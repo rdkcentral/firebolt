@@ -1,1 +1,1 @@
-# firebolt.github.io
+# firebolt
