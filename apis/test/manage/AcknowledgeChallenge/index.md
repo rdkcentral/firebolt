@@ -8,7 +8,7 @@ sdk: manage
 
 # AcknowledgeChallenge Module
 ---
-Version AcknowledgeChallenge 0.12.0-main-ci-test.9
+Version AcknowledgeChallenge 0.12.0-main-ci-test.10
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -19,6 +19,8 @@ Version AcknowledgeChallenge 0.12.0-main-ci-test.9
      - [challengeFocus](#challengefocus)
      - [challengeResponse](#challengeresponse)
      - [provide](#provide)
+   - [Events](#events)
+     - [onRequestChallenge](#onrequestchallenge)
    - [Provider Interfaces](#provider-interfaces)
      - [ChallengeProvider](#challengeprovider)
    - [Types](#types)
@@ -43,6 +45,8 @@ import { AcknowledgeChallenge } from '@firebolt-js/manage-sdk'
 ## Methods
 
 ### challengeError
+
+*This is an private RPC method.*
 
 Internal API for Challenge Provider to send back error.
 
@@ -108,6 +112,8 @@ Response:
 
 ### challengeFocus
 
+*This is an private RPC method.*
+
 Internal API for Challenge Provider to request focus for UX purposes.
 
 
@@ -158,6 +164,8 @@ Response:
 ---
 
 ### challengeResponse
+
+*This is an private RPC method.*
 
 Internal API for Challenge Provider to send back response.
 
@@ -236,6 +244,75 @@ Parameters:
 | `provider` | `any` | Yes | An implementation of the required interface. |
 
 See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
+
+## Events
+
+### onRequestChallenge
+
+*This is an private RPC method.*
+
+Registers as a provider for when the user should be challenged in order to confirm access to a capability
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `listen` | `boolean` | true |   |
+
+
+Result:
+
+[ChallengeProviderRequest](#challengeproviderrequest)
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| provides | xrn:firebolt:capability:usergrant:acknowledgechallenge |
+
+
+#### Examples
+
+
+Default Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "AcknowledgeChallenge.onRequestChallenge",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"correlationId": "abc",
+		"parameters": {
+			"capability": "xrn:firebolt:capability:localization::postal-code",
+			"requestor": {
+				"id": "ReferenceApp",
+				"name": "Firebolt Reference App"
+			}
+		}
+	}
+}
+```
+
+
+
+---
 
 
 ## Provider Interfaces

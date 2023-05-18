@@ -8,7 +8,7 @@ sdk: core
 
 # Authentication Module
 ---
-Version Authentication 0.12.0-main-ci-test.9
+Version Authentication 0.12.0-main-ci-test.10
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.12.0-main-ci-test.9
+Version Accessibility 0.12.0-main-ci-test.10
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
