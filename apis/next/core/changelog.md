@@ -5,7 +5,21 @@ version: next
 layout: default
 sdk: core
 ---
- [0.12.0-next.10](https://github.com/rdkcentral/firebolt-apis/compare/v0.12.0-next.9...v0.12.0-next.10) (2023-05-18)
+ [0.12.0-next.12](https://github.com/rdkcentral/firebolt-apis/compare/v0.12.0-next.11...v0.12.0-next.12) (2023-05-18)
+
+
+### Bug Fixes
+
+* typo ([650e53c](https://github.com/rdkcentral/firebolt-apis/commit/650e53c19bfd433eb290c929f8f2f85f90772266))
+
+# [0.12.0-next.11](https://github.com/rdkcentral/firebolt-apis/compare/v0.12.0-next.10...v0.12.0-next.11) (2023-05-18)
+
+
+### Bug Fixes
+
+* More logs ([afb9fb2](https://github.com/rdkcentral/firebolt-apis/commit/afb9fb260ef41984f6b9472ee5f641f4c1c64ad8))
+
+# [0.12.0-next.10](https://github.com/rdkcentral/firebolt-apis/compare/v0.12.0-next.9...v0.12.0-next.10) (2023-05-18)
 
 
 ### Bug Fixes
