@@ -5,7 +5,7 @@ version: next
 layout: default
 sdk: core
 ---
- [0.12.0](https://github.com/rdkcentral/firebolt-apis/compare/v0.11.0...v0.12.0) (2023-05-18)
+# [0.12.0](https://github.com/rdkcentral/firebolt-apis/compare/v0.11.0...v0.12.0) (2023-05-18)
 
 ### Bug Fixes
 

@@ -8,7 +8,7 @@ sdk: core
 
 # Discovery Module
 ---
-Version Discovery 0.12.0-next.13
+Version Discovery 0.12.0-next.14
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
