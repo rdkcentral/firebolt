@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 0.12.0-main-ci-test.9
+Version Metrics 0.12.0-main-ci-test.10
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -1231,6 +1231,8 @@ ${end.method}
 
 ### ready
 
+*This is an private RPC method.*
+
 Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
 
 
@@ -1281,6 +1283,8 @@ Response:
 ---
 
 ### signIn
+
+*This is an private RPC method.*
 
 Log a sign in event, called by Discovery.signIn().
 
@@ -1366,6 +1370,8 @@ Response:
 ---
 
 ### signOut
+
+*This is an private RPC method.*
 
 Log a sign out event, called by Discovery.signOut().
 
