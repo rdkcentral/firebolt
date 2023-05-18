@@ -27,7 +27,7 @@
 
             <ul>
                 <li>
-                    <b>Version: <select onchange="document.location.href = '/apis/' + this.value + '/core/'">
+                    <b>Version: <select onchange="document.location.href = '{{site.baseurl}}/apis/' + this.value + '/core/'">
                         {%- for v in versions -%}
                         {%- if v -%}
                         {%- if v == version -%}
