@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+  {%- assign version = path[2] | default: 'latest' -%}
+  {%- assign versions = site.pages | map: 'version' | uniq -%}
+  {%- assign latestCount = site.pages | where: 'version', 'latest' | size -%}
+  {%- if latestCount == 0 -%}
+      {%- assign version = path[2] | default: versions[1] -%}
+  {%- endif -%}
+
+  <style>
+      .home-links a {
+          display: inline-block;
+          height: 2em;
+          line-height: 2em;
+          font-size: 1.5em;
+      }
+
+      .home-links li {
+          list-style: none;
+          margin: 10px;
+      }
+
+      .home-links a[href*="github.com"] {
+        padding-left: 3em;
+          background-image: url(./images/github-mark.png);
+          background-size: 2em 2em;
+          background-repeat: no-repeat;
+      }
+
+      .home-links a[href*="npmjs.com"] {
+        padding-left: 3em;
+          background-image: url(./images/npm-mark.png);
+          background-size: 2em 0.777em;
+          background-repeat: no-repeat;
+          background-position-y: center;
+      }
+
+  </style>
+  <body>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+
+        <h2>Documentation</h2>
+        <ul class="home-links">
+            <li><a href="{{site.baseurl}}/apis/">Firebolt APIs</a>
+                <ul>
+        {%- assign pages = site.pages | where: 'version', version | sort: 'url' -%}
+        {%- for my_page in pages -%}
+            {%- if my_page.title -%}
+                {%- assign page_path = my_page.url | split: '/' -%}
+                {%- assign depth = page_path | size -%}
+                {%- if depth < 5 -%}
+                <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+                {%- endif  -%}
+            {%- endif -%}
+        {%- endfor -%}
+                </li>
+            </ul>
+        </ul>
+
+        <hr/>
+
+        <h2>Firebolt Developer Community</h2>
+        <ul class="home-links">
+            <li><a href="https://github.com/rdkcentral/firebolt-apis">rdkcentral/firebolt-apis</a></li>
+            <li><a href="https://github.com/rdkcentral/firebolt-openrpc">rdkcentral/firebolt-openrpc</a></li>
+            <li><a href="https://npmjs.com/@firebolt-js/sdk">@firebolt-js/sdk</a></li>
+            <li><a href="https://npmjs.com/@firebolt-js/manage-sdk">@firebolt-js/manage-sdk</a></li>
+        </ul>
+
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>

@@ -5,3 +5,8 @@
 layout: home
 ---
 
+![# Firebolt](./images/firebolt-logo.png)
+
+---
+
+An application platform to build apps for RDK powered connected home devices and reach millions.
