@@ -8,7 +8,7 @@ sdk: manage
 
 # Localization Module
 ---
-Version Localization 0.12.0-next.4
+Version Localization 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -128,7 +128,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### additionalInfo
 
@@ -200,7 +199,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 ### countryCode
@@ -2109,7 +2107,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

@@ -8,7 +8,7 @@ sdk: core
 
 # Internal Module
 ---
-Version Internal 0.12.0-next.4
+Version Internal 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -25,6 +25,8 @@ Version Internal 0.12.0-next.4
 ## Methods
 
 ### initialize
+
+*This is an private RPC method.*
 
 Initialize the SDK / FEE session.
 

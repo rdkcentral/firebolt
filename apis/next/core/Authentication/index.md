@@ -8,7 +8,7 @@ sdk: core
 
 # Authentication Module
 ---
-Version Authentication 0.12.0-next.4
+Version Authentication 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -107,7 +107,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### root
 
@@ -179,7 +178,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### session
 
@@ -251,7 +249,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### token
 
@@ -453,7 +450,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

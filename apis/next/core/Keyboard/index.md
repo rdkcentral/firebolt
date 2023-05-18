@@ -8,7 +8,7 @@ sdk: core
 
 # Keyboard Module
 ---
-Version Keyboard 0.12.0-next.4
+Version Keyboard 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -160,7 +160,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### password
 
@@ -239,7 +238,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### standard
 
@@ -318,7 +316,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

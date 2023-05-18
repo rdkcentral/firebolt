@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 0.12.0-next.4
+Version Lifecycle 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -167,7 +167,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### finished
 
@@ -239,7 +238,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### listen
 
@@ -425,7 +423,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### state
 
@@ -493,7 +490,6 @@ Response:
 
 
 ---
-${end.method}
 
 ## Events
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 0.12.0-next.4
+Version UserGrants 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -164,7 +164,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### capability
 
@@ -257,7 +256,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### clear
 
@@ -342,7 +340,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### deny
 
@@ -427,7 +424,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### device
 
@@ -513,7 +509,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### grant
 
@@ -598,7 +593,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### request
 
@@ -712,7 +706,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

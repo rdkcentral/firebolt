@@ -8,7 +8,7 @@ sdk: core
 
 # SecondScreen Module
 ---
-Version SecondScreen 0.12.0-next.4
+Version SecondScreen 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -116,7 +116,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### friendlyName
 Get the broadcasted friendly name for the device
@@ -448,7 +447,6 @@ Response:
 
 
 ---
-${end.method}
 
 ## Events
 

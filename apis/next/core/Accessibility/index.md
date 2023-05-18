@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.12.0-next.4
+Version Accessibility 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -141,7 +141,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### closedCaptionsSettings
 Get the user's preferred closed-captions settings
@@ -529,7 +528,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### voiceGuidanceSettings
 Get the user's preferred voice guidance settings

@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.12.0-next.4
+Version Keyboard 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -25,6 +25,10 @@ Version Keyboard 0.12.0-next.4
      - [standardError](#standarderror)
      - [standardFocus](#standardfocus)
      - [standardResponse](#standardresponse)
+   - [Events](#events)
+     - [onRequestEmail](#onrequestemail)
+     - [onRequestPassword](#onrequestpassword)
+     - [onRequestStandard](#onrequeststandard)
    - [Provider Interfaces](#provider-interfaces)
      - [KeyboardInputProvider](#keyboardinputprovider)
    - [Types](#types)
@@ -48,6 +52,8 @@ import { Keyboard } from '@firebolt-js/manage-sdk'
 ## Methods
 
 ### emailError
+
+*This is an private RPC method.*
 
 Internal API for Email Provider to send back error.
 
@@ -113,6 +119,8 @@ Response:
 
 ### emailFocus
 
+*This is an private RPC method.*
+
 Internal API for Email Provider to request focus for UX purposes.
 
 
@@ -163,6 +171,8 @@ Response:
 ---
 
 ### emailResponse
+
+*This is an private RPC method.*
 
 Internal API for Email Provider to send back response.
 
@@ -226,6 +236,8 @@ Response:
 ---
 
 ### passwordError
+
+*This is an private RPC method.*
 
 Internal API for Password Provider to send back error.
 
@@ -291,6 +303,8 @@ Response:
 
 ### passwordFocus
 
+*This is an private RPC method.*
+
 Internal API for Password Provider to request focus for UX purposes.
 
 
@@ -341,6 +355,8 @@ Response:
 ---
 
 ### passwordResponse
+
+*This is an private RPC method.*
 
 Internal API for Password Provider to send back response.
 
@@ -422,6 +438,8 @@ See [Provider Interfaces](#provider-interfaces) for each capabilities interface 
 
 ### standardError
 
+*This is an private RPC method.*
+
 Internal API for Standard Provider to send back error.
 
 Parameters:
@@ -486,6 +504,8 @@ Response:
 
 ### standardFocus
 
+*This is an private RPC method.*
+
 Internal API for Standard Provider to request focus for UX purposes.
 
 
@@ -536,6 +556,8 @@ Response:
 ---
 
 ### standardResponse
+
+*This is an private RPC method.*
 
 Internal API for Standard Provider to send back response.
 
@@ -591,6 +613,197 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": null
+}
+```
+
+
+
+---
+
+## Events
+
+### onRequestEmail
+
+*This is an private RPC method.*
+
+Registers as a provider for when the user should be shown a keyboard optimized for email address entry.
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `listen` | `boolean` | true |   |
+
+
+Result:
+
+[KeyboardProviderRequest](#keyboardproviderrequest)
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| provides | xrn:firebolt:capability:input:keyboard |
+
+
+#### Examples
+
+
+Default Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Keyboard.onRequestEmail",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"correlationId": "abc",
+		"parameters": {
+			"message": "Enter your user name."
+		}
+	}
+}
+```
+
+
+
+---
+
+### onRequestPassword
+
+*This is an private RPC method.*
+
+Registers as a provider for when the user should be shown a password keyboard, with dots for each character entered.
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `listen` | `boolean` | true |   |
+
+
+Result:
+
+[KeyboardProviderRequest](#keyboardproviderrequest)
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| provides | xrn:firebolt:capability:input:keyboard |
+
+
+#### Examples
+
+
+Default Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Keyboard.onRequestPassword",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"correlationId": "abc",
+		"parameters": {
+			"message": "Enter your user name."
+		}
+	}
+}
+```
+
+
+
+---
+
+### onRequestStandard
+
+*This is an private RPC method.*
+
+Registers as a provider for when the user should be shown a standard keyboard.
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `listen` | `boolean` | true |   |
+
+
+Result:
+
+[KeyboardProviderRequest](#keyboardproviderrequest)
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| provides | xrn:firebolt:capability:input:keyboard |
+
+
+#### Examples
+
+
+Default Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Keyboard.onRequestStandard",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"correlationId": "abc",
+		"parameters": {
+			"message": "Enter your user name."
+		}
+	}
 }
 ```
 

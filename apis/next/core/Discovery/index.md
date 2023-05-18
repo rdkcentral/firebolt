@@ -8,7 +8,7 @@ sdk: core
 
 # Discovery Module
 ---
-Version Discovery 0.12.0-next.4
+Version Discovery 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -138,7 +138,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### contentAccess
 
@@ -487,7 +486,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### entitlements
 
@@ -588,7 +586,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### entityInfo
 Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.
@@ -2730,7 +2727,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### listen
 
@@ -3552,7 +3548,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### signOut
 
@@ -3624,7 +3619,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### watched
 
@@ -3709,22 +3703,21 @@ Response:
 
 
 ---
-${end.method}
 
 ### watchNext
 
 Suggest a call-to-action for this app on the platform home screen
 
 ```typescript
-function watchNext(title?: LocalizedString, identifiers?: ContentIdentifiers, expires?: string, images?: object): Promise<boolean>
+function watchNext(title: LocalizedString, identifiers: ContentIdentifiers, expires?: string, images?: object): Promise<boolean>
 ```
 
 Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `title` | [`LocalizedString`](../schemas/Types/#LocalizedString) | false | The title of this call to action  |
-| `identifiers` | [`ContentIdentifiers`](../schemas/Entertainment/#ContentIdentifiers) | false | A set of content identifiers for this call to action  |
+| `title` | [`LocalizedString`](../schemas/Types/#LocalizedString) | true | The title of this call to action  |
+| `identifiers` | [`ContentIdentifiers`](../schemas/Entertainment/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
 | `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
 | `images` | `object` | false | A set of images for this call to action  |
 
@@ -3815,9 +3808,55 @@ Response:
 ```
 </details>
 
+Suggest a watch-next tile for the home screen
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.watchNext("A Fantastic Show", {"entityId":"partner.com/entity/456"}, null, null)
+    .then(success => {
+        console.log(success)
+    })
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+<details>
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Discovery.watchNext",
+	"params": {
+		"title": "A Fantastic Show",
+		"identifiers": {
+			"entityId": "partner.com/entity/456"
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": true
+}
+```
+</details>
+
 
 ---
-${end.method}
 
 ## Events
 

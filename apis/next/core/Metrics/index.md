@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 0.12.0-next.4
+Version Metrics 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -133,7 +133,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### error
 
@@ -219,7 +218,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaEnded
 
@@ -298,7 +296,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaLoadStart
 
@@ -377,7 +374,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaPause
 
@@ -456,7 +452,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaPlay
 
@@ -535,7 +530,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaPlaying
 
@@ -614,7 +608,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaProgress
 
@@ -695,7 +688,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaRateChange
 
@@ -776,7 +768,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaRenditionChange
 
@@ -863,7 +854,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaSeeked
 
@@ -944,7 +934,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaSeeking
 
@@ -1025,7 +1014,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaWaiting
 
@@ -1104,7 +1092,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### page
 
@@ -1227,9 +1214,10 @@ Response:
 
 
 ---
-${end.method}
 
 ### ready
+
+*This is an private RPC method.*
 
 Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
 
@@ -1281,6 +1269,8 @@ Response:
 ---
 
 ### signIn
+
+*This is an private RPC method.*
 
 Log a sign in event, called by Discovery.signIn().
 
@@ -1366,6 +1356,8 @@ Response:
 ---
 
 ### signOut
+
+*This is an private RPC method.*
 
 Log a sign out event, called by Discovery.signOut().
 
@@ -1535,7 +1527,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### stopContent
 
@@ -1656,7 +1647,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

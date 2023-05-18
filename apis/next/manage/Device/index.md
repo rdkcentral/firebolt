@@ -8,7 +8,7 @@ sdk: manage
 
 # Device Module
 ---
-Version Device 0.12.0-next.4
+Version Device 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -622,7 +622,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 ## Events

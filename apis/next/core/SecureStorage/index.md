@@ -8,7 +8,7 @@ sdk: core
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.12.0-next.4
+Version SecureStorage 0.12.0-next.6
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -161,7 +161,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### remove
 
@@ -287,7 +286,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### set
 
@@ -420,7 +418,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 
