@@ -8,7 +8,7 @@ sdk: core
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.12.0-next.12
+Version SecureStorage 0.12.0-next.13
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
