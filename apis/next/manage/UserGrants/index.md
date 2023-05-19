@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 0.12.0-next.15
+Version UserGrants 0.12.0-next.16
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

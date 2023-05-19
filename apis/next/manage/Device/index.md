@@ -8,7 +8,7 @@ sdk: manage
 
 # Device Module
 ---
-Version Device 0.12.0-next.15
+Version Device 0.12.0-next.16
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
