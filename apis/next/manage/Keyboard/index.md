@@ -975,7 +975,7 @@ class MyKeyboardInputProvider {
 Keyboard.provide('xrn:firebolt:capability:input:keyboard', new MyKeyboardInputProvider())
 ```
 
-<details>
+<details markdown="1" >
     <summary>JSON-RPC</summary>
 
 **Register to recieve each provider API**

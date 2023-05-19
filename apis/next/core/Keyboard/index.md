@@ -86,7 +86,7 @@ Value of `email`:
 ```javascript
 "user@domain.com"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -131,7 +131,7 @@ Value of `email`:
 ```javascript
 "user@domain.com"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -210,7 +210,7 @@ Value of `value`:
 ```javascript
 "abc123"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -288,7 +288,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

@@ -87,7 +87,7 @@ Value of `value`:
 ```javascript
 "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -132,7 +132,7 @@ Value of `value`:
 ```javascript
 "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -212,7 +212,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -257,7 +257,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -339,7 +339,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -388,7 +388,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

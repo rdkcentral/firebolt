@@ -428,7 +428,7 @@ class MyChallengeProvider {
 PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', new MyChallengeProvider())
 ```
 
-<details>
+<details markdown="1" >
     <summary>JSON-RPC</summary>
 
 **Register to recieve each provider API**

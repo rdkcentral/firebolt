@@ -92,7 +92,7 @@ Value of `init`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

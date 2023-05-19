@@ -96,7 +96,7 @@ Value of `connectedWifi`:
 	"frequency": 2.4
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -152,7 +152,7 @@ Value of `connectedWifi`:
 	"frequency": 2.4
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -232,7 +232,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -328,7 +328,7 @@ Value of `list`:
 	]
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -430,7 +430,7 @@ Value of `connectedWifi`:
 	"frequency": 2.4
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

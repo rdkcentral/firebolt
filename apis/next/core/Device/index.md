@@ -111,7 +111,7 @@ Value of `supportedAudioProfiles`:
 	"dolbyAtmos": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -190,7 +190,7 @@ Value of `supportedAudioProfiles`:
 	"dolbyAtmos": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -271,7 +271,7 @@ Value of `distributorId`:
 ```javascript
 "Company"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -348,7 +348,7 @@ Value of `supportedHdcpProfiles`:
 	"hdcp2.2": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -423,7 +423,7 @@ Value of `supportedHdcpProfiles`:
 	"hdcp2.2": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -504,7 +504,7 @@ Value of `supportedHdrProfiles`:
 	"hlg": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -583,7 +583,7 @@ Value of `supportedHdrProfiles`:
 	"hlg": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -663,7 +663,7 @@ Value of `id`:
 ```javascript
 "123"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -795,7 +795,7 @@ Value of `make`:
 ```javascript
 "Arris"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -871,7 +871,7 @@ Value of `model`:
 ```javascript
 "xi6"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -947,7 +947,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -989,7 +989,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1058,7 +1058,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1103,7 +1103,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1183,7 +1183,7 @@ Value of `networkInfo`:
 	"type": "wifi"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1258,7 +1258,7 @@ Value of `networkInfo`:
 	"type": "wifi"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1394,7 +1394,7 @@ Value of `platformId`:
 ```javascript
 "WPE"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1473,7 +1473,7 @@ Value of `screenResolution`:
 	1080
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1548,7 +1548,7 @@ Value of `screenResolution`:
 	1080
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1626,7 +1626,7 @@ Value of `sku`:
 ```javascript
 "AX061AEI"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1702,7 +1702,7 @@ Value of `deviceType`:
 ```javascript
 "STB"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1778,7 +1778,7 @@ Value of `uniqueId`:
 ```javascript
 "ee6723b8-7ab3-462c-8d93-dbf61227998e"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1885,7 +1885,7 @@ Value of `versions`:
 	"debug": "Non-parsable build info for error logging only."
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1990,7 +1990,7 @@ Value of `videoResolution`:
 	1080
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2065,7 +2065,7 @@ Value of `videoResolution`:
 	1080
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2146,7 +2146,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

@@ -101,7 +101,7 @@ Value of `closedCaptionsSettings`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -199,7 +199,7 @@ Value of `closedCaptionsSettings`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -296,7 +296,7 @@ Value of `closedCaptionsSettings`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -499,7 +499,7 @@ Value of `settings`:
 	"speed": 5
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -575,7 +575,7 @@ Value of `settings`:
 	"speed": 5
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -650,7 +650,7 @@ Value of `settings`:
 	"speed": 5
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

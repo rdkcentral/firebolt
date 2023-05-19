@@ -94,7 +94,7 @@ Value of `advertisingId`:
 	"lmt": "0"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -169,7 +169,7 @@ Value of `appBundleId`:
 ```javascript
 "operator.app"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -262,7 +262,7 @@ Value of `adFrameworkConfig`:
 	"authenticationEntity": "60f72475281cfba3852413bd53e957f6"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -354,7 +354,7 @@ Value of `deviceAttributes`:
 ```javascript
 {}
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -541,7 +541,7 @@ Value of `adPolicy`:
 	"limitAdTracking": false
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -616,7 +616,7 @@ Value of `adPolicy`:
 	"limitAdTracking": false
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

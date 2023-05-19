@@ -95,7 +95,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -139,7 +139,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -212,7 +212,7 @@ Value of `results`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -397,7 +397,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -464,7 +464,7 @@ Value of `state`:
 ```javascript
 "foreground"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -536,7 +536,7 @@ Value of `value`:
 	"previous": "foreground"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -611,7 +611,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -660,7 +660,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -736,7 +736,7 @@ Value of `value`:
 	"previous": "initializing"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -811,7 +811,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -886,7 +886,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

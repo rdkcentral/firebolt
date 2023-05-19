@@ -78,7 +78,7 @@ Value of `allow`:
 ```javascript
 false
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -149,7 +149,7 @@ Value of `allow`:
 ```javascript
 false
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -224,7 +224,7 @@ Value of `flags`:
 	"userExperience": "1000"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

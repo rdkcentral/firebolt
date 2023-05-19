@@ -388,7 +388,7 @@ class MyChallengeProvider {
 AcknowledgeChallenge.provide('xrn:firebolt:capability:usergrant:acknowledgechallenge', new MyChallengeProvider())
 ```
 
-<details>
+<details markdown="1" >
     <summary>JSON-RPC</summary>
 
 **Register to recieve each provider API**
