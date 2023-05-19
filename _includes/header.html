@@ -12,7 +12,16 @@
       {%- endif -%}
       {%- assign sdks = 'core,manage' | split: ',' -%}
 
-      <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+      <style>
+        .site-title img {
+            height: 1.5em;
+            padding-right: 0.25em;
+            position: relative;
+            top: -0.15em;            
+        }
+      </style>
+
+      <a class="site-title" rel="author" href="{{ "/" | relative_url }}"><img src="{{ site.baseurl }}/images/firebolt-logo-small.png"">&nbsp;{{ site.title | escape }}</a>
         <nav class="site-nav">
           <input type="checkbox" id="nav-trigger" class="nav-trigger" />
           <label for="nav-trigger">
