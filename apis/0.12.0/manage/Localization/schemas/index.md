@@ -1,0 +1,87 @@
+---
+title: Localization
+
+version: 0.12.0
+layout: default
+sdk: manage
+---
+
+# Localization
+---
+Version Localization 0.0.0-unknown.0
+
+## Table of Contents
+   - [Table of Contents](#table-of-contents)
+   - [Overview](#overview)
+   - [Types](#types)
+     - [Locality](#locality)
+     - [CountryCode](#countrycode)
+     - [Language](#language)
+     - [Locale](#locale)
+     - [TimeZone](#timezone)
+
+
+## Overview
+ undefined
+
+## Types
+
+### Locality
+
+
+
+```typescript
+type Locality = string
+```
+
+
+
+---
+
+### CountryCode
+
+
+
+```typescript
+type CountryCode = string
+```
+
+
+
+---
+
+### Language
+
+
+
+```typescript
+type Language = string
+```
+
+
+
+---
+
+### Locale
+
+
+
+```typescript
+type Locale = string
+```
+
+
+
+---
+
+### TimeZone
+
+
+
+```typescript
+type TimeZone = string
+```
+
+
+
+---
