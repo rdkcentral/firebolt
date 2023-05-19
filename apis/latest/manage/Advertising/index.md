@@ -165,7 +165,7 @@ function skipRestriction(): Promise<SkipRestriction>
 
 Promise resolution:
 
-[SkipRestriction](../schemas/Advertising/#SkipRestriction)
+[SkipRestriction](../Advertising/schemas/#SkipRestriction)
 
 Capabilities:
 
@@ -274,7 +274,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`SkipRestriction`](../schemas/Advertising/#SkipRestriction) | true |  <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
+| `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true |  <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
 
 
 Promise resolution:

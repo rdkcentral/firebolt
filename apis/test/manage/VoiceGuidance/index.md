@@ -511,7 +511,7 @@ function speed(): Promise<VoiceSpeed>
 
 Promise resolution:
 
-[VoiceSpeed](../schemas/Accessibility/#VoiceSpeed)
+[VoiceSpeed](../Accessibility/schemas/#VoiceSpeed)
 
 Capabilities:
 
@@ -620,7 +620,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`VoiceSpeed`](../schemas/Accessibility/#VoiceSpeed) | true |   |
+| `value` | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true |   |
 
 
 Promise resolution:

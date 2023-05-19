@@ -55,7 +55,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
 
 
 Result:
@@ -174,7 +174,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
 
 
 Result:
@@ -551,7 +551,7 @@ type PinChallengeProviderRequest = {
 
 See also: 
 
-[ProviderRequest](../schemas/Types/#ProviderRequest)
+[ProviderRequest](../Types/schemas/#ProviderRequest)
 [PinChallenge](#pinchallenge-1)
 
 ---

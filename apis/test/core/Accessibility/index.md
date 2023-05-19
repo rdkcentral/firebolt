@@ -57,7 +57,7 @@ function closedCaptions(): Promise<ClosedCaptionsSettings>
 
 Promise resolution:
 
-[ClosedCaptionsSettings](../schemas/Accessibility/#ClosedCaptionsSettings)
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
@@ -156,7 +156,7 @@ function closedCaptionsSettings(): Promise<ClosedCaptionsSettings>
 
 Promise resolution:
 
-[ClosedCaptionsSettings](../schemas/Accessibility/#ClosedCaptionsSettings)
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 

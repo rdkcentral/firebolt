@@ -34,14 +34,14 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `version` | [`SemanticVersion`](../schemas/Types/#SemanticVersion) | true | The semantic version of the SDK.  |
+| `version` | [`SemanticVersion`](../Types/schemas/#SemanticVersion) | true | The semantic version of the SDK.  |
 
 
 Result:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `version` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The semantic version of the FEE. | 
+| `version` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The semantic version of the FEE. | 
 
 
 Capabilities:

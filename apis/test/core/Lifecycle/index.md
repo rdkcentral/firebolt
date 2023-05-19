@@ -58,7 +58,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `reason` | [`CloseReason`](../schemas/Lifecycle/#CloseReason) | true | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
+| `reason` | [`CloseReason`](../Lifecycle/schemas/#CloseReason) | true | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
 
 
 Promise resolution:
@@ -439,7 +439,7 @@ function state(): LifecycleState
 
 Promise resolution:
 
-[LifecycleState](../schemas/Lifecycle/#LifecycleState)
+[LifecycleState](../Lifecycle/schemas/#LifecycleState)
 
 Capabilities:
 

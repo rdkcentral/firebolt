@@ -387,7 +387,7 @@ function protocols(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
@@ -461,7 +461,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 Capabilities:
 
@@ -540,7 +540,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 Capabilities:
 

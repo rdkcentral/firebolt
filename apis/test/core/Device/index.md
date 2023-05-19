@@ -315,7 +315,7 @@ function hdcp(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
@@ -469,7 +469,7 @@ function hdr(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
@@ -1824,10 +1824,10 @@ Promise resolution:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `sdk` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The Firebolt SDK version | 
-| `api` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The lateset Firebolt API version supported by the curent device. | 
-| `firmware` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The device firmware version. | 
-| `os` | [SemanticVersion](../schemas/Types/#SemanticVersion) | **Deprecated** Use `firmware`, instead. | 
+| `sdk` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The Firebolt SDK version | 
+| `api` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The lateset Firebolt API version supported by the curent device. | 
+| `firmware` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The device firmware version. | 
+| `os` | [SemanticVersion](../Types/schemas/#SemanticVersion) | **Deprecated** Use `firmware`, instead. | 
 | `debug` | string | Detail version as a string, for debugging purposes | 
 
 
@@ -2220,7 +2220,7 @@ type AudioProfiles = {
 
 See also: 
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
 
 ---

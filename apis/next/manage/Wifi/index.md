@@ -271,7 +271,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `timeout` | [`Timeout`](../schemas/Types/#Timeout) | false |  <br/>minumum: 0
+| `timeout` | [`Timeout`](../Types/schemas/#Timeout) | false |  <br/>minumum: 0
 maximum: 9999 |
 
 
