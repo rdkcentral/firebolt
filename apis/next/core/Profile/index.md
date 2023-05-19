@@ -8,7 +8,7 @@ sdk: core
 
 # Profile Module
 ---
-Version Profile 0.12.0-next.14
+Version Profile 0.12.0-next.15
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
