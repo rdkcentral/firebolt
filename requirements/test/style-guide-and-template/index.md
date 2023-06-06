@@ -9,7 +9,9 @@ category: requirements
 
 Document Status: Working Draft
 
-See [Firebolt Requirements Governance](./governance.md) for more info.
+See [Firebolt Requirements Governance](../governance) for more info.
+
+**NOTE**: Update this link based on your directory depth ^^
 
 | Contributor    | Organization   |
 | -------------- | -------------- |
@@ -45,7 +47,7 @@ Firebolt uses method templates in order to code-generate consistent APIs. For ex
 
 This enables both consistent APIs (all properties have a recongnizable pattern) and consistent SDK implementation, which reduces the code that needs to be tested.
 
-Firebolt also uses [Capabilities](./general/capabilities/capabilities.md) to map APIs to availablity and permissions. Capabilities and methods are not required to be 1:1.
+Firebolt also uses [Capabilities](../general/capabilities) to map APIs to availablity and permissions. Capabilities and methods are not required to be 1:1.
 
 ### 3.1. General Style Requirements
 All headers **MUST** be numbered, and have the parent header as the prefix, separated with '.'
@@ -79,7 +81,7 @@ Methods **MUST** have at least one capability used, managed, or provided by the 
 
 Methods **MAY** require the use of more than one capability, but this means that the app must have permission to all of them. In order to enable App permissions to be evaluated in an isolated layer, separate from the method implementation itself, a Firebolt method **MUST NOT** be specified to add or remove fields based on the caller's permissions.
 
-The words used in method and parameter names **SHOULD** be used as consistently as possible across the Firebolt API surface. See the [Firebolt API Glossary](./glossary.md) for words that Firebolt uses and how they are used.
+The words used in method and parameter names **SHOULD** be used as consistently as possible across the Firebolt API surface. See the [Firebolt API Glossary](../glossary) for words that Firebolt uses and how they are used.
 
 ### 3.3. Firebolt Method Templates
 Methods **SHOULD** consider using the existing Firebolt method tags, in order to have a level of consistency across APIs.

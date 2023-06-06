@@ -10,7 +10,7 @@ type: specification
 
 Document status: Candidate Specification
 
-See [Firebolt Requirements Governance](../governance.md) for more info.
+See [Firebolt Requirements Governance](../../../../governance) for more info.
 
 | Contributor    | Organization   |
 | -------------- | -------------- |
@@ -33,7 +33,7 @@ example, Firebolt has a `Discovery.watched` method that allows apps to
 inform Firebolt that a user has finished watching some content. This
 method allows an app to **provide** the watch history capability and the
 aggregated experience to **use** it. See Firebolt
-[Capabilities](./capabilities.md) requirements for more info on the `use` and `provide` roles of a
+[Capabilities](../capabilities) requirements for more info on the `use` and `provide` roles of a
 capability.
 
 This sort of data exchange involves several parties: minimally the user,
@@ -47,7 +47,7 @@ Firebolt capabilities require User Grants and what policies should be
 applied to acquiring those grants.
 
 ![Diagram Description automatically
-generated](../../../images/specifications/general/capabilities/user-grants/image1.png)
+generated](../../../../images/specifications/general/capabilities/user-grants/image1.png)
 
 Distributors can configure what kind of user grant is required for a
 particular capability, e.g. a simple acknowledgement of an \"OK\"
@@ -105,7 +105,7 @@ or opt-out, and whether explicit prompting of the user is required.
 
 This section defines the key concepts behind the Firebolt User Grant
 system. User Grants build on top of [Firebolt
-Capabilities](./capabilities.md).
+Capabilities](../capabilities).
 Since Capabilities are fundamental to user grants, it is recommended to
 read the Capabilities requirements first before reading this document.
 
@@ -166,7 +166,7 @@ capability. Said another way, the Acknowledgement Challenge is the
 *Granting Capability*.
 
 ![Diagram Description automatically
-generated](../../../images/specifications/general/capabilities/user-grants/image2.png)
+generated](../../../../images/specifications/general/capabilities/user-grants/image2.png)
 
 Note that the granting capability UI is provided by another app. The
 Provider APIs for each granting capability type are out of scope for
@@ -193,7 +193,7 @@ A **Privacy Setting** is a link between a Grant Policy and any Firebolt API that
 on the device or account.
 
 ![Diagram Description automatically
-generated](../../../images/specifications/general/capabilities/user-grants/image3.png)
+generated](../../../../images/specifications/general/capabilities/user-grants/image3.png)
 
 How Firebolt devices persist Privacy Settings is outside the scope of
 this document.
@@ -410,7 +410,7 @@ this app and role.
 
 First, all capabilities necessary to fulfill the API are collected.
 
-![](../../../images/specifications/general/capabilities/user-grants/image4.png)
+![](../../../../images/specifications/general/capabilities/user-grants/image4.png)
 
 ### 5.2. Grant Policy Resolution
 
@@ -419,7 +419,7 @@ Distributor, or App Grant Policy that applies, and that none of them are
 invalid, e.g. an override that is now allowed.
 
 ![Diagram Description automatically
-generated](../../../images/specifications/general/capabilities/user-grants/image5.png)
+generated](../../../../images/specifications/general/capabilities/user-grants/image5.png)
 
 ### 5.3. Active Grant Check
 
@@ -428,7 +428,7 @@ active grant, or if it is linked to a Privacy Setting configured to skip
 user-prompts.
 
 ![Diagram Description automatically
-generated](../../../images/specifications/general/capabilities/user-grants/image6.png)
+generated](../../../../images/specifications/general/capabilities/user-grants/image6.png)
 
 ### 5.4. Grant Prompt and Resolution
 
@@ -437,7 +437,7 @@ the end user, and any linked Privacy Settings are updated as
 appropriate. If all succeeds, then the API is invoked.
 
 ![Diagram Description automatically
-generated](../../../images/specifications/general/capabilities/user-grants/image7.png)
+generated](../../../../images/specifications/general/capabilities/user-grants/image7.png)
 
 ## 6. Schemas
 
@@ -519,7 +519,7 @@ The resulting user grant will only be valid:
 ## 7. APIs
 
 APIs for User Grants are covered in the [Capabilities Requirements
-document](./capabilities.md).
+document](../capabilities).
 
 ### 7.1. Manage SDK APIs
 

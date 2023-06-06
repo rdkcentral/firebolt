@@ -10,7 +10,7 @@ type: specification
 
 Document Status: Candidate Specification
 
-See [Firebolt Requirements Governance](./governance.md) for more info.
+See [Firebolt Requirements Governance](../../../governance) for more info.
 
 | Contributor    | Organization   |
 | -------------- | -------------- |
@@ -453,7 +453,7 @@ Firebolt platforms **MUST** support acquiring a user grant *at the
 moment the Capability is invoked*, without requiring any reinvocation of
 the Capability.
 
-See [User Grants](./user-grants.md), for more info.
+See [User Grants](./user-grants), for more info.
 
 The platform **MUST** return accurate responses based on these
 requirements to all [APIs](#apis) outlined below.
@@ -499,7 +499,7 @@ Note that determining user grants may involve presenting a UX to the end
 user. During this time, a necessary capability may become unavailable.
 Due to this, necessary Capabilities MUST be reevaluated for availability
 after determining user grant status. For a more detailed flow diagram
-for evaluating User Grants, see [User Grants](./user-grants.md).
+for evaluating User Grants, see [User Grants](./user-grants).
 
 ## 5. Configuring Device Capabilities
 
@@ -614,7 +614,7 @@ Specification Schema](#_Firebolt_Specification_Schema).
 | `supported`     | `string[]`                  | List of supported capabilities for this device.                       |
 | `grantPolicies` | `Map<Role,GrantPolicy>` | An optional GrantPolicy override for each role: use, manage, provide. |
 
-See [GrantPolicy](./user-grants.md) in the User Grant requirements document, for more info.
+See [GrantPolicy](./user-grants) in the User Grant requirements document, for more info.
 
 ### 6.4. CapabilityPolicy
 
