@@ -10,6 +10,10 @@
       {%- if latestCount == 0 -%}
           {%- assign version = path[2] | default: versions[1] -%}
       {%- endif -%}
+      {%- assign requirementsCount = site.pages | where: 'version': version | where: 'category': 'requirements' | size -%}
+      {%- assign specCount = site.pages | where: 'version': version | where: 'category': 'requirements' | where: 'type', 'specification' | size -%}
+      {%- assign adrCount = site.pages | where: 'version': version | where: 'category': 'requirements' | where: 'type', 'adr' | size -%}
+
       {%- assign sdks = 'core,manage' | split: ',' -%}
 
       <style>
@@ -53,11 +57,13 @@
                 {%- if my_page.sdk -%}
                 {%- else -%}
                     {%- if my_page.title -%}
-                <li><b><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></b>
                     {%- assign page_path = my_page.url | split: '/' -%}
                     {%- assign depth = page_path | size -%}
+                    <!-- {{ my_page.title}} -->
                     {%- if depth == 2 -%}
                         {%- if page_path[1] == 'apis' -%}
+                  <li><b><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></b>
+                    {%- if path[1] == 'apis' -%}
                     <ul>
                         {%- for sdk in sdks -%}
                         {%- assign pages = site.pages | where: 'version', version | where: 'sdk': sdk | sort: 'url' -%}
@@ -91,13 +97,47 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                    {%- endif -%}
+                  </li>
                         {%- endif -%}
                     {%- endif -%}
-                </li>
+                    </li>
                     {%- endif -%}
                 {%- endif -%}
               {%- endfor -%}
+
+              {%- if requirementsCount > 0 -%}
+                    <li><b>Firebolt Requirements</b>
+                      <ul>
+                        {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', null | sort: 'title' -%}
+                        {%- for my_page in pages -%}    
+                        <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+                        {%- endfor -%}                            
+
+                        {%- if specCount > 0 -%}
+                          <li><b>Specifications</b>
+                            <ul>
+                              {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', 'specification' | sort: 'title' -%}
+                              {%- for my_page in pages -%}    
+                              <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+                              {%- endfor -%}                            
+                            </ul>
+                          </li>
+                        {%- endif -%}
+                        {%- if ardCount > 0 -%}
+                          <li><b>ADRs</b>
+                            <ul>
+                              {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', 'adr' | sort: 'title' -%}
+                              {%- for my_page in pages -%}    
+                              <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+                              {%- endfor -%}                            
+                            </ul>
+                          </li>
+                        {%- endif -%}
+
+                      </ul>
+                    </li>
+              {%- endif -%}
 
 
             </ul>
