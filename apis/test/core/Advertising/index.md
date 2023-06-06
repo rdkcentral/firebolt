@@ -8,7 +8,7 @@ sdk: core
 
 # Advertising Module
 ---
-Version Advertising 0.12.0-main-ci-test.10
+Version Advertising 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -94,7 +94,7 @@ Value of `advertisingId`:
 	"lmt": "0"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -124,7 +124,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### appBundleId
 
@@ -170,7 +169,7 @@ Value of `appBundleId`:
 ```javascript
 "operator.app"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -196,7 +195,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 ### config
@@ -264,7 +262,7 @@ Value of `adFrameworkConfig`:
 	"authenticationEntity": "60f72475281cfba3852413bd53e957f6"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -311,7 +309,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### deviceAttributes
 
@@ -357,7 +354,7 @@ Value of `deviceAttributes`:
 ```javascript
 {}
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -383,7 +380,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### listen
 
@@ -545,7 +541,7 @@ Value of `adPolicy`:
 	"limitAdTracking": false
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -579,13 +575,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function policy(callback: (value) => AdPolicy): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -620,7 +612,7 @@ Value of `adPolicy`:
 	"limitAdTracking": false
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 0.12.0-main-ci-test.10
+Version Metrics 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -104,7 +104,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -133,7 +133,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### error
 
@@ -188,7 +187,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -219,7 +218,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaEnded
 
@@ -270,7 +268,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -298,7 +296,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaLoadStart
 
@@ -349,7 +346,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -377,7 +374,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaPause
 
@@ -428,7 +424,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -456,7 +452,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaPlay
 
@@ -507,7 +502,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -535,7 +530,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaPlaying
 
@@ -586,7 +580,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -614,7 +608,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaProgress
 
@@ -666,7 +659,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -695,7 +688,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaRateChange
 
@@ -747,7 +739,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -776,7 +768,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaRenditionChange
 
@@ -831,7 +822,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -863,7 +854,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaSeeked
 
@@ -915,7 +905,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -944,7 +934,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaSeeking
 
@@ -996,7 +985,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1025,7 +1014,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### mediaWaiting
 
@@ -1076,7 +1064,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1104,7 +1092,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### page
 
@@ -1155,7 +1142,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1199,7 +1186,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1227,7 +1214,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### ready
 
@@ -1471,7 +1457,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1513,7 +1499,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1541,7 +1527,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### stopContent
 
@@ -1592,7 +1577,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1634,7 +1619,7 @@ Value of `success`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1662,7 +1647,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

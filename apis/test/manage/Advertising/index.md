@@ -8,7 +8,7 @@ sdk: manage
 
 # Advertising Module
 ---
-Version Advertising 0.12.0-main-ci-test.10
+Version Advertising 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -195,7 +195,7 @@ Value of `result`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -237,7 +237,7 @@ Value of `result`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -304,7 +304,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -348,7 +348,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -380,13 +380,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function skipRestriction(callback: (value) => SkipRestriction): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -418,7 +414,7 @@ Value of `result`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -463,7 +459,7 @@ Value of `result`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

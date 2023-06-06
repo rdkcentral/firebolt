@@ -8,7 +8,7 @@ sdk: core
 
 # Parameters Module
 ---
-Version Parameters 0.12.0-main-ci-test.10
+Version Parameters 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -92,7 +92,7 @@ Value of `init`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -134,7 +134,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

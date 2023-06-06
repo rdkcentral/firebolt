@@ -8,7 +8,7 @@ sdk: core
 
 # Authentication Module
 ---
-Version Authentication 0.12.0-main-ci-test.10
+Version Authentication 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -81,7 +81,7 @@ Value of `token`:
 ```javascript
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -107,7 +107,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### root
 
@@ -153,7 +152,7 @@ Value of `token`:
 ```javascript
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -179,7 +178,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### session
 
@@ -225,7 +223,7 @@ Value of `token`:
 ```javascript
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -251,7 +249,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### token
 
@@ -310,7 +307,7 @@ Value of `token`:
 	"type": "platform"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -362,7 +359,7 @@ Value of `token`:
 	"type": "platform"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -414,7 +411,7 @@ Value of `token`:
 	"type": "platform"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -453,7 +450,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # Device Module
 ---
-Version Device 0.12.0-main-ci-test.10
+Version Device 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -140,7 +140,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -182,7 +182,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -249,7 +249,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -293,7 +293,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -325,13 +325,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function name(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -363,7 +359,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -408,7 +404,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -547,7 +543,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -592,7 +588,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -622,7 +618,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 ## Events
@@ -669,7 +664,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 0.12.0-main-ci-test.10
+Version Lifecycle 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -95,7 +95,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -139,7 +139,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -167,7 +167,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### finished
 
@@ -213,7 +212,7 @@ Value of `results`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -239,7 +238,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### listen
 
@@ -399,7 +397,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -425,7 +423,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### state
 
@@ -467,7 +464,7 @@ Value of `state`:
 ```javascript
 "foreground"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -493,7 +490,6 @@ Response:
 
 
 ---
-${end.method}
 
 ## Events
 
@@ -540,7 +536,7 @@ Value of `value`:
 	"previous": "foreground"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -615,7 +611,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -664,7 +660,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -740,7 +736,7 @@ Value of `value`:
 	"previous": "initializing"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -815,7 +811,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -890,7 +886,7 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

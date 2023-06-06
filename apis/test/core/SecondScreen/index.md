@@ -8,7 +8,7 @@ sdk: core
 
 # SecondScreen Module
 ---
-Version SecondScreen 0.12.0-main-ci-test.10
+Version SecondScreen 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -90,7 +90,7 @@ Value of `deviceId`:
 ```javascript
 "device-id"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -116,7 +116,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### friendlyName
 Get the broadcasted friendly name for the device
@@ -163,7 +162,7 @@ Value of `friendlyName`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -194,13 +193,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function friendlyName(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -232,7 +227,7 @@ Value of `friendlyName`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -420,7 +415,7 @@ Value of `protocols`:
 	"dial1.7": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -448,7 +443,6 @@ Response:
 
 
 ---
-${end.method}
 
 ## Events
 
@@ -495,7 +489,7 @@ Value of `closeRequestEvent`:
 	"version": "1.7"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -575,7 +569,7 @@ Value of `launchRequestEvent`:
 	"data": "{\"code\":\"AQDPQZiQcb3KQ7gY7yy5tHTMbbkGHR9Zjp-KL53H3eKBZIeAt7O9UKYPu6B21l2UZVmIqkFXDXBmXvK4g2e3EgZtjMNmKPsTltgnRl95DImtOXjSpWtTjSaOkW4w1kZKUTwLKdwVWTzBVH8ERHorvLU6vCGOVHxXt65LNwdl5HKRweShVC1V9QsyvRnQS61ov0UclmrH_xZML2Bt-Q-rZFjey5MjwupIb4x4f53XUJMhjHpDHoIUKrjpdPDQvK2a\",\"friendlyName\":\"Operator_TX061AEI\",\"UDN\":\"608fef11-2800-482a-962b-23a6690c93c1\"}"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

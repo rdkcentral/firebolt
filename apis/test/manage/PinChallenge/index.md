@@ -8,7 +8,7 @@ sdk: manage
 
 # PinChallenge Module
 ---
-Version PinChallenge 0.12.0-main-ci-test.10
+Version PinChallenge 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -243,6 +243,40 @@ Request:
 			"correlationId": "123",
 			"result": {
 				"granted": false,
+				"reason": "exceededPinFailures"
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+
+
+Example #3
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "PinChallenge.challengeResponse",
+	"params": {
+		"response": {
+			"correlationId": "123",
+			"result": {
+				"granted": null,
 				"reason": "cancelled"
 			}
 		}
@@ -402,7 +436,7 @@ Promise resolution:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `granted` | boolean | Whether the user succeeded in the pin challenge | 
+| `granted` | boolean | void |  | 
 | `reason` | 'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled' | The reason for the result of challenging the user | 
 
 
@@ -428,7 +462,7 @@ class MyChallengeProvider {
 PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', new MyChallengeProvider())
 ```
 
-<details>
+<details markdown="1" >
     <summary>JSON-RPC</summary>
 
 **Register to recieve each provider API**
@@ -527,7 +561,7 @@ Response:
 
 ```typescript
 type PinChallengeResult = {
-  granted: boolean           // Whether the user succeeded in the pin challenge
+  granted: boolean | void
   reason: ResultReason       // The reason for the result of challenging the user
 }
 ```

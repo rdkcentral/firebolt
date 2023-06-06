@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.12.0-main-ci-test.10
+Version Keyboard 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -975,7 +975,7 @@ class MyKeyboardInputProvider {
 Keyboard.provide('xrn:firebolt:capability:input:keyboard', new MyKeyboardInputProvider())
 ```
 
-<details>
+<details markdown="1" >
     <summary>JSON-RPC</summary>
 
 **Register to recieve each provider API**

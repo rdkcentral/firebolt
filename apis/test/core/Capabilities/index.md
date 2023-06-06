@@ -8,7 +8,7 @@ sdk: core
 
 # Capabilities Module
 ---
-Version Capabilities 0.12.0-main-ci-test.10
+Version Capabilities 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -95,7 +95,7 @@ Value of `available`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -139,7 +139,7 @@ Value of `available`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -167,7 +167,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 ### granted
@@ -220,7 +219,7 @@ Value of `granted`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -264,7 +263,7 @@ Value of `granted`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -308,7 +307,7 @@ Value of `granted`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -336,7 +335,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### info
 
@@ -591,7 +589,7 @@ Value of `info`:
 	}
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -823,7 +821,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### listen
 
@@ -989,7 +986,7 @@ Value of `permitted`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1033,7 +1030,7 @@ Value of `permitted`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1080,7 +1077,7 @@ Value of `permitted`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1108,7 +1105,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### request
 
@@ -1177,7 +1173,7 @@ Value of `Default Result`:
 	}
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1228,7 +1224,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### supported
 
@@ -1279,7 +1274,7 @@ Value of `supported`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1323,7 +1318,7 @@ Value of `supported`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1351,7 +1346,6 @@ Response:
 
 
 ---
-${end.method}
 
 ## Events
 
@@ -1419,7 +1413,7 @@ Value of `value`:
 	]
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1530,7 +1524,7 @@ Value of `value`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1642,7 +1636,7 @@ Value of `value`:
 	]
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1756,7 +1750,7 @@ Value of `value`:
 	]
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

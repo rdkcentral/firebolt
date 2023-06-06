@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.12.0-main-ci-test.10
+Version Accessibility 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -101,7 +101,7 @@ Value of `closedCaptionsSettings`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -141,7 +141,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### closedCaptionsSettings
 Get the user's preferred closed-captions settings
@@ -200,7 +199,7 @@ Value of `closedCaptionsSettings`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -245,13 +244,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function closedCaptionsSettings(callback: (value) => ClosedCaptionsSettings): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -297,7 +292,7 @@ Value of `closedCaptionsSettings`:
 	}
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -500,7 +495,7 @@ Value of `settings`:
 	"speed": 5
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -529,7 +524,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### voiceGuidanceSettings
 Get the user's preferred voice guidance settings
@@ -577,7 +571,7 @@ Value of `settings`:
 	"speed": 5
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -611,13 +605,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function voiceGuidanceSettings(callback: (value) => VoiceGuidanceSettings): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -652,7 +642,7 @@ Value of `settings`:
 	"speed": 5
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

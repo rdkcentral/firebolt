@@ -8,7 +8,7 @@ sdk: manage
 
 # AcknowledgeChallenge Module
 ---
-Version AcknowledgeChallenge 0.12.0-main-ci-test.10
+Version AcknowledgeChallenge 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -192,7 +192,7 @@ Capabilities:
 #### Examples
 
 
-Example
+Example #1
 
 JSON-RPC:
 
@@ -208,6 +208,72 @@ Request:
 			"correlationId": "123",
 			"result": {
 				"granted": true
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+
+
+Example #2
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "AcknowledgeChallenge.challengeResponse",
+	"params": {
+		"response": {
+			"correlationId": "123",
+			"result": {
+				"granted": false
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+
+
+Example #3
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "AcknowledgeChallenge.challengeResponse",
+	"params": {
+		"response": {
+			"correlationId": "123",
+			"result": {
+				"granted": null
 			}
 		}
 	}
@@ -364,7 +430,7 @@ Promise resolution:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `granted` | boolean | Whether the user approved or denied the challenge | 
+| `granted` | boolean | void |  | 
 
 
 
@@ -388,7 +454,7 @@ class MyChallengeProvider {
 AcknowledgeChallenge.provide('xrn:firebolt:capability:usergrant:acknowledgechallenge', new MyChallengeProvider())
 ```
 
-<details>
+<details markdown="1" >
     <summary>JSON-RPC</summary>
 
 **Register to recieve each provider API**
@@ -485,7 +551,7 @@ Response:
 
 ```typescript
 type GrantResult = {
-  granted: boolean    // Whether the user approved or denied the challenge
+  granted: boolean | void
 }
 ```
 

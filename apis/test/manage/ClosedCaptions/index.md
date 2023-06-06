@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.12.0-main-ci-test.10
+Version ClosedCaptions 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -101,7 +101,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -143,7 +143,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -210,7 +210,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -254,7 +254,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -286,13 +286,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function backgroundColor(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -324,7 +320,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -369,7 +365,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -444,7 +440,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -486,7 +482,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -554,7 +550,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -598,7 +594,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -630,13 +626,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function backgroundOpacity(callback: (value) => number): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -668,7 +660,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -713,7 +705,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -789,7 +781,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -831,7 +823,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -898,7 +890,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -942,7 +934,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -974,13 +966,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function enabled(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1012,7 +1000,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1057,7 +1045,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1132,7 +1120,7 @@ Value of `color`:
 ```javascript
 "#ffffff"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1174,7 +1162,7 @@ Value of `color`:
 ```javascript
 "#ffffff"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1241,7 +1229,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1285,7 +1273,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1317,13 +1305,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontColor(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1355,7 +1339,7 @@ Value of `color`:
 ```javascript
 "#ffffff"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1400,7 +1384,7 @@ Value of `color`:
 ```javascript
 "#ffffff"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1475,7 +1459,7 @@ Value of `edge`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1517,7 +1501,7 @@ Value of `edge`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1584,7 +1568,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1628,7 +1612,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1660,13 +1644,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontEdge(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1698,7 +1678,7 @@ Value of `edge`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1743,7 +1723,7 @@ Value of `edge`:
 ```javascript
 "none"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1818,7 +1798,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1860,7 +1840,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1927,7 +1907,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1971,7 +1951,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2003,13 +1983,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontEdgeColor(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2041,7 +2017,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2086,7 +2062,7 @@ Value of `color`:
 ```javascript
 "#000000"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2161,7 +2137,7 @@ Value of `family`:
 ```javascript
 "monospace"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2203,7 +2179,7 @@ Value of `family`:
 ```javascript
 "monospace"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2270,7 +2246,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2314,7 +2290,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2346,13 +2322,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontFamily(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2384,7 +2356,7 @@ Value of `family`:
 ```javascript
 "monospace"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2429,7 +2401,7 @@ Value of `family`:
 ```javascript
 "monospace"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2504,7 +2476,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2546,7 +2518,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2614,7 +2586,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2658,7 +2630,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2690,13 +2662,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontOpacity(callback: (value) => number): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2728,7 +2696,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2773,7 +2741,7 @@ Value of `opacity`:
 ```javascript
 99
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2848,7 +2816,7 @@ Value of `size`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2890,7 +2858,7 @@ Value of `size`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2957,7 +2925,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3001,7 +2969,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3033,13 +3001,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontSize(callback: (value) => number): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3071,7 +3035,7 @@ Value of `size`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3116,7 +3080,7 @@ Value of `size`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3316,7 +3280,7 @@ Value of `opacity`:
 ```javascript
 "center"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3358,7 +3322,7 @@ Value of `opacity`:
 ```javascript
 "center"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3425,7 +3389,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3469,7 +3433,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3501,13 +3465,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function textAlign(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3539,7 +3499,7 @@ Value of `opacity`:
 ```javascript
 "center"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3584,7 +3544,7 @@ Value of `opacity`:
 ```javascript
 "center"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3659,7 +3619,7 @@ Value of `opacity`:
 ```javascript
 "middle"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3701,7 +3661,7 @@ Value of `opacity`:
 ```javascript
 "middle"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3768,7 +3728,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3812,7 +3772,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3844,13 +3804,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function textAlignVertical(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3882,7 +3838,7 @@ Value of `opacity`:
 ```javascript
 "middle"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3927,7 +3883,7 @@ Value of `opacity`:
 ```javascript
 "middle"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

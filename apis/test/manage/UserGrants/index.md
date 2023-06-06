@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 0.12.0-main-ci-test.10
+Version UserGrants 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -114,7 +114,7 @@ Value of `info`:
 	}
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -164,7 +164,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### capability
 
@@ -222,7 +221,7 @@ Value of `info`:
 	}
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -257,7 +256,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### clear
 
@@ -310,7 +308,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -342,7 +340,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### deny
 
@@ -395,7 +392,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -427,7 +424,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### device
 
@@ -480,7 +476,7 @@ Value of `info`:
 	}
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -513,7 +509,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### grant
 
@@ -566,7 +561,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -598,7 +593,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### request
 
@@ -667,7 +661,7 @@ Value of `info`:
 	}
 ]
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -712,7 +706,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

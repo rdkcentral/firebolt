@@ -8,7 +8,7 @@ sdk: core
 
 # Profile Module
 ---
-Version Profile 0.12.0-main-ci-test.10
+Version Profile 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -78,7 +78,7 @@ Value of `allow`:
 ```javascript
 false
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -104,7 +104,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### approvePurchase
 
@@ -150,7 +149,7 @@ Value of `allow`:
 ```javascript
 false
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -176,7 +175,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### flags
 
@@ -226,7 +224,7 @@ Value of `flags`:
 	"userExperience": "1000"
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -254,7 +252,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

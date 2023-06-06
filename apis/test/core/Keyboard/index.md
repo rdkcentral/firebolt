@@ -8,7 +8,7 @@ sdk: core
 
 # Keyboard Module
 ---
-Version Keyboard 0.12.0-main-ci-test.10
+Version Keyboard 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -86,7 +86,7 @@ Value of `email`:
 ```javascript
 "user@domain.com"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -131,7 +131,7 @@ Value of `email`:
 ```javascript
 "user@domain.com"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -160,7 +160,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### password
 
@@ -211,7 +210,7 @@ Value of `value`:
 ```javascript
 "abc123"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -239,7 +238,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### standard
 
@@ -290,7 +288,7 @@ Value of `value`:
 ```javascript
 "Living Room"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -318,7 +316,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

@@ -8,7 +8,7 @@ sdk: core
 
 # Internal Module
 ---
-Version Internal 0.12.0-main-ci-test.10
+Version Internal 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

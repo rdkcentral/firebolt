@@ -8,7 +8,7 @@ sdk: manage
 
 # Localization Module
 ---
-Version Localization 0.12.0-main-ci-test.10
+Version Localization 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -99,7 +99,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -128,7 +128,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### additionalInfo
 
@@ -174,7 +173,7 @@ Value of `info`:
 ```javascript
 {}
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -200,7 +199,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 ### countryCode
@@ -248,7 +246,7 @@ Value of `code`:
 ```javascript
 "US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -290,7 +288,7 @@ Value of `code`:
 ```javascript
 "US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -357,7 +355,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -401,7 +399,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -433,13 +431,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function countryCode(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -471,7 +465,7 @@ Value of `code`:
 ```javascript
 "US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -516,7 +510,7 @@ Value of `code`:
 ```javascript
 "US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -591,7 +585,7 @@ Value of `lang`:
 ```javascript
 "en"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -633,7 +627,7 @@ Value of `lang`:
 ```javascript
 "en"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -700,7 +694,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -744,7 +738,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -776,13 +770,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function language(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -814,7 +804,7 @@ Value of `lang`:
 ```javascript
 "en"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -859,7 +849,7 @@ Value of `lang`:
 ```javascript
 "en"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -990,7 +980,7 @@ Value of `locale`:
 ```javascript
 "en-US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1032,7 +1022,7 @@ Value of `locale`:
 ```javascript
 "en-US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1099,7 +1089,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1143,7 +1133,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1175,13 +1165,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function locale(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1213,7 +1199,7 @@ Value of `locale`:
 ```javascript
 "en-US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1258,7 +1244,7 @@ Value of `locale`:
 ```javascript
 "en-US"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1333,7 +1319,7 @@ Value of `locality`:
 ```javascript
 "Philadelphia"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1375,7 +1361,7 @@ Value of `locality`:
 ```javascript
 "Philadelphia"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1442,7 +1428,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1486,7 +1472,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1518,13 +1504,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function locality(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1556,7 +1538,7 @@ Value of `locality`:
 ```javascript
 "Philadelphia"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1601,7 +1583,7 @@ Value of `locality`:
 ```javascript
 "Philadelphia"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1734,7 +1716,7 @@ Value of `postalCode`:
 ```javascript
 "19103"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1776,7 +1758,7 @@ Value of `postalCode`:
 ```javascript
 "19103"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1843,7 +1825,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1887,7 +1869,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1919,13 +1901,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function postalCode(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1957,7 +1935,7 @@ Value of `postalCode`:
 ```javascript
 "19103"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2002,7 +1980,7 @@ Value of `postalCode`:
 ```javascript
 "19103"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2081,7 +2059,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2109,7 +2087,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 
@@ -2162,7 +2139,7 @@ Value of `result`:
 ```javascript
 "America/New_York"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2204,7 +2181,7 @@ Value of `result`:
 ```javascript
 "America/New_York"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2271,7 +2248,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2315,7 +2292,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2347,13 +2324,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function timeZone(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2385,7 +2358,7 @@ Value of `result`:
 ```javascript
 "America/New_York"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2430,7 +2403,7 @@ Value of `result`:
 ```javascript
 "America/New_York"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # VoiceGuidance Module
 ---
-Version VoiceGuidance 0.12.0-main-ci-test.10
+Version VoiceGuidance 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -84,7 +84,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -126,7 +126,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -193,7 +193,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -237,7 +237,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -269,13 +269,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function enabled(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -307,7 +303,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -352,7 +348,7 @@ Value of `enabled`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -541,7 +537,7 @@ Value of `speed`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -583,7 +579,7 @@ Value of `speed`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -650,7 +646,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -694,7 +690,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -726,13 +722,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function speed(callback: (value) => VoiceSpeed): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -764,7 +756,7 @@ Value of `speed`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -809,7 +801,7 @@ Value of `speed`:
 ```javascript
 1
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

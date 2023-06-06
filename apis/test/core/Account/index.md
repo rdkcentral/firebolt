@@ -8,7 +8,7 @@ sdk: core
 
 # Account Module
 ---
-Version Account 0.12.0-main-ci-test.10
+Version Account 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -78,7 +78,7 @@ Value of `id`:
 ```javascript
 "123"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -154,7 +154,7 @@ Value of `uniqueId`:
 ```javascript
 "ee6723b8-7ab3-462c-8d93-dbf61227998e"
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 

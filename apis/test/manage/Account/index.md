@@ -8,7 +8,7 @@ sdk: manage
 
 # Account Module
 ---
-Version Account 0.12.0-main-ci-test.10
+Version Account 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -85,7 +85,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -114,7 +114,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # Privacy Module
 ---
-Version Privacy 0.12.0-main-ci-test.10
+Version Privacy 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -106,7 +106,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -148,7 +148,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -215,7 +215,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -259,7 +259,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -291,13 +291,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowACRCollection(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -329,7 +325,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -374,7 +370,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -449,7 +445,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -491,7 +487,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -558,7 +554,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -602,7 +598,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -634,13 +630,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowAppContentAdTargeting(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -672,7 +664,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -717,7 +709,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -792,7 +784,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -834,7 +826,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -901,7 +893,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -945,7 +937,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -977,13 +969,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowCameraAnalytics(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1015,7 +1003,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1060,7 +1048,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1135,7 +1123,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1177,7 +1165,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1244,7 +1232,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1288,7 +1276,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1320,13 +1308,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowPersonalization(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1358,7 +1342,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1403,7 +1387,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1478,7 +1462,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1520,7 +1504,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1587,7 +1571,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1631,7 +1615,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1663,13 +1647,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowPrimaryBrowseAdTargeting(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1701,7 +1681,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1746,7 +1726,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1821,7 +1801,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1863,7 +1843,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1930,7 +1910,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -1974,7 +1954,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2006,13 +1986,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowPrimaryContentAdTargeting(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2044,7 +2020,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2089,7 +2065,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2164,7 +2140,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2206,7 +2182,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2273,7 +2249,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2317,7 +2293,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2349,13 +2325,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowProductAnalytics(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2387,7 +2359,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2432,7 +2404,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2507,7 +2479,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2549,7 +2521,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2616,7 +2588,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2660,7 +2632,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2692,13 +2664,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowRemoteDiagnostics(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2730,7 +2698,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2775,7 +2743,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2850,7 +2818,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2892,7 +2860,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -2959,7 +2927,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3003,7 +2971,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3035,13 +3003,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowResumePoints(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3073,7 +3037,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3118,7 +3082,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3193,7 +3157,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3235,7 +3199,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3302,7 +3266,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3346,7 +3310,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3378,13 +3342,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowUnentitledPersonalization(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3416,7 +3376,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3461,7 +3421,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3536,7 +3496,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3578,7 +3538,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3645,7 +3605,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3689,7 +3649,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3721,13 +3681,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowUnentitledResumePoints(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3759,7 +3715,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3804,7 +3760,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3879,7 +3835,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3921,7 +3877,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -3988,7 +3944,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -4032,7 +3988,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -4064,13 +4020,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowWatchHistory(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -4102,7 +4054,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -4147,7 +4099,7 @@ Value of `allow`:
 ```javascript
 true
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -4359,7 +4311,7 @@ Value of `settings`:
 	"allowWatchHistory": true
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -4398,7 +4350,6 @@ Response:
 
 
 ---
-${end.method}
 
 ## Events
 

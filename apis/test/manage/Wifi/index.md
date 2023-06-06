@@ -8,7 +8,7 @@ sdk: manage
 
 # Wifi Module
 ---
-Version Wifi 0.12.0-main-ci-test.10
+Version Wifi 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -96,7 +96,7 @@ Value of `connectedWifi`:
 	"frequency": 2.4
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -152,7 +152,7 @@ Value of `connectedWifi`:
 	"frequency": 2.4
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -187,7 +187,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### disconnect
 
@@ -233,7 +232,7 @@ Value of `result`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -259,7 +258,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### scan
 
@@ -330,7 +328,7 @@ Value of `list`:
 	]
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -379,7 +377,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### wps
 
@@ -433,7 +430,7 @@ Value of `connectedWifi`:
 	"frequency": 2.4
 }
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -466,7 +463,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 

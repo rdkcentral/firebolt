@@ -8,7 +8,7 @@ sdk: core
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.12.0-main-ci-test.10
+Version SecureStorage 0.12.0-governance.17
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -87,7 +87,7 @@ Value of `value`:
 ```javascript
 "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -132,7 +132,7 @@ Value of `value`:
 ```javascript
 "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -161,7 +161,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### remove
 
@@ -213,7 +212,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -258,7 +257,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -287,7 +286,6 @@ Response:
 
 
 ---
-${end.method}
 
 ### set
 
@@ -341,7 +339,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -390,7 +388,7 @@ Value of `success`:
 ```javascript
 null
 ```
-<details>
+<details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
@@ -420,7 +418,6 @@ Response:
 
 
 ---
-${end.method}
 
 
 
