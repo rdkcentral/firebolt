@@ -109,7 +109,7 @@
               {%- if requirementsCount > 0 -%}
                     <li><b>Firebolt Requirements</b>
                       <ul>
-                        {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', null | sort: 'title' -%}
+                        {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where_exp: 'page', 'page.type == nil' | sort: 'title' -%}
                         {%- for my_page in pages -%}    
                         <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
                         {%- endfor -%}                            
