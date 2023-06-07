@@ -8,7 +8,7 @@ sdk: core
 
 # Account Module
 ---
-Version Account 0.12.0-next.16
+Version Account 0.12.0-next.18
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

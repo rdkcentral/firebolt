@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.12.0-next.16
+Version Keyboard 0.12.0-next.18
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -61,7 +61,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -180,7 +180,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -245,7 +245,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -364,7 +364,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -446,7 +446,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -565,7 +565,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:

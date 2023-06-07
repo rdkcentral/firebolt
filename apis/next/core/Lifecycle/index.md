@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 0.12.0-next.16
+Version Lifecycle 0.12.0-next.18
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -58,7 +58,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `reason` | [`CloseReason`](../Lifecycle/schemas/#CloseReason) | true | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
+| `reason` | [`CloseReason`](../schemas/Lifecycle/#CloseReason) | true | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
 
 
 Promise resolution:
@@ -436,7 +436,7 @@ function state(): LifecycleState
 
 Promise resolution:
 
-[LifecycleState](../Lifecycle/schemas/#LifecycleState)
+[LifecycleState](../schemas/Lifecycle/#LifecycleState)
 
 Capabilities:
 

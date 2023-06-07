@@ -8,7 +8,7 @@ sdk: manage
 
 # PinChallenge Module
 ---
-Version PinChallenge 0.12.0-next.16
+Version PinChallenge 0.12.0-next.18
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -55,7 +55,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -174,7 +174,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -243,6 +243,40 @@ Request:
 			"correlationId": "123",
 			"result": {
 				"granted": false,
+				"reason": "exceededPinFailures"
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+
+
+Example #3
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "PinChallenge.challengeResponse",
+	"params": {
+		"response": {
+			"correlationId": "123",
+			"result": {
+				"granted": null,
 				"reason": "cancelled"
 			}
 		}
@@ -402,7 +436,7 @@ Promise resolution:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `granted` | boolean | Whether the user succeeded in the pin challenge | 
+| `granted` | boolean | void |  | 
 | `reason` | 'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled' | The reason for the result of challenging the user | 
 
 
@@ -527,7 +561,7 @@ Response:
 
 ```typescript
 type PinChallengeResult = {
-  granted: boolean           // Whether the user succeeded in the pin challenge
+  granted: boolean | void
   reason: ResultReason       // The reason for the result of challenging the user
 }
 ```
@@ -551,7 +585,7 @@ type PinChallengeProviderRequest = {
 
 See also: 
 
-[ProviderRequest](../Types/schemas/#ProviderRequest)
+[ProviderRequest](../schemas/Types/#ProviderRequest)
 [PinChallenge](#pinchallenge-1)
 
 ---
