@@ -8,13 +8,14 @@ sdk: core
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.12.0
+Version SecureStorage 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
    - [Usage](#usage)
    - [Overview](#overview)
    - [Methods](#methods)
+     - [clear](#clear)
      - [get](#get)
      - [remove](#remove)
      - [set](#set)
@@ -36,6 +37,84 @@ import { SecureStorage } from '@firebolt-js/sdk'
  A module for storing and retrieving secure data owned by the app
 
 ## Methods
+
+### clear
+
+Clears all the secure data values
+
+```typescript
+function clear(scope: StorageScope): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
+
+
+Promise resolution:
+
+```typescript
+void
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:storage:secure |
+
+
+#### Examples
+
+
+Clears all the data values of storage
+
+JavaScript:
+
+```javascript
+import { SecureStorage } from '@firebolt-js/sdk'
+
+SecureStorage.clear("account")
+    .then(success => {
+        console.log(success)
+    })
+```
+
+Value of `success`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "SecureStorage.clear",
+	"params": {
+		"scope": "account"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
 
 ### get
 

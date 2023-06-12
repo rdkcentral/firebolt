@@ -8,7 +8,7 @@ sdk: manage
 
 # VoiceGuidance Module
 ---
-Version VoiceGuidance 0.12.0
+Version VoiceGuidance 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -511,7 +511,7 @@ function speed(): Promise<VoiceSpeed>
 
 Promise resolution:
 
-[VoiceSpeed](../Accessibility/schemas/#VoiceSpeed)
+[VoiceSpeed](../schemas/Accessibility/#VoiceSpeed)
 
 Capabilities:
 
@@ -620,7 +620,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true |   |
+| `value` | [`VoiceSpeed`](../schemas/Accessibility/#VoiceSpeed) | true |   |
 
 
 Promise resolution:

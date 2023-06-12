@@ -8,7 +8,7 @@ sdk: manage
 
 # Advertising Module
 ---
-Version Advertising 0.12.0
+Version Advertising 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -165,7 +165,7 @@ function skipRestriction(): Promise<SkipRestriction>
 
 Promise resolution:
 
-[SkipRestriction](../Advertising/schemas/#SkipRestriction)
+[SkipRestriction](../schemas/Advertising/#SkipRestriction)
 
 Capabilities:
 
@@ -274,7 +274,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true |  <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
+| `value` | [`SkipRestriction`](../schemas/Advertising/#SkipRestriction) | true |  <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
 
 
 Promise resolution:

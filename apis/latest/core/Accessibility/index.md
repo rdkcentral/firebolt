@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.12.0
+Version Accessibility 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -57,7 +57,7 @@ function closedCaptions(): Promise<ClosedCaptionsSettings>
 
 Promise resolution:
 
-[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
+[ClosedCaptionsSettings](../schemas/Accessibility/#ClosedCaptionsSettings)
 
 Capabilities:
 
@@ -155,7 +155,7 @@ function closedCaptionsSettings(): Promise<ClosedCaptionsSettings>
 
 Promise resolution:
 
-[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
+[ClosedCaptionsSettings](../schemas/Accessibility/#ClosedCaptionsSettings)
 
 Capabilities:
 

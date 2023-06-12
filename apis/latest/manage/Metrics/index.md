@@ -8,7 +8,7 @@ sdk: manage
 
 # Metrics Module
 ---
-Version Metrics 0.12.0
+Version Metrics 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

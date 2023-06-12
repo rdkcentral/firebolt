@@ -8,7 +8,7 @@ sdk: manage
 
 # AcknowledgeChallenge Module
 ---
-Version AcknowledgeChallenge 0.12.0
+Version AcknowledgeChallenge 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -54,7 +54,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -173,7 +173,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
 
 
 Result:
@@ -192,7 +192,7 @@ Capabilities:
 #### Examples
 
 
-Example
+Example #1
 
 JSON-RPC:
 
@@ -208,6 +208,72 @@ Request:
 			"correlationId": "123",
 			"result": {
 				"granted": true
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+
+
+Example #2
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "AcknowledgeChallenge.challengeResponse",
+	"params": {
+		"response": {
+			"correlationId": "123",
+			"result": {
+				"granted": false
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+
+
+Example #3
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "AcknowledgeChallenge.challengeResponse",
+	"params": {
+		"response": {
+			"correlationId": "123",
+			"result": {
+				"granted": null
 			}
 		}
 	}
@@ -364,7 +430,7 @@ Promise resolution:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `granted` | boolean | Whether the user approved or denied the challenge | 
+| `granted` | boolean | void |  | 
 
 
 
@@ -485,7 +551,7 @@ Response:
 
 ```typescript
 type GrantResult = {
-  granted: boolean    // Whether the user approved or denied the challenge
+  granted: boolean | void
 }
 ```
 
@@ -506,7 +572,7 @@ type ChallengeProviderRequest = {
 
 See also: 
 
-[ProviderRequest](../Types/schemas/#ProviderRequest)
+[ProviderRequest](../schemas/Types/#ProviderRequest)
 [Challenge](#challenge-1)
 
 ---

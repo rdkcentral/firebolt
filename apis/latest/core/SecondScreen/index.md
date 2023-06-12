@@ -8,7 +8,7 @@ sdk: core
 
 # SecondScreen Module
 ---
-Version SecondScreen 0.12.0
+Version SecondScreen 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -387,7 +387,7 @@ function protocols(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../Types/schemas/#BooleanMap)
+[BooleanMap](../schemas/Types/#BooleanMap)
 
 Capabilities:
 
@@ -461,7 +461,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
+[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
 
 Capabilities:
 
@@ -540,7 +540,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
+[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
 
 Capabilities:
 

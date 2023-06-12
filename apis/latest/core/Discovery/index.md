@@ -8,7 +8,7 @@ sdk: core
 
 # Discovery Module
 ---
-Version Discovery 0.12.0
+Version Discovery 0.13.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -2110,7 +2110,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | The durable app Id of the app to launch  |
-| `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
+| `intent` | [`NavigationIntent`](../schemas/Intents/#NavigationIntent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
 
 
 Promise resolution:
@@ -3716,8 +3716,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `title` | [`LocalizedString`](../Types/schemas/#LocalizedString) | true | The title of this call to action  |
-| `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
+| `title` | [`LocalizedString`](../schemas/Types/#LocalizedString) | true | The title of this call to action  |
+| `identifiers` | [`ContentIdentifiers`](../schemas/Entertainment/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
 | `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
 | `images` | `object` | false | A set of images for this call to action  |
 
@@ -3871,7 +3871,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[NavigationIntent](../Intents/schemas/#NavigationIntent)
+[NavigationIntent](../schemas/Intents/#NavigationIntent)
 
 Capabilities:
 
@@ -3987,7 +3987,7 @@ type ContentAccessIdentifiers = {
 See also: 
 
 [Availability](#availability)
-[Entitlement](../Entertainment/schemas/#Entitlement)
+[Entitlement](../schemas/Entertainment/#Entitlement)
 
 ---
 
