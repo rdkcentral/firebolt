@@ -8,7 +8,7 @@ sdk: core
 
 # Parameters Module
 ---
-Version Parameters 0.13.0-next.2
+Version Parameters 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -159,6 +159,6 @@ type AppInitialization = {
 See also: 
 
 HomeIntent | LaunchIntent | EntityIntent | PlaybackIntent | SearchIntent | SectionIntent | TuneIntent
-[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 ---

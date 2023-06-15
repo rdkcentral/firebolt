@@ -8,7 +8,7 @@ sdk: manage
 
 # Privacy Module
 ---
-Version Privacy 0.13.0-next.2
+Version Privacy 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -291,13 +291,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowACRCollection(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -634,13 +630,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowAppContentAdTargeting(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -977,13 +969,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowCameraAnalytics(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1320,13 +1308,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowPersonalization(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1663,13 +1647,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowPrimaryBrowseAdTargeting(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2006,13 +1986,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowPrimaryContentAdTargeting(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2349,13 +2325,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowProductAnalytics(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2692,13 +2664,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowRemoteDiagnostics(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3035,13 +3003,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowResumePoints(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3378,13 +3342,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowUnentitledPersonalization(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3721,13 +3681,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowUnentitledResumePoints(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -4064,13 +4020,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function allowWatchHistory(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

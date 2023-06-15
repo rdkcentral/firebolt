@@ -8,7 +8,7 @@ sdk: manage
 
 # AcknowledgeChallenge Module
 ---
-Version AcknowledgeChallenge 0.13.0-next.2
+Version AcknowledgeChallenge 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -54,7 +54,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
 
 
 Result:
@@ -173,7 +173,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
 
 
 Result:
@@ -572,7 +572,7 @@ type ChallengeProviderRequest = {
 
 See also: 
 
-[ProviderRequest](../schemas/Types/#ProviderRequest)
+[ProviderRequest](../Types/schemas/#ProviderRequest)
 [Challenge](#challenge-1)
 
 ---

@@ -8,7 +8,7 @@ sdk: core
 
 # Advertising Module
 ---
-Version Advertising 0.13.0-next.2
+Version Advertising 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -575,13 +575,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function policy(callback: (value) => AdPolicy): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

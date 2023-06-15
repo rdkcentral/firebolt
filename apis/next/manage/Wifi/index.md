@@ -8,7 +8,7 @@ sdk: manage
 
 # Wifi Module
 ---
-Version Wifi 0.13.0-next.2
+Version Wifi 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -271,7 +271,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `timeout` | [`Timeout`](../schemas/Types/#Timeout) | false |  <br/>minumum: 0
+| `timeout` | [`Timeout`](../Types/schemas/#Timeout) | false |  <br/>minumum: 0
 maximum: 9999 |
 
 

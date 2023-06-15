@@ -8,7 +8,7 @@ sdk: manage
 
 # VoiceGuidance Module
 ---
-Version VoiceGuidance 0.13.0-next.2
+Version VoiceGuidance 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -269,13 +269,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function enabled(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -511,7 +507,7 @@ function speed(): Promise<VoiceSpeed>
 
 Promise resolution:
 
-[VoiceSpeed](../schemas/Accessibility/#VoiceSpeed)
+[VoiceSpeed](../Accessibility/schemas/#VoiceSpeed)
 
 Capabilities:
 
@@ -620,7 +616,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`VoiceSpeed`](../schemas/Accessibility/#VoiceSpeed) | true |   |
+| `value` | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true |   |
 
 
 Promise resolution:
@@ -726,13 +722,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function speed(callback: (value) => VoiceSpeed): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

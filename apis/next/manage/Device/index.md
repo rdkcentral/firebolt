@@ -8,7 +8,7 @@ sdk: manage
 
 # Device Module
 ---
-Version Device 0.13.0-next.2
+Version Device 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -325,13 +325,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function name(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

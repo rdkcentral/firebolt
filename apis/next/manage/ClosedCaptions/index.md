@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.13.0-next.2
+Version ClosedCaptions 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -286,13 +286,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function backgroundColor(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -630,13 +626,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function backgroundOpacity(callback: (value) => number): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -974,13 +966,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function enabled(callback: (value) => boolean): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1317,13 +1305,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontColor(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1660,13 +1644,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontEdge(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2003,13 +1983,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontEdgeColor(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2346,13 +2322,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontFamily(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2690,13 +2662,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontOpacity(callback: (value) => number): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3033,13 +3001,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function fontSize(callback: (value) => number): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3501,13 +3465,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function textAlign(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -3844,13 +3804,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function textAlignVertical(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 0.13.0-next.2
+Version UserGrants 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -177,7 +177,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `capability` | [`Capability`](../schemas/Capabilities/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 
 Promise resolution:
@@ -269,8 +269,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `role` | [`Role`](../schemas/Capabilities/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../schemas/Capabilities/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 | `options` | `object` | false |   |
 
 
@@ -353,8 +353,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `role` | [`Role`](../schemas/Capabilities/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../schemas/Capabilities/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 | `options` | `object` | false |   |
 
 
@@ -522,8 +522,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `role` | [`Role`](../schemas/Capabilities/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../schemas/Capabilities/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 | `options` | `object` | false |   |
 
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # PinChallenge Module
 ---
-Version PinChallenge 0.13.0-next.2
+Version PinChallenge 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -55,7 +55,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
+| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
 
 
 Result:
@@ -174,7 +174,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../schemas/Types/#ProviderResponse) | true |   |
+| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
 
 
 Result:
@@ -585,7 +585,7 @@ type PinChallengeProviderRequest = {
 
 See also: 
 
-[ProviderRequest](../schemas/Types/#ProviderRequest)
+[ProviderRequest](../Types/schemas/#ProviderRequest)
 [PinChallenge](#pinchallenge-1)
 
 ---

@@ -8,7 +8,7 @@ sdk: core
 
 # Keyboard Module
 ---
-Version Keyboard 0.13.0-next.2
+Version Keyboard 0.13.1-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
