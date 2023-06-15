@@ -5,7 +5,7 @@
       {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
       {%- assign path = page.url | split: '/' -%}
       {%- assign version = path[2] | default: 'latest' -%}
-      {%- assign versions = site.pages | map: 'version' | uniq -%}
+      {%- assign versions = site.pages | sort: 'version' | map: 'version' | uniq -%}
       {%- assign latestCount = site.pages | where: 'version': 'latest' | size -%}
       {%- if latestCount == 0 -%}
           {%- assign version = path[2] | default: versions[1] -%}
