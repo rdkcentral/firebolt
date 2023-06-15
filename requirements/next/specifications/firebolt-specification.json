@@ -103,8 +103,8 @@
 				"negotiable": true
 			},
 			"manage": {
-				"public": false,
-				"negotiable": false
+				"public": true,
+				"negotiable": true
 			},
 			"provide": {
 				"public": false,
@@ -882,7 +882,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "0.13.1-next.2",
+				"version": "0.14.0-next.1",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -7899,6 +7899,130 @@
 							"result": {
 								"name": "success",
 								"value": true
+							}
+						}
+					]
+				},
+				{
+					"name": "Discovery.onSignIn",
+					"tags": [
+						{
+							"name": "event"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:discovery:sign-in-status"
+							]
+						}
+					],
+					"summary": "Listen to events from all apps that call Discovery.signIn",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "event",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"appId": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"appId"
+									]
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Event",
+								"value": {
+									"appId": "firecert"
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Discovery.onSignOut",
+					"tags": [
+						{
+							"name": "event"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:discovery:sign-in-status"
+							]
+						}
+					],
+					"summary": "Listen to events from all apps that call Discovery.signOut",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "event",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"appId": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"appId"
+									]
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Event",
+								"value": {
+									"appId": "firecert"
+								}
 							}
 						}
 					]

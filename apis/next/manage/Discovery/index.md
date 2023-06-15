@@ -1,38 +1,50 @@
 ---
-title: Advertising
+title: Discovery
 
 version: next
 layout: default
 sdk: manage
 ---
 
-# Advertising Module
+# Discovery Module
 ---
-Version Advertising 0.14.0-next.1
+Version Discovery 0.14.0-next.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
    - [Usage](#usage)
    - [Overview](#overview)
+     - [Localization](#localization)
    - [Methods](#methods)
      - [listen](#listen)
      - [once](#once)
-     - [skipRestriction](#skiprestriction)
    - [Events](#events)
-     - [skipRestrictionChanged](#skiprestrictionchanged)
+     - [signIn](#signin)
+     - [signOut](#signout)
 
 
 
 ## Usage
-To use the Advertising module, you can import it into your project from the Firebolt SDK:
+To use the Discovery module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
+import { Discovery } from '@firebolt-js/manage-sdk'
 ```
 
 
 ## Overview
- A module for platform provided advertising settings and functionality.
+ Your App likely wants to integrate with the Platform's discovery capabilities. For example to add a "Watch Next" tile that links to your app from the platform's home screen.
+
+Getting access to this information requires to connect to lower level APIs made available by the platform. Since implementations differ between operators and platforms, the Firebolt SDK offers a Discovery module, that exposes a generic, agnostic interface to the developer.
+
+Under the hood, an underlaying transport layer will then take care of calling the right APIs for the actual platform implementation that your App is running on.
+
+The Discovery plugin is used to _send_ information to the Platform.
+
+### Localization
+Apps should provide all user-facing strings in the device's language, as specified by the Firebolt `Localization.language` property.
+
+Apps should provide prices in the same currency presented in the app. If multiple currencies are supported in the app, the app should provide prices in the user's current default currency.
 
 ## Methods
 
@@ -56,7 +68,7 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Discovery.clear(id)` |
 
 Callback parameters:
 
@@ -89,7 +101,7 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Discovery.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
@@ -114,7 +126,7 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Discovery.clear(id)` |
 
 Callback parameters:
 
@@ -147,31 +159,33 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Discovery.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+## Events
 
-### skipRestriction
-Set the value for AdPolicy.skipRestriction
-
-To get the value of `skipRestriction` call the method like this:
+### signIn
 
 ```typescript
-function skipRestriction(): Promise<SkipRestriction>
+function listen('signIn', (object) => void): Promise<number>
 ```
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 
 
-Promise resolution:
+Event value:
 
-[SkipRestriction](../Advertising/schemas/#SkipRestriction)
+| Property | Type | Description |
+|----------|------|-------------|
+| `appId` | string |  | 
+
 
 Capabilities:
 
 | Role                  | Capability                 |
 | --------------------- | -------------------------- |
-| manages | xrn:firebolt:capability:advertising:configuration |
+| manages | xrn:firebolt:capability:discovery:sign-in-status |
 
 
 #### Examples
@@ -182,237 +196,19 @@ Default Example
 JavaScript:
 
 ```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
+import { Discovery } from '@firebolt-js/manage-sdk'
 
-Advertising.skipRestriction()
-    .then(result => {
-        console.log(result)
-    })
-```
-
-Value of `result`:
-
-```javascript
-"none"
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.skipRestriction",
-	"params": {}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "none"
-}
-```
-</details>
-
-Additional Example
-
-JavaScript:
-
-```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
-
-Advertising.skipRestriction()
-    .then(result => {
-        console.log(result)
-    })
-```
-
-Value of `result`:
-
-```javascript
-"none"
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.skipRestriction",
-	"params": {}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "all"
-}
-```
-</details>
-
-
----
-
-To set the value of `skipRestriction` call the method like this:
-
-```typescript
-function skipRestriction(value: SkipRestriction): Promise<void>
-```
-
-Parameters:
-
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true |  <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
-
-
-Promise resolution:
-
-```typescript
-null
-```
-
-#### Examples
-
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
-
-Advertising.skipRestriction("none")
-    .then(result => {
-        console.log(result)
-    })
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.setSkipRestriction",
-	"params": {
-		"value": "none"
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-Additional Example
-
-JavaScript:
-
-```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
-
-Advertising.skipRestriction("all")
-    .then(result => {
-        console.log(result)
-    })
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.setSkipRestriction",
-	"params": {
-		"value": "all"
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-
----
-
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function skipRestriction(callback: (value) => SkipRestriction): Promise<number>
-```
-
-
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
-
-skipRestriction(value => {
-  console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
+Discovery.listen('signIn', event => {
+  console.log(event)
 })
 ```
 
-Value of `result`:
+Value of `event`:
 
 ```javascript
-"none"
+{
+	"appId": "firecert"
+}
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -422,7 +218,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "Advertising.onSkipRestrictionChanged",
+	"method": "Discovery.onSignIn",
 	"params": {
 		"listen": true
 	}
@@ -435,29 +231,60 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": "none"
+	"result": {
+		"appId": "firecert"
+	}
 }
 ```
 </details>
 
-Additional Example
+
+---
+
+### signOut
+
+```typescript
+function listen('signOut', (object) => void): Promise<number>
+```
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+
+
+Event value:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `appId` | string |  | 
+
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| manages | xrn:firebolt:capability:discovery:sign-in-status |
+
+
+#### Examples
+
+
+Default Example
 
 JavaScript:
 
 ```javascript
-import { Advertising } from '@firebolt-js/manage-sdk'
+import { Discovery } from '@firebolt-js/manage-sdk'
 
-skipRestriction(value => {
-  console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
+Discovery.listen('signOut', event => {
+  console.log(event)
 })
 ```
 
-Value of `result`:
+Value of `event`:
 
 ```javascript
-"none"
+{
+	"appId": "firecert"
+}
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -467,7 +294,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "Advertising.onSkipRestrictionChanged",
+	"method": "Discovery.onSignOut",
 	"params": {
 		"listen": true
 	}
@@ -480,20 +307,15 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": "all"
+	"result": {
+		"appId": "firecert"
+	}
 }
 ```
 </details>
 
 
 ---
-
-
-## Events
-
-### skipRestrictionChanged
-
-See: [skipRestriction](#skiprestriction)
 
 
 
