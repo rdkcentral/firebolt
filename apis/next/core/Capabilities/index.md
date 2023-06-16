@@ -8,7 +8,7 @@ sdk: core
 
 # Capabilities Module
 ---
-Version Capabilities 0.14.0-next.3
+Version Capabilities 0.14.0-next.4
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -174,7 +174,7 @@ Response:
 Returns whether the current App has a user grant for passed capability and role.
 
 ```typescript
-function granted(capability: Capability, options?: CapabilityOption): Promise<boolean>
+function granted(capability: Capability, options?: CapabilityOption): Promise<boolean | void>
 ```
 
 Parameters:
@@ -188,7 +188,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-boolean
+boolean | void
 ```
 
 Capabilities:
@@ -328,7 +328,7 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": true
+	"result": null
 }
 ```
 </details>
@@ -532,7 +532,7 @@ Value of `info`:
 		"available": true,
 		"use": {
 			"permitted": true,
-			"granted": true
+			"granted": null
 		},
 		"manage": {
 			"permitted": true,
@@ -759,7 +759,7 @@ Response:
 			"available": true,
 			"use": {
 				"permitted": true,
-				"granted": true
+				"granted": null
 			},
 			"manage": {
 				"permitted": true,

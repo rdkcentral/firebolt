@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "0.14.0-next.3",
+		"version": "0.14.0-next.4",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -1758,7 +1758,14 @@
 				"name": "granted",
 				"summary": "Whether or not app is granted to use the given capability and the role",
 				"schema": {
-					"type": "boolean"
+					"oneOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"const": null
+						}
+					]
 				}
 			},
 			"examples": [
@@ -1798,7 +1805,7 @@
 					],
 					"result": {
 						"name": "Default Result",
-						"value": true
+						"value": null
 					}
 				}
 			]
@@ -1998,7 +2005,7 @@
 								"available": true,
 								"use": {
 									"permitted": true,
-									"granted": true
+									"granted": null
 								},
 								"manage": {
 									"permitted": true,
@@ -16965,8 +16972,15 @@
 						"description": "Provides info whether the capability is permitted"
 					},
 					"granted": {
-						"type": "boolean",
-						"description": "Provides info whether the capability is granted"
+						"oneOf": [
+							{
+								"type": "boolean",
+								"description": "Provides info whether the capability is granted"
+							},
+							{
+								"const": null
+							}
+						]
 					}
 				},
 				"additionalProperties": false
