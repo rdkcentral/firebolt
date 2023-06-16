@@ -10,3 +10,524 @@ layout: default
 Firebolt APIs are defined by [OpenRPC schemas](https://spec.open-rpc.org).
 
 The schemas are used to generate SDK and Documentation artifacts.
+
+## `xrn:firebolt:capability:accessibility:closedcaptions`
+
+| Uses |
+| ---- |
+| [Accessibility.closedCaptions](./core/Accessibility/#closedcaptions)<br/>[Accessibility.closedCaptionsSettings](./core/Accessibility/#closedcaptionssettings)<br/>[Accessibility.onClosedCaptionsSettingsChanged](./core/Accessibility/#onclosedcaptionssettingschanged)<br/>[ClosedCaptions.enabled](./manage/ClosedCaptions/#enabled)<br/>[ClosedCaptions.fontFamily](./manage/ClosedCaptions/#fontfamily)<br/>[ClosedCaptions.fontSize](./manage/ClosedCaptions/#fontsize)<br/>[ClosedCaptions.fontColor](./manage/ClosedCaptions/#fontcolor)<br/>[ClosedCaptions.fontEdge](./manage/ClosedCaptions/#fontedge)<br/>[ClosedCaptions.fontEdgeColor](./manage/ClosedCaptions/#fontedgecolor)<br/>[ClosedCaptions.fontOpacity](./manage/ClosedCaptions/#fontopacity)<br/>[ClosedCaptions.backgroundColor](./manage/ClosedCaptions/#backgroundcolor)<br/>[ClosedCaptions.backgroundOpacity](./manage/ClosedCaptions/#backgroundopacity)<br/>[ClosedCaptions.textAlign](./manage/ClosedCaptions/#textalign)<br/>[ClosedCaptions.textAlignVertical](./manage/ClosedCaptions/#textalignvertical)<br/>[ClosedCaptions.onEnabledChanged](./manage/ClosedCaptions/#onenabledchanged)<br/>[ClosedCaptions.onFontFamilyChanged](./manage/ClosedCaptions/#onfontfamilychanged)<br/>[ClosedCaptions.onFontSizeChanged](./manage/ClosedCaptions/#onfontsizechanged)<br/>[ClosedCaptions.onFontColorChanged](./manage/ClosedCaptions/#onfontcolorchanged)<br/>[ClosedCaptions.onFontEdgeChanged](./manage/ClosedCaptions/#onfontedgechanged)<br/>[ClosedCaptions.onFontEdgeColorChanged](./manage/ClosedCaptions/#onfontedgecolorchanged)<br/>[ClosedCaptions.onFontOpacityChanged](./manage/ClosedCaptions/#onfontopacitychanged)<br/>[ClosedCaptions.onBackgroundColorChanged](./manage/ClosedCaptions/#onbackgroundcolorchanged)<br/>[ClosedCaptions.onBackgroundOpacityChanged](./manage/ClosedCaptions/#onbackgroundopacitychanged)<br/>[ClosedCaptions.onTextAlignChanged](./manage/ClosedCaptions/#ontextalignchanged)<br/>[ClosedCaptions.onTextAlignVerticalChanged](./manage/ClosedCaptions/#ontextalignverticalchanged) |
+
+
+
+| Manages |
+| ------- |
+| [ClosedCaptions.setEnabled](./manage/ClosedCaptions/#setenabled)<br/>[ClosedCaptions.setFontFamily](./manage/ClosedCaptions/#setfontfamily)<br/>[ClosedCaptions.setFontSize](./manage/ClosedCaptions/#setfontsize)<br/>[ClosedCaptions.setFontColor](./manage/ClosedCaptions/#setfontcolor)<br/>[ClosedCaptions.setFontEdge](./manage/ClosedCaptions/#setfontedge)<br/>[ClosedCaptions.setFontEdgeColor](./manage/ClosedCaptions/#setfontedgecolor)<br/>[ClosedCaptions.setFontOpacity](./manage/ClosedCaptions/#setfontopacity)<br/>[ClosedCaptions.setBackgroundColor](./manage/ClosedCaptions/#setbackgroundcolor)<br/>[ClosedCaptions.setBackgroundOpacity](./manage/ClosedCaptions/#setbackgroundopacity)<br/>[ClosedCaptions.setTextAlign](./manage/ClosedCaptions/#settextalign)<br/>[ClosedCaptions.setTextAlignVertical](./manage/ClosedCaptions/#settextalignvertical) |
+
+
+## `xrn:firebolt:capability:accessibility:voiceguidance`
+
+| Uses |
+| ---- |
+| [Accessibility.voiceGuidance](./core/Accessibility/#voiceguidance)<br/>[Accessibility.voiceGuidanceSettings](./core/Accessibility/#voiceguidancesettings)<br/>[Accessibility.onVoiceGuidanceSettingsChanged](./core/Accessibility/#onvoiceguidancesettingschanged)<br/>[VoiceGuidance.enabled](./manage/VoiceGuidance/#enabled)<br/>[VoiceGuidance.speed](./manage/VoiceGuidance/#speed)<br/>[VoiceGuidance.onEnabledChanged](./manage/VoiceGuidance/#onenabledchanged)<br/>[VoiceGuidance.onSpeedChanged](./manage/VoiceGuidance/#onspeedchanged) |
+
+
+
+| Manages |
+| ------- |
+| [VoiceGuidance.setEnabled](./manage/VoiceGuidance/#setenabled)<br/>[VoiceGuidance.setSpeed](./manage/VoiceGuidance/#setspeed) |
+
+
+## `xrn:firebolt:capability:account:id`
+
+| Uses |
+| ---- |
+| [Account.id](./core/Account/#id) |
+
+
+
+| Manages |
+| ------- |
+| [Device.provision](./manage/Device/#provision) |
+
+
+## `xrn:firebolt:capability:account:uid`
+
+| Uses |
+| ---- |
+| [Account.uid](./core/Account/#uid) |
+
+
+## `xrn:firebolt:capability:advertising:configuration`
+
+| Uses |
+| ---- |
+| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid)<br/>[Advertising.onPolicyChanged](./core/Advertising/#onpolicychanged) |
+
+
+
+| Manages |
+| ------- |
+| [Advertising.skipRestriction](./manage/Advertising/#skiprestriction)<br/>[Advertising.onSkipRestrictionChanged](./manage/Advertising/#onskiprestrictionchanged)<br/>[Advertising.setSkipRestriction](./manage/Advertising/#setskiprestriction) |
+
+
+## `xrn:firebolt:capability:advertising:identifier`
+
+| Uses |
+| ---- |
+| [Advertising.advertisingId](./core/Advertising/#advertisingid) |
+
+
+
+| Manages |
+| ------- |
+| [Advertising.resetIdentifier](./manage/Advertising/#resetidentifier) |
+
+
+## `xrn:firebolt:capability:approve:content`
+
+| Uses |
+| ---- |
+| [Profile.approveContentRating](./core/Profile/#approvecontentrating) |
+
+
+## `xrn:firebolt:capability:approve:purchase`
+
+| Uses |
+| ---- |
+| [Profile.approvePurchase](./core/Profile/#approvepurchase) |
+
+
+## `xrn:firebolt:capability:capabilities:info`
+
+| Uses |
+| ---- |
+| [Capabilities.supported](./core/Capabilities/#supported)<br/>[Capabilities.available](./core/Capabilities/#available)<br/>[Capabilities.permitted](./core/Capabilities/#permitted)<br/>[Capabilities.granted](./core/Capabilities/#granted)<br/>[Capabilities.info](./core/Capabilities/#info)<br/>[Capabilities.onAvailable](./core/Capabilities/#onavailable)<br/>[Capabilities.onUnavailable](./core/Capabilities/#onunavailable)<br/>[Capabilities.onGranted](./core/Capabilities/#ongranted)<br/>[Capabilities.onRevoked](./core/Capabilities/#onrevoked) |
+
+
+## `xrn:firebolt:capability:capabilities:request`
+
+| Uses |
+| ---- |
+| [Capabilities.request](./core/Capabilities/#request) |
+
+
+## `xrn:firebolt:capability:device:distributor`
+
+| Uses |
+| ---- |
+| [Device.distributor](./core/Device/#distributor) |
+
+
+
+| Manages |
+| ------- |
+| [Device.provision](./manage/Device/#provision) |
+
+
+## `xrn:firebolt:capability:device:id`
+
+| Uses |
+| ---- |
+| [Device.id](./core/Device/#id) |
+
+
+
+| Manages |
+| ------- |
+| [Device.provision](./manage/Device/#provision) |
+
+
+## `xrn:firebolt:capability:device:info`
+
+| Uses |
+| ---- |
+| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#onhdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#onhdrchanged)<br/>[Device.onAudioChanged](./core/Device/#onaudiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#onscreenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#onvideoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
+
+
+## `xrn:firebolt:capability:device:make`
+
+| Uses |
+| ---- |
+| [Device.make](./core/Device/#make) |
+
+
+## `xrn:firebolt:capability:device:model`
+
+| Uses |
+| ---- |
+| [Device.model](./core/Device/#model) |
+
+
+## `xrn:firebolt:capability:device:name`
+
+| Uses |
+| ---- |
+| [Device.name](./core/Device/#name)<br/>[Device.onDeviceNameChanged](./core/Device/#ondevicenamechanged)<br/>[Device.onNameChanged](./core/Device/#onnamechanged) |
+
+
+
+| Manages |
+| ------- |
+| [Device.setName](./manage/Device/#setname) |
+
+
+## `xrn:firebolt:capability:device:sku`
+
+| Uses |
+| ---- |
+| [Device.sku](./core/Device/#sku) |
+
+
+## `xrn:firebolt:capability:device:uid`
+
+| Uses |
+| ---- |
+| [Device.uid](./core/Device/#uid) |
+
+
+## `xrn:firebolt:capability:discovery:content-access`
+
+| Uses |
+| ---- |
+| [Discovery.entitlements](./core/Discovery/#entitlements)<br/>[Discovery.contentAccess](./core/Discovery/#contentaccess)<br/>[Discovery.clearContentAccess](./core/Discovery/#clearcontentaccess) |
+
+
+## `xrn:firebolt:capability:discovery:entity-info`
+
+| Provides |
+| -------- |
+| [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#onpullentityinfo) |
+
+
+## `xrn:firebolt:capability:discovery:navigate-to`
+
+| Uses |
+| ---- |
+| [Discovery.onNavigateTo](./core/Discovery/#onnavigateto) |
+
+
+## `xrn:firebolt:capability:discovery:policy`
+
+| Uses |
+| ---- |
+| [Discovery.policy](./core/Discovery/#policy)<br/>[Discovery.onPolicyChanged](./core/Discovery/#onpolicychanged) |
+
+
+## `xrn:firebolt:capability:discovery:purchased-content`
+
+| Provides |
+| -------- |
+| [Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#onpullpurchasedcontent) |
+
+
+## `xrn:firebolt:capability:discovery:sign-in-status`
+
+| Uses |
+| ---- |
+| [Discovery.signIn](./core/Discovery/#signin)<br/>[Discovery.signOut](./core/Discovery/#signout) |
+
+
+## `xrn:firebolt:capability:discovery:watch-next`
+
+| Uses |
+| ---- |
+| [Discovery.watchNext](./core/Discovery/#watchnext) |
+
+
+## `xrn:firebolt:capability:discovery:watched`
+
+| Uses |
+| ---- |
+| [Discovery.watched](./core/Discovery/#watched) |
+
+
+## `xrn:firebolt:capability:grants:state`
+
+| Uses |
+| ---- |
+| [UserGrants.app](./manage/UserGrants/#app)<br/>[UserGrants.device](./manage/UserGrants/#device)<br/>[UserGrants.capability](./manage/UserGrants/#capability) |
+
+
+
+| Manages |
+| ------- |
+| [UserGrants.grant](./manage/UserGrants/#grant)<br/>[UserGrants.deny](./manage/UserGrants/#deny)<br/>[UserGrants.clear](./manage/UserGrants/#clear)<br/>[UserGrants.request](./manage/UserGrants/#request) |
+
+
+## `xrn:firebolt:capability:input:keyboard`
+
+| Uses |
+| ---- |
+| [Keyboard.email](./core/Keyboard/#email)<br/>[Keyboard.password](./core/Keyboard/#password)<br/>[Keyboard.standard](./core/Keyboard/#standard) |
+
+
+
+| Provides |
+| -------- |
+| [Keyboard.onRequestStandard](./manage/Keyboard/#onrequeststandard)<br/>[Keyboard.onRequestPassword](./manage/Keyboard/#onrequestpassword)<br/>[Keyboard.onRequestEmail](./manage/Keyboard/#onrequestemail)<br/>[Keyboard.standardFocus](./manage/Keyboard/#standardfocus)<br/>[Keyboard.passwordFocus](./manage/Keyboard/#passwordfocus)<br/>[Keyboard.emailFocus](./manage/Keyboard/#emailfocus)<br/>[Keyboard.standardResponse](./manage/Keyboard/#standardresponse)<br/>[Keyboard.standardError](./manage/Keyboard/#standarderror)<br/>[Keyboard.passwordResponse](./manage/Keyboard/#passwordresponse)<br/>[Keyboard.passwordError](./manage/Keyboard/#passworderror)<br/>[Keyboard.emailResponse](./manage/Keyboard/#emailresponse)<br/>[Keyboard.emailError](./manage/Keyboard/#emailerror) |
+
+
+## `xrn:firebolt:capability:lifecycle:initialize`
+
+| Uses |
+| ---- |
+| [Internal.initialize](./core/Internal/#initialize) |
+
+
+## `xrn:firebolt:capability:lifecycle:launch`
+
+| Uses |
+| ---- |
+| [Discovery.launch](./core/Discovery/#launch) |
+
+
+## `xrn:firebolt:capability:lifecycle:ready`
+
+| Uses |
+| ---- |
+| [Lifecycle.ready](./core/Lifecycle/#ready) |
+
+
+## `xrn:firebolt:capability:lifecycle:state`
+
+| Uses |
+| ---- |
+| [Lifecycle.close](./core/Lifecycle/#close)<br/>[Lifecycle.finished](./core/Lifecycle/#finished)<br/>[Lifecycle.state](./core/Lifecycle/#state)<br/>[Lifecycle.onInactive](./core/Lifecycle/#oninactive)<br/>[Lifecycle.onForeground](./core/Lifecycle/#onforeground)<br/>[Lifecycle.onBackground](./core/Lifecycle/#onbackground)<br/>[Lifecycle.onSuspended](./core/Lifecycle/#onsuspended)<br/>[Lifecycle.onUnloading](./core/Lifecycle/#onunloading)<br/>[Parameters.initialization](./core/Parameters/#initialization) |
+
+
+## `xrn:firebolt:capability:localization:additional-info`
+
+| Uses |
+| ---- |
+| [Localization.additionalInfo](./core/Localization/#additionalinfo) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.addAdditionalInfo](./manage/Localization/#addadditionalinfo)<br/>[Localization.removeAdditionalInfo](./manage/Localization/#removeadditionalinfo) |
+
+
+## `xrn:firebolt:capability:localization:country-code`
+
+| Uses |
+| ---- |
+| [Localization.countryCode](./core/Localization/#countrycode)<br/>[Localization.onCountryCodeChanged](./core/Localization/#oncountrycodechanged) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.setCountryCode](./manage/Localization/#setcountrycode) |
+
+
+## `xrn:firebolt:capability:localization:language`
+
+| Uses |
+| ---- |
+| [Localization.language](./core/Localization/#language)<br/>[Localization.onLanguageChanged](./core/Localization/#onlanguagechanged) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.setLanguage](./manage/Localization/#setlanguage) |
+
+
+## `xrn:firebolt:capability:localization:locale`
+
+| Uses |
+| ---- |
+| [Localization.locale](./core/Localization/#locale)<br/>[Localization.onLocaleChanged](./core/Localization/#onlocalechanged) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.setLocale](./manage/Localization/#setlocale) |
+
+
+## `xrn:firebolt:capability:localization:locality`
+
+| Uses |
+| ---- |
+| [Localization.locality](./core/Localization/#locality)<br/>[Localization.onLocalityChanged](./core/Localization/#onlocalitychanged) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.setLocality](./manage/Localization/#setlocality) |
+
+
+## `xrn:firebolt:capability:localization:location`
+
+| Uses |
+| ---- |
+| [Localization.latlon](./core/Localization/#latlon) |
+
+
+## `xrn:firebolt:capability:localization:postal-code`
+
+| Uses |
+| ---- |
+| [Localization.postalCode](./core/Localization/#postalcode)<br/>[Localization.onPostalCodeChanged](./core/Localization/#onpostalcodechanged) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.setPostalCode](./manage/Localization/#setpostalcode) |
+
+
+## `xrn:firebolt:capability:localization:time-zone`
+
+| Uses |
+| ---- |
+| [Localization.timeZone](./manage/Localization/#timezone)<br/>[Localization.onTimeZoneChanged](./manage/Localization/#ontimezonechanged) |
+
+
+
+| Manages |
+| ------- |
+| [Localization.setTimeZone](./manage/Localization/#settimezone) |
+
+
+## `xrn:firebolt:capability:metrics:distributor`
+
+| Uses |
+| ---- |
+| [Metrics.event](./manage/Metrics/#event) |
+
+
+## `xrn:firebolt:capability:metrics:general`
+
+| Uses |
+| ---- |
+| [Metrics.ready](./core/Metrics/#ready)<br/>[Metrics.signIn](./core/Metrics/#signin)<br/>[Metrics.signOut](./core/Metrics/#signout)<br/>[Metrics.startContent](./core/Metrics/#startcontent)<br/>[Metrics.stopContent](./core/Metrics/#stopcontent)<br/>[Metrics.page](./core/Metrics/#page)<br/>[Metrics.action](./core/Metrics/#action)<br/>[Metrics.error](./core/Metrics/#error) |
+
+
+## `xrn:firebolt:capability:metrics:media`
+
+| Uses |
+| ---- |
+| [Metrics.mediaLoadStart](./core/Metrics/#medialoadstart)<br/>[Metrics.mediaPlay](./core/Metrics/#mediaplay)<br/>[Metrics.mediaPlaying](./core/Metrics/#mediaplaying)<br/>[Metrics.mediaPause](./core/Metrics/#mediapause)<br/>[Metrics.mediaWaiting](./core/Metrics/#mediawaiting)<br/>[Metrics.mediaProgress](./core/Metrics/#mediaprogress)<br/>[Metrics.mediaSeeking](./core/Metrics/#mediaseeking)<br/>[Metrics.mediaSeeked](./core/Metrics/#mediaseeked)<br/>[Metrics.mediaRateChange](./core/Metrics/#mediaratechange)<br/>[Metrics.mediaRenditionChange](./core/Metrics/#mediarenditionchange)<br/>[Metrics.mediaEnded](./core/Metrics/#mediaended) |
+
+
+## `xrn:firebolt:capability:network:status`
+
+| Uses |
+| ---- |
+| [Device.network](./core/Device/#network)<br/>[Device.onNetworkChanged](./core/Device/#onnetworkchanged) |
+
+
+## `xrn:firebolt:capability:privacy:advertising`
+
+| Uses |
+| ---- |
+| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#onpolicychanged) |
+
+
+## `xrn:firebolt:capability:privacy:settings`
+
+| Uses |
+| ---- |
+| [Privacy.allowResumePoints](./manage/Privacy/#allowresumepoints)<br/>[Privacy.allowUnentitledResumePoints](./manage/Privacy/#allowunentitledresumepoints)<br/>[Privacy.allowWatchHistory](./manage/Privacy/#allowwatchhistory)<br/>[Privacy.allowProductAnalytics](./manage/Privacy/#allowproductanalytics)<br/>[Privacy.allowPersonalization](./manage/Privacy/#allowpersonalization)<br/>[Privacy.allowUnentitledPersonalization](./manage/Privacy/#allowunentitledpersonalization)<br/>[Privacy.allowRemoteDiagnostics](./manage/Privacy/#allowremotediagnostics)<br/>[Privacy.allowPrimaryContentAdTargeting](./manage/Privacy/#allowprimarycontentadtargeting)<br/>[Privacy.allowPrimaryBrowseAdTargeting](./manage/Privacy/#allowprimarybrowseadtargeting)<br/>[Privacy.allowAppContentAdTargeting](./manage/Privacy/#allowappcontentadtargeting)<br/>[Privacy.allowACRCollection](./manage/Privacy/#allowacrcollection)<br/>[Privacy.allowCameraAnalytics](./manage/Privacy/#allowcameraanalytics)<br/>[Privacy.settings](./manage/Privacy/#settings)<br/>[Privacy.onAllowResumePointsChanged](./manage/Privacy/#onallowresumepointschanged)<br/>[Privacy.onAllowUnentitledResumePointsChanged](./manage/Privacy/#onallowunentitledresumepointschanged)<br/>[Privacy.onAllowWatchHistoryChanged](./manage/Privacy/#onallowwatchhistorychanged)<br/>[Privacy.onAllowProductAnalyticsChanged](./manage/Privacy/#onallowproductanalyticschanged)<br/>[Privacy.onAllowPersonalizationChanged](./manage/Privacy/#onallowpersonalizationchanged)<br/>[Privacy.onAllowUnentitledPersonalizationChanged](./manage/Privacy/#onallowunentitledpersonalizationchanged)<br/>[Privacy.onAllowRemoteDiagnosticsChanged](./manage/Privacy/#onallowremotediagnosticschanged)<br/>[Privacy.onAllowPrimaryContentAdTargetingChanged](./manage/Privacy/#onallowprimarycontentadtargetingchanged)<br/>[Privacy.onAllowPrimaryBrowseAdTargetingChanged](./manage/Privacy/#onallowprimarybrowseadtargetingchanged)<br/>[Privacy.onAllowAppContentAdTargetingChanged](./manage/Privacy/#onallowappcontentadtargetingchanged)<br/>[Privacy.onAllowACRCollectionChanged](./manage/Privacy/#onallowacrcollectionchanged)<br/>[Privacy.onAllowCameraAnalyticsChanged](./manage/Privacy/#onallowcameraanalyticschanged) |
+
+
+
+| Manages |
+| ------- |
+| [Privacy.setAllowResumePoints](./manage/Privacy/#setallowresumepoints)<br/>[Privacy.setAllowUnentitledResumePoints](./manage/Privacy/#setallowunentitledresumepoints)<br/>[Privacy.setAllowWatchHistory](./manage/Privacy/#setallowwatchhistory)<br/>[Privacy.setAllowProductAnalytics](./manage/Privacy/#setallowproductanalytics)<br/>[Privacy.setAllowPersonalization](./manage/Privacy/#setallowpersonalization)<br/>[Privacy.setAllowUnentitledPersonalization](./manage/Privacy/#setallowunentitledpersonalization)<br/>[Privacy.setAllowRemoteDiagnostics](./manage/Privacy/#setallowremotediagnostics)<br/>[Privacy.setAllowPrimaryContentAdTargeting](./manage/Privacy/#setallowprimarycontentadtargeting)<br/>[Privacy.setAllowPrimaryBrowseAdTargeting](./manage/Privacy/#setallowprimarybrowseadtargeting)<br/>[Privacy.setAllowAppContentAdTargeting](./manage/Privacy/#setallowappcontentadtargeting)<br/>[Privacy.setAllowACRCollection](./manage/Privacy/#setallowacrcollection)<br/>[Privacy.setAllowCameraAnalytics](./manage/Privacy/#setallowcameraanalytics) |
+
+
+## `xrn:firebolt:capability:profile:flags`
+
+| Uses |
+| ---- |
+| [Profile.flags](./core/Profile/#flags) |
+
+
+## `xrn:firebolt:capability:protocol:dial`
+
+| Uses |
+| ---- |
+| [SecondScreen.device](./core/SecondScreen/#device)<br/>[SecondScreen.friendlyName](./core/SecondScreen/#friendlyname)<br/>[SecondScreen.onLaunchRequest](./core/SecondScreen/#onlaunchrequest)<br/>[SecondScreen.onCloseRequest](./core/SecondScreen/#oncloserequest)<br/>[SecondScreen.onFriendlyNameChanged](./core/SecondScreen/#onfriendlynamechanged) |
+
+
+## `xrn:firebolt:capability:protocol:wifi`
+
+| Uses |
+| ---- |
+| [Wifi.scan](./manage/Wifi/#scan)<br/>[Wifi.connect](./manage/Wifi/#connect)<br/>[Wifi.disconnect](./manage/Wifi/#disconnect)<br/>[Wifi.wps](./manage/Wifi/#wps) |
+
+
+## `xrn:firebolt:capability:rpc:discover`
+
+| Uses |
+| ---- |
+| [rpc.discover](./manage/rpc/#discover) |
+
+
+## `xrn:firebolt:capability:storage:secure`
+
+| Uses |
+| ---- |
+| [SecureStorage.get](./core/SecureStorage/#get)<br/>[SecureStorage.set](./core/SecureStorage/#set)<br/>[SecureStorage.remove](./core/SecureStorage/#remove)<br/>[SecureStorage.clear](./core/SecureStorage/#clear) |
+
+
+
+| Manages |
+| ------- |
+| [SecureStorage.setForApp](./manage/SecureStorage/#setforapp)<br/>[SecureStorage.removeForApp](./manage/SecureStorage/#removeforapp)<br/>[SecureStorage.clearForApp](./manage/SecureStorage/#clearforapp) |
+
+
+## `xrn:firebolt:capability:token:account`
+
+| Manages |
+| ------- |
+| [Account.session](./manage/Account/#session) |
+
+
+## `xrn:firebolt:capability:token:device`
+
+| Uses |
+| ---- |
+| [Authentication.device](./core/Authentication/#device) |
+
+
+## `xrn:firebolt:capability:token:platform`
+
+| Uses |
+| ---- |
+| [Authentication.token](./core/Authentication/#token) |
+
+
+## `xrn:firebolt:capability:token:root`
+
+| Uses |
+| ---- |
+| [Authentication.root](./core/Authentication/#root) |
+
+
+## `xrn:firebolt:capability:token:session`
+
+| Uses |
+| ---- |
+| [Authentication.session](./core/Authentication/#session) |
+
+
+## `xrn:firebolt:capability:usergrant:acknowledgechallenge`
+
+| Provides |
+| -------- |
+| [AcknowledgeChallenge.onRequestChallenge](./manage/AcknowledgeChallenge/#onrequestchallenge)<br/>[AcknowledgeChallenge.challengeFocus](./manage/AcknowledgeChallenge/#challengefocus)<br/>[AcknowledgeChallenge.challengeResponse](./manage/AcknowledgeChallenge/#challengeresponse)<br/>[AcknowledgeChallenge.challengeError](./manage/AcknowledgeChallenge/#challengeerror) |
+
+
+## `xrn:firebolt:capability:usergrant:pinchallenge`
+
+| Provides |
+| -------- |
+| [PinChallenge.onRequestChallenge](./manage/PinChallenge/#onrequestchallenge)<br/>[PinChallenge.challengeFocus](./manage/PinChallenge/#challengefocus)<br/>[PinChallenge.challengeResponse](./manage/PinChallenge/#challengeresponse)<br/>[PinChallenge.challengeError](./manage/PinChallenge/#challengeerror) |
+
+
