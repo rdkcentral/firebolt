@@ -8,7 +8,7 @@ sdk: core
 
 # Authentication Module
 ---
-Version Authentication 0.14.0-next.2
+Version Authentication 0.14.0-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
