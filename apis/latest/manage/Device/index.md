@@ -325,13 +325,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function name(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

@@ -57,7 +57,7 @@ function closedCaptions(): Promise<ClosedCaptionsSettings>
 
 Promise resolution:
 
-[ClosedCaptionsSettings](../schemas/Accessibility/#ClosedCaptionsSettings)
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
@@ -155,7 +155,7 @@ function closedCaptionsSettings(): Promise<ClosedCaptionsSettings>
 
 Promise resolution:
 
-[ClosedCaptionsSettings](../schemas/Accessibility/#ClosedCaptionsSettings)
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
@@ -244,13 +244,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function closedCaptionsSettings(callback: (value) => ClosedCaptionsSettings): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -609,13 +605,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function voiceGuidanceSettings(callback: (value) => VoiceGuidanceSettings): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

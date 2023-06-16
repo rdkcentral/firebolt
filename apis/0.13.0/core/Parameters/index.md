@@ -159,6 +159,6 @@ type AppInitialization = {
 See also: 
 
 HomeIntent | LaunchIntent | EntityIntent | PlaybackIntent | SearchIntent | SectionIntent | TuneIntent
-[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 ---

@@ -147,13 +147,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function audio(callback: (value) => AudioProfiles): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -315,7 +311,7 @@ function hdcp(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
@@ -382,13 +378,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function hdcp(callback: (value) => BooleanMap): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -469,7 +461,7 @@ function hdr(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
@@ -540,13 +532,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function hdr(callback: (value) => BooleanMap): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1020,13 +1008,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function name(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1217,13 +1201,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function network(callback: (value) => object): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1507,13 +1487,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function screenResolution(callback: (value) => [number, number]): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1824,10 +1800,10 @@ Promise resolution:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `sdk` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The Firebolt SDK version | 
-| `api` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The lateset Firebolt API version supported by the curent device. | 
-| `firmware` | [SemanticVersion](../schemas/Types/#SemanticVersion) | The device firmware version. | 
-| `os` | [SemanticVersion](../schemas/Types/#SemanticVersion) | **Deprecated** Use `firmware`, instead. | 
+| `sdk` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The Firebolt SDK version | 
+| `api` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The lateset Firebolt API version supported by the curent device. | 
+| `firmware` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The device firmware version. | 
+| `os` | [SemanticVersion](../Types/schemas/#SemanticVersion) | **Deprecated** Use `firmware`, instead. | 
 | `debug` | string | Detail version as a string, for debugging purposes | 
 
 
@@ -2024,13 +2000,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function videoResolution(callback: (value) => [number, number]): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -2220,7 +2192,7 @@ type AudioProfiles = {
 
 See also: 
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
 
 ---

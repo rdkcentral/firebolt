@@ -238,13 +238,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function countryCode(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -469,13 +465,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function language(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -833,13 +825,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function locale(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1064,13 +1052,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function locality(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -1353,13 +1337,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function postalCode(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 

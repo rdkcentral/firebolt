@@ -193,13 +193,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function friendlyName(callback: (value) => string): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
@@ -387,7 +383,7 @@ function protocols(): Promise<BooleanMap>
 
 Promise resolution:
 
-[BooleanMap](../schemas/Types/#BooleanMap)
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
@@ -461,7 +457,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 Capabilities:
 
@@ -540,7 +536,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../schemas/SecondScreen/#SecondScreenEvent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 Capabilities:
 

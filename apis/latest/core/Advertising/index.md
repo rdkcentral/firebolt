@@ -575,13 +575,9 @@ Response:
 
 To subscribe to notifications when the value changes, call the method like this:
 
-${if.javascript}
-
 ```typescript
 function policy(callback: (value) => AdPolicy): Promise<number>
 ```
-
-${end.if.javascript}
 
 
 
