@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "0.14.0-next.4",
+		"version": "0.14.0-next.5",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -246,7 +246,7 @@
 				"name": "settings",
 				"summary": "the voice guidance settings",
 				"schema": {
-					"$ref": "#/components/schemas/VoiceGuidanceSettings"
+					"$ref": "#/x-schemas/Accessibility/VoiceGuidanceSettings"
 				}
 			},
 			"examples": [
@@ -257,7 +257,7 @@
 						"name": "Default Result",
 						"value": {
 							"enabled": true,
-							"speed": 5
+							"speed": 2
 						}
 					}
 				}
@@ -282,7 +282,7 @@
 				"name": "settings",
 				"summary": "the voice guidance settings",
 				"schema": {
-					"$ref": "#/components/schemas/VoiceGuidanceSettings"
+					"$ref": "#/x-schemas/Accessibility/VoiceGuidanceSettings"
 				}
 			},
 			"examples": [
@@ -293,7 +293,7 @@
 						"name": "Default Result",
 						"value": {
 							"enabled": true,
-							"speed": 5
+							"speed": 2
 						}
 					}
 				}
@@ -408,7 +408,7 @@
 							"$ref": "#/x-schemas/Types/ListenResponse"
 						},
 						{
-							"$ref": "#/components/schemas/VoiceGuidanceSettings"
+							"$ref": "#/x-schemas/Accessibility/VoiceGuidanceSettings"
 						}
 					]
 				}
@@ -426,7 +426,7 @@
 						"name": "Default Result",
 						"value": {
 							"enabled": true,
-							"speed": 5
+							"speed": 2
 						}
 					}
 				}
@@ -15440,24 +15440,6 @@
 	],
 	"components": {
 		"schemas": {
-			"VoiceGuidanceSettings": {
-				"title": "VoiceGuidanceSettings",
-				"type": "object",
-				"required": [
-					"enabled",
-					"speed"
-				],
-				"properties": {
-					"enabled": {
-						"type": "boolean",
-						"description": "Whether or not voice guidance should be enabled by default"
-					},
-					"speed": {
-						"type": "number",
-						"description": "The speed at which voice guidance speech will be read back to the user"
-					}
-				}
-			},
 			"Token": {
 				"type": "string",
 				"description": "Encoded token provided by the Distributor for Device Authentication."
@@ -16790,6 +16772,36 @@
 					}
 				]
 			},
+			"VoiceGuidanceSettings": {
+				"title": "VoiceGuidanceSettings",
+				"type": "object",
+				"required": [
+					"enabled",
+					"speed"
+				],
+				"properties": {
+					"enabled": {
+						"type": "boolean",
+						"description": "Whether or not voice guidance should be enabled by default"
+					},
+					"speed": {
+						"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
+						"description": "The speed at which voice guidance speech will be read back to the user"
+					}
+				},
+				"examples": [
+					{
+						"enabled": true,
+						"speed": 2
+					}
+				]
+			},
+			"VoiceSpeed": {
+				"title": "VoiceSpeed",
+				"type": "number",
+				"minimum": 0.5,
+				"maximum": 2
+			},
 			"ClosedCaptionsStyles": {
 				"title": "ClosedCaptionsStyles",
 				"type": "object",
@@ -16850,10 +16862,6 @@
 			},
 			"VerticalAlignment": {
 				"type": "string"
-			},
-			"VoiceSpeed": {
-				"title": "VoiceSpeed",
-				"type": "number"
 			}
 		},
 		"Advertising": {

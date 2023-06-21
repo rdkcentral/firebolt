@@ -15,6 +15,8 @@ Version Accessibility 0.0.0-unknown.0
    - [Overview](#overview)
    - [Types](#types)
      - [ClosedCaptionsSettings](#closedcaptionssettings)
+     - [VoiceGuidanceSettings](#voiceguidancesettings)
+     - [VoiceSpeed](#voicespeed)
      - [ClosedCaptionsStyles](#closedcaptionsstyles)
      - [FontFamily](#fontfamily)
      - [FontSize](#fontsize)
@@ -23,7 +25,6 @@ Version Accessibility 0.0.0-unknown.0
      - [Opacity](#opacity)
      - [HorizontalAlignment](#horizontalalignment)
      - [VerticalAlignment](#verticalalignment)
-     - [VoiceSpeed](#voicespeed)
 
 
 ## Overview
@@ -45,6 +46,35 @@ type ClosedCaptionsSettings = {
 See also: 
 
 [ClosedCaptionsStyles](#closedcaptionsstyles)
+
+---
+
+### VoiceGuidanceSettings
+
+
+
+```typescript
+type VoiceGuidanceSettings = {
+  enabled: boolean              // Whether or not voice guidance should be enabled by default
+  speed: VoiceSpeed
+}
+```
+
+See also: 
+
+number
+
+---
+
+### VoiceSpeed
+
+
+
+```typescript
+type VoiceSpeed = number
+```
+
+
 
 ---
 
@@ -149,18 +179,6 @@ type HorizontalAlignment = string
 
 ```typescript
 type VerticalAlignment = string
-```
-
-
-
----
-
-### VoiceSpeed
-
-
-
-```typescript
-type VoiceSpeed = number
 ```
 
 
