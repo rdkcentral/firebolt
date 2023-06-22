@@ -8,7 +8,7 @@ sdk: manage
 
 # Advertising Module
 ---
-Version Advertising 0.13.0
+Version Advertising 0.14.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -17,6 +17,7 @@ Version Advertising 0.13.0
    - [Methods](#methods)
      - [listen](#listen)
      - [once](#once)
+     - [resetIdentifier](#resetidentifier)
      - [skipRestriction](#skiprestriction)
    - [Events](#events)
      - [skipRestrictionChanged](#skiprestrictionchanged)
@@ -150,6 +151,77 @@ Promise resolution:
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
+### resetIdentifier
+
+Resets a user's identifier in the ad platform so that the advertising id that apps get will be a new value
+
+```typescript
+function resetIdentifier(): Promise<void>
+```
+
+
+
+Promise resolution:
+
+```typescript
+void
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| manages | xrn:firebolt:capability:advertising:identifier |
+
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+Advertising.resetIdentifier()
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Advertising.resetIdentifier",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
 
 
 ### skipRestriction

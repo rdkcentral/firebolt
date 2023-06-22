@@ -8,7 +8,7 @@ sdk: manage
 
 # VoiceGuidance Module
 ---
-Version VoiceGuidance 0.13.0
+Version VoiceGuidance 0.14.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -616,7 +616,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true |   |
+| `value` | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true |  <br/>minumum: 0.5
+maximum: 2 |
 
 
 Promise resolution:

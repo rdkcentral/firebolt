@@ -226,6 +226,12 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Discovery.signIn](./core/Discovery/#signin)<br/>[Discovery.signOut](./core/Discovery/#signout) |
 
 
+
+| Manages |
+| ------- |
+| [Discovery.onSignIn](./manage/Discovery/#signin)<br/>[Discovery.onSignOut](./manage/Discovery/#signout) |
+
+
 ## `xrn:firebolt:capability:discovery:watch-next`
 
 | Uses |
