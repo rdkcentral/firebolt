@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.14.0-next.8
+Version Accessibility 0.14.0-next.9
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -95,7 +95,9 @@ Value of `closedCaptionsSettings`:
 		"backgroundColor": "#000000",
 		"backgroundOpacity": 100,
 		"textAlign": "center",
-		"textAlignVertical": "middle"
+		"textAlignVertical": "middle",
+		"windowColor": "white",
+		"windowOpacity": 50
 	}
 }
 ```
@@ -130,7 +132,9 @@ Response:
 			"backgroundColor": "#000000",
 			"backgroundOpacity": 100,
 			"textAlign": "center",
-			"textAlignVertical": "middle"
+			"textAlignVertical": "middle",
+			"windowColor": "white",
+			"windowOpacity": 50
 		}
 	}
 }
@@ -193,7 +197,9 @@ Value of `closedCaptionsSettings`:
 		"backgroundColor": "#000000",
 		"backgroundOpacity": 100,
 		"textAlign": "center",
-		"textAlignVertical": "middle"
+		"textAlignVertical": "middle",
+		"windowColor": "white",
+		"windowOpacity": 50
 	}
 }
 ```
@@ -228,7 +234,9 @@ Response:
 			"backgroundColor": "#000000",
 			"backgroundOpacity": 100,
 			"textAlign": "center",
-			"textAlignVertical": "middle"
+			"textAlignVertical": "middle",
+			"windowColor": "white",
+			"windowOpacity": 50
 		}
 	}
 }
@@ -286,7 +294,9 @@ Value of `closedCaptionsSettings`:
 		"backgroundColor": "#000000",
 		"backgroundOpacity": 100,
 		"textAlign": "center",
-		"textAlignVertical": "middle"
+		"textAlignVertical": "middle",
+		"windowColor": "white",
+		"windowOpacity": 50
 	}
 }
 ```
@@ -323,7 +333,9 @@ Response:
 			"backgroundColor": "#000000",
 			"backgroundOpacity": 100,
 			"textAlign": "center",
-			"textAlignVertical": "middle"
+			"textAlignVertical": "middle",
+			"windowColor": "white",
+			"windowOpacity": 50
 		}
 	}
 }

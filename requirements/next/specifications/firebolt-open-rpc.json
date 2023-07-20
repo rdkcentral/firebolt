@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "0.14.0-next.8",
+		"version": "0.14.0-next.9",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -171,7 +171,9 @@
 								"backgroundColor": "#000000",
 								"backgroundOpacity": 100,
 								"textAlign": "center",
-								"textAlignVertical": "middle"
+								"textAlignVertical": "middle",
+								"windowColor": "white",
+								"windowOpacity": 50
 							}
 						}
 					}
@@ -218,7 +220,9 @@
 								"backgroundColor": "#000000",
 								"backgroundOpacity": 100,
 								"textAlign": "center",
-								"textAlignVertical": "middle"
+								"textAlignVertical": "middle",
+								"windowColor": "white",
+								"windowOpacity": 50
 							}
 						}
 					}
@@ -364,7 +368,9 @@
 								"backgroundColor": "#000000",
 								"backgroundOpacity": 100,
 								"textAlign": "center",
-								"textAlignVertical": "middle"
+								"textAlignVertical": "middle",
+								"windowColor": "white",
+								"windowOpacity": 50
 							}
 						}
 					}
@@ -14207,7 +14213,7 @@
 			},
 			"examples": [
 				{
-					"name": "Set a refresh token with name authRefreshToken with optional paramter for appId foo",
+					"name": "Set a refresh token with name authRefreshToken with optional parameter for appId foo",
 					"params": [
 						{
 							"name": "appId",
@@ -16767,7 +16773,9 @@
 							"backgroundColor": "#000000",
 							"backgroundOpacity": 100,
 							"textAlign": "center",
-							"textAlignVertical": "middle"
+							"textAlignVertical": "middle",
+							"windowColor": "white",
+							"windowOpacity": 50
 						}
 					}
 				]
@@ -16836,6 +16844,12 @@
 					},
 					"textAlignVertical": {
 						"$ref": "#/x-schemas/Accessibility/VerticalAlignment"
+					},
+					"windowColor": {
+						"$ref": "#/x-schemas/Accessibility/Color"
+					},
+					"windowOpacity": {
+						"$ref": "#/x-schemas/Accessibility/Opacity"
 					}
 				}
 			},
