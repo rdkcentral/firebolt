@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "0.14.0-next.9",
+		"version": "0.14.0-next.10",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -2549,7 +2549,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font family for displaying closed-captions.",
+			"summary": "The preferred font family for displaying closed-captions.",
 			"params": [],
 			"result": {
 				"name": "family",
@@ -2573,6 +2573,14 @@
 						"name": "family",
 						"value": "cursive"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "family",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2589,7 +2597,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font size for displaying closed-captions.",
+			"summary": "The preferred font size for displaying closed-captions.",
 			"params": [],
 			"result": {
 				"name": "size",
@@ -2613,6 +2621,14 @@
 						"name": "size",
 						"value": 1
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "size",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2629,7 +2645,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font color for displaying closed-captions.",
+			"summary": "The preferred font color for displaying closed-captions.",
 			"params": [],
 			"result": {
 				"name": "color",
@@ -2653,6 +2669,14 @@
 						"name": "color",
 						"value": "#000000"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "color",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2669,7 +2693,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font edge style for displaying closed-captions.",
+			"summary": "The preferred font edge style for displaying closed-captions.",
 			"params": [],
 			"result": {
 				"name": "edge",
@@ -2693,6 +2717,14 @@
 						"name": "edge",
 						"value": "solid"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "edge",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2709,7 +2741,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font edge color for displaying closed-captions.",
+			"summary": "The preferred font edge color for displaying closed-captions.",
 			"params": [],
 			"result": {
 				"name": "color",
@@ -2732,6 +2764,14 @@
 					"result": {
 						"name": "color",
 						"value": "#ffffff"
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "color",
+						"value": null
 					}
 				}
 			]
@@ -2749,7 +2789,7 @@
 					]
 				}
 			],
-			"summary": "The prefered opacity for displaying closed-captions characters.",
+			"summary": "The preferred opacity for displaying closed-captions characters.",
 			"params": [],
 			"result": {
 				"name": "opacity",
@@ -2773,6 +2813,14 @@
 						"name": "opacity",
 						"value": 100
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "opacity",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2789,7 +2837,7 @@
 					]
 				}
 			],
-			"summary": "The prefered background color for displaying closed-captions, .",
+			"summary": "The preferred background color for displaying closed-captions, .",
 			"params": [],
 			"result": {
 				"name": "color",
@@ -2813,6 +2861,14 @@
 						"name": "color",
 						"value": "#ffffff"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "color",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2829,7 +2885,7 @@
 					]
 				}
 			],
-			"summary": "The prefered opacity for displaying closed-captions backgrounds.",
+			"summary": "The preferred opacity for displaying closed-captions backgrounds.",
 			"params": [],
 			"result": {
 				"name": "opacity",
@@ -2853,6 +2909,14 @@
 						"name": "opacity",
 						"value": 100
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "opacity",
+						"value": null
+					}
 				}
 			]
 		},
@@ -2869,10 +2933,10 @@
 					]
 				}
 			],
-			"summary": "The prefered horizontal alignment for displaying closed-captions characters.",
+			"summary": "The preferred horizontal alignment for displaying closed-captions characters.",
 			"params": [],
 			"result": {
-				"name": "opacity",
+				"name": "alignment",
 				"schema": {
 					"$ref": "#/x-schemas/Accessibility/HorizontalAlignment"
 				}
@@ -2882,7 +2946,7 @@
 					"name": "Default example #1",
 					"params": [],
 					"result": {
-						"name": "aligment",
+						"name": "alignment",
 						"value": "center"
 					}
 				},
@@ -2890,8 +2954,16 @@
 					"name": "Default example #2",
 					"params": [],
 					"result": {
-						"name": "aligment",
+						"name": "alignment",
 						"value": "left"
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "alignment",
+						"value": null
 					}
 				}
 			]
@@ -2909,10 +2981,10 @@
 					]
 				}
 			],
-			"summary": "The prefered horizontal alignment for displaying closed-captions characters.",
+			"summary": "The preferred horizontal alignment for displaying closed-captions characters.",
 			"params": [],
 			"result": {
-				"name": "opacity",
+				"name": "alignment",
 				"schema": {
 					"$ref": "#/x-schemas/Accessibility/VerticalAlignment"
 				}
@@ -2922,7 +2994,7 @@
 					"name": "Default example #1",
 					"params": [],
 					"result": {
-						"name": "alignement",
+						"name": "alignment",
 						"value": "middle"
 					}
 				},
@@ -2930,8 +3002,16 @@
 					"name": "Default example #2",
 					"params": [],
 					"result": {
-						"name": "alignement",
+						"name": "alignment",
 						"value": "top"
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [],
+					"result": {
+						"name": "alignment",
+						"value": null
 					}
 				}
 			]
@@ -3024,7 +3104,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font family for displaying closed-captions.",
+			"summary": "The preferred font family for displaying closed-captions.",
 			"params": [
 				{
 					"name": "listen",
@@ -3073,6 +3153,19 @@
 						"name": "family",
 						"value": "cursive"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "family",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3094,7 +3187,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font size for displaying closed-captions.",
+			"summary": "The preferred font size for displaying closed-captions.",
 			"params": [
 				{
 					"name": "listen",
@@ -3143,6 +3236,19 @@
 						"name": "size",
 						"value": 1
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "size",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3164,7 +3270,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font color for displaying closed-captions.",
+			"summary": "The preferred font color for displaying closed-captions.",
 			"params": [
 				{
 					"name": "listen",
@@ -3213,6 +3319,19 @@
 						"name": "color",
 						"value": "#000000"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "color",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3234,7 +3353,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font edge style for displaying closed-captions.",
+			"summary": "The preferred font edge style for displaying closed-captions.",
 			"params": [
 				{
 					"name": "listen",
@@ -3283,6 +3402,19 @@
 						"name": "edge",
 						"value": "solid"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "edge",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3304,7 +3436,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font edge color for displaying closed-captions.",
+			"summary": "The preferred font edge color for displaying closed-captions.",
 			"params": [
 				{
 					"name": "listen",
@@ -3352,6 +3484,19 @@
 					"result": {
 						"name": "color",
 						"value": "#ffffff"
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "color",
+						"value": null
 					}
 				}
 			]
@@ -3374,7 +3519,7 @@
 					]
 				}
 			],
-			"summary": "The prefered opacity for displaying closed-captions characters.",
+			"summary": "The preferred opacity for displaying closed-captions characters.",
 			"params": [
 				{
 					"name": "listen",
@@ -3423,6 +3568,19 @@
 						"name": "opacity",
 						"value": 100
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "opacity",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3444,7 +3602,7 @@
 					]
 				}
 			],
-			"summary": "The prefered background color for displaying closed-captions, .",
+			"summary": "The preferred background color for displaying closed-captions, .",
 			"params": [
 				{
 					"name": "listen",
@@ -3493,6 +3651,19 @@
 						"name": "color",
 						"value": "#ffffff"
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "color",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3514,7 +3685,7 @@
 					]
 				}
 			],
-			"summary": "The prefered opacity for displaying closed-captions backgrounds.",
+			"summary": "The preferred opacity for displaying closed-captions backgrounds.",
 			"params": [
 				{
 					"name": "listen",
@@ -3563,6 +3734,19 @@
 						"name": "opacity",
 						"value": 100
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "opacity",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3584,7 +3768,7 @@
 					]
 				}
 			],
-			"summary": "The prefered horizontal alignment for displaying closed-captions characters.",
+			"summary": "The preferred horizontal alignment for displaying closed-captions characters.",
 			"params": [
 				{
 					"name": "listen",
@@ -3595,7 +3779,7 @@
 				}
 			],
 			"result": {
-				"name": "opacity",
+				"name": "alignment",
 				"schema": {
 					"anyOf": [
 						{
@@ -3617,7 +3801,7 @@
 						}
 					],
 					"result": {
-						"name": "aligment",
+						"name": "alignment",
 						"value": "center"
 					}
 				},
@@ -3630,8 +3814,21 @@
 						}
 					],
 					"result": {
-						"name": "aligment",
+						"name": "alignment",
 						"value": "left"
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "alignment",
+						"value": null
 					}
 				}
 			]
@@ -3654,7 +3851,7 @@
 					]
 				}
 			],
-			"summary": "The prefered horizontal alignment for displaying closed-captions characters.",
+			"summary": "The preferred horizontal alignment for displaying closed-captions characters.",
 			"params": [
 				{
 					"name": "listen",
@@ -3665,7 +3862,7 @@
 				}
 			],
 			"result": {
-				"name": "opacity",
+				"name": "alignment",
 				"schema": {
 					"anyOf": [
 						{
@@ -3687,7 +3884,7 @@
 						}
 					],
 					"result": {
-						"name": "alignement",
+						"name": "alignment",
 						"value": "middle"
 					}
 				},
@@ -3700,8 +3897,21 @@
 						}
 					],
 					"result": {
-						"name": "alignement",
+						"name": "alignment",
 						"value": "top"
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "alignment",
+						"value": null
 					}
 				}
 			]
@@ -3779,7 +3989,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font family for displaying closed-captions.",
+			"summary": "The preferred font family for displaying closed-captions.",
 			"params": [
 				{
 					"name": "value",
@@ -3821,6 +4031,19 @@
 						"name": "family",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "family",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3838,7 +4061,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font size for displaying closed-captions.",
+			"summary": "The preferred font size for displaying closed-captions.",
 			"params": [
 				{
 					"name": "value",
@@ -3880,6 +4103,19 @@
 						"name": "size",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "size",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3897,7 +4133,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font color for displaying closed-captions.",
+			"summary": "The preferred font color for displaying closed-captions.",
 			"params": [
 				{
 					"name": "value",
@@ -3939,6 +4175,19 @@
 						"name": "color",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "color",
+						"value": null
+					}
 				}
 			]
 		},
@@ -3956,7 +4205,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font edge style for displaying closed-captions.",
+			"summary": "The preferred font edge style for displaying closed-captions.",
 			"params": [
 				{
 					"name": "value",
@@ -3998,6 +4247,19 @@
 						"name": "edge",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "edge",
+						"value": null
+					}
 				}
 			]
 		},
@@ -4015,7 +4277,7 @@
 					]
 				}
 			],
-			"summary": "The prefered font edge color for displaying closed-captions.",
+			"summary": "The preferred font edge color for displaying closed-captions.",
 			"params": [
 				{
 					"name": "value",
@@ -4051,6 +4313,19 @@
 						{
 							"name": "value",
 							"value": "#ffffff"
+						}
+					],
+					"result": {
+						"name": "color",
+						"value": null
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
 						}
 					],
 					"result": {
@@ -4074,7 +4349,7 @@
 					]
 				}
 			],
-			"summary": "The prefered opacity for displaying closed-captions characters.",
+			"summary": "The preferred opacity for displaying closed-captions characters.",
 			"params": [
 				{
 					"name": "value",
@@ -4116,6 +4391,19 @@
 						"name": "opacity",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "opacity",
+						"value": null
+					}
 				}
 			]
 		},
@@ -4133,7 +4421,7 @@
 					]
 				}
 			],
-			"summary": "The prefered background color for displaying closed-captions, .",
+			"summary": "The preferred background color for displaying closed-captions, .",
 			"params": [
 				{
 					"name": "value",
@@ -4175,6 +4463,19 @@
 						"name": "color",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "color",
+						"value": null
+					}
 				}
 			]
 		},
@@ -4192,7 +4493,7 @@
 					]
 				}
 			],
-			"summary": "The prefered opacity for displaying closed-captions backgrounds.",
+			"summary": "The preferred opacity for displaying closed-captions backgrounds.",
 			"params": [
 				{
 					"name": "value",
@@ -4234,6 +4535,19 @@
 						"name": "opacity",
 						"value": null
 					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "opacity",
+						"value": null
+					}
 				}
 			]
 		},
@@ -4251,7 +4565,7 @@
 					]
 				}
 			],
-			"summary": "The prefered horizontal alignment for displaying closed-captions characters.",
+			"summary": "The preferred horizontal alignment for displaying closed-captions characters.",
 			"params": [
 				{
 					"name": "value",
@@ -4277,7 +4591,7 @@
 						}
 					],
 					"result": {
-						"name": "aligment",
+						"name": "alignment",
 						"value": null
 					}
 				},
@@ -4290,7 +4604,20 @@
 						}
 					],
 					"result": {
-						"name": "aligment",
+						"name": "alignment",
+						"value": null
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "alignment",
 						"value": null
 					}
 				}
@@ -4310,7 +4637,7 @@
 					]
 				}
 			],
-			"summary": "The prefered horizontal alignment for displaying closed-captions characters.",
+			"summary": "The preferred horizontal alignment for displaying closed-captions characters.",
 			"params": [
 				{
 					"name": "value",
@@ -4336,7 +4663,7 @@
 						}
 					],
 					"result": {
-						"name": "alignement",
+						"name": "alignment",
 						"value": null
 					}
 				},
@@ -4349,7 +4676,20 @@
 						}
 					],
 					"result": {
-						"name": "alignement",
+						"name": "alignment",
+						"value": null
+					}
+				},
+				{
+					"name": "Default example #3",
+					"params": [
+						{
+							"name": "value",
+							"value": null
+						}
+					],
+					"result": {
+						"name": "alignment",
 						"value": null
 					}
 				}
@@ -16854,28 +17194,49 @@
 				}
 			},
 			"FontFamily": {
-				"type": "string"
+				"type": [
+					"string",
+					"null"
+				]
 			},
 			"FontSize": {
-				"type": "number",
+				"type": [
+					"number",
+					"null"
+				],
 				"minimum": 0
 			},
 			"Color": {
-				"type": "string"
+				"type": [
+					"string",
+					"null"
+				]
 			},
 			"FontEdge": {
-				"type": "string"
+				"type": [
+					"string",
+					"null"
+				]
 			},
 			"Opacity": {
-				"type": "number",
+				"type": [
+					"number",
+					"null"
+				],
 				"minimum": 0,
 				"maximum": 100
 			},
 			"HorizontalAlignment": {
-				"type": "string"
+				"type": [
+					"string",
+					"null"
+				]
 			},
 			"VerticalAlignment": {
-				"type": "string"
+				"type": [
+					"string",
+					"null"
+				]
 			}
 		},
 		"Advertising": {
