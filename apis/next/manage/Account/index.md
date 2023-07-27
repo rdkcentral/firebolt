@@ -8,7 +8,7 @@ sdk: manage
 
 # Account Module
 ---
-Version Account 0.14.0-next.11
+Version Account 0.15.0-next.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
