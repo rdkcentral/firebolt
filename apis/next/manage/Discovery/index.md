@@ -8,7 +8,7 @@ sdk: manage
 
 # Discovery Module
 ---
-Version Discovery 0.14.0-next.10
+Version Discovery 0.14.0-next.11
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
