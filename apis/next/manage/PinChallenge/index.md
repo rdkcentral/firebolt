@@ -8,7 +8,7 @@ sdk: manage
 
 # PinChallenge Module
 ---
-Version PinChallenge 0.15.0-next.1
+Version PinChallenge 0.15.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
