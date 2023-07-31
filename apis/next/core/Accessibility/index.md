@@ -8,13 +8,14 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.15.0-next.2
+Version Accessibility 0.15.0-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
    - [Usage](#usage)
    - [Overview](#overview)
    - [Methods](#methods)
+     - [audioDescriptionSettings](#audiodescriptionsettings)
      - [closedCaptions](#closedcaptions)
      - [closedCaptionsSettings](#closedcaptionssettings)
      - [listen](#listen)
@@ -22,8 +23,11 @@ Version Accessibility 0.15.0-next.2
      - [voiceGuidance](#voiceguidance)
      - [voiceGuidanceSettings](#voiceguidancesettings)
    - [Events](#events)
+     - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
      - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
      - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
+   - [Types](#types)
+     - [AudioDescriptionSettings](#audiodescriptionsettings-1)
 
 
 
@@ -41,6 +45,152 @@ import { Accessibility } from '@firebolt-js/sdk'
 Apps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.
 
 ## Methods
+
+### audioDescriptionSettings
+Get the user's preferred audio description settings
+
+To get the value of `audioDescriptionSettings` call the method like this:
+
+```typescript
+function audioDescriptionSettings(): Promise<AudioDescriptionSettings>
+```
+
+
+
+Promise resolution:
+
+[AudioDescriptionSettings](#audiodescriptionsettings-1)
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:accessibility:audiodescriptions |
+
+
+#### Examples
+
+
+Getting the audio description settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.audioDescriptionSettings()
+    .then(settings => {
+        console.log(settings)
+    })
+```
+
+Value of `settings`:
+
+```javascript
+{
+	"enabled": true
+}
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Accessibility.audioDescriptionSettings",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"enabled": true
+	}
+}
+```
+</details>
+
+
+---
+
+
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function audioDescriptionSettings(callback: (value) => AudioDescriptionSettings): Promise<number>
+```
+
+
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+
+Getting the audio description settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+audioDescriptionSettings(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `settings`:
+
+```javascript
+{
+	"enabled": true
+}
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Accessibility.onAudioDescriptionSettingsChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"enabled": true
+	}
+}
+```
+</details>
+
+
+---
+
 
 
 ### closedCaptions
@@ -687,6 +837,10 @@ Response:
 
 ## Events
 
+### audioDescriptionSettingsChanged
+
+See: [audioDescriptionSettings](#audiodescriptionsettings)
+
 ### closedCaptionsSettingsChanged
 
 See: [closedCaptionsSettings](#closedcaptionssettings)
@@ -697,3 +851,18 @@ See: [voiceGuidanceSettings](#voiceguidancesettings)
 
 
 
+## Types
+
+### AudioDescriptionSettings
+
+
+
+```typescript
+type AudioDescriptionSettings = {
+  enabled: boolean                 // Whether or not audio descriptions should be enabled by default
+}
+```
+
+
+
+---

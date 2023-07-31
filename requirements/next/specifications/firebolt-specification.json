@@ -426,6 +426,21 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:accessibility:audiodescriptions": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:accessibility:closedcaptions": {
 			"level": "must",
 			"use": {
@@ -882,13 +897,14 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "0.15.0-next.2",
+				"version": "0.15.0-next.3",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
 					"Account": "A module for querying about the device account.",
 					"AcknowledgeChallenge": "A module for registering as a provider for a user grant in which the user confirms access to a capability",
 					"Advertising": "A module for platform provided advertising settings and functionality.",
+					"AudioDescriptions": "A module for managing audio-description Settings.",
 					"Authentication": "A module for acquiring authentication tokens.",
 					"Capabilities": "The Capabilities module provides information about which discreet unit of functionality is enabled for the apps.",
 					"ClosedCaptions": "A module for managing closed-captions Settings.",
@@ -1184,6 +1200,41 @@
 					]
 				},
 				{
+					"name": "Accessibility.audioDescriptionSettings",
+					"summary": "Get the user's preferred audio description settings",
+					"params": [],
+					"tags": [
+						{
+							"name": "property:readonly"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:audiodescriptions"
+							]
+						}
+					],
+					"result": {
+						"name": "settings",
+						"summary": "the audio description settings",
+						"schema": {
+							"$ref": "#/components/schemas/AudioDescriptionSettings"
+						}
+					},
+					"examples": [
+						{
+							"name": "Getting the audio description settings",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": {
+									"enabled": true
+								}
+							}
+						}
+					]
+				},
+				{
 					"name": "Accessibility.onClosedCaptionsSettingsChanged",
 					"summary": "Get the user's preferred closed-captions settings",
 					"params": [
@@ -1313,6 +1364,66 @@
 								"value": {
 									"enabled": true,
 									"speed": 2
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Accessibility.onAudioDescriptionSettingsChanged",
+					"summary": "Get the user's preferred audio description settings",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "audioDescriptionSettings"
+						},
+						{
+							"name": "event",
+							"x-alternative": "audioDescriptionSettings"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:audiodescriptions"
+							]
+						}
+					],
+					"result": {
+						"name": "settings",
+						"summary": "the audio description settings",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"$ref": "#/components/schemas/AudioDescriptionSettings"
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Getting the audio description settings",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": {
+									"enabled": true
 								}
 							}
 						}
@@ -2204,6 +2315,175 @@
 							],
 							"result": {
 								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "AudioDescriptions.enabled",
+					"tags": [
+						{
+							"name": "property"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:audiodescriptions"
+							]
+						}
+					],
+					"summary": "Whether or not audio-descriptions are enabled.",
+					"params": [],
+					"result": {
+						"name": "enabled",
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default example #1",
+							"params": [],
+							"result": {
+								"name": "enabled",
+								"value": true
+							}
+						},
+						{
+							"name": "Default example #2",
+							"params": [],
+							"result": {
+								"name": "enabled",
+								"value": false
+							}
+						}
+					]
+				},
+				{
+					"name": "AudioDescriptions.onEnabledChanged",
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "enabled"
+						},
+						{
+							"name": "event",
+							"x-alternative": "enabled"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:audiodescriptions"
+							]
+						}
+					],
+					"summary": "Whether or not audio-descriptions are enabled.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "enabled",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "boolean"
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default example #1",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "enabled",
+								"value": true
+							}
+						},
+						{
+							"name": "Default example #2",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "enabled",
+								"value": false
+							}
+						}
+					]
+				},
+				{
+					"name": "AudioDescriptions.setEnabled",
+					"tags": [
+						{
+							"name": "setter",
+							"x-setter-for": "enabled"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:accessibility:audiodescriptions"
+							]
+						}
+					],
+					"summary": "Whether or not audio-descriptions are enabled.",
+					"params": [
+						{
+							"name": "value",
+							"schema": {
+								"type": "boolean"
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default example #1",
+							"params": [
+								{
+									"name": "value",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "enabled",
+								"value": null
+							}
+						},
+						{
+							"name": "Default example #2",
+							"params": [
+								{
+									"name": "value",
+									"value": false
+								}
+							],
+							"result": {
+								"name": "enabled",
 								"value": null
 							}
 						}
@@ -10202,6 +10482,56 @@
 					]
 				},
 				{
+					"name": "Localization.preferredAudioLanguages",
+					"summary": "A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.",
+					"params": [],
+					"tags": [
+						{
+							"name": "property"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:localization:language"
+							]
+						}
+					],
+					"result": {
+						"name": "languages",
+						"summary": "the preferred audio languages",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"es",
+									"en"
+								]
+							}
+						},
+						{
+							"name": "Default Example #2",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"en",
+									"es"
+								]
+							}
+						}
+					]
+				},
+				{
 					"name": "Localization.locale",
 					"tags": [
 						{
@@ -10733,6 +11063,86 @@
 					]
 				},
 				{
+					"name": "Localization.onPreferredAudioLanguagesChanged",
+					"summary": "A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "preferredAudioLanguages"
+						},
+						{
+							"name": "event",
+							"x-alternative": "preferredAudioLanguages"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:localization:language"
+							]
+						}
+					],
+					"result": {
+						"name": "languages",
+						"summary": "the preferred audio languages",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"es",
+									"en"
+								]
+							}
+						},
+						{
+							"name": "Default Example #2",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"en",
+									"es"
+								]
+							}
+						}
+					]
+				},
+				{
 					"name": "Localization.onLocaleChanged",
 					"tags": [
 						{
@@ -11104,6 +11514,75 @@
 								{
 									"name": "value",
 									"value": "es"
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Localization.setPreferredAudioLanguages",
+					"summary": "A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.",
+					"params": [
+						{
+							"name": "value",
+							"summary": "the preferred audio languages",
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"required": true
+						}
+					],
+					"tags": [
+						{
+							"name": "setter",
+							"x-setter-for": "preferredAudioLanguages"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:localization:language"
+							]
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "value",
+									"value": [
+										"es",
+										"en"
+									]
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": null
+							}
+						},
+						{
+							"name": "Default Example #2",
+							"params": [
+								{
+									"name": "value",
+									"value": [
+										"en",
+										"es"
+									]
 								}
 							],
 							"result": {
@@ -16666,6 +17145,19 @@
 			],
 			"components": {
 				"schemas": {
+					"AudioDescriptionSettings": {
+						"title": "AudioDescriptionSettings",
+						"type": "object",
+						"required": [
+							"enabled"
+						],
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"description": "Whether or not audio descriptions should be enabled by default"
+							}
+						}
+					},
 					"Token": {
 						"type": "string",
 						"description": "Encoded token provided by the Distributor for Device Authentication."

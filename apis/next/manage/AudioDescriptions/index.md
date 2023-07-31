@@ -1,14 +1,14 @@
 ---
-title: VoiceGuidance
+title: AudioDescriptions
 
 version: next
 layout: default
 sdk: manage
 ---
 
-# VoiceGuidance Module
+# AudioDescriptions Module
 ---
-Version VoiceGuidance 0.15.0-next.3
+Version AudioDescriptions 0.15.0-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -18,29 +18,27 @@ Version VoiceGuidance 0.15.0-next.3
      - [enabled](#enabled)
      - [listen](#listen)
      - [once](#once)
-     - [speed](#speed)
    - [Events](#events)
      - [enabledChanged](#enabledchanged)
-     - [speedChanged](#speedchanged)
 
 
 
 ## Usage
-To use the VoiceGuidance module, you can import it into your project from the Firebolt SDK:
+To use the AudioDescriptions module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 ```
 
 
 ## Overview
- A module for managing voice-guidance Settings.
+ A module for managing audio-description Settings.
 
 ## Methods
 
 
 ### enabled
-Whether or not voice-guidance is enabled.
+Whether or not audio-descriptions are enabled.
 
 To get the value of `enabled` call the method like this:
 
@@ -60,7 +58,7 @@ Capabilities:
 
 | Role                  | Capability                 |
 | --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+| uses | xrn:firebolt:capability:accessibility:audiodescriptions |
 
 
 #### Examples
@@ -71,9 +69,9 @@ Default example #1
 JavaScript:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-VoiceGuidance.enabled()
+AudioDescriptions.enabled()
     .then(enabled => {
         console.log(enabled)
     })
@@ -92,7 +90,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "VoiceGuidance.enabled",
+	"method": "AudioDescriptions.enabled",
 	"params": {}
 }
 ```
@@ -113,9 +111,9 @@ Default example #2
 JavaScript:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-VoiceGuidance.enabled()
+AudioDescriptions.enabled()
     .then(enabled => {
         console.log(enabled)
     })
@@ -134,7 +132,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "VoiceGuidance.enabled",
+	"method": "AudioDescriptions.enabled",
 	"params": {}
 }
 ```
@@ -180,9 +178,9 @@ Default example #1
 JavaScript:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-VoiceGuidance.enabled(true)
+AudioDescriptions.enabled(true)
     .then(result => {
         console.log(result)
     })
@@ -201,7 +199,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "VoiceGuidance.setEnabled",
+	"method": "AudioDescriptions.setEnabled",
 	"params": {
 		"value": true
 	}
@@ -224,9 +222,9 @@ Default example #2
 JavaScript:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-VoiceGuidance.enabled(false)
+AudioDescriptions.enabled(false)
     .then(result => {
         console.log(result)
     })
@@ -245,7 +243,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "VoiceGuidance.setEnabled",
+	"method": "AudioDescriptions.setEnabled",
 	"params": {
 		"value": false
 	}
@@ -289,7 +287,7 @@ Default example #1
 JavaScript:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
 enabled(value => {
   console.log(value)
@@ -311,7 +309,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "VoiceGuidance.onEnabledChanged",
+	"method": "AudioDescriptions.onEnabledChanged",
 	"params": {
 		"listen": true
 	}
@@ -334,7 +332,7 @@ Default example #2
 JavaScript:
 
 ```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
 enabled(value => {
   console.log(value)
@@ -356,7 +354,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "VoiceGuidance.onEnabledChanged",
+	"method": "AudioDescriptions.onEnabledChanged",
 	"params": {
 		"listen": true
 	}
@@ -397,7 +395,7 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VoiceGuidance.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 Callback parameters:
 
@@ -430,7 +428,7 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VoiceGuidance.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
@@ -455,7 +453,7 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VoiceGuidance.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 Callback parameters:
 
@@ -488,348 +486,9 @@ Promise resolution:
 
 | Type | Description |
 |------|-------------|
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VoiceGuidance.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
-
-
-
-### speed
-The speed at which voice guidance speech will be read back to the user.
-
-To get the value of `speed` call the method like this:
-
-```typescript
-function speed(): Promise<VoiceSpeed>
-```
-
-
-
-Promise resolution:
-
-[VoiceSpeed](../Accessibility/schemas/#VoiceSpeed)
-
-Capabilities:
-
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:accessibility:voiceguidance |
-
-
-#### Examples
-
-
-Voice guidance speed to 1
-
-JavaScript:
-
-```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
-
-VoiceGuidance.speed()
-    .then(speed => {
-        console.log(speed)
-    })
-```
-
-Value of `speed`:
-
-```javascript
-1
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "VoiceGuidance.speed",
-	"params": {}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 1
-}
-```
-</details>
-
-Voice guidance speed to 2
-
-JavaScript:
-
-```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
-
-VoiceGuidance.speed()
-    .then(speed => {
-        console.log(speed)
-    })
-```
-
-Value of `speed`:
-
-```javascript
-1
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "VoiceGuidance.speed",
-	"params": {}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 2
-}
-```
-</details>
-
-
----
-
-To set the value of `speed` call the method like this:
-
-```typescript
-function speed(value: VoiceSpeed): Promise<void>
-```
-
-Parameters:
-
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true |  <br/>minumum: 0.5
-maximum: 2 |
-
-
-Promise resolution:
-
-```typescript
-null
-```
-
-#### Examples
-
-
-Voice guidance speed to 1
-
-JavaScript:
-
-```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
-
-VoiceGuidance.speed(1)
-    .then(result => {
-        console.log(result)
-    })
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "VoiceGuidance.setSpeed",
-	"params": {
-		"value": 1
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-Voice guidance speed to 2
-
-JavaScript:
-
-```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
-
-VoiceGuidance.speed(2)
-    .then(result => {
-        console.log(result)
-    })
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "VoiceGuidance.setSpeed",
-	"params": {
-		"value": 2
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-
----
-
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function speed(callback: (value) => VoiceSpeed): Promise<number>
-```
-
-
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
-
-Voice guidance speed to 1
-
-JavaScript:
-
-```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
-
-speed(value => {
-  console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
-})
-```
-
-Value of `speed`:
-
-```javascript
-1
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "VoiceGuidance.onSpeedChanged",
-	"params": {
-		"listen": true
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 1
-}
-```
-</details>
-
-Voice guidance speed to 2
-
-JavaScript:
-
-```javascript
-import { VoiceGuidance } from '@firebolt-js/manage-sdk'
-
-speed(value => {
-  console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
-})
-```
-
-Value of `speed`:
-
-```javascript
-1
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "VoiceGuidance.onSpeedChanged",
-	"params": {
-		"listen": true
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 2
-}
-```
-</details>
-
-
----
 
 
 ## Events
@@ -837,10 +496,6 @@ Response:
 ### enabledChanged
 
 See: [enabled](#enabled)
-
-### speedChanged
-
-See: [speed](#speed)
 
 
 

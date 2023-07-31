@@ -8,7 +8,7 @@ sdk: manage
 
 # Localization Module
 ---
-Version Localization 0.15.0-next.2
+Version Localization 0.15.0-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -24,6 +24,7 @@ Version Localization 0.15.0-next.2
      - [locality](#locality)
      - [once](#once)
      - [postalCode](#postalcode)
+     - [preferredAudioLanguages](#preferredaudiolanguages)
      - [removeAdditionalInfo](#removeadditionalinfo)
      - [timeZone](#timezone)
    - [Events](#events)
@@ -32,6 +33,7 @@ Version Localization 0.15.0-next.2
      - [localeChanged](#localechanged)
      - [localityChanged](#localitychanged)
      - [postalCodeChanged](#postalcodechanged)
+     - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
      - [timeZoneChanged](#timezonechanged)
 
 
@@ -2010,6 +2012,375 @@ Response:
 ---
 
 
+### preferredAudioLanguages
+A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.
+
+To get the value of `preferredAudioLanguages` call the method like this:
+
+```typescript
+function preferredAudioLanguages(): Promise<string[]>
+```
+
+
+
+Promise resolution:
+
+```typescript
+string[]
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:localization:language |
+
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/manage-sdk'
+
+Localization.preferredAudioLanguages()
+    .then(languages => {
+        console.log(languages)
+    })
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.preferredAudioLanguages",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"es",
+		"en"
+	]
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/manage-sdk'
+
+Localization.preferredAudioLanguages()
+    .then(languages => {
+        console.log(languages)
+    })
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.preferredAudioLanguages",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"en",
+		"es"
+	]
+}
+```
+</details>
+
+
+---
+
+To set the value of `preferredAudioLanguages` call the method like this:
+
+```typescript
+function preferredAudioLanguages(value: string[]): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `value` | `string[]` | true | the preferred audio languages  |
+
+
+Promise resolution:
+
+```typescript
+null
+```
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/manage-sdk'
+
+Localization.preferredAudioLanguages(["es","en"])
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.setPreferredAudioLanguages",
+	"params": {
+		"value": [
+			"es",
+			"en"
+		]
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/manage-sdk'
+
+Localization.preferredAudioLanguages(["en","es"])
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.setPreferredAudioLanguages",
+	"params": {
+		"value": [
+			"en",
+			"es"
+		]
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function preferredAudioLanguages(callback: (value) => string[]): Promise<number>
+```
+
+
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/manage-sdk'
+
+preferredAudioLanguages(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.onPreferredAudioLanguagesChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"es",
+		"en"
+	]
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/manage-sdk'
+
+preferredAudioLanguages(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.onPreferredAudioLanguagesChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"en",
+		"es"
+	]
+}
+```
+</details>
+
+
+---
+
+
 ### removeAdditionalInfo
 
 Remove any platform-specific localization information from map
@@ -2087,6 +2458,7 @@ Response:
 
 
 ---
+
 
 
 
@@ -2454,6 +2826,10 @@ See: [locality](#locality)
 ### postalCodeChanged
 
 See: [postalCode](#postalcode)
+
+### preferredAudioLanguagesChanged
+
+See: [preferredAudioLanguages](#preferredaudiolanguages)
 
 ### timeZoneChanged
 

@@ -10,6 +10,19 @@ layout: default
 Firebolt APIs are defined by [OpenRPC schemas](https://spec.open-rpc.org).
 
 The schemas are used to generate SDK and Documentation artifacts.
+## `xrn:firebolt:capability:accessibility:audiodescriptions`
+
+| Uses |
+| ---- |
+| [Accessibility.audioDescriptionSettings](./core/Accessibility/#audiodescriptionsettings)<br/>[Accessibility.onAudioDescriptionSettingsChanged](./core/Accessibility/#audiodescriptionsettingschanged)<br/>[AudioDescriptions.enabled](./manage/AudioDescriptions/#enabled)<br/>[AudioDescriptions.onEnabledChanged](./manage/AudioDescriptions/#enabledchanged) |
+
+
+
+| Manages |
+| ------- |
+| [AudioDescriptions.setEnabled](./manage/AudioDescriptions/#setenabled) |
+
+
 ## `xrn:firebolt:capability:accessibility:closedcaptions`
 
 | Uses |
@@ -330,13 +343,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Localization.language](./core/Localization/#language)<br/>[Localization.onLanguageChanged](./core/Localization/#languagechanged) |
+| [Localization.language](./core/Localization/#language)<br/>[Localization.preferredAudioLanguages](./core/Localization/#preferredaudiolanguages)<br/>[Localization.onLanguageChanged](./core/Localization/#languagechanged)<br/>[Localization.onPreferredAudioLanguagesChanged](./core/Localization/#preferredaudiolanguageschanged) |
 
 
 
 | Manages |
 | ------- |
-| [Localization.setLanguage](./manage/Localization/#setlanguage) |
+| [Localization.setLanguage](./manage/Localization/#setlanguage)<br/>[Localization.setPreferredAudioLanguages](./manage/Localization/#setpreferredaudiolanguages) |
 
 
 ## `xrn:firebolt:capability:localization:locale`
