@@ -8,7 +8,7 @@ sdk: core
 
 # Localization Module
 ---
-Version Localization 0.15.0-next.3
+Version Localization 0.15.0-next.4
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
