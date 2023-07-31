@@ -8,7 +8,7 @@ sdk: manage
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.14.0
+Version SecureStorage 0.15.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -234,7 +234,7 @@ Capabilities:
 #### Examples
 
 
-Set a refresh token with name authRefreshToken with optional paramter for appId foo
+Set a refresh token with name authRefreshToken with optional parameter for appId foo
 
 JavaScript:
 

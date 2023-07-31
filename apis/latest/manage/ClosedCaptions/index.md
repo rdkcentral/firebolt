@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.14.0
+Version ClosedCaptions 0.15.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -57,7 +57,7 @@ import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 ## Methods
 
 ### backgroundColor
-The prefered background color for displaying closed-captions, .
+The preferred background color for displaying closed-captions, .
 
 To get the value of `backgroundColor` call the method like this:
 
@@ -167,6 +167,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.backgroundColor()
+    .then(color => {
+        console.log(color)
+    })
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.backgroundColor",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -265,6 +307,50 @@ Request:
 	"method": "ClosedCaptions.setBackgroundColor",
 	"params": {
 		"value": "#ffffff"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.backgroundColor(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setBackgroundColor",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -391,12 +477,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+backgroundColor(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onBackgroundColorChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### backgroundOpacity
-The prefered opacity for displaying closed-captions backgrounds.
+The preferred opacity for displaying closed-captions backgrounds.
 
 To get the value of `backgroundOpacity` call the method like this:
 
@@ -506,6 +637,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.backgroundOpacity()
+    .then(opacity => {
+        console.log(opacity)
+    })
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.backgroundOpacity",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -519,8 +692,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |  <br/>minumum: 0
-maximum: 100 |
+| `value` | `number` | true |   |
 
 
 Promise resolution:
@@ -605,6 +777,50 @@ Request:
 	"method": "ClosedCaptions.setBackgroundOpacity",
 	"params": {
 		"value": 100
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.backgroundOpacity(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setBackgroundOpacity",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -727,6 +943,51 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": 100
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+backgroundOpacity(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onBackgroundOpacityChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
 }
 ```
 </details>
@@ -1076,7 +1337,7 @@ Response:
 
 
 ### fontColor
-The prefered font color for displaying closed-captions.
+The preferred font color for displaying closed-captions.
 
 To get the value of `fontColor` call the method like this:
 
@@ -1186,6 +1447,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontColor()
+    .then(color => {
+        console.log(color)
+    })
+```
+
+Value of `color`:
+
+```javascript
+"#ffffff"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.fontColor",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -1284,6 +1587,50 @@ Request:
 	"method": "ClosedCaptions.setFontColor",
 	"params": {
 		"value": "#000000"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontColor(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setFontColor",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -1410,12 +1757,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+fontColor(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `color`:
+
+```javascript
+"#ffffff"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onFontColorChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### fontEdge
-The prefered font edge style for displaying closed-captions.
+The preferred font edge style for displaying closed-captions.
 
 To get the value of `fontEdge` call the method like this:
 
@@ -1525,6 +1917,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontEdge()
+    .then(edge => {
+        console.log(edge)
+    })
+```
+
+Value of `edge`:
+
+```javascript
+"none"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.fontEdge",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -1623,6 +2057,50 @@ Request:
 	"method": "ClosedCaptions.setFontEdge",
 	"params": {
 		"value": "solid"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontEdge(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setFontEdge",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -1749,12 +2227,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+fontEdge(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `edge`:
+
+```javascript
+"none"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onFontEdgeChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### fontEdgeColor
-The prefered font edge color for displaying closed-captions.
+The preferred font edge color for displaying closed-captions.
 
 To get the value of `fontEdgeColor` call the method like this:
 
@@ -1864,6 +2387,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontEdgeColor()
+    .then(color => {
+        console.log(color)
+    })
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.fontEdgeColor",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -1962,6 +2527,50 @@ Request:
 	"method": "ClosedCaptions.setFontEdgeColor",
 	"params": {
 		"value": "#ffffff"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontEdgeColor(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setFontEdgeColor",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -2088,12 +2697,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+fontEdgeColor(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onFontEdgeColorChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### fontFamily
-The prefered font family for displaying closed-captions.
+The preferred font family for displaying closed-captions.
 
 To get the value of `fontFamily` call the method like this:
 
@@ -2203,6 +2857,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontFamily()
+    .then(family => {
+        console.log(family)
+    })
+```
+
+Value of `family`:
+
+```javascript
+"monospace"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.fontFamily",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -2301,6 +2997,50 @@ Request:
 	"method": "ClosedCaptions.setFontFamily",
 	"params": {
 		"value": "cursive"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontFamily(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setFontFamily",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -2427,12 +3167,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+fontFamily(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `family`:
+
+```javascript
+"monospace"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onFontFamilyChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### fontOpacity
-The prefered opacity for displaying closed-captions characters.
+The preferred opacity for displaying closed-captions characters.
 
 To get the value of `fontOpacity` call the method like this:
 
@@ -2542,6 +3327,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontOpacity()
+    .then(opacity => {
+        console.log(opacity)
+    })
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.fontOpacity",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -2555,8 +3382,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |  <br/>minumum: 0
-maximum: 100 |
+| `value` | `number` | true |   |
 
 
 Promise resolution:
@@ -2641,6 +3467,50 @@ Request:
 	"method": "ClosedCaptions.setFontOpacity",
 	"params": {
 		"value": 100
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontOpacity(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setFontOpacity",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -2767,12 +3637,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+fontOpacity(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onFontOpacityChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### fontSize
-The prefered font size for displaying closed-captions.
+The preferred font size for displaying closed-captions.
 
 To get the value of `fontSize` call the method like this:
 
@@ -2882,6 +3797,48 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontSize()
+    .then(size => {
+        console.log(size)
+    })
+```
+
+Value of `size`:
+
+```javascript
+1
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.fontSize",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -2895,7 +3852,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |  <br/>minumum: 0 |
+| `value` | `number` | true |   |
 
 
 Promise resolution:
@@ -2980,6 +3937,50 @@ Request:
 	"method": "ClosedCaptions.setFontSize",
 	"params": {
 		"value": 1
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.fontSize(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setFontSize",
+	"params": {
+		"value": null
 	}
 }
 ```
@@ -3102,6 +4103,51 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": 1
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+fontSize(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `size`:
+
+```javascript
+1
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onFontSizeChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
 }
 ```
 </details>
@@ -3236,7 +4282,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 
 ### textAlign
-The prefered horizontal alignment for displaying closed-captions characters.
+The preferred horizontal alignment for displaying closed-captions characters.
 
 To get the value of `textAlign` call the method like this:
 
@@ -3270,12 +4316,12 @@ JavaScript:
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
 ClosedCaptions.textAlign()
-    .then(opacity => {
-        console.log(opacity)
+    .then(alignment => {
+        console.log(alignment)
     })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "center"
@@ -3312,12 +4358,12 @@ JavaScript:
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
 ClosedCaptions.textAlign()
-    .then(opacity => {
-        console.log(opacity)
+    .then(alignment => {
+        console.log(alignment)
     })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "center"
@@ -3342,6 +4388,48 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": "left"
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.textAlign()
+    .then(alignment => {
+        console.log(alignment)
+    })
+```
+
+Value of `alignment`:
+
+```javascript
+"center"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.textAlign",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
 }
 ```
 </details>
@@ -3459,6 +4547,50 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.textAlign(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setTextAlign",
+	"params": {
+		"value": null
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -3494,7 +4626,7 @@ textAlign(value => {
 })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "center"
@@ -3539,7 +4671,7 @@ textAlign(value => {
 })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "center"
@@ -3570,12 +4702,57 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+textAlign(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `alignment`:
+
+```javascript
+"center"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onTextAlignChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
 
 ### textAlignVertical
-The prefered horizontal alignment for displaying closed-captions characters.
+The preferred horizontal alignment for displaying closed-captions characters.
 
 To get the value of `textAlignVertical` call the method like this:
 
@@ -3609,12 +4786,12 @@ JavaScript:
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
 ClosedCaptions.textAlignVertical()
-    .then(opacity => {
-        console.log(opacity)
+    .then(alignment => {
+        console.log(alignment)
     })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "middle"
@@ -3651,12 +4828,12 @@ JavaScript:
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
 ClosedCaptions.textAlignVertical()
-    .then(opacity => {
-        console.log(opacity)
+    .then(alignment => {
+        console.log(alignment)
     })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "middle"
@@ -3681,6 +4858,48 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": "top"
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.textAlignVertical()
+    .then(alignment => {
+        console.log(alignment)
+    })
+```
+
+Value of `alignment`:
+
+```javascript
+"middle"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.textAlignVertical",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
 }
 ```
 </details>
@@ -3798,6 +5017,50 @@ Response:
 ```
 </details>
 
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.textAlignVertical(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setTextAlignVertical",
+	"params": {
+		"value": null
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
 
 ---
 
@@ -3833,7 +5096,7 @@ textAlignVertical(value => {
 })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "middle"
@@ -3878,7 +5141,7 @@ textAlignVertical(value => {
 })
 ```
 
-Value of `opacity`:
+Value of `alignment`:
 
 ```javascript
 "middle"
@@ -3905,6 +5168,51 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": "top"
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+textAlignVertical(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `alignment`:
+
+```javascript
+"middle"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onTextAlignVerticalChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
 }
 ```
 </details>

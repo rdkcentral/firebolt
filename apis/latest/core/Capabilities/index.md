@@ -8,7 +8,7 @@ sdk: core
 
 # Capabilities Module
 ---
-Version Capabilities 0.14.0
+Version Capabilities 0.15.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

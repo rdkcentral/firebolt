@@ -94,6 +94,8 @@ type ClosedCaptionsStyles = {
   backgroundOpacity?: number
   textAlign?: string
   textAlignVertical?: string
+  windowColor?: string
+  windowOpacity?: number
 }
 ```
 

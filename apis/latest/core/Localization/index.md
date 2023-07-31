@@ -8,7 +8,7 @@ sdk: core
 
 # Localization Module
 ---
-Version Localization 0.14.0
+Version Localization 0.15.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -24,12 +24,14 @@ Version Localization 0.14.0
      - [locality](#locality)
      - [once](#once)
      - [postalCode](#postalcode)
+     - [preferredAudioLanguages](#preferredaudiolanguages)
    - [Events](#events)
      - [countryCodeChanged](#countrycodechanged)
      - [languageChanged](#languagechanged)
      - [localeChanged](#localechanged)
      - [localityChanged](#localitychanged)
      - [postalCodeChanged](#postalcodechanged)
+     - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
    - [Types](#types)
      - [LatLon](#latlon-1)
 
@@ -1446,6 +1448,257 @@ Response:
 ---
 
 
+### preferredAudioLanguages
+A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.
+
+To get the value of `preferredAudioLanguages` call the method like this:
+
+```typescript
+function preferredAudioLanguages(): Promise<string[]>
+```
+
+
+
+Promise resolution:
+
+```typescript
+string[]
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:localization:language |
+
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/sdk'
+
+Localization.preferredAudioLanguages()
+    .then(languages => {
+        console.log(languages)
+    })
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.preferredAudioLanguages",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"es",
+		"en"
+	]
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/sdk'
+
+Localization.preferredAudioLanguages()
+    .then(languages => {
+        console.log(languages)
+    })
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.preferredAudioLanguages",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"en",
+		"es"
+	]
+}
+```
+</details>
+
+
+---
+
+
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function preferredAudioLanguages(callback: (value) => string[]): Promise<number>
+```
+
+
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/sdk'
+
+preferredAudioLanguages(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.onPreferredAudioLanguagesChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"es",
+		"en"
+	]
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { Localization } from '@firebolt-js/sdk'
+
+preferredAudioLanguages(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"es",
+	"en"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Localization.onPreferredAudioLanguagesChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"en",
+		"es"
+	]
+}
+```
+</details>
+
+
+---
+
+
 ## Events
 
 ### countryCodeChanged
@@ -1467,6 +1720,10 @@ See: [locality](#locality)
 ### postalCodeChanged
 
 See: [postalCode](#postalcode)
+
+### preferredAudioLanguagesChanged
+
+See: [preferredAudioLanguages](#preferredaudiolanguages)
 
 
 
