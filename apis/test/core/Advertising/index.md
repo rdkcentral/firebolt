@@ -8,7 +8,7 @@ sdk: core
 
 # Advertising Module
 ---
-Version Advertising 0.12.0-governance.17
+Version Advertising 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

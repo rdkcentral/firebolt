@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.12.0-governance.17
+Version Keyboard 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

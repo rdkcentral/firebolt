@@ -8,7 +8,7 @@ sdk: core
 
 # Discovery Module
 ---
-Version Discovery 0.12.0-governance.17
+Version Discovery 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

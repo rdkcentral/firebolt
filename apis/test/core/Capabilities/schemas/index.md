@@ -45,20 +45,20 @@ type Capability = string
 
 ```typescript
 type CapabilityInfo = {
-  capability?: Capability  // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-  supported: boolean       // Provides info whether the capability is supported
-  available: boolean       // Provides info whether the capability is available
+  capability?: Capability     // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  supported: boolean          // Provides info whether the capability is supported
+  available: boolean          // Provides info whether the capability is available
   use: {
-    permitted?: boolean    // Provides info whether the capability is permitted
-    granted?: boolean      // Provides info whether the capability is granted
+    permitted?: boolean       // Provides info whether the capability is permitted
+    granted?: boolean | void
   }
   manage: {
-    permitted?: boolean    // Provides info whether the capability is permitted
-    granted?: boolean      // Provides info whether the capability is granted
+    permitted?: boolean       // Provides info whether the capability is permitted
+    granted?: boolean | void
   }
   provide: {
-    permitted?: boolean    // Provides info whether the capability is permitted
-    granted?: boolean      // Provides info whether the capability is granted
+    permitted?: boolean       // Provides info whether the capability is permitted
+    granted?: boolean | void
   }
   details?: DenyReason[]
 }
@@ -113,7 +113,7 @@ enum Role {
 ```typescript
 type CapPermissionStatus = {
   permitted?: boolean         // Provides info whether the capability is permitted
-  granted?: boolean           // Provides info whether the capability is granted
+  granted?: boolean | void
 }
 ```
 

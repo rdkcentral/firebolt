@@ -3,7 +3,7 @@ title: SecureStorage
 
 version: test
 layout: default
-sdk: core
+sdk: manage
 ---
 
 # SecureStorage Module
@@ -15,10 +15,9 @@ Version SecureStorage 0.16.0-test.1
    - [Usage](#usage)
    - [Overview](#overview)
    - [Methods](#methods)
-     - [clear](#clear)
-     - [get](#get)
-     - [remove](#remove)
-     - [set](#set)
+     - [clearForApp](#clearforapp)
+     - [removeForApp](#removeforapp)
+     - [setForApp](#setforapp)
    - [Types](#types)
      - [StorageScope](#storagescope)
      - [StorageOptions](#storageoptions)
@@ -29,7 +28,7 @@ Version SecureStorage 0.16.0-test.1
 To use the SecureStorage module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
+import { SecureStorage } from '@firebolt-js/manage-sdk'
 ```
 
 
@@ -38,18 +37,19 @@ import { SecureStorage } from '@firebolt-js/sdk'
 
 ## Methods
 
-### clear
+### clearForApp
 
-Clears all the secure data values
+Clears all the secure data values for a specific app
 
 ```typescript
-function clear(scope: StorageScope): Promise<void>
+function clearForApp(appId: string, scope: StorageScope): Promise<void>
 ```
 
 Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `appId` | `string` | true | appId for which values are removed  |
 | `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
 
 
@@ -63,20 +63,20 @@ Capabilities:
 
 | Role                  | Capability                 |
 | --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:storage:secure |
+| manages | xrn:firebolt:capability:storage:secure |
 
 
 #### Examples
 
 
-Clears all the data values of storage
+Clears all the secure data values for appId foo
 
 JavaScript:
 
 ```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
+import { SecureStorage } from '@firebolt-js/manage-sdk'
 
-SecureStorage.clear("account")
+SecureStorage.clearForApp("foo", "account")
     .then(success => {
         console.log(success)
     })
@@ -95,8 +95,9 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "SecureStorage.clear",
+	"method": "SecureStorage.clearForApp",
 	"params": {
+		"appId": "foo",
 		"scope": "account"
 	}
 }
@@ -116,144 +117,20 @@ Response:
 
 ---
 
-### get
+### removeForApp
 
-Get stored value by key
+Removes single data value for a specific app.
 
 ```typescript
-function get(scope: StorageScope, key: string): Promise<string | null>
+function removeForApp(appId: string, scope: StorageScope, key: string): Promise<void>
 ```
 
 Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `appId` | `string` | true | appId for which values are removed  |
 | `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
-| `key` | `string` | true | Key to get  |
-
-
-Promise resolution:
-
-```typescript
-string | null
-```
-
-Capabilities:
-
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:storage:secure |
-
-
-#### Examples
-
-
-Successfully retrieve a refresh token with key authRefreshToken
-
-JavaScript:
-
-```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
-
-SecureStorage.get("device", "authRefreshToken")
-    .then(value => {
-        console.log(value)
-    })
-```
-
-Value of `value`:
-
-```javascript
-"VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "SecureStorage.get",
-	"params": {
-		"scope": "device",
-		"key": "authRefreshToken"
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
-}
-```
-</details>
-
-Attempt to retrieve a key with no value set
-
-JavaScript:
-
-```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
-
-SecureStorage.get("account", "authRefreshToken")
-    .then(value => {
-        console.log(value)
-    })
-```
-
-Value of `value`:
-
-```javascript
-"VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "SecureStorage.get",
-	"params": {
-		"scope": "account",
-		"key": "authRefreshToken"
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-
----
-
-### remove
-
-Remove a secure data value
-
-```typescript
-function remove(scope: StorageScope, key: string): Promise<void>
-```
-
-Parameters:
-
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `scope` | [`StorageScope`](#storagescope) | true | The scope of the data key <br/>values: `'device' \| 'account'` |
 | `key` | `string` | true | Key to remove  |
 
 
@@ -267,20 +144,20 @@ Capabilities:
 
 | Role                  | Capability                 |
 | --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:storage:secure |
+| manages | xrn:firebolt:capability:storage:secure |
 
 
 #### Examples
 
 
-Remove the value with key authRefreshToken for device
+Removes authRefreshToken for appId foo
 
 JavaScript:
 
 ```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
+import { SecureStorage } from '@firebolt-js/manage-sdk'
 
-SecureStorage.remove("device", "authRefreshToken")
+SecureStorage.removeForApp("foo", "account", "authRefreshToken")
     .then(success => {
         console.log(success)
     })
@@ -299,53 +176,9 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "SecureStorage.remove",
+	"method": "SecureStorage.removeForApp",
 	"params": {
-		"scope": "device",
-		"key": "authRefreshToken"
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-Remove the value with key authRefreshToken for account
-
-JavaScript:
-
-```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
-
-SecureStorage.remove("account", "authRefreshToken")
-    .then(success => {
-        console.log(success)
-    })
-```
-
-Value of `success`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "SecureStorage.remove",
-	"params": {
+		"appId": "foo",
 		"scope": "account",
 		"key": "authRefreshToken"
 	}
@@ -366,18 +199,19 @@ Response:
 
 ---
 
-### set
+### setForApp
 
-Set or update a secure data value
+Set or update a secure data value for a specific app.
 
 ```typescript
-function set(scope: StorageScope, key: string, value: string, options?: StorageOptions): Promise<void>
+function setForApp(appId: string, scope: StorageScope, key: string, value: string, options?: StorageOptions): Promise<void>
 ```
 
 Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `appId` | `string` | true | appId for which value is being set  |
 | `scope` | [`StorageScope`](#storagescope) | true | The scope of the data key <br/>values: `'device' \| 'account'` |
 | `key` | `string` | true | Key to set  |
 | `value` | `string` | true | Value to set  |
@@ -394,20 +228,26 @@ Capabilities:
 
 | Role                  | Capability                 |
 | --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:storage:secure |
+| manages | xrn:firebolt:capability:storage:secure |
 
 
 #### Examples
 
 
-Set a refresh token with name authRefreshToken with optional paramter
+Set a refresh token with name authRefreshToken with optional paramter for appId foo
 
 JavaScript:
 
 ```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
+import { SecureStorage } from '@firebolt-js/manage-sdk'
 
-SecureStorage.set("device", "authRefreshToken", "VGhpcyBub3QgYSByZWFsIHRva2VuLgo=", {"ttl":600})
+SecureStorage.setForApp("foo",
+                        "device",
+                        "authRefreshToken",
+                        "VGhpcyBub3QgYSByZWFsIHRva2VuLgo=",
+                        {
+                          "ttl": 600
+                        })
     .then(success => {
         console.log(success)
     })
@@ -426,8 +266,9 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "SecureStorage.set",
+	"method": "SecureStorage.setForApp",
 	"params": {
+		"appId": "foo",
 		"scope": "device",
 		"key": "authRefreshToken",
 		"value": "VGhpcyBub3QgYSByZWFsIHRva2VuLgo=",
@@ -449,14 +290,14 @@ Response:
 ```
 </details>
 
-Set a refresh token with name authRefreshToken without optional parameter
+Set a refresh token with name authRefreshToken without optional parameter for appId foo
 
 JavaScript:
 
 ```javascript
-import { SecureStorage } from '@firebolt-js/sdk'
+import { SecureStorage } from '@firebolt-js/manage-sdk'
 
-SecureStorage.set("account", "authRefreshToken", "VGhpcyBub3QgYSByZWFsIHRva2VuLgo=", null)
+SecureStorage.setForApp("foo", "account", "authRefreshToken", "VGhpcyBub3QgYSByZWFsIHRva2VuLgo=", null)
     .then(success => {
         console.log(success)
     })
@@ -475,8 +316,9 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "SecureStorage.set",
+	"method": "SecureStorage.setForApp",
 	"params": {
+		"appId": "foo",
 		"scope": "account",
 		"key": "authRefreshToken",
 		"value": "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="

@@ -8,7 +8,7 @@ sdk: manage
 
 # Wifi Module
 ---
-Version Wifi 0.12.0-governance.17
+Version Wifi 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

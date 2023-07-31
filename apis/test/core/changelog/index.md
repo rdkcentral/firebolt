@@ -5,6 +5,27 @@ version: test
 layout: default
 sdk: core
 ---
+# [0.14.0](https://github.com/rdkcentral/firebolt-apis/compare/v0.13.0...v0.14.0) (2023-06-22)
+
+### Bug Fixes
+
+* **VoiceGuidance** Change voice guidance limits to 0.5 and 2 ([#137](https://github.com/rdkcentral/firebolt-apis/issues/137)) ([b8f1944](https://github.com/rdkcentral/firebolt-apis/commit/b8f19449efd808639599b162aba61c08ec089c41))
+
+### Features
+
+* **Capabilities** Allow granted in capability.info and capability.granted to be null ([#134](https://github.com/rdkcentral/firebolt-apis/issues/134)) ([c5c31ee](https://github.com/rdkcentral/firebolt-apis/commit/c5c31ee3c744ec018a57232d2e7b1caf41158ed6))
+
+# [0.13.0](https://github.com/rdkcentral/firebolt-apis/compare/v0.12.0...v0.13.0) (2023-06-09)
+
+### Bug Fixes
+
+* Point to `firebolt-openrpc` 2.0.1 ([c57cb21](https://github.com/rdkcentral/firebolt-apis/commit/c57cb218343fd058e2e6e676d52d9d0c904ad9a8))
+
+### Features
+
+* Add SecureStorage.clear method. ([#127](https://github.com/rdkcentral/firebolt-apis/issues/127)) ([4422c79](https://github.com/rdkcentral/firebolt-apis/commit/4422c79122fc35e7b35180254be52bf33c64ab5b))
+
+
 # [0.12.0](https://github.com/rdkcentral/firebolt-apis/compare/v0.11.0...v0.12.0) (2023-05-18)
 
 ### Bug Fixes

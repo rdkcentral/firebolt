@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.12.0-governance.17
+Version Accessibility 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -24,8 +24,6 @@ Version Accessibility 0.12.0-governance.17
    - [Events](#events)
      - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
      - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
-   - [Types](#types)
-     - [VoiceGuidanceSettings](#voiceguidancesettings-1)
 
 
 
@@ -462,7 +460,7 @@ function voiceGuidance(): Promise<VoiceGuidanceSettings>
 
 Promise resolution:
 
-[VoiceGuidanceSettings](#voiceguidancesettings-1)
+[VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
 
 Capabilities:
 
@@ -492,7 +490,7 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
-	"speed": 5
+	"speed": 2
 }
 ```
 <details markdown="1" >
@@ -516,7 +514,7 @@ Response:
 	"id": 1,
 	"result": {
 		"enabled": true,
-		"speed": 5
+		"speed": 2
 	}
 }
 ```
@@ -538,7 +536,7 @@ function voiceGuidanceSettings(): Promise<VoiceGuidanceSettings>
 
 Promise resolution:
 
-[VoiceGuidanceSettings](#voiceguidancesettings-1)
+[VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
 
 Capabilities:
 
@@ -568,7 +566,7 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
-	"speed": 5
+	"speed": 2
 }
 ```
 <details markdown="1" >
@@ -592,7 +590,7 @@ Response:
 	"id": 1,
 	"result": {
 		"enabled": true,
-		"speed": 5
+		"speed": 2
 	}
 }
 ```
@@ -639,7 +637,7 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
-	"speed": 5
+	"speed": 2
 }
 ```
 <details markdown="1" >
@@ -665,7 +663,7 @@ Response:
 	"id": 1,
 	"result": {
 		"enabled": true,
-		"speed": 5
+		"speed": 2
 	}
 }
 ```
@@ -687,19 +685,3 @@ See: [voiceGuidanceSettings](#voiceguidancesettings)
 
 
 
-## Types
-
-### VoiceGuidanceSettings
-
-
-
-```typescript
-type VoiceGuidanceSettings = {
-  enabled: boolean              // Whether or not voice guidance should be enabled by default
-  speed: number                 // The speed at which voice guidance speech will be read back to the user
-}
-```
-
-
-
----

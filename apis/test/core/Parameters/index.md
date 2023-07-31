@@ -8,7 +8,7 @@ sdk: core
 
 # Parameters Module
 ---
-Version Parameters 0.12.0-governance.17
+Version Parameters 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

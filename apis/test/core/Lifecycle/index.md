@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 0.12.0-governance.17
+Version Lifecycle 0.16.0-test.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
