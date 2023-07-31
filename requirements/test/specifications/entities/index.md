@@ -10,7 +10,7 @@ type: specification
 
 Document Status: Working Draft
 
-See [Firebolt Requirements Governance](../../governance.md) for more info.
+See [Firebolt Requirements Governance](../../governance) for more info.
 
 ## 1. Overview
 Entities are object which identify a piece of content that an end-user may consume within an app.
@@ -53,6 +53,6 @@ Firebolt platforms **MUST NOT** infer anything from the values of these fields, 
 
 ## 4. Entity Specifications
 
-- [Program Entities](./programs.md)
-- [Channel Entities](./channels.md)
-- [Music Entities](./music.md)
+- [Program Entities](./programs)
+- [Channel Entities](./channels)
+- [Music Entities](./music)

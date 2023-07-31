@@ -2,11 +2,11 @@
 
 version: test
 layout: default
-title: Play Intent
+title: Intent Context
 category: requirements
 type: specification
 ---
-# Play Intent
+# Intent Context
 
 Document Status: Working Draft
 
