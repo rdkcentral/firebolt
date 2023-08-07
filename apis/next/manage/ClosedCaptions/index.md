@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.15.0-next.5
+Version ClosedCaptions 0.16.0-next.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -28,6 +28,8 @@ Version ClosedCaptions 0.15.0-next.5
      - [once](#once)
      - [textAlign](#textalign)
      - [textAlignVertical](#textalignvertical)
+     - [windowColor](#windowcolor)
+     - [windowOpacity](#windowopacity)
    - [Events](#events)
      - [backgroundColorChanged](#backgroundcolorchanged)
      - [backgroundOpacityChanged](#backgroundopacitychanged)
@@ -40,6 +42,8 @@ Version ClosedCaptions 0.15.0-next.5
      - [fontSizeChanged](#fontsizechanged)
      - [textAlignChanged](#textalignchanged)
      - [textAlignVerticalChanged](#textalignverticalchanged)
+     - [windowColorChanged](#windowcolorchanged)
+     - [windowOpacityChanged](#windowopacitychanged)
 
 
 
@@ -4281,6 +4285,8 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 
 
+
+
 ### textAlign
 The preferred horizontal alignment for displaying closed-captions characters.
 
@@ -5221,6 +5227,946 @@ Response:
 ---
 
 
+### windowColor
+The preferred window color for displaying closed-captions, .
+
+To get the value of `windowColor` call the method like this:
+
+```typescript
+function windowColor(): Promise<string>
+```
+
+
+
+Promise resolution:
+
+```typescript
+type Color = string
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:accessibility:closedcaptions |
+
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowColor()
+    .then(color => {
+        console.log(color)
+    })
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.windowColor",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": "#000000"
+}
+```
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowColor()
+    .then(color => {
+        console.log(color)
+    })
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.windowColor",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": "white"
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowColor()
+    .then(color => {
+        console.log(color)
+    })
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.windowColor",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+To set the value of `windowColor` call the method like this:
+
+```typescript
+function windowColor(value: string): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `value` | `string` | true |   |
+
+
+Promise resolution:
+
+```typescript
+null
+```
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowColor("#000000")
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setWindowColor",
+	"params": {
+		"value": "#000000"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowColor("white")
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setWindowColor",
+	"params": {
+		"value": "white"
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowColor(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setWindowColor",
+	"params": {
+		"value": null
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function windowColor(callback: (value) => string): Promise<number>
+```
+
+
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+windowColor(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onWindowColorChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": "#000000"
+}
+```
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+windowColor(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onWindowColorChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": "white"
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+windowColor(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `color`:
+
+```javascript
+"#000000"
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onWindowColorChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+
+### windowOpacity
+The preferred window opacity for displaying closed-captions backgrounds.
+
+To get the value of `windowOpacity` call the method like this:
+
+```typescript
+function windowOpacity(): Promise<number>
+```
+
+
+
+Promise resolution:
+
+```typescript
+type Opacity = number
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:accessibility:closedcaptions |
+
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowOpacity()
+    .then(opacity => {
+        console.log(opacity)
+    })
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.windowOpacity",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": 99
+}
+```
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowOpacity()
+    .then(opacity => {
+        console.log(opacity)
+    })
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.windowOpacity",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": 100
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowOpacity()
+    .then(opacity => {
+        console.log(opacity)
+    })
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.windowOpacity",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+To set the value of `windowOpacity` call the method like this:
+
+```typescript
+function windowOpacity(value: number): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `value` | `number` | true |   |
+
+
+Promise resolution:
+
+```typescript
+null
+```
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowOpacity(99)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setWindowOpacity",
+	"params": {
+		"value": 99
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowOpacity(100)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setWindowOpacity",
+	"params": {
+		"value": 100
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.windowOpacity(null)
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setWindowOpacity",
+	"params": {
+		"value": null
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function windowOpacity(callback: (value) => number): Promise<number>
+```
+
+
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+windowOpacity(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onWindowOpacityChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": 99
+}
+```
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+windowOpacity(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onWindowOpacityChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": 100
+}
+```
+</details>
+
+Default example #3
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+windowOpacity(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `opacity`:
+
+```javascript
+99
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onWindowOpacityChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+
 ## Events
 
 ### backgroundColorChanged
@@ -5266,6 +6212,14 @@ See: [textAlign](#textalign)
 ### textAlignVerticalChanged
 
 See: [textAlignVertical](#textalignvertical)
+
+### windowColorChanged
+
+See: [windowColor](#windowcolor)
+
+### windowOpacityChanged
+
+See: [windowOpacity](#windowopacity)
 
 
 
