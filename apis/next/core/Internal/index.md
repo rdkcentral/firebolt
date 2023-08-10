@@ -8,7 +8,7 @@ sdk: core
 
 # Internal Module
 ---
-Version Internal 0.16.0-next.1
+Version Internal 0.16.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
