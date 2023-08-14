@@ -8,7 +8,7 @@ sdk: core
 
 # Parameters Module
 ---
-Version Parameters 0.15.0
+Version Parameters 0.16.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

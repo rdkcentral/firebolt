@@ -8,7 +8,7 @@ sdk: manage
 
 # VoiceGuidance Module
 ---
-Version VoiceGuidance 0.15.0
+Version VoiceGuidance 0.16.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

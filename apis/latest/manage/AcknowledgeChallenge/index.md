@@ -8,7 +8,7 @@ sdk: manage
 
 # AcknowledgeChallenge Module
 ---
-Version AcknowledgeChallenge 0.15.0
+Version AcknowledgeChallenge 0.16.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
