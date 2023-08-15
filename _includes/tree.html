@@ -1,0 +1,24 @@
+{%- assign pages = include.pages | sort: 'dir' -%}
+
+{%- for my_page in pages -%}
+    {%- assign parent = my_page.dir | split: '/' | pop | join: '/' | append: '/' -%}
+    {%- assign prefixDir = (parent | slice: 0, dir.size) -%}
+    {%- assign prefixLast = (parent | slice: 0, last.dir.size) -%}
+    {%- assign prefixCurr = (parent | slice: 0, current.dir.size) -%}
+
+    {%- if prefixLast == last.dir -%}
+        {%- assign current = last -%}
+        <ul> <!-- open sub list -->
+    {%- elsif prefixCurr == current.dir -%}
+        </li> <!-- close item -->
+    {%- elsif last == nil -%}
+        <ul> <!-- open initial list -->
+    {%- elsif current != nil -%}
+        {%- assign current = nil -%}
+        </ul></li> <!-- close list and item -->
+    {%- endif -%}
+
+    <li>
+        <a class="page-link" href="{{ my_page.url | relative_url }}" title="{{ my_page.dir }}">{{ my_page.title }}</a>
+    {%- assign last = my_page -%}
+{%- endfor -%}                            

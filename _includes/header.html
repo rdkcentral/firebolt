@@ -116,18 +116,15 @@
 
                         {%- if specCount > 0 -%}
                           <li><b>Specifications</b>
-                            <ul>
-                              {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', 'specification' | sort: 'title' -%}
-                              {%- for my_page in pages -%}    
-                              <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
-                              {%- endfor -%}                            
-                            </ul>
+                            {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', 'specification' | sort: 'title' -%}
+                            {%- assign dir = '/requirements/' | append: version | append: '/specifications/' -%}
+                            {%- include tree.html pages=pages dir=dir -%}
                           </li>
                         {%- endif -%}
                         {%- if ardCount > 0 -%}
                           <li><b>ADRs</b>
                             <ul>
-                              {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', 'adr' | sort: 'title' -%}
+                              {%- assign pages = site.pages | where: 'version', version | where: 'category', 'requirements' | where: 'type', 'adr' | sort: 'dir' -%}
                               {%- for my_page in pages -%}    
                               <li><a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
                               {%- endfor -%}                            
