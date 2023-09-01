@@ -8,7 +8,7 @@ sdk: manage
 
 # Advertising Module
 ---
-Version Advertising 0.16.0-next.4
+Version Advertising 0.17.0-next.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
