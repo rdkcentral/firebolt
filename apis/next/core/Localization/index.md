@@ -8,7 +8,7 @@ sdk: core
 
 # Localization Module
 ---
-Version Localization 0.16.0-next.3
+Version Localization 0.16.0-next.4
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -123,7 +123,7 @@ Response:
 
 
 ### countryCode
-Get the ISO 3166 code for the counrty device is located in
+Get the ISO 3166-1 alpha-2 code for the country device is located in
 
 To get the value of `countryCode` call the method like this:
 
@@ -1492,8 +1492,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -1516,8 +1516,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"es",
-		"en"
+		"spa",
+		"eng"
 	]
 }
 ```
@@ -1540,8 +1540,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -1564,8 +1564,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"en",
-		"es"
+		"eng",
+		"spa"
 	]
 }
 ```
@@ -1611,8 +1611,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -1637,8 +1637,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"es",
-		"en"
+		"spa",
+		"eng"
 	]
 }
 ```
@@ -1662,8 +1662,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -1688,8 +1688,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"en",
-		"es"
+		"eng",
+		"spa"
 	]
 }
 ```

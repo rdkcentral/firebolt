@@ -40,6 +40,7 @@ Version Accessibility 0.0.0-unknown.0
 type ClosedCaptionsSettings = {
   enabled: boolean               // Whether or not closed-captions should be enabled by default
   styles: ClosedCaptionsStyles   // The default styles to use when displaying closed-captions
+  preferredLanguages?: string[]
 }
 ```
 

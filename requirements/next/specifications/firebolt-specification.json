@@ -897,7 +897,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "0.16.0-next.3",
+				"version": "0.16.0-next.4",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -1070,7 +1070,11 @@
 										"textAlignVertical": "middle",
 										"windowColor": "white",
 										"windowOpacity": 50
-									}
+									},
+									"preferredLanguages": [
+										"eng",
+										"spa"
+									]
 								}
 							}
 						}
@@ -1119,7 +1123,11 @@
 										"textAlignVertical": "middle",
 										"windowColor": "white",
 										"windowOpacity": 50
-									}
+									},
+									"preferredLanguages": [
+										"eng",
+										"spa"
+									]
 								}
 							}
 						}
@@ -1302,7 +1310,11 @@
 										"textAlignVertical": "middle",
 										"windowColor": "white",
 										"windowOpacity": 50
-									}
+									},
+									"preferredLanguages": [
+										"eng",
+										"spa"
+									]
 								}
 							}
 						}
@@ -4273,6 +4285,56 @@
 					]
 				},
 				{
+					"name": "ClosedCaptions.preferredLanguages",
+					"summary": "A prioritized list of ISO 639-2/B codes for the preferred closed captions languages on this device.",
+					"params": [],
+					"tags": [
+						{
+							"name": "property"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:closedcaptions"
+							]
+						}
+					],
+					"result": {
+						"name": "languages",
+						"summary": "the preferred closed captions languages",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/x-schemas/Localization/ISO639_2Language"
+							}
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"spa",
+									"eng"
+								]
+							}
+						},
+						{
+							"name": "Default Example #2",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"eng",
+									"spa"
+								]
+							}
+						}
+					]
+				},
+				{
 					"name": "ClosedCaptions.onEnabledChanged",
 					"tags": [
 						{
@@ -5339,6 +5401,86 @@
 					]
 				},
 				{
+					"name": "ClosedCaptions.onPreferredLanguagesChanged",
+					"summary": "A prioritized list of ISO 639-2/B codes for the preferred closed captions languages on this device.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "preferredLanguages"
+						},
+						{
+							"name": "event",
+							"x-alternative": "preferredLanguages"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:closedcaptions"
+							]
+						}
+					],
+					"result": {
+						"name": "languages",
+						"summary": "the preferred closed captions languages",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "array",
+									"items": {
+										"$ref": "#/x-schemas/Localization/ISO639_2Language"
+									}
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"spa",
+									"eng"
+								]
+							}
+						},
+						{
+							"name": "Default Example #2",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": [
+									"eng",
+									"spa"
+								]
+							}
+						}
+					]
+				},
+				{
 					"name": "ClosedCaptions.setEnabled",
 					"tags": [
 						{
@@ -6256,6 +6398,75 @@
 							],
 							"result": {
 								"name": "opacity",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "ClosedCaptions.setPreferredLanguages",
+					"summary": "A prioritized list of ISO 639-2/B codes for the preferred closed captions languages on this device.",
+					"params": [
+						{
+							"name": "value",
+							"summary": "the preferred closed captions languages",
+							"schema": {
+								"type": "array",
+								"items": {
+									"$ref": "#/x-schemas/Localization/ISO639_2Language"
+								}
+							},
+							"required": true
+						}
+					],
+					"tags": [
+						{
+							"name": "setter",
+							"x-setter-for": "preferredLanguages"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:accessibility:closedcaptions"
+							]
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "value",
+									"value": [
+										"spa",
+										"eng"
+									]
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": null
+							}
+						},
+						{
+							"name": "Default Example #2",
+							"params": [
+								{
+									"name": "value",
+									"value": [
+										"eng",
+										"spa"
+									]
+								}
+							],
+							"result": {
+								"name": "Default Result",
 								"value": null
 							}
 						}
@@ -10818,7 +11029,7 @@
 							]
 						}
 					],
-					"summary": "Get the ISO 3166 code for the counrty device is located in",
+					"summary": "Get the ISO 3166-1 alpha-2 code for the country device is located in",
 					"params": [],
 					"result": {
 						"name": "code",
@@ -10851,6 +11062,11 @@
 					"summary": "Get the ISO 639 1/2 code for the preferred language",
 					"params": [],
 					"tags": [
+						{
+							"name": "deprecated",
+							"x-since": "0.17.0",
+							"x-alternative": "Localization.locale"
+						},
 						{
 							"name": "property"
 						},
@@ -10908,7 +11124,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"type": "string"
+								"$ref": "#/x-schemas/Localization/ISO639_2Language"
 							}
 						}
 					},
@@ -10919,8 +11135,8 @@
 							"result": {
 								"name": "Default Result",
 								"value": [
-									"es",
-									"en"
+									"spa",
+									"eng"
 								]
 							}
 						},
@@ -10930,8 +11146,8 @@
 							"result": {
 								"name": "Default Result",
 								"value": [
-									"en",
-									"es"
+									"eng",
+									"spa"
 								]
 							}
 						}
@@ -11344,7 +11560,7 @@
 							]
 						}
 					],
-					"summary": "Get the ISO 3166 code for the counrty device is located in",
+					"summary": "Get the ISO 3166-1 alpha-2 code for the country device is located in",
 					"params": [
 						{
 							"name": "listen",
@@ -11417,6 +11633,11 @@
 						{
 							"name": "event",
 							"x-alternative": "language"
+						},
+						{
+							"name": "deprecated",
+							"x-since": "0.17.0",
+							"x-alternative": "Localization.locale"
 						},
 						{
 							"name": "capabilities",
@@ -11507,7 +11728,7 @@
 								{
 									"type": "array",
 									"items": {
-										"type": "string"
+										"$ref": "#/x-schemas/Localization/ISO639_2Language"
 									}
 								}
 							]
@@ -11525,8 +11746,8 @@
 							"result": {
 								"name": "Default Result",
 								"value": [
-									"es",
-									"en"
+									"spa",
+									"eng"
 								]
 							}
 						},
@@ -11541,8 +11762,8 @@
 							"result": {
 								"name": "Default Result",
 								"value": [
-									"en",
-									"es"
+									"eng",
+									"spa"
 								]
 							}
 						}
@@ -11823,7 +12044,7 @@
 							]
 						}
 					],
-					"summary": "Get the ISO 3166 code for the counrty device is located in",
+					"summary": "Get the ISO 3166-1 alpha-2 code for the country device is located in",
 					"params": [
 						{
 							"name": "value",
@@ -11888,6 +12109,11 @@
 							"x-setter-for": "language"
 						},
 						{
+							"name": "deprecated",
+							"x-since": "0.17.0",
+							"x-alternative": "Localization.locale"
+						},
+						{
 							"name": "capabilities",
 							"x-manages": [
 								"xrn:firebolt:capability:localization:language"
@@ -11939,7 +12165,7 @@
 							"schema": {
 								"type": "array",
 								"items": {
-									"type": "string"
+									"$ref": "#/x-schemas/Localization/ISO639_2Language"
 								}
 							},
 							"required": true
@@ -11970,8 +12196,8 @@
 								{
 									"name": "value",
 									"value": [
-										"es",
-										"en"
+										"spa",
+										"eng"
 									]
 								}
 							],
@@ -11986,8 +12212,8 @@
 								{
 									"name": "value",
 									"value": [
-										"en",
-										"es"
+										"eng",
+										"spa"
 									]
 								}
 							],
@@ -18876,6 +19102,12 @@
 							},
 							"styles": {
 								"$ref": "#/x-schemas/Accessibility/ClosedCaptionsStyles"
+							},
+							"preferredLanguages": {
+								"type": "array",
+								"items": {
+									"$ref": "#/x-schemas/Localization/ISO639_2Language"
+								}
 							}
 						},
 						"examples": [
@@ -18894,7 +19126,11 @@
 									"textAlignVertical": "middle",
 									"windowColor": "white",
 									"windowOpacity": 50
-								}
+								},
+								"preferredLanguages": [
+									"eng",
+									"spa"
+								]
 							}
 						]
 					},
@@ -19015,6 +19251,32 @@
 							"string",
 							"null"
 						]
+					}
+				},
+				"Localization": {
+					"uri": "https://meta.comcast.com/firebolt/localization",
+					"ISO639_2Language": {
+						"type": "string",
+						"pattern": "^[a-z]{3}$"
+					},
+					"Locality": {
+						"type": "string"
+					},
+					"CountryCode": {
+						"type": "string",
+						"pattern": "^[A-Z]{2}$"
+					},
+					"Language": {
+						"type": "string",
+						"pattern": "^[A-Za-z]{2}$"
+					},
+					"Locale": {
+						"type": "string",
+						"pattern": "^[a-zA-Z]+([a-zA-Z0-9\\-]*)$"
+					},
+					"TimeZone": {
+						"type": "string",
+						"pattern": "^[-+_/ A-Za-z 0-9]*$"
 					}
 				},
 				"Advertising": {
@@ -20230,28 +20492,6 @@
 							"unloading",
 							"suspended"
 						]
-					}
-				},
-				"Localization": {
-					"uri": "https://meta.comcast.com/firebolt/localization",
-					"Locality": {
-						"type": "string"
-					},
-					"CountryCode": {
-						"type": "string",
-						"pattern": "^[A-Za-z]{2}$"
-					},
-					"Language": {
-						"type": "string",
-						"pattern": "^[A-Za-z]{2}$"
-					},
-					"Locale": {
-						"type": "string",
-						"pattern": "^[a-zA-Z]+([a-zA-Z0-9\\-]*)$"
-					},
-					"TimeZone": {
-						"type": "string",
-						"pattern": "^[-+_/ A-Za-z 0-9]*$"
 					}
 				},
 				"SecondScreen": {
