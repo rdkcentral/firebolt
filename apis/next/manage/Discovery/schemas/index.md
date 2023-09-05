@@ -40,7 +40,6 @@ See also:
 [EntityInfo](../Entertainment/schemas/#EntityInfo)
 
 ---
-
 ### PurchasedContentResult
 
 

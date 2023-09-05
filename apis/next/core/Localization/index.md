@@ -8,7 +8,7 @@ sdk: core
 
 # Localization Module
 ---
-Version Localization 0.17.0-next.1
+Version Localization 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -120,7 +120,6 @@ Response:
 
 
 ---
-
 
 ### countryCode
 Get the ISO 3166-1 alpha-2 code for the country device is located in

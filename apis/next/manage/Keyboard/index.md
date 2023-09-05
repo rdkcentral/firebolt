@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.17.0-next.1
+Version Keyboard 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -33,8 +33,8 @@ Version Keyboard 0.17.0-next.1
      - [KeyboardInputProvider](#keyboardinputprovider)
    - [Types](#types)
      - [KeyboardResult](#keyboardresult)
-     - [KeyboardProviderRequest](#keyboardproviderrequest)
      - [KeyboardParameters](#keyboardparameters)
+     - [KeyboardProviderRequest](#keyboardproviderrequest)
 
 
 
@@ -1198,7 +1198,19 @@ type KeyboardResult = {
 
 
 ---
+### KeyboardParameters
 
+
+
+```typescript
+type KeyboardParameters = {
+  message: string            // The message to display to the user so the user knows what they are entering
+}
+```
+
+
+
+---
 ### KeyboardProviderRequest
 
 
@@ -1213,19 +1225,5 @@ type KeyboardProviderRequest = {
 See also: 
 
 [KeyboardParameters](#keyboardparameters)
-
----
-
-### KeyboardParameters
-
-
-
-```typescript
-type KeyboardParameters = {
-  message: string            // The message to display to the user so the user knows what they are entering
-}
-```
-
-
 
 ---

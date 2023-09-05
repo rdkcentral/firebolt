@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 0.17.0-next.1
+Version UserGrants 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -23,10 +23,10 @@ Version UserGrants 0.17.0-next.1
      - [grant](#grant)
      - [request](#request)
    - [Types](#types)
-     - [GrantInfo](#grantinfo)
-     - [GrantModificationOptions](#grantmodificationoptions)
      - [AppInfo](#appinfo)
+     - [GrantModificationOptions](#grantmodificationoptions)
      - [GrantState](#grantstate)
+     - [GrantInfo](#grantinfo)
 
 
 
@@ -270,8 +270,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | `object` | false |   |
+, | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+, | `options` | `object` | false |   |
 
 
 Promise resolution:
@@ -354,8 +354,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | `object` | false |   |
+, | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+, | `options` | `object` | false |   |
 
 
 Promise resolution:
@@ -523,8 +523,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | `object` | false |   |
+, | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+, | `options` | `object` | false |   |
 
 
 Promise resolution:
@@ -607,7 +607,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true |   |
-| `permissions` | `Permission[]` | true |   |
+, | `permissions` | `Permission[]` | true |   |
 
 
 Promise resolution:
@@ -711,6 +711,48 @@ Response:
 
 ## Types
 
+### AppInfo
+
+Information about an app that a grant was for
+
+```typescript
+type AppInfo = {
+  id: string
+  title?: string
+}
+```
+
+
+
+---
+### GrantModificationOptions
+
+Options when modifying any grant
+
+```typescript
+type GrantModificationOptions = {
+  appId?: string
+}
+```
+
+
+
+---
+### GrantState
+
+The state the grant is in
+
+```typescript
+enum GrantState {
+	GRANTED = 'granted',
+	DENIED = 'denied'
+}
+
+```
+
+
+
+---
 ### GrantInfo
 
 Information about a grant given by a user
@@ -733,50 +775,5 @@ See also:
 
 string
 'use' | 'manage' | 'provide'
-
----
-
-### GrantModificationOptions
-
-Options when modifying any grant
-
-```typescript
-type GrantModificationOptions = {
-  appId?: string
-}
-```
-
-
-
----
-
-### AppInfo
-
-Information about an app that a grant was for
-
-```typescript
-type AppInfo = {
-  id: string
-  title?: string
-}
-```
-
-
-
----
-
-### GrantState
-
-The state the grant is in
-
-```typescript
-enum GrantState {
-	GRANTED = 'granted',
-	DENIED = 'denied'
-}
-
-```
-
-
 
 ---

@@ -8,7 +8,7 @@ sdk: core
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.17.0-next.1
+Version SecureStorage 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -129,7 +129,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
-| `key` | `string` | true | Key to get  |
+, | `key` | `string` | true | Key to get  |
 
 
 Promise resolution:
@@ -254,7 +254,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `scope` | [`StorageScope`](#storagescope) | true | The scope of the data key <br/>values: `'device' \| 'account'` |
-| `key` | `string` | true | Key to remove  |
+, | `key` | `string` | true | Key to remove  |
 
 
 Promise resolution:
@@ -379,9 +379,9 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `scope` | [`StorageScope`](#storagescope) | true | The scope of the data key <br/>values: `'device' \| 'account'` |
-| `key` | `string` | true | Key to set  |
-| `value` | `string` | true | Value to set  |
-| `options` | [`StorageOptions`](#storageoptions) | false | Optional parameters to set  |
+, | `key` | `string` | true | Key to set  |
+, | `value` | `string` | true | Value to set  |
+, | `options` | [`StorageOptions`](#storageoptions) | false | Optional parameters to set  |
 
 
 Promise resolution:
@@ -517,7 +517,6 @@ enum StorageScope {
 
 
 ---
-
 ### StorageOptions
 
 

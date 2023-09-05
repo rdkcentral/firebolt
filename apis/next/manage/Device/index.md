@@ -8,7 +8,7 @@ sdk: manage
 
 # Device Module
 ---
-Version Device 0.17.0-next.1
+Version Device 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -37,7 +37,6 @@ import { Device } from '@firebolt-js/manage-sdk'
  A module for querying about the device and it's capabilities.
 
 ## Methods
-
 
 ### listen
 
@@ -505,8 +504,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `accountId` | `string` | true | The id of the account that is device is attached to in the back office.  |
-| `deviceId` | `string` | true | The id of the device in the back office.  |
-| `distributorId` | `string` | false | The id of the distributor in the back office.  |
+, | `deviceId` | `string` | true | The id of the device in the back office.  |
+, | `distributorId` | `string` | false | The id of the distributor in the back office.  |
 
 
 Promise resolution:
@@ -618,7 +617,6 @@ Response:
 
 
 ---
-
 
 ## Events
 

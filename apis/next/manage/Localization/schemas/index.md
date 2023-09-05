@@ -38,7 +38,6 @@ type ISO639_2Language = string
 
 
 ---
-
 ### Locality
 
 
@@ -50,7 +49,6 @@ type Locality = string
 
 
 ---
-
 ### CountryCode
 
 
@@ -62,7 +60,6 @@ type CountryCode = string
 
 
 ---
-
 ### Language
 
 
@@ -74,7 +71,6 @@ type Language = string
 
 
 ---
-
 ### Locale
 
 
@@ -86,7 +82,6 @@ type Locale = string
 
 
 ---
-
 ### TimeZone
 
 

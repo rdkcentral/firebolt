@@ -14,12 +14,12 @@ Version Capabilities 0.0.0-unknown.0
    - [Table of Contents](#table-of-contents)
    - [Overview](#overview)
    - [Types](#types)
+     - [Role](#role)
+     - [DenyReason](#denyreason)
      - [Capability](#capability)
+     - [CapPermissionStatus](#cappermissionstatus)
      - [CapabilityInfo](#capabilityinfo)
      - [Permission](#permission)
-     - [Role](#role)
-     - [CapPermissionStatus](#cappermissionstatus)
-     - [DenyReason](#denyreason)
 
 
 ## Overview
@@ -27,6 +27,41 @@ Version Capabilities 0.0.0-unknown.0
 
 ## Types
 
+### Role
+
+Role provides access level for the app for a given capability.
+
+```typescript
+enum Role {
+	USE = 'use',
+	MANAGE = 'manage',
+	PROVIDE = 'provide'
+}
+
+```
+
+
+
+---
+### DenyReason
+
+Reasons why a Capability might not be invokable
+
+```typescript
+enum DenyReason {
+	UNPERMITTED = 'unpermitted',
+	UNSUPPORTED = 'unsupported',
+	DISABLED = 'disabled',
+	UNAVAILABLE = 'unavailable',
+	GRANT_DENIED = 'grantDenied',
+	UNGRANTED = 'ungranted'
+}
+
+```
+
+
+
+---
 ### Capability
 
 A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
@@ -38,7 +73,20 @@ type Capability = string
 
 
 ---
+### CapPermissionStatus
 
+
+
+```typescript
+type CapPermissionStatus = {
+  permitted?: boolean         // Provides info whether the capability is permitted
+  granted?: boolean | void
+}
+```
+
+
+
+---
 ### CapabilityInfo
 
 
@@ -70,7 +118,6 @@ string
 'unpermitted' | 'unsupported' | 'disabled' | 'unavailable' | 'grantDenied' | 'ungranted'
 
 ---
-
 ### Permission
 
 A sapability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
@@ -86,57 +133,5 @@ See also:
 
 'use' | 'manage' | 'provide'
 string
-
----
-
-### Role
-
-Role provides access level for the app for a given capability.
-
-```typescript
-enum Role {
-	USE = 'use',
-	MANAGE = 'manage',
-	PROVIDE = 'provide'
-}
-
-```
-
-
-
----
-
-### CapPermissionStatus
-
-
-
-```typescript
-type CapPermissionStatus = {
-  permitted?: boolean         // Provides info whether the capability is permitted
-  granted?: boolean | void
-}
-```
-
-
-
----
-
-### DenyReason
-
-Reasons why a Capability might not be invokable
-
-```typescript
-enum DenyReason {
-	UNPERMITTED = 'unpermitted',
-	UNSUPPORTED = 'unsupported',
-	DISABLED = 'disabled',
-	UNAVAILABLE = 'unavailable',
-	GRANT_DENIED = 'grantDenied',
-	UNGRANTED = 'ungranted'
-}
-
-```
-
-
 
 ---

@@ -8,7 +8,7 @@ sdk: manage
 
 # AcknowledgeChallenge Module
 ---
-Version AcknowledgeChallenge 0.17.0-next.1
+Version AcknowledgeChallenge 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -25,9 +25,9 @@ Version AcknowledgeChallenge 0.17.0-next.1
      - [ChallengeProvider](#challengeprovider)
    - [Types](#types)
      - [GrantResult](#grantresult)
-     - [ChallengeProviderRequest](#challengeproviderrequest)
-     - [Challenge](#challenge)
      - [ChallengeRequestor](#challengerequestor)
+     - [Challenge](#challenge)
+     - [ChallengeProviderRequest](#challengeproviderrequest)
 
 
 
@@ -558,25 +558,20 @@ type GrantResult = {
 
 
 ---
-
-### ChallengeProviderRequest
+### ChallengeRequestor
 
 
 
 ```typescript
-type ChallengeProviderRequest = {
-  parameters: Challenge
-  correlationId: string            // The id that was passed in to the event that triggered a provider method to be called
+type ChallengeRequestor = {
+  id: string                 // The id of the app that requested the challenge
+  name: string               // The name of the app that requested the challenge
 }
 ```
 
-See also: 
 
-[ProviderRequest](../Types/schemas/#ProviderRequest)
-[Challenge](#challenge-1)
 
 ---
-
 ### Challenge
 
 
@@ -593,18 +588,20 @@ See also:
 [ChallengeRequestor](#challengerequestor)
 
 ---
-
-### ChallengeRequestor
+### ChallengeProviderRequest
 
 
 
 ```typescript
-type ChallengeRequestor = {
-  id: string                 // The id of the app that requested the challenge
-  name: string               // The name of the app that requested the challenge
+type ChallengeProviderRequest = {
+  parameters: Challenge
+  correlationId: string            // The id that was passed in to the event that triggered a provider method to be called
 }
 ```
 
+See also: 
 
+[ProviderRequest](../Types/schemas/#ProviderRequest)
+[Challenge](#challenge-1)
 
 ---

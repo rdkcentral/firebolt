@@ -8,7 +8,7 @@ sdk: manage
 
 # VoiceGuidance Module
 ---
-Version VoiceGuidance 0.17.0-next.1
+Version VoiceGuidance 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -37,7 +37,6 @@ import { VoiceGuidance } from '@firebolt-js/manage-sdk'
  A module for managing voice-guidance Settings.
 
 ## Methods
-
 
 ### enabled
 Whether or not voice-guidance is enabled.
@@ -491,8 +490,6 @@ Promise resolution:
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VoiceGuidance.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
-
-
 
 ### speed
 The speed at which voice guidance speech will be read back to the user.

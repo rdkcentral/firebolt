@@ -8,7 +8,7 @@ sdk: manage
 
 # Account Module
 ---
-Version Account 0.17.0-next.1
+Version Account 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -48,7 +48,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `token` | `string` | false |   |
-| `expiresIn` | `number` | false |  <br/>minumum: 1 |
+, | `expiresIn` | `number` | false |  <br/>minumum: 1 |
 
 
 Promise resolution:
@@ -130,7 +130,6 @@ type Token = string
 
 
 ---
-
 ### Expiry
 
 Number of secs before the token expires

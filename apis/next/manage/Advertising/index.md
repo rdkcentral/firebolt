@@ -8,7 +8,7 @@ sdk: manage
 
 # Advertising Module
 ---
-Version Advertising 0.17.0-next.1
+Version Advertising 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -36,7 +36,6 @@ import { Advertising } from '@firebolt-js/manage-sdk'
  A module for platform provided advertising settings and functionality.
 
 ## Methods
-
 
 ### listen
 
@@ -222,7 +221,6 @@ Response:
 
 
 ---
-
 
 ### skipRestriction
 Set the value for AdPolicy.skipRestriction

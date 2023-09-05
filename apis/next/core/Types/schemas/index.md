@@ -14,9 +14,9 @@ Version Types 0.0.0-unknown.0
    - [Table of Contents](#table-of-contents)
    - [Overview](#overview)
    - [Types](#types)
-     - [SemanticVersion](#semanticversion)
-     - [BooleanMap](#booleanmap)
      - [AudioProfile](#audioprofile)
+     - [BooleanMap](#booleanmap)
+     - [SemanticVersion](#semanticversion)
      - [LocalizedString](#localizedstring)
      - [FlatMap](#flatmap)
      - [Timeout](#timeout)
@@ -26,37 +26,6 @@ Version Types 0.0.0-unknown.0
  undefined
 
 ## Types
-
-### SemanticVersion
-
-
-
-```typescript
-type SemanticVersion = {
-  major: number
-  minor: number
-  patch: number
-  readable: string
-}
-```
-
-
-
----
-
-### BooleanMap
-
-
-
-```typescript
-type BooleanMap = {
-  [property: string]: boolean
-}
-```
-
-
-
----
 
 ### AudioProfile
 
@@ -77,7 +46,35 @@ enum AudioProfile {
 
 
 ---
+### BooleanMap
 
+
+
+```typescript
+type BooleanMap = {
+  [property: string]: boolean
+}
+```
+
+
+
+---
+### SemanticVersion
+
+
+
+```typescript
+type SemanticVersion = {
+  major: number
+  minor: number
+  patch: number
+  readable: string
+}
+```
+
+
+
+---
 ### LocalizedString
 
 Localized string supports either a simple `string` or a Map<string, string> of language codes to strings. When using a simple `string`, the current preferred langauge from `Localization.langauge()` is assumed.
@@ -89,7 +86,6 @@ type LocalizedString = string | object
 
 
 ---
-
 ### FlatMap
 
 
@@ -103,7 +99,6 @@ type FlatMap = {
 
 
 ---
-
 ### Timeout
 
 Defines the timeout in seconds. If the threshold for timeout is passed for any operation without a result it will throw an error.

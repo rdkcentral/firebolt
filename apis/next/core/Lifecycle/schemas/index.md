@@ -40,7 +40,6 @@ enum CloseReason {
 
 
 ---
-
 ### LifecycleState
 
 The application lifecycle state

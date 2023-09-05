@@ -8,7 +8,7 @@ sdk: manage
 
 # Discovery Module
 ---
-Version Discovery 0.17.0-next.1
+Version Discovery 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -47,7 +47,6 @@ Apps should provide all user-facing strings in the device's language, as specifi
 Apps should provide prices in the same currency presented in the app. If multiple currencies are supported in the app, the app should provide prices in the user's current default currency.
 
 ## Methods
-
 
 ### listen
 

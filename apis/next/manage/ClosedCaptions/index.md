@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.17.0-next.1
+Version ClosedCaptions 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -1000,7 +1000,6 @@ Response:
 
 
 ---
-
 
 
 ### enabled
@@ -4643,20 +4642,6 @@ Response:
 
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ### textAlign

@@ -8,7 +8,7 @@ sdk: manage
 
 # AudioDescriptions Module
 ---
-Version AudioDescriptions 0.17.0-next.1
+Version AudioDescriptions 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -35,7 +35,6 @@ import { AudioDescriptions } from '@firebolt-js/manage-sdk'
  A module for managing audio-description Settings.
 
 ## Methods
-
 
 ### enabled
 Whether or not audio-descriptions are enabled.
@@ -489,7 +488,6 @@ Promise resolution:
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
-
 
 ## Events
 

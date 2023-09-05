@@ -8,7 +8,7 @@ sdk: manage
 
 # Localization Module
 ---
-Version Localization 0.17.0-next.1
+Version Localization 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -64,7 +64,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `key` | `string` | true | Key to add additionalInfo  |
-| `value` | `string` | true | Value to be set for additionalInfo  |
+, | `value` | `string` | true | Value to be set for additionalInfo  |
 
 
 Promise resolution:
@@ -201,7 +201,6 @@ Response:
 
 
 ---
-
 
 ### countryCode
 Get the ISO 3166-1 alpha-2 code for the country device is located in
@@ -2458,13 +2457,6 @@ Response:
 
 
 ---
-
-
-
-
-
-
-
 
 ### timeZone
 Set the IANA timezone for the device

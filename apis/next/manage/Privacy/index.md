@@ -8,7 +8,7 @@ sdk: manage
 
 # Privacy Module
 ---
-Version Privacy 0.17.0-next.1
+Version Privacy 0.17.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -4129,7 +4129,6 @@ Response:
 ---
 
 
-
 ### listen
 
 To listen to a specific event pass the event name as the first parameter:
@@ -4243,18 +4242,6 @@ Promise resolution:
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Privacy.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### settings
 
