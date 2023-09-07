@@ -8,7 +8,7 @@ sdk: manage
 
 # Localization Module
 ---
-Version Localization 0.16.0
+Version Localization 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -64,7 +64,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `key` | `string` | true | Key to add additionalInfo  |
-| `value` | `string` | true | Value to be set for additionalInfo  |
+, | `value` | `string` | true | Value to be set for additionalInfo  |
 
 
 Promise resolution:
@@ -202,9 +202,8 @@ Response:
 
 ---
 
-
 ### countryCode
-Get the ISO 3166 code for the counrty device is located in
+Get the ISO 3166-1 alpha-2 code for the country device is located in
 
 To get the value of `countryCode` call the method like this:
 
@@ -327,7 +326,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device country code <br/>pattern: ^[A-Za-z]{2}$ |
+| `value` | `string` | true | the device country code <br/>pattern: ^[A-Z]{2}$ |
 
 
 Promise resolution:
@@ -2056,8 +2055,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -2080,8 +2079,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"es",
-		"en"
+		"spa",
+		"eng"
 	]
 }
 ```
@@ -2104,8 +2103,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -2128,8 +2127,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"en",
-		"es"
+		"eng",
+		"spa"
 	]
 }
 ```
@@ -2148,7 +2147,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string[]` | true | the preferred audio languages  |
+| `value` | `string[]` | true | the preferred audio languages <br/>pattern: ^[a-z]{3}$ |
 
 
 Promise resolution:
@@ -2167,7 +2166,7 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.preferredAudioLanguages(["es","en"])
+Localization.preferredAudioLanguages(["spa","eng"])
     .then(result => {
         console.log(result)
     })
@@ -2189,8 +2188,8 @@ Request:
 	"method": "Localization.setPreferredAudioLanguages",
 	"params": {
 		"value": [
-			"es",
-			"en"
+			"spa",
+			"eng"
 		]
 	}
 }
@@ -2214,7 +2213,7 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.preferredAudioLanguages(["en","es"])
+Localization.preferredAudioLanguages(["eng","spa"])
     .then(result => {
         console.log(result)
     })
@@ -2236,8 +2235,8 @@ Request:
 	"method": "Localization.setPreferredAudioLanguages",
 	"params": {
 		"value": [
-			"en",
-			"es"
+			"eng",
+			"spa"
 		]
 	}
 }
@@ -2293,8 +2292,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -2319,8 +2318,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"es",
-		"en"
+		"spa",
+		"eng"
 	]
 }
 ```
@@ -2344,8 +2343,8 @@ Value of `languages`:
 
 ```javascript
 [
-	"es",
-	"en"
+	"spa",
+	"eng"
 ]
 ```
 <details markdown="1" >
@@ -2370,8 +2369,8 @@ Response:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"result": [
-		"en",
-		"es"
+		"eng",
+		"spa"
 	]
 }
 ```
@@ -2458,13 +2457,6 @@ Response:
 
 
 ---
-
-
-
-
-
-
-
 
 ### timeZone
 Set the IANA timezone for the device

@@ -8,7 +8,7 @@ sdk: core
 
 # Device Module
 ---
-Version Device 0.16.0
+Version Device 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -43,10 +43,10 @@ Version Device 0.16.0
      - [screenResolutionChanged](#screenresolutionchanged)
      - [videoResolutionChanged](#videoresolutionchanged)
    - [Types](#types)
-     - [AudioProfiles](#audioprofiles)
-     - [Resolution](#resolution)
      - [NetworkState](#networkstate)
      - [NetworkType](#networktype)
+     - [AudioProfiles](#audioprofiles)
+     - [Resolution](#resolution)
 
 
 
@@ -219,7 +219,6 @@ Response:
 
 
 ---
-
 
 
 ### distributor
@@ -2175,6 +2174,37 @@ See: [videoResolution](#videoresolution)
 
 ## Types
 
+### NetworkState
+
+The type of network that is currently active
+
+```typescript
+enum NetworkState {
+	CONNECTED = 'connected',
+	DISCONNECTED = 'disconnected'
+}
+
+```
+
+
+
+---
+### NetworkType
+
+The type of network that is currently active
+
+```typescript
+enum NetworkType {
+	WIFI = 'wifi',
+	ETHERNET = 'ethernet',
+	HYBRID = 'hybrid'
+}
+
+```
+
+
+
+---
 ### AudioProfiles
 
 
@@ -2196,46 +2226,12 @@ See also:
 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
 
 ---
-
 ### Resolution
 
 
 
 ```typescript
 type Resolution = [number, number]
-```
-
-
-
----
-
-### NetworkState
-
-The type of network that is currently active
-
-```typescript
-enum NetworkState {
-	CONNECTED = 'connected',
-	DISCONNECTED = 'disconnected'
-}
-
-```
-
-
-
----
-
-### NetworkType
-
-The type of network that is currently active
-
-```typescript
-enum NetworkType {
-	WIFI = 'wifi',
-	ETHERNET = 'ethernet',
-	HYBRID = 'hybrid'
-}
-
 ```
 
 

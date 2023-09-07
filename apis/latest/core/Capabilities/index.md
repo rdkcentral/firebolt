@@ -8,7 +8,7 @@ sdk: core
 
 # Capabilities Module
 ---
-Version Capabilities 0.16.0
+Version Capabilities 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -168,7 +168,6 @@ Response:
 
 ---
 
-
 ### granted
 
 Returns whether the current App has a user grant for passed capability and role.
@@ -182,7 +181,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
+, | `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
 
 
 Promise resolution:
@@ -949,7 +948,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
+, | `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
 
 
 Promise resolution:
@@ -1145,12 +1144,12 @@ JavaScript:
 import { Capabilities } from '@firebolt-js/sdk'
 
 Capabilities.request([{"role":"use","capability":"xrn:firebolt:capability:commerce:purchase"}])
-    .then(Default Result => {
-        console.log(Default Result)
+    .then(request => {
+        console.log(request)
     })
 ```
 
-Value of `Default Result`:
+Value of `request`:
 
 ```javascript
 [

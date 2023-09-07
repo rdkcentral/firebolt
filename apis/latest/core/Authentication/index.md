@@ -8,7 +8,7 @@ sdk: core
 
 # Authentication Module
 ---
-Version Authentication 0.16.0
+Version Authentication 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -263,7 +263,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `type` | [`TokenType`](#tokentype) | true | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
-| `options` | `object` | false | Additional options for acquiring the token.  |
+, | `options` | `object` | false | Additional options for acquiring the token.  |
 
 
 Promise resolution:

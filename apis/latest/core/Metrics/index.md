@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 0.16.0
+Version Metrics 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -66,8 +66,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `category` | `string` | true | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
-| `type` | `string` | true | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256 |
-| `parameters` | `object` | false |   |
+, | `type` | `string` | true | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256 |
+, | `parameters` | `object` | false |   |
 
 
 Promise resolution:
@@ -147,10 +147,10 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `type` | [`ErrorType`](#errortype) | true | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
-| `code` | `string` | true | an app-specific error code  |
-| `description` | `string` | true | A short description of the error  |
-| `visible` | `boolean` | true | Whether or not this error was visible to the user.  |
-| `parameters` | `object` | false | Optional additional parameters to be logged with the error  |
+, | `code` | `string` | true | an app-specific error code  |
+, | `description` | `string` | true | A short description of the error  |
+, | `visible` | `boolean` | true | Whether or not this error was visible to the user.  |
+, | `parameters` | `object` | false | Optional additional parameters to be logged with the error  |
 
 
 Promise resolution:
@@ -622,7 +622,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entityId of the media.  |
-| `progress` | [`MediaPosition`](#mediaposition) | true | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.  |
+, | `progress` | [`MediaPosition`](#mediaposition) | true | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.  |
 
 
 Promise resolution:
@@ -702,7 +702,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entityId of the media.  |
-| `rate` | `number` | true | The new playback rate.  |
+, | `rate` | `number` | true | The new playback rate.  |
 
 
 Promise resolution:
@@ -782,10 +782,10 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entityId of the media.  |
-| `bitrate` | `number` | true | The new bitrate in kbps.  |
-| `width` | `number` | true | The new resolution width.  |
-| `height` | `number` | true | The new resolution height.  |
-| `profile` | `string` | false | A description of the new profile, e.g. 'HDR' etc.  |
+, | `bitrate` | `number` | true | The new bitrate in kbps.  |
+, | `width` | `number` | true | The new resolution width.  |
+, | `height` | `number` | true | The new resolution height.  |
+, | `profile` | `string` | false | A description of the new profile, e.g. 'HDR' etc.  |
 
 
 Promise resolution:
@@ -868,7 +868,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entityId of the media.  |
-| `position` | [`MediaPosition`](#mediaposition) | true | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.  |
+, | `position` | [`MediaPosition`](#mediaposition) | true | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.  |
 
 
 Promise resolution:
@@ -948,7 +948,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entityId of the media.  |
-| `target` | [`MediaPosition`](#mediaposition) | true | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.  |
+, | `target` | [`MediaPosition`](#mediaposition) | true | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.  |
 
 
 Promise resolution:
@@ -1670,7 +1670,6 @@ enum ErrorType {
 
 
 ---
-
 ### MediaPosition
 
 Represents a position inside playback content, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.

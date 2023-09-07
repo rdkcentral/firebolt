@@ -10,7 +10,7 @@ layout: default
 Firebolt APIs are defined by [OpenRPC schemas](https://spec.open-rpc.org).
 
 The schemas are used to generate SDK and Documentation artifacts.
-## `xrn:firebolt:capability:accessibility:audiodescriptions`
+### `xrn:firebolt:capability:accessibility:audiodescriptions`
 
 | Uses |
 | ---- |
@@ -23,20 +23,20 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [AudioDescriptions.setEnabled](./manage/AudioDescriptions/#setenabled) |
 
 
-## `xrn:firebolt:capability:accessibility:closedcaptions`
+### `xrn:firebolt:capability:accessibility:closedcaptions`
 
 | Uses |
 | ---- |
-| [Accessibility.closedCaptions](./core/Accessibility/#closedcaptions)<br/>[Accessibility.closedCaptionsSettings](./core/Accessibility/#closedcaptionssettings)<br/>[Accessibility.onClosedCaptionsSettingsChanged](./core/Accessibility/#closedcaptionssettingschanged)<br/>[ClosedCaptions.enabled](./manage/ClosedCaptions/#enabled)<br/>[ClosedCaptions.fontFamily](./manage/ClosedCaptions/#fontfamily)<br/>[ClosedCaptions.fontSize](./manage/ClosedCaptions/#fontsize)<br/>[ClosedCaptions.fontColor](./manage/ClosedCaptions/#fontcolor)<br/>[ClosedCaptions.fontEdge](./manage/ClosedCaptions/#fontedge)<br/>[ClosedCaptions.fontEdgeColor](./manage/ClosedCaptions/#fontedgecolor)<br/>[ClosedCaptions.fontOpacity](./manage/ClosedCaptions/#fontopacity)<br/>[ClosedCaptions.backgroundColor](./manage/ClosedCaptions/#backgroundcolor)<br/>[ClosedCaptions.backgroundOpacity](./manage/ClosedCaptions/#backgroundopacity)<br/>[ClosedCaptions.textAlign](./manage/ClosedCaptions/#textalign)<br/>[ClosedCaptions.textAlignVertical](./manage/ClosedCaptions/#textalignvertical)<br/>[ClosedCaptions.windowColor](./manage/ClosedCaptions/#windowcolor)<br/>[ClosedCaptions.windowOpacity](./manage/ClosedCaptions/#windowopacity)<br/>[ClosedCaptions.onEnabledChanged](./manage/ClosedCaptions/#enabledchanged)<br/>[ClosedCaptions.onFontFamilyChanged](./manage/ClosedCaptions/#fontfamilychanged)<br/>[ClosedCaptions.onFontSizeChanged](./manage/ClosedCaptions/#fontsizechanged)<br/>[ClosedCaptions.onFontColorChanged](./manage/ClosedCaptions/#fontcolorchanged)<br/>[ClosedCaptions.onFontEdgeChanged](./manage/ClosedCaptions/#fontedgechanged)<br/>[ClosedCaptions.onFontEdgeColorChanged](./manage/ClosedCaptions/#fontedgecolorchanged)<br/>[ClosedCaptions.onFontOpacityChanged](./manage/ClosedCaptions/#fontopacitychanged)<br/>[ClosedCaptions.onBackgroundColorChanged](./manage/ClosedCaptions/#backgroundcolorchanged)<br/>[ClosedCaptions.onBackgroundOpacityChanged](./manage/ClosedCaptions/#backgroundopacitychanged)<br/>[ClosedCaptions.onTextAlignChanged](./manage/ClosedCaptions/#textalignchanged)<br/>[ClosedCaptions.onTextAlignVerticalChanged](./manage/ClosedCaptions/#textalignverticalchanged)<br/>[ClosedCaptions.onWindowColorChanged](./manage/ClosedCaptions/#windowcolorchanged)<br/>[ClosedCaptions.onWindowOpacityChanged](./manage/ClosedCaptions/#windowopacitychanged) |
+| [Accessibility.closedCaptions](./core/Accessibility/#closedcaptions)<br/>[Accessibility.closedCaptionsSettings](./core/Accessibility/#closedcaptionssettings)<br/>[Accessibility.onClosedCaptionsSettingsChanged](./core/Accessibility/#closedcaptionssettingschanged)<br/>[ClosedCaptions.enabled](./manage/ClosedCaptions/#enabled)<br/>[ClosedCaptions.fontFamily](./manage/ClosedCaptions/#fontfamily)<br/>[ClosedCaptions.fontSize](./manage/ClosedCaptions/#fontsize)<br/>[ClosedCaptions.fontColor](./manage/ClosedCaptions/#fontcolor)<br/>[ClosedCaptions.fontEdge](./manage/ClosedCaptions/#fontedge)<br/>[ClosedCaptions.fontEdgeColor](./manage/ClosedCaptions/#fontedgecolor)<br/>[ClosedCaptions.fontOpacity](./manage/ClosedCaptions/#fontopacity)<br/>[ClosedCaptions.backgroundColor](./manage/ClosedCaptions/#backgroundcolor)<br/>[ClosedCaptions.backgroundOpacity](./manage/ClosedCaptions/#backgroundopacity)<br/>[ClosedCaptions.textAlign](./manage/ClosedCaptions/#textalign)<br/>[ClosedCaptions.textAlignVertical](./manage/ClosedCaptions/#textalignvertical)<br/>[ClosedCaptions.windowColor](./manage/ClosedCaptions/#windowcolor)<br/>[ClosedCaptions.windowOpacity](./manage/ClosedCaptions/#windowopacity)<br/>[ClosedCaptions.preferredLanguages](./manage/ClosedCaptions/#preferredlanguages)<br/>[ClosedCaptions.onEnabledChanged](./manage/ClosedCaptions/#enabledchanged)<br/>[ClosedCaptions.onFontFamilyChanged](./manage/ClosedCaptions/#fontfamilychanged)<br/>[ClosedCaptions.onFontSizeChanged](./manage/ClosedCaptions/#fontsizechanged)<br/>[ClosedCaptions.onFontColorChanged](./manage/ClosedCaptions/#fontcolorchanged)<br/>[ClosedCaptions.onFontEdgeChanged](./manage/ClosedCaptions/#fontedgechanged)<br/>[ClosedCaptions.onFontEdgeColorChanged](./manage/ClosedCaptions/#fontedgecolorchanged)<br/>[ClosedCaptions.onFontOpacityChanged](./manage/ClosedCaptions/#fontopacitychanged)<br/>[ClosedCaptions.onBackgroundColorChanged](./manage/ClosedCaptions/#backgroundcolorchanged)<br/>[ClosedCaptions.onBackgroundOpacityChanged](./manage/ClosedCaptions/#backgroundopacitychanged)<br/>[ClosedCaptions.onTextAlignChanged](./manage/ClosedCaptions/#textalignchanged)<br/>[ClosedCaptions.onTextAlignVerticalChanged](./manage/ClosedCaptions/#textalignverticalchanged)<br/>[ClosedCaptions.onWindowColorChanged](./manage/ClosedCaptions/#windowcolorchanged)<br/>[ClosedCaptions.onWindowOpacityChanged](./manage/ClosedCaptions/#windowopacitychanged)<br/>[ClosedCaptions.onPreferredLanguagesChanged](./manage/ClosedCaptions/#preferredlanguageschanged) |
 
 
 
 | Manages |
 | ------- |
-| [ClosedCaptions.setEnabled](./manage/ClosedCaptions/#setenabled)<br/>[ClosedCaptions.setFontFamily](./manage/ClosedCaptions/#setfontfamily)<br/>[ClosedCaptions.setFontSize](./manage/ClosedCaptions/#setfontsize)<br/>[ClosedCaptions.setFontColor](./manage/ClosedCaptions/#setfontcolor)<br/>[ClosedCaptions.setFontEdge](./manage/ClosedCaptions/#setfontedge)<br/>[ClosedCaptions.setFontEdgeColor](./manage/ClosedCaptions/#setfontedgecolor)<br/>[ClosedCaptions.setFontOpacity](./manage/ClosedCaptions/#setfontopacity)<br/>[ClosedCaptions.setBackgroundColor](./manage/ClosedCaptions/#setbackgroundcolor)<br/>[ClosedCaptions.setBackgroundOpacity](./manage/ClosedCaptions/#setbackgroundopacity)<br/>[ClosedCaptions.setTextAlign](./manage/ClosedCaptions/#settextalign)<br/>[ClosedCaptions.setTextAlignVertical](./manage/ClosedCaptions/#settextalignvertical)<br/>[ClosedCaptions.setWindowColor](./manage/ClosedCaptions/#setwindowcolor)<br/>[ClosedCaptions.setWindowOpacity](./manage/ClosedCaptions/#setwindowopacity) |
+| [ClosedCaptions.setEnabled](./manage/ClosedCaptions/#setenabled)<br/>[ClosedCaptions.setFontFamily](./manage/ClosedCaptions/#setfontfamily)<br/>[ClosedCaptions.setFontSize](./manage/ClosedCaptions/#setfontsize)<br/>[ClosedCaptions.setFontColor](./manage/ClosedCaptions/#setfontcolor)<br/>[ClosedCaptions.setFontEdge](./manage/ClosedCaptions/#setfontedge)<br/>[ClosedCaptions.setFontEdgeColor](./manage/ClosedCaptions/#setfontedgecolor)<br/>[ClosedCaptions.setFontOpacity](./manage/ClosedCaptions/#setfontopacity)<br/>[ClosedCaptions.setBackgroundColor](./manage/ClosedCaptions/#setbackgroundcolor)<br/>[ClosedCaptions.setBackgroundOpacity](./manage/ClosedCaptions/#setbackgroundopacity)<br/>[ClosedCaptions.setTextAlign](./manage/ClosedCaptions/#settextalign)<br/>[ClosedCaptions.setTextAlignVertical](./manage/ClosedCaptions/#settextalignvertical)<br/>[ClosedCaptions.setWindowColor](./manage/ClosedCaptions/#setwindowcolor)<br/>[ClosedCaptions.setWindowOpacity](./manage/ClosedCaptions/#setwindowopacity)<br/>[ClosedCaptions.setPreferredLanguages](./manage/ClosedCaptions/#setpreferredlanguages) |
 
 
-## `xrn:firebolt:capability:accessibility:voiceguidance`
+### `xrn:firebolt:capability:accessibility:voiceguidance`
 
 | Uses |
 | ---- |
@@ -49,7 +49,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [VoiceGuidance.setEnabled](./manage/VoiceGuidance/#setenabled)<br/>[VoiceGuidance.setSpeed](./manage/VoiceGuidance/#setspeed) |
 
 
-## `xrn:firebolt:capability:account:id`
+### `xrn:firebolt:capability:account:id`
 
 | Uses |
 | ---- |
@@ -62,14 +62,14 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Device.provision](./manage/Device/#provision) |
 
 
-## `xrn:firebolt:capability:account:uid`
+### `xrn:firebolt:capability:account:uid`
 
 | Uses |
 | ---- |
 | [Account.uid](./core/Account/#uid) |
 
 
-## `xrn:firebolt:capability:advertising:configuration`
+### `xrn:firebolt:capability:advertising:configuration`
 
 | Uses |
 | ---- |
@@ -82,7 +82,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Advertising.skipRestriction](./manage/Advertising/#skiprestriction)<br/>[Advertising.onSkipRestrictionChanged](./manage/Advertising/#skiprestrictionchanged)<br/>[Advertising.setSkipRestriction](./manage/Advertising/#setskiprestriction) |
 
 
-## `xrn:firebolt:capability:advertising:identifier`
+### `xrn:firebolt:capability:advertising:identifier`
 
 | Uses |
 | ---- |
@@ -95,35 +95,35 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Advertising.resetIdentifier](./manage/Advertising/#resetidentifier) |
 
 
-## `xrn:firebolt:capability:approve:content`
+### `xrn:firebolt:capability:approve:content`
 
 | Uses |
 | ---- |
 | [Profile.approveContentRating](./core/Profile/#approvecontentrating) |
 
 
-## `xrn:firebolt:capability:approve:purchase`
+### `xrn:firebolt:capability:approve:purchase`
 
 | Uses |
 | ---- |
 | [Profile.approvePurchase](./core/Profile/#approvepurchase) |
 
 
-## `xrn:firebolt:capability:capabilities:info`
+### `xrn:firebolt:capability:capabilities:info`
 
 | Uses |
 | ---- |
 | [Capabilities.supported](./core/Capabilities/#supported)<br/>[Capabilities.available](./core/Capabilities/#available)<br/>[Capabilities.permitted](./core/Capabilities/#permitted)<br/>[Capabilities.granted](./core/Capabilities/#granted)<br/>[Capabilities.info](./core/Capabilities/#info)<br/>[Capabilities.onAvailable](./core/Capabilities/#available)<br/>[Capabilities.onUnavailable](./core/Capabilities/#unavailable)<br/>[Capabilities.onGranted](./core/Capabilities/#granted)<br/>[Capabilities.onRevoked](./core/Capabilities/#revoked) |
 
 
-## `xrn:firebolt:capability:capabilities:request`
+### `xrn:firebolt:capability:capabilities:request`
 
 | Uses |
 | ---- |
 | [Capabilities.request](./core/Capabilities/#request) |
 
 
-## `xrn:firebolt:capability:device:distributor`
+### `xrn:firebolt:capability:device:distributor`
 
 | Uses |
 | ---- |
@@ -136,7 +136,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Device.provision](./manage/Device/#provision) |
 
 
-## `xrn:firebolt:capability:device:id`
+### `xrn:firebolt:capability:device:id`
 
 | Uses |
 | ---- |
@@ -149,28 +149,28 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Device.provision](./manage/Device/#provision) |
 
 
-## `xrn:firebolt:capability:device:info`
+### `xrn:firebolt:capability:device:info`
 
 | Uses |
 | ---- |
 | [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
 
 
-## `xrn:firebolt:capability:device:make`
+### `xrn:firebolt:capability:device:make`
 
 | Uses |
 | ---- |
 | [Device.make](./core/Device/#make) |
 
 
-## `xrn:firebolt:capability:device:model`
+### `xrn:firebolt:capability:device:model`
 
 | Uses |
 | ---- |
 | [Device.model](./core/Device/#model) |
 
 
-## `xrn:firebolt:capability:device:name`
+### `xrn:firebolt:capability:device:name`
 
 | Uses |
 | ---- |
@@ -183,56 +183,56 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Device.setName](./manage/Device/#setname) |
 
 
-## `xrn:firebolt:capability:device:sku`
+### `xrn:firebolt:capability:device:sku`
 
 | Uses |
 | ---- |
 | [Device.sku](./core/Device/#sku) |
 
 
-## `xrn:firebolt:capability:device:uid`
+### `xrn:firebolt:capability:device:uid`
 
 | Uses |
 | ---- |
 | [Device.uid](./core/Device/#uid) |
 
 
-## `xrn:firebolt:capability:discovery:content-access`
+### `xrn:firebolt:capability:discovery:content-access`
 
 | Uses |
 | ---- |
 | [Discovery.entitlements](./core/Discovery/#entitlements)<br/>[Discovery.contentAccess](./core/Discovery/#contentaccess)<br/>[Discovery.clearContentAccess](./core/Discovery/#clearcontentaccess) |
 
 
-## `xrn:firebolt:capability:discovery:entity-info`
+### `xrn:firebolt:capability:discovery:entity-info`
 
 | Provides |
 | -------- |
 | [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
 
 
-## `xrn:firebolt:capability:discovery:navigate-to`
+### `xrn:firebolt:capability:discovery:navigate-to`
 
 | Uses |
 | ---- |
 | [Discovery.onNavigateTo](./core/Discovery/#navigateto) |
 
 
-## `xrn:firebolt:capability:discovery:policy`
+### `xrn:firebolt:capability:discovery:policy`
 
 | Uses |
 | ---- |
 | [Discovery.policy](./core/Discovery/#policy)<br/>[Discovery.onPolicyChanged](./core/Discovery/#policychanged) |
 
 
-## `xrn:firebolt:capability:discovery:purchased-content`
+### `xrn:firebolt:capability:discovery:purchased-content`
 
 | Provides |
 | -------- |
 | [Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
 
 
-## `xrn:firebolt:capability:discovery:sign-in-status`
+### `xrn:firebolt:capability:discovery:sign-in-status`
 
 | Uses |
 | ---- |
@@ -245,21 +245,21 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Discovery.onSignIn](./manage/Discovery/#signin)<br/>[Discovery.onSignOut](./manage/Discovery/#signout) |
 
 
-## `xrn:firebolt:capability:discovery:watch-next`
+### `xrn:firebolt:capability:discovery:watch-next`
 
 | Uses |
 | ---- |
 | [Discovery.watchNext](./core/Discovery/#watchnext) |
 
 
-## `xrn:firebolt:capability:discovery:watched`
+### `xrn:firebolt:capability:discovery:watched`
 
 | Uses |
 | ---- |
 | [Discovery.watched](./core/Discovery/#watched) |
 
 
-## `xrn:firebolt:capability:grants:state`
+### `xrn:firebolt:capability:grants:state`
 
 | Uses |
 | ---- |
@@ -272,7 +272,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [UserGrants.grant](./manage/UserGrants/#grant)<br/>[UserGrants.deny](./manage/UserGrants/#deny)<br/>[UserGrants.clear](./manage/UserGrants/#clear)<br/>[UserGrants.request](./manage/UserGrants/#request) |
 
 
-## `xrn:firebolt:capability:input:keyboard`
+### `xrn:firebolt:capability:input:keyboard`
 
 | Uses |
 | ---- |
@@ -285,35 +285,35 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Keyboard.onRequestStandard](./manage/Keyboard/#requeststandard)<br/>[Keyboard.onRequestPassword](./manage/Keyboard/#requestpassword)<br/>[Keyboard.onRequestEmail](./manage/Keyboard/#requestemail)<br/>[Keyboard.standardFocus](./manage/Keyboard/#standardfocus)<br/>[Keyboard.passwordFocus](./manage/Keyboard/#passwordfocus)<br/>[Keyboard.emailFocus](./manage/Keyboard/#emailfocus)<br/>[Keyboard.standardResponse](./manage/Keyboard/#standardresponse)<br/>[Keyboard.standardError](./manage/Keyboard/#standarderror)<br/>[Keyboard.passwordResponse](./manage/Keyboard/#passwordresponse)<br/>[Keyboard.passwordError](./manage/Keyboard/#passworderror)<br/>[Keyboard.emailResponse](./manage/Keyboard/#emailresponse)<br/>[Keyboard.emailError](./manage/Keyboard/#emailerror) |
 
 
-## `xrn:firebolt:capability:lifecycle:initialize`
+### `xrn:firebolt:capability:lifecycle:initialize`
 
 | Uses |
 | ---- |
 | [Internal.initialize](./core/Internal/#initialize) |
 
 
-## `xrn:firebolt:capability:lifecycle:launch`
+### `xrn:firebolt:capability:lifecycle:launch`
 
 | Uses |
 | ---- |
 | [Discovery.launch](./core/Discovery/#launch) |
 
 
-## `xrn:firebolt:capability:lifecycle:ready`
+### `xrn:firebolt:capability:lifecycle:ready`
 
 | Uses |
 | ---- |
 | [Lifecycle.ready](./core/Lifecycle/#ready) |
 
 
-## `xrn:firebolt:capability:lifecycle:state`
+### `xrn:firebolt:capability:lifecycle:state`
 
 | Uses |
 | ---- |
 | [Lifecycle.close](./core/Lifecycle/#close)<br/>[Lifecycle.finished](./core/Lifecycle/#finished)<br/>[Lifecycle.state](./core/Lifecycle/#state)<br/>[Lifecycle.onInactive](./core/Lifecycle/#inactive)<br/>[Lifecycle.onForeground](./core/Lifecycle/#foreground)<br/>[Lifecycle.onBackground](./core/Lifecycle/#background)<br/>[Lifecycle.onSuspended](./core/Lifecycle/#suspended)<br/>[Lifecycle.onUnloading](./core/Lifecycle/#unloading)<br/>[Parameters.initialization](./core/Parameters/#initialization) |
 
 
-## `xrn:firebolt:capability:localization:additional-info`
+### `xrn:firebolt:capability:localization:additional-info`
 
 | Uses |
 | ---- |
@@ -326,7 +326,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.addAdditionalInfo](./manage/Localization/#addadditionalinfo)<br/>[Localization.removeAdditionalInfo](./manage/Localization/#removeadditionalinfo) |
 
 
-## `xrn:firebolt:capability:localization:country-code`
+### `xrn:firebolt:capability:localization:country-code`
 
 | Uses |
 | ---- |
@@ -339,7 +339,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setCountryCode](./manage/Localization/#setcountrycode) |
 
 
-## `xrn:firebolt:capability:localization:language`
+### `xrn:firebolt:capability:localization:language`
 
 | Uses |
 | ---- |
@@ -352,7 +352,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setLanguage](./manage/Localization/#setlanguage)<br/>[Localization.setPreferredAudioLanguages](./manage/Localization/#setpreferredaudiolanguages) |
 
 
-## `xrn:firebolt:capability:localization:locale`
+### `xrn:firebolt:capability:localization:locale`
 
 | Uses |
 | ---- |
@@ -365,7 +365,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setLocale](./manage/Localization/#setlocale) |
 
 
-## `xrn:firebolt:capability:localization:locality`
+### `xrn:firebolt:capability:localization:locality`
 
 | Uses |
 | ---- |
@@ -378,14 +378,14 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setLocality](./manage/Localization/#setlocality) |
 
 
-## `xrn:firebolt:capability:localization:location`
+### `xrn:firebolt:capability:localization:location`
 
 | Uses |
 | ---- |
 | [Localization.latlon](./core/Localization/#latlon) |
 
 
-## `xrn:firebolt:capability:localization:postal-code`
+### `xrn:firebolt:capability:localization:postal-code`
 
 | Uses |
 | ---- |
@@ -398,7 +398,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setPostalCode](./manage/Localization/#setpostalcode) |
 
 
-## `xrn:firebolt:capability:localization:time-zone`
+### `xrn:firebolt:capability:localization:time-zone`
 
 | Uses |
 | ---- |
@@ -411,42 +411,42 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setTimeZone](./manage/Localization/#settimezone) |
 
 
-## `xrn:firebolt:capability:metrics:distributor`
+### `xrn:firebolt:capability:metrics:distributor`
 
 | Uses |
 | ---- |
 | [Metrics.event](./manage/Metrics/#event) |
 
 
-## `xrn:firebolt:capability:metrics:general`
+### `xrn:firebolt:capability:metrics:general`
 
 | Uses |
 | ---- |
 | [Metrics.ready](./core/Metrics/#ready)<br/>[Metrics.signIn](./core/Metrics/#signin)<br/>[Metrics.signOut](./core/Metrics/#signout)<br/>[Metrics.startContent](./core/Metrics/#startcontent)<br/>[Metrics.stopContent](./core/Metrics/#stopcontent)<br/>[Metrics.page](./core/Metrics/#page)<br/>[Metrics.action](./core/Metrics/#action)<br/>[Metrics.error](./core/Metrics/#error) |
 
 
-## `xrn:firebolt:capability:metrics:media`
+### `xrn:firebolt:capability:metrics:media`
 
 | Uses |
 | ---- |
 | [Metrics.mediaLoadStart](./core/Metrics/#medialoadstart)<br/>[Metrics.mediaPlay](./core/Metrics/#mediaplay)<br/>[Metrics.mediaPlaying](./core/Metrics/#mediaplaying)<br/>[Metrics.mediaPause](./core/Metrics/#mediapause)<br/>[Metrics.mediaWaiting](./core/Metrics/#mediawaiting)<br/>[Metrics.mediaProgress](./core/Metrics/#mediaprogress)<br/>[Metrics.mediaSeeking](./core/Metrics/#mediaseeking)<br/>[Metrics.mediaSeeked](./core/Metrics/#mediaseeked)<br/>[Metrics.mediaRateChange](./core/Metrics/#mediaratechange)<br/>[Metrics.mediaRenditionChange](./core/Metrics/#mediarenditionchange)<br/>[Metrics.mediaEnded](./core/Metrics/#mediaended) |
 
 
-## `xrn:firebolt:capability:network:status`
+### `xrn:firebolt:capability:network:status`
 
 | Uses |
 | ---- |
 | [Device.network](./core/Device/#network)<br/>[Device.onNetworkChanged](./core/Device/#networkchanged) |
 
 
-## `xrn:firebolt:capability:privacy:advertising`
+### `xrn:firebolt:capability:privacy:advertising`
 
 | Uses |
 | ---- |
 | [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
 
 
-## `xrn:firebolt:capability:privacy:settings`
+### `xrn:firebolt:capability:privacy:settings`
 
 | Uses |
 | ---- |
@@ -459,35 +459,35 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Privacy.setAllowResumePoints](./manage/Privacy/#setallowresumepoints)<br/>[Privacy.setAllowUnentitledResumePoints](./manage/Privacy/#setallowunentitledresumepoints)<br/>[Privacy.setAllowWatchHistory](./manage/Privacy/#setallowwatchhistory)<br/>[Privacy.setAllowProductAnalytics](./manage/Privacy/#setallowproductanalytics)<br/>[Privacy.setAllowPersonalization](./manage/Privacy/#setallowpersonalization)<br/>[Privacy.setAllowUnentitledPersonalization](./manage/Privacy/#setallowunentitledpersonalization)<br/>[Privacy.setAllowRemoteDiagnostics](./manage/Privacy/#setallowremotediagnostics)<br/>[Privacy.setAllowPrimaryContentAdTargeting](./manage/Privacy/#setallowprimarycontentadtargeting)<br/>[Privacy.setAllowPrimaryBrowseAdTargeting](./manage/Privacy/#setallowprimarybrowseadtargeting)<br/>[Privacy.setAllowAppContentAdTargeting](./manage/Privacy/#setallowappcontentadtargeting)<br/>[Privacy.setAllowACRCollection](./manage/Privacy/#setallowacrcollection)<br/>[Privacy.setAllowCameraAnalytics](./manage/Privacy/#setallowcameraanalytics) |
 
 
-## `xrn:firebolt:capability:profile:flags`
+### `xrn:firebolt:capability:profile:flags`
 
 | Uses |
 | ---- |
 | [Profile.flags](./core/Profile/#flags) |
 
 
-## `xrn:firebolt:capability:protocol:dial`
+### `xrn:firebolt:capability:protocol:dial`
 
 | Uses |
 | ---- |
 | [SecondScreen.device](./core/SecondScreen/#device)<br/>[SecondScreen.friendlyName](./core/SecondScreen/#friendlyname)<br/>[SecondScreen.onLaunchRequest](./core/SecondScreen/#launchrequest)<br/>[SecondScreen.onCloseRequest](./core/SecondScreen/#closerequest)<br/>[SecondScreen.onFriendlyNameChanged](./core/SecondScreen/#friendlynamechanged) |
 
 
-## `xrn:firebolt:capability:protocol:wifi`
+### `xrn:firebolt:capability:protocol:wifi`
 
 | Uses |
 | ---- |
 | [Wifi.scan](./manage/Wifi/#scan)<br/>[Wifi.connect](./manage/Wifi/#connect)<br/>[Wifi.disconnect](./manage/Wifi/#disconnect)<br/>[Wifi.wps](./manage/Wifi/#wps) |
 
 
-## `xrn:firebolt:capability:rpc:discover`
+### `xrn:firebolt:capability:rpc:discover`
 
 | Uses |
 | ---- |
 | [rpc.discover](./manage/rpc/#discover) |
 
 
-## `xrn:firebolt:capability:storage:secure`
+### `xrn:firebolt:capability:storage:secure`
 
 | Uses |
 | ---- |
@@ -500,49 +500,49 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [SecureStorage.setForApp](./manage/SecureStorage/#setforapp)<br/>[SecureStorage.removeForApp](./manage/SecureStorage/#removeforapp)<br/>[SecureStorage.clearForApp](./manage/SecureStorage/#clearforapp) |
 
 
-## `xrn:firebolt:capability:token:account`
+### `xrn:firebolt:capability:token:account`
 
 | Manages |
 | ------- |
 | [Account.session](./manage/Account/#session) |
 
 
-## `xrn:firebolt:capability:token:device`
+### `xrn:firebolt:capability:token:device`
 
 | Uses |
 | ---- |
 | [Authentication.device](./core/Authentication/#device) |
 
 
-## `xrn:firebolt:capability:token:platform`
+### `xrn:firebolt:capability:token:platform`
 
 | Uses |
 | ---- |
 | [Authentication.token](./core/Authentication/#token) |
 
 
-## `xrn:firebolt:capability:token:root`
+### `xrn:firebolt:capability:token:root`
 
 | Uses |
 | ---- |
 | [Authentication.root](./core/Authentication/#root) |
 
 
-## `xrn:firebolt:capability:token:session`
+### `xrn:firebolt:capability:token:session`
 
 | Uses |
 | ---- |
 | [Authentication.session](./core/Authentication/#session) |
 
 
-## `xrn:firebolt:capability:usergrant:acknowledgechallenge`
+### `xrn:firebolt:capability:usergrant:acknowledgechallenge`
 
 | Provides |
 | -------- |
 | [AcknowledgeChallenge.onRequestChallenge](./manage/AcknowledgeChallenge/#requestchallenge)<br/>[AcknowledgeChallenge.challengeFocus](./manage/AcknowledgeChallenge/#challengefocus)<br/>[AcknowledgeChallenge.challengeResponse](./manage/AcknowledgeChallenge/#challengeresponse)<br/>[AcknowledgeChallenge.challengeError](./manage/AcknowledgeChallenge/#challengeerror) |
 
 
-## `xrn:firebolt:capability:usergrant:pinchallenge`
+### `xrn:firebolt:capability:usergrant:pinchallenge`
 
 | Provides |
 | -------- |

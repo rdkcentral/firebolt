@@ -14,25 +14,25 @@ Version Intents 0.0.0-unknown.0
    - [Table of Contents](#table-of-contents)
    - [Overview](#overview)
    - [Types](#types)
-     - [NavigationIntent](#navigationintent)
-     - [HomeIntent](#homeintent)
-     - [LaunchIntent](#launchintent)
-     - [EntityIntent](#entityintent)
-     - [PlaybackIntent](#playbackintent)
-     - [SearchIntent](#searchintent)
-     - [SectionIntent](#sectionintent)
-     - [TuneIntent](#tuneintent)
      - [Intent](#intent)
      - [IntentProperties](#intentproperties)
-     - [MovieEntity](#movieentity)
-     - [TVEpisodeEntity](#tvepisodeentity)
-     - [TVSeriesEntity](#tvseriesentity)
-     - [TVSeasonEntity](#tvseasonentity)
-     - [AdditionalEntity](#additionalentity)
-     - [UntypedEntity](#untypedentity)
-     - [ChannelEntity](#channelentity)
      - [ProgramEntity](#programentity)
      - [Identifier](#identifier)
+     - [SearchIntent](#searchintent)
+     - [SectionIntent](#sectionintent)
+     - [ChannelEntity](#channelentity)
+     - [HomeIntent](#homeintent)
+     - [LaunchIntent](#launchintent)
+     - [TVSeriesEntity](#tvseriesentity)
+     - [AdditionalEntity](#additionalentity)
+     - [TVSeasonEntity](#tvseasonentity)
+     - [UntypedEntity](#untypedentity)
+     - [MovieEntity](#movieentity)
+     - [TVEpisodeEntity](#tvepisodeentity)
+     - [TuneIntent](#tuneintent)
+     - [PlaybackIntent](#playbackintent)
+     - [EntityIntent](#entityintent)
+     - [NavigationIntent](#navigationintent)
 
 
 ## Overview
@@ -40,33 +40,13 @@ Version Intents 0.0.0-unknown.0
 
 ## Types
 
-### NavigationIntent
+### Intent
 
-A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
-
-```typescript
-type NavigationIntent = HomeIntent | LaunchIntent | EntityIntent | PlaybackIntent | SearchIntent | SectionIntent | TuneIntent
-```
-
-See also: 
-
-[HomeIntent](#homeintent)
-[LaunchIntent](#launchintent)
-[EntityIntent](#entityintent)
-[PlaybackIntent](#playbackintent)
-[SearchIntent](#searchintent)
-[SectionIntent](#sectionintent)
-[TuneIntent](#tuneintent)
-
----
-
-### HomeIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
+A Firebolt compliant representation of a user intention.
 
 ```typescript
-type HomeIntent = {
-  action: "home"
+type Intent = {
+  action: string
   context: {
     source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
   }
@@ -76,71 +56,49 @@ type HomeIntent = {
 
 
 ---
+### IntentProperties
 
-### LaunchIntent
 
-A Firebolt compliant representation of a user intention to launch an app.
 
 ```typescript
-type LaunchIntent = {
-  action: "launch"
-  context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
-  }
+type IntentProperties = {
+  action: any
+  data: any
+  context: any
 }
 ```
 
 
 
 ---
+### ProgramEntity
 
-### EntityIntent
 
-A Firebolt compliant representation of a user intention to navigate an app to a specific entity page, and bring that app to the foreground if needed.
 
 ```typescript
-type EntityIntent = {
-  action: "entity"
-  data: MovieEntity | TVEpisodeEntity | TVSeriesEntity | TVSeasonEntity | AdditionalEntity | UntypedEntity
-  context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
-  }
+type ProgramEntity = {
+  entityType: "program"
+  programType: ProgramType  // In the case of a program `entityType`, specifies the program type.
+  entityId: string
 }
 ```
 
 See also: 
 
-[MovieEntity](#movieentity)
-[TVEpisodeEntity](#tvepisodeentity)
-[TVSeriesEntity](#tvseriesentity)
-[TVSeasonEntity](#tvseasonentity)
-[AdditionalEntity](#additionalentity)
-[UntypedEntity](#untypedentity)
+'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
 
 ---
+### Identifier
 
-### PlaybackIntent
 
-A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
 
 ```typescript
-type PlaybackIntent = {
-  action: "playback"
-  data: MovieEntity | TVEpisodeEntity | AdditionalEntity
-  context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
-  }
-}
+type Identifier = string
 ```
 
-See also: 
 
-[MovieEntity](#movieentity)
-[TVEpisodeEntity](#tvepisodeentity)
-[AdditionalEntity](#additionalentity)
 
 ---
-
 ### SearchIntent
 
 A Firebolt compliant representation of a user intention to navigate an app to it's search UI with a search term populated, and bring that app to the foreground if needed.
@@ -160,7 +118,6 @@ type SearchIntent = {
 
 
 ---
-
 ### SectionIntent
 
 A Firebolt compliant representation of a user intention to navigate an app to a section not covered by `home`, `entity`, `player`, or `search`, and bring that app to the foreground if needed.
@@ -180,7 +137,167 @@ type SectionIntent = {
 
 
 ---
+### ChannelEntity
 
+
+
+```typescript
+type ChannelEntity = {
+  entityType: "channel"
+  channelType: 'streaming' | 'overTheAir'
+  entityId: string                         // ID of the channel, in the target App's scope.
+  appContentData?: string
+}
+```
+
+
+
+---
+### HomeIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
+
+```typescript
+type HomeIntent = {
+  action: "home"
+  context: {
+    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+  }
+}
+```
+
+
+
+---
+### LaunchIntent
+
+A Firebolt compliant representation of a user intention to launch an app.
+
+```typescript
+type LaunchIntent = {
+  action: "launch"
+  context: {
+    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+  }
+}
+```
+
+
+
+---
+### TVSeriesEntity
+
+
+
+```typescript
+type TVSeriesEntity = {
+  entityType: "program"
+  programType: "series"
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also: 
+
+[ProgramEntity](#programentity)
+
+---
+### AdditionalEntity
+
+
+
+```typescript
+type AdditionalEntity = {
+  entityType: "program"
+  programType: ProgramType  // In the case of a program `entityType`, specifies the program type.
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also: 
+
+[ProgramEntity](#programentity)
+
+---
+### TVSeasonEntity
+
+A Firebolt compliant representation of a TV Season entity.
+
+```typescript
+type TVSeasonEntity = {
+  entityType: "program"
+  programType: "season"
+  entityId: string
+  seriesId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also: 
+
+[ProgramEntity](#programentity)
+
+---
+### UntypedEntity
+
+
+
+```typescript
+type UntypedEntity = {
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+
+
+---
+### MovieEntity
+
+
+
+```typescript
+type MovieEntity = {
+  entityType: "program"
+  programType: "movie"
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also: 
+
+[ProgramEntity](#programentity)
+
+---
+### TVEpisodeEntity
+
+
+
+```typescript
+type TVEpisodeEntity = {
+  entityType: "program"
+  programType: "episode"
+  entityId: string
+  seriesId: string
+  seasonId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also: 
+
+[ProgramEntity](#programentity)
+
+---
 ### TuneIntent
 
 A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.
@@ -207,202 +324,67 @@ See also:
 [ChannelEntity](#channelentity)
 
 ---
+### PlaybackIntent
 
-### Intent
-
-A Firebolt compliant representation of a user intention.
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
 
 ```typescript
-type Intent = {
-  action: string
+type PlaybackIntent = {
+  action: "playback"
+  data: MovieEntity | TVEpisodeEntity | AdditionalEntity
   context: {
     source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
   }
 }
 ```
 
+See also: 
 
-
----
-
-### IntentProperties
-
-
-
-```typescript
-type IntentProperties = {
-  action: any
-  data: any
-  context: any
-}
-```
-
-
+[MovieEntity](#movieentity)
+[TVEpisodeEntity](#tvepisodeentity)
+[AdditionalEntity](#additionalentity)
 
 ---
+### EntityIntent
 
-### MovieEntity
-
-
+A Firebolt compliant representation of a user intention to navigate an app to a specific entity page, and bring that app to the foreground if needed.
 
 ```typescript
-type MovieEntity = {
-  entityType: "program"
-  programType: "movie"
-  entityId: string
-  assetId?: string
-  appContentData?: string
+type EntityIntent = {
+  action: "entity"
+  data: MovieEntity | TVEpisodeEntity | TVSeriesEntity | TVSeasonEntity | AdditionalEntity | UntypedEntity
+  context: {
+    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+  }
 }
 ```
 
 See also: 
 
-[ProgramEntity](#programentity)
+[MovieEntity](#movieentity)
+[TVEpisodeEntity](#tvepisodeentity)
+[TVSeriesEntity](#tvseriesentity)
+[TVSeasonEntity](#tvseasonentity)
+[AdditionalEntity](#additionalentity)
+[UntypedEntity](#untypedentity)
 
 ---
+### NavigationIntent
 
-### TVEpisodeEntity
-
-
+A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
 
 ```typescript
-type TVEpisodeEntity = {
-  entityType: "program"
-  programType: "episode"
-  entityId: string
-  seriesId: string
-  seasonId: string
-  assetId?: string
-  appContentData?: string
-}
+type NavigationIntent = HomeIntent | LaunchIntent | EntityIntent | PlaybackIntent | SearchIntent | SectionIntent | TuneIntent
 ```
 
 See also: 
 
-[ProgramEntity](#programentity)
-
----
-
-### TVSeriesEntity
-
-
-
-```typescript
-type TVSeriesEntity = {
-  entityType: "program"
-  programType: "series"
-  entityId: string
-  assetId?: string
-  appContentData?: string
-}
-```
-
-See also: 
-
-[ProgramEntity](#programentity)
-
----
-
-### TVSeasonEntity
-
-A Firebolt compliant representation of a TV Season entity.
-
-```typescript
-type TVSeasonEntity = {
-  entityType: "program"
-  programType: "season"
-  entityId: string
-  seriesId: string
-  assetId?: string
-  appContentData?: string
-}
-```
-
-See also: 
-
-[ProgramEntity](#programentity)
-
----
-
-### AdditionalEntity
-
-
-
-```typescript
-type AdditionalEntity = {
-  entityType: "program"
-  programType: ProgramType  // In the case of a program `entityType`, specifies the program type.
-  entityId: string
-  assetId?: string
-  appContentData?: string
-}
-```
-
-See also: 
-
-[ProgramEntity](#programentity)
-
----
-
-### UntypedEntity
-
-
-
-```typescript
-type UntypedEntity = {
-  entityId: string
-  assetId?: string
-  appContentData?: string
-}
-```
-
-
-
----
-
-### ChannelEntity
-
-
-
-```typescript
-type ChannelEntity = {
-  entityType: "channel"
-  channelType: 'streaming' | 'overTheAir'
-  entityId: string                         // ID of the channel, in the target App's scope.
-  appContentData?: string
-}
-```
-
-
-
----
-
-### ProgramEntity
-
-
-
-```typescript
-type ProgramEntity = {
-  entityType: "program"
-  programType: ProgramType  // In the case of a program `entityType`, specifies the program type.
-  entityId: string
-}
-```
-
-See also: 
-
-'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
-
----
-
-### Identifier
-
-
-
-```typescript
-type Identifier = string
-```
-
-
+[HomeIntent](#homeintent)
+[LaunchIntent](#launchintent)
+[EntityIntent](#entityintent)
+[PlaybackIntent](#playbackintent)
+[SearchIntent](#searchintent)
+[SectionIntent](#sectionintent)
+[TuneIntent](#tuneintent)
 
 ---

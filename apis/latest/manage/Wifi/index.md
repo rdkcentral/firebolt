@@ -8,7 +8,7 @@ sdk: manage
 
 # Wifi Module
 ---
-Version Wifi 0.16.0
+Version Wifi 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -20,12 +20,12 @@ Version Wifi 0.16.0
      - [scan](#scan)
      - [wps](#wps)
    - [Types](#types)
-     - [AccessPointList](#accesspointlist)
      - [WifiSecurityMode](#wifisecuritymode)
-     - [AccessPoint](#accesspoint)
      - [WPSSecurityPin](#wpssecuritypin)
      - [WifiSignalStrength](#wifisignalstrength)
      - [WifiFrequency](#wififrequency)
+     - [AccessPoint](#accesspoint)
+     - [AccessPointList](#accesspointlist)
 
 
 
@@ -55,13 +55,13 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `ssid` | `string` | false |   |
-| `passphrase` | `string` | false |   |
-| `security` | [`WifiSecurityMode`](#wifisecuritymode) | false |  <br/>values: `'none' \| 'wep64' \| 'wep128' \| 'wpaPskTkip' \| 'wpaPskAes' \| 'wpa2PskTkip' \| 'wpa2PskAes' \| 'wpaEnterpriseTkip' \| 'wpaEnterpriseAes' \| 'wpa2EnterpriseTkip' \| 'wpa2EnterpriseAes' \| 'wpa2Psk' \| 'wpa2Enterprise' \| 'wpa3PskAes' \| 'wpa3Sae'` |
+, | `passphrase` | `string` | false |   |
+, | `security` | [`WifiSecurityMode`](#wifisecuritymode) | false |  <br/>values: `'none' \| 'wep64' \| 'wep128' \| 'wpaPskTkip' \| 'wpaPskAes' \| 'wpa2PskTkip' \| 'wpa2PskAes' \| 'wpaEnterpriseTkip' \| 'wpaEnterpriseAes' \| 'wpa2EnterpriseTkip' \| 'wpa2EnterpriseAes' \| 'wpa2Psk' \| 'wpa2Enterprise' \| 'wpa3PskAes' \| 'wpa3Sae'` |
 
 
 Promise resolution:
 
-[AccessPoint](#accesspoint-1)
+[AccessPoint](#accesspoint)
 
 Capabilities:
 
@@ -395,7 +395,7 @@ Parameters:
 
 Promise resolution:
 
-[AccessPoint](#accesspoint-1)
+[AccessPoint](#accesspoint)
 
 Capabilities:
 
@@ -468,22 +468,6 @@ Response:
 
 ## Types
 
-### AccessPointList
-
-List of scanned Wifi networks available near the device.
-
-```typescript
-type AccessPointList = {
-  list?: AccessPoint[]
-}
-```
-
-See also: 
-
-[AccessPoint](#accesspoint-1)
-
----
-
 ### WifiSecurityMode
 
 Security Mode supported for Wifi
@@ -512,7 +496,44 @@ enum WifiSecurityMode {
 
 
 ---
+### WPSSecurityPin
 
+Security pin type for WPS(Wifi Protected Setup).
+
+```typescript
+enum WPSSecurityPin {
+	PUSH_BUTTON = 'pushButton',
+	PIN = 'pin',
+	MANUFACTURER_PIN = 'manufacturerPin'
+}
+
+```
+
+
+
+---
+### WifiSignalStrength
+
+Strength of Wifi signal, value is negative based on RSSI specification.
+
+```typescript
+type WifiSignalStrength = number
+```
+
+
+
+---
+### WifiFrequency
+
+Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
+
+```typescript
+type WifiFrequency = number
+```
+
+
+
+---
 ### AccessPoint
 
 Properties of a scanned wifi list item.
@@ -533,44 +554,18 @@ number
 number
 
 ---
+### AccessPointList
 
-### WPSSecurityPin
-
-Security pin type for WPS(Wifi Protected Setup).
+List of scanned Wifi networks available near the device.
 
 ```typescript
-enum WPSSecurityPin {
-	PUSH_BUTTON = 'pushButton',
-	PIN = 'pin',
-	MANUFACTURER_PIN = 'manufacturerPin'
+type AccessPointList = {
+  list?: AccessPoint[]
 }
-
 ```
 
+See also: 
 
-
----
-
-### WifiSignalStrength
-
-Strength of Wifi signal, value is negative based on RSSI specification.
-
-```typescript
-type WifiSignalStrength = number
-```
-
-
-
----
-
-### WifiFrequency
-
-Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
-
-```typescript
-type WifiFrequency = number
-```
-
-
+[AccessPoint](#accesspoint)
 
 ---

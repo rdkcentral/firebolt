@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 0.16.0
+Version Accessibility 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -192,7 +192,6 @@ Response:
 ---
 
 
-
 ### closedCaptions
 
 Get the user's preferred closed-captions settings
@@ -248,7 +247,11 @@ Value of `closedCaptionsSettings`:
 		"textAlignVertical": "middle",
 		"windowColor": "white",
 		"windowOpacity": 50
-	}
+	},
+	"preferredLanguages": [
+		"eng",
+		"spa"
+	]
 }
 ```
 <details markdown="1" >
@@ -285,7 +288,11 @@ Response:
 			"textAlignVertical": "middle",
 			"windowColor": "white",
 			"windowOpacity": 50
-		}
+		},
+		"preferredLanguages": [
+			"eng",
+			"spa"
+		]
 	}
 }
 ```
@@ -350,7 +357,11 @@ Value of `closedCaptionsSettings`:
 		"textAlignVertical": "middle",
 		"windowColor": "white",
 		"windowOpacity": 50
-	}
+	},
+	"preferredLanguages": [
+		"eng",
+		"spa"
+	]
 }
 ```
 <details markdown="1" >
@@ -387,7 +398,11 @@ Response:
 			"textAlignVertical": "middle",
 			"windowColor": "white",
 			"windowOpacity": 50
-		}
+		},
+		"preferredLanguages": [
+			"eng",
+			"spa"
+		]
 	}
 }
 ```
@@ -447,7 +462,11 @@ Value of `closedCaptionsSettings`:
 		"textAlignVertical": "middle",
 		"windowColor": "white",
 		"windowOpacity": 50
-	}
+	},
+	"preferredLanguages": [
+		"eng",
+		"spa"
+	]
 }
 ```
 <details markdown="1" >
@@ -486,7 +505,11 @@ Response:
 			"textAlignVertical": "middle",
 			"windowColor": "white",
 			"windowOpacity": 50
-		}
+		},
+		"preferredLanguages": [
+			"eng",
+			"spa"
+		]
 	}
 }
 ```

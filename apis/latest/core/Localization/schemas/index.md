@@ -14,6 +14,7 @@ Version Localization 0.0.0-unknown.0
    - [Table of Contents](#table-of-contents)
    - [Overview](#overview)
    - [Types](#types)
+     - [ISO639_2Language](#isolanguage)
      - [Locality](#locality)
      - [CountryCode](#countrycode)
      - [Language](#language)
@@ -26,6 +27,17 @@ Version Localization 0.0.0-unknown.0
 
 ## Types
 
+### ISO639_2Language
+
+
+
+```typescript
+type ISO639_2Language = string
+```
+
+
+
+---
 ### Locality
 
 
@@ -37,7 +49,6 @@ type Locality = string
 
 
 ---
-
 ### CountryCode
 
 
@@ -49,7 +60,6 @@ type CountryCode = string
 
 
 ---
-
 ### Language
 
 
@@ -61,7 +71,6 @@ type Language = string
 
 
 ---
-
 ### Locale
 
 
@@ -73,7 +82,6 @@ type Locale = string
 
 
 ---
-
 ### TimeZone
 
 

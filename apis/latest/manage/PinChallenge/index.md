@@ -8,7 +8,7 @@ sdk: manage
 
 # PinChallenge Module
 ---
-Version PinChallenge 0.16.0
+Version PinChallenge 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -24,11 +24,11 @@ Version PinChallenge 0.16.0
    - [Provider Interfaces](#provider-interfaces)
      - [ChallengeProvider](#challengeprovider)
    - [Types](#types)
-     - [PinChallengeResult](#pinchallengeresult)
-     - [PinChallengeProviderRequest](#pinchallengeproviderrequest)
      - [ResultReason](#resultreason)
-     - [PinChallenge](#pinchallenge)
      - [ChallengeRequestor](#challengerequestor)
+     - [PinChallengeResult](#pinchallengeresult)
+     - [PinChallenge](#pinchallenge)
+     - [PinChallengeProviderRequest](#pinchallengeproviderrequest)
 
 
 
@@ -555,41 +555,6 @@ Response:
 
 ## Types
 
-### PinChallengeResult
-
-
-
-```typescript
-type PinChallengeResult = {
-  granted: boolean | void
-  reason: ResultReason       // The reason for the result of challenging the user
-}
-```
-
-See also: 
-
-'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled'
-
----
-
-### PinChallengeProviderRequest
-
-
-
-```typescript
-type PinChallengeProviderRequest = {
-  parameters: PinChallenge
-  correlationId: string               // The id that was passed in to the event that triggered a provider method to be called
-}
-```
-
-See also: 
-
-[ProviderRequest](../Types/schemas/#ProviderRequest)
-[PinChallenge](#pinchallenge-1)
-
----
-
 ### ResultReason
 
 The reason for the result of challenging the user
@@ -608,7 +573,36 @@ enum ResultReason {
 
 
 ---
+### ChallengeRequestor
 
+
+
+```typescript
+type ChallengeRequestor = {
+  id: string                 // The id of the app that requested the challenge
+  name: string               // The name of the app that requested the challenge
+}
+```
+
+
+
+---
+### PinChallengeResult
+
+
+
+```typescript
+type PinChallengeResult = {
+  granted: boolean | void
+  reason: ResultReason       // The reason for the result of challenging the user
+}
+```
+
+See also: 
+
+'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled'
+
+---
 ### PinChallenge
 
 
@@ -626,18 +620,20 @@ See also:
 [ChallengeRequestor](#challengerequestor)
 
 ---
-
-### ChallengeRequestor
+### PinChallengeProviderRequest
 
 
 
 ```typescript
-type ChallengeRequestor = {
-  id: string                 // The id of the app that requested the challenge
-  name: string               // The name of the app that requested the challenge
+type PinChallengeProviderRequest = {
+  parameters: PinChallenge
+  correlationId: string               // The id that was passed in to the event that triggered a provider method to be called
 }
 ```
 
+See also: 
 
+[ProviderRequest](../Types/schemas/#ProviderRequest)
+[PinChallenge](#pinchallenge-1)
 
 ---

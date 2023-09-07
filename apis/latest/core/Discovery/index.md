@@ -8,7 +8,7 @@ sdk: core
 
 # Discovery Module
 ---
-Version Discovery 0.16.0
+Version Discovery 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -34,12 +34,12 @@ Version Discovery 0.16.0
      - [policyChanged](#policychanged)
    - [Types](#types)
      - [DiscoveryPolicy](#discoverypolicy)
+     - [Availability](#availability)
+     - [PurchasedContentParameters](#purchasedcontentparameters)
      - [ContentAccessIdentifiers](#contentaccessidentifiers)
+     - [EntityInfoParameters](#entityinfoparameters)
      - [EntityInfoFederatedRequest](#entityinfofederatedrequest)
      - [PurchasedContentFederatedRequest](#purchasedcontentfederatedrequest)
-     - [Availability](#availability)
-     - [EntityInfoParameters](#entityinfoparameters)
-     - [PurchasedContentParameters](#purchasedcontentparameters)
 
 
 
@@ -66,7 +66,6 @@ Apps should provide all user-facing strings in the device's language, as specifi
 Apps should provide prices in the same currency presented in the app. If multiple currencies are supported in the app, the app should provide prices in the user's current default currency.
 
 ## Methods
-
 
 ### clearContentAccess
 
@@ -2110,7 +2109,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | The durable app Id of the app to launch  |
-| `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
+, | `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
 
 
 Promise resolution:
@@ -3629,9 +3628,9 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entity Id of the watched content.  |
-| `progress` | `number` | false | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
-| `completed` | `boolean` | false | Whether or not this viewing is considered "complete," per the app's definition thereof  |
-| `watchedOn` | `string` | false | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time |
+, | `progress` | `number` | false | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
+, | `completed` | `boolean` | false | Whether or not this viewing is considered "complete," per the app's definition thereof  |
+, | `watchedOn` | `string` | false | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time |
 
 
 Promise resolution:
@@ -3713,9 +3712,9 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `title` | [`LocalizedString`](../Types/schemas/#LocalizedString) | true | The title of this call to action  |
-| `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
-| `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
-| `images` | `object` | false | A set of images for this call to action  |
+, | `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
+, | `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
+, | `images` | `object` | false | A set of images for this call to action  |
 
 
 Promise resolution:
@@ -3949,8 +3948,6 @@ See: [policy](#policy)
 
 
 
-
-
 ## Types
 
 ### DiscoveryPolicy
@@ -3968,61 +3965,6 @@ type DiscoveryPolicy = {
 
 
 ---
-
-### ContentAccessIdentifiers
-
-
-
-```typescript
-type ContentAccessIdentifiers = {
-  availabilities?: Availability[]  // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
-  entitlements?: Entitlement[]     // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
-}
-```
-
-See also: 
-
-[Availability](#availability)
-[Entitlement](../Entertainment/schemas/#Entitlement)
-
----
-
-### EntityInfoFederatedRequest
-
-
-
-```typescript
-type EntityInfoFederatedRequest = {
-  parameters: EntityInfoParameters
-  correlationId: string
-}
-```
-
-See also: 
-
-[FederatedRequest](#federatedrequest)
-[EntityInfoParameters](#entityinfoparameters)
-
----
-
-### PurchasedContentFederatedRequest
-
-
-
-```typescript
-type PurchasedContentFederatedRequest = {
-  parameters: PurchasedContentParameters
-  correlationId: string
-}
-```
-
-See also: 
-
-[FederatedRequest](#federatedrequest)
-[PurchasedContentParameters](#purchasedcontentparameters)
-
----
-
 ### Availability
 
 
@@ -4040,22 +3982,6 @@ type Availability = {
 
 
 ---
-
-### EntityInfoParameters
-
-
-
-```typescript
-type EntityInfoParameters = {
-  entityId: string
-  assetId?: string
-}
-```
-
-
-
----
-
 ### PurchasedContentParameters
 
 
@@ -4072,5 +3998,70 @@ See also:
 
 'free' | 'subscribe' | 'buy' | 'rent'
 'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
+
+---
+### ContentAccessIdentifiers
+
+
+
+```typescript
+type ContentAccessIdentifiers = {
+  availabilities?: Availability[]  // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
+  entitlements?: Entitlement[]     // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
+}
+```
+
+See also: 
+
+[Availability](#availability)
+[Entitlement](../Entertainment/schemas/#Entitlement)
+
+---
+### EntityInfoParameters
+
+
+
+```typescript
+type EntityInfoParameters = {
+  entityId: string
+  assetId?: string
+}
+```
+
+
+
+---
+### EntityInfoFederatedRequest
+
+
+
+```typescript
+type EntityInfoFederatedRequest = {
+  parameters: EntityInfoParameters
+  correlationId: string
+}
+```
+
+See also: 
+
+[FederatedRequest](#federatedrequest)
+[EntityInfoParameters](#entityinfoparameters)
+
+---
+### PurchasedContentFederatedRequest
+
+
+
+```typescript
+type PurchasedContentFederatedRequest = {
+  parameters: PurchasedContentParameters
+  correlationId: string
+}
+```
+
+See also: 
+
+[FederatedRequest](#federatedrequest)
+[PurchasedContentParameters](#purchasedcontentparameters)
 
 ---

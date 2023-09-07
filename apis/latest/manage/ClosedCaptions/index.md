@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.16.0
+Version ClosedCaptions 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -26,6 +26,7 @@ Version ClosedCaptions 0.16.0
      - [fontSize](#fontsize)
      - [listen](#listen)
      - [once](#once)
+     - [preferredLanguages](#preferredlanguages)
      - [textAlign](#textalign)
      - [textAlignVertical](#textalignvertical)
      - [windowColor](#windowcolor)
@@ -40,6 +41,7 @@ Version ClosedCaptions 0.16.0
      - [fontFamilyChanged](#fontfamilychanged)
      - [fontOpacityChanged](#fontopacitychanged)
      - [fontSizeChanged](#fontsizechanged)
+     - [preferredLanguagesChanged](#preferredlanguageschanged)
      - [textAlignChanged](#textalignchanged)
      - [textAlignVerticalChanged](#textalignverticalchanged)
      - [windowColorChanged](#windowcolorchanged)
@@ -998,7 +1000,6 @@ Response:
 
 
 ---
-
 
 
 ### enabled
@@ -4274,17 +4275,373 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+### preferredLanguages
+A prioritized list of ISO 639-2/B codes for the preferred closed captions languages on this device.
+
+To get the value of `preferredLanguages` call the method like this:
+
+```typescript
+function preferredLanguages(): Promise<string[]>
+```
 
 
 
+Promise resolution:
+
+```typescript
+string[]
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:accessibility:closedcaptions |
+
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.preferredLanguages()
+    .then(languages => {
+        console.log(languages)
+    })
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"spa",
+	"eng"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.preferredLanguages",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"spa",
+		"eng"
+	]
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.preferredLanguages()
+    .then(languages => {
+        console.log(languages)
+    })
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"spa",
+	"eng"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.preferredLanguages",
+	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"eng",
+		"spa"
+	]
+}
+```
+</details>
+
+
+---
+
+To set the value of `preferredLanguages` call the method like this:
+
+```typescript
+function preferredLanguages(value: string[]): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `value` | `string[]` | true | the preferred closed captions languages <br/>pattern: ^[a-z]{3}$ |
+
+
+Promise resolution:
+
+```typescript
+null
+```
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.preferredLanguages(["spa","eng"])
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setPreferredLanguages",
+	"params": {
+		"value": [
+			"spa",
+			"eng"
+		]
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+ClosedCaptions.preferredLanguages(["eng","spa"])
+    .then(result => {
+        console.log(result)
+    })
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.setPreferredLanguages",
+	"params": {
+		"value": [
+			"eng",
+			"spa"
+		]
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function preferredLanguages(callback: (value) => string[]): Promise<number>
+```
 
 
 
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
 
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+preferredLanguages(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"spa",
+	"eng"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onPreferredLanguagesChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"spa",
+		"eng"
+	]
+}
+```
+</details>
+
+Default Example #2
+
+JavaScript:
+
+```javascript
+import { ClosedCaptions } from '@firebolt-js/manage-sdk'
+
+preferredLanguages(value => {
+  console.log(value)
+}).then(listenerId => {
+  console.log(listenerId)
+})
+```
+
+Value of `languages`:
+
+```javascript
+[
+	"spa",
+	"eng"
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "ClosedCaptions.onPreferredLanguagesChanged",
+	"params": {
+		"listen": true
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		"eng",
+		"spa"
+	]
+}
+```
+</details>
 
 
-
+---
 
 
 ### textAlign
@@ -6204,6 +6561,10 @@ See: [fontOpacity](#fontopacity)
 ### fontSizeChanged
 
 See: [fontSize](#fontsize)
+
+### preferredLanguagesChanged
+
+See: [preferredLanguages](#preferredlanguages)
 
 ### textAlignChanged
 

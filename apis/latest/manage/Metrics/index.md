@@ -8,7 +8,7 @@ sdk: manage
 
 # Metrics Module
 ---
-Version Metrics 0.16.0
+Version Metrics 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -17,8 +17,8 @@ Version Metrics 0.16.0
    - [Methods](#methods)
      - [event](#event)
    - [Types](#types)
-     - [EventObject](#eventobject)
      - [EventObjectPrimitives](#eventobjectprimitives)
+     - [EventObject](#eventobject)
 
 
 
@@ -48,7 +48,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `schema` | `string` | true | The schema URI of the metric type <br/>format: uri |
-| `data` | [`EventObject`](#eventobject) | true | A JSON payload conforming the the provided schema  |
+, | `data` | [`EventObject`](#eventobject-1) | true | A JSON payload conforming the the provided schema  |
 
 
 Promise resolution:
@@ -121,6 +121,17 @@ Response:
 
 ## Types
 
+### EventObjectPrimitives
+
+
+
+```typescript
+type EventObjectPrimitives = string | number | number | boolean | null
+```
+
+
+
+---
 ### EventObject
 
 
@@ -134,18 +145,6 @@ type EventObject = {
 See also: 
 
 string | number | number | boolean | null
-[EventObject](#eventobject)
-
----
-
-### EventObjectPrimitives
-
-
-
-```typescript
-type EventObjectPrimitives = string | number | number | boolean | null
-```
-
-
+[EventObject](#eventobject-1)
 
 ---

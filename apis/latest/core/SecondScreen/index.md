@@ -8,7 +8,7 @@ sdk: core
 
 # SecondScreen Module
 ---
-Version SecondScreen 0.16.0
+Version SecondScreen 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -39,7 +39,6 @@ import { SecondScreen } from '@firebolt-js/sdk'
  Methods for communicating with second screen devices
 
 ## Methods
-
 
 ### device
 

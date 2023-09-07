@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 0.16.0
+Version Lifecycle 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -44,7 +44,6 @@ import { Lifecycle } from '@firebolt-js/sdk'
  Methods and events for responding to lifecycle changes in your app
 
 ## Methods
-
 
 ### close
 

@@ -8,7 +8,7 @@ sdk: core
 
 # Keyboard Module
 ---
-Version Keyboard 0.16.0
+Version Keyboard 0.17.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -49,7 +49,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `type` | [`EmailUsage`](#emailusage) | true | Why the email is being requested, e.g. sign on or sign up <br/>values: `'signIn' \| 'signUp'` |
-| `message` | `string` | false | The message to display while prompting  |
+, | `message` | `string` | false | The message to display while prompting  |
 
 
 Promise resolution:

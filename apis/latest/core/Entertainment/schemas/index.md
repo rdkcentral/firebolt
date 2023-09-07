@@ -14,104 +14,21 @@ Version Entertainment 0.0.0-unknown.0
    - [Table of Contents](#table-of-contents)
    - [Overview](#overview)
    - [Types](#types)
-     - [ContentIdentifiers](#contentidentifiers)
-     - [Entitlement](#entitlement)
-     - [EntityInfo](#entityinfo)
      - [OfferingType](#offeringtype)
      - [ProgramType](#programtype)
+     - [ContentIdentifiers](#contentidentifiers)
      - [ContentRating](#contentrating)
    - [United States](#united-states)
    - [Canada](#canada)
+     - [Entitlement](#entitlement)
      - [WayToWatch](#waytowatch)
+     - [EntityInfo](#entityinfo)
 
 
 ## Overview
  undefined
 
 ## Types
-
-### ContentIdentifiers
-
-The ContentIdentifiers object is how the app identifies an entity or asset to
-the Firebolt platform. These ids are used to look up metadata and deep link into
-the app.
-
-Apps do not need to provide all ids. They only need to provide the minimum
-required to target a playable stream or an entity detail screen via a deep link.
-If an id isn't needed to get to those pages, it doesn't need to be included.
-
-```typescript
-type ContentIdentifiers = {
-  assetId?: string           // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
-  entityId?: string          // Identifies an entity, such as a Movie, TV Series or TV Episode.
-  seasonId?: string          // The TV Season for a TV Episode.
-  seriesId?: string          // The TV Series for a TV Episode or TV Season.
-  appContentData?: string    // App-specific content identifiers.
-}
-```
-
-
-
----
-
-### Entitlement
-
-
-
-```typescript
-type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
-}
-```
-
-
-
----
-
-### EntityInfo
-
-An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-
-Additionally, EntityInfo objects must specify a properly formed
-ContentIdentifiers object, `entityType`, and `title`.  The app should provide
-the `synopsis` property for a good user experience if the content
-metadata is not available another way.
-
-The ContentIdentifiers must be sufficient for navigating the user to the
-appropriate entity or detail screen via a `detail` intent or deep link.
-
-EntityInfo objects must provide at least one WayToWatch object when returned as
-part of an `entityInfo` method and a streamable asset is available to the user.
-It is optional for the `purchasedContent` method, but recommended because the UI
-may use those data.
-
-```typescript
-type EntityInfo = {
-  identifiers: ContentIdentifiers   // The ContentIdentifiers object is how the app identifies an entity or asset to
-  title: string                     // Title of the entity.
-  entityType: "program"
-  programType: ProgramType          // In the case of a program `entityType`, specifies the program type.
-  synopsis?: string                 // Short description of the entity.
-  seasonNumber?: number             // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
-  seasonCount?: number              // For TV series, seasons, and episodes, the total number of seasons.
-  episodeNumber?: number            // For TV episodes, the episode number.
-  episodeCount?: number             // For TV seasons and episodes, the total number of episodes in the current season.
-  releaseDate?: string              // The date that the program or entity was released or first aired.
-  contentRatings?: ContentRating[]  // A list of ContentRating objects, describing the entity's ratings in various rating schemes.
-  waysToWatch?: WayToWatch[]        // An array of ways a user is might watch this entity, regardless of entitlements.
-}
-```
-
-See also: 
-
-[ContentIdentifiers](#contentidentifiers)
-'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
-[ContentRating](#contentrating)
-[WayToWatch](#waytowatch)
-
----
 
 ### OfferingType
 
@@ -130,7 +47,6 @@ enum OfferingType {
 
 
 ---
-
 ### ProgramType
 
 In the case of a program `entityType`, specifies the program type.
@@ -156,7 +72,29 @@ enum ProgramType {
 
 
 ---
+### ContentIdentifiers
 
+The ContentIdentifiers object is how the app identifies an entity or asset to
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included.
+
+```typescript
+type ContentIdentifiers = {
+  assetId?: string           // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
+  entityId?: string          // Identifies an entity, such as a Movie, TV Series or TV Episode.
+  seasonId?: string          // The TV Season for a TV Episode.
+  seriesId?: string          // The TV Series for a TV Episode or TV Season.
+  appContentData?: string    // App-specific content identifiers.
+}
+```
+
+
+
+---
 ### ContentRating
 
 A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
@@ -207,7 +145,21 @@ type ContentRating = {
 
 
 ---
+### Entitlement
 
+
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
+}
+```
+
+
+
+---
 ### WayToWatch
 
 A WayToWatch describes a way to watch a video program. It may describe a single
@@ -268,5 +220,47 @@ See also:
 [ContentIdentifiers](#contentidentifiers)
 'free' | 'subscribe' | 'buy' | 'rent'
 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
+
+---
+### EntityInfo
+
+An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+
+Additionally, EntityInfo objects must specify a properly formed
+ContentIdentifiers object, `entityType`, and `title`.  The app should provide
+the `synopsis` property for a good user experience if the content
+metadata is not available another way.
+
+The ContentIdentifiers must be sufficient for navigating the user to the
+appropriate entity or detail screen via a `detail` intent or deep link.
+
+EntityInfo objects must provide at least one WayToWatch object when returned as
+part of an `entityInfo` method and a streamable asset is available to the user.
+It is optional for the `purchasedContent` method, but recommended because the UI
+may use those data.
+
+```typescript
+type EntityInfo = {
+  identifiers: ContentIdentifiers   // The ContentIdentifiers object is how the app identifies an entity or asset to
+  title: string                     // Title of the entity.
+  entityType: "program"
+  programType: ProgramType          // In the case of a program `entityType`, specifies the program type.
+  synopsis?: string                 // Short description of the entity.
+  seasonNumber?: number             // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
+  seasonCount?: number              // For TV series, seasons, and episodes, the total number of seasons.
+  episodeNumber?: number            // For TV episodes, the episode number.
+  episodeCount?: number             // For TV seasons and episodes, the total number of episodes in the current season.
+  releaseDate?: string              // The date that the program or entity was released or first aired.
+  contentRatings?: ContentRating[]  // A list of ContentRating objects, describing the entity's ratings in various rating schemes.
+  waysToWatch?: WayToWatch[]        // An array of ways a user is might watch this entity, regardless of entitlements.
+}
+```
+
+See also: 
+
+[ContentIdentifiers](#contentidentifiers)
+'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
+[ContentRating](#contentrating)
+[WayToWatch](#waytowatch)
 
 ---
