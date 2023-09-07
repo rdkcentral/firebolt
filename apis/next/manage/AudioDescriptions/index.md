@@ -8,7 +8,7 @@ sdk: manage
 
 # AudioDescriptions Module
 ---
-Version AudioDescriptions 0.17.0-next.2
+Version AudioDescriptions 0.17.0-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
