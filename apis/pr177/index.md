@@ -456,13 +456,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [BroadcastPlayer.create](./manage/BroadcastPlayer/#create)<br/>[BroadcastPlayer.status](./manage/BroadcastPlayer/#status)<br/>[BroadcastPlayer.provideStatus](./manage/BroadcastPlayer/#providestatus)<br/>[BroadcastPlayer.onStatusChanged](./manage/BroadcastPlayer/#statuschanged) |
+| [BroadcastPlayer.create](./manage/BroadcastPlayer/#create)<br/>[BroadcastPlayer.status](./manage/BroadcastPlayer/#status)<br/>[BroadcastPlayer.onStatusChanged](./manage/BroadcastPlayer/#statuschanged) |
 
 
 
 | Provides |
 | -------- |
-| [BroadcastPlayer.onRequestCreate](./manage/BroadcastPlayer/#requestcreate)<br/>[BroadcastPlayer.onRequestStatus](./manage/BroadcastPlayer/#requeststatus)<br/>[BroadcastPlayer.createResponse](./manage/BroadcastPlayer/#createresponse)<br/>[BroadcastPlayer.createError](./manage/BroadcastPlayer/#createerror)<br/>[BroadcastPlayer.statusResponse](./manage/BroadcastPlayer/#statusresponse)<br/>[BroadcastPlayer.statusError](./manage/BroadcastPlayer/#statuserror) |
+| [BroadcastPlayer.onRequestCreate](./manage/BroadcastPlayer/#requestcreate)<br/>[BroadcastPlayer.onRequestStatus](./manage/BroadcastPlayer/#requeststatus)<br/>[BroadcastPlayer.provideStatus](./manage/BroadcastPlayer/#providestatus)<br/>[BroadcastPlayer.createResponse](./manage/BroadcastPlayer/#createresponse)<br/>[BroadcastPlayer.createError](./manage/BroadcastPlayer/#createerror)<br/>[BroadcastPlayer.statusResponse](./manage/BroadcastPlayer/#statusresponse)<br/>[BroadcastPlayer.statusError](./manage/BroadcastPlayer/#statuserror) |
 
 
 ### `xrn:firebolt:capability:player:streaming`

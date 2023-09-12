@@ -2128,9 +2128,7 @@
 			"tags": [
 				{
 					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:player:broadcast"
-					]
+					"x-provides": "xrn:firebolt:capability:player:broadcast"
 				}
 			],
 			"summary": "Tells listeners the current broadcast status of a player",
@@ -14419,9 +14417,7 @@
 			"tags": [
 				{
 					"name": "capabilities",
-					"x-provides": [
-						"xrn:firebolt:capability:player:base"
-					]
+					"x-provides": "xrn:firebolt:capability:player:base"
 				}
 			],
 			"summary": "Tells listeners the current status of a player",
@@ -14478,9 +14474,7 @@
 			"tags": [
 				{
 					"name": "capabilities",
-					"x-provides": [
-						"xrn:firebolt:capability:player:base"
-					]
+					"x-provides": "xrn:firebolt:capability:player:base"
 				}
 			],
 			"summary": "Tells listeners the current progress of a player",

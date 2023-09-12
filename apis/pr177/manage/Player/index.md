@@ -27,6 +27,8 @@ Version Player 0.17.1-proposed.1
      - [progressError](#progresserror)
      - [progressResponse](#progressresponse)
      - [provide](#provide)
+     - [provideProgress](#provideprogress)
+     - [provideStatus](#providestatus)
      - [status](#status)
      - [statusError](#statuserror)
      - [statusResponse](#statusresponse)
@@ -1148,6 +1150,188 @@ Parameters:
 | `provider` | `any` | Yes | An implementation of the required interface. |
 
 See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
+
+### provideProgress
+
+Tells listeners the current progress of a player
+
+```typescript
+function provideProgress(playerId: string, progress: PlayerProgress): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `playerId` | `string` | true | The id of the player the progress is for  |
+, | `progress` | [`PlayerProgress`](#playerprogress) | true | The progress  |
+
+
+Promise resolution:
+
+```typescript
+void
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| provides | xrn:firebolt:capability:player:base |
+
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Player } from '@firebolt-js/manage-sdk'
+
+Player.provideProgress("123",
+                       {
+                         "speed": 1,
+                         "startPosition": 0,
+                         "position": 5000,
+                         "endPosition": 3600000,
+                         "liveSyncTime": "2021-04-23T18:25:43.511Z"
+                       })
+    .then(providedResponse => {
+        console.log(providedResponse)
+    })
+```
+
+Value of `providedResponse`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Player.provideProgress",
+	"params": {
+		"playerId": "123",
+		"progress": {
+			"speed": 1,
+			"startPosition": 0,
+			"position": 5000,
+			"endPosition": 3600000,
+			"liveSyncTime": "2021-04-23T18:25:43.511Z"
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
+
+### provideStatus
+
+Tells listeners the current status of a player
+
+```typescript
+function provideStatus(playerId: string, status: PlayerStatus): Promise<void>
+```
+
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `playerId` | `string` | true | The id of the player the status is for  |
+, | `status` | [`PlayerStatus`](#playerstatus) | true | The status  |
+
+
+Promise resolution:
+
+```typescript
+void
+```
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| provides | xrn:firebolt:capability:player:base |
+
+
+#### Examples
+
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Player } from '@firebolt-js/manage-sdk'
+
+Player.provideStatus("123",
+                     {
+                       "mediaSessionId": "sess2",
+                       "state": "BLOCKED",
+                       "blockedReason": "CONTENT_NOT_FOUND"
+                     })
+    .then(providedResponse => {
+        console.log(providedResponse)
+    })
+```
+
+Value of `providedResponse`:
+
+```javascript
+null
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Player.provideStatus",
+	"params": {
+		"playerId": "123",
+		"status": {
+			"mediaSessionId": "sess2",
+			"state": "BLOCKED",
+			"blockedReason": "CONTENT_NOT_FOUND"
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": null
+}
+```
+</details>
+
+
+---
 
 ### status
 Gets the latest status for the given player

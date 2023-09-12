@@ -457,7 +457,7 @@ Capabilities:
 
 | Role                  | Capability                 |
 | --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:player:broadcast |
+| provides | xrn:firebolt:capability:player:broadcast |
 
 
 #### Examples
