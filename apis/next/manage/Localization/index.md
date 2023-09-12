@@ -8,7 +8,7 @@ sdk: manage
 
 # Localization Module
 ---
-Version Localization 0.17.1-next.2
+Version Localization 0.17.1-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

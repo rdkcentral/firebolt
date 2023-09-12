@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.17.1-next.2
+Version ClosedCaptions 0.17.1-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
