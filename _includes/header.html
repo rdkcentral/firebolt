@@ -46,7 +46,10 @@
                         {%- if v == version -%}
                         <option selected value="{{v}}">{{v}}</option>
                         {%- else -%}
+                        {%- if v contains 'pr' -%}
+                        {%- else -%}
                         <option value="{{v}}">{{v}}</option>
+                        {%- endif -%}
                         {%- endif -%}
                         {%- endif -%}
                         {%- endfor -%}
