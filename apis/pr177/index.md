@@ -443,13 +443,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Player.load](./manage/Player/#load)<br/>[Player.play](./manage/Player/#play)<br/>[Player.stop](./manage/Player/#stop)<br/>[Player.status](./manage/Player/#status)<br/>[Player.progress](./manage/Player/#progress)<br/>[Player.reportStatus](./manage/Player/#reportstatus)<br/>[Player.reportProgress](./manage/Player/#reportprogress)<br/>[Player.onStatusChanged](./manage/Player/#statuschanged)<br/>[Player.onProgressChanged](./manage/Player/#progresschanged) |
+| [Player.load](./manage/Player/#load)<br/>[Player.play](./manage/Player/#play)<br/>[Player.stop](./manage/Player/#stop)<br/>[Player.status](./manage/Player/#status)<br/>[Player.progress](./manage/Player/#progress)<br/>[Player.onStatusChanged](./manage/Player/#statuschanged)<br/>[Player.onProgressChanged](./manage/Player/#progresschanged) |
 
 
 
 | Provides |
 | -------- |
-| [Player.onRequestLoad](./manage/Player/#requestload)<br/>[Player.onRequestPlay](./manage/Player/#requestplay)<br/>[Player.onRequestStop](./manage/Player/#requeststop)<br/>[Player.onRequestStatus](./manage/Player/#requeststatus)<br/>[Player.onRequestProgress](./manage/Player/#requestprogress)<br/>[Player.loadResponse](./manage/Player/#loadresponse)<br/>[Player.loadError](./manage/Player/#loaderror)<br/>[Player.playResponse](./manage/Player/#playresponse)<br/>[Player.playError](./manage/Player/#playerror)<br/>[Player.stopResponse](./manage/Player/#stopresponse)<br/>[Player.stopError](./manage/Player/#stoperror)<br/>[Player.statusResponse](./manage/Player/#statusresponse)<br/>[Player.statusError](./manage/Player/#statuserror)<br/>[Player.progressResponse](./manage/Player/#progressresponse)<br/>[Player.progressError](./manage/Player/#progresserror) |
+| [Player.onRequestLoad](./manage/Player/#requestload)<br/>[Player.onRequestPlay](./manage/Player/#requestplay)<br/>[Player.onRequestStop](./manage/Player/#requeststop)<br/>[Player.onRequestStatus](./manage/Player/#requeststatus)<br/>[Player.onRequestProgress](./manage/Player/#requestprogress)<br/>[Player.reportStatus](./manage/Player/#reportstatus)<br/>[Player.reportProgress](./manage/Player/#reportprogress)<br/>[Player.loadResponse](./manage/Player/#loadresponse)<br/>[Player.loadError](./manage/Player/#loaderror)<br/>[Player.playResponse](./manage/Player/#playresponse)<br/>[Player.playError](./manage/Player/#playerror)<br/>[Player.stopResponse](./manage/Player/#stopresponse)<br/>[Player.stopError](./manage/Player/#stoperror)<br/>[Player.statusResponse](./manage/Player/#statusresponse)<br/>[Player.statusError](./manage/Player/#statuserror)<br/>[Player.progressResponse](./manage/Player/#progressresponse)<br/>[Player.progressError](./manage/Player/#progresserror) |
 
 
 ### `xrn:firebolt:capability:player:broadcast`

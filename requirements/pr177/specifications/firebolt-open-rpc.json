@@ -13736,7 +13736,16 @@
 				}
 			],
 			"summary": "Starts playing the content that was last loaded",
-			"params": [],
+			"params": [
+				{
+					"name": "playerId",
+					"summary": "The id of the player to stop",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
 			"result": {
 				"name": "playResponse",
 				"schema": {
@@ -13746,7 +13755,12 @@
 			"examples": [
 				{
 					"name": "Default example #1",
-					"params": [],
+					"params": [
+						{
+							"name": "playerId",
+							"value": "app1:123"
+						}
+					],
 					"result": {
 						"name": "playResponse",
 						"value": null
@@ -13765,7 +13779,16 @@
 				}
 			],
 			"summary": "Stops playing the content that was last loaded",
-			"params": [],
+			"params": [
+				{
+					"name": "playerId",
+					"summary": "The id of the player to stop",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
 			"result": {
 				"name": "stopResponse",
 				"schema": {
@@ -13775,7 +13798,12 @@
 			"examples": [
 				{
 					"name": "Default example #1",
-					"params": [],
+					"params": [
+						{
+							"name": "playerId",
+							"value": "app1:123"
+						}
+					],
 					"result": {
 						"name": "stopResponse",
 						"value": null
@@ -14391,7 +14419,7 @@
 			"tags": [
 				{
 					"name": "capabilities",
-					"x-uses": [
+					"x-provides": [
 						"xrn:firebolt:capability:player:base"
 					]
 				}
@@ -14450,7 +14478,7 @@
 			"tags": [
 				{
 					"name": "capabilities",
-					"x-uses": [
+					"x-provides": [
 						"xrn:firebolt:capability:player:base"
 					]
 				}

@@ -27,8 +27,6 @@ Version Player 0.17.1-proposed.1
      - [progressError](#progresserror)
      - [progressResponse](#progressresponse)
      - [provide](#provide)
-     - [reportProgress](#reportprogress)
-     - [reportStatus](#reportstatus)
      - [status](#status)
      - [statusError](#statuserror)
      - [statusResponse](#statusresponse)
@@ -436,9 +434,14 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Starts playing the content that was last loaded
 
 ```typescript
-function play(): Promise<void>
+function play(playerId: string): Promise<void>
 ```
 
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `playerId` | `string` | true | The id of the player to stop  |
 
 
 Promise resolution:
@@ -464,7 +467,7 @@ JavaScript:
 ```javascript
 import { Player } from '@firebolt-js/manage-sdk'
 
-Player.play()
+Player.play("app1:123")
     .then(playResponse => {
         console.log(playResponse)
     })
@@ -484,7 +487,9 @@ Request:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"method": "Player.play",
-	"params": {}
+	"params": {
+		"playerId": "app1:123"
+	}
 }
 ```
 
@@ -1144,188 +1149,6 @@ Parameters:
 
 See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
 
-### reportProgress
-
-Tells listeners the current progress of a player
-
-```typescript
-function reportProgress(playerId: string, progress: PlayerProgress): Promise<void>
-```
-
-Parameters:
-
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `playerId` | `string` | true | The id of the player the progress is for  |
-, | `progress` | [`PlayerProgress`](#playerprogress) | true | The progress report  |
-
-
-Promise resolution:
-
-```typescript
-void
-```
-
-Capabilities:
-
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:player:base |
-
-
-#### Examples
-
-
-Default example #1
-
-JavaScript:
-
-```javascript
-import { Player } from '@firebolt-js/manage-sdk'
-
-Player.reportProgress("123",
-                      {
-                        "speed": 1,
-                        "startPosition": 0,
-                        "position": 5000,
-                        "endPosition": 3600000,
-                        "liveSyncTime": "2021-04-23T18:25:43.511Z"
-                      })
-    .then(reportResponse => {
-        console.log(reportResponse)
-    })
-```
-
-Value of `reportResponse`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Player.reportProgress",
-	"params": {
-		"playerId": "123",
-		"progress": {
-			"speed": 1,
-			"startPosition": 0,
-			"position": 5000,
-			"endPosition": 3600000,
-			"liveSyncTime": "2021-04-23T18:25:43.511Z"
-		}
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-
----
-
-### reportStatus
-
-Tells listeners the current status of a player
-
-```typescript
-function reportStatus(playerId: string, status: PlayerStatus): Promise<void>
-```
-
-Parameters:
-
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `playerId` | `string` | true | The id of the player the status is for  |
-, | `status` | [`PlayerStatus`](#playerstatus) | true | The status report  |
-
-
-Promise resolution:
-
-```typescript
-void
-```
-
-Capabilities:
-
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
-| uses | xrn:firebolt:capability:player:base |
-
-
-#### Examples
-
-
-Default example #1
-
-JavaScript:
-
-```javascript
-import { Player } from '@firebolt-js/manage-sdk'
-
-Player.reportStatus("123",
-                    {
-                      "mediaSessionId": "sess2",
-                      "state": "BLOCKED",
-                      "blockedReason": "CONTENT_NOT_FOUND"
-                    })
-    .then(reportResponse => {
-        console.log(reportResponse)
-    })
-```
-
-Value of `reportResponse`:
-
-```javascript
-null
-```
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Player.reportStatus",
-	"params": {
-		"playerId": "123",
-		"status": {
-			"mediaSessionId": "sess2",
-			"state": "BLOCKED",
-			"blockedReason": "CONTENT_NOT_FOUND"
-		}
-	}
-}
-```
-
-Response:
-
-```json
-{
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
-}
-```
-</details>
-
-
----
-
 ### status
 Gets the latest status for the given player
 
@@ -1765,9 +1588,14 @@ Response:
 Stops playing the content that was last loaded
 
 ```typescript
-function stop(): Promise<void>
+function stop(playerId: string): Promise<void>
 ```
 
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `playerId` | `string` | true | The id of the player to stop  |
 
 
 Promise resolution:
@@ -1793,7 +1621,7 @@ JavaScript:
 ```javascript
 import { Player } from '@firebolt-js/manage-sdk'
 
-Player.stop()
+Player.stop("app1:123")
     .then(stopResponse => {
         console.log(stopResponse)
     })
@@ -1813,7 +1641,9 @@ Request:
 	"jsonrpc": "2.0",
 	"id": 1,
 	"method": "Player.stop",
-	"params": {}
+	"params": {
+		"playerId": "app1:123"
+	}
 }
 ```
 
