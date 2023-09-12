@@ -8,7 +8,7 @@ sdk: manage
 
 # ClosedCaptions Module
 ---
-Version ClosedCaptions 0.17.1-next.3
+Version ClosedCaptions 0.17.1-next.4
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -1917,7 +1917,7 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": "solid"
+	"result": "uniform"
 }
 ```
 </details>
@@ -2040,7 +2040,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-ClosedCaptions.fontEdge("solid")
+ClosedCaptions.fontEdge("uniform")
     .then(result => {
         console.log(result)
     })
@@ -2061,7 +2061,7 @@ Request:
 	"id": 1,
 	"method": "ClosedCaptions.setFontEdge",
 	"params": {
-		"value": "solid"
+		"value": "uniform"
 	}
 }
 ```
@@ -2227,7 +2227,7 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": "solid"
+	"result": "uniform"
 }
 ```
 </details>
@@ -2794,7 +2794,7 @@ ClosedCaptions.fontFamily()
 Value of `family`:
 
 ```javascript
-"monospace"
+"monospaced_sanserif"
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -2815,7 +2815,7 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": "monospace"
+	"result": "monospaced_sanserif"
 }
 ```
 </details>
@@ -2836,7 +2836,7 @@ ClosedCaptions.fontFamily()
 Value of `family`:
 
 ```javascript
-"monospace"
+"monospaced_sanserif"
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -2878,7 +2878,7 @@ ClosedCaptions.fontFamily()
 Value of `family`:
 
 ```javascript
-"monospace"
+"monospaced_sanserif"
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -2936,7 +2936,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-ClosedCaptions.fontFamily("monospace")
+ClosedCaptions.fontFamily("monospaced_sanserif")
     .then(result => {
         console.log(result)
     })
@@ -2957,7 +2957,7 @@ Request:
 	"id": 1,
 	"method": "ClosedCaptions.setFontFamily",
 	"params": {
-		"value": "monospace"
+		"value": "monospaced_sanserif"
 	}
 }
 ```
@@ -3099,7 +3099,7 @@ fontFamily(value => {
 Value of `family`:
 
 ```javascript
-"monospace"
+"monospaced_sanserif"
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -3122,7 +3122,7 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": "monospace"
+	"result": "monospaced_sanserif"
 }
 ```
 </details>
@@ -3144,7 +3144,7 @@ fontFamily(value => {
 Value of `family`:
 
 ```javascript
-"monospace"
+"monospaced_sanserif"
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -3189,7 +3189,7 @@ fontFamily(value => {
 Value of `family`:
 
 ```javascript
-"monospace"
+"monospaced_sanserif"
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>

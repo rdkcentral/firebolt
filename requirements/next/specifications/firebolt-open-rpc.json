@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "0.17.1-next.3",
+		"version": "0.17.1-next.4",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -163,7 +163,7 @@
 						"value": {
 							"enabled": true,
 							"styles": {
-								"fontFamily": "Monospace sans-serif",
+								"fontFamily": "monospaced_sanserif",
 								"fontSize": 1,
 								"fontColor": "#ffffff",
 								"fontEdge": "none",
@@ -216,7 +216,7 @@
 						"value": {
 							"enabled": true,
 							"styles": {
-								"fontFamily": "Monospace sans-serif",
+								"fontFamily": "monospaced_sanserif",
 								"fontSize": 1,
 								"fontColor": "#ffffff",
 								"fontEdge": "none",
@@ -403,7 +403,7 @@
 						"value": {
 							"enabled": true,
 							"styles": {
-								"fontFamily": "Monospace sans-serif",
+								"fontFamily": "monospaced_sanserif",
 								"fontSize": 1,
 								"fontColor": "#ffffff",
 								"fontEdge": "none",
@@ -2840,7 +2840,7 @@
 					"params": [],
 					"result": {
 						"name": "family",
-						"value": "monospace"
+						"value": "monospaced_sanserif"
 					}
 				},
 				{
@@ -2992,7 +2992,7 @@
 					"params": [],
 					"result": {
 						"name": "edge",
-						"value": "solid"
+						"value": "uniform"
 					}
 				},
 				{
@@ -3561,7 +3561,7 @@
 					],
 					"result": {
 						"name": "family",
-						"value": "monospace"
+						"value": "monospaced_sanserif"
 					}
 				},
 				{
@@ -3823,7 +3823,7 @@
 					],
 					"result": {
 						"name": "edge",
-						"value": "solid"
+						"value": "uniform"
 					}
 				},
 				{
@@ -4680,7 +4680,7 @@
 					"params": [
 						{
 							"name": "value",
-							"value": "monospace"
+							"value": "monospaced_sanserif"
 						}
 					],
 					"result": {
@@ -4909,7 +4909,7 @@
 					"params": [
 						{
 							"name": "value",
-							"value": "solid"
+							"value": "uniform"
 						}
 					],
 					"result": {
@@ -18219,7 +18219,7 @@
 					{
 						"enabled": true,
 						"styles": {
-							"fontFamily": "Monospace sans-serif",
+							"fontFamily": "monospaced_serif",
 							"fontSize": 1,
 							"fontColor": "#ffffff",
 							"fontEdge": "none",
@@ -18316,6 +18316,16 @@
 				"type": [
 					"string",
 					"null"
+				],
+				"enum": [
+					"monospaced_serif",
+					"proportional_serif",
+					"monospaced_sanserif",
+					"proportional_sanserif",
+					"smallcaps",
+					"cursive",
+					"casual",
+					null
 				]
 			},
 			"FontSize": {
@@ -18335,6 +18345,15 @@
 				"type": [
 					"string",
 					"null"
+				],
+				"enum": [
+					"none",
+					"raised",
+					"depressed",
+					"uniform",
+					"drop_shadow_left",
+					"drop_shadow_right",
+					null
 				]
 			},
 			"Opacity": {
