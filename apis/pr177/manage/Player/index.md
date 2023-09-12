@@ -443,7 +443,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `playerId` | `string` | true | The id of the player to stop  |
+| `playerId` | `string` | true | The id of the player to start playing  |
 
 
 Promise resolution:
