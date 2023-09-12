@@ -2030,7 +2030,7 @@
 		},
 		{
 			"name": "BroadcastPlayer.onRequestStatus",
-			"summary": "Registers as a provider for when broadcast player status needs to be reported",
+			"summary": "Registers as a provider for when broadcast player status needs to be provided",
 			"params": [
 				{
 					"name": "listen",
@@ -2124,7 +2124,7 @@
 			]
 		},
 		{
-			"name": "BroadcastPlayer.reportStatus",
+			"name": "BroadcastPlayer.provideStatus",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -2145,7 +2145,7 @@
 				},
 				{
 					"name": "status",
-					"summary": "The status report",
+					"summary": "The status",
 					"schema": {
 						"$ref": "#/components/schemas/BroadcastPlayerStatus"
 					},
@@ -2153,7 +2153,7 @@
 				}
 			],
 			"result": {
-				"name": "reportResponse",
+				"name": "providedResponse",
 				"schema": {
 					"const": null
 				}
@@ -2177,7 +2177,7 @@
 						}
 					],
 					"result": {
-						"name": "reportResponse",
+						"name": "providedResponse",
 						"value": null
 					}
 				}
@@ -14227,7 +14227,7 @@
 		},
 		{
 			"name": "Player.onRequestStatus",
-			"summary": "Registers as a provider for when player status needs to be reported",
+			"summary": "Registers as a provider for when player status needs to be provided",
 			"params": [
 				{
 					"name": "listen",
@@ -14320,7 +14320,7 @@
 		},
 		{
 			"name": "Player.onRequestProgress",
-			"summary": "Registers as a provider for when player progress needs to be reported",
+			"summary": "Registers as a provider for when player progress needs to be provided",
 			"params": [
 				{
 					"name": "listen",
@@ -14415,7 +14415,7 @@
 			]
 		},
 		{
-			"name": "Player.reportStatus",
+			"name": "Player.provideStatus",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -14436,7 +14436,7 @@
 				},
 				{
 					"name": "status",
-					"summary": "The status report",
+					"summary": "The status",
 					"schema": {
 						"$ref": "#/components/schemas/PlayerStatus"
 					},
@@ -14444,7 +14444,7 @@
 				}
 			],
 			"result": {
-				"name": "reportResponse",
+				"name": "providedResponse",
 				"schema": {
 					"const": null
 				}
@@ -14467,14 +14467,14 @@
 						}
 					],
 					"result": {
-						"name": "reportResponse",
+						"name": "providedResponse",
 						"value": null
 					}
 				}
 			]
 		},
 		{
-			"name": "Player.reportProgress",
+			"name": "Player.provideProgress",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -14495,7 +14495,7 @@
 				},
 				{
 					"name": "progress",
-					"summary": "The progress report",
+					"summary": "The progress",
 					"schema": {
 						"$ref": "#/components/schemas/PlayerProgress"
 					},
@@ -14503,7 +14503,7 @@
 				}
 			],
 			"result": {
-				"name": "reportResponse",
+				"name": "providedResponse",
 				"schema": {
 					"const": null
 				}
@@ -14528,7 +14528,7 @@
 						}
 					],
 					"result": {
-						"name": "reportResponse",
+						"name": "providedResponse",
 						"value": null
 					}
 				}

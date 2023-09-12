@@ -449,14 +449,14 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Provides |
 | -------- |
-| [Player.onRequestLoad](./manage/Player/#requestload)<br/>[Player.onRequestPlay](./manage/Player/#requestplay)<br/>[Player.onRequestStop](./manage/Player/#requeststop)<br/>[Player.onRequestStatus](./manage/Player/#requeststatus)<br/>[Player.onRequestProgress](./manage/Player/#requestprogress)<br/>[Player.reportStatus](./manage/Player/#reportstatus)<br/>[Player.reportProgress](./manage/Player/#reportprogress)<br/>[Player.loadResponse](./manage/Player/#loadresponse)<br/>[Player.loadError](./manage/Player/#loaderror)<br/>[Player.playResponse](./manage/Player/#playresponse)<br/>[Player.playError](./manage/Player/#playerror)<br/>[Player.stopResponse](./manage/Player/#stopresponse)<br/>[Player.stopError](./manage/Player/#stoperror)<br/>[Player.statusResponse](./manage/Player/#statusresponse)<br/>[Player.statusError](./manage/Player/#statuserror)<br/>[Player.progressResponse](./manage/Player/#progressresponse)<br/>[Player.progressError](./manage/Player/#progresserror) |
+| [Player.onRequestLoad](./manage/Player/#requestload)<br/>[Player.onRequestPlay](./manage/Player/#requestplay)<br/>[Player.onRequestStop](./manage/Player/#requeststop)<br/>[Player.onRequestStatus](./manage/Player/#requeststatus)<br/>[Player.onRequestProgress](./manage/Player/#requestprogress)<br/>[Player.provideStatus](./manage/Player/#providestatus)<br/>[Player.provideProgress](./manage/Player/#provideprogress)<br/>[Player.loadResponse](./manage/Player/#loadresponse)<br/>[Player.loadError](./manage/Player/#loaderror)<br/>[Player.playResponse](./manage/Player/#playresponse)<br/>[Player.playError](./manage/Player/#playerror)<br/>[Player.stopResponse](./manage/Player/#stopresponse)<br/>[Player.stopError](./manage/Player/#stoperror)<br/>[Player.statusResponse](./manage/Player/#statusresponse)<br/>[Player.statusError](./manage/Player/#statuserror)<br/>[Player.progressResponse](./manage/Player/#progressresponse)<br/>[Player.progressError](./manage/Player/#progresserror) |
 
 
 ### `xrn:firebolt:capability:player:broadcast`
 
 | Uses |
 | ---- |
-| [BroadcastPlayer.create](./manage/BroadcastPlayer/#create)<br/>[BroadcastPlayer.status](./manage/BroadcastPlayer/#status)<br/>[BroadcastPlayer.reportStatus](./manage/BroadcastPlayer/#reportstatus)<br/>[BroadcastPlayer.onStatusChanged](./manage/BroadcastPlayer/#statuschanged) |
+| [BroadcastPlayer.create](./manage/BroadcastPlayer/#create)<br/>[BroadcastPlayer.status](./manage/BroadcastPlayer/#status)<br/>[BroadcastPlayer.provideStatus](./manage/BroadcastPlayer/#providestatus)<br/>[BroadcastPlayer.onStatusChanged](./manage/BroadcastPlayer/#statuschanged) |
 
 
 

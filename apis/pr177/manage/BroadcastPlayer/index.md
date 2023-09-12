@@ -21,7 +21,7 @@ Version BroadcastPlayer 0.17.1-proposed.1
      - [listen](#listen)
      - [once](#once)
      - [provide](#provide)
-     - [reportStatus](#reportstatus)
+     - [provideStatus](#providestatus)
      - [status](#status)
      - [statusError](#statuserror)
      - [statusResponse](#statusresponse)
@@ -431,12 +431,12 @@ Parameters:
 
 See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
 
-### reportStatus
+### provideStatus
 
 Tells listeners the current broadcast status of a player
 
 ```typescript
-function reportStatus(playerId: string, status: BroadcastPlayerStatus): Promise<void>
+function provideStatus(playerId: string, status: BroadcastPlayerStatus): Promise<void>
 ```
 
 Parameters:
@@ -444,7 +444,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `playerId` | `string` | true | The id of the player the status is for  |
-, | `status` | [`BroadcastPlayerStatus`](#broadcastplayerstatus) | true | The status report  |
+, | `status` | [`BroadcastPlayerStatus`](#broadcastplayerstatus) | true | The status  |
 
 
 Promise resolution:
@@ -470,19 +470,19 @@ JavaScript:
 ```javascript
 import { BroadcastPlayer } from '@firebolt-js/manage-sdk'
 
-BroadcastPlayer.reportStatus("123",
-                             {
-                               "locked": false,
-                               "frequency": 695000000,
-                               "signalStrength": 90,
-                               "signalQuality": 90
-                             })
-    .then(reportResponse => {
-        console.log(reportResponse)
+BroadcastPlayer.provideStatus("123",
+                              {
+                                "locked": false,
+                                "frequency": 695000000,
+                                "signalStrength": 90,
+                                "signalQuality": 90
+                              })
+    .then(providedResponse => {
+        console.log(providedResponse)
     })
 ```
 
-Value of `reportResponse`:
+Value of `providedResponse`:
 
 ```javascript
 null
@@ -495,7 +495,7 @@ Request:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"method": "BroadcastPlayer.reportStatus",
+	"method": "BroadcastPlayer.provideStatus",
 	"params": {
 		"playerId": "123",
 		"status": {
@@ -1004,7 +1004,7 @@ Response:
 
 *This is an private RPC method.*
 
-Registers as a provider for when broadcast player status needs to be reported
+Registers as a provider for when broadcast player status needs to be provided
 
 Parameters:
 
@@ -1110,7 +1110,7 @@ Promise resolution:
 
 #### status
 
-Registers as a provider for when broadcast player status needs to be reported
+Registers as a provider for when broadcast player status needs to be provided
 
 ```typescript
 function status(parameters?: PlayerRequest, session?: ProviderSession): Promise<BroadcastPlayerStatus>

@@ -1962,7 +1962,7 @@ Response:
 
 *This is an private RPC method.*
 
-Registers as a provider for when player progress needs to be reported
+Registers as a provider for when player progress needs to be provided
 
 Parameters:
 
@@ -2025,7 +2025,7 @@ Response:
 
 *This is an private RPC method.*
 
-Registers as a provider for when player status needs to be reported
+Registers as a provider for when player status needs to be provided
 
 Parameters:
 
@@ -2287,7 +2287,7 @@ Promise resolution:
 
 #### status
 
-Registers as a provider for when player status needs to be reported
+Registers as a provider for when player status needs to be provided
 
 ```typescript
 function status(parameters?: PlayerRequest, session?: ProviderSession): Promise<PlayerStatus>
@@ -2326,7 +2326,7 @@ Promise resolution:
 
 #### progress
 
-Registers as a provider for when player progress needs to be reported
+Registers as a provider for when player progress needs to be provided
 
 ```typescript
 function progress(parameters?: PlayerRequest, session?: ProviderSession): Promise<PlayerProgress>
