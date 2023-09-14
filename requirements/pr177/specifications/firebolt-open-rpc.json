@@ -166,7 +166,7 @@
 						"value": {
 							"enabled": true,
 							"styles": {
-								"fontFamily": "Monospace sans-serif",
+								"fontFamily": "monospaced_sanserif",
 								"fontSize": 1,
 								"fontColor": "#ffffff",
 								"fontEdge": "none",
@@ -219,7 +219,7 @@
 						"value": {
 							"enabled": true,
 							"styles": {
-								"fontFamily": "Monospace sans-serif",
+								"fontFamily": "monospaced_sanserif",
 								"fontSize": 1,
 								"fontColor": "#ffffff",
 								"fontEdge": "none",
@@ -406,7 +406,7 @@
 						"value": {
 							"enabled": true,
 							"styles": {
-								"fontFamily": "Monospace sans-serif",
+								"fontFamily": "monospaced_sanserif",
 								"fontSize": 1,
 								"fontColor": "#ffffff",
 								"fontEdge": "none",
@@ -3630,7 +3630,7 @@
 					"params": [],
 					"result": {
 						"name": "family",
-						"value": "monospace"
+						"value": "monospaced_sanserif"
 					}
 				},
 				{
@@ -3782,7 +3782,7 @@
 					"params": [],
 					"result": {
 						"name": "edge",
-						"value": "solid"
+						"value": "uniform"
 					}
 				},
 				{
@@ -4351,7 +4351,7 @@
 					],
 					"result": {
 						"name": "family",
-						"value": "monospace"
+						"value": "monospaced_sanserif"
 					}
 				},
 				{
@@ -4613,7 +4613,7 @@
 					],
 					"result": {
 						"name": "edge",
-						"value": "solid"
+						"value": "uniform"
 					}
 				},
 				{
@@ -5470,7 +5470,7 @@
 					"params": [
 						{
 							"name": "value",
-							"value": "monospace"
+							"value": "monospaced_sanserif"
 						}
 					],
 					"result": {
@@ -5699,7 +5699,7 @@
 					"params": [
 						{
 							"name": "value",
-							"value": "solid"
+							"value": "uniform"
 						}
 					],
 					"result": {
@@ -21564,7 +21564,7 @@
 					{
 						"enabled": true,
 						"styles": {
-							"fontFamily": "Monospace sans-serif",
+							"fontFamily": "monospaced_serif",
 							"fontSize": 1,
 							"fontColor": "#ffffff",
 							"fontEdge": "none",
@@ -21661,6 +21661,16 @@
 				"type": [
 					"string",
 					"null"
+				],
+				"enum": [
+					"monospaced_serif",
+					"proportional_serif",
+					"monospaced_sanserif",
+					"proportional_sanserif",
+					"smallcaps",
+					"cursive",
+					"casual",
+					null
 				]
 			},
 			"FontSize": {
@@ -21680,6 +21690,15 @@
 				"type": [
 					"string",
 					"null"
+				],
+				"enum": [
+					"none",
+					"raised",
+					"depressed",
+					"uniform",
+					"drop_shadow_left",
+					"drop_shadow_right",
+					null
 				]
 			},
 			"Opacity": {

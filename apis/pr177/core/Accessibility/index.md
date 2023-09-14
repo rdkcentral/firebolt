@@ -235,7 +235,7 @@ Value of `closedCaptionsSettings`:
 {
 	"enabled": true,
 	"styles": {
-		"fontFamily": "Monospace sans-serif",
+		"fontFamily": "monospaced_sanserif",
 		"fontSize": 1,
 		"fontColor": "#ffffff",
 		"fontEdge": "none",
@@ -276,7 +276,7 @@ Response:
 	"result": {
 		"enabled": true,
 		"styles": {
-			"fontFamily": "Monospace sans-serif",
+			"fontFamily": "monospaced_sanserif",
 			"fontSize": 1,
 			"fontColor": "#ffffff",
 			"fontEdge": "none",
@@ -345,7 +345,7 @@ Value of `closedCaptionsSettings`:
 {
 	"enabled": true,
 	"styles": {
-		"fontFamily": "Monospace sans-serif",
+		"fontFamily": "monospaced_sanserif",
 		"fontSize": 1,
 		"fontColor": "#ffffff",
 		"fontEdge": "none",
@@ -386,7 +386,7 @@ Response:
 	"result": {
 		"enabled": true,
 		"styles": {
-			"fontFamily": "Monospace sans-serif",
+			"fontFamily": "monospaced_sanserif",
 			"fontSize": 1,
 			"fontColor": "#ffffff",
 			"fontEdge": "none",
@@ -450,7 +450,7 @@ Value of `closedCaptionsSettings`:
 {
 	"enabled": true,
 	"styles": {
-		"fontFamily": "Monospace sans-serif",
+		"fontFamily": "monospaced_sanserif",
 		"fontSize": 1,
 		"fontColor": "#ffffff",
 		"fontEdge": "none",
@@ -493,7 +493,7 @@ Response:
 	"result": {
 		"enabled": true,
 		"styles": {
-			"fontFamily": "Monospace sans-serif",
+			"fontFamily": "monospaced_sanserif",
 			"fontSize": 1,
 			"fontColor": "#ffffff",
 			"fontEdge": "none",
