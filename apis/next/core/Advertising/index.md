@@ -8,7 +8,7 @@ sdk: core
 
 # Advertising Module
 ---
-Version Advertising 0.18.0-next.1
+Version Advertising 0.18.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
