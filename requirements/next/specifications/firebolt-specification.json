@@ -897,7 +897,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "0.17.1-next.4",
+				"version": "0.18.0-next.1",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -17154,6 +17154,14 @@
 								"minItems": 1
 							},
 							"required": true
+						},
+						{
+							"name": "options",
+							"summary": "Request options",
+							"schema": {
+								"$ref": "#/components/schemas/RequestOptions"
+							},
+							"required": false
 						}
 					],
 					"result": {
@@ -17168,7 +17176,7 @@
 					},
 					"examples": [
 						{
-							"name": "Default result",
+							"name": "Default result #1",
 							"params": [
 								{
 									"name": "appId",
@@ -17182,6 +17190,45 @@
 											"capability": "xrn:firebolt:capability:localization:postal-code"
 										}
 									]
+								}
+							],
+							"result": {
+								"name": "defaultResult",
+								"value": [
+									{
+										"app": {
+											"id": "certapp",
+											"title": "Certification App"
+										},
+										"state": "granted",
+										"capability": "xrn:firebolt:capability:localization:postal-code",
+										"role": "use",
+										"lifespan": "powerActive"
+									}
+								]
+							}
+						},
+						{
+							"name": "Default result #2",
+							"params": [
+								{
+									"name": "appId",
+									"value": "certapp"
+								},
+								{
+									"name": "permissions",
+									"value": [
+										{
+											"role": "use",
+											"capability": "xrn:firebolt:capability:localization:postal-code"
+										}
+									]
+								},
+								{
+									"name": "options",
+									"value": {
+										"force": true
+									}
 								}
 							],
 							"result": {
@@ -18823,6 +18870,16 @@
 						},
 						"additionalProperties": false,
 						"required": []
+					},
+					"RequestOptions": {
+						"title": "RequestOptions",
+						"type": "object",
+						"properties": {
+							"force": {
+								"type": "boolean",
+								"description": "Whether to force for user grant even if the previous decision stored"
+							}
+						}
 					},
 					"AccessPointList": {
 						"title": "AccessPointList",
