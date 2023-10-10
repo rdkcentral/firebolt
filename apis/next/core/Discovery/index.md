@@ -8,7 +8,7 @@ sdk: core
 
 # Discovery Module
 ---
-Version Discovery 0.18.0-next.2
+Version Discovery 0.18.0-next.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -2098,7 +2098,12 @@ Response:
 
 ### launch
 
-Launch or foreground the specified app, and optionally instructs it to navigate to the specified user action
+Launch or foreground the specified app, and optionally instructs it to navigate to the specified user action. 
+ For the Primary Experience, the appId can be any one of:  
+
+ - xrn:firebolt:application-type:main 
+
+ - xrn:firebolt:application-type:settings
 
 ```typescript
 function launch(appId: string, intent?: NavigationIntent): Promise<boolean>
@@ -2317,7 +2322,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main",
+Discovery.launch("xrn:firebolt:application-type:main",
                  {
                    "action": "entity",
                    "data": {
@@ -2349,7 +2354,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:main",
 		"intent": {
 			"action": "entity",
 			"data": {
@@ -2383,7 +2388,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main",
+Discovery.launch("xrn:firebolt:application-type:main",
                  {
                    "action": "section",
                    "data": {
@@ -2413,7 +2418,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:main",
 		"intent": {
 			"action": "section",
 			"data": {
@@ -2445,7 +2450,13 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main", {"action":"home","context":{"source":"voice"}})
+Discovery.launch("xrn:firebolt:application-type:main",
+                 {
+                   "action": "home",
+                   "context": {
+                     "source": "voice"
+                   }
+                 })
     .then(success => {
         console.log(success)
     })
@@ -2466,7 +2477,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:main",
 		"intent": {
 			"action": "home",
 			"context": {
@@ -2495,7 +2506,13 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main", {"action":"search","context":{"source":"voice"}})
+Discovery.launch("xrn:firebolt:application-type:main",
+                 {
+                   "action": "search",
+                   "context": {
+                     "source": "voice"
+                   }
+                 })
     .then(success => {
         console.log(success)
     })
@@ -2516,7 +2533,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:main",
 		"intent": {
 			"action": "search",
 			"context": {
@@ -2545,7 +2562,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main",
+Discovery.launch("xrn:firebolt:application-type:settings ",
                  {
                    "action": "section",
                    "data": {
@@ -2575,7 +2592,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:settings ",
 		"intent": {
 			"action": "section",
 			"data": {
@@ -2607,7 +2624,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main",
+Discovery.launch("xrn:firebolt:application-type:main",
                  {
                    "action": "section",
                    "data": {
@@ -2637,7 +2654,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:main",
 		"intent": {
 			"action": "section",
 			"data": {
@@ -2662,14 +2679,14 @@ Response:
 ```
 </details>
 
-Launch the Aggregated Experience to the App Store details page for a specfic app with the ID 'foo'.
+Launch the Aggregated Experience to the App Store details page for a specific app with the ID 'foo'.
 
 JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-Discovery.launch("urn:firebolt:apps:main",
+Discovery.launch("xrn:firebolt:application-type:main ",
                  {
                    "action": "section",
                    "data": {
@@ -2699,7 +2716,7 @@ Request:
 	"id": 1,
 	"method": "Discovery.launch",
 	"params": {
-		"appId": "urn:firebolt:apps:main",
+		"appId": "xrn:firebolt:application-type:main ",
 		"intent": {
 			"action": "section",
 			"data": {
@@ -3414,7 +3431,7 @@ Response:
 
 ### signIn
 
-Inform the platform that your user is signed in, for increased visiblity in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
+Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
 
 ```typescript
 function signIn(entitlements?: Entitlement[]): Promise<boolean>
