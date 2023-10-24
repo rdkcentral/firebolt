@@ -8,7 +8,7 @@ sdk: manage
 
 # SecureStorage Module
 ---
-Version SecureStorage 0.18.0-next.3
+Version SecureStorage 0.18.0-next.4
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

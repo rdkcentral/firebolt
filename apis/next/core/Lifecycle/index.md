@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 0.18.0-next.3
+Version Lifecycle 0.18.0-next.4
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
