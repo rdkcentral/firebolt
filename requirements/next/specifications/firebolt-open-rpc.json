@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "0.18.0-next.4",
+		"version": "0.18.0-next.5",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -18810,11 +18810,18 @@
 						"description": "Title of the entity."
 					},
 					"entityType": {
-						"const": "program",
-						"description": "The type of the entity. If `program`, then `programType` must be provided."
+						"type": "string",
+						"enum": [
+							"program",
+							"music"
+						],
+						"description": "The type of the entity, e.g. `program` or `music`."
 					},
 					"programType": {
 						"$ref": "#/x-schemas/Entertainment/ProgramType"
+					},
+					"musicType": {
+						"$ref": "#/x-schemas/Entertainment/MusicType"
 					},
 					"synopsis": {
 						"type": "string",
@@ -18855,6 +18862,33 @@
 						},
 						"description": "An array of ways a user is might watch this entity, regardless of entitlements."
 					}
+				},
+				"if": {
+					"properties": {
+						"entityType": {
+							"const": "program"
+						}
+					}
+				},
+				"then": {
+					"required": [
+						"programType"
+					],
+					"not": {
+						"required": [
+							"musicType"
+						]
+					}
+				},
+				"else": {
+					"required": [
+						"musicType"
+					],
+					"not": {
+						"required": [
+							"programType"
+						]
+					}
 				}
 			},
 			"OfferingType": {
@@ -18885,6 +18919,15 @@
 					"advertisement",
 					"musicVideo",
 					"minisode"
+				]
+			},
+			"MusicType": {
+				"title": "MusicType",
+				"type": "string",
+				"description": "In the case of a music `entityType`, specifies the type of music entity.",
+				"enum": [
+					"song",
+					"album"
 				]
 			},
 			"ContentRating": {
@@ -19034,6 +19077,12 @@
 					},
 					{
 						"$ref": "#/x-schemas/Intents/TuneIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/PlayEntityIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/PlayQueryIntent"
 					}
 				]
 			},
@@ -19174,17 +19223,7 @@
 								"const": "playback"
 							},
 							"data": {
-								"anyOf": [
-									{
-										"$ref": "#/x-schemas/Intents/MovieEntity"
-									},
-									{
-										"$ref": "#/x-schemas/Intents/TVEpisodeEntity"
-									},
-									{
-										"$ref": "#/x-schemas/Intents/AdditionalEntity"
-									}
-								]
+								"$ref": "#/x-schemas/Intents/PlayableEntity"
 							}
 						}
 					}
@@ -19367,6 +19406,222 @@
 					}
 				]
 			},
+			"PlayEntityIntent": {
+				"description": "A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.",
+				"title": "PlayEntityIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"required": [
+							"data"
+						],
+						"properties": {
+							"action": {
+								"const": "play-entity"
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"entity": {
+										"$ref": "#/x-schemas/Intents/PlayableEntity"
+									},
+									"options": {
+										"type": "object",
+										"properties": {
+											"playFirstId": {
+												"type": "string"
+											},
+											"playFirstTrack": {
+												"type": "integer",
+												"minimum": 1
+											}
+										},
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"entity"
+								],
+								"propertyNames": {
+									"enum": [
+										"entity",
+										"options"
+									]
+								},
+								"if": {
+									"properties": {
+										"entity": {
+											"type": "object",
+											"required": [
+												"entityType"
+											],
+											"properties": {
+												"entityType": {
+													"const": "playlist"
+												}
+											}
+										}
+									}
+								},
+								"then": {
+									"type": "object",
+									"properties": {
+										"options": {
+											"maxProperties": 1
+										}
+									}
+								},
+								"else": {
+									"type": "object",
+									"properties": {
+										"options": {
+											"maxProperties": 0
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "play-entity",
+						"data": {
+							"entity": {
+								"entityType": "playlist",
+								"entityId": "playlist/xyz"
+							},
+							"options": {
+								"playFirstId": "song/xyz"
+							}
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "play-entity",
+						"data": {
+							"entity": {
+								"entityType": "playlist",
+								"entityId": "playlist/xyz"
+							},
+							"options": {
+								"playFirstTrack": 3
+							}
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"PlayQueryIntent": {
+				"description": "A Firebolt compliant representation of a user intention to navigate an app to a the video player for an abstract query to be searched for and played by the app.",
+				"title": "PlayQueryIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"required": [
+							"data"
+						],
+						"properties": {
+							"action": {
+								"const": "play-query"
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"query": {
+										"type": "string"
+									},
+									"options": {
+										"type": "object",
+										"properties": {
+											"programTypes": {
+												"type": "array",
+												"items": {
+													"$ref": "#/x-schemas/Entertainment/ProgramType"
+												}
+											},
+											"musicTypes": {
+												"type": "array",
+												"items": {
+													"$ref": "#/x-schemas/Entertainment/MusicType"
+												}
+											}
+										},
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"query"
+								],
+								"propertyNames": {
+									"enum": [
+										"query",
+										"options"
+									]
+								}
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "play-query",
+						"data": {
+							"query": "Ed Sheeran"
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "play-query",
+						"data": {
+							"query": "Ed Sheeran",
+							"options": {
+								"programTypes": [
+									"movie"
+								]
+							}
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "play-query",
+						"data": {
+							"query": "Ed Sheeran",
+							"options": {
+								"programTypes": [
+									"movie"
+								],
+								"musicTypes": [
+									"song"
+								]
+							}
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
 			"Intent": {
 				"description": "A Firebolt compliant representation of a user intention.",
 				"type": "object",
@@ -19385,13 +19640,7 @@
 						],
 						"properties": {
 							"source": {
-								"type": "string",
-								"enum": [
-									"voice",
-									"channel-lineup",
-									"editorial",
-									"device"
-								]
+								"type": "string"
 							}
 						}
 					}
@@ -19678,6 +19927,23 @@
 					}
 				]
 			},
+			"PlayableEntity": {
+				"title": "PlayableEntity",
+				"anyOf": [
+					{
+						"$ref": "#/x-schemas/Intents/MovieEntity"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/TVEpisodeEntity"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/PlaylistEntity"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/AdditionalEntity"
+					}
+				]
+			},
 			"ChannelEntity": {
 				"title": "ChannelEntity",
 				"type": "object",
@@ -19730,6 +19996,37 @@
 			},
 			"Identifier": {
 				"type": "string"
+			},
+			"PlaylistEntity": {
+				"title": "PlaylistEntity",
+				"description": "A Firebolt compliant representation of a Playlist entity.",
+				"type": "object",
+				"required": [
+					"entityType",
+					"entityId"
+				],
+				"properties": {
+					"entityType": {
+						"const": "playlist"
+					},
+					"entityId": {
+						"$ref": "#/x-schemas/Intents/Identifier"
+					},
+					"assetId": {
+						"$ref": "#/x-schemas/Intents/Identifier"
+					},
+					"appContentData": {
+						"type": "string",
+						"maxLength": 256
+					}
+				},
+				"additionalProperties": false,
+				"examples": [
+					{
+						"entityType": "playlist",
+						"entityId": "playlist/xyz"
+					}
+				]
 			}
 		},
 		"Lifecycle": {
