@@ -8,18 +8,23 @@ type: specification
 ---
 # Channel Entities
 
-Document Status: Working Draft
+Document Status: Proposed Specification 
 
-See [Firebolt Requirements Governance](../../../governance) for more info.
+See [Firebolt Requirements Governance](../../../governance) for more info. 
 
-| Contributor    | Organization   |
-| -------------- | -------------- |
-| Jeremy LaCivita       | Comcast |
+| Contributor     | Organization |
+| --------------- | ------------ |
+| Jeremy LaCivita | Comcast      |
 
 ## 1. Overview
-TBD...
+TBD... 
 
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in [BCP 14](https://www.rfc-editor.org/rfc/rfc2119.txt) [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL 
+NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT 
+RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be 
+interpreted as described in [BCP 
+14](https://www.rfc-editor.org/rfc/rfc2119.txt) [RFC2119] [RFC8174] when, and 
+only when, they appear in all capitals, as shown here. 
 
 ## 2. Table of Contents
 - [1. Overview](#1-overview)
@@ -28,16 +33,18 @@ The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL 
 
 
 ## 3. Channel Entities
-Every Channel Entity **MUST** be an [Entity](../index#3-entities).
+Every Channel Entity **MUST** be an [Entity](../index#3-entities). 
 
-Every Channel Entity **MUST** have a `const` property named `entityType`, which **MUST** have the value `"channel"`.
+Every Channel Entity **MUST** have a `const` property named `entityType`, which 
+**MUST** have the value `"channel"`. 
 
-Every Channel Entity **MUST** have a `string` property named `channelType`, whose value **MUST** be one of:
+Every Channel Entity **MUST** have a `string` property named `channelType`, 
+whose value **MUST** be one of: 
 
  - `"streaming"`
  - `"broadcast"`
 
-An example Channel Entity:
+An example Channel Entity: 
 
 ```json
 {
@@ -45,9 +52,9 @@ An example Channel Entity:
     "channelType": "streaming",
     "entityId": "streaming/xyz"
 }
-```
+``` 
 
-Another example Channel Entity:
+Another example Channel Entity: 
 
 ```json
 {
@@ -55,4 +62,4 @@ Another example Channel Entity:
     "channelType": "broadcast",
     "entityId": "broadcast/xyz"
 }
-```
+``` 
