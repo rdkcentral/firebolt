@@ -52,7 +52,7 @@ A Firebolt compliant representation of a user intention.
 type Intent = {
   action: string
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -114,7 +114,7 @@ type SearchIntent = {
     query: string
   }
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -133,7 +133,7 @@ type SectionIntent = {
     sectionName: string
   }
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -191,7 +191,7 @@ type PlayQueryIntent = {
     }
   }
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -210,7 +210,7 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 type HomeIntent = {
   action: "home"
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -226,7 +226,7 @@ A Firebolt compliant representation of a user intention to launch an app.
 type LaunchIntent = {
   action: "launch"
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -337,7 +337,7 @@ type EntityIntent = {
   action: "entity"
   data: MovieEntity | TVEpisodeEntity | TVSeriesEntity | TVSeasonEntity | AdditionalEntity | UntypedEntity
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -378,13 +378,13 @@ type TuneIntent = {
   data: {
     entity: ChannelEntity
     options?: {
-      assetId?: string                                           // The ID of a specific 'listing', as scoped by the target App's ID-space, which the App should begin playback from.
-      restartCurrentProgram?: boolean                            // Denotes that the App should start playback at the most recent program boundary, rather than 'live.'
-      time?: string                                              // ISO 8601 Date/Time where the App should begin playback from.
+      assetId?: string                 // The ID of a specific 'listing', as scoped by the target App's ID-space, which the App should begin playback from.
+      restartCurrentProgram?: boolean  // Denotes that the App should start playback at the most recent program boundary, rather than 'live.'
+      time?: string                    // ISO 8601 Date/Time where the App should begin playback from.
     }
   }
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -419,7 +419,7 @@ type PlaybackIntent = {
   action: "playback"
   data: PlayableEntity
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```
@@ -444,7 +444,7 @@ type PlayEntityIntent = {
     }
   }
   context: {
-    source: 'voice' | 'channel-lineup' | 'editorial' | 'device'
+    source: string
   }
 }
 ```

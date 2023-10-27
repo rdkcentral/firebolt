@@ -19476,6 +19476,14 @@
 											"maxProperties": 1
 										}
 									}
+								},
+								"else": {
+									"type": "object",
+									"properties": {
+										"options": {
+											"maxProperties": 0
+										}
+									}
 								}
 							}
 						}
@@ -19632,13 +19640,7 @@
 						],
 						"properties": {
 							"source": {
-								"type": "string",
-								"enum": [
-									"voice",
-									"channel-lineup",
-									"editorial",
-									"device"
-								]
+								"type": "string"
 							}
 						}
 					}
