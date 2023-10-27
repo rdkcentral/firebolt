@@ -20365,7 +20365,12 @@
 											}
 										},
 										"then": {
-											"maxProperties": 1
+											"type": "object",
+											"properties": {
+												"options": {
+													"maxProperties": 1
+												}
+											}
 										}
 									}
 								}
@@ -20437,9 +20442,14 @@
 														"items": {
 															"$ref": "#/x-schemas/Entertainment/ProgramType"
 														}
+													},
+													"musicTypes": {
+														"type": "array",
+														"items": {
+															"$ref": "#/x-schemas/Entertainment/MusicType"
+														}
 													}
 												},
-												"maxProperties": 1,
 												"additionalProperties": false
 											}
 										},
@@ -20451,39 +20461,6 @@
 												"query",
 												"options"
 											]
-										},
-										"if": {
-											"properties": {
-												"entity": {
-													"type": "object",
-													"required": [
-														"entityType"
-													],
-													"properties": {
-														"entityType": {
-															"const": "playlist"
-														}
-													}
-												}
-											}
-										},
-										"then": {
-											"properties": {
-												"options": {
-													"type": "object",
-													"properties": {
-														"playFirstId": {
-															"type": "string"
-														},
-														"playFirstTrack": {
-															"type": "integer",
-															"minimum": 1
-														}
-													},
-													"maxProperties": 1,
-													"additionalProperties": false
-												}
-											}
 										}
 									}
 								}
@@ -20915,36 +20892,28 @@
 					},
 					"PlaylistEntity": {
 						"title": "PlaylistEntity",
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Intents/ProgramEntity"
-							},
-							{
-								"description": "A Firebolt compliant representation of a Movie entity.",
-								"title": "MovieEntity",
-								"type": "object",
-								"required": [
-									"entityType",
-									"entityId"
-								],
-								"properties": {
-									"entityType": {
-										"const": "playlist"
-									},
-									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"appContentData": {
-										"type": "string",
-										"maxLength": 256
-									}
-								},
-								"additionalProperties": false
-							}
+						"description": "A Firebolt compliant representation of a Playlist entity.",
+						"type": "object",
+						"required": [
+							"entityType",
+							"entityId"
 						],
+						"properties": {
+							"entityType": {
+								"const": "playlist"
+							},
+							"entityId": {
+								"$ref": "#/x-schemas/Intents/Identifier"
+							},
+							"assetId": {
+								"$ref": "#/x-schemas/Intents/Identifier"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
 						"examples": [
 							{
 								"entityType": "playlist",

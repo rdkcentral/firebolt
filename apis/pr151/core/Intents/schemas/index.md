@@ -187,6 +187,7 @@ type PlayQueryIntent = {
     query: string
     options?: {
       programTypes?: ProgramType[]
+      musicTypes?: MusicType[]
     }
   }
   context: {
@@ -198,6 +199,7 @@ type PlayQueryIntent = {
 See also: 
 
 'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
+'song' | 'album'
 
 ---
 ### HomeIntent
@@ -352,7 +354,7 @@ See also:
 ---
 ### PlaylistEntity
 
-
+A Firebolt compliant representation of a Playlist entity.
 
 ```typescript
 type PlaylistEntity = {
@@ -360,13 +362,10 @@ type PlaylistEntity = {
   entityId: string
   assetId?: string
   appContentData?: string
-  programType: ProgramType  // In the case of a program `entityType`, specifies the program type.
 }
 ```
 
-See also: 
 
-[ProgramEntity](#programentity)
 
 ---
 ### TuneIntent
