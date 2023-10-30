@@ -8,7 +8,7 @@ sdk: core
 
 # Device Module
 ---
-Version Device 0.18.0-next.6
+Version Device 0.18.0-next.7
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
