@@ -120,12 +120,12 @@ string
 ---
 ### Permission
 
-A sapability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
+A capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
 
 ```typescript
 type Permission = {
-  role?: Role              // Role provides access level for the app for a given capability.
-  capability?: Capability  // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  role?: Role             // Role provides access level for the app for a given capability.
+  capability: Capability  // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
 }
 ```
 
