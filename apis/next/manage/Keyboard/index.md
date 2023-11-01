@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.18.0-next.7
+Version Keyboard 1.0.0-next.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
