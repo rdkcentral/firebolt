@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 1.0.0-next.1
+Version Metrics 1.0.0-next.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
