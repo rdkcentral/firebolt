@@ -8,7 +8,7 @@ sdk: manage
 
 # Wifi Module
 ---
-Version Wifi 0.17.1
+Version Wifi 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 0.17.1
+Version UserGrants 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -25,6 +25,7 @@ Version UserGrants 0.17.1
    - [Types](#types)
      - [AppInfo](#appinfo)
      - [GrantModificationOptions](#grantmodificationoptions)
+     - [RequestOptions](#requestoptions)
      - [GrantState](#grantstate)
      - [GrantInfo](#grantinfo)
 
@@ -599,7 +600,7 @@ Response:
 Requests Firebolt to carry out a set of user grants for a given application such that the user grant provider is notified or an existing user grant is reused.
 
 ```typescript
-function request(appId: string, permissions: Permission[]): Promise<object[]>
+function request(appId: string, permissions: Permission[], options?: RequestOptions): Promise<object[]>
 ```
 
 Parameters:
@@ -608,6 +609,7 @@ Parameters:
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true |   |
 , | `permissions` | `Permission[]` | true |   |
+, | `options` | [`RequestOptions`](#requestoptions) | false | Request options  |
 
 
 Promise resolution:
@@ -626,7 +628,7 @@ Capabilities:
 #### Examples
 
 
-Default result
+Default result #1
 
 JavaScript:
 
@@ -639,7 +641,8 @@ UserGrants.request("certapp",
                        "role": "use",
                        "capability": "xrn:firebolt:capability:localization:postal-code"
                      }
-                   ])
+                   ],
+                   null)
     .then(info => {
         console.log(info)
     })
@@ -704,6 +707,90 @@ Response:
 ```
 </details>
 
+Default result #2
+
+JavaScript:
+
+```javascript
+import { UserGrants } from '@firebolt-js/manage-sdk'
+
+UserGrants.request("certapp",
+                   [
+                     {
+                       "role": "use",
+                       "capability": "xrn:firebolt:capability:localization:postal-code"
+                     }
+                   ],
+                   {
+                     "force": true
+                   })
+    .then(info => {
+        console.log(info)
+    })
+```
+
+Value of `info`:
+
+```javascript
+[
+	{
+		"app": {
+			"id": "certapp",
+			"title": "Certification App"
+		},
+		"state": "granted",
+		"capability": "xrn:firebolt:capability:localization:postal-code",
+		"role": "use",
+		"lifespan": "powerActive"
+	}
+]
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "UserGrants.request",
+	"params": {
+		"appId": "certapp",
+		"permissions": [
+			{
+				"role": "use",
+				"capability": "xrn:firebolt:capability:localization:postal-code"
+			}
+		],
+		"options": {
+			"force": true
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": [
+		{
+			"app": {
+				"id": "certapp",
+				"title": "Certification App"
+			},
+			"state": "granted",
+			"capability": "xrn:firebolt:capability:localization:postal-code",
+			"role": "use",
+			"lifespan": "powerActive"
+		}
+	]
+}
+```
+</details>
+
 
 ---
 
@@ -732,6 +819,19 @@ Options when modifying any grant
 ```typescript
 type GrantModificationOptions = {
   appId?: string
+}
+```
+
+
+
+---
+### RequestOptions
+
+
+
+```typescript
+type RequestOptions = {
+  force?: boolean        // Whether to force for user grant even if the previous decision stored
 }
 ```
 

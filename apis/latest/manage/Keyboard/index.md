@@ -8,7 +8,7 @@ sdk: manage
 
 # Keyboard Module
 ---
-Version Keyboard 0.17.1
+Version Keyboard 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -843,7 +843,7 @@ Provider methods always have two arguments:
 | `session` | `FocusableProviderSession` | false |   |
 
 
-${if.provider.params}
+
 
 | Parameters Property    | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
@@ -856,7 +856,7 @@ type KeyboardParameters = {
 }
 ```
 
-${end.if.provider.params}
+
 
 Promise resolution:
 
@@ -881,7 +881,7 @@ Provider methods always have two arguments:
 | `session` | `FocusableProviderSession` | false |   |
 
 
-${if.provider.params}
+
 
 | Parameters Property    | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
@@ -894,7 +894,7 @@ type KeyboardParameters = {
 }
 ```
 
-${end.if.provider.params}
+
 
 Promise resolution:
 
@@ -919,7 +919,7 @@ Provider methods always have two arguments:
 | `session` | `FocusableProviderSession` | false |   |
 
 
-${if.provider.params}
+
 
 | Parameters Property    | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
@@ -932,7 +932,7 @@ type KeyboardParameters = {
 }
 ```
 
-${end.if.provider.params}
+
 
 Promise resolution:
 

@@ -8,7 +8,7 @@ sdk: manage
 
 # Privacy Module
 ---
-Version Privacy 0.17.1
+Version Privacy 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

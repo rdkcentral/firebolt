@@ -8,7 +8,7 @@ sdk: manage
 
 # PinChallenge Module
 ---
-Version PinChallenge 0.17.1
+Version PinChallenge 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -417,7 +417,7 @@ Provider methods always have two arguments:
 | `session` | `FocusableProviderSession` | false |   |
 
 
-${if.provider.params}
+
 
 | Parameters Property    | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
@@ -430,7 +430,7 @@ ${if.provider.params}
 type PinChallenge = object
 ```
 
-${end.if.provider.params}
+
 
 Promise resolution:
 

@@ -16,11 +16,12 @@ Version Entertainment 0.0.0-unknown.0
    - [Types](#types)
      - [OfferingType](#offeringtype)
      - [ProgramType](#programtype)
+     - [MusicType](#musictype)
      - [ContentIdentifiers](#contentidentifiers)
+     - [Entitlement](#entitlement)
      - [ContentRating](#contentrating)
    - [United States](#united-states)
    - [Canada](#canada)
-     - [Entitlement](#entitlement)
      - [WayToWatch](#waytowatch)
      - [EntityInfo](#entityinfo)
 
@@ -72,6 +73,21 @@ enum ProgramType {
 
 
 ---
+### MusicType
+
+In the case of a music `entityType`, specifies the type of music entity.
+
+```typescript
+enum MusicType {
+	SONG = 'song',
+	ALBUM = 'album'
+}
+
+```
+
+
+
+---
 ### ContentIdentifiers
 
 The ContentIdentifiers object is how the app identifies an entity or asset to
@@ -89,6 +105,21 @@ type ContentIdentifiers = {
   seasonId?: string          // The TV Season for a TV Episode.
   seriesId?: string          // The TV Series for a TV Episode or TV Season.
   appContentData?: string    // App-specific content identifiers.
+}
+```
+
+
+
+---
+### Entitlement
+
+
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
 }
 ```
 
@@ -139,21 +170,6 @@ type ContentRating = {
   scheme: 'CA-Movie' | 'CA-TV' | 'CA-Movie-Fr' | 'CA-TV-Fr' | 'US-Movie' | 'US-TV'  // The rating scheme.
   rating: string                                                                    // The content rating.
   advisories?: string[]                                                             // Optional list of subratings or content advisories.
-}
-```
-
-
-
----
-### Entitlement
-
-
-
-```typescript
-type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
 }
 ```
 
@@ -243,8 +259,9 @@ may use those data.
 type EntityInfo = {
   identifiers: ContentIdentifiers   // The ContentIdentifiers object is how the app identifies an entity or asset to
   title: string                     // Title of the entity.
-  entityType: "program"
+  entityType: 'program' | 'music'   // The type of the entity, e.g. `program` or `music`.
   programType: ProgramType          // In the case of a program `entityType`, specifies the program type.
+  musicType?: MusicType             // In the case of a music `entityType`, specifies the type of music entity.
   synopsis?: string                 // Short description of the entity.
   seasonNumber?: number             // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
   seasonCount?: number              // For TV series, seasons, and episodes, the total number of seasons.
@@ -260,6 +277,7 @@ See also:
 
 [ContentIdentifiers](#contentidentifiers)
 'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
+'song' | 'album'
 [ContentRating](#contentrating)
 [WayToWatch](#waytowatch)
 

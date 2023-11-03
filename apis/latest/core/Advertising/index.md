@@ -8,7 +8,7 @@ sdk: core
 
 # Advertising Module
 ---
-Version Advertising 0.17.1
+Version Advertising 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -27,6 +27,7 @@ Version Advertising 0.17.1
    - [Types](#types)
      - [AdConfigurationOptions](#adconfigurationoptions)
      - [AdPolicy](#adpolicy)
+     - [AdvertisingIdOptions](#advertisingidoptions)
 
 
 
@@ -48,9 +49,14 @@ import { Advertising } from '@firebolt-js/sdk'
 Get the advertising ID
 
 ```typescript
-function advertisingId(): Promise<object>
+function advertisingId(options?: AdvertisingIdOptions): Promise<object>
 ```
 
+Parameters:
+
+| Param                  | Type                 | Required                 | Description                 |
+| ---------------------- | -------------------- | ------------------------ | ----------------------- |
+| `options` | [`AdvertisingIdOptions`](#advertisingidoptions) | false | AdvertisingId options  |
 
 
 Promise resolution:
@@ -79,7 +85,7 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
 
-Advertising.advertisingId()
+Advertising.advertisingId(null)
     .then(advertisingId => {
         console.log(advertisingId)
     })
@@ -104,6 +110,120 @@ Request:
 	"id": 1,
 	"method": "Advertising.advertisingId",
 	"params": {}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+		"ifa_type": "idfa",
+		"lmt": "0"
+	}
+}
+```
+</details>
+
+Getting the advertising ID with scope browse
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+Advertising.advertisingId({"scope":{"type":"browse","id":"paidPlacement"}})
+    .then(advertisingId => {
+        console.log(advertisingId)
+    })
+```
+
+Value of `advertisingId`:
+
+```javascript
+{
+	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+	"ifa_type": "idfa",
+	"lmt": "0"
+}
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Advertising.advertisingId",
+	"params": {
+		"options": {
+			"scope": {
+				"type": "browse",
+				"id": "paidPlacement"
+			}
+		}
+	}
+}
+```
+
+Response:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+		"ifa_type": "idfa",
+		"lmt": "0"
+	}
+}
+```
+</details>
+
+Getting the advertising ID with scope content
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+Advertising.advertisingId({"scope":{"type":"content","id":"metadata:linear:station:123"}})
+    .then(advertisingId => {
+        console.log(advertisingId)
+    })
+```
+
+Value of `advertisingId`:
+
+```javascript
+{
+	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+	"ifa_type": "idfa",
+	"lmt": "0"
+}
+```
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "Advertising.advertisingId",
+	"params": {
+		"options": {
+			"scope": {
+				"type": "content",
+				"id": "metadata:linear:station:123"
+			}
+		}
+	}
 }
 ```
 
@@ -683,5 +803,21 @@ type AdPolicy = {
 See also: 
 
 'none' | 'adsUnwatched' | 'adsAll' | 'all'
+
+---
+### AdvertisingIdOptions
+
+
+
+```typescript
+type AdvertisingIdOptions = {
+  scope?: {
+    type: 'browse' | 'content'  // The scope type, which will determine where to show advertisement
+    id: string                  // A value that identifies a specific scope within the scope type
+  }
+}
+```
+
+
 
 ---

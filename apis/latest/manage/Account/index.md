@@ -8,7 +8,7 @@ sdk: manage
 
 # Account Module
 ---
-Version Account 0.17.1
+Version Account 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
@@ -40,15 +40,15 @@ import { Account } from '@firebolt-js/manage-sdk'
 Used by a distributor to push Session token to firebolt.
 
 ```typescript
-function session(token?: string, expiresIn?: number): Promise<void>
+function session(token: string, expiresIn: number): Promise<void>
 ```
 
 Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `token` | `string` | false |   |
-, | `expiresIn` | `number` | false |  <br/>minumum: 1 |
+| `token` | `string` | true |   |
+, | `expiresIn` | `number` | true |  <br/>minumum: 1 |
 
 
 Promise resolution:
