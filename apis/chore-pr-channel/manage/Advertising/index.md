@@ -8,7 +8,7 @@ sdk: manage
 
 # Advertising Module
 ---
-Version Advertising 1.0.0
+Version Advertising 1.0.1-chore-pr-channel.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

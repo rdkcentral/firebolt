@@ -8,7 +8,7 @@ sdk: core
 
 # Localization Module
 ---
-Version Localization 1.0.0
+Version Localization 1.0.1-chore-pr-channel.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
