@@ -8,7 +8,7 @@ sdk: manage
 
 # Device Module
 ---
-Version Device 1.0.1-chore-pr-channel.1
+Version Device 1.0.1-chore-pr-channel.2
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
