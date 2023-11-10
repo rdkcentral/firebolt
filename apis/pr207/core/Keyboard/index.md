@@ -8,7 +8,7 @@ sdk: core
 
 # Keyboard Module
 ---
-Version Keyboard 1.0.0-pr.1
+Version Keyboard 1.0.1-pr207.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
