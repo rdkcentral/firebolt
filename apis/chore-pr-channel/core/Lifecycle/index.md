@@ -8,7 +8,7 @@ sdk: core
 
 # Lifecycle Module
 ---
-Version Lifecycle 1.0.1-chore-pr-channel.0
+Version Lifecycle 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

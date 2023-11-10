@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 1.0.1-chore-pr-channel.0
+Version Metrics 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

@@ -8,7 +8,7 @@ sdk: manage
 
 # Wifi Module
 ---
-Version Wifi 1.0.1-chore-pr-channel.0
+Version Wifi 1.0.0
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
