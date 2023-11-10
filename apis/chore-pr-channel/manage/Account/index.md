@@ -8,7 +8,7 @@ sdk: manage
 
 # Account Module
 ---
-Version Account 1.0.1-chore-pr-channel.0
+Version Account 1.0.1-chore-pr-channel.1
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
