@@ -8,7 +8,7 @@ sdk: core
 
 # SecondScreen Module
 ---
-Version SecondScreen 1.0.0
+Version SecondScreen 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

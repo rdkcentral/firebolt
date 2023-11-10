@@ -8,7 +8,7 @@ sdk: core
 
 # Capabilities Module
 ---
-Version Capabilities 1.0.0
+Version Capabilities 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

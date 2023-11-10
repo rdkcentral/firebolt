@@ -8,7 +8,7 @@ sdk: provider
 
 # StreamingPlayer Module
 ---
-Version StreamingPlayer 1.0.0
+Version StreamingPlayer 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

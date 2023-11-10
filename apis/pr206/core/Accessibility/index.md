@@ -8,7 +8,7 @@ sdk: core
 
 # Accessibility Module
 ---
-Version Accessibility 1.0.0
+Version Accessibility 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

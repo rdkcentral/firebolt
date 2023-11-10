@@ -8,7 +8,7 @@ sdk: provider
 
 # BroadcastPlayer Module
 ---
-Version BroadcastPlayer 1.0.0
+Version BroadcastPlayer 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

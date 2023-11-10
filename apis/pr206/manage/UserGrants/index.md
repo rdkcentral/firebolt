@@ -8,7 +8,7 @@ sdk: manage
 
 # UserGrants Module
 ---
-Version UserGrants 1.0.0
+Version UserGrants 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

@@ -8,7 +8,7 @@ sdk: core
 
 # Metrics Module
 ---
-Version Metrics 1.0.0
+Version Metrics 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

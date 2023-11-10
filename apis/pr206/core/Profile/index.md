@@ -8,7 +8,7 @@ sdk: core
 
 # Profile Module
 ---
-Version Profile 1.0.0
+Version Profile 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

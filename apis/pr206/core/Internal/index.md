@@ -8,7 +8,7 @@ sdk: core
 
 # Internal Module
 ---
-Version Internal 1.0.0
+Version Internal 1.0.0-player
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
