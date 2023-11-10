@@ -8,7 +8,7 @@ sdk: core
 
 # Keyboard Module
 ---
-Version Keyboard 1.0.1-chore-pr-channel.2
+Version Keyboard 1.0.1-chore-pr-channel.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

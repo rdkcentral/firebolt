@@ -8,7 +8,7 @@ sdk: core
 
 # Authentication Module
 ---
-Version Authentication 1.0.1-chore-pr-channel.2
+Version Authentication 1.0.1-chore-pr-channel.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)

@@ -8,7 +8,7 @@ sdk: core
 
 # Advertising Module
 ---
-Version Advertising 1.0.1-chore-pr-channel.2
+Version Advertising 1.0.1-chore-pr-channel.3
 
 ## Table of Contents
    - [Table of Contents](#table-of-contents)
