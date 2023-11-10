@@ -55,7 +55,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -86,12 +87,10 @@ Request:
 	"id": 1,
 	"method": "PinChallenge.challengeError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -174,7 +173,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`PinChallengeResult`](#pinchallengeresult) | true |   |
 
 
 Result:
@@ -205,12 +205,10 @@ Request:
 	"id": 1,
 	"method": "PinChallenge.challengeResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": true,
-				"reason": "correctPin"
-			}
+		"correlationId": "123",
+		"result": {
+			"granted": true,
+			"reason": "correctPin"
 		}
 	}
 }
@@ -239,12 +237,10 @@ Request:
 	"id": 1,
 	"method": "PinChallenge.challengeResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": false,
-				"reason": "exceededPinFailures"
-			}
+		"correlationId": "123",
+		"result": {
+			"granted": false,
+			"reason": "exceededPinFailures"
 		}
 	}
 }
@@ -273,12 +269,10 @@ Request:
 	"id": 1,
 	"method": "PinChallenge.challengeResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": null,
-				"reason": "cancelled"
-			}
+		"correlationId": "123",
+		"result": {
+			"granted": null,
+			"reason": "cancelled"
 		}
 	}
 }

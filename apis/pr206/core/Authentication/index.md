@@ -263,7 +263,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `type` | [`TokenType`](#tokentype) | true | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
-, | `options` | `object` | false | Additional options for acquiring the token.  |
+| `options` | `object` | false | Additional options for acquiring the token.  |
 
 
 Promise resolution:

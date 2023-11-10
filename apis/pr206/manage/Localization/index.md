@@ -64,7 +64,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `key` | `string` | true | Key to add additionalInfo  |
-, | `value` | `string` | true | Value to be set for additionalInfo  |
+| `value` | `string` | true | Value to be set for additionalInfo  |
 
 
 Promise resolution:

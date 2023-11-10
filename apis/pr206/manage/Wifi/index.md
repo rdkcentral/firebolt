@@ -55,8 +55,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `ssid` | `string` | false |   |
-, | `passphrase` | `string` | false |   |
-, | `security` | [`WifiSecurityMode`](#wifisecuritymode) | false |  <br/>values: `'none' \| 'wep64' \| 'wep128' \| 'wpaPskTkip' \| 'wpaPskAes' \| 'wpa2PskTkip' \| 'wpa2PskAes' \| 'wpaEnterpriseTkip' \| 'wpaEnterpriseAes' \| 'wpa2EnterpriseTkip' \| 'wpa2EnterpriseAes' \| 'wpa2Psk' \| 'wpa2Enterprise' \| 'wpa3PskAes' \| 'wpa3Sae'` |
+| `passphrase` | `string` | false |   |
+| `security` | [`WifiSecurityMode`](#wifisecuritymode) | false |  <br/>values: `'none' \| 'wep64' \| 'wep128' \| 'wpaPskTkip' \| 'wpaPskAes' \| 'wpa2PskTkip' \| 'wpa2PskAes' \| 'wpaEnterpriseTkip' \| 'wpaEnterpriseAes' \| 'wpa2EnterpriseTkip' \| 'wpa2EnterpriseAes' \| 'wpa2Psk' \| 'wpa2Enterprise' \| 'wpa3PskAes' \| 'wpa3Sae'` |
 
 
 Promise resolution:

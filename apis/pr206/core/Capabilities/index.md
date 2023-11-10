@@ -181,7 +181,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-, | `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
+| `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
 
 
 Promise resolution:
@@ -948,7 +948,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-, | `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
+| `options` | [`CapabilityOption`](#capabilityoption) | false | Capability options  |
 
 
 Promise resolution:

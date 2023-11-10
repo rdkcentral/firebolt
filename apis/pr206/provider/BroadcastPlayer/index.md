@@ -57,7 +57,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -88,12 +89,10 @@ Request:
 	"id": 1,
 	"method": "BroadcastPlayer.createError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -123,7 +122,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`BroadcastPlayerInstance`](#broadcastplayerinstance) | true |   |
 
 
 Result:
@@ -154,12 +154,10 @@ Request:
 	"id": 1,
 	"method": "BroadcastPlayer.createResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"playerId": "123",
-				"windowId": "456"
-			}
+		"correlationId": "123",
+		"result": {
+			"playerId": "123",
+			"windowId": "456"
 		}
 	}
 }
@@ -188,12 +186,10 @@ Request:
 	"id": 1,
 	"method": "BroadcastPlayer.createResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"playerId": "abc",
-				"windowId": "def"
-			}
+		"correlationId": "123",
+		"result": {
+			"playerId": "abc",
+			"windowId": "def"
 		}
 	}
 }
@@ -243,7 +239,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `playerId` | `string` | true | The id of the player the status is for  |
-, | `status` | [`BroadcastPlayerStatus`](#broadcastplayerstatus) | true | The status  |
+| `status` | [`BroadcastPlayerStatus`](#broadcastplayerstatus) | true | The status  |
 
 
 Promise resolution:
@@ -331,7 +327,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -362,12 +359,10 @@ Request:
 	"id": 1,
 	"method": "BroadcastPlayer.statusError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -397,7 +392,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`BroadcastPlayerStatus`](#broadcastplayerstatus) | true |   |
 
 
 Result:
@@ -428,14 +424,12 @@ Request:
 	"id": 1,
 	"method": "BroadcastPlayer.statusResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"locked": false,
-				"frequency": 1,
-				"signalStrength": 90,
-				"signalQuality": 90
-			}
+		"correlationId": "123",
+		"result": {
+			"locked": false,
+			"frequency": 1,
+			"signalStrength": 90,
+			"signalQuality": 90
 		}
 	}
 }

@@ -504,8 +504,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `accountId` | `string` | true | The id of the account that is device is attached to in the back office.  |
-, | `deviceId` | `string` | true | The id of the device in the back office.  |
-, | `distributorId` | `string` | false | The id of the distributor in the back office.  |
+| `deviceId` | `string` | true | The id of the device in the back office.  |
+| `distributorId` | `string` | false | The id of the distributor in the back office.  |
 
 
 Promise resolution:

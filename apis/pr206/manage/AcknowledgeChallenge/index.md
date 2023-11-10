@@ -54,7 +54,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -85,12 +86,10 @@ Request:
 	"id": 1,
 	"method": "AcknowledgeChallenge.challengeError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -173,7 +172,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`GrantResult`](#grantresult) | true |   |
 
 
 Result:
@@ -204,11 +204,9 @@ Request:
 	"id": 1,
 	"method": "AcknowledgeChallenge.challengeResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": true
-			}
+		"correlationId": "123",
+		"result": {
+			"granted": true
 		}
 	}
 }
@@ -237,11 +235,9 @@ Request:
 	"id": 1,
 	"method": "AcknowledgeChallenge.challengeResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": false
-			}
+		"correlationId": "123",
+		"result": {
+			"granted": false
 		}
 	}
 }
@@ -270,11 +266,9 @@ Request:
 	"id": 1,
 	"method": "AcknowledgeChallenge.challengeResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": null
-			}
+		"correlationId": "123",
+		"result": {
+			"granted": null
 		}
 	}
 }

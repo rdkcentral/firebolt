@@ -796,23 +796,18 @@
 			"summary": "Internal API for Challenge Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/GrantResult"
-									}
-								}
-							}
-						]
-					}
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/GrantResult"
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -837,12 +832,13 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"granted": true
-								}
+								"granted": true
 							}
 						}
 					],
@@ -855,12 +851,13 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"granted": false
-								}
+								"granted": false
 							}
 						}
 					],
@@ -873,12 +870,13 @@
 					"name": "Example #3",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"granted": null
-								}
+								"granted": null
 							}
 						}
 					],
@@ -894,44 +892,39 @@
 			"summary": "Internal API for Challenge Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -956,13 +949,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -2337,29 +2331,24 @@
 			"summary": "Internal API for Create Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/BroadcastPlayerInstance",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/BroadcastPlayerInstance",
-										"examples": [
-											{
-												"playerId": "123",
-												"windowId": "456"
-											}
-										]
-									}
-								}
+								"playerId": "123",
+								"windowId": "456"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -2384,13 +2373,14 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"playerId": "123",
-									"windowId": "456"
-								}
+								"playerId": "123",
+								"windowId": "456"
 							}
 						}
 					],
@@ -2403,13 +2393,14 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"playerId": "abc",
-									"windowId": "def"
-								}
+								"playerId": "abc",
+								"windowId": "def"
 							}
 						}
 					],
@@ -2425,44 +2416,39 @@
 			"summary": "Internal API for Create Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -2487,13 +2473,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -2509,31 +2496,26 @@
 			"summary": "Internal API for Status Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/BroadcastPlayerStatus",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/BroadcastPlayerStatus",
-										"examples": [
-											{
-												"locked": false,
-												"frequency": 695000000,
-												"signalStrength": 90,
-												"signalQuality": 90
-											}
-										]
-									}
-								}
+								"locked": false,
+								"frequency": 695000000,
+								"signalStrength": 90,
+								"signalQuality": 90
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -2558,15 +2540,16 @@
 					"name": "Example",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"locked": false,
-									"frequency": 1,
-									"signalStrength": 90,
-									"signalQuality": 90
-								}
+								"locked": false,
+								"frequency": 1,
+								"signalStrength": 90,
+								"signalQuality": 90
 							}
 						}
 					],
@@ -2582,44 +2565,39 @@
 			"summary": "Internal API for Status Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -2644,13 +2622,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -9985,28 +9964,23 @@
 			"summary": "Internal API for Standard Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/KeyboardResult",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/KeyboardResult",
-										"examples": [
-											{
-												"text": "username"
-											}
-										]
-									}
-								}
+								"text": "username"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -10031,12 +10005,13 @@
 					"name": "Example",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"text": "username"
-								}
+								"text": "username"
 							}
 						}
 					],
@@ -10052,44 +10027,39 @@
 			"summary": "Internal API for Standard Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -10114,13 +10084,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -10136,28 +10107,23 @@
 			"summary": "Internal API for Password Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/KeyboardResult",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/KeyboardResult",
-										"examples": [
-											{
-												"text": "password"
-											}
-										]
-									}
-								}
+								"text": "password"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -10182,12 +10148,13 @@
 					"name": "Example",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"text": "password"
-								}
+								"text": "password"
 							}
 						}
 					],
@@ -10203,44 +10170,39 @@
 			"summary": "Internal API for Password Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -10265,13 +10227,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -10287,28 +10250,23 @@
 			"summary": "Internal API for Email Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/KeyboardResult",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/KeyboardResult",
-										"examples": [
-											{
-												"text": "email@address.com"
-											}
-										]
-									}
-								}
+								"text": "email@address.com"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -10333,12 +10291,13 @@
 					"name": "Example",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"text": "email@address.com"
-								}
+								"text": "email@address.com"
 							}
 						}
 					],
@@ -10354,44 +10313,39 @@
 			"summary": "Internal API for Email Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -10416,13 +10370,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -13536,37 +13491,32 @@
 			"summary": "Internal API for Challenge Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/PinChallengeResult",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+								"granted": true,
+								"reason": "correctPin"
 							},
 							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/PinChallengeResult",
-										"examples": [
-											{
-												"granted": true,
-												"reason": "correctPin"
-											},
-											{
-												"granted": false,
-												"reason": "exceededPinFailures"
-											},
-											{
-												"granted": null,
-												"reason": "cancelled"
-											}
-										]
-									}
-								}
+								"granted": false,
+								"reason": "exceededPinFailures"
+							},
+							{
+								"granted": null,
+								"reason": "cancelled"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -13591,13 +13541,14 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"granted": true,
-									"reason": "correctPin"
-								}
+								"granted": true,
+								"reason": "correctPin"
 							}
 						}
 					],
@@ -13610,13 +13561,14 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"granted": false,
-									"reason": "exceededPinFailures"
-								}
+								"granted": false,
+								"reason": "exceededPinFailures"
 							}
 						}
 					],
@@ -13629,13 +13581,14 @@
 					"name": "Example #3",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"granted": null,
-									"reason": "cancelled"
-								}
+								"granted": null,
+								"reason": "cancelled"
 							}
 						}
 					],
@@ -13651,44 +13604,39 @@
 			"summary": "Internal API for Challenge Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -13713,13 +13661,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -13743,10 +13692,18 @@
 			"summary": "Loads content in a player and starts a media session",
 			"params": [
 				{
+					"name": "playerId",
+					"summary": "The id of the player to load content in",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
 					"name": "request",
 					"summary": "The load request",
 					"schema": {
-						"$ref": "#/components/schemas/PlayerLoadRequest"
+						"$ref": "#/components/schemas/LoadRequest"
 					},
 					"required": true
 				}
@@ -13762,9 +13719,12 @@
 					"name": "Default example #1",
 					"params": [
 						{
+							"name": "playerId",
+							"value": "app1:123"
+						},
+						{
 							"name": "request",
 							"value": {
-								"playerId": "app1:123",
 								"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
 							}
 						}
@@ -13800,9 +13760,9 @@
 				}
 			],
 			"result": {
-				"name": "playResponse",
+				"name": "mediaSession",
 				"schema": {
-					"const": null
+					"$ref": "#/components/schemas/PlayerMediaSession"
 				}
 			},
 			"examples": [
@@ -13815,8 +13775,10 @@
 						}
 					],
 					"result": {
-						"name": "playResponse",
-						"value": null
+						"name": "mediaSession",
+						"value": {
+							"mediaSessionId": "sess1"
+						}
 					}
 				}
 			]
@@ -13843,9 +13805,9 @@
 				}
 			],
 			"result": {
-				"name": "stopResponse",
+				"name": "mediaSession",
 				"schema": {
-					"const": null
+					"$ref": "#/components/schemas/PlayerMediaSession"
 				}
 			},
 			"examples": [
@@ -13858,8 +13820,10 @@
 						}
 					],
 					"result": {
-						"name": "stopResponse",
-						"value": null
+						"name": "mediaSession",
+						"value": {
+							"mediaSessionId": "sess1"
+						}
 					}
 				}
 			]
@@ -14086,8 +14050,10 @@
 						"value": {
 							"correlationId": "abc",
 							"parameters": {
-								"playerId": "app1:123",
-								"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+								"playerId": "123",
+								"request": {
+									"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+								}
 							}
 						}
 					}
@@ -14179,7 +14145,7 @@
 						"value": {
 							"correlationId": "abc",
 							"parameters": {
-								"playerId": "app1:123"
+								"playerId": "123"
 							}
 						}
 					}
@@ -14271,7 +14237,7 @@
 						"value": {
 							"correlationId": "abc",
 							"parameters": {
-								"playerId": "app1:123"
+								"playerId": "123"
 							}
 						}
 					}
@@ -14779,28 +14745,23 @@
 			"summary": "Internal API for Load Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/PlayerMediaSession",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/PlayerMediaSession",
-										"examples": [
-											{
-												"mediaSessionId": "sess1"
-											}
-										]
-									}
-								}
+								"mediaSessionId": "sess1"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -14825,12 +14786,13 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess1"
-								}
+								"mediaSessionId": "sess1"
 							}
 						}
 					],
@@ -14843,12 +14805,13 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess2"
-								}
+								"mediaSessionId": "sess2"
 							}
 						}
 					],
@@ -14864,44 +14827,39 @@
 			"summary": "Internal API for Load Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -14926,13 +14884,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -14948,28 +14907,23 @@
 			"summary": "Internal API for Play Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/PlayerMediaSession",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/PlayerMediaSession",
-										"examples": [
-											{
-												"mediaSessionId": "sess1"
-											}
-										]
-									}
-								}
+								"mediaSessionId": "sess1"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -14994,12 +14948,13 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess1"
-								}
+								"mediaSessionId": "sess1"
 							}
 						}
 					],
@@ -15012,12 +14967,13 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess2"
-								}
+								"mediaSessionId": "sess2"
 							}
 						}
 					],
@@ -15033,44 +14989,39 @@
 			"summary": "Internal API for Play Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15095,13 +15046,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -15117,28 +15069,23 @@
 			"summary": "Internal API for Stop Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/PlayerMediaSession",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/PlayerMediaSession",
-										"examples": [
-											{
-												"mediaSessionId": "sess1"
-											}
-										]
-									}
-								}
+								"mediaSessionId": "sess1"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15163,12 +15110,13 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess1"
-								}
+								"mediaSessionId": "sess1"
 							}
 						}
 					],
@@ -15181,12 +15129,13 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess2"
-								}
+								"mediaSessionId": "sess2"
 							}
 						}
 					],
@@ -15202,44 +15151,39 @@
 			"summary": "Internal API for Stop Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15264,13 +15208,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -15286,29 +15231,24 @@
 			"summary": "Internal API for Status Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/PlayerStatus",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/PlayerStatus",
-										"examples": [
-											{
-												"mediaSessionId": "sess1",
-												"state": "IDLE"
-											}
-										]
-									}
-								}
+								"mediaSessionId": "sess1",
+								"state": "IDLE"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15333,13 +15273,14 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess1",
-									"state": "IDLE"
-								}
+								"mediaSessionId": "sess1",
+								"state": "IDLE"
 							}
 						}
 					],
@@ -15352,14 +15293,15 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"mediaSessionId": "sess2",
-									"state": "BLOCKED",
-									"blockedReason": "CONTENT_NOT_FOUND"
-								}
+								"mediaSessionId": "sess2",
+								"state": "BLOCKED",
+								"blockedReason": "CONTENT_NOT_FOUND"
 							}
 						}
 					],
@@ -15375,44 +15317,39 @@
 			"summary": "Internal API for Status Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15437,13 +15374,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -15459,32 +15397,27 @@
 			"summary": "Internal API for Progress Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/PlayerProgress",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/PlayerProgress",
-										"examples": [
-											{
-												"speed": 1,
-												"startPosition": 0,
-												"position": 5000,
-												"endPosition": 3600000,
-												"liveSyncTime": "2021-04-23T18:25:43.511Z"
-											}
-										]
-									}
-								}
+								"speed": 1,
+								"startPosition": 0,
+								"position": 5000,
+								"endPosition": 3600000,
+								"liveSyncTime": "2021-04-23T18:25:43.511Z"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15509,16 +15442,17 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"speed": 1,
-									"startPosition": 0,
-									"position": 5000,
-									"endPosition": 3600000,
-									"liveSyncTime": "2021-04-23T18:25:43.511Z"
-								}
+								"speed": 1,
+								"startPosition": 0,
+								"position": 5000,
+								"endPosition": 3600000,
+								"liveSyncTime": "2021-04-23T18:25:43.511Z"
 							}
 						}
 					],
@@ -15531,16 +15465,17 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"speed": 3,
-									"startPosition": 5000,
-									"position": 10000,
-									"endPosition": 3600000,
-									"liveSyncTime": "2021-04-23T18:25:43.511Z"
-								}
+								"speed": 3,
+								"startPosition": 5000,
+								"position": 10000,
+								"endPosition": 3600000,
+								"liveSyncTime": "2021-04-23T18:25:43.511Z"
 							}
 						}
 					],
@@ -15556,44 +15491,39 @@
 			"summary": "Internal API for Progress Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -15618,13 +15548,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -18769,29 +18700,24 @@
 			"summary": "Internal API for Create Provider to send back response.",
 			"params": [
 				{
-					"name": "response",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "result",
+					"schema": {
+						"$ref": "#/components/schemas/StreamingPlayerInstance",
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"$ref": "#/components/schemas/StreamingPlayerInstance",
-										"examples": [
-											{
-												"playerId": "123",
-												"windowId": "456"
-											}
-										]
-									}
-								}
+								"playerId": "123",
+								"windowId": "456"
 							}
 						]
-					}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -18816,13 +18742,14 @@
 					"name": "Example #1",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"playerId": "123",
-									"windowId": "456"
-								}
+								"playerId": "123",
+								"windowId": "456"
 							}
 						}
 					],
@@ -18835,13 +18762,14 @@
 					"name": "Example #2",
 					"params": [
 						{
-							"name": "response",
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "result",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"playerId": "abc",
-									"windowId": "def"
-								}
+								"playerId": "abc",
+								"windowId": "def"
 							}
 						}
 					],
@@ -18857,44 +18785,39 @@
 			"summary": "Internal API for Create Provider to send back error.",
 			"params": [
 				{
-					"name": "error",
-					"required": true,
+					"name": "correlationId",
 					"schema": {
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/ProviderResponse"
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
 							},
-							{
-								"type": "object",
-								"properties": {
-									"result": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"code",
-											"message"
-										],
-										"properties": {
-											"code": {
-												"title": "errorObjectCode",
-												"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-												"type": "integer"
-											},
-											"message": {
-												"title": "errorObjectMessage",
-												"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-												"type": "string"
-											},
-											"data": {
-												"title": "errorObjectData",
-												"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-											}
-										}
-									}
-								}
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
 							}
-						]
-					}
+						}
+					},
+					"required": true
 				}
 			],
 			"tags": [
@@ -18919,13 +18842,14 @@
 					"name": "Example 1",
 					"params": [
 						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
 							"name": "error",
 							"value": {
-								"correlationId": "123",
-								"result": {
-									"code": 1,
-									"message": "Error"
-								}
+								"code": 1,
+								"message": "Error"
 							}
 						}
 					],
@@ -20972,18 +20896,13 @@
 					}
 				}
 			},
-			"PlayerLoadRequest": {
-				"title": "PlayerLoadRequest",
+			"LoadRequest": {
+				"title": "LoadRequest",
 				"type": "object",
 				"required": [
-					"playerId",
 					"locator"
 				],
 				"properties": {
-					"playerId": {
-						"description": "The id of the player instance to load the locator into",
-						"type": "string"
-					},
 					"locator": {
 						"description": "A locator to the content to load",
 						"type": "string",
@@ -21000,16 +20919,50 @@
 				},
 				"examples": [
 					{
-						"playerId": "app1:123",
 						"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
 					},
 					{
-						"playerId": "app2:345",
 						"locator": "https://cdn.rdkcentral.com/media/assets/asset-2.hls",
 						"metadata": {
 							"assetType": "linear"
 						},
 						"autoPlay": true
+					}
+				]
+			},
+			"PlayerLoadRequest": {
+				"title": "PlayerLoadRequest",
+				"type": "object",
+				"required": [
+					"playerId",
+					"request"
+				],
+				"properties": {
+					"playerId": {
+						"description": "The id of the player instance to load the locator into",
+						"type": "string"
+					},
+					"request": {
+						"description": "A request detailing what to load in the given player",
+						"$ref": "#/components/schemas/LoadRequest"
+					}
+				},
+				"examples": [
+					{
+						"playerId": "app1:123",
+						"request": {
+							"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+						}
+					},
+					{
+						"playerId": "app2:345",
+						"request": {
+							"locator": "https://cdn.rdkcentral.com/media/assets/asset-2.hls",
+							"metadata": {
+								"assetType": "linear"
+							},
+							"autoPlay": true
+						}
 					}
 				]
 			},
@@ -21572,23 +21525,6 @@
 					}
 				},
 				"additionalProperties": false
-			},
-			"ProviderResponse": {
-				"title": "ProviderResponse",
-				"type": "object",
-				"required": [
-					"correlationId"
-				],
-				"additionalProperties": false,
-				"properties": {
-					"correlationId": {
-						"type": "string",
-						"description": "The id that was passed in to the event that triggered a provider method to be called"
-					},
-					"result": {
-						"description": "The result of the provider response."
-					}
-				}
 			},
 			"ProviderRequest": {
 				"title": "ProviderRequest",

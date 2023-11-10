@@ -48,7 +48,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `token` | `string` | true |   |
-, | `expiresIn` | `number` | true |  <br/>minumum: 1 |
+| `expiresIn` | `number` | true |  <br/>minumum: 1 |
 
 
 Promise resolution:

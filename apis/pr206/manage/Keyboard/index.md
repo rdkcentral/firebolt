@@ -61,7 +61,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -92,12 +93,10 @@ Request:
 	"id": 1,
 	"method": "Keyboard.emailError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -180,7 +179,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`KeyboardResult`](#keyboardresult) | true |   |
 
 
 Result:
@@ -211,11 +211,9 @@ Request:
 	"id": 1,
 	"method": "Keyboard.emailResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"text": "email@address.com"
-			}
+		"correlationId": "123",
+		"result": {
+			"text": "email@address.com"
 		}
 	}
 }
@@ -245,7 +243,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -276,12 +275,10 @@ Request:
 	"id": 1,
 	"method": "Keyboard.passwordError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -364,7 +361,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`KeyboardResult`](#keyboardresult) | true |   |
 
 
 Result:
@@ -395,11 +393,9 @@ Request:
 	"id": 1,
 	"method": "Keyboard.passwordResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"text": "password"
-			}
+		"correlationId": "123",
+		"result": {
+			"text": "password"
 		}
 	}
 }
@@ -446,7 +442,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -477,12 +474,10 @@ Request:
 	"id": 1,
 	"method": "Keyboard.standardError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -565,7 +560,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`KeyboardResult`](#keyboardresult) | true |   |
 
 
 Result:
@@ -596,11 +592,9 @@ Request:
 	"id": 1,
 	"method": "Keyboard.standardResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"text": "username"
-			}
+		"correlationId": "123",
+		"result": {
+			"text": "username"
 		}
 	}
 }

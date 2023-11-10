@@ -271,8 +271,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-, | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-, | `options` | `object` | false |   |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options` | `object` | false |   |
 
 
 Promise resolution:
@@ -355,8 +355,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-, | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-, | `options` | `object` | false |   |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options` | `object` | false |   |
 
 
 Promise resolution:
@@ -524,8 +524,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-, | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-, | `options` | `object` | false |   |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options` | `object` | false |   |
 
 
 Promise resolution:
@@ -608,8 +608,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true |   |
-, | `permissions` | `Permission[]` | true |   |
-, | `options` | [`RequestOptions`](#requestoptions) | false | Request options  |
+| `permissions` | `Permission[]` | true |   |
+| `options` | [`RequestOptions`](#requestoptions) | false | Request options  |
 
 
 Promise resolution:

@@ -2114,7 +2114,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | The durable app Id of the app to launch  |
-, | `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
+| `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
 
 
 Promise resolution:
@@ -3645,9 +3645,9 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `entityId` | `string` | true | The entity Id of the watched content.  |
-, | `progress` | `number` | false | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
-, | `completed` | `boolean` | false | Whether or not this viewing is considered "complete," per the app's definition thereof  |
-, | `watchedOn` | `string` | false | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time |
+| `progress` | `number` | false | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
+| `completed` | `boolean` | false | Whether or not this viewing is considered "complete," per the app's definition thereof  |
+| `watchedOn` | `string` | false | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time |
 
 
 Promise resolution:
@@ -3729,9 +3729,9 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `title` | [`LocalizedString`](../Types/schemas/#LocalizedString) | true | The title of this call to action  |
-, | `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
-, | `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
-, | `images` | `object` | false | A set of images for this call to action  |
+| `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true | A set of content identifiers for this call to action  |
+| `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
+| `images` | `object` | false | A set of images for this call to action  |
 
 
 Promise resolution:

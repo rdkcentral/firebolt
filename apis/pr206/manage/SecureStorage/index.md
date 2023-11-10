@@ -50,7 +50,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | appId for which values are removed  |
-, | `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
+| `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
 
 
 Promise resolution:
@@ -130,8 +130,8 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | appId for which values are removed  |
-, | `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
-, | `key` | `string` | true | Key to remove  |
+| `scope` | [`StorageScope`](#storagescope) | true | The scope of the key/value <br/>values: `'device' \| 'account'` |
+| `key` | `string` | true | Key to remove  |
 
 
 Promise resolution:
@@ -212,10 +212,10 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | appId for which value is being set  |
-, | `scope` | [`StorageScope`](#storagescope) | true | The scope of the data key <br/>values: `'device' \| 'account'` |
-, | `key` | `string` | true | Key to set  |
-, | `value` | `string` | true | Value to set  |
-, | `options` | [`StorageOptions`](#storageoptions) | false | Optional parameters to set  |
+| `scope` | [`StorageScope`](#storagescope) | true | The scope of the data key <br/>values: `'device' \| 'account'` |
+| `key` | `string` | true | Key to set  |
+| `value` | `string` | true | Value to set  |
+| `options` | [`StorageOptions`](#storageoptions) | false | Optional parameters to set  |
 
 
 Promise resolution:

@@ -26,7 +26,7 @@ Version Player 1.0.0
      - [progressChanged](#progresschanged)
      - [statusChanged](#statuschanged)
    - [Types](#types)
-     - [PlayerLoadRequest](#playerloadrequest)
+     - [LoadRequest](#loadrequest)
      - [PlayerMediaSession](#playermediasession)
      - [PlayerStatus](#playerstatus)
      - [PlayerProgress](#playerprogress)
@@ -107,14 +107,15 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Loads content in a player and starts a media session
 
 ```typescript
-function load(request: PlayerLoadRequest): Promise<PlayerMediaSession>
+function load(playerId: string, request: LoadRequest): Promise<PlayerMediaSession>
 ```
 
 Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `request` | [`PlayerLoadRequest`](#playerloadrequest) | true | The load request  |
+| `playerId` | `string` | true | The id of the player to load content in  |
+| `request` | [`LoadRequest`](#loadrequest) | true | The load request  |
 
 
 Promise resolution:
@@ -138,10 +139,7 @@ JavaScript:
 ```javascript
 import { Player } from '@firebolt-js/manage-sdk'
 
-Player.load({
-              "playerId": "app1:123",
-              "locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
-            })
+Player.load("app1:123", {"locator":"https://cdn.rdkcentral.com/media/assets/asset.hls"})
     .then(mediaSession => {
         console.log(mediaSession)
     })
@@ -164,8 +162,8 @@ Request:
 	"id": 1,
 	"method": "Player.load",
 	"params": {
+		"playerId": "app1:123",
 		"request": {
-			"playerId": "app1:123",
 			"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
 		}
 	}
@@ -251,7 +249,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Starts playing the content that was last loaded
 
 ```typescript
-function play(playerId: string): Promise<void>
+function play(playerId: string): Promise<PlayerMediaSession>
 ```
 
 Parameters:
@@ -263,9 +261,7 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-void
-```
+[PlayerMediaSession](#playermediasession)
 
 Capabilities:
 
@@ -285,15 +281,17 @@ JavaScript:
 import { Player } from '@firebolt-js/manage-sdk'
 
 Player.play("app1:123")
-    .then(playResponse => {
-        console.log(playResponse)
+    .then(mediaSession => {
+        console.log(mediaSession)
     })
 ```
 
-Value of `playResponse`:
+Value of `mediaSession`:
 
 ```javascript
-null
+{
+	"mediaSessionId": "sess1"
+}
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -316,7 +314,9 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": null
+	"result": {
+		"mediaSessionId": "sess1"
+	}
 }
 ```
 </details>
@@ -885,7 +885,7 @@ Response:
 Stops playing the content that was last loaded
 
 ```typescript
-function stop(playerId: string): Promise<void>
+function stop(playerId: string): Promise<PlayerMediaSession>
 ```
 
 Parameters:
@@ -897,9 +897,7 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-void
-```
+[PlayerMediaSession](#playermediasession)
 
 Capabilities:
 
@@ -919,15 +917,17 @@ JavaScript:
 import { Player } from '@firebolt-js/manage-sdk'
 
 Player.stop("app1:123")
-    .then(stopResponse => {
-        console.log(stopResponse)
+    .then(mediaSession => {
+        console.log(mediaSession)
     })
 ```
 
-Value of `stopResponse`:
+Value of `mediaSession`:
 
 ```javascript
-null
+{
+	"mediaSessionId": "sess1"
+}
 ```
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -950,7 +950,9 @@ Response:
 {
 	"jsonrpc": "2.0",
 	"id": 1,
-	"result": null
+	"result": {
+		"mediaSessionId": "sess1"
+	}
 }
 ```
 </details>
@@ -972,17 +974,16 @@ See: [status](#status)
 
 ## Types
 
-### PlayerLoadRequest
+### LoadRequest
 
 
 
 ```typescript
-type PlayerLoadRequest = {
-  playerId: string          // The id of the player instance to load the locator into
-  locator: string           // A locator to the content to load
+type LoadRequest = {
+  locator: string     // A locator to the content to load
   metadata?: {
   }
-  autoPlay?: boolean        // Start playing immediately on load without needing to call Player.play
+  autoPlay?: boolean  // Start playing immediately on load without needing to call Player.play
 }
 ```
 

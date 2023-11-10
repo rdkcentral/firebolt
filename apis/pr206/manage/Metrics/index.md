@@ -48,7 +48,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `schema` | `string` | true | The schema URI of the metric type <br/>format: uri |
-, | `data` | [`EventObject`](#eventobject-1) | true | A JSON payload conforming the the provided schema  |
+| `data` | [`EventObject`](#eventobject-1) | true | A JSON payload conforming the the provided schema  |
 
 
 Promise resolution:

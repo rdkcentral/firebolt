@@ -38,9 +38,10 @@ Version Player 1.0.0
      - [BasePlayerProvider](#baseplayerprovider)
    - [Types](#types)
      - [PlayerMediaSession](#playermediasession)
-     - [PlayerLoadRequest](#playerloadrequest)
+     - [LoadRequest](#loadrequest)
      - [PlayerStatus](#playerstatus)
      - [PlayerProgress](#playerprogress)
+     - [PlayerLoadRequest](#playerloadrequest)
      - [PlayerLoadProviderRequest](#playerloadproviderrequest)
 
 
@@ -68,7 +69,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -99,12 +101,10 @@ Request:
 	"id": 1,
 	"method": "Player.loadError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -134,7 +134,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`PlayerMediaSession`](#playermediasession) | true |   |
 
 
 Result:
@@ -165,11 +166,9 @@ Request:
 	"id": 1,
 	"method": "Player.loadResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess1"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess1"
 		}
 	}
 }
@@ -198,11 +197,9 @@ Request:
 	"id": 1,
 	"method": "Player.loadResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess2"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess2"
 		}
 	}
 }
@@ -232,7 +229,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -263,12 +261,10 @@ Request:
 	"id": 1,
 	"method": "Player.playError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -298,7 +294,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`PlayerMediaSession`](#playermediasession) | true |   |
 
 
 Result:
@@ -329,11 +326,9 @@ Request:
 	"id": 1,
 	"method": "Player.playResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess1"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess1"
 		}
 	}
 }
@@ -362,11 +357,9 @@ Request:
 	"id": 1,
 	"method": "Player.playResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess2"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess2"
 		}
 	}
 }
@@ -396,7 +389,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -427,12 +421,10 @@ Request:
 	"id": 1,
 	"method": "Player.progressError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -462,7 +454,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`PlayerProgress`](#playerprogress) | true |   |
 
 
 Result:
@@ -493,15 +486,13 @@ Request:
 	"id": 1,
 	"method": "Player.progressResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"speed": 1,
-				"startPosition": 0,
-				"position": 5000,
-				"endPosition": 3600000,
-				"liveSyncTime": "2021-04-23T18:25:43.511Z"
-			}
+		"correlationId": "123",
+		"result": {
+			"speed": 1,
+			"startPosition": 0,
+			"position": 5000,
+			"endPosition": 3600000,
+			"liveSyncTime": "2021-04-23T18:25:43.511Z"
 		}
 	}
 }
@@ -530,15 +521,13 @@ Request:
 	"id": 1,
 	"method": "Player.progressResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"speed": 3,
-				"startPosition": 5000,
-				"position": 10000,
-				"endPosition": 3600000,
-				"liveSyncTime": "2021-04-23T18:25:43.511Z"
-			}
+		"correlationId": "123",
+		"result": {
+			"speed": 3,
+			"startPosition": 5000,
+			"position": 10000,
+			"endPosition": 3600000,
+			"liveSyncTime": "2021-04-23T18:25:43.511Z"
 		}
 	}
 }
@@ -588,7 +577,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `playerId` | `string` | true | The id of the player the progress is for  |
-, | `progress` | [`PlayerProgress`](#playerprogress) | true | The progress  |
+| `progress` | [`PlayerProgress`](#playerprogress) | true | The progress  |
 
 
 Promise resolution:
@@ -681,7 +670,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `playerId` | `string` | true | The id of the player the status is for  |
-, | `status` | [`PlayerStatus`](#playerstatus) | true | The status  |
+| `status` | [`PlayerStatus`](#playerstatus) | true | The status  |
 
 
 Promise resolution:
@@ -767,7 +756,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -798,12 +788,10 @@ Request:
 	"id": 1,
 	"method": "Player.statusError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -833,7 +821,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`PlayerStatus`](#playerstatus) | true |   |
 
 
 Result:
@@ -864,12 +853,10 @@ Request:
 	"id": 1,
 	"method": "Player.statusResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess1",
-				"state": "IDLE"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess1",
+			"state": "IDLE"
 		}
 	}
 }
@@ -898,13 +885,11 @@ Request:
 	"id": 1,
 	"method": "Player.statusResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess2",
-				"state": "BLOCKED",
-				"blockedReason": "CONTENT_NOT_FOUND"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess2",
+			"state": "BLOCKED",
+			"blockedReason": "CONTENT_NOT_FOUND"
 		}
 	}
 }
@@ -934,7 +919,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `error` | `object` | true |   |
 
 
 Result:
@@ -965,12 +951,10 @@ Request:
 	"id": 1,
 	"method": "Player.stopError",
 	"params": {
+		"correlationId": "123",
 		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
+			"code": 1,
+			"message": "Error"
 		}
 	}
 }
@@ -1000,7 +984,8 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Description                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
+| `correlationId` | `string` | true |   |
+| `result` | [`PlayerMediaSession`](#playermediasession) | true |   |
 
 
 Result:
@@ -1031,11 +1016,9 @@ Request:
 	"id": 1,
 	"method": "Player.stopResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess1"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess1"
 		}
 	}
 }
@@ -1064,11 +1047,9 @@ Request:
 	"id": 1,
 	"method": "Player.stopResponse",
 	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"mediaSessionId": "sess2"
-			}
+		"correlationId": "123",
+		"result": {
+			"mediaSessionId": "sess2"
 		}
 	}
 }
@@ -1143,8 +1124,10 @@ Response:
 	"result": {
 		"correlationId": "abc",
 		"parameters": {
-			"playerId": "app1:123",
-			"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+			"playerId": "123",
+			"request": {
+				"locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+			}
 		}
 	}
 }
@@ -1207,7 +1190,7 @@ Response:
 	"result": {
 		"correlationId": "abc",
 		"parameters": {
-			"playerId": "app1:123"
+			"playerId": "123"
 		}
 	}
 }
@@ -1396,7 +1379,7 @@ Response:
 	"result": {
 		"correlationId": "abc",
 		"parameters": {
-			"playerId": "app1:123"
+			"playerId": "123"
 		}
 	}
 }
@@ -1443,18 +1426,13 @@ Provider methods always have two arguments:
 | Parameters Property    | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `playerId` | `string` | true | The id of the player instance to load the locator into  |
-| `locator` | `string` | true | A locator to the content to load <br/>format: uri |
-| `metadata` | `object` | false | An opaque set of metadata that will be relevant to the player.  |
-| `autoPlay` | `boolean` | false | Start playing immediately on load without needing to call Player.play  |
+| `request` | [`LoadRequest`](#loadrequest) | true |   |
 
 
 ```typescript
 type PlayerLoadRequest = {
   playerId: string          // The id of the player instance to load the locator into
-  locator: string           // A locator to the content to load
-  metadata?: {
-  }
-  autoPlay?: boolean        // Start playing immediately on load without needing to call Player.play
+  request: LoadRequest
 }
 ```
 
@@ -1785,8 +1763,10 @@ Event Response:
     "result": {
         "correlationId": "abc",
         "parameters": {
-            "playerId": "app1:123",
-            "locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+            "playerId": "123",
+            "request": {
+                "locator": "https://cdn.rdkcentral.com/media/assets/asset.hls"
+            }
         }
     }
 }
@@ -1830,7 +1810,7 @@ Event Response:
     "result": {
         "correlationId": "abc",
         "parameters": {
-            "playerId": "app1:123"
+            "playerId": "123"
         }
     }
 }
@@ -1874,7 +1854,7 @@ Event Response:
     "result": {
         "correlationId": "abc",
         "parameters": {
-            "playerId": "app1:123"
+            "playerId": "123"
         }
     }
 }
@@ -2021,17 +2001,16 @@ type PlayerMediaSession = {
 
 
 ---
-### PlayerLoadRequest
+### LoadRequest
 
 
 
 ```typescript
-type PlayerLoadRequest = {
-  playerId: string          // The id of the player instance to load the locator into
-  locator: string           // A locator to the content to load
+type LoadRequest = {
+  locator: string     // A locator to the content to load
   metadata?: {
   }
-  autoPlay?: boolean        // Start playing immediately on load without needing to call Player.play
+  autoPlay?: boolean  // Start playing immediately on load without needing to call Player.play
 }
 ```
 
@@ -2068,6 +2047,22 @@ type PlayerProgress = {
 ```
 
 
+
+---
+### PlayerLoadRequest
+
+
+
+```typescript
+type PlayerLoadRequest = {
+  playerId: string          // The id of the player instance to load the locator into
+  request: LoadRequest
+}
+```
+
+See also: 
+
+[LoadRequest](#loadrequest)
 
 ---
 ### PlayerLoadProviderRequest
