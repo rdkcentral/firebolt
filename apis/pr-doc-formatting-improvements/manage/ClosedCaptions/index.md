@@ -7,62 +7,65 @@ sdk: manage
 ---
 
 # ClosedCaptions Module
+
 ---
+
 Version ClosedCaptions 1.0.1-doc-formatting-improvements.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [backgroundColor](#backgroundcolor)
-     - [backgroundOpacity](#backgroundopacity)
-     - [enabled](#enabled)
-     - [fontColor](#fontcolor)
-     - [fontEdge](#fontedge)
-     - [fontEdgeColor](#fontedgecolor)
-     - [fontFamily](#fontfamily)
-     - [fontOpacity](#fontopacity)
-     - [fontSize](#fontsize)
-     - [listen](#listen)
-     - [once](#once)
-     - [preferredLanguages](#preferredlanguages)
-     - [textAlign](#textalign)
-     - [textAlignVertical](#textalignvertical)
-     - [windowColor](#windowcolor)
-     - [windowOpacity](#windowopacity)
-   - [Events](#events)
-     - [backgroundColorChanged](#backgroundcolorchanged)
-     - [backgroundOpacityChanged](#backgroundopacitychanged)
-     - [enabledChanged](#enabledchanged)
-     - [fontColorChanged](#fontcolorchanged)
-     - [fontEdgeChanged](#fontedgechanged)
-     - [fontEdgeColorChanged](#fontedgecolorchanged)
-     - [fontFamilyChanged](#fontfamilychanged)
-     - [fontOpacityChanged](#fontopacitychanged)
-     - [fontSizeChanged](#fontsizechanged)
-     - [preferredLanguagesChanged](#preferredlanguageschanged)
-     - [textAlignChanged](#textalignchanged)
-     - [textAlignVerticalChanged](#textalignverticalchanged)
-     - [windowColorChanged](#windowcolorchanged)
-     - [windowOpacityChanged](#windowopacitychanged)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [backgroundColor](#backgroundcolor)
+  - [backgroundOpacity](#backgroundopacity)
+  - [enabled](#enabled)
+  - [fontColor](#fontcolor)
+  - [fontEdge](#fontedge)
+  - [fontEdgeColor](#fontedgecolor)
+  - [fontFamily](#fontfamily)
+  - [fontOpacity](#fontopacity)
+  - [fontSize](#fontsize)
+  - [listen](#listen)
+  - [once](#once)
+  - [preferredLanguages](#preferredlanguages)
+  - [textAlign](#textalign)
+  - [textAlignVertical](#textalignvertical)
+  - [windowColor](#windowcolor)
+  - [windowOpacity](#windowopacity)
+- [Events](#events)
+  - [backgroundColorChanged](#backgroundcolorchanged)
+  - [backgroundOpacityChanged](#backgroundopacitychanged)
+  - [enabledChanged](#enabledchanged)
+  - [fontColorChanged](#fontcolorchanged)
+  - [fontEdgeChanged](#fontedgechanged)
+  - [fontEdgeColorChanged](#fontedgecolorchanged)
+  - [fontFamilyChanged](#fontfamilychanged)
+  - [fontOpacityChanged](#fontopacitychanged)
+  - [fontSizeChanged](#fontsizechanged)
+  - [preferredLanguagesChanged](#preferredlanguageschanged)
+  - [textAlignChanged](#textalignchanged)
+  - [textAlignVerticalChanged](#textalignverticalchanged)
+  - [windowColorChanged](#windowcolorchanged)
+  - [windowOpacityChanged](#windowopacitychanged)
 
 ## Usage
+
 To use the ClosedCaptions module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for managing closed-captions Settings.
+
+A module for managing closed-captions Settings.
 
 ## Methods
 
 ### backgroundColor
+
 The preferred background color for displaying closed-captions, .
 
 To get the value of `backgroundColor` call the method like this:
@@ -70,8 +73,6 @@ To get the value of `backgroundColor` call the method like this:
 ```typescript
 function backgroundColor(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -81,13 +82,11 @@ type Color = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -103,18 +102,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.backgroundColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.backgroundColor",
+  "params": {}
 }
 ```
 
@@ -122,11 +122,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #2
@@ -143,18 +144,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.backgroundColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.backgroundColor",
+  "params": {}
 }
 ```
 
@@ -162,11 +164,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#ffffff"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#ffffff"
 }
 ```
+
 </details>
 
 Default example #3
@@ -183,18 +186,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.backgroundColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.backgroundColor",
+  "params": {}
 }
 ```
 
@@ -202,13 +206,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -220,10 +224,9 @@ function backgroundColor(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -233,7 +236,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -241,7 +243,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.backgroundColor("#000000")
+let result = await ClosedCaptions.backgroundColor('#000000')
 console.log(result)
 ```
 
@@ -250,18 +252,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setBackgroundColor",
-	"params": {
-		"value": "#000000"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setBackgroundColor",
+  "params": {
+    "value": "#000000"
+  }
 }
 ```
 
@@ -269,11 +272,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -283,7 +287,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.backgroundColor("#ffffff")
+let result = await ClosedCaptions.backgroundColor('#ffffff')
 console.log(result)
 ```
 
@@ -292,18 +296,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setBackgroundColor",
-	"params": {
-		"value": "#ffffff"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setBackgroundColor",
+  "params": {
+    "value": "#ffffff"
+  }
 }
 ```
 
@@ -311,11 +316,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -334,18 +340,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setBackgroundColor",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setBackgroundColor",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -353,24 +360,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function backgroundColor(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -380,7 +384,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -388,7 +391,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await backgroundColor(value => {
+let listenerId = await backgroundColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -397,20 +400,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onBackgroundColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onBackgroundColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -418,11 +422,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #2
@@ -432,7 +437,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await backgroundColor(value => {
+let listenerId = await backgroundColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -441,20 +446,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onBackgroundColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onBackgroundColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -462,11 +468,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#ffffff"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#ffffff"
 }
 ```
+
 </details>
 
 Default example #3
@@ -476,7 +483,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await backgroundColor(value => {
+let listenerId = await backgroundColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -485,20 +492,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onBackgroundColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onBackgroundColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -506,18 +514,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### backgroundOpacity
+
 The preferred opacity for displaying closed-captions backgrounds.
 
 To get the value of `backgroundOpacity` call the method like this:
@@ -525,8 +533,6 @@ To get the value of `backgroundOpacity` call the method like this:
 ```typescript
 function backgroundOpacity(): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -536,13 +542,11 @@ type Opacity = number
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -560,16 +564,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.backgroundOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.backgroundOpacity",
+  "params": {}
 }
 ```
 
@@ -577,11 +582,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 99
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 99
 }
 ```
+
 </details>
 
 Default example #2
@@ -600,16 +606,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.backgroundOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.backgroundOpacity",
+  "params": {}
 }
 ```
 
@@ -617,11 +624,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 100
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 100
 }
 ```
+
 </details>
 
 Default example #3
@@ -640,16 +648,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.backgroundOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.backgroundOpacity",
+  "params": {}
 }
 ```
 
@@ -657,13 +666,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -675,10 +684,9 @@ function backgroundOpacity(value: number): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `number` | true     |             |
 
 Promise resolution:
 
@@ -687,7 +695,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -705,18 +712,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setBackgroundOpacity",
-	"params": {
-		"value": 99
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setBackgroundOpacity",
+  "params": {
+    "value": 99
+  }
 }
 ```
 
@@ -724,11 +732,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -747,18 +756,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setBackgroundOpacity",
-	"params": {
-		"value": 100
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setBackgroundOpacity",
+  "params": {
+    "value": 100
+  }
 }
 ```
 
@@ -766,11 +776,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -789,18 +800,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setBackgroundOpacity",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setBackgroundOpacity",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -808,24 +820,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function backgroundOpacity(callback: (value) => number): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -835,7 +844,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -843,7 +851,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await backgroundOpacity(value => {
+let listenerId = await backgroundOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -854,18 +862,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onBackgroundOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onBackgroundOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -873,11 +882,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 99
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 99
 }
 ```
+
 </details>
 
 Default example #2
@@ -887,7 +897,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await backgroundOpacity(value => {
+let listenerId = await backgroundOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -898,18 +908,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onBackgroundOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onBackgroundOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -917,11 +928,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 100
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 100
 }
 ```
+
 </details>
 
 Default example #3
@@ -931,7 +943,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await backgroundOpacity(value => {
+let listenerId = await backgroundOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -942,18 +954,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onBackgroundOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onBackgroundOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -961,18 +974,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### enabled
+
 Whether or not closed-captions are enabled.
 
 To get the value of `enabled` call the method like this:
@@ -980,8 +993,6 @@ To get the value of `enabled` call the method like this:
 ```typescript
 function enabled(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -991,13 +1002,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1015,16 +1024,17 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.enabled",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.enabled",
+  "params": {}
 }
 ```
 
@@ -1032,11 +1042,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1055,16 +1066,17 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.enabled",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.enabled",
+  "params": {}
 }
 ```
 
@@ -1072,13 +1084,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1090,10 +1102,9 @@ function enabled(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -1102,7 +1113,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -1120,18 +1130,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setEnabled",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setEnabled",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -1139,11 +1150,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1162,18 +1174,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setEnabled",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setEnabled",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -1181,24 +1194,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function enabled(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1208,7 +1218,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1216,7 +1225,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await enabled(value => {
+let listenerId = await enabled((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1227,18 +1236,19 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onEnabledChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1246,11 +1256,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1260,7 +1271,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await enabled(value => {
+let listenerId = await enabled((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1271,18 +1282,19 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onEnabledChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1290,18 +1302,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### fontColor
+
 The preferred font color for displaying closed-captions.
 
 To get the value of `fontColor` call the method like this:
@@ -1309,8 +1321,6 @@ To get the value of `fontColor` call the method like this:
 ```typescript
 function fontColor(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -1320,13 +1330,11 @@ type Color = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1342,18 +1350,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#ffffff"
+'#ffffff'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontColor",
+  "params": {}
 }
 ```
 
@@ -1361,11 +1370,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#ffffff"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#ffffff"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1382,18 +1392,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#ffffff"
+'#ffffff'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontColor",
+  "params": {}
 }
 ```
 
@@ -1401,11 +1412,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #3
@@ -1422,18 +1434,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#ffffff"
+'#ffffff'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontColor",
+  "params": {}
 }
 ```
 
@@ -1441,13 +1454,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1459,10 +1472,9 @@ function fontColor(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -1472,7 +1484,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1480,7 +1491,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontColor("#ffffff")
+let result = await ClosedCaptions.fontColor('#ffffff')
 console.log(result)
 ```
 
@@ -1489,18 +1500,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontColor",
-	"params": {
-		"value": "#ffffff"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontColor",
+  "params": {
+    "value": "#ffffff"
+  }
 }
 ```
 
@@ -1508,11 +1520,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1522,7 +1535,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontColor("#000000")
+let result = await ClosedCaptions.fontColor('#000000')
 console.log(result)
 ```
 
@@ -1531,18 +1544,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontColor",
-	"params": {
-		"value": "#000000"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontColor",
+  "params": {
+    "value": "#000000"
+  }
 }
 ```
 
@@ -1550,11 +1564,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -1573,18 +1588,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontColor",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontColor",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -1592,24 +1608,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function fontColor(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1619,7 +1632,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1627,7 +1639,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontColor(value => {
+let listenerId = await fontColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1636,20 +1648,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#ffffff"
+'#ffffff'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1657,11 +1670,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#ffffff"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#ffffff"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1671,7 +1685,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontColor(value => {
+let listenerId = await fontColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1680,20 +1694,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#ffffff"
+'#ffffff'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1701,11 +1716,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #3
@@ -1715,7 +1731,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontColor(value => {
+let listenerId = await fontColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1724,20 +1740,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#ffffff"
+'#ffffff'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1745,18 +1762,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### fontEdge
+
 The preferred font edge style for displaying closed-captions.
 
 To get the value of `fontEdge` call the method like this:
@@ -1764,8 +1781,6 @@ To get the value of `fontEdge` call the method like this:
 ```typescript
 function fontEdge(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -1775,13 +1790,11 @@ type FontEdge = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1797,18 +1810,19 @@ console.log(edge)
 Value of `edge`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontEdge",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontEdge",
+  "params": {}
 }
 ```
 
@@ -1816,11 +1830,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "none"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "none"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1837,18 +1852,19 @@ console.log(edge)
 Value of `edge`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontEdge",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontEdge",
+  "params": {}
 }
 ```
 
@@ -1856,11 +1872,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "uniform"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "uniform"
 }
 ```
+
 </details>
 
 Default example #3
@@ -1877,18 +1894,19 @@ console.log(edge)
 Value of `edge`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontEdge",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontEdge",
+  "params": {}
 }
 ```
 
@@ -1896,13 +1914,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1914,10 +1932,9 @@ function fontEdge(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -1927,7 +1944,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1935,7 +1951,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontEdge("none")
+let result = await ClosedCaptions.fontEdge('none')
 console.log(result)
 ```
 
@@ -1944,18 +1960,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontEdge",
-	"params": {
-		"value": "none"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontEdge",
+  "params": {
+    "value": "none"
+  }
 }
 ```
 
@@ -1963,11 +1980,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1977,7 +1995,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontEdge("uniform")
+let result = await ClosedCaptions.fontEdge('uniform')
 console.log(result)
 ```
 
@@ -1986,18 +2004,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontEdge",
-	"params": {
-		"value": "uniform"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontEdge",
+  "params": {
+    "value": "uniform"
+  }
 }
 ```
 
@@ -2005,11 +2024,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -2028,18 +2048,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontEdge",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontEdge",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -2047,24 +2068,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function fontEdge(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2074,7 +2092,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2082,7 +2099,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontEdge(value => {
+let listenerId = await fontEdge((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2091,20 +2108,21 @@ console.log(listenerId)
 Value of `edge`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontEdgeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontEdgeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2112,11 +2130,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "none"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "none"
 }
 ```
+
 </details>
 
 Default example #2
@@ -2126,7 +2145,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontEdge(value => {
+let listenerId = await fontEdge((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2135,20 +2154,21 @@ console.log(listenerId)
 Value of `edge`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontEdgeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontEdgeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2156,11 +2176,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "uniform"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "uniform"
 }
 ```
+
 </details>
 
 Default example #3
@@ -2170,7 +2191,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontEdge(value => {
+let listenerId = await fontEdge((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2179,20 +2200,21 @@ console.log(listenerId)
 Value of `edge`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontEdgeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontEdgeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2200,18 +2222,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### fontEdgeColor
+
 The preferred font edge color for displaying closed-captions.
 
 To get the value of `fontEdgeColor` call the method like this:
@@ -2219,8 +2241,6 @@ To get the value of `fontEdgeColor` call the method like this:
 ```typescript
 function fontEdgeColor(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -2230,13 +2250,11 @@ type Color = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -2252,18 +2270,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontEdgeColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontEdgeColor",
+  "params": {}
 }
 ```
 
@@ -2271,11 +2290,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #2
@@ -2292,18 +2312,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontEdgeColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontEdgeColor",
+  "params": {}
 }
 ```
 
@@ -2311,11 +2332,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#ffffff"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#ffffff"
 }
 ```
+
 </details>
 
 Default example #3
@@ -2332,18 +2354,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontEdgeColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontEdgeColor",
+  "params": {}
 }
 ```
 
@@ -2351,13 +2374,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2369,10 +2392,9 @@ function fontEdgeColor(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -2382,7 +2404,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2390,7 +2411,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontEdgeColor("#000000")
+let result = await ClosedCaptions.fontEdgeColor('#000000')
 console.log(result)
 ```
 
@@ -2399,18 +2420,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontEdgeColor",
-	"params": {
-		"value": "#000000"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontEdgeColor",
+  "params": {
+    "value": "#000000"
+  }
 }
 ```
 
@@ -2418,11 +2440,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -2432,7 +2455,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontEdgeColor("#ffffff")
+let result = await ClosedCaptions.fontEdgeColor('#ffffff')
 console.log(result)
 ```
 
@@ -2441,18 +2464,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontEdgeColor",
-	"params": {
-		"value": "#ffffff"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontEdgeColor",
+  "params": {
+    "value": "#ffffff"
+  }
 }
 ```
 
@@ -2460,11 +2484,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -2483,18 +2508,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontEdgeColor",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontEdgeColor",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -2502,24 +2528,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function fontEdgeColor(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2529,7 +2552,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2537,7 +2559,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontEdgeColor(value => {
+let listenerId = await fontEdgeColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2546,20 +2568,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontEdgeColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontEdgeColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2567,11 +2590,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #2
@@ -2581,7 +2605,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontEdgeColor(value => {
+let listenerId = await fontEdgeColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2590,20 +2614,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontEdgeColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontEdgeColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2611,11 +2636,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#ffffff"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#ffffff"
 }
 ```
+
 </details>
 
 Default example #3
@@ -2625,7 +2651,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontEdgeColor(value => {
+let listenerId = await fontEdgeColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2634,20 +2660,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontEdgeColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontEdgeColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2655,18 +2682,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### fontFamily
+
 The preferred font family for displaying closed-captions.
 
 To get the value of `fontFamily` call the method like this:
@@ -2674,8 +2701,6 @@ To get the value of `fontFamily` call the method like this:
 ```typescript
 function fontFamily(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -2685,13 +2710,11 @@ type FontFamily = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -2707,18 +2730,19 @@ console.log(family)
 Value of `family`:
 
 ```javascript
-"monospaced_sanserif"
+'monospaced_sanserif'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontFamily",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontFamily",
+  "params": {}
 }
 ```
 
@@ -2726,11 +2750,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "monospaced_sanserif"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "monospaced_sanserif"
 }
 ```
+
 </details>
 
 Default example #2
@@ -2747,18 +2772,19 @@ console.log(family)
 Value of `family`:
 
 ```javascript
-"monospaced_sanserif"
+'monospaced_sanserif'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontFamily",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontFamily",
+  "params": {}
 }
 ```
 
@@ -2766,11 +2792,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "cursive"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "cursive"
 }
 ```
+
 </details>
 
 Default example #3
@@ -2787,18 +2814,19 @@ console.log(family)
 Value of `family`:
 
 ```javascript
-"monospaced_sanserif"
+'monospaced_sanserif'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontFamily",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontFamily",
+  "params": {}
 }
 ```
 
@@ -2806,13 +2834,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2824,10 +2852,9 @@ function fontFamily(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -2837,7 +2864,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2845,7 +2871,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontFamily("monospaced_sanserif")
+let result = await ClosedCaptions.fontFamily('monospaced_sanserif')
 console.log(result)
 ```
 
@@ -2854,18 +2880,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontFamily",
-	"params": {
-		"value": "monospaced_sanserif"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontFamily",
+  "params": {
+    "value": "monospaced_sanserif"
+  }
 }
 ```
 
@@ -2873,11 +2900,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -2887,7 +2915,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontFamily("cursive")
+let result = await ClosedCaptions.fontFamily('cursive')
 console.log(result)
 ```
 
@@ -2896,18 +2924,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontFamily",
-	"params": {
-		"value": "cursive"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontFamily",
+  "params": {
+    "value": "cursive"
+  }
 }
 ```
 
@@ -2915,11 +2944,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -2938,18 +2968,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontFamily",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontFamily",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -2957,24 +2988,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function fontFamily(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2984,7 +3012,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2992,7 +3019,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontFamily(value => {
+let listenerId = await fontFamily((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3001,20 +3028,21 @@ console.log(listenerId)
 Value of `family`:
 
 ```javascript
-"monospaced_sanserif"
+'monospaced_sanserif'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontFamilyChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontFamilyChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3022,11 +3050,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "monospaced_sanserif"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "monospaced_sanserif"
 }
 ```
+
 </details>
 
 Default example #2
@@ -3036,7 +3065,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontFamily(value => {
+let listenerId = await fontFamily((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3045,20 +3074,21 @@ console.log(listenerId)
 Value of `family`:
 
 ```javascript
-"monospaced_sanserif"
+'monospaced_sanserif'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontFamilyChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontFamilyChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3066,11 +3096,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "cursive"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "cursive"
 }
 ```
+
 </details>
 
 Default example #3
@@ -3080,7 +3111,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontFamily(value => {
+let listenerId = await fontFamily((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3089,20 +3120,21 @@ console.log(listenerId)
 Value of `family`:
 
 ```javascript
-"monospaced_sanserif"
+'monospaced_sanserif'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontFamilyChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontFamilyChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3110,18 +3142,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### fontOpacity
+
 The preferred opacity for displaying closed-captions characters.
 
 To get the value of `fontOpacity` call the method like this:
@@ -3129,8 +3161,6 @@ To get the value of `fontOpacity` call the method like this:
 ```typescript
 function fontOpacity(): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3140,13 +3170,11 @@ type Opacity = number
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -3164,16 +3192,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontOpacity",
+  "params": {}
 }
 ```
 
@@ -3181,11 +3210,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 99
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 99
 }
 ```
+
 </details>
 
 Default example #2
@@ -3204,16 +3234,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontOpacity",
+  "params": {}
 }
 ```
 
@@ -3221,11 +3252,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 100
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 100
 }
 ```
+
 </details>
 
 Default example #3
@@ -3244,16 +3276,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontOpacity",
+  "params": {}
 }
 ```
 
@@ -3261,13 +3294,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -3279,10 +3312,9 @@ function fontOpacity(value: number): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `number` | true     |             |
 
 Promise resolution:
 
@@ -3291,7 +3323,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -3309,18 +3340,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontOpacity",
-	"params": {
-		"value": 99
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontOpacity",
+  "params": {
+    "value": 99
+  }
 }
 ```
 
@@ -3328,11 +3360,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -3351,18 +3384,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontOpacity",
-	"params": {
-		"value": 100
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontOpacity",
+  "params": {
+    "value": 100
+  }
 }
 ```
 
@@ -3370,11 +3404,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -3393,18 +3428,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontOpacity",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontOpacity",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -3412,24 +3448,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function fontOpacity(callback: (value) => number): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3439,7 +3472,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -3447,7 +3479,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontOpacity(value => {
+let listenerId = await fontOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3458,18 +3490,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3477,11 +3510,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 99
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 99
 }
 ```
+
 </details>
 
 Default example #2
@@ -3491,7 +3525,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontOpacity(value => {
+let listenerId = await fontOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3502,18 +3536,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3521,11 +3556,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 100
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 100
 }
 ```
+
 </details>
 
 Default example #3
@@ -3535,7 +3571,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontOpacity(value => {
+let listenerId = await fontOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3546,18 +3582,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3565,18 +3602,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### fontSize
+
 The preferred font size for displaying closed-captions.
 
 To get the value of `fontSize` call the method like this:
@@ -3584,8 +3621,6 @@ To get the value of `fontSize` call the method like this:
 ```typescript
 function fontSize(): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3595,13 +3630,11 @@ type FontSize = number
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -3619,16 +3652,17 @@ Value of `size`:
 ```javascript
 1
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontSize",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontSize",
+  "params": {}
 }
 ```
 
@@ -3636,11 +3670,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 1
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
 }
 ```
+
 </details>
 
 Default example #2
@@ -3659,16 +3694,17 @@ Value of `size`:
 ```javascript
 1
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontSize",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontSize",
+  "params": {}
 }
 ```
 
@@ -3676,11 +3712,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 1
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
 }
 ```
+
 </details>
 
 Default example #3
@@ -3699,16 +3736,17 @@ Value of `size`:
 ```javascript
 1
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.fontSize",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.fontSize",
+  "params": {}
 }
 ```
 
@@ -3716,13 +3754,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -3734,10 +3772,9 @@ function fontSize(value: number): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `number` | true     |             |
 
 Promise resolution:
 
@@ -3746,7 +3783,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -3764,18 +3800,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontSize",
-	"params": {
-		"value": 1
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontSize",
+  "params": {
+    "value": 1
+  }
 }
 ```
 
@@ -3783,11 +3820,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -3806,18 +3844,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontSize",
-	"params": {
-		"value": 1
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontSize",
+  "params": {
+    "value": 1
+  }
 }
 ```
 
@@ -3825,11 +3864,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -3848,18 +3888,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setFontSize",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setFontSize",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -3867,24 +3908,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function fontSize(callback: (value) => number): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3894,7 +3932,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -3902,7 +3939,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontSize(value => {
+let listenerId = await fontSize((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3913,18 +3950,19 @@ Value of `size`:
 ```javascript
 1
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontSizeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontSizeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3932,11 +3970,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 1
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
 }
 ```
+
 </details>
 
 Default example #2
@@ -3946,7 +3985,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontSize(value => {
+let listenerId = await fontSize((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3957,18 +3996,19 @@ Value of `size`:
 ```javascript
 1
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontSizeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontSizeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3976,11 +4016,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 1
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
 }
 ```
+
 </details>
 
 Default example #3
@@ -3990,7 +4031,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await fontSize(value => {
+let listenerId = await fontSize((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -4001,18 +4042,19 @@ Value of `size`:
 ```javascript
 1
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onFontSizeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onFontSizeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -4020,16 +4062,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### listen
 
@@ -4041,24 +4082,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------ |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `ClosedCaptions.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -4066,23 +4107,21 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------ |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `ClosedCaptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -4099,22 +4138,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------ |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `ClosedCaptions.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -4124,28 +4163,27 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------ |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `ClosedCaptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
 ### preferredLanguages
+
 A prioritized list of ISO 639-2/B codes for the preferred closed captions languages on this device.
 
 To get the value of `preferredLanguages` call the method like this:
@@ -4153,8 +4191,6 @@ To get the value of `preferredLanguages` call the method like this:
 ```typescript
 function preferredLanguages(): Promise<string[]>
 ```
-
-
 
 Promise resolution:
 
@@ -4164,13 +4200,11 @@ string[]
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default Example
 
@@ -4186,21 +4220,19 @@ console.log(languages)
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.preferredLanguages",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.preferredLanguages",
+  "params": {}
 }
 ```
 
@@ -4208,14 +4240,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"spa",
-		"eng"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["spa", "eng"]
 }
 ```
+
 </details>
 
 Default Example #2
@@ -4232,21 +4262,19 @@ console.log(languages)
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.preferredLanguages",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.preferredLanguages",
+  "params": {}
 }
 ```
 
@@ -4254,16 +4282,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"eng",
-		"spa"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["eng", "spa"]
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -4275,10 +4300,9 @@ function preferredLanguages(value: string[]): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string[]` | true | the preferred closed captions languages <br/>pattern: ^[a-z]{3}$ |
-
+| Param   | Type       | Required | Description                                                      |
+| ------- | ---------- | -------- | ---------------------------------------------------------------- |
+| `value` | `string[]` | true     | the preferred closed captions languages <br/>pattern: ^[a-z]{3}$ |
 
 Promise resolution:
 
@@ -4288,7 +4312,6 @@ null
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -4296,10 +4319,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.preferredLanguages([
-    "spa",
-    "eng"
-  ])
+let result = await ClosedCaptions.preferredLanguages(['spa', 'eng'])
 console.log(result)
 ```
 
@@ -4308,21 +4328,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setPreferredLanguages",
-	"params": {
-		"value": [
-			"spa",
-			"eng"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setPreferredLanguages",
+  "params": {
+    "value": ["spa", "eng"]
+  }
 }
 ```
 
@@ -4330,11 +4348,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default Example #2
@@ -4344,10 +4363,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.preferredLanguages([
-    "eng",
-    "spa"
-  ])
+let result = await ClosedCaptions.preferredLanguages(['eng', 'spa'])
 console.log(result)
 ```
 
@@ -4356,21 +4372,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setPreferredLanguages",
-	"params": {
-		"value": [
-			"eng",
-			"spa"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setPreferredLanguages",
+  "params": {
+    "value": ["eng", "spa"]
+  }
 }
 ```
 
@@ -4378,24 +4392,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function preferredLanguages(callback: (value) => string[]): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -4405,7 +4416,6 @@ number
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -4413,7 +4423,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await preferredLanguages(value => {
+let listenerId = await preferredLanguages((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -4422,23 +4432,21 @@ console.log(listenerId)
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onPreferredLanguagesChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onPreferredLanguagesChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -4446,14 +4454,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"spa",
-		"eng"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["spa", "eng"]
 }
 ```
+
 </details>
 
 Default Example #2
@@ -4463,7 +4469,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await preferredLanguages(value => {
+let listenerId = await preferredLanguages((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -4472,23 +4478,21 @@ console.log(listenerId)
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onPreferredLanguagesChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onPreferredLanguagesChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -4496,21 +4500,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"eng",
-		"spa"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["eng", "spa"]
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### textAlign
+
 The preferred horizontal alignment for displaying closed-captions characters.
 
 To get the value of `textAlign` call the method like this:
@@ -4518,8 +4519,6 @@ To get the value of `textAlign` call the method like this:
 ```typescript
 function textAlign(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -4529,13 +4528,11 @@ type HorizontalAlignment = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -4551,18 +4548,19 @@ console.log(alignment)
 Value of `alignment`:
 
 ```javascript
-"center"
+'center'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.textAlign",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.textAlign",
+  "params": {}
 }
 ```
 
@@ -4570,11 +4568,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "center"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "center"
 }
 ```
+
 </details>
 
 Default example #2
@@ -4591,18 +4590,19 @@ console.log(alignment)
 Value of `alignment`:
 
 ```javascript
-"center"
+'center'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.textAlign",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.textAlign",
+  "params": {}
 }
 ```
 
@@ -4610,11 +4610,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "left"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "left"
 }
 ```
+
 </details>
 
 Default example #3
@@ -4631,18 +4632,19 @@ console.log(alignment)
 Value of `alignment`:
 
 ```javascript
-"center"
+'center'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.textAlign",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.textAlign",
+  "params": {}
 }
 ```
 
@@ -4650,13 +4652,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -4668,10 +4670,9 @@ function textAlign(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -4681,7 +4682,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -4689,7 +4689,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.textAlign("center")
+let result = await ClosedCaptions.textAlign('center')
 console.log(result)
 ```
 
@@ -4698,18 +4698,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setTextAlign",
-	"params": {
-		"value": "center"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setTextAlign",
+  "params": {
+    "value": "center"
+  }
 }
 ```
 
@@ -4717,11 +4718,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -4731,7 +4733,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.textAlign("left")
+let result = await ClosedCaptions.textAlign('left')
 console.log(result)
 ```
 
@@ -4740,18 +4742,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setTextAlign",
-	"params": {
-		"value": "left"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setTextAlign",
+  "params": {
+    "value": "left"
+  }
 }
 ```
 
@@ -4759,11 +4762,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -4782,18 +4786,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setTextAlign",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setTextAlign",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -4801,24 +4806,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function textAlign(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -4828,7 +4830,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -4836,7 +4837,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await textAlign(value => {
+let listenerId = await textAlign((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -4845,20 +4846,21 @@ console.log(listenerId)
 Value of `alignment`:
 
 ```javascript
-"center"
+'center'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onTextAlignChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onTextAlignChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -4866,11 +4868,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "center"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "center"
 }
 ```
+
 </details>
 
 Default example #2
@@ -4880,7 +4883,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await textAlign(value => {
+let listenerId = await textAlign((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -4889,20 +4892,21 @@ console.log(listenerId)
 Value of `alignment`:
 
 ```javascript
-"center"
+'center'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onTextAlignChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onTextAlignChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -4910,11 +4914,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "left"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "left"
 }
 ```
+
 </details>
 
 Default example #3
@@ -4924,7 +4929,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await textAlign(value => {
+let listenerId = await textAlign((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -4933,20 +4938,21 @@ console.log(listenerId)
 Value of `alignment`:
 
 ```javascript
-"center"
+'center'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onTextAlignChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onTextAlignChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -4954,18 +4960,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### textAlignVertical
+
 The preferred horizontal alignment for displaying closed-captions characters.
 
 To get the value of `textAlignVertical` call the method like this:
@@ -4973,8 +4979,6 @@ To get the value of `textAlignVertical` call the method like this:
 ```typescript
 function textAlignVertical(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -4984,13 +4988,11 @@ type VerticalAlignment = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -5006,18 +5008,19 @@ console.log(alignment)
 Value of `alignment`:
 
 ```javascript
-"middle"
+'middle'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.textAlignVertical",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.textAlignVertical",
+  "params": {}
 }
 ```
 
@@ -5025,11 +5028,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "middle"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "middle"
 }
 ```
+
 </details>
 
 Default example #2
@@ -5046,18 +5050,19 @@ console.log(alignment)
 Value of `alignment`:
 
 ```javascript
-"middle"
+'middle'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.textAlignVertical",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.textAlignVertical",
+  "params": {}
 }
 ```
 
@@ -5065,11 +5070,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "top"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "top"
 }
 ```
+
 </details>
 
 Default example #3
@@ -5086,18 +5092,19 @@ console.log(alignment)
 Value of `alignment`:
 
 ```javascript
-"middle"
+'middle'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.textAlignVertical",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.textAlignVertical",
+  "params": {}
 }
 ```
 
@@ -5105,13 +5112,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -5123,10 +5130,9 @@ function textAlignVertical(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -5136,7 +5142,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -5144,7 +5149,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.textAlignVertical("middle")
+let result = await ClosedCaptions.textAlignVertical('middle')
 console.log(result)
 ```
 
@@ -5153,18 +5158,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setTextAlignVertical",
-	"params": {
-		"value": "middle"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setTextAlignVertical",
+  "params": {
+    "value": "middle"
+  }
 }
 ```
 
@@ -5172,11 +5178,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -5186,7 +5193,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.textAlignVertical("top")
+let result = await ClosedCaptions.textAlignVertical('top')
 console.log(result)
 ```
 
@@ -5195,18 +5202,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setTextAlignVertical",
-	"params": {
-		"value": "top"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setTextAlignVertical",
+  "params": {
+    "value": "top"
+  }
 }
 ```
 
@@ -5214,11 +5222,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -5237,18 +5246,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setTextAlignVertical",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setTextAlignVertical",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -5256,24 +5266,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function textAlignVertical(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -5283,7 +5290,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -5291,7 +5297,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await textAlignVertical(value => {
+let listenerId = await textAlignVertical((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -5300,20 +5306,21 @@ console.log(listenerId)
 Value of `alignment`:
 
 ```javascript
-"middle"
+'middle'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onTextAlignVerticalChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onTextAlignVerticalChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -5321,11 +5328,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "middle"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "middle"
 }
 ```
+
 </details>
 
 Default example #2
@@ -5335,7 +5343,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await textAlignVertical(value => {
+let listenerId = await textAlignVertical((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -5344,20 +5352,21 @@ console.log(listenerId)
 Value of `alignment`:
 
 ```javascript
-"middle"
+'middle'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onTextAlignVerticalChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onTextAlignVerticalChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -5365,11 +5374,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "top"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "top"
 }
 ```
+
 </details>
 
 Default example #3
@@ -5379,7 +5389,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await textAlignVertical(value => {
+let listenerId = await textAlignVertical((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -5388,20 +5398,21 @@ console.log(listenerId)
 Value of `alignment`:
 
 ```javascript
-"middle"
+'middle'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onTextAlignVerticalChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onTextAlignVerticalChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -5409,18 +5420,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### windowColor
+
 The preferred window color for displaying closed-captions, .
 
 To get the value of `windowColor` call the method like this:
@@ -5428,8 +5439,6 @@ To get the value of `windowColor` call the method like this:
 ```typescript
 function windowColor(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -5439,13 +5448,11 @@ type Color = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -5461,18 +5468,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.windowColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.windowColor",
+  "params": {}
 }
 ```
 
@@ -5480,11 +5488,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #2
@@ -5501,18 +5510,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.windowColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.windowColor",
+  "params": {}
 }
 ```
 
@@ -5520,11 +5530,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "white"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "white"
 }
 ```
+
 </details>
 
 Default example #3
@@ -5541,18 +5552,19 @@ console.log(color)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.windowColor",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.windowColor",
+  "params": {}
 }
 ```
 
@@ -5560,13 +5572,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -5578,10 +5590,9 @@ function windowColor(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `string` | true     |             |
 
 Promise resolution:
 
@@ -5591,7 +5602,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -5599,7 +5609,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.windowColor("#000000")
+let result = await ClosedCaptions.windowColor('#000000')
 console.log(result)
 ```
 
@@ -5608,18 +5618,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setWindowColor",
-	"params": {
-		"value": "#000000"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setWindowColor",
+  "params": {
+    "value": "#000000"
+  }
 }
 ```
 
@@ -5627,11 +5638,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -5641,7 +5653,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.windowColor("white")
+let result = await ClosedCaptions.windowColor('white')
 console.log(result)
 ```
 
@@ -5650,18 +5662,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setWindowColor",
-	"params": {
-		"value": "white"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setWindowColor",
+  "params": {
+    "value": "white"
+  }
 }
 ```
 
@@ -5669,11 +5682,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -5692,18 +5706,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setWindowColor",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setWindowColor",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -5711,24 +5726,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function windowColor(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -5738,7 +5750,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -5746,7 +5757,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await windowColor(value => {
+let listenerId = await windowColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -5755,20 +5766,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onWindowColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onWindowColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -5776,11 +5788,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "#000000"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "#000000"
 }
 ```
+
 </details>
 
 Default example #2
@@ -5790,7 +5803,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await windowColor(value => {
+let listenerId = await windowColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -5799,20 +5812,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onWindowColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onWindowColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -5820,11 +5834,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "white"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "white"
 }
 ```
+
 </details>
 
 Default example #3
@@ -5834,7 +5849,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await windowColor(value => {
+let listenerId = await windowColor((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -5843,20 +5858,21 @@ console.log(listenerId)
 Value of `color`:
 
 ```javascript
-"#000000"
+'#000000'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onWindowColorChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onWindowColorChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -5864,18 +5880,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### windowOpacity
+
 The preferred window opacity for displaying closed-captions backgrounds.
 
 To get the value of `windowOpacity` call the method like this:
@@ -5883,8 +5899,6 @@ To get the value of `windowOpacity` call the method like this:
 ```typescript
 function windowOpacity(): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -5894,13 +5908,11 @@ type Opacity = number
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -5918,16 +5930,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.windowOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.windowOpacity",
+  "params": {}
 }
 ```
 
@@ -5935,11 +5948,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 99
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 99
 }
 ```
+
 </details>
 
 Default example #2
@@ -5958,16 +5972,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.windowOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.windowOpacity",
+  "params": {}
 }
 ```
 
@@ -5975,11 +5990,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 100
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 100
 }
 ```
+
 </details>
 
 Default example #3
@@ -5998,16 +6014,17 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.windowOpacity",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.windowOpacity",
+  "params": {}
 }
 ```
 
@@ -6015,13 +6032,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -6033,10 +6050,9 @@ function windowOpacity(value: number): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `number` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `value` | `number` | true     |             |
 
 Promise resolution:
 
@@ -6045,7 +6061,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -6063,18 +6078,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setWindowOpacity",
-	"params": {
-		"value": 99
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setWindowOpacity",
+  "params": {
+    "value": 99
+  }
 }
 ```
 
@@ -6082,11 +6098,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -6105,18 +6122,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setWindowOpacity",
-	"params": {
-		"value": 100
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setWindowOpacity",
+  "params": {
+    "value": 100
+  }
 }
 ```
 
@@ -6124,11 +6142,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #3
@@ -6147,18 +6166,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.setWindowOpacity",
-	"params": {
-		"value": null
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.setWindowOpacity",
+  "params": {
+    "value": null
+  }
 }
 ```
 
@@ -6166,24 +6186,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function windowOpacity(callback: (value) => number): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -6193,7 +6210,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -6201,7 +6217,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await windowOpacity(value => {
+let listenerId = await windowOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -6212,18 +6228,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onWindowOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onWindowOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -6231,11 +6248,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 99
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 99
 }
 ```
+
 </details>
 
 Default example #2
@@ -6245,7 +6263,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await windowOpacity(value => {
+let listenerId = await windowOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -6256,18 +6274,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onWindowOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onWindowOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -6275,11 +6294,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": 100
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 100
 }
 ```
+
 </details>
 
 Default example #3
@@ -6289,7 +6309,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let listenerId = await windowOpacity(value => {
+let listenerId = await windowOpacity((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -6300,18 +6320,19 @@ Value of `opacity`:
 ```javascript
 99
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "ClosedCaptions.onWindowOpacityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "ClosedCaptions.onWindowOpacityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -6319,16 +6340,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 ## Events
 
@@ -6387,6 +6407,3 @@ See: [windowColor](#windowcolor)
 ### windowOpacityChanged
 
 See: [windowOpacity](#windowopacity)
-
-
-

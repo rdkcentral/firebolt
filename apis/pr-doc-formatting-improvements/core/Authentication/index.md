@@ -7,33 +7,35 @@ sdk: core
 ---
 
 # Authentication Module
+
 ---
+
 Version Authentication 1.0.1-doc-formatting-improvements.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [device](#device)
-     - [root](#root)
-     - [session](#session)
-     - [token](#token)
-   - [Types](#types)
-     - [TokenType](#tokentype)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [device](#device)
+  - [root](#root)
+  - [session](#session)
+  - [token](#token)
+- [Types](#types)
+  - [TokenType](#tokentype)
 
 ## Usage
+
 To use the Authentication module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
 ```
 
-
 ## Overview
- A module for acquiring authentication tokens.
+
+A module for acquiring authentication tokens.
 
 ## Methods
 
@@ -45,8 +47,6 @@ Get a device token scoped to the current app.
 function device(): Promise<string>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -55,13 +55,11 @@ string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                           |
+| ---- | ------------------------------------ |
 | uses | xrn:firebolt:capability:token:device |
 
-
 #### Examples
-
 
 Acquire a Firebolt device identity token
 
@@ -77,18 +75,19 @@ console.log(token)
 Value of `token`:
 
 ```javascript
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Authentication.device",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.device",
+  "params": {}
 }
 ```
 
@@ -96,13 +95,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -114,8 +113,6 @@ Get a root device token.
 function root(): Promise<string>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -124,13 +121,11 @@ string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                         |
+| ---- | ---------------------------------- |
 | uses | xrn:firebolt:capability:token:root |
 
-
 #### Examples
-
 
 Acquire a Firebolt root device identity token
 
@@ -146,18 +141,19 @@ console.log(token)
 Value of `token`:
 
 ```javascript
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Authentication.root",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.root",
+  "params": {}
 }
 ```
 
@@ -165,13 +161,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -183,8 +179,6 @@ Get a destributor session token.
 function session(): Promise<string>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -193,13 +187,11 @@ string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                            |
+| ---- | ------------------------------------- |
 | uses | xrn:firebolt:capability:token:session |
 
-
 #### Examples
-
 
 Acquire a distributor session token
 
@@ -215,18 +207,19 @@ console.log(token)
 Value of `token`:
 
 ```javascript
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Authentication.session",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.session",
+  "params": {}
 }
 ```
 
@@ -234,13 +227,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -254,30 +247,26 @@ function token(type: TokenType, options?: object): Promise<object>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `type` | [`TokenType`](#tokentype) | true | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
-| `options` | `object` | false | Additional options for acquiring the token.  |
-
+| Param     | Type                      | Required | Description                                                                      |
+| --------- | ------------------------- | -------- | -------------------------------------------------------------------------------- |
+| `type`    | [`TokenType`](#tokentype) | true     | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
+| `options` | `object`                  | false    | Additional options for acquiring the token.                                      |
 
 Promise resolution:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `value` | string |  | 
-| `expires` | string |  | 
-| `type` | string |  | 
-
+| Property  | Type   | Description |
+| --------- | ------ | ----------- |
+| `value`   | string |             |
+| `expires` | string |             |
+| `type`    | string |             |
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                             |
+| ---- | -------------------------------------- |
 | uses | xrn:firebolt:capability:token:platform |
 
-
 #### Examples
-
 
 Acquire a Firebolt platform token
 
@@ -286,7 +275,7 @@ JavaScript:
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
 
-let token = await Authentication.token("platform", null)
+let token = await Authentication.token('platform', null)
 console.log(token)
 ```
 
@@ -299,18 +288,19 @@ Value of `token`:
 	"type": "platform"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Authentication.token",
-	"params": {
-		"type": "platform"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.token",
+  "params": {
+    "type": "platform"
+  }
 }
 ```
 
@@ -318,15 +308,16 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-		"expires": "2022-04-23T18:25:43.511Z",
-		"type": "platform"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "expires": "2022-04-23T18:25:43.511Z",
+    "type": "platform"
+  }
 }
 ```
+
 </details>
 
 Acquire a Firebolt device identity token
@@ -336,7 +327,7 @@ JavaScript:
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
 
-let token = await Authentication.token("device", null)
+let token = await Authentication.token('device', null)
 console.log(token)
 ```
 
@@ -349,18 +340,19 @@ Value of `token`:
 	"type": "platform"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Authentication.token",
-	"params": {
-		"type": "device"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.token",
+  "params": {
+    "type": "device"
+  }
 }
 ```
 
@@ -368,15 +360,16 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-		"expires": "2022-04-23T18:25:43.511Z",
-		"type": "device"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "expires": "2022-04-23T18:25:43.511Z",
+    "type": "device"
+  }
 }
 ```
+
 </details>
 
 Acquire a Firebolt distributor token
@@ -386,10 +379,9 @@ JavaScript:
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
 
-let token = await Authentication.token("distributor",
-  {
-    clientId: "xyz"
-  })
+let token = await Authentication.token('distributor', {
+  clientId: 'xyz',
+})
 console.log(token)
 ```
 
@@ -402,21 +394,22 @@ Value of `token`:
 	"type": "platform"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Authentication.token",
-	"params": {
-		"type": "distributor",
-		"options": {
-			"clientId": "xyz"
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.token",
+  "params": {
+    "type": "distributor",
+    "options": {
+      "clientId": "xyz"
+    }
+  }
 }
 ```
 
@@ -424,41 +417,34 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-		"expires": "2022-04-23T18:25:43.511Z",
-		"type": "distributor",
-		"data": {
-			"tid": "EB00E9230AB2A35F57DB4EFDDC4908F6446D38F08F4FF0BD57FE6A61E21EEFD9",
-			"scope": "scope"
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "expires": "2022-04-23T18:25:43.511Z",
+    "type": "distributor",
+    "data": {
+      "tid": "EB00E9230AB2A35F57DB4EFDDC4908F6446D38F08F4FF0BD57FE6A61E21EEFD9",
+      "scope": "scope"
+    }
+  }
 }
 ```
+
 </details>
 
-
 ---
-
-
 
 ## Types
 
 ### TokenType
 
-
-
 ```typescript
 enum TokenType {
-	PLATFORM = 'platform',
-	DEVICE = 'device',
-	DISTRIBUTOR = 'distributor'
+  PLATFORM = 'platform',
+  DEVICE = 'device',
+  DISTRIBUTOR = 'distributor',
 }
-
 ```
-
-
 
 ---

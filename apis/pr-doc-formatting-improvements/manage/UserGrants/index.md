@@ -7,40 +7,42 @@ sdk: manage
 ---
 
 # UserGrants Module
+
 ---
+
 Version UserGrants 1.0.1-doc-formatting-improvements.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [app](#app)
-     - [capability](#capability)
-     - [clear](#clear)
-     - [deny](#deny)
-     - [device](#device)
-     - [grant](#grant)
-     - [request](#request)
-   - [Types](#types)
-     - [AppInfo](#appinfo)
-     - [GrantModificationOptions](#grantmodificationoptions)
-     - [RequestOptions](#requestoptions)
-     - [GrantState](#grantstate)
-     - [GrantInfo](#grantinfo)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [app](#app)
+  - [capability](#capability)
+  - [clear](#clear)
+  - [deny](#deny)
+  - [device](#device)
+  - [grant](#grant)
+  - [request](#request)
+- [Types](#types)
+  - [AppInfo](#appinfo)
+  - [GrantModificationOptions](#grantmodificationoptions)
+  - [RequestOptions](#requestoptions)
+  - [GrantState](#grantstate)
+  - [GrantInfo](#grantinfo)
 
 ## Usage
+
 To use the UserGrants module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for managing grants given by the user
+
+A module for managing grants given by the user
 
 ## Methods
 
@@ -54,10 +56,9 @@ function app(appId: string): Promise<object[]>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `appId` | `string` | true |   |
-
+| Param   | Type     | Required | Description |
+| ------- | -------- | -------- | ----------- |
+| `appId` | `string` | true     |             |
 
 Promise resolution:
 
@@ -67,13 +68,11 @@ object[]
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                           |
+| ---- | ------------------------------------ |
 | uses | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -82,49 +81,50 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let info = await UserGrants.app("certapp")
+let info = await UserGrants.app('certapp')
 console.log(info)
 ```
 
 Value of `info`:
 
 ```javascript
-[
-	{
-		"app": {
-			"id": "certapp",
-			"title": "Firebolt Certification"
-		},
-		"state": "granted",
-		"capability": "xrn:firebolt:capability:data:app-usage",
-		"role": "use",
-		"lifespan": "seconds",
-		"expires": "2022-12-14T20:20:39+00:00"
-	},
-	{
-		"app": {
-			"id": "certapp",
-			"title": "Firebolt Certification"
-		},
-		"state": "denied",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"role": "use",
-		"lifespan": "appActive"
-	}
+;[
+  {
+    app: {
+      id: 'certapp',
+      title: 'Firebolt Certification',
+    },
+    state: 'granted',
+    capability: 'xrn:firebolt:capability:data:app-usage',
+    role: 'use',
+    lifespan: 'seconds',
+    expires: '2022-12-14T20:20:39+00:00',
+  },
+  {
+    app: {
+      id: 'certapp',
+      title: 'Firebolt Certification',
+    },
+    state: 'denied',
+    capability: 'xrn:firebolt:capability:localization:postal-code',
+    role: 'use',
+    lifespan: 'appActive',
+  },
 ]
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.app",
-	"params": {
-		"appId": "certapp"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.app",
+  "params": {
+    "appId": "certapp"
+  }
 }
 ```
 
@@ -132,35 +132,35 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		{
-			"app": {
-				"id": "certapp",
-				"title": "Firebolt Certification"
-			},
-			"state": "granted",
-			"capability": "xrn:firebolt:capability:data:app-usage",
-			"role": "use",
-			"lifespan": "seconds",
-			"expires": "2022-12-14T20:20:39+00:00"
-		},
-		{
-			"app": {
-				"id": "certapp",
-				"title": "Firebolt Certification"
-			},
-			"state": "denied",
-			"capability": "xrn:firebolt:capability:localization:postal-code",
-			"role": "use",
-			"lifespan": "appActive"
-		}
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "app": {
+        "id": "certapp",
+        "title": "Firebolt Certification"
+      },
+      "state": "granted",
+      "capability": "xrn:firebolt:capability:data:app-usage",
+      "role": "use",
+      "lifespan": "seconds",
+      "expires": "2022-12-14T20:20:39+00:00"
+    },
+    {
+      "app": {
+        "id": "certapp",
+        "title": "Firebolt Certification"
+      },
+      "state": "denied",
+      "capability": "xrn:firebolt:capability:localization:postal-code",
+      "role": "use",
+      "lifespan": "appActive"
+    }
+  ]
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -174,10 +174,9 @@ function capability(capability: Capability): Promise<object[]>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
 
@@ -187,13 +186,11 @@ object[]
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                           |
+| ---- | ------------------------------------ |
 | uses | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -202,34 +199,37 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let info = await UserGrants.capability("xrn:firebolt:capability:localization:postal-code")
+let info = await UserGrants.capability(
+  'xrn:firebolt:capability:localization:postal-code',
+)
 console.log(info)
 ```
 
 Value of `info`:
 
 ```javascript
-[
-	{
-		"state": "granted",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"role": "use",
-		"lifespan": "powerActive"
-	}
+;[
+  {
+    state: 'granted',
+    capability: 'xrn:firebolt:capability:localization:postal-code',
+    role: 'use',
+    lifespan: 'powerActive',
+  },
 ]
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.capability",
-	"params": {
-		"capability": "xrn:firebolt:capability:localization:postal-code"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.capability",
+  "params": {
+    "capability": "xrn:firebolt:capability:localization:postal-code"
+  }
 }
 ```
 
@@ -237,39 +237,42 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		{
-			"state": "granted",
-			"capability": "xrn:firebolt:capability:localization:postal-code",
-			"role": "use",
-			"lifespan": "powerActive"
-		}
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "state": "granted",
+      "capability": "xrn:firebolt:capability:localization:postal-code",
+      "role": "use",
+      "lifespan": "powerActive"
+    }
+  ]
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### clear
 
-Clears the grant for a given capability, to a specific app if appropriate. Calling this results in a persisted Denied Grant that lasts for the duration of the Grant Policy lifespan. 
+Clears the grant for a given capability, to a specific app if appropriate. Calling this results in a persisted Denied Grant that lasts for the duration of the Grant Policy lifespan.
 
 ```typescript
-function clear(role: Role, capability: Capability, options?: object): Promise<void>
+function clear(
+  role: Role,
+  capability: Capability,
+  options?: object,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | `object` | false |   |
-
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | `object`                                            | false    |                                                                        |
 
 Promise resolution:
 
@@ -279,13 +282,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                           |
+| ------- | ------------------------------------ |
 | manages | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -294,11 +295,13 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let result = await UserGrants.clear("use",
-  "xrn:firebolt:capability:localization:postal-code",
+let result = await UserGrants.clear(
+  'use',
+  'xrn:firebolt:capability:localization:postal-code',
   {
-    appId: "certapp"
-  })
+    appId: 'certapp',
+  },
+)
 console.log(result)
 ```
 
@@ -307,22 +310,23 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.clear",
-	"params": {
-		"role": "use",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"options": {
-			"appId": "certapp"
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.clear",
+  "params": {
+    "role": "use",
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "options": {
+      "appId": "certapp"
+    }
+  }
 }
 ```
 
@@ -330,32 +334,35 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### deny
 
-Denies a given capability, to a specific app if appropriate. Calling this results in a persisted Denied Grant that lasts for the duration of the Grant Policy lifespan. 
+Denies a given capability, to a specific app if appropriate. Calling this results in a persisted Denied Grant that lasts for the duration of the Grant Policy lifespan.
 
 ```typescript
-function deny(role: Role, capability: Capability, options?: object): Promise<void>
+function deny(
+  role: Role,
+  capability: Capability,
+  options?: object,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | `object` | false |   |
-
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | `object`                                            | false    |                                                                        |
 
 Promise resolution:
 
@@ -365,13 +372,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                           |
+| ------- | ------------------------------------ |
 | manages | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -380,11 +385,13 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let result = await UserGrants.deny("use",
-  "xrn:firebolt:capability:localization:postal-code",
+let result = await UserGrants.deny(
+  'use',
+  'xrn:firebolt:capability:localization:postal-code',
   {
-    appId: "certapp"
-  })
+    appId: 'certapp',
+  },
+)
 console.log(result)
 ```
 
@@ -393,22 +400,23 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.deny",
-	"params": {
-		"role": "use",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"options": {
-			"appId": "certapp"
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.deny",
+  "params": {
+    "role": "use",
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "options": {
+      "appId": "certapp"
+    }
+  }
 }
 ```
 
@@ -416,13 +424,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -434,8 +442,6 @@ Get all granted and denied user grants for the device
 function device(): Promise<object[]>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -444,13 +450,11 @@ object[]
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                           |
+| ---- | ------------------------------------ |
 | uses | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -466,25 +470,26 @@ console.log(info)
 Value of `info`:
 
 ```javascript
-[
-	{
-		"state": "granted",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"role": "use",
-		"lifespan": "powerActive"
-	}
+;[
+  {
+    state: 'granted',
+    capability: 'xrn:firebolt:capability:localization:postal-code',
+    role: 'use',
+    lifespan: 'powerActive',
+  },
 ]
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.device",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.device",
+  "params": {}
 }
 ```
 
@@ -492,39 +497,42 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		{
-			"state": "granted",
-			"capability": "xrn:firebolt:capability:localization:postal-code",
-			"role": "use",
-			"lifespan": "powerActive"
-		}
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "state": "granted",
+      "capability": "xrn:firebolt:capability:localization:postal-code",
+      "role": "use",
+      "lifespan": "powerActive"
+    }
+  ]
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### grant
 
-Grants a given capability to a specific app, if appropriate. Calling this results in a persisted active grant that lasts for the duration of the grant policy lifespan. 
+Grants a given capability to a specific app, if appropriate. Calling this results in a persisted active grant that lasts for the duration of the grant policy lifespan.
 
 ```typescript
-function grant(role: Role, capability: Capability, options?: object): Promise<void>
+function grant(
+  role: Role,
+  capability: Capability,
+  options?: object,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `role` | [`Role`](../Capabilities/schemas/#Role) | true |  <br/>values: `'use' \| 'manage' \| 'provide'` |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true |  <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options` | `object` | false |   |
-
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | `object`                                            | false    |                                                                        |
 
 Promise resolution:
 
@@ -534,13 +542,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                           |
+| ------- | ------------------------------------ |
 | manages | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -549,11 +555,13 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let result = await UserGrants.grant("use",
-  "xrn:firebolt:capability:localization:postal-code",
+let result = await UserGrants.grant(
+  'use',
+  'xrn:firebolt:capability:localization:postal-code',
   {
-    appId: "certapp"
-  })
+    appId: 'certapp',
+  },
+)
 console.log(result)
 ```
 
@@ -562,22 +570,23 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.grant",
-	"params": {
-		"role": "use",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"options": {
-			"appId": "certapp"
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.grant",
+  "params": {
+    "role": "use",
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "options": {
+      "appId": "certapp"
+    }
+  }
 }
 ```
 
@@ -585,13 +594,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -600,17 +609,20 @@ Response:
 Requests Firebolt to carry out a set of user grants for a given application such that the user grant provider is notified or an existing user grant is reused.
 
 ```typescript
-function request(appId: string, permissions: Permission[], options?: RequestOptions): Promise<object[]>
+function request(
+  appId: string,
+  permissions: Permission[],
+  options?: RequestOptions,
+): Promise<object[]>
 ```
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `appId` | `string` | true |   |
-| `permissions` | `Permission[]` | true |   |
-| `options` | [`RequestOptions`](#requestoptions) | false | Request options  |
-
+| Param         | Type                                | Required | Description     |
+| ------------- | ----------------------------------- | -------- | --------------- |
+| `appId`       | `string`                            | true     |                 |
+| `permissions` | `Permission[]`                      | true     |                 |
+| `options`     | [`RequestOptions`](#requestoptions) | false    | Request options |
 
 Promise resolution:
 
@@ -620,13 +632,11 @@ object[]
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                           |
+| ------- | ------------------------------------ |
 | manages | xrn:firebolt:capability:grants:state |
 
-
 #### Examples
-
 
 Default result #1
 
@@ -635,51 +645,54 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let info = await UserGrants.request("certapp",
+let info = await UserGrants.request(
+  'certapp',
   [
     {
-      role: "use",
-      capability: "xrn:firebolt:capability:localization:postal-code"
-    }
+      role: 'use',
+      capability: 'xrn:firebolt:capability:localization:postal-code',
+    },
   ],
-  null)
+  null,
+)
 console.log(info)
 ```
 
 Value of `info`:
 
 ```javascript
-[
-	{
-		"app": {
-			"id": "certapp",
-			"title": "Certification App"
-		},
-		"state": "granted",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"role": "use",
-		"lifespan": "powerActive"
-	}
+;[
+  {
+    app: {
+      id: 'certapp',
+      title: 'Certification App',
+    },
+    state: 'granted',
+    capability: 'xrn:firebolt:capability:localization:postal-code',
+    role: 'use',
+    lifespan: 'powerActive',
+  },
 ]
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.request",
-	"params": {
-		"appId": "certapp",
-		"permissions": [
-			{
-				"role": "use",
-				"capability": "xrn:firebolt:capability:localization:postal-code"
-			}
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.request",
+  "params": {
+    "appId": "certapp",
+    "permissions": [
+      {
+        "role": "use",
+        "capability": "xrn:firebolt:capability:localization:postal-code"
+      }
+    ]
+  }
 }
 ```
 
@@ -687,22 +700,23 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		{
-			"app": {
-				"id": "certapp",
-				"title": "Certification App"
-			},
-			"state": "granted",
-			"capability": "xrn:firebolt:capability:localization:postal-code",
-			"role": "use",
-			"lifespan": "powerActive"
-		}
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "app": {
+        "id": "certapp",
+        "title": "Certification App"
+      },
+      "state": "granted",
+      "capability": "xrn:firebolt:capability:localization:postal-code",
+      "role": "use",
+      "lifespan": "powerActive"
+    }
+  ]
 }
 ```
+
 </details>
 
 Default result #2
@@ -712,56 +726,59 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let info = await UserGrants.request("certapp",
+let info = await UserGrants.request(
+  'certapp',
   [
     {
-      role: "use",
-      capability: "xrn:firebolt:capability:localization:postal-code"
-    }
+      role: 'use',
+      capability: 'xrn:firebolt:capability:localization:postal-code',
+    },
   ],
   {
-    force: true
-  })
+    force: true,
+  },
+)
 console.log(info)
 ```
 
 Value of `info`:
 
 ```javascript
-[
-	{
-		"app": {
-			"id": "certapp",
-			"title": "Certification App"
-		},
-		"state": "granted",
-		"capability": "xrn:firebolt:capability:localization:postal-code",
-		"role": "use",
-		"lifespan": "powerActive"
-	}
+;[
+  {
+    app: {
+      id: 'certapp',
+      title: 'Certification App',
+    },
+    state: 'granted',
+    capability: 'xrn:firebolt:capability:localization:postal-code',
+    role: 'use',
+    lifespan: 'powerActive',
+  },
 ]
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "UserGrants.request",
-	"params": {
-		"appId": "certapp",
-		"permissions": [
-			{
-				"role": "use",
-				"capability": "xrn:firebolt:capability:localization:postal-code"
-			}
-		],
-		"options": {
-			"force": true
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "UserGrants.request",
+  "params": {
+    "appId": "certapp",
+    "permissions": [
+      {
+        "role": "use",
+        "capability": "xrn:firebolt:capability:localization:postal-code"
+      }
+    ],
+    "options": {
+      "force": true
+    }
+  }
 }
 ```
 
@@ -769,28 +786,26 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		{
-			"app": {
-				"id": "certapp",
-				"title": "Certification App"
-			},
-			"state": "granted",
-			"capability": "xrn:firebolt:capability:localization:postal-code",
-			"role": "use",
-			"lifespan": "powerActive"
-		}
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "app": {
+        "id": "certapp",
+        "title": "Certification App"
+      },
+      "state": "granted",
+      "capability": "xrn:firebolt:capability:localization:postal-code",
+      "role": "use",
+      "lifespan": "powerActive"
+    }
+  ]
 }
 ```
+
 </details>
 
-
 ---
-
-
 
 ## Types
 
@@ -805,9 +820,8 @@ type AppInfo = {
 }
 ```
 
-
-
 ---
+
 ### GrantModificationOptions
 
 Options when modifying any grant
@@ -818,37 +832,31 @@ type GrantModificationOptions = {
 }
 ```
 
-
-
 ---
+
 ### RequestOptions
-
-
 
 ```typescript
 type RequestOptions = {
-  force?: boolean        // Whether to force for user grant even if the previous decision stored
+  force?: boolean // Whether to force for user grant even if the previous decision stored
 }
 ```
 
-
-
 ---
+
 ### GrantState
 
 The state the grant is in
 
 ```typescript
 enum GrantState {
-	GRANTED = 'granted',
-	DENIED = 'denied'
+  GRANTED = 'granted',
+  DENIED = 'denied',
 }
-
 ```
 
-
-
 ---
+
 ### GrantInfo
 
 Information about a grant given by a user
@@ -859,15 +867,15 @@ type GrantInfo = {
     id: string
     title?: string
   }
-  state: 'granted' | 'denied'                                             // The state the grant is in
-  capability: Capability                                                  // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-  role: Role                                                              // Role provides access level for the app for a given capability.
+  state: 'granted' | 'denied' // The state the grant is in
+  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  role: Role // Role provides access level for the app for a given capability.
   lifespan: 'once' | 'forever' | 'appActive' | 'powerActive' | 'seconds'
   expires?: string
 }
 ```
 
-See also: 
+See also:
 
 string
 'use' | 'manage' | 'provide'

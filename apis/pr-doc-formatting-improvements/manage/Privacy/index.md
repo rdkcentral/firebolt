@@ -7,61 +7,64 @@ sdk: manage
 ---
 
 # Privacy Module
+
 ---
+
 Version Privacy 1.0.1-doc-formatting-improvements.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [allowACRCollection](#allowacrcollection)
-     - [allowAppContentAdTargeting](#allowappcontentadtargeting)
-     - [allowCameraAnalytics](#allowcameraanalytics)
-     - [allowPersonalization](#allowpersonalization)
-     - [allowPrimaryBrowseAdTargeting](#allowprimarybrowseadtargeting)
-     - [allowPrimaryContentAdTargeting](#allowprimarycontentadtargeting)
-     - [allowProductAnalytics](#allowproductanalytics)
-     - [allowRemoteDiagnostics](#allowremotediagnostics)
-     - [allowResumePoints](#allowresumepoints)
-     - [allowUnentitledPersonalization](#allowunentitledpersonalization)
-     - [allowUnentitledResumePoints](#allowunentitledresumepoints)
-     - [allowWatchHistory](#allowwatchhistory)
-     - [listen](#listen)
-     - [once](#once)
-     - [settings](#settings)
-   - [Events](#events)
-     - [allowACRCollectionChanged](#allowacrcollectionchanged)
-     - [allowAppContentAdTargetingChanged](#allowappcontentadtargetingchanged)
-     - [allowCameraAnalyticsChanged](#allowcameraanalyticschanged)
-     - [allowPersonalizationChanged](#allowpersonalizationchanged)
-     - [allowPrimaryBrowseAdTargetingChanged](#allowprimarybrowseadtargetingchanged)
-     - [allowPrimaryContentAdTargetingChanged](#allowprimarycontentadtargetingchanged)
-     - [allowProductAnalyticsChanged](#allowproductanalyticschanged)
-     - [allowRemoteDiagnosticsChanged](#allowremotediagnosticschanged)
-     - [allowResumePointsChanged](#allowresumepointschanged)
-     - [allowUnentitledPersonalizationChanged](#allowunentitledpersonalizationchanged)
-     - [allowUnentitledResumePointsChanged](#allowunentitledresumepointschanged)
-     - [allowWatchHistoryChanged](#allowwatchhistorychanged)
-   - [Types](#types)
-     - [PrivacySettings](#privacysettings)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [allowACRCollection](#allowacrcollection)
+  - [allowAppContentAdTargeting](#allowappcontentadtargeting)
+  - [allowCameraAnalytics](#allowcameraanalytics)
+  - [allowPersonalization](#allowpersonalization)
+  - [allowPrimaryBrowseAdTargeting](#allowprimarybrowseadtargeting)
+  - [allowPrimaryContentAdTargeting](#allowprimarycontentadtargeting)
+  - [allowProductAnalytics](#allowproductanalytics)
+  - [allowRemoteDiagnostics](#allowremotediagnostics)
+  - [allowResumePoints](#allowresumepoints)
+  - [allowUnentitledPersonalization](#allowunentitledpersonalization)
+  - [allowUnentitledResumePoints](#allowunentitledresumepoints)
+  - [allowWatchHistory](#allowwatchhistory)
+  - [listen](#listen)
+  - [once](#once)
+  - [settings](#settings)
+- [Events](#events)
+  - [allowACRCollectionChanged](#allowacrcollectionchanged)
+  - [allowAppContentAdTargetingChanged](#allowappcontentadtargetingchanged)
+  - [allowCameraAnalyticsChanged](#allowcameraanalyticschanged)
+  - [allowPersonalizationChanged](#allowpersonalizationchanged)
+  - [allowPrimaryBrowseAdTargetingChanged](#allowprimarybrowseadtargetingchanged)
+  - [allowPrimaryContentAdTargetingChanged](#allowprimarycontentadtargetingchanged)
+  - [allowProductAnalyticsChanged](#allowproductanalyticschanged)
+  - [allowRemoteDiagnosticsChanged](#allowremotediagnosticschanged)
+  - [allowResumePointsChanged](#allowresumepointschanged)
+  - [allowUnentitledPersonalizationChanged](#allowunentitledpersonalizationchanged)
+  - [allowUnentitledResumePointsChanged](#allowunentitledresumepointschanged)
+  - [allowWatchHistoryChanged](#allowwatchhistorychanged)
+- [Types](#types)
+  - [PrivacySettings](#privacysettings)
 
 ## Usage
+
 To use the Privacy module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for managing device settings.
+
+A module for managing device settings.
 
 ## Methods
 
 ### allowACRCollection
+
 Whether the user allows their automatic content recognition data to be collected
 
 To get the value of `allowACRCollection` call the method like this:
@@ -69,8 +72,6 @@ To get the value of `allowACRCollection` call the method like this:
 ```typescript
 function allowACRCollection(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -80,13 +81,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -104,16 +103,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowACRCollection",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowACRCollection",
+  "params": {}
 }
 ```
 
@@ -121,11 +121,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -144,16 +145,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowACRCollection",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowACRCollection",
+  "params": {}
 }
 ```
 
@@ -161,13 +163,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -179,10 +181,9 @@ function allowACRCollection(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -191,7 +192,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -209,18 +209,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowACRCollection",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowACRCollection",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -228,11 +229,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -251,18 +253,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowACRCollection",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowACRCollection",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -270,24 +273,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowACRCollection(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -297,7 +297,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -305,7 +304,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowACRCollection(value => {
+let listenerId = await allowACRCollection((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -316,18 +315,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowACRCollectionChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowACRCollectionChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -335,11 +335,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -349,7 +350,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowACRCollection(value => {
+let listenerId = await allowACRCollection((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -360,18 +361,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowACRCollectionChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowACRCollectionChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -379,18 +381,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowAppContentAdTargeting
+
 Whether the user allows ads to be targeted to the user while watching content in apps
 
 To get the value of `allowAppContentAdTargeting` call the method like this:
@@ -398,8 +400,6 @@ To get the value of `allowAppContentAdTargeting` call the method like this:
 ```typescript
 function allowAppContentAdTargeting(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -409,13 +409,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -433,16 +431,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowAppContentAdTargeting",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowAppContentAdTargeting",
+  "params": {}
 }
 ```
 
@@ -450,11 +449,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -473,16 +473,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowAppContentAdTargeting",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowAppContentAdTargeting",
+  "params": {}
 }
 ```
 
@@ -490,13 +491,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -508,10 +509,9 @@ function allowAppContentAdTargeting(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -520,7 +520,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -538,18 +537,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowAppContentAdTargeting",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowAppContentAdTargeting",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -557,11 +557,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -580,18 +581,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowAppContentAdTargeting",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowAppContentAdTargeting",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -599,24 +601,23 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function allowAppContentAdTargeting(callback: (value) => boolean): Promise<number>
+function allowAppContentAdTargeting(
+  callback: (value) => boolean,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -626,7 +627,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -634,7 +634,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowAppContentAdTargeting(value => {
+let listenerId = await allowAppContentAdTargeting((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -645,18 +645,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowAppContentAdTargetingChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowAppContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -664,11 +665,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -678,7 +680,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowAppContentAdTargeting(value => {
+let listenerId = await allowAppContentAdTargeting((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -689,18 +691,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowAppContentAdTargetingChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowAppContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -708,18 +711,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowCameraAnalytics
+
 Whether the user allows data from their camera to be used for Product Analytics
 
 To get the value of `allowCameraAnalytics` call the method like this:
@@ -727,8 +730,6 @@ To get the value of `allowCameraAnalytics` call the method like this:
 ```typescript
 function allowCameraAnalytics(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -738,13 +739,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -762,16 +761,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowCameraAnalytics",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowCameraAnalytics",
+  "params": {}
 }
 ```
 
@@ -779,11 +779,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -802,16 +803,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowCameraAnalytics",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowCameraAnalytics",
+  "params": {}
 }
 ```
 
@@ -819,13 +821,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -837,10 +839,9 @@ function allowCameraAnalytics(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -849,7 +850,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -867,18 +867,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowCameraAnalytics",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowCameraAnalytics",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -886,11 +887,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -909,18 +911,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowCameraAnalytics",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowCameraAnalytics",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -928,24 +931,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowCameraAnalytics(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -955,7 +955,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -963,7 +962,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowCameraAnalytics(value => {
+let listenerId = await allowCameraAnalytics((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -974,18 +973,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowCameraAnalyticsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowCameraAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -993,11 +993,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1007,7 +1008,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowCameraAnalytics(value => {
+let listenerId = await allowCameraAnalytics((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1018,18 +1019,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowCameraAnalyticsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowCameraAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1037,18 +1039,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowPersonalization
+
 Whether the user allows their usage data to be used for personalization and recommendations
 
 To get the value of `allowPersonalization` call the method like this:
@@ -1056,8 +1058,6 @@ To get the value of `allowPersonalization` call the method like this:
 ```typescript
 function allowPersonalization(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -1067,13 +1067,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1091,16 +1089,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowPersonalization",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPersonalization",
+  "params": {}
 }
 ```
 
@@ -1108,11 +1107,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1131,16 +1131,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowPersonalization",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPersonalization",
+  "params": {}
 }
 ```
 
@@ -1148,13 +1149,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1166,10 +1167,9 @@ function allowPersonalization(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -1178,7 +1178,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -1196,18 +1195,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowPersonalization",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPersonalization",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -1215,11 +1215,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1238,18 +1239,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowPersonalization",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPersonalization",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -1257,24 +1259,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowPersonalization(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1284,7 +1283,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1292,7 +1290,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowPersonalization(value => {
+let listenerId = await allowPersonalization((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1303,18 +1301,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowPersonalizationChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1322,11 +1321,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1336,7 +1336,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowPersonalization(value => {
+let listenerId = await allowPersonalization((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1347,18 +1347,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowPersonalizationChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1366,18 +1367,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowPrimaryBrowseAdTargeting
+
 Whether the user allows ads to be targeted to the user while browsing in the primary experience
 
 To get the value of `allowPrimaryBrowseAdTargeting` call the method like this:
@@ -1385,8 +1386,6 @@ To get the value of `allowPrimaryBrowseAdTargeting` call the method like this:
 ```typescript
 function allowPrimaryBrowseAdTargeting(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -1396,13 +1395,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1420,16 +1417,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowPrimaryBrowseAdTargeting",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryBrowseAdTargeting",
+  "params": {}
 }
 ```
 
@@ -1437,11 +1435,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1460,16 +1459,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowPrimaryBrowseAdTargeting",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryBrowseAdTargeting",
+  "params": {}
 }
 ```
 
@@ -1477,13 +1477,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1495,10 +1495,9 @@ function allowPrimaryBrowseAdTargeting(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -1507,7 +1506,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -1525,18 +1523,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowPrimaryBrowseAdTargeting",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryBrowseAdTargeting",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -1544,11 +1543,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1567,18 +1567,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowPrimaryBrowseAdTargeting",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryBrowseAdTargeting",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -1586,24 +1587,23 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function allowPrimaryBrowseAdTargeting(callback: (value) => boolean): Promise<number>
+function allowPrimaryBrowseAdTargeting(
+  callback: (value) => boolean,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1613,7 +1613,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1621,7 +1620,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowPrimaryBrowseAdTargeting(value => {
+let listenerId = await allowPrimaryBrowseAdTargeting((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1632,18 +1631,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1651,11 +1651,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1665,7 +1666,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowPrimaryBrowseAdTargeting(value => {
+let listenerId = await allowPrimaryBrowseAdTargeting((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1676,18 +1677,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1695,18 +1697,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowPrimaryContentAdTargeting
+
 Whether the user allows ads to be targeted to the user while watching content in the primary experience
 
 To get the value of `allowPrimaryContentAdTargeting` call the method like this:
@@ -1714,8 +1716,6 @@ To get the value of `allowPrimaryContentAdTargeting` call the method like this:
 ```typescript
 function allowPrimaryContentAdTargeting(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -1725,13 +1725,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1749,16 +1747,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowPrimaryContentAdTargeting",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryContentAdTargeting",
+  "params": {}
 }
 ```
 
@@ -1766,11 +1765,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1789,16 +1789,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowPrimaryContentAdTargeting",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryContentAdTargeting",
+  "params": {}
 }
 ```
 
@@ -1806,13 +1807,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1824,10 +1825,9 @@ function allowPrimaryContentAdTargeting(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -1836,7 +1836,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -1854,18 +1853,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowPrimaryContentAdTargeting",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryContentAdTargeting",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -1873,11 +1873,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1896,18 +1897,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowPrimaryContentAdTargeting",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryContentAdTargeting",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -1915,24 +1917,23 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function allowPrimaryContentAdTargeting(callback: (value) => boolean): Promise<number>
+function allowPrimaryContentAdTargeting(
+  callback: (value) => boolean,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1942,7 +1943,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1950,7 +1950,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowPrimaryContentAdTargeting(value => {
+let listenerId = await allowPrimaryContentAdTargeting((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -1961,18 +1961,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1980,11 +1981,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -1994,7 +1996,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowPrimaryContentAdTargeting(value => {
+let listenerId = await allowPrimaryContentAdTargeting((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2005,18 +2007,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2024,18 +2027,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowProductAnalytics
+
 Whether the user allows their usage data can be used for analytics about the product
 
 To get the value of `allowProductAnalytics` call the method like this:
@@ -2043,8 +2046,6 @@ To get the value of `allowProductAnalytics` call the method like this:
 ```typescript
 function allowProductAnalytics(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -2054,13 +2055,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -2078,16 +2077,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowProductAnalytics",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowProductAnalytics",
+  "params": {}
 }
 ```
 
@@ -2095,11 +2095,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -2118,16 +2119,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowProductAnalytics",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowProductAnalytics",
+  "params": {}
 }
 ```
 
@@ -2135,13 +2137,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2153,10 +2155,9 @@ function allowProductAnalytics(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -2165,7 +2166,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -2183,18 +2183,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowProductAnalytics",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowProductAnalytics",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -2202,11 +2203,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -2225,18 +2227,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowProductAnalytics",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowProductAnalytics",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -2244,24 +2247,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowProductAnalytics(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2271,7 +2271,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2279,7 +2278,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowProductAnalytics(value => {
+let listenerId = await allowProductAnalytics((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2290,18 +2289,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowProductAnalyticsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowProductAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2309,11 +2309,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -2323,7 +2324,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowProductAnalytics(value => {
+let listenerId = await allowProductAnalytics((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2334,18 +2335,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowProductAnalyticsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowProductAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2353,18 +2355,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowRemoteDiagnostics
+
 Whether the user allows their personal data to be included in diagnostic telemetry. This also allows whether device logs can be remotely accessed from the client device
 
 To get the value of `allowRemoteDiagnostics` call the method like this:
@@ -2372,8 +2374,6 @@ To get the value of `allowRemoteDiagnostics` call the method like this:
 ```typescript
 function allowRemoteDiagnostics(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -2383,13 +2383,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -2407,16 +2405,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowRemoteDiagnostics",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowRemoteDiagnostics",
+  "params": {}
 }
 ```
 
@@ -2424,11 +2423,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -2447,16 +2447,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowRemoteDiagnostics",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowRemoteDiagnostics",
+  "params": {}
 }
 ```
 
@@ -2464,13 +2465,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2482,10 +2483,9 @@ function allowRemoteDiagnostics(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -2494,7 +2494,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -2512,18 +2511,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowRemoteDiagnostics",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowRemoteDiagnostics",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -2531,11 +2531,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -2554,18 +2555,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowRemoteDiagnostics",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowRemoteDiagnostics",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -2573,24 +2575,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowRemoteDiagnostics(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2600,7 +2599,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2608,7 +2606,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowRemoteDiagnostics(value => {
+let listenerId = await allowRemoteDiagnostics((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2619,18 +2617,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowRemoteDiagnosticsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowRemoteDiagnosticsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2638,11 +2637,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -2652,7 +2652,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowRemoteDiagnostics(value => {
+let listenerId = await allowRemoteDiagnostics((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2663,18 +2663,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowRemoteDiagnosticsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowRemoteDiagnosticsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2682,18 +2683,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowResumePoints
+
 Whether the user allows resume points for content to show in the main experience
 
 To get the value of `allowResumePoints` call the method like this:
@@ -2701,8 +2702,6 @@ To get the value of `allowResumePoints` call the method like this:
 ```typescript
 function allowResumePoints(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -2712,13 +2711,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -2736,16 +2733,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowResumePoints",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowResumePoints",
+  "params": {}
 }
 ```
 
@@ -2753,11 +2751,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -2776,16 +2775,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowResumePoints",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowResumePoints",
+  "params": {}
 }
 ```
 
@@ -2793,13 +2793,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2811,10 +2811,9 @@ function allowResumePoints(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -2823,7 +2822,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -2841,18 +2839,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowResumePoints",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowResumePoints",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -2860,11 +2859,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -2883,18 +2883,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowResumePoints",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowResumePoints",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -2902,24 +2903,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowResumePoints(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2929,7 +2927,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -2937,7 +2934,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowResumePoints(value => {
+let listenerId = await allowResumePoints((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2948,18 +2945,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowResumePointsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowResumePointsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2967,11 +2965,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -2981,7 +2980,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowResumePoints(value => {
+let listenerId = await allowResumePoints((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -2992,18 +2991,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowResumePointsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowResumePointsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3011,18 +3011,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowUnentitledPersonalization
+
 Whether the user allows their usage data to be used for personalization and recommendations for unentitled content
 
 To get the value of `allowUnentitledPersonalization` call the method like this:
@@ -3030,8 +3030,6 @@ To get the value of `allowUnentitledPersonalization` call the method like this:
 ```typescript
 function allowUnentitledPersonalization(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -3041,13 +3039,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -3065,16 +3061,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowUnentitledPersonalization",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledPersonalization",
+  "params": {}
 }
 ```
 
@@ -3082,11 +3079,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -3105,16 +3103,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowUnentitledPersonalization",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledPersonalization",
+  "params": {}
 }
 ```
 
@@ -3122,13 +3121,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -3140,10 +3139,9 @@ function allowUnentitledPersonalization(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -3152,7 +3150,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -3170,18 +3167,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowUnentitledPersonalization",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledPersonalization",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -3189,11 +3187,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -3212,18 +3211,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowUnentitledPersonalization",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledPersonalization",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -3231,24 +3231,23 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function allowUnentitledPersonalization(callback: (value) => boolean): Promise<number>
+function allowUnentitledPersonalization(
+  callback: (value) => boolean,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3258,7 +3257,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -3266,7 +3264,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowUnentitledPersonalization(value => {
+let listenerId = await allowUnentitledPersonalization((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3277,18 +3275,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowUnentitledPersonalizationChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3296,11 +3295,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -3310,7 +3310,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowUnentitledPersonalization(value => {
+let listenerId = await allowUnentitledPersonalization((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3321,18 +3321,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowUnentitledPersonalizationChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3340,18 +3341,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowUnentitledResumePoints
+
 Whether the user allows resume points for content from unentitled providers to show in the main experience
 
 To get the value of `allowUnentitledResumePoints` call the method like this:
@@ -3359,8 +3360,6 @@ To get the value of `allowUnentitledResumePoints` call the method like this:
 ```typescript
 function allowUnentitledResumePoints(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -3370,13 +3369,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -3394,16 +3391,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowUnentitledResumePoints",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledResumePoints",
+  "params": {}
 }
 ```
 
@@ -3411,11 +3409,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -3434,16 +3433,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowUnentitledResumePoints",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledResumePoints",
+  "params": {}
 }
 ```
 
@@ -3451,13 +3451,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -3469,10 +3469,9 @@ function allowUnentitledResumePoints(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -3481,7 +3480,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -3499,18 +3497,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowUnentitledResumePoints",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledResumePoints",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -3518,11 +3517,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -3541,18 +3541,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowUnentitledResumePoints",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledResumePoints",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -3560,24 +3561,23 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function allowUnentitledResumePoints(callback: (value) => boolean): Promise<number>
+function allowUnentitledResumePoints(
+  callback: (value) => boolean,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3587,7 +3587,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -3595,7 +3594,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowUnentitledResumePoints(value => {
+let listenerId = await allowUnentitledResumePoints((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3606,18 +3605,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowUnentitledResumePointsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledResumePointsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3625,11 +3625,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -3639,7 +3640,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowUnentitledResumePoints(value => {
+let listenerId = await allowUnentitledResumePoints((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3650,18 +3651,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowUnentitledResumePointsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledResumePointsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3669,18 +3671,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### allowWatchHistory
+
 Whether the user allows their watch history from all sources to show in the main experience
 
 To get the value of `allowWatchHistory` call the method like this:
@@ -3688,8 +3690,6 @@ To get the value of `allowWatchHistory` call the method like this:
 ```typescript
 function allowWatchHistory(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -3699,13 +3699,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -3723,16 +3721,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowWatchHistory",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowWatchHistory",
+  "params": {}
 }
 ```
 
@@ -3740,11 +3739,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -3763,16 +3763,17 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.allowWatchHistory",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowWatchHistory",
+  "params": {}
 }
 ```
 
@@ -3780,13 +3781,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -3798,10 +3799,9 @@ function allowWatchHistory(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -3810,7 +3810,6 @@ null
 ```
 
 #### Examples
-
 
 Default example #1
 
@@ -3828,18 +3827,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowWatchHistory",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowWatchHistory",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -3847,11 +3847,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -3870,18 +3871,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.setAllowWatchHistory",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowWatchHistory",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -3889,24 +3891,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function allowWatchHistory(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -3916,7 +3915,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -3924,7 +3922,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowWatchHistory(value => {
+let listenerId = await allowWatchHistory((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3935,18 +3933,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowWatchHistoryChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowWatchHistoryChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3954,11 +3953,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -3968,7 +3968,7 @@ JavaScript:
 ```javascript
 import { Privacy } from '@firebolt-js/manage-sdk'
 
-let listenerId = await allowWatchHistory(value => {
+let listenerId = await allowWatchHistory((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -3979,18 +3979,19 @@ Value of `allow`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.onAllowWatchHistoryChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowWatchHistoryChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -3998,16 +3999,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### listen
 
@@ -4019,24 +4019,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                     |
+| -------- | ----------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Privacy.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -4044,23 +4044,21 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                     |
+| -------- | ----------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Privacy.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -4077,22 +4075,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                     |
+| -------- | ----------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Privacy.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -4102,23 +4100,21 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                     |
+| -------- | ----------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Privacy.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -4131,21 +4127,17 @@ Gets the allowed value for all privacy settings
 function settings(): Promise<PrivacySettings>
 ```
 
-
-
 Promise resolution:
 
 [PrivacySettings](#privacysettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default Example
 
@@ -4176,16 +4168,17 @@ Value of `settings`:
 	"allowWatchHistory": true
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Privacy.settings",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.settings",
+  "params": {}
 }
 ```
 
@@ -4193,26 +4186,26 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"allowACRCollection": true,
-		"allowResumePoints": false,
-		"allowAppContentAdTargeting": false,
-		"allowCameraAnalytics": true,
-		"allowPersonalization": true,
-		"allowPrimaryBrowseAdTargeting": false,
-		"allowPrimaryContentAdTargeting": false,
-		"allowProductAnalytics": true,
-		"allowRemoteDiagnostics": true,
-		"allowUnentitledPersonalization": true,
-		"allowUnentitledResumePoints": false,
-		"allowWatchHistory": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "allowACRCollection": true,
+    "allowResumePoints": false,
+    "allowAppContentAdTargeting": false,
+    "allowCameraAnalytics": true,
+    "allowPersonalization": true,
+    "allowPrimaryBrowseAdTargeting": false,
+    "allowPrimaryContentAdTargeting": false,
+    "allowProductAnalytics": true,
+    "allowRemoteDiagnostics": true,
+    "allowUnentitledPersonalization": true,
+    "allowUnentitledResumePoints": false,
+    "allowWatchHistory": true
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -4266,13 +4259,9 @@ See: [allowUnentitledResumePoints](#allowunentitledresumepoints)
 
 See: [allowWatchHistory](#allowwatchhistory)
 
-
-
 ## Types
 
 ### PrivacySettings
-
-
 
 ```typescript
 type PrivacySettings = {
@@ -4290,7 +4279,5 @@ type PrivacySettings = {
   allowWatchHistory: boolean
 }
 ```
-
-
 
 ---

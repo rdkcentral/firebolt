@@ -7,41 +7,43 @@ sdk: core
 ---
 
 # Lifecycle Module
+
 ---
+
 Version Lifecycle 1.0.1-doc-formatting-improvements.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [close](#close)
-     - [finished](#finished)
-     - [listen](#listen)
-     - [once](#once)
-     - [ready](#ready)
-     - [state](#state)
-   - [Events](#events)
-     - [background](#background)
-     - [foreground](#foreground)
-     - [inactive](#inactive)
-     - [suspended](#suspended)
-     - [unloading](#unloading)
-   - [Types](#types)
-     - [LifecycleEvent](#lifecycleevent)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [close](#close)
+  - [finished](#finished)
+  - [listen](#listen)
+  - [once](#once)
+  - [ready](#ready)
+  - [state](#state)
+- [Events](#events)
+  - [background](#background)
+  - [foreground](#foreground)
+  - [inactive](#inactive)
+  - [suspended](#suspended)
+  - [unloading](#unloading)
+- [Types](#types)
+  - [LifecycleEvent](#lifecycleevent)
 
 ## Usage
+
 To use the Lifecycle module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 ```
 
-
 ## Overview
- Methods and events for responding to lifecycle changes in your app
+
+Methods and events for responding to lifecycle changes in your app
 
 ## Methods
 
@@ -55,10 +57,9 @@ function close(reason: CloseReason): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `reason` | [`CloseReason`](../Lifecycle/schemas/#CloseReason) | true | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
-
+| Param    | Type                                               | Required | Description                                                                                                    |
+| -------- | -------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------- |
+| `reason` | [`CloseReason`](../Lifecycle/schemas/#CloseReason) | true     | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
 
 Promise resolution:
 
@@ -68,13 +69,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Close the app when the user presses back on the app home screen
 
@@ -83,7 +82,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-let success = await Lifecycle.close("remoteButton")
+let success = await Lifecycle.close('remoteButton')
 console.log(success)
 ```
 
@@ -92,18 +91,19 @@ Value of `success`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.close",
-	"params": {
-		"reason": "remoteButton"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.close",
+  "params": {
+    "reason": "remoteButton"
+  }
 }
 ```
 
@@ -111,11 +111,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Close the app when the user selects an exit menu item
@@ -125,7 +126,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-let success = await Lifecycle.close("userExit")
+let success = await Lifecycle.close('userExit')
 console.log(success)
 ```
 
@@ -134,18 +135,19 @@ Value of `success`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.close",
-	"params": {
-		"reason": "userExit"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.close",
+  "params": {
+    "reason": "userExit"
+  }
 }
 ```
 
@@ -153,13 +155,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -171,8 +173,6 @@ Notify the platform that the app is done unloading
 function finished(): Promise<void>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -181,13 +181,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -205,16 +203,17 @@ Value of `results`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.finished",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.finished",
+  "params": {}
 }
 ```
 
@@ -222,13 +221,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -242,24 +241,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -267,23 +266,21 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -300,22 +297,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -325,23 +322,21 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -354,8 +349,6 @@ Notify the platform that the app is ready
 function ready(): Promise<void>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -364,13 +357,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:ready |
 
-
 #### Examples
-
 
 Let the platform know that your app is ready
 
@@ -388,16 +379,17 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.ready",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.ready",
+  "params": {}
 }
 ```
 
@@ -405,13 +397,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -423,21 +415,17 @@ Get the current state of the app. This function is **synchronous**.
 function state(): LifecycleState
 ```
 
-
-
 Promise resolution:
 
 [LifecycleState](../Lifecycle/schemas/#LifecycleState)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -453,18 +441,19 @@ console.log(state)
 Value of `state`:
 
 ```javascript
-"foreground"
+'foreground'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.state",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.state",
+  "params": {}
 }
 ```
 
@@ -472,13 +461,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "foreground"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "foreground"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -489,9 +478,8 @@ Response:
 ```typescript
 function listen('background', (LifecycleEvent) => void): Promise<number>
 ```
+
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-
 
 Event value:
 
@@ -499,13 +487,11 @@ Event value:
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -514,7 +500,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('background', value => {
+Lifecycle.listen('background', (value) => {
   console.log(value)
 })
 ```
@@ -527,18 +513,19 @@ Value of `value`:
 	"previous": "foreground"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.onBackground",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onBackground",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -546,16 +533,16 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"state": "background",
-		"previous": "foreground"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "background",
+    "previous": "foreground"
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -564,9 +551,8 @@ Response:
 ```typescript
 function listen('foreground', (LifecycleEvent) => void): Promise<number>
 ```
+
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-
 
 Event value:
 
@@ -574,13 +560,11 @@ Event value:
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -589,7 +573,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('foreground', value => {
+Lifecycle.listen('foreground', (value) => {
   console.log(value)
 })
 ```
@@ -602,18 +586,19 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.onForeground",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -621,14 +606,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"state": "foreground",
-		"previous": "inactive"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "foreground",
+    "previous": "inactive"
+  }
 }
 ```
+
 </details>
 
 Move to foreground via remote branded buton
@@ -638,7 +624,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('foreground', value => {
+Lifecycle.listen('foreground', (value) => {
   console.log(value)
 })
 ```
@@ -651,18 +637,19 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.onForeground",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -670,17 +657,17 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"state": "foreground",
-		"previous": "inactive",
-		"source": "remote"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "foreground",
+    "previous": "inactive",
+    "source": "remote"
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -689,9 +676,8 @@ Response:
 ```typescript
 function listen('inactive', (LifecycleEvent) => void): Promise<number>
 ```
+
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-
 
 Event value:
 
@@ -699,13 +685,11 @@ Event value:
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -714,7 +698,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('inactive', value => {
+Lifecycle.listen('inactive', (value) => {
   console.log(value)
 })
 ```
@@ -727,18 +711,19 @@ Value of `value`:
 	"previous": "initializing"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.onInactive",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onInactive",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -746,16 +731,16 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"state": "inactive",
-		"previous": "initializing"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "inactive",
+    "previous": "initializing"
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -764,9 +749,8 @@ Response:
 ```typescript
 function listen('suspended', (LifecycleEvent) => void): Promise<number>
 ```
+
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-
 
 Event value:
 
@@ -774,13 +758,11 @@ Event value:
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -789,7 +771,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('suspended', value => {
+Lifecycle.listen('suspended', (value) => {
   console.log(value)
 })
 ```
@@ -802,18 +784,19 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.onSuspended",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onSuspended",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -821,16 +804,16 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"state": "suspended",
-		"previous": "inactive"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "suspended",
+    "previous": "inactive"
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -839,9 +822,8 @@ Response:
 ```typescript
 function listen('unloading', (LifecycleEvent) => void): Promise<number>
 ```
+
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-
 
 Event value:
 
@@ -849,13 +831,11 @@ Event value:
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -864,7 +844,7 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('unloading', value => {
+Lifecycle.listen('unloading', (value) => {
   console.log(value)
 })
 ```
@@ -877,18 +857,19 @@ Value of `value`:
 	"previous": "inactive"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Lifecycle.onUnloading",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onUnloading",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -896,20 +877,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"state": "unloading",
-		"previous": "inactive"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "unloading",
+    "previous": "inactive"
+  }
 }
 ```
+
 </details>
 
-
 ---
-
-
 
 ## Types
 
@@ -919,13 +898,13 @@ A an object describing the previous and current states
 
 ```typescript
 type LifecycleEvent = {
-  state: LifecycleState        // The application lifecycle state
-  previous: LifecycleState     // The application lifecycle state
-  source?: 'voice' | 'remote'  // The source of the lifecycle change.
+  state: LifecycleState // The application lifecycle state
+  previous: LifecycleState // The application lifecycle state
+  source?: 'voice' | 'remote' // The source of the lifecycle change.
 }
 ```
 
-See also: 
+See also:
 
 'initializing' | 'inactive' | 'foreground' | 'background' | 'unloading' | 'suspended'
 

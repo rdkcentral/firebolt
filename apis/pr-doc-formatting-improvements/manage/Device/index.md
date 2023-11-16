@@ -7,34 +7,36 @@ sdk: manage
 ---
 
 # Device Module
+
 ---
+
 Version Device 1.0.1-doc-formatting-improvements.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [listen](#listen)
-     - [name](#name)
-     - [once](#once)
-     - [provision](#provision)
-   - [Events](#events)
-     - [deviceNameChanged](#devicenamechanged)
-     - [nameChanged](#namechanged)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [listen](#listen)
+  - [name](#name)
+  - [once](#once)
+  - [provision](#provision)
+- [Events](#events)
+  - [deviceNameChanged](#devicenamechanged)
+  - [nameChanged](#namechanged)
 
 ## Usage
+
 To use the Device module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for querying about the device and it's capabilities.
+
+A module for querying about the device and it's capabilities.
 
 ## Methods
 
@@ -48,24 +50,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Device.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -73,28 +75,27 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Device.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
 ### name
+
 The human readable name of the device
 
 To get the value of `name` call the method like this:
@@ -102,8 +103,6 @@ To get the value of `name` call the method like this:
 ```typescript
 function name(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -113,13 +112,11 @@ string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:name |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -135,18 +132,19 @@ console.log(value)
 Value of `value`:
 
 ```javascript
-"Living Room"
+'Living Room'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.name",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.name",
+  "params": {}
 }
 ```
 
@@ -154,11 +152,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Living Room"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
 }
 ```
+
 </details>
 
 Default example #2
@@ -175,18 +174,19 @@ console.log(value)
 Value of `value`:
 
 ```javascript
-"Living Room"
+'Living Room'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.name",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.name",
+  "params": {}
 }
 ```
 
@@ -194,13 +194,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Kitchen"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Kitchen"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -212,10 +212,9 @@ function name(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device friendly-name  |
-
+| Param   | Type     | Required | Description              |
+| ------- | -------- | -------- | ------------------------ |
+| `value` | `string` | true     | the device friendly-name |
 
 Promise resolution:
 
@@ -225,7 +224,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -233,7 +231,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let result = await Device.name("Living Room")
+let result = await Device.name('Living Room')
 console.log(result)
 ```
 
@@ -242,18 +240,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.setName",
-	"params": {
-		"value": "Living Room"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.setName",
+  "params": {
+    "value": "Living Room"
+  }
 }
 ```
 
@@ -261,11 +260,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -275,7 +275,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let result = await Device.name("Kitchen")
+let result = await Device.name('Kitchen')
 console.log(result)
 ```
 
@@ -284,18 +284,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.setName",
-	"params": {
-		"value": "Kitchen"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.setName",
+  "params": {
+    "value": "Kitchen"
+  }
 }
 ```
 
@@ -303,24 +304,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function name(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -330,7 +328,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -338,7 +335,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let listenerId = await name(value => {
+let listenerId = await name((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -347,20 +344,21 @@ console.log(listenerId)
 Value of `value`:
 
 ```javascript
-"Living Room"
+'Living Room'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.onNameChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onNameChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -368,11 +366,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Living Room"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
 }
 ```
+
 </details>
 
 Default example #2
@@ -382,7 +381,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let listenerId = await name(value => {
+let listenerId = await name((value) => {
   console.log(value)
 })
 console.log(listenerId)
@@ -391,20 +390,21 @@ console.log(listenerId)
 Value of `value`:
 
 ```javascript
-"Living Room"
+'Living Room'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.onNameChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onNameChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -412,16 +412,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Kitchen"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Kitchen"
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### once
 
@@ -435,22 +434,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Device.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -460,23 +459,21 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Device.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -486,17 +483,20 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Used by a distributor to push provision info to firebolt.
 
 ```typescript
-function provision(accountId: string, deviceId: string, distributorId?: string): Promise<void>
+function provision(
+  accountId: string,
+  deviceId: string,
+  distributorId?: string,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `accountId` | `string` | true | The id of the account that is device is attached to in the back office.  |
-| `deviceId` | `string` | true | The id of the device in the back office.  |
-| `distributorId` | `string` | false | The id of the distributor in the back office.  |
-
+| Param           | Type     | Required | Description                                                             |
+| --------------- | -------- | -------- | ----------------------------------------------------------------------- |
+| `accountId`     | `string` | true     | The id of the account that is device is attached to in the back office. |
+| `deviceId`      | `string` | true     | The id of the device in the back office.                                |
+| `distributorId` | `string` | false    | The id of the distributor in the back office.                           |
 
 Promise resolution:
 
@@ -506,13 +506,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                                                                                                              |
+| ------- | ----------------------------------------------------------------------------------------------------------------------- |
 | manages | xrn:firebolt:capability:account:id<br/>xrn:firebolt:capability:device:id<br/>xrn:firebolt:capability:device:distributor |
 
-
 #### Examples
-
 
 Default Example
 
@@ -521,7 +519,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let result = await Device.provision("12345678910", "987654321111", null)
+let result = await Device.provision('12345678910', '987654321111', null)
 console.log(result)
 ```
 
@@ -530,19 +528,20 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.provision",
-	"params": {
-		"accountId": "12345678910",
-		"deviceId": "987654321111"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.provision",
+  "params": {
+    "accountId": "12345678910",
+    "deviceId": "987654321111"
+  }
 }
 ```
 
@@ -550,11 +549,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 With distributor id
@@ -564,7 +564,11 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let result = await Device.provision("12345678910", "987654321111", "global_partner")
+let result = await Device.provision(
+  '12345678910',
+  '987654321111',
+  'global_partner',
+)
 console.log(result)
 ```
 
@@ -573,20 +577,21 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.provision",
-	"params": {
-		"accountId": "12345678910",
-		"deviceId": "987654321111",
-		"distributorId": "global_partner"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.provision",
+  "params": {
+    "accountId": "12345678910",
+    "deviceId": "987654321111",
+    "distributorId": "global_partner"
+  }
 }
 ```
 
@@ -594,13 +599,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -611,9 +616,8 @@ Response:
 ```typescript
 function listen('deviceNameChanged', (string) => void): Promise<number>
 ```
+
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-
 
 Event value:
 
@@ -623,13 +627,11 @@ string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:name |
 
-
 #### Examples
-
 
 Getting the device name
 
@@ -638,7 +640,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-Device.listen('deviceNameChanged', value => {
+Device.listen('deviceNameChanged', (value) => {
   console.log(value)
 })
 ```
@@ -646,20 +648,21 @@ Device.listen('deviceNameChanged', value => {
 Value of `value`:
 
 ```javascript
-"Living Room"
+'Living Room'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Device.onDeviceNameChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onDeviceNameChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -667,19 +670,16 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Living Room"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### nameChanged
 
 See: [name](#name)
-
-
-
