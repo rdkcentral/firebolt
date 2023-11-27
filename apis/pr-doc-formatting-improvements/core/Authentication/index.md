@@ -379,9 +379,7 @@ JavaScript:
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
 
-let token = await Authentication.token('distributor', {
-  clientId: 'xyz',
-})
+let token = await Authentication.token('distributor', { clientId: 'xyz' })
 console.log(token)
 ```
 

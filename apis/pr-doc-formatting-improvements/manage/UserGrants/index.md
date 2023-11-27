@@ -298,9 +298,7 @@ import { UserGrants } from '@firebolt-js/manage-sdk'
 let result = await UserGrants.clear(
   'use',
   'xrn:firebolt:capability:localization:postal-code',
-  {
-    appId: 'certapp',
-  },
+  { appId: 'certapp' },
 )
 console.log(result)
 ```
@@ -388,9 +386,7 @@ import { UserGrants } from '@firebolt-js/manage-sdk'
 let result = await UserGrants.deny(
   'use',
   'xrn:firebolt:capability:localization:postal-code',
-  {
-    appId: 'certapp',
-  },
+  { appId: 'certapp' },
 )
 console.log(result)
 ```
@@ -558,9 +554,7 @@ import { UserGrants } from '@firebolt-js/manage-sdk'
 let result = await UserGrants.grant(
   'use',
   'xrn:firebolt:capability:localization:postal-code',
-  {
-    appId: 'certapp',
-  },
+  { appId: 'certapp' },
 )
 console.log(result)
 ```

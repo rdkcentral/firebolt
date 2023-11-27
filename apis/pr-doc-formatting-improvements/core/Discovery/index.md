@@ -393,9 +393,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let result = await Discovery.contentAccess({
-  entitlements: [],
-})
+let result = await Discovery.contentAccess({ entitlements: [] })
 console.log(result)
 ```
 
@@ -441,9 +439,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let result = await Discovery.contentAccess({
-  availabilities: [],
-})
+let result = await Discovery.contentAccess({ availabilities: [] })
 console.log(result)
 ```
 
@@ -1920,9 +1916,7 @@ import { Discovery } from '@firebolt-js/sdk'
 
 let success = await Discovery.launch('foo', {
   action: 'home',
-  context: {
-    source: 'voice',
-  },
+  context: { source: 'voice' },
 })
 console.log(success)
 ```
@@ -3473,20 +3467,22 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.watchNext("A Cool Show",
+let success = await Discovery.watchNext(
+  'A Cool Show',
   {
-    entityId: "partner.com/entity/123"
+    entityId: 'partner.com/entity/123',
   },
-  "2021-04-23T18:25:43.511Z",
+  '2021-04-23T18:25:43.511Z',
   {
-    3x4: {
-      en-US: "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg",
-      es: "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
+    '3x4': {
+      'en-US': 'https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg',
+      es: 'https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg',
     },
-    16x9: {
-      en: "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
-    }
-  })
+    '16x9': {
+      en: 'https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg',
+    },
+  },
+)
 console.log(success)
 ```
 
@@ -3545,9 +3541,7 @@ import { Discovery } from '@firebolt-js/sdk'
 
 let success = await Discovery.watchNext(
   'A Fantastic Show',
-  {
-    entityId: 'partner.com/entity/456',
-  },
+  { entityId: 'partner.com/entity/456' },
   null,
   null,
 )

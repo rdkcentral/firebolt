@@ -134,10 +134,7 @@ JavaScript:
 import { Advertising } from '@firebolt-js/sdk'
 
 let advertisingId = await Advertising.advertisingId({
-  scope: {
-    type: 'browse',
-    id: 'paidPlacement',
-  },
+  scope: { type: 'browse', id: 'paidPlacement' },
 })
 console.log(advertisingId)
 ```
@@ -196,10 +193,7 @@ JavaScript:
 import { Advertising } from '@firebolt-js/sdk'
 
 let advertisingId = await Advertising.advertisingId({
-  scope: {
-    type: 'content',
-    id: 'metadata:linear:station:123',
-  },
+  scope: { type: 'content', id: 'metadata:linear:station:123' },
 })
 console.log(advertisingId)
 ```

@@ -403,9 +403,7 @@ let success = await SecureStorage.set(
   'device',
   'authRefreshToken',
   'VGhpcyBub3QgYSByZWFsIHRva2VuLgo=',
-  {
-    ttl: 600,
-  },
+  { ttl: 600 },
 )
 console.log(success)
 ```

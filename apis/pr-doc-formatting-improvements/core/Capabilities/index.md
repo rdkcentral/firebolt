@@ -993,9 +993,7 @@ import { Capabilities } from '@firebolt-js/sdk'
 
 let permitted = await Capabilities.permitted(
   'xrn:firebolt:capability:input:keyboard',
-  {
-    role: 'manage',
-  },
+  { role: 'manage' },
 )
 console.log(permitted)
 ```
@@ -1121,10 +1119,7 @@ JavaScript:
 import { Capabilities } from '@firebolt-js/sdk'
 
 let request = await Capabilities.request([
-  {
-    role: 'use',
-    capability: 'xrn:firebolt:capability:commerce:purchase',
-  },
+  { role: 'use', capability: 'xrn:firebolt:capability:commerce:purchase' },
 ])
 console.log(request)
 ```
