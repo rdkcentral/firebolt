@@ -21,12 +21,12 @@ Version Entertainment 0.0.0-unknown.0
   - [ProgramType](#programtype)
   - [MusicType](#musictype)
   - [ContentIdentifiers](#contentidentifiers)
-  - [Entitlement](#entitlement)
   - [ContentRating](#contentrating)
 - [United States](#united-states)
 - [Canada](#canada)
   - [WayToWatch](#waytowatch)
   - [EntityInfo](#entityinfo)
+  - [Entitlement](#entitlement)
 
 ## Overview
 
@@ -102,18 +102,6 @@ type ContentIdentifiers = {
   seasonId?: string // The TV Season for a TV Episode.
   seriesId?: string // The TV Series for a TV Episode or TV Season.
   appContentData?: string // App-specific content identifiers.
-}
-```
-
----
-
-### Entitlement
-
-```typescript
-type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
 }
 ```
 
@@ -258,7 +246,7 @@ type EntityInfo = {
   identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
   title: string // Title of the entity.
   entityType: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
-  programType: ProgramType // In the case of a program `entityType`, specifies the program type.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
   musicType?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
   synopsis?: string // Short description of the entity.
   seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
@@ -278,5 +266,17 @@ See also:
 'song' | 'album'
 [ContentRating](#contentrating)
 [WayToWatch](#waytowatch)
+
+---
+
+### Entitlement
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
+}
+```
 
 ---

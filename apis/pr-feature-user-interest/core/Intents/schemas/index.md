@@ -19,6 +19,9 @@ Version Intents 0.0.0-unknown.0
 - [Types](#types)
   - [Intent](#intent)
   - [IntentProperties](#intentproperties)
+  - [InterestedInIntent](#interestedinintent)
+  - [HomeIntent](#homeintent)
+  - [LaunchIntent](#launchintent)
   - [ProgramEntity](#programentity)
   - [Identifier](#identifier)
   - [SearchIntent](#searchintent)
@@ -26,8 +29,6 @@ Version Intents 0.0.0-unknown.0
   - [ChannelEntity](#channelentity)
   - [AdditionalEntity](#additionalentity)
   - [PlayQueryIntent](#playqueryintent)
-  - [HomeIntent](#homeintent)
-  - [LaunchIntent](#launchintent)
   - [TVSeriesEntity](#tvseriesentity)
   - [MovieEntity](#movieentity)
   - [TVSeasonEntity](#tvseasonentity)
@@ -69,6 +70,61 @@ type IntentProperties = {
   action: any
   data: any
   context: any
+}
+```
+
+---
+
+### InterestedInIntent
+
+A Firebolt compliant representation of a user's interest in a piece of content.
+
+```typescript
+type InterestedInIntent = {
+  action: 'interestedIn'
+  data?: {
+    appId?: string
+    type?: InterestType
+    entity?: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  }
+  context: {
+    source: string
+  }
+}
+```
+
+See also:
+
+'interest' | 'disinterest'
+[EntityInfo](../Entertainment/schemas/#EntityInfo)
+
+---
+
+### HomeIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
+
+```typescript
+type HomeIntent = {
+  action: 'home'
+  context: {
+    source: string
+  }
+}
+```
+
+---
+
+### LaunchIntent
+
+A Firebolt compliant representation of a user intention to launch an app.
+
+```typescript
+type LaunchIntent = {
+  action: 'launch'
+  context: {
+    source: string
+  }
 }
 ```
 
@@ -189,36 +245,6 @@ See also:
 
 'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
 'song' | 'album'
-
----
-
-### HomeIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
-
-```typescript
-type HomeIntent = {
-  action: 'home'
-  context: {
-    source: string
-  }
-}
-```
-
----
-
-### LaunchIntent
-
-A Firebolt compliant representation of a user intention to launch an app.
-
-```typescript
-type LaunchIntent = {
-  action: 'launch'
-  context: {
-    source: string
-  }
-}
-```
 
 ---
 

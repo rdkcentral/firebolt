@@ -207,9 +207,28 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 ### `xrn:firebolt:capability:discovery:entity-info`
 
+| Uses |
+| ---- |
+| [Content.entity](./manage/Content/#entity) |
+
+
+
 | Provides |
 | -------- |
 | [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
+
+
+### `xrn:firebolt:capability:discovery:interest`
+
+| Uses |
+| ---- |
+| [Content.requestUserInterest](./manage/Content/#requestuserinterest)<br/>[Content.onUserInterestedIn](./manage/Content/#userinterestedin) |
+
+
+
+| Provides |
+| -------- |
+| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest)<br/>[Discovery.userInterestResponse](./core/Discovery/#userinterestresponse)<br/>[Discovery.userInterestError](./core/Discovery/#userinteresterror) |
 
 
 ### `xrn:firebolt:capability:discovery:navigate-to`
@@ -226,7 +245,20 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Discovery.policy](./core/Discovery/#policy)<br/>[Discovery.onPolicyChanged](./core/Discovery/#policychanged) |
 
 
+### `xrn:firebolt:capability:discovery:providers`
+
+| Uses |
+| ---- |
+| [Content.providers](./manage/Content/#providers) |
+
+
 ### `xrn:firebolt:capability:discovery:purchased-content`
+
+| Uses |
+| ---- |
+| [Content.purchases](./manage/Content/#purchases) |
+
+
 
 | Provides |
 | -------- |

@@ -27,19 +27,28 @@ Version Discovery 1.0.1-feature-user-interest.0
   - [listen](#listen)
   - [once](#once)
   - [policy](#policy)
+  - [provide](#provide)
   - [purchasedContent](#purchasedcontent)
   - [signIn](#signin)
   - [signOut](#signout)
+  - [userInterest](#userinterest)
+  - [userInterestError](#userinteresterror)
+  - [userInterestResponse](#userinterestresponse)
   - [watched](#watched)
   - [watchNext](#watchnext)
 - [Events](#events)
   - [navigateTo](#navigateto)
   - [policyChanged](#policychanged)
+  - [onRequestUserInterest](#onrequestuserinterest)
+- [Provider Interfaces](#provider-interfaces)
+  - [UserInterestProvider](#userinterestprovider)
 - [Types](#types)
   - [DiscoveryPolicy](#discoverypolicy)
   - [Availability](#availability)
+  - [UserInterestParameters](#userinterestparameters)
   - [PurchasedContentParameters](#purchasedcontentparameters)
   - [ContentAccessIdentifiers](#contentaccessidentifiers)
+  - [UserInterestProviderRequest](#userinterestproviderrequest)
   - [EntityInfoParameters](#entityinfoparameters)
   - [EntityInfoFederatedRequest](#entityinfofederatedrequest)
   - [PurchasedContentFederatedRequest](#purchasedcontentfederatedrequest)
@@ -2768,6 +2777,23 @@ Response:
 
 ---
 
+### provide
+
+To provide a specific capability to the platform. See [Provider Interfaces](#provider-interfaces) for a list of interfaces available to provide in this module.
+
+```typescript
+provide(capability: string, provider: any): void
+```
+
+Parameters:
+
+| Param        | Type     | Required | Summary                                      |
+| ------------ | -------- | -------- | -------------------------------------------- |
+| `capability` | `string` | Yes      | The capability that is being provided.       |
+| `provider`   | `any`    | Yes      | An implementation of the required interface. |
+
+See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
+
 ### purchasedContent
 
 Return content purchased by the user, such as rentals and electronic sell through purchases.
@@ -3334,6 +3360,281 @@ Response:
 
 ---
 
+### userInterest
+
+Notify the platform that content was marked as interesting to the user.
+
+```typescript
+function userInterest(type: InterestType, entity?: EntityInfo): Promise<null>
+```
+
+Parameters:
+
+| Param    | Type                                                 | Required | Description                                                                      |
+| -------- | ---------------------------------------------------- | -------- | -------------------------------------------------------------------------------- |
+| `type`   | `InterestType`                                       | true     | The entity Id of the watched content. <br/>values: `'interest' \| 'disinterest'` |
+| `entity` | [`EntityInfo`](../Entertainment/schemas/#EntityInfo) | false    |                                                                                  |
+
+Promise resolution:
+
+```typescript
+null
+```
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Notify the platform of interest.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let default = await Discovery.userInterest("interest",
+                       {
+                         "identifiers": {
+                           "entityId": "xyz"
+                         },
+                         "entityType": "program",
+                         "programType": "movie",
+                         "title": "Interesting Movie Title"
+                       })
+console.log(default)
+```
+
+Value of `default`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterest",
+  "params": {
+    "type": "interest",
+    "entity": {
+      "identifiers": {
+        "entityId": "xyz"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Interesting Movie Title"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Notify the platform of disinterest.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let default = await Discovery.userInterest("disinterest",
+                       {
+                         "identifiers": {
+                           "entityId": "xyz"
+                         },
+                         "entityType": "program",
+                         "programType": "movie",
+                         "title": "Uninteresting Movie Title"
+                       })
+console.log(default)
+```
+
+Value of `default`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterest",
+  "params": {
+    "type": "disinterest",
+    "entity": {
+      "identifiers": {
+        "entityId": "xyz"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Uninteresting Movie Title"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### userInterestError
+
+_This is an private RPC method._
+
+Internal API for UserInterest Provider to send back error.
+
+Parameters:
+
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
+
+Result:
+
+```typescript
+null
+```
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Example 1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+### userInterestResponse
+
+_This is an private RPC method._
+
+Internal API for UserInterest Provider to send back response.
+
+Parameters:
+
+| Param           | Type                                                 | Required | Description |
+| --------------- | ---------------------------------------------------- | -------- | ----------- |
+| `correlationId` | `string`                                             | true     |             |
+| `result`        | [`EntityInfo`](../Entertainment/schemas/#EntityInfo) | true     |             |
+
+Result:
+
+```typescript
+null
+```
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "identifiers": {
+        "entityId": "xyz"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Interesting Movie Title"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
 ### watched
 
 Notify the platform that content was partially or completely watched
@@ -3677,6 +3978,237 @@ Response:
 
 See: [policy](#policy)
 
+### onRequestUserInterest
+
+_This is an private RPC method._
+
+Invoked when the platform is requesting metadata for content that the user finds interesting.
+
+Parameters:
+
+| Param    | Type      | Required | Description |
+| -------- | --------- | -------- | ----------- |
+| `listen` | `boolean` | true     |             |
+
+Result:
+
+[UserInterestProviderRequest](#userinterestproviderrequest)
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Platform requests the currently displayed content.
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onRequestUserInterest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "correlationId": "1",
+    "parameters": {
+      "type": "interest"
+    }
+  }
+}
+```
+
+---
+
+## Provider Interfaces
+
+### UserInterestProvider
+
+The provider interface for the `xrn:firebolt:capability:discovery:interest` capability.
+
+```typescript
+
+```
+
+Usage:
+
+```typescript
+Discovery.provide('xrn:firebolt:capability:discovery:interest', provider: UserInterestProvider | object)
+```
+
+#### userInterest
+
+Invoked when the platform is requesting metadata for content that the user finds interesting.
+
+```typescript
+function userInterest(
+  parameters?: UserInterestParameters,
+  session?: ProviderSession,
+): Promise<EntityInfo>
+```
+
+Provider methods always have two arguments:
+
+| Param        | Type                                                | Required | Summary |
+| ------------ | --------------------------------------------------- | -------- | ------- |
+| `parameters` | [`UserInterestParameters`](#userinterestparameters) | false    |         |
+| `session`    | `ProviderSession`                                   | false    |         |
+
+| Parameters Property | Type                            | Required | Summary                                    |
+| ------------------- | ------------------------------- | -------- | ------------------------------------------ |
+| `type`              | [`InterestType`](#interesttype) | true     | <br/>values: `'interest' \| 'disinterest'` |
+
+```typescript
+type UserInterestParameters = {
+  type: InterestType
+}
+```
+
+Promise resolution:
+
+| Property      | Type                                                               | Description                                                                   |
+| ------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `identifiers` | [ContentIdentifiers](../Entertainment/schemas/#ContentIdentifiers) | The ContentIdentifiers object is how the app identifies an entity or asset to |
+
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included. |
+| `title` | string | Title of the entity. |
+| `entityType` | 'program' | 'music' | The type of the entity, e.g. `program` or `music`. |
+| `programType` | 'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode' | In the case of a program `entityType`, specifies the program type. |
+| `musicType` | 'song' | 'album' | In the case of a music `entityType`, specifies the type of music entity. |
+| `synopsis` | string | Short description of the entity. |
+| `seasonNumber` | number | For TV seasons, the season number. For TV episodes, the season that the episode belongs to. |
+| `seasonCount` | number | For TV series, seasons, and episodes, the total number of seasons. |
+| `episodeNumber` | number | For TV episodes, the episode number. |
+| `episodeCount` | number | For TV seasons and episodes, the total number of episodes in the current season. |
+| `releaseDate` | string | The date that the program or entity was released or first aired. |
+| `contentRatings` | ContentRating[] | A list of ContentRating objects, describing the entity's ratings in various rating schemes. |
+| `waysToWatch` | WayToWatch[] | An array of ways a user is might watch this entity, regardless of entitlements. |
+
+#### Examples
+
+**Register your app to provide the `xrn:firebolt:capability:discovery:interest` capability.**
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+class MyUserInterestProvider {
+  async userInterest(parameters, session) {
+    return {
+      identifiers: {
+        entityId: 'xyz',
+      },
+      entityType: 'program',
+      programType: 'movie',
+      title: 'Interesting Movie Title',
+    }
+  }
+}
+
+Discovery.provide(
+  'xrn:firebolt:capability:discovery:interest',
+  new MyUserInterestProvider(),
+)
+```
+
+<details markdown="1" >
+    <summary>JSON-RPC</summary>
+
+**Register to recieve each provider API**
+
+Request:
+
+```json
+{
+  "id": 1,
+  "method": "Discovery.onRequestUserInterest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 1,
+  "result": {
+    "listening": true,
+    "event": "Discovery.onRequestUserInterest"
+  }
+}
+```
+
+**Asynchronous event to initiate userInterest()**
+
+Event Response:
+
+```json
+{
+  "id": 1,
+  "result": {
+    "correlationId": "1",
+    "parameters": {
+      "type": "interest"
+    }
+  }
+}
+```
+
+**App initiated response to event**
+
+Request:
+
+```json
+{
+  "id": 2,
+  "method": "Discovery.userInterestResponse",
+  "params": {
+    "correlationId": "1",
+    "result": {
+      "identifiers": {
+        "entityId": "xyz"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Interesting Movie Title"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 2,
+  "result": true
+}
+```
+
+</details>
+
 ## Types
 
 ### DiscoveryPolicy
@@ -3702,6 +4234,20 @@ type Availability = {
   endTime?: string
 }
 ```
+
+---
+
+### UserInterestParameters
+
+```typescript
+type UserInterestParameters = {
+  type: InterestType
+}
+```
+
+See also:
+
+'interest' | 'disinterest'
 
 ---
 
@@ -3735,6 +4281,21 @@ See also:
 
 [Availability](#availability)
 [Entitlement](../Entertainment/schemas/#Entitlement)
+
+---
+
+### UserInterestProviderRequest
+
+```typescript
+type UserInterestProviderRequest = {
+  correlationId: string // An id to correlate the provider response with this request
+  parameters: UserInterestParameters
+}
+```
+
+See also:
+
+[UserInterestParameters](#userinterestparameters)
 
 ---
 

@@ -18,8 +18,8 @@ Version Types 0.0.0-unknown.0
 - [Overview](#overview)
 - [Types](#types)
   - [AudioProfile](#audioprofile)
-  - [BooleanMap](#booleanmap)
   - [SemanticVersion](#semanticversion)
+  - [BooleanMap](#booleanmap)
   - [LocalizedString](#localizedstring)
   - [FlatMap](#flatmap)
   - [Timeout](#timeout)
@@ -45,16 +45,6 @@ enum AudioProfile {
 
 ---
 
-### BooleanMap
-
-```typescript
-type BooleanMap = {
-  [property: string]: boolean
-}
-```
-
----
-
 ### SemanticVersion
 
 ```typescript
@@ -63,6 +53,16 @@ type SemanticVersion = {
   minor: number
   patch: number
   readable: string
+}
+```
+
+---
+
+### BooleanMap
+
+```typescript
+type BooleanMap = {
+  [property: string]: boolean
 }
 ```
 
