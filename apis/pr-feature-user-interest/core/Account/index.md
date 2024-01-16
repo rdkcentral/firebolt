@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.0.1-feature-user-interest.0
+Version Account 1.1.0-feature-user-interest.0
 
 ## Table of Contents
 

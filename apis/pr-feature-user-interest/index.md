@@ -318,6 +318,19 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Keyboard.onRequestStandard](./manage/Keyboard/#requeststandard)<br/>[Keyboard.onRequestPassword](./manage/Keyboard/#requestpassword)<br/>[Keyboard.onRequestEmail](./manage/Keyboard/#requestemail)<br/>[Keyboard.standardFocus](./manage/Keyboard/#standardfocus)<br/>[Keyboard.passwordFocus](./manage/Keyboard/#passwordfocus)<br/>[Keyboard.emailFocus](./manage/Keyboard/#emailfocus)<br/>[Keyboard.standardResponse](./manage/Keyboard/#standardresponse)<br/>[Keyboard.standardError](./manage/Keyboard/#standarderror)<br/>[Keyboard.passwordResponse](./manage/Keyboard/#passwordresponse)<br/>[Keyboard.passwordError](./manage/Keyboard/#passworderror)<br/>[Keyboard.emailResponse](./manage/Keyboard/#emailresponse)<br/>[Keyboard.emailError](./manage/Keyboard/#emailerror) |
 
 
+### `xrn:firebolt:capability:inputs:hdmi`
+
+| Uses |
+| ---- |
+| [HDMIInput.ports](./manage/HDMIInput/#ports)<br/>[HDMIInput.port](./manage/HDMIInput/#port)<br/>[HDMIInput.onConnectionChanged](./manage/HDMIInput/#connectionchanged)<br/>[HDMIInput.onSignalChanged](./manage/HDMIInput/#signalchanged)<br/>[HDMIInput.lowLatencyMode](./manage/HDMIInput/#lowlatencymode)<br/>[HDMIInput.onAutoLowLatencyModeSignalChanged](./manage/HDMIInput/#autolowlatencymodesignalchanged)<br/>[HDMIInput.autoLowLatencyModeCapable](./manage/HDMIInput/#autolowlatencymodecapable)<br/>[HDMIInput.edidVersion](./manage/HDMIInput/#edidversion)<br/>[HDMIInput.onLowLatencyModeChanged](./manage/HDMIInput/#lowlatencymodechanged)<br/>[HDMIInput.onAutoLowLatencyModeCapableChanged](./manage/HDMIInput/#autolowlatencymodecapablechanged)<br/>[HDMIInput.onEdidVersionChanged](./manage/HDMIInput/#edidversionchanged) |
+
+
+
+| Manages |
+| ------- |
+| [HDMIInput.open](./manage/HDMIInput/#open)<br/>[HDMIInput.close](./manage/HDMIInput/#close)<br/>[HDMIInput.setLowLatencyMode](./manage/HDMIInput/#setlowlatencymode)<br/>[HDMIInput.setAutoLowLatencyModeCapable](./manage/HDMIInput/#setautolowlatencymodecapable)<br/>[HDMIInput.setEdidVersion](./manage/HDMIInput/#setedidversion) |
+
+
 ### `xrn:firebolt:capability:lifecycle:initialize`
 
 | Uses |
