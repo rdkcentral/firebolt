@@ -7,47 +7,49 @@ sdk: manage
 ---
 
 # Localization Module
+
 ---
-Version Localization 1.0.0-next.2
+
+Version Localization 1.1.0-next.1
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [addAdditionalInfo](#addadditionalinfo)
-     - [additionalInfo](#additionalinfo)
-     - [countryCode](#countrycode)
-     - [language](#language)
-     - [listen](#listen)
-     - [locale](#locale)
-     - [locality](#locality)
-     - [once](#once)
-     - [postalCode](#postalcode)
-     - [preferredAudioLanguages](#preferredaudiolanguages)
-     - [removeAdditionalInfo](#removeadditionalinfo)
-     - [timeZone](#timezone)
-   - [Events](#events)
-     - [countryCodeChanged](#countrycodechanged)
-     - [languageChanged](#languagechanged)
-     - [localeChanged](#localechanged)
-     - [localityChanged](#localitychanged)
-     - [postalCodeChanged](#postalcodechanged)
-     - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
-     - [timeZoneChanged](#timezonechanged)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [addAdditionalInfo](#addadditionalinfo)
+  - [additionalInfo](#additionalinfo)
+  - [countryCode](#countrycode)
+  - [language](#language)
+  - [listen](#listen)
+  - [locale](#locale)
+  - [locality](#locality)
+  - [once](#once)
+  - [postalCode](#postalcode)
+  - [preferredAudioLanguages](#preferredaudiolanguages)
+  - [removeAdditionalInfo](#removeadditionalinfo)
+  - [timeZone](#timezone)
+- [Events](#events)
+  - [countryCodeChanged](#countrycodechanged)
+  - [languageChanged](#languagechanged)
+  - [localeChanged](#localechanged)
+  - [localityChanged](#localitychanged)
+  - [postalCodeChanged](#postalcodechanged)
+  - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
+  - [timeZoneChanged](#timezonechanged)
 
 ## Usage
+
 To use the Localization module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- Methods for accessessing location and language preferences
+
+Methods for accessessing location and language preferences
 
 ## Methods
 
@@ -61,11 +63,10 @@ function addAdditionalInfo(key: string, value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `key` | `string` | true | Key to add additionalInfo  |
-, | `value` | `string` | true | Value to be set for additionalInfo  |
-
+| Param   | Type     | Required | Description                        |
+| ------- | -------- | -------- | ---------------------------------- |
+| `key`   | `string` | true     | Key to add additionalInfo          |
+| `value` | `string` | true     | Value to be set for additionalInfo |
 
 Promise resolution:
 
@@ -75,13 +76,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                                           |
+| ------- | ---------------------------------------------------- |
 | manages | xrn:firebolt:capability:localization:additional-info |
 
-
 #### Examples
-
 
 Add an additionalInfo for localization
 
@@ -90,10 +89,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.addAdditionalInfo("defaultKey", "defaultValue=")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.addAdditionalInfo('defaultKey', 'defaultValue=')
+console.log(result)
 ```
 
 Value of `result`:
@@ -101,19 +98,20 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.addAdditionalInfo",
-	"params": {
-		"key": "defaultKey",
-		"value": "defaultValue="
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.addAdditionalInfo",
+  "params": {
+    "key": "defaultKey",
+    "value": "defaultValue="
+  }
 }
 ```
 
@@ -121,13 +119,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -139,8 +137,6 @@ Get any platform-specific localization information, in an Map<string, string>
 function additionalInfo(): Promise<object>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -149,13 +145,11 @@ object
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:additional-info |
 
-
 #### Examples
-
 
 Default Example
 
@@ -164,27 +158,27 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.additionalInfo()
-    .then(info => {
-        console.log(info)
-    })
+let info = await Localization.additionalInfo()
+console.log(info)
 ```
 
 Value of `info`:
 
 ```javascript
-{}
+{
+}
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.additionalInfo",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.additionalInfo",
+  "params": {}
 }
 ```
 
@@ -192,17 +186,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### countryCode
+
 Get the ISO 3166-1 alpha-2 code for the country device is located in
 
 To get the value of `countryCode` call the method like this:
@@ -210,8 +205,6 @@ To get the value of `countryCode` call the method like this:
 ```typescript
 function countryCode(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -221,13 +214,11 @@ type CountryCode = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                        |
+| ---- | ------------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:country-code |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -236,27 +227,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.countryCode()
-    .then(code => {
-        console.log(code)
-    })
+let code = await Localization.countryCode()
+console.log(code)
 ```
 
 Value of `code`:
 
 ```javascript
-"US"
+'US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.countryCode",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.countryCode",
+  "params": {}
 }
 ```
 
@@ -264,11 +254,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "US"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "US"
 }
 ```
+
 </details>
 
 Default example #2
@@ -278,27 +269,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.countryCode()
-    .then(code => {
-        console.log(code)
-    })
+let code = await Localization.countryCode()
+console.log(code)
 ```
 
 Value of `code`:
 
 ```javascript
-"US"
+'US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.countryCode",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.countryCode",
+  "params": {}
 }
 ```
 
@@ -306,13 +296,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "UK"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "UK"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -324,10 +314,9 @@ function countryCode(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device country code <br/>pattern: ^[A-Z]{2}$ |
-
+| Param   | Type     | Required | Description                                      |
+| ------- | -------- | -------- | ------------------------------------------------ |
+| `value` | `string` | true     | the device country code <br/>pattern: ^[A-Z]{2}$ |
 
 Promise resolution:
 
@@ -337,7 +326,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -345,10 +333,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.countryCode("US")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.countryCode('US')
+console.log(result)
 ```
 
 Value of `result`:
@@ -356,18 +342,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setCountryCode",
-	"params": {
-		"value": "US"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setCountryCode",
+  "params": {
+    "value": "US"
+  }
 }
 ```
 
@@ -375,11 +362,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -389,10 +377,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.countryCode("UK")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.countryCode('UK')
+console.log(result)
 ```
 
 Value of `result`:
@@ -400,18 +386,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setCountryCode",
-	"params": {
-		"value": "UK"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setCountryCode",
+  "params": {
+    "value": "UK"
+  }
 }
 ```
 
@@ -419,24 +406,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function countryCode(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -446,7 +430,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -454,30 +437,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-countryCode(value => {
+let listenerId = await countryCode((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `code`:
 
 ```javascript
-"US"
+'US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onCountryCodeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onCountryCodeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -485,11 +468,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "US"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "US"
 }
 ```
+
 </details>
 
 Default example #2
@@ -499,30 +483,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-countryCode(value => {
+let listenerId = await countryCode((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `code`:
 
 ```javascript
-"US"
+'US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onCountryCodeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onCountryCodeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -530,18 +514,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "UK"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "UK"
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### language
+
 Get the ISO 639 1/2 code for the preferred language
 
 To get the value of `language` call the method like this:
@@ -549,8 +533,6 @@ To get the value of `language` call the method like this:
 ```typescript
 function language(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -560,13 +542,11 @@ type Language = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:language |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -575,27 +555,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.language()
-    .then(lang => {
-        console.log(lang)
-    })
+let lang = await Localization.language()
+console.log(lang)
 ```
 
 Value of `lang`:
 
 ```javascript
-"en"
+'en'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.language",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.language",
+  "params": {}
 }
 ```
 
@@ -603,11 +582,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "en"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "en"
 }
 ```
+
 </details>
 
 Default example #2
@@ -617,27 +597,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.language()
-    .then(lang => {
-        console.log(lang)
-    })
+let lang = await Localization.language()
+console.log(lang)
 ```
 
 Value of `lang`:
 
 ```javascript
-"en"
+'en'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.language",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.language",
+  "params": {}
 }
 ```
 
@@ -645,13 +624,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "es"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "es"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -663,10 +642,9 @@ function language(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device language <br/>pattern: ^[A-Za-z]{2}$ |
-
+| Param   | Type     | Required | Description                                     |
+| ------- | -------- | -------- | ----------------------------------------------- |
+| `value` | `string` | true     | the device language <br/>pattern: ^[A-Za-z]{2}$ |
 
 Promise resolution:
 
@@ -676,7 +654,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -684,10 +661,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.language("en")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.language('en')
+console.log(result)
 ```
 
 Value of `result`:
@@ -695,18 +670,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setLanguage",
-	"params": {
-		"value": "en"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setLanguage",
+  "params": {
+    "value": "en"
+  }
 }
 ```
 
@@ -714,11 +690,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -728,10 +705,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.language("es")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.language('es')
+console.log(result)
 ```
 
 Value of `result`:
@@ -739,18 +714,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setLanguage",
-	"params": {
-		"value": "es"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setLanguage",
+  "params": {
+    "value": "es"
+  }
 }
 ```
 
@@ -758,24 +734,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function language(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -785,7 +758,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -793,30 +765,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-language(value => {
+let listenerId = await language((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `lang`:
 
 ```javascript
-"en"
+'en'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onLanguageChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onLanguageChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -824,11 +796,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "en"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "en"
 }
 ```
+
 </details>
 
 Default example #2
@@ -838,30 +811,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-language(value => {
+let listenerId = await language((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `lang`:
 
 ```javascript
-"en"
+'en'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onLanguageChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onLanguageChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -869,16 +842,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "es"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "es"
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### listen
 
@@ -890,24 +862,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                          |
+| -------- | ---------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Localization.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -915,37 +887,34 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                          |
+| -------- | ---------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Localization.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
 ### locale
-Get the *full* BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale
+
+Get the _full_ BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale
 
 To get the value of `locale` call the method like this:
 
 ```typescript
 function locale(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -955,13 +924,11 @@ type Locale = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                  |
+| ---- | ------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:locale |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -970,27 +937,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locale()
-    .then(locale => {
-        console.log(locale)
-    })
+let locale = await Localization.locale()
+console.log(locale)
 ```
 
 Value of `locale`:
 
 ```javascript
-"en-US"
+'en-US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.locale",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.locale",
+  "params": {}
 }
 ```
 
@@ -998,11 +964,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "en-US"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "en-US"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1012,27 +979,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locale()
-    .then(locale => {
-        console.log(locale)
-    })
+let locale = await Localization.locale()
+console.log(locale)
 ```
 
 Value of `locale`:
 
 ```javascript
-"en-US"
+'en-US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.locale",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.locale",
+  "params": {}
 }
 ```
 
@@ -1040,13 +1006,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "es-US"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "es-US"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1058,10 +1024,9 @@ function locale(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device locale <br/>pattern: ^[a-zA-Z]+([a-zA-Z0-9\-]*)$ |
-
+| Param   | Type     | Required | Description                                                  |
+| ------- | -------- | -------- | ------------------------------------------------------------ |
+| `value` | `string` | true     | the device locale <br/>pattern: ^[a-zA-Z]+([a-zA-Z0-9\-]\*)$ |
 
 Promise resolution:
 
@@ -1071,7 +1036,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1079,10 +1043,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locale("en-US")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.locale('en-US')
+console.log(result)
 ```
 
 Value of `result`:
@@ -1090,18 +1052,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setLocale",
-	"params": {
-		"value": "en-US"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setLocale",
+  "params": {
+    "value": "en-US"
+  }
 }
 ```
 
@@ -1109,11 +1072,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1123,10 +1087,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locale("es-US")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.locale('es-US')
+console.log(result)
 ```
 
 Value of `result`:
@@ -1134,18 +1096,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setLocale",
-	"params": {
-		"value": "es-US"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setLocale",
+  "params": {
+    "value": "es-US"
+  }
 }
 ```
 
@@ -1153,24 +1116,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function locale(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1180,7 +1140,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1188,30 +1147,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-locale(value => {
+let listenerId = await locale((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `locale`:
 
 ```javascript
-"en-US"
+'en-US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onLocaleChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onLocaleChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1219,11 +1178,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "en-US"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "en-US"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1233,30 +1193,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-locale(value => {
+let listenerId = await locale((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `locale`:
 
 ```javascript
-"en-US"
+'en-US'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onLocaleChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onLocaleChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1264,18 +1224,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "es-US"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "es-US"
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### locality
+
 Get the locality/city the device is located in
 
 To get the value of `locality` call the method like this:
@@ -1283,8 +1243,6 @@ To get the value of `locality` call the method like this:
 ```typescript
 function locality(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -1294,13 +1252,11 @@ type Locality = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:locality |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1309,27 +1265,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locality()
-    .then(locality => {
-        console.log(locality)
-    })
+let locality = await Localization.locality()
+console.log(locality)
 ```
 
 Value of `locality`:
 
 ```javascript
-"Philadelphia"
+'Philadelphia'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.locality",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.locality",
+  "params": {}
 }
 ```
 
@@ -1337,11 +1292,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Philadelphia"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Philadelphia"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1351,27 +1307,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locality()
-    .then(locality => {
-        console.log(locality)
-    })
+let locality = await Localization.locality()
+console.log(locality)
 ```
 
 Value of `locality`:
 
 ```javascript
-"Philadelphia"
+'Philadelphia'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.locality",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.locality",
+  "params": {}
 }
 ```
 
@@ -1379,13 +1334,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Rockville"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Rockville"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1397,10 +1352,9 @@ function locality(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device city  |
-
+| Param   | Type     | Required | Description     |
+| ------- | -------- | -------- | --------------- |
+| `value` | `string` | true     | the device city |
 
 Promise resolution:
 
@@ -1410,7 +1364,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1418,10 +1371,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locality("Philadelphia")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.locality('Philadelphia')
+console.log(result)
 ```
 
 Value of `result`:
@@ -1429,18 +1380,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setLocality",
-	"params": {
-		"value": "Philadelphia"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setLocality",
+  "params": {
+    "value": "Philadelphia"
+  }
 }
 ```
 
@@ -1448,11 +1400,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1462,10 +1415,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.locality("Rockville")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.locality('Rockville')
+console.log(result)
 ```
 
 Value of `result`:
@@ -1473,18 +1424,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setLocality",
-	"params": {
-		"value": "Rockville"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setLocality",
+  "params": {
+    "value": "Rockville"
+  }
 }
 ```
 
@@ -1492,24 +1444,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function locality(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1519,7 +1468,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1527,30 +1475,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-locality(value => {
+let listenerId = await locality((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `locality`:
 
 ```javascript
-"Philadelphia"
+'Philadelphia'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onLocalityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onLocalityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1558,11 +1506,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Philadelphia"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Philadelphia"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1572,30 +1521,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-locality(value => {
+let listenerId = await locality((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `locality`:
 
 ```javascript
-"Philadelphia"
+'Philadelphia'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onLocalityChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onLocalityChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1603,16 +1552,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "Rockville"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Rockville"
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### once
 
@@ -1626,22 +1574,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                          |
+| -------- | ---------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Localization.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -1651,28 +1599,27 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                          |
+| -------- | ---------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Localization.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
 ### postalCode
+
 Get the postal code the device is located in
 
 To get the value of `postalCode` call the method like this:
@@ -1680,8 +1627,6 @@ To get the value of `postalCode` call the method like this:
 ```typescript
 function postalCode(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -1691,13 +1636,11 @@ string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                       |
+| ---- | ------------------------------------------------ |
 | uses | xrn:firebolt:capability:localization:postal-code |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -1706,27 +1649,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.postalCode()
-    .then(postalCode => {
-        console.log(postalCode)
-    })
+let postalCode = await Localization.postalCode()
+console.log(postalCode)
 ```
 
 Value of `postalCode`:
 
 ```javascript
-"19103"
+'19103'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.postalCode",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.postalCode",
+  "params": {}
 }
 ```
 
@@ -1734,11 +1676,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "19103"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "19103"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1748,27 +1691,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.postalCode()
-    .then(postalCode => {
-        console.log(postalCode)
-    })
+let postalCode = await Localization.postalCode()
+console.log(postalCode)
 ```
 
 Value of `postalCode`:
 
 ```javascript
-"19103"
+'19103'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.postalCode",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.postalCode",
+  "params": {}
 }
 ```
 
@@ -1776,13 +1718,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "20850"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "20850"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -1794,10 +1736,9 @@ function postalCode(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true | the device postal code  |
-
+| Param   | Type     | Required | Description            |
+| ------- | -------- | -------- | ---------------------- |
+| `value` | `string` | true     | the device postal code |
 
 Promise resolution:
 
@@ -1807,7 +1748,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1815,10 +1755,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.postalCode("19103")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.postalCode('19103')
+console.log(result)
 ```
 
 Value of `result`:
@@ -1826,18 +1764,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setPostalCode",
-	"params": {
-		"value": "19103"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setPostalCode",
+  "params": {
+    "value": "19103"
+  }
 }
 ```
 
@@ -1845,11 +1784,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -1859,10 +1799,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.postalCode("20850")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.postalCode('20850')
+console.log(result)
 ```
 
 Value of `result`:
@@ -1870,18 +1808,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setPostalCode",
-	"params": {
-		"value": "20850"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setPostalCode",
+  "params": {
+    "value": "20850"
+  }
 }
 ```
 
@@ -1889,24 +1828,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function postalCode(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -1916,7 +1852,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -1924,30 +1859,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-postalCode(value => {
+let listenerId = await postalCode((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `postalCode`:
 
 ```javascript
-"19103"
+'19103'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onPostalCodeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onPostalCodeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -1955,11 +1890,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "19103"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "19103"
 }
 ```
+
 </details>
 
 Default example #2
@@ -1969,30 +1905,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-postalCode(value => {
+let listenerId = await postalCode((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `postalCode`:
 
 ```javascript
-"19103"
+'19103'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onPostalCodeChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onPostalCodeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2000,18 +1936,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "20850"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "20850"
 }
 ```
-</details>
 
+</details>
 
 ---
 
-
 ### preferredAudioLanguages
+
 A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.
 
 To get the value of `preferredAudioLanguages` call the method like this:
@@ -2019,8 +1955,6 @@ To get the value of `preferredAudioLanguages` call the method like this:
 ```typescript
 function preferredAudioLanguages(): Promise<string[]>
 ```
-
-
 
 Promise resolution:
 
@@ -2030,13 +1964,11 @@ string[]
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:language |
 
-
 #### Examples
-
 
 Default Example
 
@@ -2045,30 +1977,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.preferredAudioLanguages()
-    .then(languages => {
-        console.log(languages)
-    })
+let languages = await Localization.preferredAudioLanguages()
+console.log(languages)
 ```
 
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.preferredAudioLanguages",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.preferredAudioLanguages",
+  "params": {}
 }
 ```
 
@@ -2076,14 +2004,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"spa",
-		"eng"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["spa", "eng"]
 }
 ```
+
 </details>
 
 Default Example #2
@@ -2093,30 +2019,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.preferredAudioLanguages()
-    .then(languages => {
-        console.log(languages)
-    })
+let languages = await Localization.preferredAudioLanguages()
+console.log(languages)
 ```
 
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.preferredAudioLanguages",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.preferredAudioLanguages",
+  "params": {}
 }
 ```
 
@@ -2124,16 +2046,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"eng",
-		"spa"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["eng", "spa"]
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2145,10 +2064,9 @@ function preferredAudioLanguages(value: string[]): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string[]` | true | the preferred audio languages <br/>pattern: ^[a-z]{3}$ |
-
+| Param   | Type       | Required | Description                                            |
+| ------- | ---------- | -------- | ------------------------------------------------------ |
+| `value` | `string[]` | true     | the preferred audio languages <br/>pattern: ^[a-z]{3}$ |
 
 Promise resolution:
 
@@ -2158,7 +2076,6 @@ null
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -2166,10 +2083,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.preferredAudioLanguages(["spa","eng"])
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.preferredAudioLanguages(['spa', 'eng'])
+console.log(result)
 ```
 
 Value of `result`:
@@ -2177,21 +2092,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setPreferredAudioLanguages",
-	"params": {
-		"value": [
-			"spa",
-			"eng"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setPreferredAudioLanguages",
+  "params": {
+    "value": ["spa", "eng"]
+  }
 }
 ```
 
@@ -2199,11 +2112,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default Example #2
@@ -2213,10 +2127,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.preferredAudioLanguages(["eng","spa"])
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.preferredAudioLanguages(['eng', 'spa'])
+console.log(result)
 ```
 
 Value of `result`:
@@ -2224,21 +2136,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setPreferredAudioLanguages",
-	"params": {
-		"value": [
-			"eng",
-			"spa"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setPreferredAudioLanguages",
+  "params": {
+    "value": ["eng", "spa"]
+  }
 }
 ```
 
@@ -2246,24 +2156,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function preferredAudioLanguages(callback: (value) => string[]): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2273,7 +2180,6 @@ number
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -2281,33 +2187,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-preferredAudioLanguages(value => {
+let listenerId = await preferredAudioLanguages((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onPreferredAudioLanguagesChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onPreferredAudioLanguagesChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2315,14 +2218,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"spa",
-		"eng"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["spa", "eng"]
 }
 ```
+
 </details>
 
 Default Example #2
@@ -2332,33 +2233,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-preferredAudioLanguages(value => {
+let listenerId = await preferredAudioLanguages((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `languages`:
 
 ```javascript
-[
-	"spa",
-	"eng"
-]
+;['spa', 'eng']
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onPreferredAudioLanguagesChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onPreferredAudioLanguagesChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2366,19 +2264,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": [
-		"eng",
-		"spa"
-	]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["eng", "spa"]
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### removeAdditionalInfo
 
@@ -2390,10 +2284,9 @@ function removeAdditionalInfo(key: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `key` | `string` | true | Key to remove additionalInfo  |
-
+| Param | Type     | Required | Description                  |
+| ----- | -------- | -------- | ---------------------------- |
+| `key` | `string` | true     | Key to remove additionalInfo |
 
 Promise resolution:
 
@@ -2403,13 +2296,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                                           |
+| ------- | ---------------------------------------------------- |
 | manages | xrn:firebolt:capability:localization:additional-info |
 
-
 #### Examples
-
 
 Remove an additionalInfo for localization
 
@@ -2418,10 +2309,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.removeAdditionalInfo("defaultKey")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.removeAdditionalInfo('defaultKey')
+console.log(result)
 ```
 
 Value of `result`:
@@ -2429,18 +2318,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.removeAdditionalInfo",
-	"params": {
-		"key": "defaultKey"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.removeAdditionalInfo",
+  "params": {
+    "key": "defaultKey"
+  }
 }
 ```
 
@@ -2448,17 +2338,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### timeZone
+
 Set the IANA timezone for the device
 
 To get the value of `timeZone` call the method like this:
@@ -2466,8 +2357,6 @@ To get the value of `timeZone` call the method like this:
 ```typescript
 function timeZone(): Promise<string>
 ```
-
-
 
 Promise resolution:
 
@@ -2477,13 +2366,11 @@ type TimeZone = string
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                     |
+| ---- | ---------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:time-zone |
 
-
 #### Examples
-
 
 Default Example
 
@@ -2492,27 +2379,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.timeZone()
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.timeZone()
+console.log(result)
 ```
 
 Value of `result`:
 
 ```javascript
-"America/New_York"
+'America/New_York'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.timeZone",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.timeZone",
+  "params": {}
 }
 ```
 
@@ -2520,11 +2406,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "America/New_York"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "America/New_York"
 }
 ```
+
 </details>
 
 Additional Example
@@ -2534,27 +2421,26 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.timeZone()
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.timeZone()
+console.log(result)
 ```
 
 Value of `result`:
 
 ```javascript
-"America/New_York"
+'America/New_York'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.timeZone",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.timeZone",
+  "params": {}
 }
 ```
 
@@ -2562,13 +2448,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "America/Los_Angeles"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "America/Los_Angeles"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -2580,10 +2466,9 @@ function timeZone(value: string): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `string` | true |  <br/>pattern: ^[-+_/ A-Za-z 0-9]*$ |
-
+| Param   | Type     | Required | Description                         |
+| ------- | -------- | -------- | ----------------------------------- |
+| `value` | `string` | true     | <br/>pattern: ^[-+_/ A-Za-z 0-9]\*$ |
 
 Promise resolution:
 
@@ -2593,7 +2478,6 @@ null
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -2601,10 +2485,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.timeZone("America/New_York")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.timeZone('America/New_York')
+console.log(result)
 ```
 
 Value of `result`:
@@ -2612,18 +2494,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setTimeZone",
-	"params": {
-		"value": "America/New_York"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setTimeZone",
+  "params": {
+    "value": "America/New_York"
+  }
 }
 ```
 
@@ -2631,11 +2514,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Additional Example
@@ -2645,10 +2529,8 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-Localization.timeZone("America/Los_Angeles")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Localization.timeZone('America/Los_Angeles')
+console.log(result)
 ```
 
 Value of `result`:
@@ -2656,18 +2538,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.setTimeZone",
-	"params": {
-		"value": "America/Los_Angeles"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.setTimeZone",
+  "params": {
+    "value": "America/Los_Angeles"
+  }
 }
 ```
 
@@ -2675,24 +2558,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function timeZone(callback: (value) => string): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -2702,7 +2582,6 @@ number
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -2710,30 +2589,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-timeZone(value => {
+let listenerId = await timeZone((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `result`:
 
 ```javascript
-"America/New_York"
+'America/New_York'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onTimeZoneChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onTimeZoneChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2741,11 +2620,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "America/New_York"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "America/New_York"
 }
 ```
+
 </details>
 
 Additional Example
@@ -2755,30 +2635,30 @@ JavaScript:
 ```javascript
 import { Localization } from '@firebolt-js/manage-sdk'
 
-timeZone(value => {
+let listenerId = await timeZone((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `result`:
 
 ```javascript
-"America/New_York"
+'America/New_York'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Localization.onTimeZoneChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Localization.onTimeZoneChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -2786,16 +2666,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "America/Los_Angeles"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "America/Los_Angeles"
 }
 ```
+
 </details>
 
-
 ---
-
 
 ## Events
 
@@ -2826,6 +2705,3 @@ See: [preferredAudioLanguages](#preferredaudiolanguages)
 ### timeZoneChanged
 
 See: [timeZone](#timezone)
-
-
-

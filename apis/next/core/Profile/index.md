@@ -7,30 +7,32 @@ sdk: core
 ---
 
 # Profile Module
+
 ---
-Version Profile 1.0.0-next.2
+
+Version Profile 1.1.0-next.1
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [approveContentRating](#approvecontentrating)
-     - [approvePurchase](#approvepurchase)
-     - [flags](#flags)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [approveContentRating](#approvecontentrating)
+  - [approvePurchase](#approvepurchase)
+  - [flags](#flags)
 
 ## Usage
+
 To use the Profile module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
 ```
 
-
 ## Overview
- Methods for getting information about the current user/account profile
+
+Methods for getting information about the current user/account profile
 
 ## Methods
 
@@ -42,8 +44,6 @@ Verifies that the current profile should have access to mature/adult content.
 function approveContentRating(): Promise<boolean>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -52,13 +52,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:approve:content |
 
-
 #### Examples
-
 
 Default Example
 
@@ -67,10 +65,8 @@ JavaScript:
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
 
-Profile.approveContentRating()
-    .then(allow => {
-        console.log(allow)
-    })
+let allow = await Profile.approveContentRating()
+console.log(allow)
 ```
 
 Value of `allow`:
@@ -78,16 +74,17 @@ Value of `allow`:
 ```javascript
 false
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Profile.approveContentRating",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Profile.approveContentRating",
+  "params": {}
 }
 ```
 
@@ -95,13 +92,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -113,8 +110,6 @@ Verifies that the current profile should have access to making purchases.
 function approvePurchase(): Promise<boolean>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -123,13 +118,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:approve:purchase |
 
-
 #### Examples
-
 
 Default Example
 
@@ -138,10 +131,8 @@ JavaScript:
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
 
-Profile.approvePurchase()
-    .then(allow => {
-        console.log(allow)
-    })
+let allow = await Profile.approvePurchase()
+console.log(allow)
 ```
 
 Value of `allow`:
@@ -149,16 +140,17 @@ Value of `allow`:
 ```javascript
 false
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Profile.approvePurchase",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Profile.approvePurchase",
+  "params": {}
 }
 ```
 
@@ -166,13 +158,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -184,8 +176,6 @@ Get a map of profile flags for the current session.
 function flags(): Promise<object>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -196,13 +186,11 @@ type FlatMap = {
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                            |
+| ---- | ------------------------------------- |
 | uses | xrn:firebolt:capability:profile:flags |
 
-
 #### Examples
-
 
 Default Example
 
@@ -211,10 +199,8 @@ JavaScript:
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
 
-Profile.flags()
-    .then(flags => {
-        console.log(flags)
-    })
+let flags = await Profile.flags()
+console.log(flags)
 ```
 
 Value of `flags`:
@@ -224,16 +210,17 @@ Value of `flags`:
 	"userExperience": "1000"
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Profile.flags",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Profile.flags",
+  "params": {}
 }
 ```
 
@@ -241,17 +228,14 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"userExperience": "1000"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "userExperience": "1000"
+  }
 }
 ```
+
 </details>
 
-
 ---
-
-
-

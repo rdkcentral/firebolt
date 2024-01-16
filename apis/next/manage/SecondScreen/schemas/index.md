@@ -7,18 +7,21 @@ sdk: manage
 ---
 
 # SecondScreen
+
 ---
+
 Version SecondScreen 0.0.0-unknown.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Overview](#overview)
-   - [Types](#types)
-     - [SecondScreenEvent](#secondscreenevent)
 
+- [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+- [Types](#types)
+  - [SecondScreenEvent](#secondscreenevent)
 
 ## Overview
- undefined
+
+undefined
 
 ## Types
 
@@ -33,7 +36,5 @@ type SecondScreenEvent = {
   data?: string
 }
 ```
-
-
 
 ---

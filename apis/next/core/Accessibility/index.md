@@ -7,46 +7,49 @@ sdk: core
 ---
 
 # Accessibility Module
+
 ---
-Version Accessibility 1.0.0-next.2
+
+Version Accessibility 1.1.0-next.1
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [audioDescriptionSettings](#audiodescriptionsettings)
-     - [closedCaptions](#closedcaptions)
-     - [closedCaptionsSettings](#closedcaptionssettings)
-     - [listen](#listen)
-     - [once](#once)
-     - [voiceGuidance](#voiceguidance)
-     - [voiceGuidanceSettings](#voiceguidancesettings)
-   - [Events](#events)
-     - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
-     - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
-     - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
-   - [Types](#types)
-     - [AudioDescriptionSettings](#audiodescriptionsettings-1)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [audioDescriptionSettings](#audiodescriptionsettings)
+  - [closedCaptions](#closedcaptions)
+  - [closedCaptionsSettings](#closedcaptionssettings)
+  - [listen](#listen)
+  - [once](#once)
+  - [voiceGuidance](#voiceguidance)
+  - [voiceGuidanceSettings](#voiceguidancesettings)
+- [Events](#events)
+  - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
+  - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
+  - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
+- [Types](#types)
+  - [AudioDescriptionSettings](#audiodescriptionsettings-1)
 
 ## Usage
+
 To use the Accessibility module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 ```
 
-
 ## Overview
- The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.
+
+The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.
 
 Apps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.
 
 ## Methods
 
 ### audioDescriptionSettings
+
 Get the user's preferred audio description settings
 
 To get the value of `audioDescriptionSettings` call the method like this:
@@ -55,21 +58,17 @@ To get the value of `audioDescriptionSettings` call the method like this:
 function audioDescriptionSettings(): Promise<AudioDescriptionSettings>
 ```
 
-
-
 Promise resolution:
 
 [AudioDescriptionSettings](#audiodescriptionsettings-1)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                              |
+| ---- | ------------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:audiodescriptions |
 
-
 #### Examples
-
 
 Getting the audio description settings
 
@@ -78,10 +77,8 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-Accessibility.audioDescriptionSettings()
-    .then(settings => {
-        console.log(settings)
-    })
+let settings = await Accessibility.audioDescriptionSettings()
+console.log(settings)
 ```
 
 Value of `settings`:
@@ -91,16 +88,17 @@ Value of `settings`:
 	"enabled": true
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.audioDescriptionSettings",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.audioDescriptionSettings",
+  "params": {}
 }
 ```
 
@@ -108,27 +106,25 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true
+  }
 }
 ```
+
 </details>
 
-
 ---
-
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function audioDescriptionSettings(callback: (value) => AudioDescriptionSettings): Promise<number>
+function audioDescriptionSettings(
+  callback: (value) => AudioDescriptionSettings,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -138,7 +134,6 @@ number
 
 #### Examples
 
-
 Getting the audio description settings
 
 JavaScript:
@@ -146,11 +141,10 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-audioDescriptionSettings(value => {
+let listenerId = await audioDescriptionSettings((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `settings`:
@@ -160,18 +154,19 @@ Value of `settings`:
 	"enabled": true
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.onAudioDescriptionSettingsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onAudioDescriptionSettingsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -179,18 +174,17 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true
+  }
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### closedCaptions
 
@@ -200,21 +194,17 @@ Get the user's preferred closed-captions settings
 function closedCaptions(): Promise<ClosedCaptionsSettings>
 ```
 
-
-
 Promise resolution:
 
 [ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Getting the closed captions settings
 
@@ -223,10 +213,8 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-Accessibility.closedCaptions()
-    .then(closedCaptionsSettings => {
-        console.log(closedCaptionsSettings)
-    })
+let closedCaptionsSettings = await Accessibility.closedCaptions()
+console.log(closedCaptionsSettings)
 ```
 
 Value of `closedCaptionsSettings`:
@@ -254,16 +242,17 @@ Value of `closedCaptionsSettings`:
 	]
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.closedCaptions",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.closedCaptions",
+  "params": {}
 }
 ```
 
@@ -271,37 +260,35 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true,
-		"styles": {
-			"fontFamily": "monospaced_sanserif",
-			"fontSize": 1,
-			"fontColor": "#ffffff",
-			"fontEdge": "none",
-			"fontEdgeColor": "#7F7F7F",
-			"fontOpacity": 100,
-			"backgroundColor": "#000000",
-			"backgroundOpacity": 100,
-			"textAlign": "center",
-			"textAlignVertical": "middle",
-			"windowColor": "white",
-			"windowOpacity": 50
-		},
-		"preferredLanguages": [
-			"eng",
-			"spa"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "monospaced_sanserif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle",
+      "windowColor": "white",
+      "windowOpacity": 50
+    },
+    "preferredLanguages": ["eng", "spa"]
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### closedCaptionsSettings
+
 Get the user's preferred closed-captions settings
 
 To get the value of `closedCaptionsSettings` call the method like this:
@@ -310,21 +297,17 @@ To get the value of `closedCaptionsSettings` call the method like this:
 function closedCaptionsSettings(): Promise<ClosedCaptionsSettings>
 ```
 
-
-
 Promise resolution:
 
 [ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Getting the closed captions settings
 
@@ -333,10 +316,8 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-Accessibility.closedCaptionsSettings()
-    .then(closedCaptionsSettings => {
-        console.log(closedCaptionsSettings)
-    })
+let closedCaptionsSettings = await Accessibility.closedCaptionsSettings()
+console.log(closedCaptionsSettings)
 ```
 
 Value of `closedCaptionsSettings`:
@@ -364,16 +345,17 @@ Value of `closedCaptionsSettings`:
 	]
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.closedCaptionsSettings",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.closedCaptionsSettings",
+  "params": {}
 }
 ```
 
@@ -381,45 +363,40 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true,
-		"styles": {
-			"fontFamily": "monospaced_sanserif",
-			"fontSize": 1,
-			"fontColor": "#ffffff",
-			"fontEdge": "none",
-			"fontEdgeColor": "#7F7F7F",
-			"fontOpacity": 100,
-			"backgroundColor": "#000000",
-			"backgroundOpacity": 100,
-			"textAlign": "center",
-			"textAlignVertical": "middle",
-			"windowColor": "white",
-			"windowOpacity": 50
-		},
-		"preferredLanguages": [
-			"eng",
-			"spa"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "monospaced_sanserif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle",
+      "windowColor": "white",
+      "windowOpacity": 50
+    },
+    "preferredLanguages": ["eng", "spa"]
+  }
 }
 ```
+
 </details>
 
-
 ---
-
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function closedCaptionsSettings(callback: (value) => ClosedCaptionsSettings): Promise<number>
+function closedCaptionsSettings(
+  callback: (value) => ClosedCaptionsSettings,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -429,7 +406,6 @@ number
 
 #### Examples
 
-
 Getting the closed captions settings
 
 JavaScript:
@@ -437,11 +413,10 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-closedCaptionsSettings(value => {
+let listenerId = await closedCaptionsSettings((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `closedCaptionsSettings`:
@@ -469,18 +444,19 @@ Value of `closedCaptionsSettings`:
 	]
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.onClosedCaptionsSettingsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onClosedCaptionsSettingsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -488,36 +464,32 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true,
-		"styles": {
-			"fontFamily": "monospaced_sanserif",
-			"fontSize": 1,
-			"fontColor": "#ffffff",
-			"fontEdge": "none",
-			"fontEdgeColor": "#7F7F7F",
-			"fontOpacity": 100,
-			"backgroundColor": "#000000",
-			"backgroundOpacity": 100,
-			"textAlign": "center",
-			"textAlignVertical": "middle",
-			"windowColor": "white",
-			"windowOpacity": 50
-		},
-		"preferredLanguages": [
-			"eng",
-			"spa"
-		]
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "monospaced_sanserif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle",
+      "windowColor": "white",
+      "windowOpacity": 50
+    },
+    "preferredLanguages": ["eng", "spa"]
+  }
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### listen
 
@@ -529,24 +501,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Accessibility.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -554,23 +526,21 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Accessibility.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -587,22 +557,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Accessibility.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -612,23 +582,21 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Accessibility.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -641,21 +609,17 @@ Get the user's preferred voice guidance settings
 function voiceGuidance(): Promise<VoiceGuidanceSettings>
 ```
 
-
-
 Promise resolution:
 
 [VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:voiceguidance |
 
-
 #### Examples
-
 
 Getting the voice guidance settings
 
@@ -664,10 +628,8 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-Accessibility.voiceGuidance()
-    .then(settings => {
-        console.log(settings)
-    })
+let settings = await Accessibility.voiceGuidance()
+console.log(settings)
 ```
 
 Value of `settings`:
@@ -678,16 +640,17 @@ Value of `settings`:
 	"speed": 2
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.voiceGuidance",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.voiceGuidance",
+  "params": {}
 }
 ```
 
@@ -695,20 +658,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true,
-		"speed": 2
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "speed": 2
+  }
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### voiceGuidanceSettings
+
 Get the user's preferred voice guidance settings
 
 To get the value of `voiceGuidanceSettings` call the method like this:
@@ -717,21 +681,17 @@ To get the value of `voiceGuidanceSettings` call the method like this:
 function voiceGuidanceSettings(): Promise<VoiceGuidanceSettings>
 ```
 
-
-
 Promise resolution:
 
 [VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:voiceguidance |
 
-
 #### Examples
-
 
 Getting the voice guidance settings
 
@@ -740,10 +700,8 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-Accessibility.voiceGuidanceSettings()
-    .then(settings => {
-        console.log(settings)
-    })
+let settings = await Accessibility.voiceGuidanceSettings()
+console.log(settings)
 ```
 
 Value of `settings`:
@@ -754,16 +712,17 @@ Value of `settings`:
 	"speed": 2
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.voiceGuidanceSettings",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.voiceGuidanceSettings",
+  "params": {}
 }
 ```
 
@@ -771,28 +730,26 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true,
-		"speed": 2
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "speed": 2
+  }
 }
 ```
+
 </details>
 
-
 ---
-
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function voiceGuidanceSettings(callback: (value) => VoiceGuidanceSettings): Promise<number>
+function voiceGuidanceSettings(
+  callback: (value) => VoiceGuidanceSettings,
+): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -802,7 +759,6 @@ number
 
 #### Examples
 
-
 Getting the voice guidance settings
 
 JavaScript:
@@ -810,11 +766,10 @@ JavaScript:
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-voiceGuidanceSettings(value => {
+let listenerId = await voiceGuidanceSettings((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `settings`:
@@ -825,18 +780,19 @@ Value of `settings`:
 	"speed": 2
 }
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Accessibility.onVoiceGuidanceSettingsChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onVoiceGuidanceSettingsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -844,19 +800,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"enabled": true,
-		"speed": 2
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "speed": 2
+  }
 }
 ```
+
 </details>
 
-
 ---
-
 
 ## Events
 
@@ -872,20 +827,14 @@ See: [closedCaptionsSettings](#closedcaptionssettings)
 
 See: [voiceGuidanceSettings](#voiceguidancesettings)
 
-
-
 ## Types
 
 ### AudioDescriptionSettings
 
-
-
 ```typescript
 type AudioDescriptionSettings = {
-  enabled: boolean                 // Whether or not audio descriptions should be enabled by default
+  enabled: boolean // Whether or not audio descriptions should be enabled by default
 }
 ```
-
-
 
 ---

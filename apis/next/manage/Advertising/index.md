@@ -7,33 +7,35 @@ sdk: manage
 ---
 
 # Advertising Module
+
 ---
-Version Advertising 1.0.0-next.2
+
+Version Advertising 1.1.0-next.1
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [listen](#listen)
-     - [once](#once)
-     - [resetIdentifier](#resetidentifier)
-     - [skipRestriction](#skiprestriction)
-   - [Events](#events)
-     - [skipRestrictionChanged](#skiprestrictionchanged)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [listen](#listen)
+  - [once](#once)
+  - [resetIdentifier](#resetidentifier)
+  - [skipRestriction](#skiprestriction)
+- [Events](#events)
+  - [skipRestrictionChanged](#skiprestrictionchanged)
 
 ## Usage
+
 To use the Advertising module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for platform provided advertising settings and functionality.
+
+A module for platform provided advertising settings and functionality.
 
 ## Methods
 
@@ -47,24 +49,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                         |
+| -------- | --------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -72,23 +74,21 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                         |
+| -------- | --------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -105,22 +105,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                         |
+| -------- | --------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -130,23 +130,21 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                         |
+| -------- | --------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Advertising.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -159,8 +157,6 @@ Resets a user's identifier in the ad platform so that the advertising id that ap
 function resetIdentifier(): Promise<void>
 ```
 
-
-
 Promise resolution:
 
 ```typescript
@@ -169,13 +165,11 @@ void
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                                     |
+| ------- | ---------------------------------------------- |
 | manages | xrn:firebolt:capability:advertising:identifier |
 
-
 #### Examples
-
 
 Default Example
 
@@ -184,10 +178,8 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-Advertising.resetIdentifier()
-    .then(result => {
-        console.log(result)
-    })
+let result = await Advertising.resetIdentifier()
+console.log(result)
 ```
 
 Value of `result`:
@@ -195,16 +187,17 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.resetIdentifier",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.resetIdentifier",
+  "params": {}
 }
 ```
 
@@ -212,17 +205,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-</details>
 
+</details>
 
 ---
 
 ### skipRestriction
+
 Set the value for AdPolicy.skipRestriction
 
 To get the value of `skipRestriction` call the method like this:
@@ -231,21 +225,17 @@ To get the value of `skipRestriction` call the method like this:
 function skipRestriction(): Promise<SkipRestriction>
 ```
 
-
-
 Promise resolution:
 
 [SkipRestriction](../Advertising/schemas/#SkipRestriction)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role    | Capability                                        |
+| ------- | ------------------------------------------------- |
 | manages | xrn:firebolt:capability:advertising:configuration |
 
-
 #### Examples
-
 
 Default Example
 
@@ -254,27 +244,26 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-Advertising.skipRestriction()
-    .then(result => {
-        console.log(result)
-    })
+let result = await Advertising.skipRestriction()
+console.log(result)
 ```
 
 Value of `result`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.skipRestriction",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.skipRestriction",
+  "params": {}
 }
 ```
 
@@ -282,11 +271,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "none"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "none"
 }
 ```
+
 </details>
 
 Additional Example
@@ -296,27 +286,26 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-Advertising.skipRestriction()
-    .then(result => {
-        console.log(result)
-    })
+let result = await Advertising.skipRestriction()
+console.log(result)
 ```
 
 Value of `result`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.skipRestriction",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.skipRestriction",
+  "params": {}
 }
 ```
 
@@ -324,13 +313,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "all"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "all"
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -342,10 +331,9 @@ function skipRestriction(value: SkipRestriction): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true |  <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
-
+| Param   | Type                                                         | Required | Description                                                  |
+| ------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
+| `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true     | <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
 
 Promise resolution:
 
@@ -355,7 +343,6 @@ null
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -363,10 +350,8 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-Advertising.skipRestriction("none")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Advertising.skipRestriction('none')
+console.log(result)
 ```
 
 Value of `result`:
@@ -374,18 +359,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.setSkipRestriction",
-	"params": {
-		"value": "none"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.setSkipRestriction",
+  "params": {
+    "value": "none"
+  }
 }
 ```
 
@@ -393,11 +379,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Additional Example
@@ -407,10 +394,8 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-Advertising.skipRestriction("all")
-    .then(result => {
-        console.log(result)
-    })
+let result = await Advertising.skipRestriction('all')
+console.log(result)
 ```
 
 Value of `result`:
@@ -418,18 +403,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.setSkipRestriction",
-	"params": {
-		"value": "all"
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.setSkipRestriction",
+  "params": {
+    "value": "all"
+  }
 }
 ```
 
@@ -437,24 +423,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function skipRestriction(callback: (value) => SkipRestriction): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -464,7 +447,6 @@ number
 
 #### Examples
 
-
 Default Example
 
 JavaScript:
@@ -472,30 +454,30 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-skipRestriction(value => {
+let listenerId = await skipRestriction((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `result`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.onSkipRestrictionChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onSkipRestrictionChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -503,11 +485,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "none"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "none"
 }
 ```
+
 </details>
 
 Additional Example
@@ -517,30 +500,30 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/manage-sdk'
 
-skipRestriction(value => {
+let listenerId = await skipRestriction((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `result`:
 
 ```javascript
-"none"
+'none'
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Advertising.onSkipRestrictionChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onSkipRestrictionChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -548,22 +531,18 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": "all"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "all"
 }
 ```
+
 </details>
 
-
 ---
-
 
 ## Events
 
 ### skipRestrictionChanged
 
 See: [skipRestriction](#skiprestriction)
-
-
-
