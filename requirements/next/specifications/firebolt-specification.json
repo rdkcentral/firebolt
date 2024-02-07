@@ -912,7 +912,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.1.0-next.1",
+				"version": "1.1.0-next.2",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -21106,6 +21106,9 @@
 												"$ref": "#/x-schemas/Intents/TVSeasonEntity"
 											},
 											{
+												"$ref": "#/x-schemas/Intents/MusicEntity"
+											},
+											{
 												"$ref": "#/x-schemas/Intents/AdditionalEntity"
 											},
 											{
@@ -21772,6 +21775,26 @@
 							}
 						]
 					},
+					"MusicEntity": {
+						"title": "MusicEntity",
+						"type": "object",
+						"properties": {
+							"entityType": {
+								"const": "music"
+							},
+							"musicType": {
+								"$ref": "#/x-schemas/Entertainment/MusicType"
+							},
+							"entityId": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"entityType",
+							"musicType",
+							"entityId"
+						]
+					},
 					"AdditionalEntity": {
 						"title": "AdditionalEntity",
 						"allOf": [
@@ -21865,6 +21888,9 @@
 							},
 							{
 								"$ref": "#/x-schemas/Intents/PlaylistEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/MusicEntity"
 							},
 							{
 								"$ref": "#/x-schemas/Intents/AdditionalEntity"

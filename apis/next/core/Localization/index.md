@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.1.0-next.1
+Version Localization 1.1.0-next.2
 
 ## Table of Contents
 
