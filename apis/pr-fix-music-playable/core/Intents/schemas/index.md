@@ -24,22 +24,22 @@ Version Intents 0.0.0-unknown.0
   - [SearchIntent](#searchintent)
   - [SectionIntent](#sectionintent)
   - [ChannelEntity](#channelentity)
-  - [AdditionalEntity](#additionalentity)
+  - [MusicEntity](#musicentity)
   - [PlayQueryIntent](#playqueryintent)
   - [HomeIntent](#homeintent)
   - [LaunchIntent](#launchintent)
   - [TVSeriesEntity](#tvseriesentity)
-  - [MovieEntity](#movieentity)
+  - [AdditionalEntity](#additionalentity)
   - [TVSeasonEntity](#tvseasonentity)
   - [UntypedEntity](#untypedentity)
+  - [MovieEntity](#movieentity)
   - [TVEpisodeEntity](#tvepisodeentity)
   - [EntityIntent](#entityintent)
   - [PlaylistEntity](#playlistentity)
   - [TuneIntent](#tuneintent)
-  - [MusicEntity](#musicentity)
   - [PlayableEntity](#playableentity)
-  - [PlayEntityIntent](#playentityintent)
   - [PlaybackIntent](#playbackintent)
+  - [PlayEntityIntent](#playentityintent)
   - [NavigationIntent](#navigationintent)
 
 ## Overview
@@ -148,21 +148,19 @@ type ChannelEntity = {
 
 ---
 
-### AdditionalEntity
+### MusicEntity
 
 ```typescript
-type AdditionalEntity = {
-  entityType: 'program'
-  programType: ProgramType // In the case of a program `entityType`, specifies the program type.
+type MusicEntity = {
+  entityType: 'music'
+  musicType: MusicType // In the case of a music `entityType`, specifies the type of music entity.
   entityId: string
-  assetId?: string
-  appContentData?: string
 }
 ```
 
 See also:
 
-[ProgramEntity](#programentity)
+'song' | 'album'
 
 ---
 
@@ -241,12 +239,12 @@ See also:
 
 ---
 
-### MovieEntity
+### AdditionalEntity
 
 ```typescript
-type MovieEntity = {
+type AdditionalEntity = {
   entityType: 'program'
-  programType: 'movie'
+  programType: ProgramType // In the case of a program `entityType`, specifies the program type.
   entityId: string
   assetId?: string
   appContentData?: string
@@ -292,6 +290,24 @@ type UntypedEntity = {
 
 ---
 
+### MovieEntity
+
+```typescript
+type MovieEntity = {
+  entityType: 'program'
+  programType: 'movie'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also:
+
+[ProgramEntity](#programentity)
+
+---
+
 ### TVEpisodeEntity
 
 ```typescript
@@ -324,6 +340,7 @@ type EntityIntent = {
     | TVEpisodeEntity
     | TVSeriesEntity
     | TVSeasonEntity
+    | MusicEntity
     | AdditionalEntity
     | UntypedEntity
   context: {
@@ -338,6 +355,7 @@ See also:
 [TVEpisodeEntity](#tvepisodeentity)
 [TVSeriesEntity](#tvseriesentity)
 [TVSeasonEntity](#tvseasonentity)
+[MusicEntity](#musicentity)
 [AdditionalEntity](#additionalentity)
 [UntypedEntity](#untypedentity)
 
@@ -385,22 +403,6 @@ See also:
 
 ---
 
-### MusicEntity
-
-```typescript
-type MusicEntity = {
-  entityType: 'music'
-  musicType: MusicType // In the case of a music `entityType`, specifies the type of music entity.
-  entityId: string
-}
-```
-
-See also:
-
-'song' | 'album'
-
----
-
 ### PlayableEntity
 
 ```typescript
@@ -422,6 +424,26 @@ See also:
 
 ---
 
+### PlaybackIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
+
+```typescript
+type PlaybackIntent = {
+  action: 'playback'
+  data: PlayableEntity
+  context: {
+    source: string
+  }
+}
+```
+
+See also:
+
+MovieEntity | TVEpisodeEntity | PlaylistEntity | MusicEntity | AdditionalEntity
+
+---
+
 ### PlayEntityIntent
 
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
@@ -436,26 +458,6 @@ type PlayEntityIntent = {
       playFirstTrack?: number
     }
   }
-  context: {
-    source: string
-  }
-}
-```
-
-See also:
-
-MovieEntity | TVEpisodeEntity | PlaylistEntity | MusicEntity | AdditionalEntity
-
----
-
-### PlaybackIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
-
-```typescript
-type PlaybackIntent = {
-  action: 'playback'
-  data: PlayableEntity
   context: {
     source: string
   }
