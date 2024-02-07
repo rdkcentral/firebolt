@@ -21106,6 +21106,9 @@
 												"$ref": "#/x-schemas/Intents/TVSeasonEntity"
 											},
 											{
+												"$ref": "#/x-schemas/Intents/MusicEntity"
+											},
+											{
 												"$ref": "#/x-schemas/Intents/AdditionalEntity"
 											},
 											{
@@ -21772,6 +21775,26 @@
 							}
 						]
 					},
+					"MusicEntity": {
+						"title": "MusicEntity",
+						"type": "object",
+						"properties": {
+							"entityType": {
+								"const": "music"
+							},
+							"musicType": {
+								"$ref": "#/x-schemas/Entertainment/MusicType"
+							},
+							"entityId": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"entityType",
+							"musicType",
+							"entityId"
+						]
+					},
 					"AdditionalEntity": {
 						"title": "AdditionalEntity",
 						"allOf": [
@@ -21865,6 +21888,9 @@
 							},
 							{
 								"$ref": "#/x-schemas/Intents/PlaylistEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/MusicEntity"
 							},
 							{
 								"$ref": "#/x-schemas/Intents/AdditionalEntity"
