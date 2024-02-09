@@ -7,56 +7,58 @@ sdk: manage
 ---
 
 # PinChallenge Module
+
 ---
-Version PinChallenge 1.0.0
+
+Version PinChallenge 1.1.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [challengeError](#challengeerror)
-     - [challengeFocus](#challengefocus)
-     - [challengeResponse](#challengeresponse)
-     - [provide](#provide)
-   - [Events](#events)
-     - [onRequestChallenge](#onrequestchallenge)
-   - [Provider Interfaces](#provider-interfaces)
-     - [ChallengeProvider](#challengeprovider)
-   - [Types](#types)
-     - [ResultReason](#resultreason)
-     - [ChallengeRequestor](#challengerequestor)
-     - [PinChallengeResult](#pinchallengeresult)
-     - [PinChallenge](#pinchallenge)
-     - [PinChallengeProviderRequest](#pinchallengeproviderrequest)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [challengeError](#challengeerror)
+  - [challengeFocus](#challengefocus)
+  - [challengeResponse](#challengeresponse)
+  - [provide](#provide)
+- [Events](#events)
+  - [onRequestChallenge](#onrequestchallenge)
+- [Provider Interfaces](#provider-interfaces)
+  - [ChallengeProvider](#challengeprovider)
+- [Types](#types)
+  - [ResultReason](#resultreason)
+  - [ChallengeRequestor](#challengerequestor)
+  - [PinChallengeResult](#pinchallengeresult)
+  - [PinChallenge](#pinchallenge)
+  - [PinChallengeProviderRequest](#pinchallengeproviderrequest)
 
 ## Usage
+
 To use the PinChallenge module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { PinChallenge } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for registering as a provider for a user grant in which the user is prompted for a pin for access to a capability
+
+A module for registering as a provider for a user grant in which the user is prompted for a pin for access to a capability
 
 ## Methods
 
 ### challengeError
 
-*This is an private RPC method.*
+_This is an private RPC method._
 
 Internal API for Challenge Provider to send back error.
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `error` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
-
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
 
 Result:
 
@@ -66,13 +68,11 @@ null
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                                     |
+| -------- | ---------------------------------------------- |
 | provides | xrn:firebolt:capability:usergrant:pinchallenge |
 
-
 #### Examples
-
 
 Example 1
 
@@ -82,18 +82,16 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "PinChallenge.challengeError",
-	"params": {
-		"error": {
-			"correlationId": "123",
-			"result": {
-				"code": 1,
-				"message": "Error"
-			}
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.challengeError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
 }
 ```
 
@@ -101,23 +99,19 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-
-
 
 ---
 
 ### challengeFocus
 
-*This is an private RPC method.*
+_This is an private RPC method._
 
 Internal API for Challenge Provider to request focus for UX purposes.
-
-
 
 Result:
 
@@ -127,13 +121,11 @@ null
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                                     |
+| -------- | ---------------------------------------------- |
 | provides | xrn:firebolt:capability:usergrant:pinchallenge |
 
-
 #### Examples
-
 
 Example
 
@@ -143,10 +135,10 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "PinChallenge.challengeFocus",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.challengeFocus",
+  "params": {}
 }
 ```
 
@@ -154,28 +146,26 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-
-
 
 ---
 
 ### challengeResponse
 
-*This is an private RPC method.*
+_This is an private RPC method._
 
 Internal API for Challenge Provider to send back response.
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `response` | [`ProviderResponse`](../Types/schemas/#ProviderResponse) | true |   |
-
+| Param           | Type                                        | Required | Description |
+| --------------- | ------------------------------------------- | -------- | ----------- |
+| `correlationId` | `string`                                    | true     |             |
+| `result`        | [`PinChallengeResult`](#pinchallengeresult) | true     |             |
 
 Result:
 
@@ -185,13 +175,11 @@ null
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                                     |
+| -------- | ---------------------------------------------- |
 | provides | xrn:firebolt:capability:usergrant:pinchallenge |
 
-
 #### Examples
-
 
 Example #1
 
@@ -201,18 +189,16 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "PinChallenge.challengeResponse",
-	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": true,
-				"reason": "correctPin"
-			}
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.challengeResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "granted": true,
+      "reason": "correctPin"
+    }
+  }
 }
 ```
 
@@ -220,12 +206,11 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-
 
 Example #2
 
@@ -235,18 +220,16 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "PinChallenge.challengeResponse",
-	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": false,
-				"reason": "exceededPinFailures"
-			}
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.challengeResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "granted": false,
+      "reason": "exceededPinFailures"
+    }
+  }
 }
 ```
 
@@ -254,12 +237,11 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-
 
 Example #3
 
@@ -269,18 +251,16 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "PinChallenge.challengeResponse",
-	"params": {
-		"response": {
-			"correlationId": "123",
-			"result": {
-				"granted": null,
-				"reason": "cancelled"
-			}
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.challengeResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "granted": null,
+      "reason": "cancelled"
+    }
+  }
 }
 ```
 
@@ -288,13 +268,11 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
-
-
 
 ---
 
@@ -308,10 +286,10 @@ provide(capability: string, provider: any): void
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `capability` | `string` | Yes | The capability that is being provided. |
-| `provider` | `any` | Yes | An implementation of the required interface. |
+| Param        | Type     | Required | Summary                                      |
+| ------------ | -------- | -------- | -------------------------------------------- |
+| `capability` | `string` | Yes      | The capability that is being provided.       |
+| `provider`   | `any`    | Yes      | An implementation of the required interface. |
 
 See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
 
@@ -319,16 +297,15 @@ See [Provider Interfaces](#provider-interfaces) for each capabilities interface 
 
 ### onRequestChallenge
 
-*This is an private RPC method.*
+_This is an private RPC method._
 
 Registers as a provider for when the user should be challenged in order to confirm access to a capability through a pin prompt
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `listen` | `boolean` | true |   |
-
+| Param    | Type      | Required | Description |
+| -------- | --------- | -------- | ----------- |
+| `listen` | `boolean` | true     |             |
 
 Result:
 
@@ -336,13 +313,11 @@ Result:
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                                     |
+| -------- | ---------------------------------------------- |
 | provides | xrn:firebolt:capability:usergrant:pinchallenge |
 
-
 #### Examples
-
 
 Default Example
 
@@ -352,12 +327,12 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "PinChallenge.onRequestChallenge",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.onRequestChallenge",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -365,30 +340,28 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": {
-		"correlationId": "abc",
-		"parameters": {
-			"capability": "xrn:firebolt:capability:commerce::purchase",
-			"requestor": {
-				"id": "ReferenceApp",
-				"name": "Firebolt Reference App"
-			},
-			"pinSpace": "purchase"
-		}
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "correlationId": "abc",
+    "parameters": {
+      "capability": "xrn:firebolt:capability:commerce::purchase",
+      "requestor": {
+        "id": "ReferenceApp",
+        "name": "Firebolt Reference App"
+      },
+      "pinSpace": "purchase"
+    }
+  }
 }
 ```
 
-
-
 ---
-
 
 ## Provider Interfaces
 
 ### ChallengeProvider
+
 The provider interface for the `xrn:firebolt:capability:usergrant:pinchallenge` capability.
 
 ```typescript
@@ -406,40 +379,35 @@ PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', provider:
 Registers as a provider for when the user should be challenged in order to confirm access to a capability through a pin prompt
 
 ```typescript
-function challenge(parameters?: PinChallenge, session?: FocusableProviderSession): Promise<PinChallengeResult>
+function challenge(
+  parameters?: PinChallenge,
+  session?: FocusableProviderSession,
+): Promise<PinChallengeResult>
 ```
 
 Provider methods always have two arguments:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `parameters` | `PinChallenge` | false |   |
-| `session` | `FocusableProviderSession` | false |   |
+| Param        | Type                       | Required | Summary |
+| ------------ | -------------------------- | -------- | ------- |
+| `parameters` | `PinChallenge`             | false    |         |
+| `session`    | `FocusableProviderSession` | false    |         |
 
-
-
-
-| Parameters Property    | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `pinSpace` | `'purchase' | 'content'` | true | The pin space that this challenge is for <br/>values: `'purchase' \| 'content'` |
-| `capability` | `string` | false | The capability that is gated by a pin challenge  |
-| `requestor` | [`ChallengeRequestor`](#challengerequestor) | true |   |
-
+| Parameters Property | Type                                        | Required   | Summary                                         |
+| ------------------- | ------------------------------------------- | ---------- | ----------------------------------------------- | ------------------------------------------------------------------------------- |
+| `pinSpace`          | `'purchase'                                 | 'content'` | true                                            | The pin space that this challenge is for <br/>values: `'purchase' \| 'content'` |
+| `capability`        | `string`                                    | false      | The capability that is gated by a pin challenge |
+| `requestor`         | [`ChallengeRequestor`](#challengerequestor) | true       |                                                 |
 
 ```typescript
 type PinChallenge = object
 ```
 
-
-
 Promise resolution:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `granted` | boolean | void |  | 
-| `reason` | 'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled' | The reason for the result of challenging the user | 
-
-
+| Property  | Type            | Description           |
+| --------- | --------------- | --------------------- | --------------------- | ------------ | ----------- | ------------------------------------------------- |
+| `granted` | boolean         | void                  |                       |
+| `reason`  | 'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled' | The reason for the result of challenging the user |
 
 #### Examples
 
@@ -449,17 +417,18 @@ Promise resolution:
 import { PinChallenge } from '@firebolt-js/manage-sdk'
 
 class MyChallengeProvider {
-
-    async challenge(parameters, session) {
-        return await Promise.resolve({
-            "granted": true,
-            "reason": "correctPin"
-        })
+  async challenge(parameters, session) {
+    return {
+      granted: true,
+      reason: 'correctPin',
     }
-
+  }
 }
 
-PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', new MyChallengeProvider())
+PinChallenge.provide(
+  'xrn:firebolt:capability:usergrant:pinchallenge',
+  new MyChallengeProvider(),
+)
 ```
 
 <details markdown="1" >
@@ -470,33 +439,26 @@ PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', new MyCha
 Request:
 
 ```json
-
 {
-    "id": 1,
-    "method": "PinChallenge.onRequestChallenge",
-    "params": {
-        "listen": true
-    }
+  "id": 1,
+  "method": "PinChallenge.onRequestChallenge",
+  "params": {
+    "listen": true
+  }
 }
-
 ```
 
 Response:
 
 ```json
-
 {
-    "id": 1,
-    "result": {
-        "listening": true,
-        "event": "PinChallenge.onRequestChallenge"
-    }            
- 
+  "id": 1,
+  "result": {
+    "listening": true,
+    "event": "PinChallenge.onRequestChallenge"
+  }
 }
-
 ```
-
-
 
 **Asynchronous event to initiate challenge()**
 
@@ -504,18 +466,18 @@ Event Response:
 
 ```json
 {
-    "id": 1,
-    "result": {
-        "correlationId": "abc",
-        "parameters": {
-            "capability": "xrn:firebolt:capability:commerce::purchase",
-            "requestor": {
-                "id": "ReferenceApp",
-                "name": "Firebolt Reference App"
-            },
-            "pinSpace": "purchase"
-        }
+  "id": 1,
+  "result": {
+    "correlationId": "abc",
+    "parameters": {
+      "capability": "xrn:firebolt:capability:commerce::purchase",
+      "requestor": {
+        "id": "ReferenceApp",
+        "name": "Firebolt Reference App"
+      },
+      "pinSpace": "purchase"
     }
+  }
 }
 ```
 
@@ -525,15 +487,15 @@ Request:
 
 ```json
 {
-    "id": 2,
-    "method": "PinChallenge.challengeResponse",
-    "params": {
-        "correlationId": "abc",
-        "result": {
-            "granted": true,
-            "reason": "correctPin"
-        }
+  "id": 2,
+  "method": "PinChallenge.challengeResponse",
+  "params": {
+    "correlationId": "abc",
+    "result": {
+      "granted": true,
+      "reason": "correctPin"
     }
+  }
 }
 ```
 
@@ -541,17 +503,12 @@ Response:
 
 ```json
 {
-    "id": 2,
-    "result": true
+  "id": 2,
+  "result": true
 }
 ```
 
-
-
-
 </details>
-
-
 
 ## Types
 
@@ -561,77 +518,68 @@ The reason for the result of challenging the user
 
 ```typescript
 enum ResultReason {
-	NO_PIN_REQUIRED = 'noPinRequired',
-	NO_PIN_REQUIRED_WINDOW = 'noPinRequiredWindow',
-	EXCEEDED_PIN_FAILURES = 'exceededPinFailures',
-	CORRECT_PIN = 'correctPin',
-	CANCELLED = 'cancelled'
+  NO_PIN_REQUIRED = 'noPinRequired',
+  NO_PIN_REQUIRED_WINDOW = 'noPinRequiredWindow',
+  EXCEEDED_PIN_FAILURES = 'exceededPinFailures',
+  CORRECT_PIN = 'correctPin',
+  CANCELLED = 'cancelled',
 }
-
 ```
 
-
-
 ---
+
 ### ChallengeRequestor
-
-
 
 ```typescript
 type ChallengeRequestor = {
-  id: string                 // The id of the app that requested the challenge
-  name: string               // The name of the app that requested the challenge
+  id: string // The id of the app that requested the challenge
+  name: string // The name of the app that requested the challenge
 }
 ```
 
-
-
 ---
+
 ### PinChallengeResult
-
-
 
 ```typescript
 type PinChallengeResult = {
   granted: boolean | void
-  reason: ResultReason       // The reason for the result of challenging the user
+  reason: ResultReason // The reason for the result of challenging the user
 }
 ```
 
-See also: 
+See also:
 
 'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled'
 
 ---
+
 ### PinChallenge
-
-
 
 ```typescript
 type PinChallenge = {
-  pinSpace: 'purchase' | 'content'  // The pin space that this challenge is for
-  capability?: string               // The capability that is gated by a pin challenge
+  pinSpace: 'purchase' | 'content' // The pin space that this challenge is for
+  capability?: string // The capability that is gated by a pin challenge
   requestor: ChallengeRequestor
 }
 ```
 
-See also: 
+See also:
 
 [ChallengeRequestor](#challengerequestor)
 
 ---
+
 ### PinChallengeProviderRequest
-
-
 
 ```typescript
 type PinChallengeProviderRequest = {
   parameters: PinChallenge
-  correlationId: string               // The id that was passed in to the event that triggered a provider method to be called
+  correlationId: string // The id that was passed in to the event that triggered a provider method to be called
 }
 ```
 
-See also: 
+See also:
 
 [ProviderRequest](../Types/schemas/#ProviderRequest)
 [PinChallenge](#pinchallenge-1)

@@ -7,36 +7,39 @@ sdk: manage
 ---
 
 # AudioDescriptions Module
+
 ---
-Version AudioDescriptions 1.0.0
+
+Version AudioDescriptions 1.1.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Usage](#usage)
-   - [Overview](#overview)
-   - [Methods](#methods)
-     - [enabled](#enabled)
-     - [listen](#listen)
-     - [once](#once)
-   - [Events](#events)
-     - [enabledChanged](#enabledchanged)
 
-
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+- [Overview](#overview)
+- [Methods](#methods)
+  - [enabled](#enabled)
+  - [listen](#listen)
+  - [once](#once)
+- [Events](#events)
+  - [enabledChanged](#enabledchanged)
 
 ## Usage
+
 To use the AudioDescriptions module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 ```
 
-
 ## Overview
- A module for managing audio-description Settings.
+
+A module for managing audio-description Settings.
 
 ## Methods
 
 ### enabled
+
 Whether or not audio-descriptions are enabled.
 
 To get the value of `enabled` call the method like this:
@@ -44,8 +47,6 @@ To get the value of `enabled` call the method like this:
 ```typescript
 function enabled(): Promise<boolean>
 ```
-
-
 
 Promise resolution:
 
@@ -55,13 +56,11 @@ boolean
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                              |
+| ---- | ------------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:audiodescriptions |
 
-
 #### Examples
-
 
 Default example #1
 
@@ -70,10 +69,8 @@ JavaScript:
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-AudioDescriptions.enabled()
-    .then(enabled => {
-        console.log(enabled)
-    })
+let enabled = await AudioDescriptions.enabled()
+console.log(enabled)
 ```
 
 Value of `enabled`:
@@ -81,16 +78,17 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AudioDescriptions.enabled",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.enabled",
+  "params": {}
 }
 ```
 
@@ -98,11 +96,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -112,10 +111,8 @@ JavaScript:
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-AudioDescriptions.enabled()
-    .then(enabled => {
-        console.log(enabled)
-    })
+let enabled = await AudioDescriptions.enabled()
+console.log(enabled)
 ```
 
 Value of `enabled`:
@@ -123,16 +120,17 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AudioDescriptions.enabled",
-	"params": {}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.enabled",
+  "params": {}
 }
 ```
 
@@ -140,13 +138,13 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
-</details>
 
+</details>
 
 ---
 
@@ -158,10 +156,9 @@ function enabled(value: boolean): Promise<void>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Description                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `value` | `boolean` | true |   |
-
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
 
 Promise resolution:
 
@@ -171,7 +168,6 @@ null
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -179,10 +175,8 @@ JavaScript:
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-AudioDescriptions.enabled(true)
-    .then(result => {
-        console.log(result)
-    })
+let result = await AudioDescriptions.enabled(true)
+console.log(result)
 ```
 
 Value of `result`:
@@ -190,18 +184,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AudioDescriptions.setEnabled",
-	"params": {
-		"value": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.setEnabled",
+  "params": {
+    "value": true
+  }
 }
 ```
 
@@ -209,11 +204,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
 Default example #2
@@ -223,10 +219,8 @@ JavaScript:
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-AudioDescriptions.enabled(false)
-    .then(result => {
-        console.log(result)
-    })
+let result = await AudioDescriptions.enabled(false)
+console.log(result)
 ```
 
 Value of `result`:
@@ -234,18 +228,19 @@ Value of `result`:
 ```javascript
 null
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AudioDescriptions.setEnabled",
-	"params": {
-		"value": false
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.setEnabled",
+  "params": {
+    "value": false
+  }
 }
 ```
 
@@ -253,24 +248,21 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": null
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
 </details>
 
-
 ---
-
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function enabled(callback: (value) => boolean): Promise<number>
 ```
-
-
 
 Promise resolution:
 
@@ -280,7 +272,6 @@ number
 
 #### Examples
 
-
 Default example #1
 
 JavaScript:
@@ -288,11 +279,10 @@ JavaScript:
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-enabled(value => {
+let listenerId = await enabled((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `enabled`:
@@ -300,18 +290,19 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AudioDescriptions.onEnabledChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -319,11 +310,12 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
 }
 ```
+
 </details>
 
 Default example #2
@@ -333,11 +325,10 @@ JavaScript:
 ```javascript
 import { AudioDescriptions } from '@firebolt-js/manage-sdk'
 
-enabled(value => {
+let listenerId = await enabled((value) => {
   console.log(value)
-}).then(listenerId => {
-  console.log(listenerId)
 })
+console.log(listenerId)
 ```
 
 Value of `enabled`:
@@ -345,18 +336,19 @@ Value of `enabled`:
 ```javascript
 true
 ```
+
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AudioDescriptions.onEnabledChanged",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -364,16 +356,15 @@ Response:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"result": false
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
 }
 ```
+
 </details>
 
-
 ---
-
 
 ### listen
 
@@ -385,24 +376,24 @@ listen(event: string, callback: (data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
-To listen to all events from this module  pass only a callback, without specifying an event name:
+To listen to all events from this module pass only a callback, without specifying an event name:
 
 ```typescript
 listen(callback: (event: string, data: any) => void): Promise<number>
@@ -410,23 +401,21 @@ listen(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -443,22 +432,22 @@ The `once` method will only pass the next instance of this event, and then dicar
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event to listen for, see [Events](#events). |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. |
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
 
@@ -468,23 +457,21 @@ once(callback: (event: string, data: any) => void): Promise<number>
 
 Parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| *callback* | `function` | Yes | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
-
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
 
 Callback parameters:
 
-| Param                  | Type                 | Required                 | Summary                 |
-| ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `event` | `string` | Yes | The event that has occured listen for, see [Events](#events). |
-| `data` | `any` | Yes | The event data, which depends on which event is firing, see [Events](#events). |
-
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
 
 Promise resolution:
 
-| Type | Description |
-|------|-------------|
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioDescriptions.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
@@ -494,6 +481,3 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 ### enabledChanged
 
 See: [enabled](#enabled)
-
-
-

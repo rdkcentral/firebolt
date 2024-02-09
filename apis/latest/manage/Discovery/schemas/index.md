@@ -7,19 +7,22 @@ sdk: manage
 ---
 
 # Discovery
+
 ---
+
 Version Discovery 0.0.0-unknown.0
 
 ## Table of Contents
-   - [Table of Contents](#table-of-contents)
-   - [Overview](#overview)
-   - [Types](#types)
-     - [EntityInfoResult](#entityinforesult)
-     - [PurchasedContentResult](#purchasedcontentresult)
 
+- [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+- [Types](#types)
+  - [EntityInfoResult](#entityinforesult)
+  - [PurchasedContentResult](#purchasedcontentresult)
 
 ## Overview
- undefined
+
+undefined
 
 ## Types
 
@@ -30,19 +33,18 @@ The result for an `entityInfo()` push or pull.
 ```typescript
 type EntityInfoResult = {
   expires: string
-  entity: EntityInfo       // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
   related?: EntityInfo[]
 }
 ```
 
-See also: 
+See also:
 
 [EntityInfo](../Entertainment/schemas/#EntityInfo)
 
 ---
+
 ### PurchasedContentResult
-
-
 
 ```typescript
 type PurchasedContentResult = {
@@ -52,7 +54,7 @@ type PurchasedContentResult = {
 }
 ```
 
-See also: 
+See also:
 
 [EntityInfo](../Entertainment/schemas/#EntityInfo)
 
