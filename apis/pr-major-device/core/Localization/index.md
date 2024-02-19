@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.1.0-major-device.0
+Version Localization 1.1.1-major-device.0
 
 ## Table of Contents
 

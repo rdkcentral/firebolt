@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.1.0-major-device.0
+Version Metrics 1.1.1-major-device.0
 
 ## Table of Contents
 

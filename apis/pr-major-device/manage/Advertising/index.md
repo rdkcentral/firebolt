@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.1.0-major-device.0
+Version Advertising 1.1.1-major-device.0
 
 ## Table of Contents
 
