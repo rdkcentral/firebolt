@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.1.0-feature-user-interest.0
+Version Internal 1.1.1-feature-user-interest.0
 
 ## Table of Contents
 

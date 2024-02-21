@@ -27,12 +27,13 @@ Version Intents 0.0.0-unknown.0
   - [SearchIntent](#searchintent)
   - [SectionIntent](#sectionintent)
   - [ChannelEntity](#channelentity)
-  - [AdditionalEntity](#additionalentity)
+  - [MusicEntity](#musicentity)
   - [PlayQueryIntent](#playqueryintent)
   - [TVSeriesEntity](#tvseriesentity)
-  - [MovieEntity](#movieentity)
+  - [AdditionalEntity](#additionalentity)
   - [TVSeasonEntity](#tvseasonentity)
   - [UntypedEntity](#untypedentity)
+  - [MovieEntity](#movieentity)
   - [TVEpisodeEntity](#tvepisodeentity)
   - [EntityIntent](#entityintent)
   - [PlaylistEntity](#playlistentity)
@@ -203,21 +204,19 @@ type ChannelEntity = {
 
 ---
 
-### AdditionalEntity
+### MusicEntity
 
 ```typescript
-type AdditionalEntity = {
-  entityType: 'program'
-  programType: ProgramType // In the case of a program `entityType`, specifies the program type.
+type MusicEntity = {
+  entityType: 'music'
+  musicType: MusicType // In the case of a music `entityType`, specifies the type of music entity.
   entityId: string
-  assetId?: string
-  appContentData?: string
 }
 ```
 
 See also:
 
-[ProgramEntity](#programentity)
+'song' | 'album'
 
 ---
 
@@ -266,12 +265,12 @@ See also:
 
 ---
 
-### MovieEntity
+### AdditionalEntity
 
 ```typescript
-type MovieEntity = {
+type AdditionalEntity = {
   entityType: 'program'
-  programType: 'movie'
+  programType: ProgramType // In the case of a program `entityType`, specifies the program type.
   entityId: string
   assetId?: string
   appContentData?: string
@@ -317,6 +316,24 @@ type UntypedEntity = {
 
 ---
 
+### MovieEntity
+
+```typescript
+type MovieEntity = {
+  entityType: 'program'
+  programType: 'movie'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+See also:
+
+[ProgramEntity](#programentity)
+
+---
+
 ### TVEpisodeEntity
 
 ```typescript
@@ -349,6 +366,7 @@ type EntityIntent = {
     | TVEpisodeEntity
     | TVSeriesEntity
     | TVSeasonEntity
+    | MusicEntity
     | AdditionalEntity
     | UntypedEntity
   context: {
@@ -363,6 +381,7 @@ See also:
 [TVEpisodeEntity](#tvepisodeentity)
 [TVSeriesEntity](#tvseriesentity)
 [TVSeasonEntity](#tvseasonentity)
+[MusicEntity](#musicentity)
 [AdditionalEntity](#additionalentity)
 [UntypedEntity](#untypedentity)
 
@@ -417,6 +436,7 @@ type PlayableEntity =
   | MovieEntity
   | TVEpisodeEntity
   | PlaylistEntity
+  | MusicEntity
   | AdditionalEntity
 ```
 
@@ -425,6 +445,7 @@ See also:
 [MovieEntity](#movieentity)
 [TVEpisodeEntity](#tvepisodeentity)
 [PlaylistEntity](#playlistentity)
+[MusicEntity](#musicentity)
 [AdditionalEntity](#additionalentity)
 
 ---
@@ -445,7 +466,7 @@ type PlaybackIntent = {
 
 See also:
 
-MovieEntity | TVEpisodeEntity | PlaylistEntity | AdditionalEntity
+MovieEntity | TVEpisodeEntity | PlaylistEntity | MusicEntity | AdditionalEntity
 
 ---
 
@@ -471,7 +492,7 @@ type PlayEntityIntent = {
 
 See also:
 
-MovieEntity | TVEpisodeEntity | PlaylistEntity | AdditionalEntity
+MovieEntity | TVEpisodeEntity | PlaylistEntity | MusicEntity | AdditionalEntity
 
 ---
 

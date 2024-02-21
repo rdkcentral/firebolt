@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.1.0-feature-user-interest.0
+Version Profile 1.1.1-feature-user-interest.0
 
 ## Table of Contents
 

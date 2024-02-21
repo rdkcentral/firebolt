@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.1.0-feature-user-interest.0
+Version Keyboard 1.1.1-feature-user-interest.0
 
 ## Table of Contents
 
