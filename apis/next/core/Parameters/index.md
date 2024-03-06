@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.1.1-next.1
+Version Parameters 1.1.1-next.2
 
 ## Table of Contents
 
