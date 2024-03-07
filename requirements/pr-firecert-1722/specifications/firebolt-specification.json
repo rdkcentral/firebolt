@@ -21108,6 +21108,9 @@
 												"$ref": "#/x-schemas/Intents/MusicEntity"
 											},
 											{
+												"$ref": "#/x-schemas/Intents/PlaylistEntity"
+											},
+											{
 												"$ref": "#/x-schemas/Intents/AdditionalEntity"
 											},
 											{
@@ -21794,6 +21797,37 @@
 							"entityId"
 						]
 					},
+					"PlaylistEntity": {
+						"title": "PlaylistEntity",
+						"description": "A Firebolt compliant representation of a Playlist entity.",
+						"type": "object",
+						"required": [
+							"entityType",
+							"entityId"
+						],
+						"properties": {
+							"entityType": {
+								"const": "playlist"
+							},
+							"entityId": {
+								"$ref": "#/x-schemas/Intents/Identifier"
+							},
+							"assetId": {
+								"$ref": "#/x-schemas/Intents/Identifier"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
+						"examples": [
+							{
+								"entityType": "playlist",
+								"entityId": "playlist/xyz"
+							}
+						]
+					},
 					"AdditionalEntity": {
 						"title": "AdditionalEntity",
 						"allOf": [
@@ -21948,37 +21982,6 @@
 					},
 					"Identifier": {
 						"type": "string"
-					},
-					"PlaylistEntity": {
-						"title": "PlaylistEntity",
-						"description": "A Firebolt compliant representation of a Playlist entity.",
-						"type": "object",
-						"required": [
-							"entityType",
-							"entityId"
-						],
-						"properties": {
-							"entityType": {
-								"const": "playlist"
-							},
-							"entityId": {
-								"$ref": "#/x-schemas/Intents/Identifier"
-							},
-							"assetId": {
-								"$ref": "#/x-schemas/Intents/Identifier"
-							},
-							"appContentData": {
-								"type": "string",
-								"maxLength": 256
-							}
-						},
-						"additionalProperties": false,
-						"examples": [
-							{
-								"entityType": "playlist",
-								"entityId": "playlist/xyz"
-							}
-						]
 					}
 				},
 				"Lifecycle": {
