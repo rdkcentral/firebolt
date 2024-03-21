@@ -23,6 +23,7 @@ Version AudioDescriptions 1.1.1-features-cpp.1
   - [once](#once)
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
+- [Types](#types)
 
 ## Usage
 
@@ -45,7 +46,7 @@ Whether or not audio-descriptions are enabled.
 To get the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(): Promise<boolean>
+${method.signature}
 ```
 
 Promise resolution:
@@ -151,7 +152,8 @@ Response:
 To set the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(value: boolean): Promise<void>
+function enabled(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
@@ -163,7 +165,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -481,3 +483,5 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 ### enabledChanged
 
 See: [enabled](#enabled)
+
+## Types

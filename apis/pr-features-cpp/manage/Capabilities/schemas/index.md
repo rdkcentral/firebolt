@@ -35,11 +35,14 @@ undefined
 Role provides access level for the app for a given capability.
 
 ```typescript
-enum Role {
-  USE = 'use',
-  MANAGE = 'manage',
-  PROVIDE = 'provide',
-}
+Role Enumeration:
+
+| key | value |
+|-----|-------|
+| USE | use |
+| MANAGE | manage |
+| PROVIDE | provide |
+
 ```
 
 ---
@@ -49,14 +52,17 @@ enum Role {
 Reasons why a Capability might not be invokable
 
 ```typescript
-enum DenyReason {
-  UNPERMITTED = 'unpermitted',
-  UNSUPPORTED = 'unsupported',
-  DISABLED = 'disabled',
-  UNAVAILABLE = 'unavailable',
-  GRANT_DENIED = 'grantDenied',
-  UNGRANTED = 'ungranted',
-}
+DenyReason Enumeration:
+
+| key | value |
+|-----|-------|
+| UNPERMITTED | unpermitted |
+| UNSUPPORTED | unsupported |
+| DISABLED | disabled |
+| UNAVAILABLE | unavailable |
+| GRANT_DENIED | grantDenied |
+| UNGRANTED | ungranted |
+
 ```
 
 ---
@@ -66,7 +72,7 @@ enum DenyReason {
 A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
 
 ```typescript
-type Capability = string
+
 ```
 
 ---
@@ -74,41 +80,24 @@ type Capability = string
 ### CapPermissionStatus
 
 ```typescript
-type CapPermissionStatus = {
-  permitted?: boolean // Provides info whether the capability is permitted
-  granted?: boolean | void
-}
+
 ```
 
 ---
 
 ### CapabilityInfo
 
+````typescript
 ```typescript
-type CapabilityInfo = {
-  capability?: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-  supported: boolean // Provides info whether the capability is supported
-  available: boolean // Provides info whether the capability is available
-  use: {
-    permitted?: boolean // Provides info whether the capability is permitted
-    granted?: boolean | void
-  }
-  manage: {
-    permitted?: boolean // Provides info whether the capability is permitted
-    granted?: boolean | void
-  }
-  provide: {
-    permitted?: boolean // Provides info whether the capability is permitted
-    granted?: boolean | void
-  }
-  details?: DenyReason[]
-}
-```
+
+````
+
+````
 
 See also:
 
-string
-'unpermitted' | 'unsupported' | 'disabled' | 'unavailable' | 'grantDenied' | 'ungranted'
+
+
 
 ---
 
@@ -117,15 +106,16 @@ string
 A capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
 
 ```typescript
-type Permission = {
-  role?: Role // Role provides access level for the app for a given capability.
-  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-'use' | 'manage' | 'provide'
-string
+
+
 
 ---
+```

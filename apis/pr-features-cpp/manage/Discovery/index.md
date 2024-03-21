@@ -24,6 +24,7 @@ Version Discovery 1.1.1-features-cpp.1
 - [Events](#events)
   - [signIn](#signin)
   - [signOut](#signout)
+- [Types](#types)
 
 ## Usage
 
@@ -166,7 +167,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 ### signIn
 
 ```typescript
-function listen('signIn', (object) => void): Promise<number>
+function listen('signIn', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -239,7 +240,7 @@ Response:
 ### signOut
 
 ```typescript
-function listen('signOut', (object) => void): Promise<number>
+function listen('signOut', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -308,3 +309,5 @@ Response:
 </details>
 
 ---
+
+## Types

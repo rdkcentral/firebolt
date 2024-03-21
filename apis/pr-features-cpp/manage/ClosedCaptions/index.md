@@ -49,6 +49,7 @@ Version ClosedCaptions 1.1.1-features-cpp.1
   - [textAlignVerticalChanged](#textalignverticalchanged)
   - [windowColorChanged](#windowcolorchanged)
   - [windowOpacityChanged](#windowopacitychanged)
+- [Types](#types)
 
 ## Usage
 
@@ -71,13 +72,13 @@ The preferred background color for displaying closed-captions, .
 To get the value of `backgroundColor` call the method like this:
 
 ```typescript
-function backgroundColor(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Color = string
+
 ```
 
 Capabilities:
@@ -219,19 +220,20 @@ Response:
 To set the value of `backgroundColor` call the method like this:
 
 ```typescript
-function backgroundColor(value: string): Promise<void>
+function backgroundColor(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -373,7 +375,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function backgroundColor(callback: (value) => string): Promise<number>
+function backgroundColor(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -531,13 +533,13 @@ The preferred opacity for displaying closed-captions backgrounds.
 To get the value of `backgroundOpacity` call the method like this:
 
 ```typescript
-function backgroundOpacity(): Promise<number>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Opacity = number
+
 ```
 
 Capabilities:
@@ -679,19 +681,20 @@ Response:
 To set the value of `backgroundOpacity` call the method like this:
 
 ```typescript
-function backgroundOpacity(value: number): Promise<void>
+function backgroundOpacity(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `number` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -833,7 +836,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function backgroundOpacity(callback: (value) => number): Promise<number>
+function backgroundOpacity(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -991,7 +994,7 @@ Whether or not closed-captions are enabled.
 To get the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(): Promise<boolean>
+${method.signature}
 ```
 
 Promise resolution:
@@ -1097,7 +1100,8 @@ Response:
 To set the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(value: boolean): Promise<void>
+function enabled(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
@@ -1109,7 +1113,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -1319,13 +1323,13 @@ The preferred font color for displaying closed-captions.
 To get the value of `fontColor` call the method like this:
 
 ```typescript
-function fontColor(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Color = string
+
 ```
 
 Capabilities:
@@ -1467,19 +1471,20 @@ Response:
 To set the value of `fontColor` call the method like this:
 
 ```typescript
-function fontColor(value: string): Promise<void>
+function fontColor(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -1621,7 +1626,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function fontColor(callback: (value) => string): Promise<number>
+function fontColor(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -1779,13 +1784,23 @@ The preferred font edge style for displaying closed-captions.
 To get the value of `fontEdge` call the method like this:
 
 ```typescript
-function fontEdge(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type FontEdge = string
+FontEdge Enumeration:
+
+| key | value |
+|-----|-------|
+| NONE | none |
+| RAISED | raised |
+| DEPRESSED | depressed |
+| UNIFORM | uniform |
+| DROP_SHADOW_LEFT | drop_shadow_left |
+| DROP_SHADOW_RIGHT | drop_shadow_right |
+
 ```
 
 Capabilities:
@@ -1927,19 +1942,20 @@ Response:
 To set the value of `fontEdge` call the method like this:
 
 ```typescript
-function fontEdge(value: string): Promise<void>
+function fontEdge(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -2081,7 +2097,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function fontEdge(callback: (value) => string): Promise<number>
+function fontEdge(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -2239,13 +2255,13 @@ The preferred font edge color for displaying closed-captions.
 To get the value of `fontEdgeColor` call the method like this:
 
 ```typescript
-function fontEdgeColor(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Color = string
+
 ```
 
 Capabilities:
@@ -2387,19 +2403,20 @@ Response:
 To set the value of `fontEdgeColor` call the method like this:
 
 ```typescript
-function fontEdgeColor(value: string): Promise<void>
+function fontEdgeColor(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -2541,7 +2558,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function fontEdgeColor(callback: (value) => string): Promise<number>
+function fontEdgeColor(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -2699,13 +2716,24 @@ The preferred font family for displaying closed-captions.
 To get the value of `fontFamily` call the method like this:
 
 ```typescript
-function fontFamily(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type FontFamily = string
+FontFamily Enumeration:
+
+| key | value |
+|-----|-------|
+| MONOSPACED_SERIF | monospaced_serif |
+| PROPORTIONAL_SERIF | proportional_serif |
+| MONOSPACED_SANSERIF | monospaced_sanserif |
+| PROPORTIONAL_SANSERIF | proportional_sanserif |
+| SMALLCAPS | smallcaps |
+| CURSIVE | cursive |
+| CASUAL | casual |
+
 ```
 
 Capabilities:
@@ -2847,19 +2875,20 @@ Response:
 To set the value of `fontFamily` call the method like this:
 
 ```typescript
-function fontFamily(value: string): Promise<void>
+function fontFamily(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -3001,7 +3030,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function fontFamily(callback: (value) => string): Promise<number>
+function fontFamily(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -3159,13 +3188,13 @@ The preferred opacity for displaying closed-captions characters.
 To get the value of `fontOpacity` call the method like this:
 
 ```typescript
-function fontOpacity(): Promise<number>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Opacity = number
+
 ```
 
 Capabilities:
@@ -3307,19 +3336,20 @@ Response:
 To set the value of `fontOpacity` call the method like this:
 
 ```typescript
-function fontOpacity(value: number): Promise<void>
+function fontOpacity(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `number` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -3461,7 +3491,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function fontOpacity(callback: (value) => number): Promise<number>
+function fontOpacity(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -3619,13 +3649,13 @@ The preferred font size for displaying closed-captions.
 To get the value of `fontSize` call the method like this:
 
 ```typescript
-function fontSize(): Promise<number>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type FontSize = number
+
 ```
 
 Capabilities:
@@ -3767,19 +3797,20 @@ Response:
 To set the value of `fontSize` call the method like this:
 
 ```typescript
-function fontSize(value: number): Promise<void>
+function fontSize(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `number` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -3921,7 +3952,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function fontSize(callback: (value) => number): Promise<number>
+function fontSize(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -4189,13 +4220,13 @@ A prioritized list of ISO 639-2/B codes for the preferred closed captions langua
 To get the value of `preferredLanguages` call the method like this:
 
 ```typescript
-function preferredLanguages(): Promise<string[]>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-string[]
+
 ```
 
 Capabilities:
@@ -4295,19 +4326,20 @@ Response:
 To set the value of `preferredLanguages` call the method like this:
 
 ```typescript
-function preferredLanguages(value: string[]): Promise<void>
+function preferredLanguages(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type       | Required | Description                                                      |
-| ------- | ---------- | -------- | ---------------------------------------------------------------- |
-| `value` | `string[]` | true     | the preferred closed captions languages <br/>pattern: ^[a-z]{3}$ |
+| Param   | Type | Required | Description                                                 |
+| ------- | ---- | -------- | ----------------------------------------------------------- |
+| `value` | ``   | true     | the preferred closed captions languages pattern: ^[a-z]{3}$ |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -4405,7 +4437,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function preferredLanguages(callback: (value) => string[]): Promise<number>
+function preferredLanguages(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -4517,13 +4549,13 @@ The preferred horizontal alignment for displaying closed-captions characters.
 To get the value of `textAlign` call the method like this:
 
 ```typescript
-function textAlign(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type HorizontalAlignment = string
+
 ```
 
 Capabilities:
@@ -4665,19 +4697,20 @@ Response:
 To set the value of `textAlign` call the method like this:
 
 ```typescript
-function textAlign(value: string): Promise<void>
+function textAlign(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -4819,7 +4852,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function textAlign(callback: (value) => string): Promise<number>
+function textAlign(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -4977,13 +5010,13 @@ The preferred horizontal alignment for displaying closed-captions characters.
 To get the value of `textAlignVertical` call the method like this:
 
 ```typescript
-function textAlignVertical(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type VerticalAlignment = string
+
 ```
 
 Capabilities:
@@ -5125,19 +5158,20 @@ Response:
 To set the value of `textAlignVertical` call the method like this:
 
 ```typescript
-function textAlignVertical(value: string): Promise<void>
+function textAlignVertical(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -5279,7 +5313,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function textAlignVertical(callback: (value) => string): Promise<number>
+function textAlignVertical(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -5437,13 +5471,13 @@ The preferred window color for displaying closed-captions, .
 To get the value of `windowColor` call the method like this:
 
 ```typescript
-function windowColor(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Color = string
+
 ```
 
 Capabilities:
@@ -5585,19 +5619,20 @@ Response:
 To set the value of `windowColor` call the method like this:
 
 ```typescript
-function windowColor(value: string): Promise<void>
+function windowColor(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `string` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -5739,7 +5774,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function windowColor(callback: (value) => string): Promise<number>
+function windowColor(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -5897,13 +5932,13 @@ The preferred window opacity for displaying closed-captions backgrounds.
 To get the value of `windowOpacity` call the method like this:
 
 ```typescript
-function windowOpacity(): Promise<number>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Opacity = number
+
 ```
 
 Capabilities:
@@ -6045,19 +6080,20 @@ Response:
 To set the value of `windowOpacity` call the method like this:
 
 ```typescript
-function windowOpacity(value: number): Promise<void>
+function windowOpacity(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description |
-| ------- | -------- | -------- | ----------- |
-| `value` | `number` | true     |             |
+| Param   | Type | Required | Description |
+| ------- | ---- | -------- | ----------- |
+| `value` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -6199,7 +6235,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function windowOpacity(callback: (value) => number): Promise<number>
+function windowOpacity(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -6407,3 +6443,5 @@ See: [windowColor](#windowcolor)
 ### windowOpacityChanged
 
 See: [windowOpacity](#windowopacity)
+
+## Types

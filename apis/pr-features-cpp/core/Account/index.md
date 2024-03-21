@@ -20,6 +20,7 @@ Version Account 1.1.1-features-cpp.1
 - [Methods](#methods)
   - [id](#id)
   - [uid](#uid)
+- [Types](#types)
 
 ## Usage
 
@@ -42,7 +43,7 @@ Get the platform back-office account identifier
 To get the value of `id` call the method like this:
 
 ```typescript
-function id(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -110,7 +111,7 @@ Gets a unique id for the current app & account
 To get the value of `uid` call the method like this:
 
 ```typescript
-function uid(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -170,3 +171,5 @@ Response:
 </details>
 
 ---
+
+## Types

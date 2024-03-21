@@ -53,14 +53,14 @@ The Capabilities module provides information about which discreet unit of functi
 Returns whether a capability is available now.
 
 ```typescript
-function available(capability: Capability): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
 
@@ -175,23 +175,20 @@ Response:
 Returns whether the current App has a user grant for passed capability and role.
 
 ```typescript
-function granted(
-  capability: Capability,
-  options?: CapabilityOption,
-): Promise<boolean | void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options`    | [`CapabilityOption`](#capabilityoption)             | false    | Capability options                                                     |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | ``   | false    | Capability options                                                |
 
 Promise resolution:
 
 ```typescript
-boolean | void
+boolean
 ```
 
 Capabilities:
@@ -350,19 +347,19 @@ Response:
 Returns an array of CapabilityInfo objects for the passed in capabilities.
 
 ```typescript
-function info(capabilities: Capability[]): Promise<CapabilityInfo[]>
+${method.signature}
 ```
 
 Parameters:
 
-| Param          | Type           | Required | Description                                                            |
-| -------------- | -------------- | -------- | ---------------------------------------------------------------------- |
-| `capabilities` | `Capability[]` | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param          | Type | Required | Description                                                       |
+| -------------- | ---- | -------- | ----------------------------------------------------------------- |
+| `capabilities` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
 
 ```typescript
-CapabilityInfo[]
+
 ```
 
 Capabilities:
@@ -910,18 +907,15 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Returns whether the current App has permission to the passed capability and role.
 
 ```typescript
-function permitted(
-  capability: Capability,
-  options?: CapabilityOption,
-): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options`    | [`CapabilityOption`](#capabilityoption)             | false    | Capability options                                                     |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | ``   | false    | Capability options                                                |
 
 Promise resolution:
 
@@ -1088,19 +1082,19 @@ Response:
 Requests grants for all capability/role combinations in the roles array.
 
 ```typescript
-function request(grants: Permission[]): Promise<CapabilityInfo[]>
+${method.signature}
 ```
 
 Parameters:
 
-| Param    | Type           | Required | Description |
-| -------- | -------------- | -------- | ----------- |
-| `grants` | `Permission[]` | true     |             |
+| Param    | Type | Required | Description |
+| -------- | ---- | -------- | ----------- |
+| `grants` | ``   | true     |             |
 
 Promise resolution:
 
 ```typescript
-CapabilityInfo[]
+
 ```
 
 Capabilities:
@@ -1205,14 +1199,14 @@ Response:
 Returns whether the platform supports the passed capability.
 
 ```typescript
-function supported(capability: Capability): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
 
@@ -1327,28 +1321,36 @@ Response:
 ### available
 
 ```typescript
-function listen('available', capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('available', | `capability` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Event value:
 
-[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                |
-| ---- | ----------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:capabilities:info |
 
+
 #### Examples
+
 
 Platform token is available
 
@@ -1357,10 +1359,10 @@ JavaScript:
 ```javascript
 import { Capabilities } from '@firebolt-js/sdk'
 
-Capabilities.listen('available', (value) => {
+Capabilities.listen('available', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -1437,29 +1439,38 @@ Response:
 ### granted
 
 ```typescript
-function listen('granted', role: Role, capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('granted', | `role` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, | `capability` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `role`       | ``   | true     | values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Event value:
 
-[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                |
-| ---- | ----------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:capabilities:info |
 
+
 #### Examples
+
 
 Postal code granted
 
@@ -1468,10 +1479,10 @@ JavaScript:
 ```javascript
 import { Capabilities } from '@firebolt-js/sdk'
 
-Capabilities.listen('granted', (value) => {
+Capabilities.listen('granted', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -1545,29 +1556,38 @@ Response:
 ### revoked
 
 ```typescript
-function listen('revoked', role: Role, capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('revoked', | `role` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, | `capability` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `role`       | ``   | true     | values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Event value:
 
-[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                |
-| ---- | ----------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:capabilities:info |
 
+
 #### Examples
+
 
 Postal code revoked
 
@@ -1576,10 +1596,10 @@ JavaScript:
 ```javascript
 import { Capabilities } from '@firebolt-js/sdk'
 
-Capabilities.listen('revoked', (value) => {
+Capabilities.listen('revoked', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -1657,28 +1677,36 @@ Response:
 ### unavailable
 
 ```typescript
-function listen('unavailable', capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('unavailable', | `capability` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Event value:
 
-[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                |
-| ---- | ----------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:capabilities:info |
 
+
 #### Examples
+
 
 Platform token is unavailable.
 
@@ -1687,10 +1715,10 @@ JavaScript:
 ```javascript
 import { Capabilities } from '@firebolt-js/sdk'
 
-Capabilities.listen('unavailable', (value) => {
+Capabilities.listen('unavailable', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -1768,14 +1796,16 @@ Response:
 
 ### CapabilityOption
 
+````typescript
 ```typescript
-type CapabilityOption = {
-  role?: Role // Role provides access level for the app for a given capability.
-}
+
+````
+
 ```
 
 See also:
 
-'use' | 'manage' | 'provide'
+
 
 ---
+```

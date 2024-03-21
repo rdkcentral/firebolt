@@ -54,15 +54,18 @@ Internal API for Challenge Provider to send back error.
 
 Parameters:
 
-| Param           | Type     | Required | Description |
-| --------------- | -------- | -------- | ----------- |
-| `correlationId` | `string` | true     |             |
-| `error`         | `object` | true     |             |
+| Param           | Type                    | Required       | Description |
+| --------------- | ----------------------- | -------------- | ----------- | ----------- |
+| `correlationId` | `string`                | true           |             |
+| `error`         | [`                      | Property       | Type        | Description |
+| ----------      | ------                  | -------------  |
+| `${property}`   | [${type}](${type.link}) | ${description} |
+| `](#)           | true                    |                |
 
 Result:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -115,7 +118,7 @@ Internal API for Challenge Provider to request focus for UX purposes.
 Result:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -161,15 +164,15 @@ Internal API for Challenge Provider to send back response.
 
 Parameters:
 
-| Param           | Type                          | Required | Description |
-| --------------- | ----------------------------- | -------- | ----------- |
-| `correlationId` | `string`                      | true     |             |
-| `result`        | [`GrantResult`](#grantresult) | true     |             |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `result`        | ``       | true     |             |
 
 Result:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -305,15 +308,22 @@ Parameters:
 
 Result:
 
-[ChallengeProviderRequest](#challengeproviderrequest)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role     | Capability                                             |
-| -------- | ------------------------------------------------------ |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | provides | xrn:firebolt:capability:usergrant:acknowledgechallenge |
 
+
 #### Examples
+
 
 Default Example
 
@@ -323,14 +333,14 @@ Request:
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "AcknowledgeChallenge.onRequestChallenge",
-  "params": {
-    "listen": true
-  }
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "AcknowledgeChallenge.onRequestChallenge",
+	"params": {
+		"listen": true
+	}
 }
-```
+````
 
 Response:
 
@@ -368,39 +378,6 @@ Usage:
 ```typescript
 AcknowledgeChallenge.provide('xrn:firebolt:capability:usergrant:acknowledgechallenge', provider: ChallengeProvider | object)
 ```
-
-#### challenge
-
-Registers as a provider for when the user should be challenged in order to confirm access to a capability
-
-```typescript
-function challenge(
-  parameters?: Challenge,
-  session?: FocusableProviderSession,
-): Promise<GrantResult>
-```
-
-Provider methods always have two arguments:
-
-| Param        | Type                       | Required | Summary |
-| ------------ | -------------------------- | -------- | ------- |
-| `parameters` | `Challenge`                | false    |         |
-| `session`    | `FocusableProviderSession` | false    |         |
-
-| Parameters Property | Type                                        | Required | Summary                                                       |
-| ------------------- | ------------------------------------------- | -------- | ------------------------------------------------------------- |
-| `capability`        | `string`                                    | true     | The capability that is being requested by the user to approve |
-| `requestor`         | [`ChallengeRequestor`](#challengerequestor) | true     |                                                               |
-
-```typescript
-type Challenge = object
-```
-
-Promise resolution:
-
-| Property  | Type    | Description |
-| --------- | ------- | ----------- | --- |
-| `granted` | boolean | void        |     |
 
 #### Examples
 
@@ -460,7 +437,7 @@ Event Response:
 {
   "id": 1,
   "result": {
-    "correlationId": "abc",
+    "correlationId": undefined,
     "parameters": {
       "capability": "xrn:firebolt:capability:localization::postal-code",
       "requestor": {
@@ -481,7 +458,7 @@ Request:
   "id": 2,
   "method": "AcknowledgeChallenge.challengeResponse",
   "params": {
-    "correlationId": "abc",
+    "correlationId": undefined,
     "result": {
       "granted": true
     }
@@ -504,52 +481,64 @@ Response:
 
 ### GrantResult
 
+````typescript
 ```typescript
-type GrantResult = {
-  granted: boolean | void
-}
-```
+
+````
+
+````
+
+
 
 ---
 
 ### ChallengeRequestor
 
+
+
 ```typescript
-type ChallengeRequestor = {
-  id: string // The id of the app that requested the challenge
-  name: string // The name of the app that requested the challenge
-}
-```
+```typescript
+
+````
+
+````
+
+
 
 ---
 
 ### Challenge
 
+
+
 ```typescript
-type Challenge = {
-  capability: string // The capability that is being requested by the user to approve
-  requestor: ChallengeRequestor
-}
-```
+```typescript
+
+````
+
+````
 
 See also:
 
-[ChallengeRequestor](#challengerequestor)
+
 
 ---
 
 ### ChallengeProviderRequest
 
+
+
 ```typescript
-type ChallengeProviderRequest = {
-  parameters: Challenge
-  correlationId: string // The id that was passed in to the event that triggered a provider method to be called
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-[ProviderRequest](../Types/schemas/#ProviderRequest)
-[Challenge](#challenge-1)
+
+
 
 ---
+```

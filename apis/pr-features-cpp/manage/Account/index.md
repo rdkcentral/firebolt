@@ -42,15 +42,15 @@ A module for querying about the device account.
 Used by a distributor to push Session token to firebolt.
 
 ```typescript
-function session(token: string, expiresIn: number): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param       | Type     | Required | Description     |
-| ----------- | -------- | -------- | --------------- |
-| `token`     | `string` | true     |                 |
-| `expiresIn` | `number` | true     | <br/>minumum: 1 |
+| Param       | Type | Required | Description |
+| ----------- | ---- | -------- | ----------- |
+| `token`     | ``   | true     |             |
+| `expiresIn` | ``   | true     | minumum: 1  |
 
 Promise resolution:
 
@@ -123,7 +123,7 @@ Response:
 Encoded token provided by the Distributor for Device Authentication.
 
 ```typescript
-type Token = string
+
 ```
 
 ---
@@ -133,7 +133,7 @@ type Token = string
 Number of secs before the token expires
 
 ```typescript
-type Expiry = number
+
 ```
 
 ---
