@@ -1,8 +1,3 @@
-The GitHub logo in the special directory is used to link to the GitHub hosting site, and is used with permission.
-GITHUB®, the GITHUB® logo design, the INVERTOCAT logo design, OCTOCAT®, and the OCTOCAT® logo design are trademarks of GitHub, Inc., registered in the United States and other countries.
-The OCTOCAT design is the exclusive property of GitHub, Inc and has been federally registered with the United States Copyright Office. All rights reserved.
-No adaptation or use of any kind of any of our registered trademarks or copyrights, is allowed without the express written permission of GitHub, Inc.
-
 [firebolt-core-sdk]
 Copyright 2021 Comcast Cable Communications Management, LLC
 
@@ -29,3 +24,14 @@ within this component..
 Material from husky is:
 Copyright (c) 2021 typicode
 Licensed under the MIT License
+
+Files in the special-images directory are NOT Apache-2.0 licensed.
+
+The npm logo in the special-images directory is used to link to the npm registry service. "npm" and the npm logos are trademarks owned by npm, Inc.
+npm is a registered trademark of npm, Inc.
+The npm logo is used with permission."
+
+The GitHub logo in the special-images directory is used to link to the GitHub hosting site, and is used with permission.
+GITHUB®, the GITHUB® logo design, the INVERTOCAT logo design, OCTOCAT®, and the OCTOCAT® logo design are trademarks of GitHub, Inc., registered in the United States and other countries.
+The OCTOCAT design is the exclusive property of GitHub, Inc and has been federally registered with the United States Copyright Office. All rights reserved.
+No adaptation or use of any kind of any of our registered trademarks or copyrights, is allowed without the express written permission of GitHub, Inc.
