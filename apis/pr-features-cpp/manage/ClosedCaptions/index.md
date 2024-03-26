@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version ClosedCaptions 1.1.1-features-cpp.1
+Version ClosedCaptions 1.1.1-features-cpp.2
 
 ## Table of Contents
 

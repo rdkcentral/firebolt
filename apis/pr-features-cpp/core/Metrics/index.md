@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.1.1-features-cpp.1
+Version Metrics 1.1.1-features-cpp.2
 
 ## Table of Contents
 

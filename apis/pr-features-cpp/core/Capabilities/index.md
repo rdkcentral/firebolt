@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.1.1-features-cpp.1
+Version Capabilities 1.1.1-features-cpp.2
 
 ## Table of Contents
 

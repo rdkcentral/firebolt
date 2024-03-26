@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.1.1-features-cpp.1
+Version SecureStorage 1.1.1-features-cpp.2
 
 ## Table of Contents
 

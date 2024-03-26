@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Localization 1.1.1-features-cpp.1
+Version Localization 1.1.1-features-cpp.2
 
 ## Table of Contents
 
