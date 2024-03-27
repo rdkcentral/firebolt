@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.1.1-next.2
+Version Device 1.2.0-next.1
 
 ## Table of Contents
 
@@ -25,6 +25,7 @@ Version Device 1.1.1-next.2
 - [Events](#events)
   - [deviceNameChanged](#devicenamechanged)
   - [nameChanged](#namechanged)
+- [Types](#types)
 
 ## Usage
 
@@ -101,7 +102,7 @@ The human readable name of the device
 To get the value of `name` call the method like this:
 
 ```typescript
-function name(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -207,7 +208,8 @@ Response:
 To set the value of `name` call the method like this:
 
 ```typescript
-function name(value: string): Promise<void>
+function name(| `value` | [`string`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
@@ -219,7 +221,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -483,11 +485,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Used by a distributor to push provision info to firebolt.
 
 ```typescript
-function provision(
-  accountId: string,
-  deviceId: string,
-  distributorId?: string,
-): Promise<void>
+${method.signature}
 ```
 
 Parameters:
@@ -614,7 +612,7 @@ Response:
 ### deviceNameChanged
 
 ```typescript
-function listen('deviceNameChanged', (string) => void): Promise<number>
+function listen('deviceNameChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -683,3 +681,5 @@ Response:
 ### nameChanged
 
 See: [name](#name)
+
+## Types

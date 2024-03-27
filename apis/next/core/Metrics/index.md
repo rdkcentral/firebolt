@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.1.1-next.2
+Version Metrics 1.2.0-next.1
 
 ## Table of Contents
 
@@ -60,11 +60,7 @@ Methods for sending metrics
 Inform the platform of something not covered by other Metrics APIs.
 
 ```typescript
-function action(
-  category: 'user' | 'app',
-  type: string,
-  parameters?: object,
-): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -73,7 +69,7 @@ Parameters:
 | ------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `category`   | `string` | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
 | `type`       | `string` | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
-| `parameters` | `object` | false    |                                                                                                                                             |
+| `parameters` | ``       | false    |                                                                                                                                             |
 
 Promise resolution:
 
@@ -141,24 +137,18 @@ Response:
 Inform the platform of an error that has occured in your app.
 
 ```typescript
-function error(
-  type: ErrorType,
-  code: string,
-  description: string,
-  visible: boolean,
-  parameters?: object,
-): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param         | Type                      | Required | Description                                                                                        |
-| ------------- | ------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `type`        | [`ErrorType`](#errortype) | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
-| `code`        | `string`                  | true     | an app-specific error code                                                                         |
-| `description` | `string`                  | true     | A short description of the error                                                                   |
-| `visible`     | `boolean`                 | true     | Whether or not this error was visible to the user.                                                 |
-| `parameters`  | `object`                  | false    | Optional additional parameters to be logged with the error                                         |
+| Param         | Type      | Required | Description                                                                                   |
+| ------------- | --------- | -------- | --------------------------------------------------------------------------------------------- |
+| `type`        | ``        | true     | The type of error values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
+| `code`        | `string`  | true     | an app-specific error code                                                                    |
+| `description` | `string`  | true     | A short description of the error                                                              |
+| `visible`     | `boolean` | true     | Whether or not this error was visible to the user.                                            |
+| `parameters`  | ``        | false    | Optional additional parameters to be logged with the error                                    |
 
 Promise resolution:
 
@@ -234,7 +224,7 @@ Response:
 Called when playback has stopped because the end of the media was reached.
 
 ```typescript
-function mediaEnded(entityId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -308,7 +298,7 @@ Response:
 Called when setting the URL of a media asset to play, in order to infer load time.
 
 ```typescript
-function mediaLoadStart(entityId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -382,7 +372,7 @@ Response:
 Called when media playback will pause due to an intentional pause operation.
 
 ```typescript
-function mediaPause(entityId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -456,7 +446,7 @@ Response:
 Called when media playback should start due to autoplay, user-initiated play, or unpausing.
 
 ```typescript
-function mediaPlay(entityId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -530,7 +520,7 @@ Response:
 Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interuption.
 
 ```typescript
-function mediaPlaying(entityId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -604,18 +594,15 @@ Response:
 Called every 60 seconds as media playback progresses.
 
 ```typescript
-function mediaProgress(
-  entityId: string,
-  progress: MediaPosition,
-): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param      | Type                              | Required | Description                                                                                                                                                                |
-| ---------- | --------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entityId` | `string`                          | true     | The entityId of the media.                                                                                                                                                 |
-| `progress` | [`MediaPosition`](#mediaposition) | true     | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param      | Type     | Required | Description                                                                                                                                                                |
+| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `entityId` | `string` | true     | The entityId of the media.                                                                                                                                                 |
+| `progress` | ``       | true     | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
 
 Promise resolution:
 
@@ -683,7 +670,7 @@ Response:
 Called when the playback rate of media is changed.
 
 ```typescript
-function mediaRateChange(entityId: string, rate: number): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -759,13 +746,7 @@ Response:
 Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed.
 
 ```typescript
-function mediaRenditionChange(
-  entityId: string,
-  bitrate: number,
-  width: number,
-  height: number,
-  profile?: string,
-): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -853,18 +834,15 @@ Response:
 Called when a seek is completed during media playback.
 
 ```typescript
-function mediaSeeked(
-  entityId: string,
-  position: MediaPosition,
-): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param      | Type                              | Required | Description                                                                                                                                                                                    |
-| ---------- | --------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entityId` | `string`                          | true     | The entityId of the media.                                                                                                                                                                     |
-| `position` | [`MediaPosition`](#mediaposition) | true     | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param      | Type     | Required | Description                                                                                                                                                                                    |
+| ---------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `entityId` | `string` | true     | The entityId of the media.                                                                                                                                                                     |
+| `position` | ``       | true     | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
 
 Promise resolution:
 
@@ -932,15 +910,15 @@ Response:
 Called when a seek is initiated during media playback.
 
 ```typescript
-function mediaSeeking(entityId: string, target: MediaPosition): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param      | Type                              | Required | Description                                                                                                                                                                          |
-| ---------- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `entityId` | `string`                          | true     | The entityId of the media.                                                                                                                                                           |
-| `target`   | [`MediaPosition`](#mediaposition) | true     | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param      | Type     | Required | Description                                                                                                                                                                          |
+| ---------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `entityId` | `string` | true     | The entityId of the media.                                                                                                                                                           |
+| `target`   | ``       | true     | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
 
 Promise resolution:
 
@@ -1008,7 +986,7 @@ Response:
 Called when media playback will halt due to a network, buffer, or other unintentional constraint.
 
 ```typescript
-function mediaWaiting(entityId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -1082,7 +1060,7 @@ Response:
 Inform the platform that your user has navigated to a page or view.
 
 ```typescript
-function page(pageId: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -1374,7 +1352,7 @@ Response:
 Inform the platform that your user has started content.
 
 ```typescript
-function startContent(entityId?: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -1490,7 +1468,7 @@ Response:
 Inform the platform that your user has stopped content.
 
 ```typescript
-function stopContent(entityId?: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
@@ -1606,13 +1584,16 @@ Response:
 ### ErrorType
 
 ```typescript
-enum ErrorType {
-  NETWORK = 'network',
-  MEDIA = 'media',
-  RESTRICTION = 'restriction',
-  ENTITLEMENT = 'entitlement',
-  OTHER = 'other',
-}
+ErrorType Enumeration:
+
+| key | value |
+|-----|-------|
+| NETWORK | network |
+| MEDIA | media |
+| RESTRICTION | restriction |
+| ENTITLEMENT | entitlement |
+| OTHER | other |
+
 ```
 
 ---
@@ -1622,7 +1603,7 @@ enum ErrorType {
 Represents a position inside playback content, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.
 
 ```typescript
-type MediaPosition = void | number | number
+
 ```
 
 ---

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecureStorage 1.1.1-next.2
+Version SecureStorage 1.2.0-next.1
 
 ## Table of Contents
 
@@ -45,14 +45,14 @@ A module for storing and retrieving secure data owned by the app
 Clears all the secure data values
 
 ```typescript
-function clear(scope: StorageScope): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param   | Type                            | Required | Description                                                     |
-| ------- | ------------------------------- | -------- | --------------------------------------------------------------- |
-| `scope` | [`StorageScope`](#storagescope) | true     | The scope of the key/value <br/>values: `'device' \| 'account'` |
+| Param   | Type | Required | Description                                                |
+| ------- | ---- | -------- | ---------------------------------------------------------- |
+| `scope` | ``   | true     | The scope of the key/value values: `'device' \| 'account'` |
 
 Promise resolution:
 
@@ -119,20 +119,20 @@ Response:
 Get stored value by key
 
 ```typescript
-function get(scope: StorageScope, key: string): Promise<string | null>
+${method.signature}
 ```
 
 Parameters:
 
-| Param   | Type                            | Required | Description                                                     |
-| ------- | ------------------------------- | -------- | --------------------------------------------------------------- |
-| `scope` | [`StorageScope`](#storagescope) | true     | The scope of the key/value <br/>values: `'device' \| 'account'` |
-| `key`   | `string`                        | true     | Key to get                                                      |
+| Param   | Type     | Required | Description                                                |
+| ------- | -------- | -------- | ---------------------------------------------------------- |
+| `scope` | ``       | true     | The scope of the key/value values: `'device' \| 'account'` |
+| `key`   | `string` | true     | Key to get                                                 |
 
 Promise resolution:
 
 ```typescript
-string | null
+
 ```
 
 Capabilities:
@@ -240,15 +240,15 @@ Response:
 Remove a secure data value
 
 ```typescript
-function remove(scope: StorageScope, key: string): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param   | Type                            | Required | Description                                                    |
-| ------- | ------------------------------- | -------- | -------------------------------------------------------------- |
-| `scope` | [`StorageScope`](#storagescope) | true     | The scope of the data key <br/>values: `'device' \| 'account'` |
-| `key`   | `string`                        | true     | Key to remove                                                  |
+| Param   | Type     | Required | Description                                               |
+| ------- | -------- | -------- | --------------------------------------------------------- |
+| `scope` | ``       | true     | The scope of the data key values: `'device' \| 'account'` |
+| `key`   | `string` | true     | Key to remove                                             |
 
 Promise resolution:
 
@@ -361,22 +361,17 @@ Response:
 Set or update a secure data value
 
 ```typescript
-function set(
-  scope: StorageScope,
-  key: string,
-  value: string,
-  options?: StorageOptions,
-): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param     | Type                                | Required | Description                                                    |
-| --------- | ----------------------------------- | -------- | -------------------------------------------------------------- |
-| `scope`   | [`StorageScope`](#storagescope)     | true     | The scope of the data key <br/>values: `'device' \| 'account'` |
-| `key`     | `string`                            | true     | Key to set                                                     |
-| `value`   | `string`                            | true     | Value to set                                                   |
-| `options` | [`StorageOptions`](#storageoptions) | false    | Optional parameters to set                                     |
+| Param     | Type     | Required | Description                                               |
+| --------- | -------- | -------- | --------------------------------------------------------- |
+| `scope`   | ``       | true     | The scope of the data key values: `'device' \| 'account'` |
+| `key`     | `string` | true     | Key to set                                                |
+| `value`   | `string` | true     | Value to set                                              |
+| `options` | ``       | false    | Optional parameters to set                                |
 
 Promise resolution:
 
@@ -506,20 +501,27 @@ Response:
 The scope of the data
 
 ```typescript
-enum StorageScope {
-  DEVICE = 'device',
-  ACCOUNT = 'account',
-}
+StorageScope Enumeration:
+
+| key | value |
+|-----|-------|
+| DEVICE | device |
+| ACCOUNT | account |
+
 ```
 
 ---
 
 ### StorageOptions
 
+````typescript
 ```typescript
-type StorageOptions = {
-  ttl: number // Seconds from set time before the data expires and is removed
-}
+
+````
+
 ```
 
+
+
 ---
+```

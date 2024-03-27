@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Localization 1.1.1-next.2
+Version Localization 1.2.0-next.1
 
 ## Table of Contents
 
@@ -38,6 +38,7 @@ Version Localization 1.1.1-next.2
   - [postalCodeChanged](#postalcodechanged)
   - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
   - [timeZoneChanged](#timezonechanged)
+- [Types](#types)
 
 ## Usage
 
@@ -58,7 +59,7 @@ Methods for accessessing location and language preferences
 Add any platform-specific localization information in key/value pair
 
 ```typescript
-function addAdditionalInfo(key: string, value: string): Promise<void>
+${method.signature}
 ```
 
 Parameters:
@@ -134,13 +135,16 @@ Response:
 Get any platform-specific localization information, in an Map<string, string>
 
 ```typescript
-function additionalInfo(): Promise<object>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-object
+| Property | Type | Description |
+|----------|------|-------------|
+| `${property}` | ${type} |  |
+
 ```
 
 Capabilities:
@@ -203,13 +207,13 @@ Get the ISO 3166-1 alpha-2 code for the country device is located in
 To get the value of `countryCode` call the method like this:
 
 ```typescript
-function countryCode(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type CountryCode = string
+
 ```
 
 Capabilities:
@@ -309,19 +313,20 @@ Response:
 To set the value of `countryCode` call the method like this:
 
 ```typescript
-function countryCode(value: string): Promise<void>
+function countryCode(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                                      |
-| ------- | -------- | -------- | ------------------------------------------------ |
-| `value` | `string` | true     | the device country code <br/>pattern: ^[A-Z]{2}$ |
+| Param   | Type | Required | Description                                 |
+| ------- | ---- | -------- | ------------------------------------------- |
+| `value` | ``   | true     | the device country code pattern: ^[A-Z]{2}$ |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -419,7 +424,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function countryCode(callback: (value) => string): Promise<number>
+function countryCode(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -531,13 +536,13 @@ Get the ISO 639 1/2 code for the preferred language
 To get the value of `language` call the method like this:
 
 ```typescript
-function language(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Language = string
+
 ```
 
 Capabilities:
@@ -637,19 +642,20 @@ Response:
 To set the value of `language` call the method like this:
 
 ```typescript
-function language(value: string): Promise<void>
+function language(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                                     |
-| ------- | -------- | -------- | ----------------------------------------------- |
-| `value` | `string` | true     | the device language <br/>pattern: ^[A-Za-z]{2}$ |
+| Param   | Type | Required | Description                                |
+| ------- | ---- | -------- | ------------------------------------------ |
+| `value` | ``   | true     | the device language pattern: ^[A-Za-z]{2}$ |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -747,7 +753,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function language(callback: (value) => string): Promise<number>
+function language(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -913,13 +919,13 @@ Get the _full_ BCP 47 code, including script, region, variant, etc., for the pre
 To get the value of `locale` call the method like this:
 
 ```typescript
-function locale(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Locale = string
+
 ```
 
 Capabilities:
@@ -1019,19 +1025,20 @@ Response:
 To set the value of `locale` call the method like this:
 
 ```typescript
-function locale(value: string): Promise<void>
+function locale(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                                                  |
-| ------- | -------- | -------- | ------------------------------------------------------------ |
-| `value` | `string` | true     | the device locale <br/>pattern: ^[a-zA-Z]+([a-zA-Z0-9\-]\*)$ |
+| Param   | Type | Required | Description                                             |
+| ------- | ---- | -------- | ------------------------------------------------------- |
+| `value` | ``   | true     | the device locale pattern: ^[a-zA-Z]+([a-zA-Z0-9\-]\*)$ |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -1129,7 +1136,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function locale(callback: (value) => string): Promise<number>
+function locale(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -1241,13 +1248,13 @@ Get the locality/city the device is located in
 To get the value of `locality` call the method like this:
 
 ```typescript
-function locality(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type Locality = string
+
 ```
 
 Capabilities:
@@ -1347,19 +1354,20 @@ Response:
 To set the value of `locality` call the method like this:
 
 ```typescript
-function locality(value: string): Promise<void>
+function locality(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description     |
-| ------- | -------- | -------- | --------------- |
-| `value` | `string` | true     | the device city |
+| Param   | Type | Required | Description     |
+| ------- | ---- | -------- | --------------- |
+| `value` | ``   | true     | the device city |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -1457,7 +1465,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function locality(callback: (value) => string): Promise<number>
+function locality(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -1625,7 +1633,7 @@ Get the postal code the device is located in
 To get the value of `postalCode` call the method like this:
 
 ```typescript
-function postalCode(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -1731,7 +1739,8 @@ Response:
 To set the value of `postalCode` call the method like this:
 
 ```typescript
-function postalCode(value: string): Promise<void>
+function postalCode(| `value` | [`string`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
@@ -1743,7 +1752,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -1953,13 +1962,13 @@ A prioritized list of ISO 639 1/2 codes for the preferred audio languages on thi
 To get the value of `preferredAudioLanguages` call the method like this:
 
 ```typescript
-function preferredAudioLanguages(): Promise<string[]>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-string[]
+
 ```
 
 Capabilities:
@@ -2059,19 +2068,20 @@ Response:
 To set the value of `preferredAudioLanguages` call the method like this:
 
 ```typescript
-function preferredAudioLanguages(value: string[]): Promise<void>
+function preferredAudioLanguages(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type       | Required | Description                                            |
-| ------- | ---------- | -------- | ------------------------------------------------------ |
-| `value` | `string[]` | true     | the preferred audio languages <br/>pattern: ^[a-z]{3}$ |
+| Param   | Type | Required | Description                                       |
+| ------- | ---- | -------- | ------------------------------------------------- |
+| `value` | ``   | true     | the preferred audio languages pattern: ^[a-z]{3}$ |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -2169,7 +2179,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function preferredAudioLanguages(callback: (value) => string[]): Promise<number>
+function preferredAudioLanguages(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -2279,7 +2289,7 @@ Response:
 Remove any platform-specific localization information from map
 
 ```typescript
-function removeAdditionalInfo(key: string): Promise<void>
+${method.signature}
 ```
 
 Parameters:
@@ -2355,13 +2365,13 @@ Set the IANA timezone for the device
 To get the value of `timeZone` call the method like this:
 
 ```typescript
-function timeZone(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-type TimeZone = string
+
 ```
 
 Capabilities:
@@ -2461,19 +2471,20 @@ Response:
 To set the value of `timeZone` call the method like this:
 
 ```typescript
-function timeZone(value: string): Promise<void>
+function timeZone(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                         |
-| ------- | -------- | -------- | ----------------------------------- |
-| `value` | `string` | true     | <br/>pattern: ^[-+_/ A-Za-z 0-9]\*$ |
+| Param   | Type | Required | Description                    |
+| ------- | ---- | -------- | ------------------------------ |
+| `value` | ``   | true     | pattern: ^[-+_/ A-Za-z 0-9]\*$ |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -2571,7 +2582,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function timeZone(callback: (value) => string): Promise<number>
+function timeZone(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -2705,3 +2716,5 @@ See: [preferredAudioLanguages](#preferredaudiolanguages)
 ### timeZoneChanged
 
 See: [timeZone](#timezone)
+
+## Types

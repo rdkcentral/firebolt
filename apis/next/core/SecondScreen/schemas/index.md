@@ -29,12 +29,14 @@ undefined
 
 An a message notification from a second screen device
 
+````typescript
 ```typescript
-type SecondScreenEvent = {
-  type: 'dial'
-  version?: string
-  data?: string
-}
+
+````
+
 ```
 
+
+
 ---
+```
