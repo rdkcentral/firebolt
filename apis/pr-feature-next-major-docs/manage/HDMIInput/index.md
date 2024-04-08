@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version HDMIInput 1.1.1-feature-next-major-docs.0
+Version HDMIInput 1.2.0-feature-next-major-docs.0
 
 ## Table of Contents
 
@@ -36,13 +36,13 @@ Version HDMIInput 1.1.1-feature-next-major-docs.0
   - [signalChanged](#signalchanged)
 - [Types](#types)
   - [EDIDVersion](#edidversion-1)
-  - [HDMIPortId](#hdmiportid)
-  - [ConnectionChangedInfo](#connectionchangedinfo)
   - [HDMISignalStatus](#hdmisignalstatus)
+  - [HDMIPortId](#hdmiportid)
+  - [SignalChangedInfo](#signalchangedinfo)
   - [AutoLowLatencyModeSignalChangedInfo](#autolowlatencymodesignalchangedinfo)
   - [HDMIInputPort](#hdmiinputport)
   - [AutoLowLatencyModeCapableChangedInfo](#autolowlatencymodecapablechangedinfo)
-  - [SignalChangedInfo](#signalchangedinfo)
+  - [ConnectionChangedInfo](#connectionchangedinfo)
 
 ## Usage
 
@@ -65,14 +65,14 @@ Property for each port auto low latency mode setting.
 To get the value of `autoLowLatencyModeCapable` call the method like this:
 
 ```typescript
-function autoLowLatencyModeCapable(port: string): Promise<boolean>
+${method.signature}
 ```
 
 Parameters:
 
-| Param  | Type     | Required | Description                |
-| ------ | -------- | -------- | -------------------------- |
-| `port` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param  | Type | Required | Description           |
+| ------ | ---- | -------- | --------------------- |
+| `port` | ``   | true     | pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
@@ -181,20 +181,22 @@ Response:
 To set the value of `autoLowLatencyModeCapable` call the method like this:
 
 ```typescript
-function autoLowLatencyModeCapable(port: string, value: boolean): Promise<void>
+function autoLowLatencyModeCapable(| `port` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, | `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type      | Required | Description                |
-| ------- | --------- | -------- | -------------------------- |
-| `port`  | `string`  | true     | <br/>pattern: ^HDMI[0-9]+$ |
-| `value` | `boolean` | true     |                            |
+| Param   | Type      | Required | Description           |
+| ------- | --------- | -------- | --------------------- |
+| `port`  | ``        | true     | pattern: ^HDMI[0-9]+$ |
+| `value` | `boolean` | true     |                       |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -294,9 +296,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function autoLowLatencyModeCapable(
-  callback: (value) => AutoLowLatencyModeCapableChangedInfo,
-): Promise<number>
+function autoLowLatencyModeCapable(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -418,7 +418,7 @@ Response:
 Closes the given HDMI Port if it is the current active source for HDMI Input. If there was no active source, then there would no action taken on the device.
 
 ```typescript
-function close(): Promise<void>
+${method.signature}
 ```
 
 Promise resolution:
@@ -486,18 +486,27 @@ Property for each port's active EDID version.
 To get the value of `edidVersion` call the method like this:
 
 ```typescript
-function edidVersion(port: string): Promise<EDIDVersion>
+${method.signature}
 ```
 
 Parameters:
 
-| Param  | Type     | Required | Description                |
-| ------ | -------- | -------- | -------------------------- |
-| `port` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param  | Type | Required | Description           |
+| ------ | ---- | -------- | --------------------- |
+| `port` | ``   | true     | pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
-[EDIDVersion](#edidversion-1)
+```typescript
+EDIDVersion Enumeration:
+
+| key | value |
+|-----|-------|
+| V1_4 | 1.4 |
+| V2_0 | 2.0 |
+| UNKNOWN | unknown |
+
+```
 
 Capabilities:
 
@@ -600,20 +609,22 @@ Response:
 To set the value of `edidVersion` call the method like this:
 
 ```typescript
-function edidVersion(port: string, value: EDIDVersion): Promise<void>
+function edidVersion(| `port` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, | `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type                            | Required | Description                                |
-| ------- | ------------------------------- | -------- | ------------------------------------------ |
-| `port`  | `string`                        | true     | <br/>pattern: ^HDMI[0-9]+$                 |
-| `value` | [`EDIDVersion`](#edidversion-1) | true     | <br/>values: `'1.4' \| '2.0' \| 'unknown'` |
+| Param   | Type | Required | Description                           |
+| ------- | ---- | -------- | ------------------------------------- |
+| `port`  | ``   | true     | pattern: ^HDMI[0-9]+$                 |
+| `value` | ``   | true     | values: `'1.4' \| '2.0' \| 'unknown'` |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -713,17 +724,15 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function edidVersion(
-  port: string,
-  callback: (value) => EDIDVersion,
-): Promise<number>
+function edidVersion(| `port` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, callback: (value) => ): Promise<number>
 ```
 
 Parameters:
 
-| Param  | Type     | Required | Description                |
-| ------ | -------- | -------- | -------------------------- |
-| `port` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param  | Type | Required | Description           |
+| ------ | ---- | -------- | --------------------- |
+| `port` | ``   | true     | pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
@@ -890,7 +899,7 @@ Property for the low latency mode setting.
 To get the value of `lowLatencyMode` call the method like this:
 
 ```typescript
-function lowLatencyMode(): Promise<boolean>
+${method.signature}
 ```
 
 Promise resolution:
@@ -996,7 +1005,8 @@ Response:
 To set the value of `lowLatencyMode` call the method like this:
 
 ```typescript
-function lowLatencyMode(value: boolean): Promise<void>
+function lowLatencyMode(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
@@ -1008,7 +1018,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -1272,14 +1282,14 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Opens the HDMI Port allowing it to be the active source device. Incase there is a different HDMI portId already set as the active source, this call would stop the older portId before opening the given portId.
 
 ```typescript
-function open(portId: string): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description                |
-| -------- | -------- | -------- | -------------------------- |
-| `portId` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param    | Type | Required | Description           |
+| -------- | ---- | -------- | --------------------- |
+| `portId` | ``   | true     | pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
@@ -1346,26 +1356,33 @@ Response:
 Retrieve a specific HDMI input port.
 
 ```typescript
-function port(portId: string): Promise<HDMIInputPort>
+${method.signature}
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description                |
-| -------- | -------- | -------- | -------------------------- |
-| `portId` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param    | Type | Required | Description           |
+| -------- | ---- | -------- | --------------------- |
+| `portId` | ``   | true     | pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
-[HDMIInputPort](#hdmiinputport)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:inputs:hdmi |
 
+
 #### Examples
+
 
 Default Example
 
@@ -1374,9 +1391,9 @@ JavaScript:
 ```javascript
 import { HDMIInput } from '@firebolt-js/manage-sdk'
 
-let port = await HDMIInput.port('HDMI1')
+let port = await HDMIInput.port("HDMI1")
 console.log(port)
-```
+````
 
 Value of `port`:
 
@@ -1436,13 +1453,13 @@ Response:
 Retrieve a list of HDMI input ports.
 
 ```typescript
-function ports(): Promise<HDMIInputPort[]>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-HDMIInputPort[]
+
 ```
 
 Capabilities:
@@ -1528,22 +1545,29 @@ See: [autoLowLatencyModeCapable](#autolowlatencymodecapable)
 ### autoLowLatencyModeSignalChanged
 
 ```typescript
-function listen('autoLowLatencyModeSignalChanged', (AutoLowLatencyModeSignalChangedInfo) => void): Promise<number>
+function listen('autoLowLatencyModeSignalChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[AutoLowLatencyModeSignalChangedInfo](#autolowlatencymodesignalchangedinfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:inputs:hdmi |
 
+
 #### Examples
+
 
 Default Example
 
@@ -1552,10 +1576,10 @@ JavaScript:
 ```javascript
 import { HDMIInput } from '@firebolt-js/manage-sdk'
 
-HDMIInput.listen('autoLowLatencyModeSignalChanged', (info) => {
+HDMIInput.listen('autoLowLatencyModeSignalChanged', info => {
   console.log(info)
 })
-```
+````
 
 Value of `info`:
 
@@ -1601,22 +1625,29 @@ Response:
 ### connectionChanged
 
 ```typescript
-function listen('connectionChanged', (ConnectionChangedInfo) => void): Promise<number>
+function listen('connectionChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[ConnectionChangedInfo](#connectionchangedinfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:inputs:hdmi |
 
+
 #### Examples
+
 
 Default Example
 
@@ -1625,10 +1656,10 @@ JavaScript:
 ```javascript
 import { HDMIInput } from '@firebolt-js/manage-sdk'
 
-HDMIInput.listen('connectionChanged', (info) => {
+HDMIInput.listen('connectionChanged', info => {
   console.log(info)
 })
-```
+````
 
 Value of `info`:
 
@@ -1682,22 +1713,29 @@ See: [lowLatencyMode](#lowlatencymode)
 ### signalChanged
 
 ```typescript
-function listen('signalChanged', (SignalChangedInfo) => void): Promise<number>
+function listen('signalChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SignalChangedInfo](#signalchangedinfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:inputs:hdmi |
 
+
 #### Examples
+
 
 Default Example
 
@@ -1706,10 +1744,10 @@ JavaScript:
 ```javascript
 import { HDMIInput } from '@firebolt-js/manage-sdk'
 
-HDMIInput.listen('signalChanged', (info) => {
+HDMIInput.listen('signalChanged', info => {
   console.log(info)
 })
-```
+````
 
 Value of `info`:
 
@@ -1757,30 +1795,14 @@ Response:
 ### EDIDVersion
 
 ```typescript
-enum EDIDVersion {
-  V1_4 = '1.4',
-  V2_0 = '2.0',
-  UNKNOWN = 'unknown',
-}
-```
+EDIDVersion Enumeration:
 
----
+| key | value |
+|-----|-------|
+| V1_4 | 1.4 |
+| V2_0 | 2.0 |
+| UNKNOWN | unknown |
 
-### HDMIPortId
-
-```typescript
-type HDMIPortId = string
-```
-
----
-
-### ConnectionChangedInfo
-
-```typescript
-type ConnectionChangedInfo = {
-  port?: string
-  connected?: boolean
-}
 ```
 
 ---
@@ -1788,67 +1810,111 @@ type ConnectionChangedInfo = {
 ### HDMISignalStatus
 
 ```typescript
-enum HDMISignalStatus {
-  NONE = 'none',
-  STABLE = 'stable',
-  UNSTABLE = 'unstable',
-  UNSUPPORTED = 'unsupported',
-  UNKNOWN = 'unknown',
-}
+HDMISignalStatus Enumeration:
+
+| key | value |
+|-----|-------|
+| NONE | none |
+| STABLE | stable |
+| UNSTABLE | unstable |
+| UNSUPPORTED | unsupported |
+| UNKNOWN | unknown |
+
 ```
 
 ---
 
-### AutoLowLatencyModeSignalChangedInfo
+### HDMIPortId
 
 ```typescript
-type AutoLowLatencyModeSignalChangedInfo = {
-  port?: string
-  autoLowLatencyModeSignalled?: boolean
-}
-```
 
----
-
-### HDMIInputPort
-
-```typescript
-type HDMIInputPort = {
-  port: string
-  connected: boolean
-  signal: 'none' | 'stable' | 'unstable' | 'unsupported' | 'unknown'
-  arcCapable: boolean
-  arcConnected: boolean
-  edidVersion: EDIDVersion
-  autoLowLatencyModeCapable: boolean
-  autoLowLatencyModeSignalled: boolean
-}
-```
-
-See also:
-
-'1.4' | '2.0' | 'unknown'
-
----
-
-### AutoLowLatencyModeCapableChangedInfo
-
-```typescript
-type AutoLowLatencyModeCapableChangedInfo = {
-  port: string
-  enabled: boolean
-}
 ```
 
 ---
 
 ### SignalChangedInfo
 
+````typescript
 ```typescript
-type SignalChangedInfo = {
-  port: string
-  signal: 'none' | 'stable' | 'unstable' | 'unsupported' | 'unknown'
-}
-```
+
+````
+
+````
+
+See also:
+
+
+
 
 ---
+
+### AutoLowLatencyModeSignalChangedInfo
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+See also:
+
+
+
+---
+
+### HDMIInputPort
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+See also:
+
+
+
+
+
+---
+
+### AutoLowLatencyModeCapableChangedInfo
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+See also:
+
+
+
+---
+
+### ConnectionChangedInfo
+
+
+
+```typescript
+```typescript
+
+````
+
+```
+
+See also:
+
+
+
+---
+```

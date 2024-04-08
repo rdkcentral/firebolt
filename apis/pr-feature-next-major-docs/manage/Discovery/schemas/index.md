@@ -30,32 +30,33 @@ undefined
 
 The result for an `entityInfo()` push or pull.
 
+````typescript
 ```typescript
-type EntityInfoResult = {
-  expires: string
-  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  related?: EntityInfo[]
-}
-```
+
+````
+
+````
 
 See also:
 
-[EntityInfo](../Entertainment/schemas/#EntityInfo)
+
 
 ---
 
 ### PurchasedContentResult
 
+
+
 ```typescript
-type PurchasedContentResult = {
-  expires: string
-  totalCount: number
-  entries: EntityInfo[]
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-[EntityInfo](../Entertainment/schemas/#EntityInfo)
+
 
 ---
+```

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.1.1-feature-next-major-docs.0
+Version Account 1.2.0-feature-next-major-docs.0
 
 ## Table of Contents
 
@@ -20,6 +20,7 @@ Version Account 1.1.1-feature-next-major-docs.0
 - [Methods](#methods)
   - [id](#id)
   - [uid](#uid)
+- [Types](#types)
 
 ## Usage
 
@@ -42,7 +43,7 @@ Get the platform back-office account identifier
 To get the value of `id` call the method like this:
 
 ```typescript
-function id(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -110,7 +111,7 @@ Gets a unique id for the current app & account
 To get the value of `uid` call the method like this:
 
 ```typescript
-function uid(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -170,3 +171,5 @@ Response:
 </details>
 
 ---
+
+## Types

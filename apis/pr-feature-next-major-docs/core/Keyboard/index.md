@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Keyboard 1.1.1-feature-next-major-docs.0
+Version Keyboard 1.2.0-feature-next-major-docs.0
 
 ## Table of Contents
 
@@ -43,15 +43,15 @@ Methods for prompting users to enter text with task-oriented UX
 Prompt the user for their email address with a simplified list of choices.
 
 ```typescript
-function email(type: EmailUsage, message?: string): Promise<string>
+${method.signature}
 ```
 
 Parameters:
 
-| Param     | Type                        | Required | Description                                                                                   |
-| --------- | --------------------------- | -------- | --------------------------------------------------------------------------------------------- |
-| `type`    | [`EmailUsage`](#emailusage) | true     | Why the email is being requested, e.g. sign on or sign up <br/>values: `'signIn' \| 'signUp'` |
-| `message` | `string`                    | false    | The message to display while prompting                                                        |
+| Param     | Type     | Required | Description                                                                              |
+| --------- | -------- | -------- | ---------------------------------------------------------------------------------------- |
+| `type`    | ``       | true     | Why the email is being requested, e.g. sign on or sign up values: `'signIn' \| 'signUp'` |
+| `message` | `string` | false    | The message to display while prompting                                                   |
 
 Promise resolution:
 
@@ -170,7 +170,7 @@ Response:
 Show the password entry keyboard, with typing obfuscated from visibility
 
 ```typescript
-function password(message?: string): Promise<string>
+${method.signature}
 ```
 
 Parameters:
@@ -244,7 +244,7 @@ Response:
 Show the standard platform keyboard, and return the submitted value
 
 ```typescript
-function standard(message: string): Promise<string>
+${method.signature}
 ```
 
 Parameters:
@@ -320,10 +320,13 @@ Response:
 ### EmailUsage
 
 ```typescript
-enum EmailUsage {
-  SIGN_IN = 'signIn',
-  SIGN_UP = 'signUp',
-}
+EmailUsage Enumeration:
+
+| key | value |
+|-----|-------|
+| SIGN_IN | signIn |
+| SIGN_UP | signUp |
+
 ```
 
 ---

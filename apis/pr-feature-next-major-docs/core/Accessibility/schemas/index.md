@@ -38,7 +38,7 @@ undefined
 ### FontFamily
 
 ```typescript
-type FontFamily = string
+
 ```
 
 ---
@@ -46,38 +46,40 @@ type FontFamily = string
 ### VoiceSpeed
 
 ```typescript
-type VoiceSpeed = number
+
 ```
 
 ---
 
 ### VoiceGuidanceSettings
 
+````typescript
 ```typescript
-type VoiceGuidanceSettings = {
-  enabled: boolean // Whether or not voice guidance should be enabled by default
-  speed: VoiceSpeed
-}
-```
+
+````
+
+````
 
 See also:
 
-number
+
 
 ---
 
 ### FontSize
 
+
+
 ```typescript
-type FontSize = number
-```
+
+````
 
 ---
 
 ### Color
 
 ```typescript
-type Color = string
+
 ```
 
 ---
@@ -85,7 +87,7 @@ type Color = string
 ### FontEdge
 
 ```typescript
-type FontEdge = string
+
 ```
 
 ---
@@ -93,7 +95,7 @@ type FontEdge = string
 ### Opacity
 
 ```typescript
-type Opacity = number
+
 ```
 
 ---
@@ -101,7 +103,7 @@ type Opacity = number
 ### HorizontalAlignment
 
 ```typescript
-type HorizontalAlignment = string
+
 ```
 
 ---
@@ -109,7 +111,7 @@ type HorizontalAlignment = string
 ### VerticalAlignment
 
 ```typescript
-type VerticalAlignment = string
+
 ```
 
 ---
@@ -118,37 +120,31 @@ type VerticalAlignment = string
 
 The default styles to use when displaying closed-captions
 
+````typescript
 ```typescript
-type ClosedCaptionsStyles = {
-  fontFamily?: string
-  fontSize?: number
-  fontColor?: string
-  fontEdge?: string
-  fontEdgeColor?: string
-  fontOpacity?: number
-  backgroundColor?: string
-  backgroundOpacity?: number
-  textAlign?: string
-  textAlignVertical?: string
-  windowColor?: string
-  windowOpacity?: number
-}
-```
+
+````
+
+````
+
+
 
 ---
 
 ### ClosedCaptionsSettings
 
+
+
 ```typescript
-type ClosedCaptionsSettings = {
-  enabled: boolean // Whether or not closed-captions should be enabled by default
-  styles: ClosedCaptionsStyles // The default styles to use when displaying closed-captions
-  preferredLanguages?: string[]
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-[ClosedCaptionsStyles](#closedcaptionsstyles)
+
 
 ---
+```

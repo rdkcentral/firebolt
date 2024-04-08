@@ -41,12 +41,15 @@ Applies to fast-forward/rewind (e.g. trick mode), seeking over an entire opportu
 Namespace: `xrn:advertising:policy:skipRestriction:`
 
 ```typescript
-enum SkipRestriction {
-  NONE = 'none',
-  ADS_UNWATCHED = 'adsUnwatched',
-  ADS_ALL = 'adsAll',
-  ALL = 'all',
-}
+SkipRestriction Enumeration:
+
+| key | value |
+|-----|-------|
+| NONE | none |
+| ADS_UNWATCHED | adsUnwatched |
+| ADS_ALL | adsAll |
+| ALL | all |
+
 ```
 
 ---

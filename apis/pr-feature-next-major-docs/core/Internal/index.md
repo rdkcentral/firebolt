@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.1.1-feature-next-major-docs.0
+Version Internal 1.2.0-feature-next-major-docs.0
 
 ## Table of Contents
 
@@ -18,6 +18,7 @@ Version Internal 1.1.1-feature-next-major-docs.0
 - [Overview](#overview)
 - [Methods](#methods)
   - [initialize](#initialize)
+- [Types](#types)
 
 ## Overview
 
@@ -33,15 +34,15 @@ Initialize the SDK / FEE session.
 
 Parameters:
 
-| Param     | Type                                                   | Required | Description                      |
-| --------- | ------------------------------------------------------ | -------- | -------------------------------- |
-| `version` | [`SemanticVersion`](../Types/schemas/#SemanticVersion) | true     | The semantic version of the SDK. |
+| Param     | Type | Required | Description                      |
+| --------- | ---- | -------- | -------------------------------- |
+| `version` | ``   | true     | The semantic version of the SDK. |
 
 Result:
 
-| Property  | Type                                                 | Description                      |
-| --------- | ---------------------------------------------------- | -------------------------------- |
-| `version` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The semantic version of the FEE. |
+| Property  | Type | Description                      |
+| --------- | ---- | -------------------------------- |
+| `version` |      | The semantic version of the FEE. |
 
 Capabilities:
 
@@ -91,3 +92,5 @@ Response:
 ```
 
 ---
+
+## Types

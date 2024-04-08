@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.1.1-feature-next-major-docs.0
+Version Profile 1.2.0-feature-next-major-docs.0
 
 ## Table of Contents
 
@@ -21,6 +21,7 @@ Version Profile 1.1.1-feature-next-major-docs.0
   - [approveContentRating](#approvecontentrating)
   - [approvePurchase](#approvepurchase)
   - [flags](#flags)
+- [Types](#types)
 
 ## Usage
 
@@ -41,7 +42,7 @@ Methods for getting information about the current user/account profile
 Verifies that the current profile should have access to mature/adult content.
 
 ```typescript
-function approveContentRating(): Promise<boolean>
+${method.signature}
 ```
 
 Promise resolution:
@@ -107,7 +108,7 @@ Response:
 Verifies that the current profile should have access to making purchases.
 
 ```typescript
-function approvePurchase(): Promise<boolean>
+${method.signature}
 ```
 
 Promise resolution:
@@ -173,24 +174,27 @@ Response:
 Get a map of profile flags for the current session.
 
 ```typescript
-function flags(): Promise<object>
+${method.signature}
 ```
 
 Promise resolution:
 
+````typescript
 ```typescript
-type FlatMap = {
-  [property: string]: string | number | boolean
-}
-```
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                            |
-| ---- | ------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:profile:flags |
 
+
 #### Examples
+
 
 Default Example
 
@@ -201,7 +205,7 @@ import { Profile } from '@firebolt-js/sdk'
 
 let flags = await Profile.flags()
 console.log(flags)
-```
+````
 
 Value of `flags`:
 
@@ -239,3 +243,5 @@ Response:
 </details>
 
 ---
+
+## Types
