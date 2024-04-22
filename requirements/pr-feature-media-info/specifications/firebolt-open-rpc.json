@@ -8950,7 +8950,7 @@
 		},
 		{
 			"name": "Display Properties.width",
-			"summary": "Get the width of the display (in centimeters) from the HDMI EDID.",
+			"summary": "Get the physical width of the display (in centimeters).",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -8980,7 +8980,7 @@
 		},
 		{
 			"name": "Display Properties.height",
-			"summary": "Get the height of the display (in centimeters) from the HDMI EDID.",
+			"summary": "Get the physical height of the display (in centimeters).",
 			"tags": [
 				{
 					"name": "capabilities",
