@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.1.1-feature-command-intents.0
+Version Advertising 1.2.0-feature-command-intents.0
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ Version Advertising 1.1.1-feature-command-intents.0
   - [skipRestriction](#skiprestriction)
 - [Events](#events)
   - [skipRestrictionChanged](#skiprestrictionchanged)
+- [Types](#types)
 
 ## Usage
 
@@ -154,7 +155,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Resets a user's identifier in the ad platform so that the advertising id that apps get will be a new value
 
 ```typescript
-function resetIdentifier(): Promise<void>
+${method.signature}
 ```
 
 Promise resolution:
@@ -222,12 +223,22 @@ Set the value for AdPolicy.skipRestriction
 To get the value of `skipRestriction` call the method like this:
 
 ```typescript
-function skipRestriction(): Promise<SkipRestriction>
+${method.signature}
 ```
 
 Promise resolution:
 
-[SkipRestriction](../Advertising/schemas/#SkipRestriction)
+```typescript
+SkipRestriction Enumeration:
+
+| key | value |
+|-----|-------|
+| NONE | none |
+| ADS_UNWATCHED | adsUnwatched |
+| ADS_ALL | adsAll |
+| ALL | all |
+
+```
 
 Capabilities:
 
@@ -326,19 +337,20 @@ Response:
 To set the value of `skipRestriction` call the method like this:
 
 ```typescript
-function skipRestriction(value: SkipRestriction): Promise<void>
+function skipRestriction(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type                                                         | Required | Description                                                  |
-| ------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true     | <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
+| Param   | Type | Required | Description                                             |
+| ------- | ---- | -------- | ------------------------------------------------------- |
+| `value` | ``   | true     | values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -436,7 +448,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function skipRestriction(callback: (value) => SkipRestriction): Promise<number>
+function skipRestriction(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -546,3 +558,5 @@ Response:
 ### skipRestrictionChanged
 
 See: [skipRestriction](#skiprestriction)
+
+## Types

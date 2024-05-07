@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.1.1-feature-command-intents.0
+Version UserGrants 1.2.0-feature-command-intents.0
 
 ## Table of Contents
 
@@ -26,10 +26,10 @@ Version UserGrants 1.1.1-feature-command-intents.0
   - [grant](#grant)
   - [request](#request)
 - [Types](#types)
-  - [AppInfo](#appinfo)
+  - [GrantState](#grantstate)
   - [GrantModificationOptions](#grantmodificationoptions)
   - [RequestOptions](#requestoptions)
-  - [GrantState](#grantstate)
+  - [AppInfo](#appinfo)
   - [GrantInfo](#grantinfo)
 
 ## Usage
@@ -51,7 +51,7 @@ A module for managing grants given by the user
 Get all granted and denied user grants for the given app
 
 ```typescript
-function app(appId: string): Promise<object[]>
+${method.signature}
 ```
 
 Parameters:
@@ -63,7 +63,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-object[]
+
 ```
 
 Capabilities:
@@ -169,19 +169,19 @@ Response:
 Get all granted and denied user grants for the given capability
 
 ```typescript
-function capability(capability: Capability): Promise<object[]>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
 
 ```typescript
-object[]
+
 ```
 
 Capabilities:
@@ -259,20 +259,16 @@ Response:
 Clears the grant for a given capability, to a specific app if appropriate. Calling this results in a persisted Denied Grant that lasts for the duration of the Grant Policy lifespan.
 
 ```typescript
-function clear(
-  role: Role,
-  capability: Capability,
-  options?: object,
-): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options`    | `object`                                            | false    |                                                                        |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `role`       | ``   | true     | values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | ``   | false    |                                                                   |
 
 Promise resolution:
 
@@ -347,20 +343,16 @@ Response:
 Denies a given capability, to a specific app if appropriate. Calling this results in a persisted Denied Grant that lasts for the duration of the Grant Policy lifespan.
 
 ```typescript
-function deny(
-  role: Role,
-  capability: Capability,
-  options?: object,
-): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options`    | `object`                                            | false    |                                                                        |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `role`       | ``   | true     | values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | ``   | false    |                                                                   |
 
 Promise resolution:
 
@@ -435,13 +427,13 @@ Response:
 Get all granted and denied user grants for the device
 
 ```typescript
-function device(): Promise<object[]>
+${method.signature}
 ```
 
 Promise resolution:
 
 ```typescript
-object[]
+
 ```
 
 Capabilities:
@@ -515,20 +507,16 @@ Response:
 Grants a given capability to a specific app, if appropriate. Calling this results in a persisted active grant that lasts for the duration of the grant policy lifespan.
 
 ```typescript
-function grant(
-  role: Role,
-  capability: Capability,
-  options?: object,
-): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                | Required | Description                                                            |
-| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
-| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
-| `options`    | `object`                                            | false    |                                                                        |
+| Param        | Type | Required | Description                                                       |
+| ------------ | ---- | -------- | ----------------------------------------------------------------- |
+| `role`       | ``   | true     | values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | ``   | true     | pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+| `options`    | ``   | false    |                                                                   |
 
 Promise resolution:
 
@@ -603,25 +591,21 @@ Response:
 Requests Firebolt to carry out a set of user grants for a given application such that the user grant provider is notified or an existing user grant is reused.
 
 ```typescript
-function request(
-  appId: string,
-  permissions: Permission[],
-  options?: RequestOptions,
-): Promise<object[]>
+${method.signature}
 ```
 
 Parameters:
 
-| Param         | Type                                | Required | Description     |
-| ------------- | ----------------------------------- | -------- | --------------- |
-| `appId`       | `string`                            | true     |                 |
-| `permissions` | `Permission[]`                      | true     |                 |
-| `options`     | [`RequestOptions`](#requestoptions) | false    | Request options |
+| Param         | Type     | Required | Description     |
+| ------------- | -------- | -------- | --------------- |
+| `appId`       | `string` | true     |                 |
+| `permissions` | ``       | true     |                 |
+| `options`     | ``       | false    | Request options |
 
 Promise resolution:
 
 ```typescript
-object[]
+
 ```
 
 Capabilities:
@@ -803,15 +787,18 @@ Response:
 
 ## Types
 
-### AppInfo
+### GrantState
 
-Information about an app that a grant was for
+The state the grant is in
 
 ```typescript
-type AppInfo = {
-  id: string
-  title?: string
-}
+GrantState Enumeration:
+
+| key | value |
+|-----|-------|
+| GRANTED | granted |
+| DENIED | denied |
+
 ```
 
 ---
@@ -820,34 +807,44 @@ type AppInfo = {
 
 Options when modifying any grant
 
+````typescript
 ```typescript
-type GrantModificationOptions = {
-  appId?: string
-}
-```
+
+````
+
+````
+
+
 
 ---
 
 ### RequestOptions
 
+
+
 ```typescript
-type RequestOptions = {
-  force?: boolean // Whether to force for user grant even if the previous decision stored
-}
-```
+```typescript
+
+````
+
+````
+
+
 
 ---
 
-### GrantState
+### AppInfo
 
-The state the grant is in
+Information about an app that a grant was for
 
 ```typescript
-enum GrantState {
-  GRANTED = 'granted',
-  DENIED = 'denied',
-}
-```
+```typescript
+
+````
+
+````
+
+
 
 ---
 
@@ -856,22 +853,18 @@ enum GrantState {
 Information about a grant given by a user
 
 ```typescript
-type GrantInfo = {
-  app?: {
-    id: string
-    title?: string
-  }
-  state: 'granted' | 'denied' // The state the grant is in
-  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-  role: Role // Role provides access level for the app for a given capability.
-  lifespan: 'once' | 'forever' | 'appActive' | 'powerActive' | 'seconds'
-  expires?: string
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-string
-'use' | 'manage' | 'provide'
+
+
+
+
 
 ---
+```

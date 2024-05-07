@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.1.1-feature-command-intents.0
+Version PinChallenge 1.2.0-feature-command-intents.0
 
 ## Table of Contents
 
@@ -55,15 +55,18 @@ Internal API for Challenge Provider to send back error.
 
 Parameters:
 
-| Param           | Type     | Required | Description |
-| --------------- | -------- | -------- | ----------- |
-| `correlationId` | `string` | true     |             |
-| `error`         | `object` | true     |             |
+| Param           | Type                    | Required       | Description |
+| --------------- | ----------------------- | -------------- | ----------- | ----------- |
+| `correlationId` | `string`                | true           |             |
+| `error`         | [`                      | Property       | Type        | Description |
+| ----------      | ------                  | -------------  |
+| `${property}`   | [${type}](${type.link}) | ${description} |
+| `](#)           | true                    |                |
 
 Result:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -116,7 +119,7 @@ Internal API for Challenge Provider to request focus for UX purposes.
 Result:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -162,15 +165,15 @@ Internal API for Challenge Provider to send back response.
 
 Parameters:
 
-| Param           | Type                                        | Required | Description |
-| --------------- | ------------------------------------------- | -------- | ----------- |
-| `correlationId` | `string`                                    | true     |             |
-| `result`        | [`PinChallengeResult`](#pinchallengeresult) | true     |             |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `result`        | ``       | true     |             |
 
 Result:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -309,15 +312,22 @@ Parameters:
 
 Result:
 
-[PinChallengeProviderRequest](#pinchallengeproviderrequest)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role     | Capability                                     |
-| -------- | ---------------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | provides | xrn:firebolt:capability:usergrant:pinchallenge |
 
+
 #### Examples
+
 
 Default Example
 
@@ -327,14 +337,14 @@ Request:
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "PinChallenge.onRequestChallenge",
-  "params": {
-    "listen": true
-  }
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "PinChallenge.onRequestChallenge",
+	"params": {
+		"listen": true
+	}
 }
-```
+````
 
 Response:
 
@@ -373,41 +383,6 @@ Usage:
 ```typescript
 PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', provider: ChallengeProvider | object)
 ```
-
-#### challenge
-
-Registers as a provider for when the user should be challenged in order to confirm access to a capability through a pin prompt
-
-```typescript
-function challenge(
-  parameters?: PinChallenge,
-  session?: FocusableProviderSession,
-): Promise<PinChallengeResult>
-```
-
-Provider methods always have two arguments:
-
-| Param        | Type                       | Required | Summary |
-| ------------ | -------------------------- | -------- | ------- |
-| `parameters` | `PinChallenge`             | false    |         |
-| `session`    | `FocusableProviderSession` | false    |         |
-
-| Parameters Property | Type                                        | Required   | Summary                                         |
-| ------------------- | ------------------------------------------- | ---------- | ----------------------------------------------- | ------------------------------------------------------------------------------- |
-| `pinSpace`          | `'purchase'                                 | 'content'` | true                                            | The pin space that this challenge is for <br/>values: `'purchase' \| 'content'` |
-| `capability`        | `string`                                    | false      | The capability that is gated by a pin challenge |
-| `requestor`         | [`ChallengeRequestor`](#challengerequestor) | true       |                                                 |
-
-```typescript
-type PinChallenge = object
-```
-
-Promise resolution:
-
-| Property  | Type            | Description           |
-| --------- | --------------- | --------------------- | --------------------- | ------------ | ----------- | ------------------------------------------------- |
-| `granted` | boolean         | void                  |                       |
-| `reason`  | 'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled' | The reason for the result of challenging the user |
 
 #### Examples
 
@@ -468,7 +443,7 @@ Event Response:
 {
   "id": 1,
   "result": {
-    "correlationId": "abc",
+    "correlationId": undefined,
     "parameters": {
       "capability": "xrn:firebolt:capability:commerce::purchase",
       "requestor": {
@@ -490,7 +465,7 @@ Request:
   "id": 2,
   "method": "PinChallenge.challengeResponse",
   "params": {
-    "correlationId": "abc",
+    "correlationId": undefined,
     "result": {
       "granted": true,
       "reason": "correctPin"
@@ -517,71 +492,82 @@ Response:
 The reason for the result of challenging the user
 
 ```typescript
-enum ResultReason {
-  NO_PIN_REQUIRED = 'noPinRequired',
-  NO_PIN_REQUIRED_WINDOW = 'noPinRequiredWindow',
-  EXCEEDED_PIN_FAILURES = 'exceededPinFailures',
-  CORRECT_PIN = 'correctPin',
-  CANCELLED = 'cancelled',
-}
+ResultReason Enumeration:
+
+| key | value |
+|-----|-------|
+| NO_PIN_REQUIRED | noPinRequired |
+| NO_PIN_REQUIRED_WINDOW | noPinRequiredWindow |
+| EXCEEDED_PIN_FAILURES | exceededPinFailures |
+| CORRECT_PIN | correctPin |
+| CANCELLED | cancelled |
+
 ```
 
 ---
 
 ### ChallengeRequestor
 
+````typescript
 ```typescript
-type ChallengeRequestor = {
-  id: string // The id of the app that requested the challenge
-  name: string // The name of the app that requested the challenge
-}
-```
+
+````
+
+````
+
+
 
 ---
 
 ### PinChallengeResult
 
+
+
 ```typescript
-type PinChallengeResult = {
-  granted: boolean | void
-  reason: ResultReason // The reason for the result of challenging the user
-}
-```
+```typescript
+
+````
+
+````
 
 See also:
 
-'noPinRequired' | 'noPinRequiredWindow' | 'exceededPinFailures' | 'correctPin' | 'cancelled'
+
 
 ---
 
 ### PinChallenge
 
+
+
 ```typescript
-type PinChallenge = {
-  pinSpace: 'purchase' | 'content' // The pin space that this challenge is for
-  capability?: string // The capability that is gated by a pin challenge
-  requestor: ChallengeRequestor
-}
-```
+```typescript
+
+````
+
+````
 
 See also:
 
-[ChallengeRequestor](#challengerequestor)
+
 
 ---
 
 ### PinChallengeProviderRequest
 
+
+
 ```typescript
-type PinChallengeProviderRequest = {
-  parameters: PinChallenge
-  correlationId: string // The id that was passed in to the event that triggered a provider method to be called
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-[ProviderRequest](../Types/schemas/#ProviderRequest)
-[PinChallenge](#pinchallenge-1)
+
+
 
 ---
+```

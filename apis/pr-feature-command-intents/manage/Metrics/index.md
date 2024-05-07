@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.1.1-feature-command-intents.0
+Version Metrics 1.2.0-feature-command-intents.0
 
 ## Table of Contents
 
@@ -42,20 +42,20 @@ Methods for sending metrics
 Inform the platform of 1st party distributor metrics.
 
 ```typescript
-function event(schema: string, data: EventObject): Promise<null>
+${method.signature}
 ```
 
 Parameters:
 
-| Param    | Type                            | Required | Description                                        |
-| -------- | ------------------------------- | -------- | -------------------------------------------------- |
-| `schema` | `string`                        | true     | The schema URI of the metric type <br/>format: uri |
-| `data`   | [`EventObject`](#eventobject-1) | true     | A JSON payload conforming the the provided schema  |
+| Param    | Type     | Required | Description                                        |
+| -------- | -------- | -------- | -------------------------------------------------- |
+| `schema` | `string` | true     | The schema URI of the metric type <br/>format: uri |
+| `data`   | ``       | true     | A JSON payload conforming the the provided schema  |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 Capabilities:
@@ -122,26 +122,24 @@ Response:
 ### EventObjectPrimitives
 
 ```typescript
-type EventObjectPrimitives = string | number | number | boolean | null
+
 ```
 
 ---
 
 ### EventObject
 
+````typescript
 ```typescript
-type EventObject = {
-  [property: string]:
-    | EventObjectPrimitives
-    | EventObjectPrimitives
-    | EventObject[]
-    | EventObject
-}
+
+````
+
 ```
 
 See also:
 
-string | number | number | boolean | null
-[EventObject](#eventobject-1)
+
+
 
 ---
+```
