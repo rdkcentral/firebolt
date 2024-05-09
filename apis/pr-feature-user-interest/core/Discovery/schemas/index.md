@@ -18,8 +18,11 @@ Version Discovery 0.0.0-unknown.0
 - [Overview](#overview)
 - [Types](#types)
   - [InterestType](#interesttype)
-  - [PurchasedContentResult](#purchasedcontentresult)
+  - [InterestReason](#interestreason)
+  - [DetailsResult](#detailsresult)
+  - [DetailsArrayResult](#detailsarrayresult)
   - [EntityInfoResult](#entityinforesult)
+  - [PurchasedContentResult](#purchasedcontentresult)
 
 ## Overview
 
@@ -30,27 +33,61 @@ undefined
 ### InterestType
 
 ```typescript
-enum InterestType {
-  INTEREST = 'interest',
-  DISINTEREST = 'disinterest',
-}
+InterestType Enumeration:
+
+| key | value |
+|-----|-------|
+| INTEREST | interest |
+| DISINTEREST | disinterest |
+
 ```
 
 ---
 
-### PurchasedContentResult
+### InterestReason
 
 ```typescript
-type PurchasedContentResult = {
-  expires: string
-  totalCount: number
-  entries: EntityInfo[]
-}
+InterestReason Enumeration:
+
+| key | value |
+|-----|-------|
+| PLAYLIST | playlist |
+| REACTION | reaction |
+| RECORDING | recording |
+
 ```
+
+---
+
+### DetailsResult
+
+````typescript
+```typescript
+
+````
+
+````
 
 See also:
 
-[EntityInfo](../Entertainment/schemas/#EntityInfo)
+
+
+---
+
+### DetailsArrayResult
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+See also:
+
+
 
 ---
 
@@ -59,15 +96,32 @@ See also:
 The result for an `entityInfo()` push or pull.
 
 ```typescript
-type EntityInfoResult = {
-  expires: string
-  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  related?: EntityInfo[]
-}
+```typescript
+
+````
+
+````
+
+See also:
+
+
+
+---
+
+### PurchasedContentResult
+
+
+
+```typescript
+```typescript
+
+````
+
 ```
 
 See also:
 
-[EntityInfo](../Entertainment/schemas/#EntityInfo)
+
 
 ---
+```

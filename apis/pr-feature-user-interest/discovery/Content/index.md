@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.1.1-feature-user-interest.0
+Version Content 1.2.0-feature-user-interest.0
 
 ## Table of Contents
 
@@ -18,21 +18,17 @@ Version Content 1.1.1-feature-user-interest.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [entity](#entity)
   - [listen](#listen)
   - [once](#once)
-  - [providers](#providers)
-  - [purchases](#purchases)
+  - [requestDetails](#requestdetails)
+  - [requestPurchases](#requestpurchases)
   - [requestUserInterest](#requestuserinterest)
 - [Events](#events)
-  - [userInterestedIn](#userinterestedin)
+  - [details](#details)
+  - [purchases](#purchases)
+  - [userInterest](#userinterest)
 - [Types](#types)
-  - [ContentProvider](#contentprovider)
-  - [PurchasedContentParameters](#purchasedcontentparameters)
-  - [FederationOptions](#federationoptions)
-  - [ProvidedPurchasedContentResult](#providedpurchasedcontentresult)
-  - [EntityInfoParameters](#entityinfoparameters)
-  - [ProvidedEntityInfoResult](#providedentityinforesult)
+  - [DetailsInfo](#detailsinfo)
 
 ## Usage
 
@@ -47,192 +43,6 @@ import { Content } from '@firebolt-js/discovery-sdk'
 undefined
 
 ## Methods
-
-### entity
-
-Gets information about a program entity from a provider and its available watchable assets, such as entitlement status and price. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.
-
-```typescript
-function entity(
-  provider: string,
-  parameters: EntityInfoParameters,
-  options?: FederationOptions,
-): Promise<ProvidedEntityInfoResult>
-```
-
-Parameters:
-
-| Param        | Type                                            | Required | Description                                     |
-| ------------ | ----------------------------------------------- | -------- | ----------------------------------------------- |
-| `provider`   | `string`                                        | true     | The id of the provider that has the entity info |
-| `parameters` | [`EntityInfoParameters`](#entityinfoparameters) | true     | The content parameters                          |
-| `options`    | [`FederationOptions`](#federationoptions)       | false    | Any options with making the request to provider |
-
-Promise resolution:
-
-[ProvidedEntityInfoResult](#providedentityinforesult)
-
-Capabilities:
-
-| Role | Capability                                    |
-| ---- | --------------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:entity-info |
-
-#### Examples
-
-Get info about specific content from a provider
-
-JavaScript:
-
-```javascript
-import { Content } from '@firebolt-js/discovery-sdk'
-
-let content = await Content.entity(
-  'Vudu',
-  { entityId: '111' },
-  { timeout: 10000 },
-)
-console.log(content)
-```
-
-Value of `content`:
-
-```javascript
-{
-	"provider": "Vudu",
-	"data": {
-		"expires": "2025-01-01T00:00:00.000Z",
-		"entity": {
-			"identifiers": {
-				"entityId": "345"
-			},
-			"entityType": "program",
-			"programType": "movie",
-			"title": "Cool Runnings",
-			"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-			"releaseDate": "1993-01-01T00:00:00.000Z",
-			"contentRatings": [
-				{
-					"scheme": "US-Movie",
-					"rating": "PG"
-				},
-				{
-					"scheme": "CA-Movie",
-					"rating": "G"
-				}
-			],
-			"waysToWatch": [
-				{
-					"identifiers": {
-						"assetId": "123"
-					},
-					"expires": "2025-01-01T00:00:00.000Z",
-					"entitled": true,
-					"entitledExpires": "2025-01-01T00:00:00.000Z",
-					"offeringType": "buy",
-					"price": 2.99,
-					"videoQuality": [
-						"UHD"
-					],
-					"audioProfile": [
-						"dolbyAtmos"
-					],
-					"audioLanguages": [
-						"en"
-					],
-					"closedCaptions": [
-						"en"
-					],
-					"subtitles": [
-						"es"
-					],
-					"audioDescriptions": [
-						"en"
-					]
-				}
-			]
-		}
-	}
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Content.entity",
-  "params": {
-    "provider": "Vudu",
-    "parameters": {
-      "entityId": "111"
-    },
-    "options": {
-      "timeout": 10000
-    }
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "provider": "Vudu",
-    "data": {
-      "expires": "2025-01-01T00:00:00.000Z",
-      "entity": {
-        "identifiers": {
-          "entityId": "345"
-        },
-        "entityType": "program",
-        "programType": "movie",
-        "title": "Cool Runnings",
-        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-        "releaseDate": "1993-01-01T00:00:00.000Z",
-        "contentRatings": [
-          {
-            "scheme": "US-Movie",
-            "rating": "PG"
-          },
-          {
-            "scheme": "CA-Movie",
-            "rating": "G"
-          }
-        ],
-        "waysToWatch": [
-          {
-            "identifiers": {
-              "assetId": "123"
-            },
-            "expires": "2025-01-01T00:00:00.000Z",
-            "entitled": true,
-            "entitledExpires": "2025-01-01T00:00:00.000Z",
-            "offeringType": "buy",
-            "price": 2.99,
-            "videoQuality": ["UHD"],
-            "audioProfile": ["dolbyAtmos"],
-            "audioLanguages": ["en"],
-            "closedCaptions": ["en"],
-            "subtitles": ["es"],
-            "audioDescriptions": ["en"]
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-</details>
-
----
 
 ### listen
 
@@ -344,164 +154,103 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-### providers
+### requestDetails
 
-Returns a list of providers and the discovery apis they support
-
-```typescript
-function providers(): Promise<ContentProvider[]>
-```
-
-Promise resolution:
+Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.
 
 ```typescript
-ContentProvider[]
-```
-
-Capabilities:
-
-| Role | Capability                                  |
-| ---- | ------------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:providers |
-
-#### Examples
-
-Getting the list of providers and the discovery apis they support
-
-JavaScript:
-
-```javascript
-import { Content } from '@firebolt-js/discovery-sdk'
-
-let providers = await Content.providers()
-console.log(providers)
-```
-
-Value of `providers`:
-
-```javascript
-;[
-  {
-    id: 'Vudu',
-    apis: ['purchases', 'entity'],
-  },
-  {
-    id: 'NetflixApp',
-    apis: ['search'],
-  },
-]
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Content.providers",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": [
-    {
-      "id": "Vudu",
-      "apis": ["purchases", "entity"]
-    },
-    {
-      "id": "NetflixApp",
-      "apis": ["search"]
-    }
-  ]
-}
-```
-
-</details>
-
----
-
-### purchases
-
-Gets a list of entities that the user has purchased
-
-```typescript
-function purchases(
-  provider: string,
-  parameters: PurchasedContentParameters,
-  options?: FederationOptions,
-): Promise<ProvidedPurchasedContentResult>
+${method.signature}
 ```
 
 Parameters:
 
-| Param        | Type                                                        | Required | Description                                              |
-| ------------ | ----------------------------------------------------------- | -------- | -------------------------------------------------------- |
-| `provider`   | `string`                                                    | true     | The id of the provider to request purchased content from |
-| `parameters` | [`PurchasedContentParameters`](#purchasedcontentparameters) | true     | Any parameters to control what purchases are returned    |
-| `options`    | [`FederationOptions`](#federationoptions)                   | false    | Any options with making the request to provider          |
+| Param      | Type     | Required | Description |
+| ---------- | -------- | -------- | ----------- |
+| `entityId` | `string` | true     |             |
 
 Promise resolution:
 
-[ProvidedPurchasedContentResult](#providedpurchasedcontentresult)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                          |
-| ---- | --------------------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:purchased-content |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:discovery:entity-info |
+
 
 #### Examples
 
-Gets a list of entities that the user has purchased
+
+Send entity info for a movie to the platform.
 
 JavaScript:
 
 ```javascript
 import { Content } from '@firebolt-js/discovery-sdk'
 
-let ProvidedPurchasedContentResult = await Content.purchases(
-  'Vudu',
-  { limit: 10 },
-  { timeout: 10000 },
-)
-console.log(ProvidedPurchasedContentResult)
-```
+let details = await Content.requestDetails("345")
+console.log(details)
+````
 
-Value of `ProvidedPurchasedContentResult`:
+Value of `details`:
 
 ```javascript
 {
-	"provider": "Vudu",
-	"data": {
-		"totalCount": 1,
-		"expires": "2025-01-01T00:00:00.000Z",
-		"entries": [
+	"expires": "2025-01-01T00:00:00.000Z",
+	"details": {
+		"identifiers": {
+			"entityId": "345",
+			"entityType": "program",
+			"programType": "movie"
+		},
+		"info": {
+			"title": "Cool Runnings",
+			"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+			"releaseDate": "1993-01-01T00:00:00.000Z",
+			"contentRatings": [
+				{
+					"scheme": "US-Movie",
+					"rating": "PG"
+				},
+				{
+					"scheme": "CA-Movie",
+					"rating": "G"
+				}
+			]
+		},
+		"waysToWatch": [
 			{
 				"identifiers": {
-					"entityId": "345"
+					"assetId": "123"
 				},
-				"entityType": "program",
-				"programType": "movie",
-				"title": "Cool Runnings",
-				"synopsis": "When a Jamaican sprinter is disqualified from the Olympic Games, he enlists the help of a dishonored coach to start the first Jamaican Bobsled Team.",
-				"releaseDate": "1993-01-01T00:00:00.000Z",
-				"contentRatings": [
-					{
-						"scheme": "US-Movie",
-						"rating": "PG"
-					},
-					{
-						"scheme": "CA-Movie",
-						"rating": "G"
-					}
+				"expires": "2025-01-01T00:00:00.000Z",
+				"entitled": true,
+				"entitledExpires": "2025-01-01T00:00:00.000Z",
+				"offeringType": "buy",
+				"price": 2.99,
+				"videoQuality": [
+					"UHD"
+				],
+				"audioProfile": [
+					"dolbyAtmos"
+				],
+				"audioLanguages": [
+					"en"
+				],
+				"closedCaptions": [
+					"en"
+				],
+				"subtitles": [
+					"es"
+				],
+				"audioDescriptions": [
+					"en"
 				]
 			}
 		]
@@ -517,15 +266,9 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "Content.purchases",
+  "method": "Content.requestDetails",
   "params": {
-    "provider": "Vudu",
-    "parameters": {
-      "limit": 10
-    },
-    "options": {
-      "timeout": 10000
-    }
+    "entityId": "345"
   }
 }
 ```
@@ -537,30 +280,184 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "provider": "Vudu",
-    "data": {
-      "totalCount": 1,
-      "expires": "2025-01-01T00:00:00.000Z",
-      "entries": [
+    "expires": "2025-01-01T00:00:00.000Z",
+    "details": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      },
+      "waysToWatch": [
         {
           "identifiers": {
-            "entityId": "345"
+            "assetId": "123"
           },
-          "entityType": "program",
-          "programType": "movie",
-          "title": "Cool Runnings",
-          "synopsis": "When a Jamaican sprinter is disqualified from the Olympic Games, he enlists the help of a dishonored coach to start the first Jamaican Bobsled Team.",
-          "releaseDate": "1993-01-01T00:00:00.000Z",
-          "contentRatings": [
-            {
-              "scheme": "US-Movie",
-              "rating": "PG"
-            },
-            {
-              "scheme": "CA-Movie",
-              "rating": "G"
-            }
-          ]
+          "expires": "2025-01-01T00:00:00.000Z",
+          "entitled": true,
+          "entitledExpires": "2025-01-01T00:00:00.000Z",
+          "offeringType": "buy",
+          "price": 2.99,
+          "videoQuality": ["UHD"],
+          "audioProfile": ["dolbyAtmos"],
+          "audioLanguages": ["en"],
+          "closedCaptions": ["en"],
+          "subtitles": ["es"],
+          "audioDescriptions": ["en"]
+        }
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+Send entity info for a movie with a trailer to the platform.
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let details = await Content.requestDetails('345')
+console.log(details)
+```
+
+Value of `details`:
+
+```javascript
+{
+	"expires": "2025-01-01T00:00:00.000Z",
+	"details": {
+		"identifiers": {
+			"entityId": "345",
+			"entityType": "program",
+			"programType": "movie"
+		},
+		"info": {
+			"title": "Cool Runnings",
+			"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+			"releaseDate": "1993-01-01T00:00:00.000Z",
+			"contentRatings": [
+				{
+					"scheme": "US-Movie",
+					"rating": "PG"
+				},
+				{
+					"scheme": "CA-Movie",
+					"rating": "G"
+				}
+			]
+		},
+		"waysToWatch": [
+			{
+				"identifiers": {
+					"assetId": "123"
+				},
+				"expires": "2025-01-01T00:00:00.000Z",
+				"entitled": true,
+				"entitledExpires": "2025-01-01T00:00:00.000Z",
+				"offeringType": "buy",
+				"price": 2.99,
+				"videoQuality": [
+					"UHD"
+				],
+				"audioProfile": [
+					"dolbyAtmos"
+				],
+				"audioLanguages": [
+					"en"
+				],
+				"closedCaptions": [
+					"en"
+				],
+				"subtitles": [
+					"es"
+				],
+				"audioDescriptions": [
+					"en"
+				]
+			}
+		]
+	}
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.requestDetails",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "expires": "2025-01-01T00:00:00.000Z",
+    "details": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      },
+      "waysToWatch": [
+        {
+          "identifiers": {
+            "assetId": "123"
+          },
+          "expires": "2025-01-01T00:00:00.000Z",
+          "entitled": true,
+          "entitledExpires": "2025-01-01T00:00:00.000Z",
+          "offeringType": "buy",
+          "price": 2.99,
+          "videoQuality": ["UHD"],
+          "audioProfile": ["dolbyAtmos"],
+          "audioLanguages": ["en"],
+          "closedCaptions": ["en"],
+          "subtitles": ["es"],
+          "audioDescriptions": ["en"]
         }
       ]
     }
@@ -572,31 +469,212 @@ Response:
 
 ---
 
-### requestUserInterest
+### requestPurchases
 
-undefined
+Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.
 
 ```typescript
-function requestUserInterest(type?: InterestType): Promise<EntityInfo>
+${method.signature}
+```
+
+Promise resolution:
+
+````typescript
+```typescript
+
+````
+
+````
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:discovery:purchased-content |
+
+
+#### Examples
+
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let purchases = await Content.requestPurchases()
+console.log(purchases)
+````
+
+Value of `purchases`:
+
+```javascript
+{
+	"totalCount": 10,
+	"expires": "2025-01-01T00:00:00.000Z",
+	"entries": [
+		{
+			"identifiers": {
+				"entityId": "345",
+				"entityType": "program",
+				"programType": "movie"
+			},
+			"info": {
+				"title": "Cool Runnings",
+				"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+				"releaseDate": "1993-01-01T00:00:00.000Z",
+				"contentRatings": [
+					{
+						"scheme": "US-Movie",
+						"rating": "PG"
+					},
+					{
+						"scheme": "CA-Movie",
+						"rating": "G"
+					}
+				]
+			},
+			"waysToWatch": [
+				{
+					"identifiers": {
+						"assetId": "123"
+					},
+					"expires": "2025-01-01T00:00:00.000Z",
+					"entitled": true,
+					"entitledExpires": "2025-01-01T00:00:00.000Z",
+					"offeringType": "buy",
+					"price": 2.99,
+					"videoQuality": [
+						"UHD"
+					],
+					"audioProfile": [
+						"dolbyAtmos"
+					],
+					"audioLanguages": [
+						"en"
+					],
+					"closedCaptions": [
+						"en"
+					],
+					"subtitles": [
+						"es"
+					],
+					"audioDescriptions": [
+						"en"
+					]
+				}
+			]
+		}
+	]
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.requestPurchases",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "totalCount": 10,
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entries": [
+      {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        },
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+### requestUserInterest
+
+Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.
+
+```typescript
+${method.signature}
 ```
 
 Parameters:
 
-| Param  | Type           | Required | Description                                |
-| ------ | -------------- | -------- | ------------------------------------------ |
-| `type` | `InterestType` | false    | <br/>values: `'interest' \| 'disinterest'` |
+| Param    | Type | Required | Description                                       |
+| -------- | ---- | -------- | ------------------------------------------------- |
+| `type`   | ``   | true     | values: `'interest' \| 'disinterest'`             |
+| `reason` | ``   | true     | values: `'playlist' \| 'reaction' \| 'recording'` |
 
 Promise resolution:
 
-[EntityInfo](../Entertainment/schemas/#EntityInfo)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                 |
-| ---- | ------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:interest |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:discovery:user-interest |
+
 
 #### Examples
+
 
 Default Example
 
@@ -605,20 +683,34 @@ JavaScript:
 ```javascript
 import { Content } from '@firebolt-js/discovery-sdk'
 
-let entity = await Content.requestUserInterest('interest')
+let entity = await Content.requestUserInterest("interest", "playlist")
 console.log(entity)
-```
+````
 
 Value of `entity`:
 
 ```javascript
 {
 	"identifiers": {
-		"entityId": "xyz"
+		"entityId": "345",
+		"entityType": "program",
+		"programType": "movie"
 	},
-	"entityType": "program",
-	"programType": "movie",
-	"title": "Interesting Movie Title"
+	"info": {
+		"title": "Cool Runnings",
+		"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+		"releaseDate": "1993-01-01T00:00:00.000Z",
+		"contentRatings": [
+			{
+				"scheme": "US-Movie",
+				"rating": "PG"
+			},
+			{
+				"scheme": "CA-Movie",
+				"rating": "G"
+			}
+		]
+	}
 }
 ```
 
@@ -632,7 +724,8 @@ Request:
   "id": 1,
   "method": "Content.requestUserInterest",
   "params": {
-    "type": "interest"
+    "type": "interest",
+    "reason": "playlist"
   }
 }
 ```
@@ -645,11 +738,25 @@ Response:
   "id": 1,
   "result": {
     "identifiers": {
-      "entityId": "xyz"
+      "entityId": "345",
+      "entityType": "program",
+      "programType": "movie"
     },
-    "entityType": "program",
-    "programType": "movie",
-    "title": "Interesting Movie Title"
+    "info": {
+      "title": "Cool Runnings",
+      "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+      "releaseDate": "1993-01-01T00:00:00.000Z",
+      "contentRatings": [
+        {
+          "scheme": "US-Movie",
+          "rating": "PG"
+        },
+        {
+          "scheme": "CA-Movie",
+          "rating": "G"
+        }
+      ]
+    }
   }
 }
 ```
@@ -660,57 +767,104 @@ Response:
 
 ## Events
 
-### userInterestedIn
+### details
 
 ```typescript
-function listen('userInterestedIn', (InterestedInIntent) => void): Promise<number>
+function listen('details', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[InterestedInIntent](../Intents/schemas/#InterestedInIntent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                                 |
-| ---- | ------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:interest |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:discovery:entity-info |
+
 
 #### Examples
 
-Default Example
+
+Send entity info for a movie to the platform.
 
 JavaScript:
 
 ```javascript
 import { Content } from '@firebolt-js/discovery-sdk'
 
-Content.listen('userInterestedIn', (intent) => {
-  console.log(intent)
+Content.listen('details', data => {
+  console.log(data)
 })
-```
+````
 
-Value of `intent`:
+Value of `data`:
 
 ```javascript
 {
-	"action": "interestedIn",
-	"data": {
-		"appId": "cool-app",
-		"type": "interest",
-		"entity": {
+	"entityId": "345",
+	"details": {
+		"expires": "2025-01-01T00:00:00.000Z",
+		"details": {
 			"identifiers": {
-				"entityId": "xyz"
+				"entityId": "345",
+				"entityType": "program",
+				"programType": "movie"
 			},
-			"entityType": "program",
-			"programType": "movie",
-			"title": "Interesting Movie Title"
+			"info": {
+				"title": "Cool Runnings",
+				"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+				"releaseDate": "1993-01-01T00:00:00.000Z",
+				"contentRatings": [
+					{
+						"scheme": "US-Movie",
+						"rating": "PG"
+					},
+					{
+						"scheme": "CA-Movie",
+						"rating": "G"
+					}
+				]
+			},
+			"waysToWatch": [
+				{
+					"identifiers": {
+						"assetId": "123"
+					},
+					"expires": "2025-01-01T00:00:00.000Z",
+					"entitled": true,
+					"entitledExpires": "2025-01-01T00:00:00.000Z",
+					"offeringType": "buy",
+					"price": 2.99,
+					"videoQuality": [
+						"UHD"
+					],
+					"audioProfile": [
+						"dolbyAtmos"
+					],
+					"audioLanguages": [
+						"en"
+					],
+					"closedCaptions": [
+						"en"
+					],
+					"subtitles": [
+						"es"
+					],
+					"audioDescriptions": [
+						"en"
+					]
+				}
+			]
 		}
-	},
-	"context": {
-		"source": "api"
 	}
 }
 ```
@@ -723,7 +877,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "Content.onUserInterestedIn",
+  "method": "Content.onDetails",
   "params": {
     "listen": true
   }
@@ -737,21 +891,499 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "action": "interestedIn",
-    "data": {
-      "appId": "cool-app",
-      "type": "interest",
-      "entity": {
+    "entityId": "345",
+    "details": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "details": {
         "identifiers": {
-          "entityId": "xyz"
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
         },
-        "entityType": "program",
-        "programType": "movie",
-        "title": "Interesting Movie Title"
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        },
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
       }
+    }
+  }
+}
+```
+
+</details>
+
+Send entity info for a movie with a trailer to the platform.
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('details', (data) => {
+  console.log(data)
+})
+```
+
+Value of `data`:
+
+```javascript
+{
+	"entityId": "345",
+	"details": {
+		"expires": "2025-01-01T00:00:00.000Z",
+		"details": {
+			"identifiers": {
+				"entityId": "345",
+				"entityType": "program",
+				"programType": "movie"
+			},
+			"info": {
+				"title": "Cool Runnings",
+				"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+				"releaseDate": "1993-01-01T00:00:00.000Z",
+				"contentRatings": [
+					{
+						"scheme": "US-Movie",
+						"rating": "PG"
+					},
+					{
+						"scheme": "CA-Movie",
+						"rating": "G"
+					}
+				]
+			},
+			"waysToWatch": [
+				{
+					"identifiers": {
+						"assetId": "123"
+					},
+					"expires": "2025-01-01T00:00:00.000Z",
+					"entitled": true,
+					"entitledExpires": "2025-01-01T00:00:00.000Z",
+					"offeringType": "buy",
+					"price": 2.99,
+					"videoQuality": [
+						"UHD"
+					],
+					"audioProfile": [
+						"dolbyAtmos"
+					],
+					"audioLanguages": [
+						"en"
+					],
+					"closedCaptions": [
+						"en"
+					],
+					"subtitles": [
+						"es"
+					],
+					"audioDescriptions": [
+						"en"
+					]
+				}
+			]
+		}
+	}
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onDetails",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "entityId": "345",
+    "details": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "details": {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        },
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+### purchases
+
+```typescript
+function listen('purchases', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+````typescript
+```typescript
+
+````
+
+````
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:discovery:purchased-content |
+
+
+#### Examples
+
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('purchases', purchases => {
+  console.log(purchases)
+})
+````
+
+Value of `purchases`:
+
+```javascript
+{
+	"totalCount": 10,
+	"expires": "2025-01-01T00:00:00.000Z",
+	"entries": [
+		{
+			"identifiers": {
+				"entityId": "345",
+				"entityType": "program",
+				"programType": "movie"
+			},
+			"info": {
+				"title": "Cool Runnings",
+				"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+				"releaseDate": "1993-01-01T00:00:00.000Z",
+				"contentRatings": [
+					{
+						"scheme": "US-Movie",
+						"rating": "PG"
+					},
+					{
+						"scheme": "CA-Movie",
+						"rating": "G"
+					}
+				]
+			},
+			"waysToWatch": [
+				{
+					"identifiers": {
+						"assetId": "123"
+					},
+					"expires": "2025-01-01T00:00:00.000Z",
+					"entitled": true,
+					"entitledExpires": "2025-01-01T00:00:00.000Z",
+					"offeringType": "buy",
+					"price": 2.99,
+					"videoQuality": [
+						"UHD"
+					],
+					"audioProfile": [
+						"dolbyAtmos"
+					],
+					"audioLanguages": [
+						"en"
+					],
+					"closedCaptions": [
+						"en"
+					],
+					"subtitles": [
+						"es"
+					],
+					"audioDescriptions": [
+						"en"
+					]
+				}
+			]
+		}
+	]
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onPurchases",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "totalCount": 10,
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entries": [
+      {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        },
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+### userInterest
+
+```typescript
+function listen('userInterest', | `type` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, | `reason` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+, () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param    | Type | Required | Description                                       |
+| -------- | ---- | -------- | ------------------------------------------------- |
+| `type`   | ``   | true     | values: `'interest' \| 'disinterest'`             |
+| `reason` | ``   | true     | values: `'playlist' \| 'reaction' \| 'recording'` |
+
+Event value:
+
+````typescript
+```typescript
+
+````
+
+````
+
+Capabilities:
+
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
+| uses | xrn:firebolt:capability:discovery:user-interest |
+
+
+#### Examples
+
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('userInterest', entity => {
+  console.log(entity)
+})
+````
+
+Value of `entity`:
+
+```javascript
+{
+	"identifiers": {
+		"entityId": "345",
+		"entityType": "program",
+		"programType": "movie"
+	},
+	"info": {
+		"title": "Cool Runnings",
+		"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+		"releaseDate": "1993-01-01T00:00:00.000Z",
+		"contentRatings": [
+			{
+				"scheme": "US-Movie",
+				"rating": "PG"
+			},
+			{
+				"scheme": "CA-Movie",
+				"rating": "G"
+			}
+		]
+	}
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "identifiers": {
+      "entityId": "345",
+      "entityType": "program",
+      "programType": "movie"
     },
-    "context": {
-      "source": "api"
+    "info": {
+      "title": "Cool Runnings",
+      "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+      "releaseDate": "1993-01-01T00:00:00.000Z",
+      "contentRatings": [
+        {
+          "scheme": "US-Movie",
+          "rating": "PG"
+        },
+        {
+          "scheme": "CA-Movie",
+          "rating": "G"
+        }
+      ]
     }
   }
 }
@@ -763,81 +1395,18 @@ Response:
 
 ## Types
 
-### ContentProvider
+### DetailsInfo
 
+````typescript
 ```typescript
-type ContentProvider = {
-  id: string
-  apis: string[]
-}
-```
 
----
+````
 
-### PurchasedContentParameters
-
-```typescript
-type PurchasedContentParameters = {
-  limit: number
-  offeringType?: OfferingType // The offering type of the WayToWatch.
-  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
-}
 ```
 
 See also:
 
-'free' | 'subscribe' | 'buy' | 'rent'
-'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
+
 
 ---
-
-### FederationOptions
-
-```typescript
-type FederationOptions = {
-  timeout?: number
-}
 ```
-
----
-
-### ProvidedPurchasedContentResult
-
-```typescript
-type ProvidedPurchasedContentResult = {
-  provider: string
-  data: PurchasedContentResult
-}
-```
-
-See also:
-
-[PurchasedContentResult](../Discovery/schemas/#PurchasedContentResult)
-
----
-
-### EntityInfoParameters
-
-```typescript
-type EntityInfoParameters = {
-  entityId: string
-  assetId?: string
-}
-```
-
----
-
-### ProvidedEntityInfoResult
-
-```typescript
-type ProvidedEntityInfoResult = {
-  provider: string
-  data: EntityInfoResult // The result for an `entityInfo()` push or pull.
-}
-```
-
-See also:
-
-[EntityInfoResult](../Discovery/schemas/#EntityInfoResult)
-
----

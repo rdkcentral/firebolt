@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.1.1-feature-user-interest.0
+Version SecondScreen 1.2.0-feature-user-interest.0
 
 ## Table of Contents
 
@@ -27,6 +27,7 @@ Version SecondScreen 1.1.1-feature-user-interest.0
   - [closeRequest](#closerequest)
   - [friendlyNameChanged](#friendlynamechanged)
   - [launchRequest](#launchrequest)
+- [Types](#types)
 
 ## Usage
 
@@ -47,7 +48,7 @@ Methods for communicating with second screen devices
 Get the broadcasted id for the device
 
 ```typescript
-function device(type?: string): Promise<string>
+${method.signature}
 ```
 
 Parameters:
@@ -121,7 +122,7 @@ Get the broadcasted friendly name for the device
 To get the value of `friendlyName` call the method like this:
 
 ```typescript
-function friendlyName(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -359,20 +360,27 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Get the supported second screen discovery protocols
 
 ```typescript
-function protocols(): Promise<BooleanMap>
+${method.signature}
 ```
 
 Promise resolution:
 
-[BooleanMap](../Types/schemas/#BooleanMap)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:device:info |
 
+
 #### Examples
+
 
 Default Example
 
@@ -383,7 +391,7 @@ import { SecondScreen } from '@firebolt-js/sdk'
 
 let protocols = await SecondScreen.protocols()
 console.log(protocols)
-```
+````
 
 Value of `protocols`:
 
@@ -427,22 +435,29 @@ Response:
 ### closeRequest
 
 ```typescript
-function listen('closeRequest', (SecondScreenEvent) => void): Promise<number>
+function listen('closeRequest', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                            |
-| ---- | ------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:protocol:dial |
 
+
 #### Examples
+
 
 Default Example
 
@@ -451,10 +466,10 @@ JavaScript:
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
 
-SecondScreen.listen('closeRequest', (closeRequestEvent) => {
+SecondScreen.listen('closeRequest', closeRequestEvent => {
   console.log(closeRequestEvent)
 })
-```
+````
 
 Value of `closeRequestEvent`:
 
@@ -504,22 +519,29 @@ See: [friendlyName](#friendlyname)
 ### launchRequest
 
 ```typescript
-function listen('launchRequest', (SecondScreenEvent) => void): Promise<number>
+function listen('launchRequest', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                            |
-| ---- | ------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:protocol:dial |
 
+
 #### Examples
+
 
 Default Example
 
@@ -528,10 +550,10 @@ JavaScript:
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
 
-SecondScreen.listen('launchRequest', (launchRequestEvent) => {
+SecondScreen.listen('launchRequest', launchRequestEvent => {
   console.log(launchRequestEvent)
 })
-```
+````
 
 Value of `launchRequestEvent`:
 
@@ -575,3 +597,5 @@ Response:
 </details>
 
 ---
+
+## Types

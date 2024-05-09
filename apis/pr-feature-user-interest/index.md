@@ -209,26 +209,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Content.entity](./manage/Content/#entity) |
+| [Content.requestDetails](./manage/Content/#requestdetails)<br/>[Content.onDetails](./manage/Content/#details) |
 
 
 
 | Provides |
 | -------- |
-| [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
-
-
-### `xrn:firebolt:capability:discovery:interest`
-
-| Uses |
-| ---- |
-| [Content.requestUserInterest](./manage/Content/#requestuserinterest)<br/>[Content.onUserInterestedIn](./manage/Content/#userinterestedin) |
-
-
-
-| Provides |
-| -------- |
-| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest)<br/>[Discovery.userInterestResponse](./core/Discovery/#userinterestresponse)<br/>[Discovery.userInterestError](./core/Discovery/#userinteresterror) |
+| [Discovery.details](./core/Discovery/#details)<br/>[Discovery.onRequestDetails](./core/Discovery/#requestdetails)<br/>[Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
 
 
 ### `xrn:firebolt:capability:discovery:navigate-to`
@@ -245,24 +232,17 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Discovery.policy](./core/Discovery/#policy)<br/>[Discovery.onPolicyChanged](./core/Discovery/#policychanged) |
 
 
-### `xrn:firebolt:capability:discovery:providers`
-
-| Uses |
-| ---- |
-| [Content.providers](./manage/Content/#providers) |
-
-
 ### `xrn:firebolt:capability:discovery:purchased-content`
 
 | Uses |
 | ---- |
-| [Content.purchases](./manage/Content/#purchases) |
+| [Content.requestPurchases](./manage/Content/#requestpurchases)<br/>[Content.onPurchases](./manage/Content/#purchases) |
 
 
 
 | Provides |
 | -------- |
-| [Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
+| [Discovery.purchases](./core/Discovery/#purchases)<br/>[Discovery.onRequestPurchases](./core/Discovery/#requestpurchases)<br/>[Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
 
 
 ### `xrn:firebolt:capability:discovery:sign-in-status`
@@ -276,6 +256,19 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Manages |
 | ------- |
 | [Discovery.onSignIn](./manage/Discovery/#signin)<br/>[Discovery.onSignOut](./manage/Discovery/#signout) |
+
+
+### `xrn:firebolt:capability:discovery:user-interest`
+
+| Uses |
+| ---- |
+| [Content.requestUserInterest](./manage/Content/#requestuserinterest)<br/>[Content.onUserInterest](./manage/Content/#userinterest) |
+
+
+
+| Provides |
+| -------- |
+| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest) |
 
 
 ### `xrn:firebolt:capability:discovery:watch-next`

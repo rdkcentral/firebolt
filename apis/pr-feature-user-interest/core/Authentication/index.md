@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.1.1-feature-user-interest.0
+Version Authentication 1.2.0-feature-user-interest.0
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ A module for acquiring authentication tokens.
 Get a device token scoped to the current app.
 
 ```typescript
-function device(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -110,7 +110,7 @@ Response:
 Get a root device token.
 
 ```typescript
-function root(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -176,7 +176,7 @@ Response:
 Get a destributor session token.
 
 ```typescript
-function session(): Promise<string>
+${method.signature}
 ```
 
 Promise resolution:
@@ -242,15 +242,18 @@ Response:
 Get a specific `type` of authentication token
 
 ```typescript
-function token(type: TokenType, options?: object): Promise<object>
+${method.signature}
 ```
 
 Parameters:
 
-| Param     | Type                      | Required | Description                                                                      |
-| --------- | ------------------------- | -------- | -------------------------------------------------------------------------------- |
-| `type`    | [`TokenType`](#tokentype) | true     | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
-| `options` | `object`                  | false    | Additional options for acquiring the token.                                      |
+| Param         | Type                    | Required                                    | Description                                                                 |
+| ------------- | ----------------------- | ------------------------------------------- | --------------------------------------------------------------------------- | ----------- |
+| `type`        | ``                      | true                                        | What type of token to get values: `'platform' \| 'device' \| 'distributor'` |
+| `options`     | [`                      | Property                                    | Type                                                                        | Description |
+| ----------    | ------                  | -------------                               |
+| `${property}` | [${type}](${type.link}) | ${description}                              |
+| `](#)         | false                   | Additional options for acquiring the token. |
 
 Promise resolution:
 
@@ -438,11 +441,14 @@ Response:
 ### TokenType
 
 ```typescript
-enum TokenType {
-  PLATFORM = 'platform',
-  DEVICE = 'device',
-  DISTRIBUTOR = 'distributor',
-}
+TokenType Enumeration:
+
+| key | value |
+|-----|-------|
+| PLATFORM | platform |
+| DEVICE | device |
+| DISTRIBUTOR | distributor |
+
 ```
 
 ---

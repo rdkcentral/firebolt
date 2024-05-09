@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version VoiceGuidance 1.1.1-feature-user-interest.0
+Version VoiceGuidance 1.2.0-feature-user-interest.0
 
 ## Table of Contents
 
@@ -25,6 +25,7 @@ Version VoiceGuidance 1.1.1-feature-user-interest.0
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
   - [speedChanged](#speedchanged)
+- [Types](#types)
 
 ## Usage
 
@@ -47,7 +48,7 @@ Whether or not voice-guidance is enabled.
 To get the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(): Promise<boolean>
+${method.signature}
 ```
 
 Promise resolution:
@@ -153,7 +154,8 @@ Response:
 To set the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(value: boolean): Promise<void>
+function enabled(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
@@ -165,7 +167,7 @@ Parameters:
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -485,12 +487,14 @@ The speed at which voice guidance speech will be read back to the user.
 To get the value of `speed` call the method like this:
 
 ```typescript
-function speed(): Promise<VoiceSpeed>
+${method.signature}
 ```
 
 Promise resolution:
 
-[VoiceSpeed](../Accessibility/schemas/#VoiceSpeed)
+```typescript
+
+```
 
 Capabilities:
 
@@ -589,20 +593,21 @@ Response:
 To set the value of `speed` call the method like this:
 
 ```typescript
-function speed(value: VoiceSpeed): Promise<void>
+function speed(| `value` | [``](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
+): Promise<void>
 ```
 
 Parameters:
 
-| Param      | Type                                                 | Required | Description       |
-| ---------- | ---------------------------------------------------- | -------- | ----------------- |
-| `value`    | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true     | <br/>minumum: 0.5 |
+| Param      | Type | Required | Description  |
+| ---------- | ---- | -------- | ------------ |
+| `value`    | ``   | true     | minumum: 0.5 |
 | maximum: 2 |
 
 Promise resolution:
 
 ```typescript
-null
+
 ```
 
 #### Examples
@@ -700,7 +705,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function speed(callback: (value) => VoiceSpeed): Promise<number>
+function speed(callback: (value) => ): Promise<number>
 ```
 
 Promise resolution:
@@ -814,3 +819,5 @@ See: [enabled](#enabled)
 ### speedChanged
 
 See: [speed](#speed)
+
+## Types

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Lifecycle 1.1.1-feature-user-interest.0
+Version Lifecycle 1.2.0-feature-user-interest.0
 
 ## Table of Contents
 
@@ -52,14 +52,14 @@ Methods and events for responding to lifecycle changes in your app
 Request that the platform move your app out of focus
 
 ```typescript
-function close(reason: CloseReason): Promise<void>
+${method.signature}
 ```
 
 Parameters:
 
-| Param    | Type                                               | Required | Description                                                                                                    |
-| -------- | -------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------- |
-| `reason` | [`CloseReason`](../Lifecycle/schemas/#CloseReason) | true     | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
+| Param    | Type | Required | Description                                                                                               |
+| -------- | ---- | -------- | --------------------------------------------------------------------------------------------------------- |
+| `reason` | ``   | true     | The reason the app is requesting to be closed values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
 
 Promise resolution:
 
@@ -170,7 +170,7 @@ Response:
 Notify the platform that the app is done unloading
 
 ```typescript
-function finished(): Promise<void>
+${method.signature}
 ```
 
 Promise resolution:
@@ -346,7 +346,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Notify the platform that the app is ready
 
 ```typescript
-function ready(): Promise<void>
+${method.signature}
 ```
 
 Promise resolution:
@@ -412,12 +412,24 @@ Response:
 Get the current state of the app. This function is **synchronous**.
 
 ```typescript
-function state(): LifecycleState
+${method.signature}
 ```
 
 Promise resolution:
 
-[LifecycleState](../Lifecycle/schemas/#LifecycleState)
+```typescript
+LifecycleState Enumeration:
+
+| key | value |
+|-----|-------|
+| INITIALIZING | initializing |
+| INACTIVE | inactive |
+| FOREGROUND | foreground |
+| BACKGROUND | background |
+| UNLOADING | unloading |
+| SUSPENDED | suspended |
+
+```
 
 Capabilities:
 
@@ -476,22 +488,29 @@ Response:
 ### background
 
 ```typescript
-function listen('background', (LifecycleEvent) => void): Promise<number>
+function listen('background', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[LifecycleEvent](#lifecycleevent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                              |
-| ---- | --------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
+
 #### Examples
+
 
 Default Example
 
@@ -500,10 +519,10 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('background', (value) => {
+Lifecycle.listen('background', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -549,22 +568,29 @@ Response:
 ### foreground
 
 ```typescript
-function listen('foreground', (LifecycleEvent) => void): Promise<number>
+function listen('foreground', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[LifecycleEvent](#lifecycleevent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                              |
-| ---- | --------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
+
 #### Examples
+
 
 Default Example
 
@@ -573,10 +599,10 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('foreground', (value) => {
+Lifecycle.listen('foreground', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -674,22 +700,29 @@ Response:
 ### inactive
 
 ```typescript
-function listen('inactive', (LifecycleEvent) => void): Promise<number>
+function listen('inactive', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[LifecycleEvent](#lifecycleevent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                              |
-| ---- | --------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
+
 #### Examples
+
 
 Default Example
 
@@ -698,10 +731,10 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('inactive', (value) => {
+Lifecycle.listen('inactive', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -747,22 +780,29 @@ Response:
 ### suspended
 
 ```typescript
-function listen('suspended', (LifecycleEvent) => void): Promise<number>
+function listen('suspended', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[LifecycleEvent](#lifecycleevent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                              |
-| ---- | --------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
+
 #### Examples
+
 
 Default Example
 
@@ -771,10 +811,10 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('suspended', (value) => {
+Lifecycle.listen('suspended', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -820,22 +860,29 @@ Response:
 ### unloading
 
 ```typescript
-function listen('unloading', (LifecycleEvent) => void): Promise<number>
+function listen('unloading', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-[LifecycleEvent](#lifecycleevent)
+````typescript
+```typescript
+
+````
+
+````
 
 Capabilities:
 
-| Role | Capability                              |
-| ---- | --------------------------------------- |
+| Role                  | Capability                 |
+| --------------------- | -------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
+
 #### Examples
+
 
 Default Example
 
@@ -844,10 +891,10 @@ JavaScript:
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-Lifecycle.listen('unloading', (value) => {
+Lifecycle.listen('unloading', value => {
   console.log(value)
 })
-```
+````
 
 Value of `value`:
 
@@ -896,16 +943,16 @@ Response:
 
 A an object describing the previous and current states
 
+````typescript
 ```typescript
-type LifecycleEvent = {
-  state: LifecycleState // The application lifecycle state
-  previous: LifecycleState // The application lifecycle state
-  source?: 'voice' | 'remote' // The source of the lifecycle change.
-}
+
+````
+
 ```
 
 See also:
 
-'initializing' | 'inactive' | 'foreground' | 'background' | 'unloading' | 'suspended'
+
 
 ---
+```

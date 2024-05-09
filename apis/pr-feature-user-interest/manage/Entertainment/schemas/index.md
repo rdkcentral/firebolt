@@ -18,15 +18,15 @@ Version Entertainment 0.0.0-unknown.0
 - [Overview](#overview)
 - [Types](#types)
   - [OfferingType](#offeringtype)
-  - [ProgramType](#programtype)
   - [MusicType](#musictype)
-  - [ContentIdentifiers](#contentidentifiers)
+  - [ProgramType](#programtype)
   - [ContentRating](#contentrating)
 - [United States](#united-states)
 - [Canada](#canada)
+  - [ContentIdentifiers](#contentidentifiers)
+  - [Entitlement](#entitlement)
   - [WayToWatch](#waytowatch)
   - [EntityInfo](#entityinfo)
-  - [Entitlement](#entitlement)
 
 ## Overview
 
@@ -39,35 +39,15 @@ undefined
 The offering type of the WayToWatch.
 
 ```typescript
-enum OfferingType {
-  FREE = 'free',
-  SUBSCRIBE = 'subscribe',
-  BUY = 'buy',
-  RENT = 'rent',
-}
-```
+OfferingType Enumeration:
 
----
+| key | value |
+|-----|-------|
+| FREE | free |
+| SUBSCRIBE | subscribe |
+| BUY | buy |
+| RENT | rent |
 
-### ProgramType
-
-In the case of a program `entityType`, specifies the program type.
-
-```typescript
-enum ProgramType {
-  MOVIE = 'movie',
-  EPISODE = 'episode',
-  SEASON = 'season',
-  SERIES = 'series',
-  OTHER = 'other',
-  PREVIEW = 'preview',
-  EXTRA = 'extra',
-  CONCERT = 'concert',
-  SPORTING_EVENT = 'sportingEvent',
-  ADVERTISEMENT = 'advertisement',
-  MUSIC_VIDEO = 'musicVideo',
-  MINISODE = 'minisode',
-}
 ```
 
 ---
@@ -77,32 +57,39 @@ enum ProgramType {
 In the case of a music `entityType`, specifies the type of music entity.
 
 ```typescript
-enum MusicType {
-  SONG = 'song',
-  ALBUM = 'album',
-}
+MusicType Enumeration:
+
+| key | value |
+|-----|-------|
+| SONG | song |
+| ALBUM | album |
+
 ```
 
 ---
 
-### ContentIdentifiers
+### ProgramType
 
-The ContentIdentifiers object is how the app identifies an entity or asset to
-the Firebolt platform. These ids are used to look up metadata and deep link into
-the app.
-
-Apps do not need to provide all ids. They only need to provide the minimum
-required to target a playable stream or an entity detail screen via a deep link.
-If an id isn't needed to get to those pages, it doesn't need to be included.
+In the case of a program `entityType`, specifies the program type.
 
 ```typescript
-type ContentIdentifiers = {
-  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
-  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
-  seasonId?: string // The TV Season for a TV Episode.
-  seriesId?: string // The TV Series for a TV Episode or TV Season.
-  appContentData?: string // App-specific content identifiers.
-}
+ProgramType Enumeration:
+
+| key | value |
+|-----|-------|
+| MOVIE | movie |
+| EPISODE | episode |
+| SEASON | season |
+| SERIES | series |
+| OTHER | other |
+| PREVIEW | preview |
+| EXTRA | extra |
+| CONCERT | concert |
+| SPORTING_EVENT | sportingEvent |
+| ADVERTISEMENT | advertisement |
+| MUSIC_VIDEO | musicVideo |
+| MINISODE | minisode |
+
 ```
 
 ---
@@ -145,19 +132,50 @@ Ratings: `G`, `8+`, `13+`, `16+`, `18+`
 
 Ratings: `G`, `8+`, `13+`, `16+`, `18+`
 
+````typescript
 ```typescript
-type ContentRating = {
-  scheme:
-    | 'CA-Movie'
-    | 'CA-TV'
-    | 'CA-Movie-Fr'
-    | 'CA-TV-Fr'
-    | 'US-Movie'
-    | 'US-TV' // The rating scheme.
-  rating: string // The content rating.
-  advisories?: string[] // Optional list of subratings or content advisories.
-}
-```
+
+````
+
+````
+
+
+
+---
+
+### ContentIdentifiers
+
+The ContentIdentifiers object is how the app identifies an entity or asset to
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included.
+
+```typescript
+```typescript
+
+````
+
+````
+
+
+
+---
+
+### Entitlement
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+
 
 ---
 
@@ -199,28 +217,17 @@ multiple WayToWatch objects.
 points, the `price` provided must be the lowest available price.
 
 ```typescript
-type WayToWatch = {
-  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
-  expires?: string // Time when the WayToWatch is no longer available.
-  entitled?: boolean // Specify if the user is entitled to watch the entity.
-  entitledExpires?: string // Time when the entity is no longer entitled.
-  offeringType?: OfferingType // The offering type of the WayToWatch.
-  hasAds?: boolean // True if the streamable asset contains ads.
-  price?: number // For "buy" and "rent" WayToWatch, the price to buy or rent in the user's preferred currency.
-  videoQuality?: 'SD' | 'HD' | 'UHD'[] // List of the video qualities available via the WayToWatch.
-  audioProfile: AudioProfile[] // List of the audio types available via the WayToWatch.
-  audioLanguages?: string[] // List of audio track languages available on the WayToWatch. The first is considered the primary language. Languages are expressed as ISO 639 1/2 codes.
-  closedCaptions?: string[] // List of languages for which closed captions are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
-  subtitles?: string[] // List of languages for which subtitles are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
-  audioDescriptions?: string[] // List of languages for which audio descriptions (DVD) as available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
-}
-```
+```typescript
+
+````
+
+````
 
 See also:
 
-[ContentIdentifiers](#contentidentifiers)
-'free' | 'subscribe' | 'buy' | 'rent'
-'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
+
+
+
 
 ---
 
@@ -229,7 +236,7 @@ See also:
 An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
 
 Additionally, EntityInfo objects must specify a properly formed
-ContentIdentifiers object, `entityType`, and `title`. The app should provide
+ContentIdentifiers object, `entityType`, and `title`.  The app should provide
 the `synopsis` property for a good user experience if the content
 metadata is not available another way.
 
@@ -242,41 +249,19 @@ It is optional for the `purchasedContent` method, but recommended because the UI
 may use those data.
 
 ```typescript
-type EntityInfo = {
-  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
-  title: string // Title of the entity.
-  entityType: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
-  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
-  musicType?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
-  synopsis?: string // Short description of the entity.
-  seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
-  seasonCount?: number // For TV series, seasons, and episodes, the total number of seasons.
-  episodeNumber?: number // For TV episodes, the episode number.
-  episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
-  releaseDate?: string // The date that the program or entity was released or first aired.
-  contentRatings?: ContentRating[] // A list of ContentRating objects, describing the entity's ratings in various rating schemes.
-  waysToWatch?: WayToWatch[] // An array of ways a user is might watch this entity, regardless of entitlements.
-}
+```typescript
+
+````
+
 ```
 
 See also:
 
-[ContentIdentifiers](#contentidentifiers)
-'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
-'song' | 'album'
-[ContentRating](#contentrating)
-[WayToWatch](#waytowatch)
+
+
+
+
+
 
 ---
-
-### Entitlement
-
-```typescript
-type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
-}
 ```
-
----
