@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.2.0-feature-user-interest.0
+Version Parameters 1.2.0-feature-user-interest.1
 
 ## Table of Contents
 

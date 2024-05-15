@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.2.0-feature-user-interest.0
+Version AcknowledgeChallenge 1.2.0-feature-user-interest.1
 
 ## Table of Contents
 
@@ -388,9 +388,7 @@ import { AcknowledgeChallenge } from '@firebolt-js/manage-sdk'
 
 class MyChallengeProvider {
   async challenge(parameters, session) {
-    return {
-      granted: true,
-    }
+    return null
   }
 }
 
@@ -459,9 +457,7 @@ Request:
   "method": "AcknowledgeChallenge.challengeResponse",
   "params": {
     "correlationId": undefined,
-    "result": {
-      "granted": true
-    }
+    "result": null
   }
 }
 ```

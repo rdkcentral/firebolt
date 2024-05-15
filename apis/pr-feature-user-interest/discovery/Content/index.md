@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.2.0-feature-user-interest.0
+Version Content 1.2.0-feature-user-interest.1
 
 ## Table of Contents
 
@@ -644,7 +644,7 @@ Response:
 
 ### requestUserInterest
 
-Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.
+Provide information about the entity currently displayed or selected on the screen.
 
 ```typescript
 ${method.signature}

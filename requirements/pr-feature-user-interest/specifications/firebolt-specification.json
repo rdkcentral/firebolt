@@ -927,7 +927,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.2.0-feature-user-interest.0",
+				"version": "1.2.0-feature-user-interest.1",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -6829,8 +6829,8 @@
 							]
 						}
 					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
 					"params": [
 						{
 							"name": "type",
@@ -7190,8 +7190,8 @@
 							"name": "push"
 						}
 					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
 					"params": [
 						{
 							"name": "type",
@@ -7426,15 +7426,7 @@
 											"type": "string"
 										},
 										"parameters": {
-											"type": "object",
-											"required": [
-												"entityId"
-											],
-											"properties": {
-												"entityId": {
-													"type": "string"
-												}
-											}
+											"$ref": "#/components/schemas/DetailsProviderParameters"
 										}
 									},
 									"additionalProperties": false
@@ -7587,9 +7579,7 @@
 											"type": "string"
 										},
 										"parameters": {
-											"type": "object",
-											"required": [],
-											"properties": {}
+											"$ref": "#/components/schemas/PurchasesProviderParameters"
 										}
 									},
 									"additionalProperties": false
@@ -7659,8 +7649,8 @@
 							"name": "push"
 						}
 					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
 					"params": [
 						{
 							"name": "listen",
@@ -7688,19 +7678,7 @@
 											"type": "string"
 										},
 										"parameters": {
-											"type": "object",
-											"required": [
-												"type",
-												"reason"
-											],
-											"properties": {
-												"type": {
-													"$ref": "#/x-schemas/Discovery/InterestType"
-												},
-												"reason": {
-													"$ref": "#/x-schemas/Discovery/InterestReason"
-												}
-											}
+											"$ref": "#/components/schemas/UserInterestProviderParameters"
 										}
 									},
 									"additionalProperties": false
@@ -8038,8 +8016,8 @@
 							]
 						}
 					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
 					"params": [
 						{
 							"name": "type",
@@ -20587,6 +20565,43 @@
 								"correlationId": "abc"
 							}
 						]
+					},
+					"DetailsProviderParameters": {
+						"title": "DetailsProviderParameters",
+						"type": "object",
+						"required": [
+							"entityId"
+						],
+						"properties": {
+							"entityId": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
+					"PurchasesProviderParameters": {
+						"title": "PurchasesProviderParameters",
+						"type": "object",
+						"required": [],
+						"properties": {},
+						"additionalProperties": false
+					},
+					"UserInterestProviderParameters": {
+						"title": "UserInterestProviderParameters",
+						"type": "object",
+						"required": [
+							"type",
+							"reason"
+						],
+						"properties": {
+							"type": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							},
+							"reason": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							}
+						},
+						"additionalProperties": false
 					},
 					"DetailsInfo": {
 						"title": "DetailsInfo",

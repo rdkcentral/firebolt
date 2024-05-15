@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.2.0-feature-user-interest.0
+Version Discovery 1.2.0-feature-user-interest.1
 
 ## Table of Contents
 
@@ -47,6 +47,9 @@ Version Discovery 1.2.0-feature-user-interest.0
   - [PurchasesProvider](#purchasesprovider)
   - [UserInterestProvider](#userinterestprovider)
 - [Types](#types)
+  - [DetailsProviderParameters](#detailsproviderparameters)
+  - [PurchasesProviderParameters](#purchasesproviderparameters)
+  - [UserInterestProviderParameters](#userinterestproviderparameters)
   - [DiscoveryPolicy](#discoverypolicy)
   - [Availability](#availability)
   - [PurchasedContentParameters](#purchasedcontentparameters)
@@ -3868,7 +3871,7 @@ Response:
 
 ### userInterest
 
-Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.
+Provide information about the entity currently displayed or selected on the screen.
 
 ```typescript
 ${method.signature}
@@ -4335,16 +4338,10 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-| Property        | Type    | Description   |
-| --------------- | ------- | ------------- | ---- | ----------- |
-| `correlationId` | string  |               |
-| `parameters`    | [       | Property      | Type | Description |
-| ----------      | ------  | ------------- |
-| `request`       | [       | Property      | Type | Description |
-| ----------      | ------  | ------------- |
-| `${property}`   | ${type} |               |
-| ](#)            |         |
-| ](#)            |         |
+| Property        | Type   | Description |
+| --------------- | ------ | ----------- |
+| `correlationId` | string |             |
+| `parameters`    |        |             |
 
 Capabilities:
 
@@ -4476,16 +4473,10 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-| Property        | Type    | Description   |
-| --------------- | ------- | ------------- | ---- | ----------- |
-| `correlationId` | string  |               |
-| `parameters`    | [       | Property      | Type | Description |
-| ----------      | ------  | ------------- |
-| `request`       | [       | Property      | Type | Description |
-| ----------      | ------  | ------------- |
-| `${property}`   | ${type} |               |
-| ](#)            |         |
-| ](#)            |         |
+| Property        | Type   | Description |
+| --------------- | ------ | ----------- |
+| `correlationId` | string |             |
+| `parameters`    |        |             |
 
 Capabilities:
 
@@ -4558,16 +4549,10 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-| Property        | Type    | Description   |
-| --------------- | ------- | ------------- | ---- | ----------- |
-| `correlationId` | string  |               |
-| `parameters`    | [       | Property      | Type | Description |
-| ----------      | ------  | ------------- |
-| `request`       | [       | Property      | Type | Description |
-| ----------      | ------  | ------------- |
-| `${property}`   | ${type} |               |
-| ](#)            |         |
-| ](#)            |         |
+| Property        | Type   | Description |
+| --------------- | ------ | ----------- |
+| `correlationId` | string |             |
+| `parameters`    |        |             |
 
 Capabilities:
 
@@ -5170,9 +5155,57 @@ Response:
 
 ## Types
 
-### DiscoveryPolicy
+### DetailsProviderParameters
 
 ````typescript
+```typescript
+
+````
+
+````
+
+
+
+---
+
+### PurchasesProviderParameters
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+
+
+---
+
+### UserInterestProviderParameters
+
+
+
+```typescript
+```typescript
+
+````
+
+````
+
+See also:
+
+
+
+
+---
+
+### DiscoveryPolicy
+
+
+
+```typescript
 ```typescript
 
 ````
