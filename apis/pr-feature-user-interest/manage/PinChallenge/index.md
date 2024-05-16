@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.2.0-feature-user-interest.1
+Version PinChallenge 1.2.0-feature-user-interest.2
 
 ## Table of Contents
 
