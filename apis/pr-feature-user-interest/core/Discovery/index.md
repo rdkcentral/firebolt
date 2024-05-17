@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.2.0-feature-user-interest.2
+Version Discovery 1.2.0-feature-user-interest.4
 
 ## Table of Contents
 
@@ -22,6 +22,8 @@ Version Discovery 1.2.0-feature-user-interest.2
   - [clearContentAccess](#clearcontentaccess)
   - [contentAccess](#contentaccess)
   - [details](#details)
+  - [detailsError](#detailserror)
+  - [detailsResponse](#detailsresponse)
   - [entitlements](#entitlements)
   - [entityInfo](#entityinfo)
   - [launch](#launch)
@@ -31,17 +33,21 @@ Version Discovery 1.2.0-feature-user-interest.2
   - [provide](#provide)
   - [purchasedContent](#purchasedcontent)
   - [purchases](#purchases)
+  - [purchasesError](#purchaseserror)
+  - [purchasesResponse](#purchasesresponse)
   - [signIn](#signin)
   - [signOut](#signout)
   - [userInterest](#userinterest)
+  - [userInterestError](#userinteresterror)
+  - [userInterestResponse](#userinterestresponse)
   - [watched](#watched)
   - [watchNext](#watchnext)
 - [Events](#events)
   - [navigateTo](#navigateto)
   - [policyChanged](#policychanged)
-  - [requestDetails](#requestdetails)
-  - [requestPurchases](#requestpurchases)
-  - [requestUserInterest](#requestuserinterest)
+  - [onRequestDetails](#onrequestdetails)
+  - [onRequestPurchases](#onrequestpurchases)
+  - [onRequestUserInterest](#onrequestuserinterest)
 - [Provider Interfaces](#provider-interfaces)
   - [DetailsProvider](#detailsprovider)
   - [PurchasesProvider](#purchasesprovider)
@@ -782,6 +788,238 @@ Response:
 ```
 
 </details>
+
+---
+
+### detailsError
+
+_This is an private RPC method._
+
+Internal API for .onRequestDetails Provider to send back error.
+
+Parameters:
+
+| Param           | Type                    | Required       | Description |
+| --------------- | ----------------------- | -------------- | ----------- | ----------- |
+| `correlationId` | `string`                | true           |             |
+| `error`         | [`                      | Property       | Type        | Description |
+| ----------      | ------                  | -------------  |
+| `${property}`   | [${type}](${type.link}) | ${description} |
+| `](#)           | true                    |                |
+
+Result:
+
+```typescript
+
+```
+
+Capabilities:
+
+| Role     | Capability                                    |
+| -------- | --------------------------------------------- |
+| provides | xrn:firebolt:capability:discovery:entity-info |
+
+#### Examples
+
+Example 1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.detailsError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+### detailsResponse
+
+_This is an private RPC method._
+
+Internal API for .onRequestDetails Provider to send back response.
+
+Parameters:
+
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `result`        | ``       | true     |             |
+
+Result:
+
+```typescript
+
+```
+
+Capabilities:
+
+| Role     | Capability                                    |
+| -------- | --------------------------------------------- |
+| provides | xrn:firebolt:capability:discovery:entity-info |
+
+#### Examples
+
+Example #1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.detailsResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "details": {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        },
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+Example #2
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.detailsResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "details": {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        },
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
 
 ---
 
@@ -3675,6 +3913,171 @@ Response:
 
 ---
 
+### purchasesError
+
+_This is an private RPC method._
+
+Internal API for .onRequestPurchases Provider to send back error.
+
+Parameters:
+
+| Param           | Type                    | Required       | Description |
+| --------------- | ----------------------- | -------------- | ----------- | ----------- |
+| `correlationId` | `string`                | true           |             |
+| `error`         | [`                      | Property       | Type        | Description |
+| ----------      | ------                  | -------------  |
+| `${property}`   | [${type}](${type.link}) | ${description} |
+| `](#)           | true                    |                |
+
+Result:
+
+```typescript
+
+```
+
+Capabilities:
+
+| Role     | Capability                                          |
+| -------- | --------------------------------------------------- |
+| provides | xrn:firebolt:capability:discovery:purchased-content |
+
+#### Examples
+
+Example 1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.purchasesError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+### purchasesResponse
+
+_This is an private RPC method._
+
+Internal API for .onRequestPurchases Provider to send back response.
+
+Parameters:
+
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `result`        | ``       | true     |             |
+
+Result:
+
+```typescript
+
+```
+
+Capabilities:
+
+| Role     | Capability                                          |
+| -------- | --------------------------------------------------- |
+| provides | xrn:firebolt:capability:discovery:purchased-content |
+
+#### Examples
+
+Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.purchasesResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "totalCount": 10,
+      "expires": "2025-01-01T00:00:00.000Z",
+      "entries": [
+        {
+          "identifiers": {
+            "entityId": "345",
+            "entityType": "program",
+            "programType": "movie"
+          },
+          "info": {
+            "title": "Cool Runnings",
+            "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+            "releaseDate": "1993-01-01T00:00:00.000Z",
+            "contentRatings": [
+              {
+                "scheme": "US-Movie",
+                "rating": "PG"
+              },
+              {
+                "scheme": "CA-Movie",
+                "rating": "G"
+              }
+            ]
+          },
+          "waysToWatch": [
+            {
+              "identifiers": {
+                "assetId": "123"
+              },
+              "expires": "2025-01-01T00:00:00.000Z",
+              "entitled": true,
+              "entitledExpires": "2025-01-01T00:00:00.000Z",
+              "offeringType": "buy",
+              "price": 2.99,
+              "videoQuality": ["UHD"],
+              "audioProfile": ["dolbyAtmos"],
+              "audioLanguages": ["en"],
+              "closedCaptions": ["en"],
+              "subtitles": ["es"],
+              "audioDescriptions": ["en"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
 ### signIn
 
 Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
@@ -3987,6 +4390,147 @@ Response:
 ```
 
 </details>
+
+---
+
+### userInterestError
+
+_This is an private RPC method._
+
+Internal API for .onRequestUserInterest Provider to send back error.
+
+Parameters:
+
+| Param           | Type                    | Required       | Description |
+| --------------- | ----------------------- | -------------- | ----------- | ----------- |
+| `correlationId` | `string`                | true           |             |
+| `error`         | [`                      | Property       | Type        | Description |
+| ----------      | ------                  | -------------  |
+| `${property}`   | [${type}](${type.link}) | ${description} |
+| `](#)           | true                    |                |
+
+Result:
+
+```typescript
+
+```
+
+Capabilities:
+
+| Role     | Capability                                      |
+| -------- | ----------------------------------------------- |
+| provides | xrn:firebolt:capability:discovery:user-interest |
+
+#### Examples
+
+Example 1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+### userInterestResponse
+
+_This is an private RPC method._
+
+Internal API for .onRequestUserInterest Provider to send back response.
+
+Parameters:
+
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `result`        | ``       | true     |             |
+
+Result:
+
+```typescript
+
+```
+
+Capabilities:
+
+| Role     | Capability                                      |
+| -------- | ----------------------------------------------- |
+| provides | xrn:firebolt:capability:discovery:user-interest |
+
+#### Examples
+
+Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
 
 ---
 
@@ -4328,15 +4872,19 @@ Response:
 
 See: [policy](#policy)
 
-### requestDetails
+### onRequestDetails
 
-```typescript
-function listen('requestDetails', () => void): Promise<number>
-```
+_This is an private RPC method._
 
-See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.
 
-Event value:
+Parameters:
+
+| Param    | Type      | Required | Description |
+| -------- | --------- | -------- | ----------- |
+| `listen` | `boolean` | true     |             |
+
+Result:
 
 | Property        | Type   | Description |
 | --------------- | ------ | ----------- |
@@ -4353,29 +4901,8 @@ Capabilities:
 
 Send entity info for a movie to the platform.
 
-JavaScript:
+JSON-RPC:
 
-```javascript
-import { Discovery } from '@firebolt-js/sdk'
-
-Discovery.listen('requestDetails', (request) => {
-  console.log(request)
-})
-```
-
-Value of `request`:
-
-```javascript
-{
-	"correlationId": "xyz",
-	"parameters": {
-		"entityId": "345"
-	}
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
 Request:
 
 ```json
@@ -4403,34 +4930,11 @@ Response:
   }
 }
 ```
-
-</details>
 
 Send entity info for a movie with a trailer to the platform.
 
-JavaScript:
+JSON-RPC:
 
-```javascript
-import { Discovery } from '@firebolt-js/sdk'
-
-Discovery.listen('requestDetails', (request) => {
-  console.log(request)
-})
-```
-
-Value of `request`:
-
-```javascript
-{
-	"correlationId": "xyz",
-	"parameters": {
-		"entityId": "345"
-	}
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
 Request:
 
 ```json
@@ -4459,19 +4963,21 @@ Response:
 }
 ```
 
-</details>
-
 ---
 
-### requestPurchases
+### onRequestPurchases
 
-```typescript
-function listen('requestPurchases', () => void): Promise<number>
-```
+_This is an private RPC method._
 
-See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.
 
-Event value:
+Parameters:
+
+| Param    | Type      | Required | Description |
+| -------- | --------- | -------- | ----------- |
+| `listen` | `boolean` | true     |             |
+
+Result:
 
 | Property        | Type   | Description |
 | --------------- | ------ | ----------- |
@@ -4488,27 +4994,8 @@ Capabilities:
 
 Inform the platform of the user's purchased content
 
-JavaScript:
+JSON-RPC:
 
-```javascript
-import { Discovery } from '@firebolt-js/sdk'
-
-Discovery.listen('requestPurchases', (request) => {
-  console.log(request)
-})
-```
-
-Value of `request`:
-
-```javascript
-{
-	"correlationId": "xyz",
-	"parameters": {}
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
 Request:
 
 ```json
@@ -4535,19 +5022,21 @@ Response:
 }
 ```
 
-</details>
-
 ---
 
-### requestUserInterest
+### onRequestUserInterest
 
-```typescript
-function listen('requestUserInterest', () => void): Promise<number>
-```
+_This is an private RPC method._
 
-See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+Provide information about the entity currently displayed or selected on the screen.
 
-Event value:
+Parameters:
+
+| Param    | Type      | Required | Description |
+| -------- | --------- | -------- | ----------- |
+| `listen` | `boolean` | true     |             |
+
+Result:
 
 | Property        | Type   | Description |
 | --------------- | ------ | ----------- |
@@ -4564,30 +5053,8 @@ Capabilities:
 
 Default Example
 
-JavaScript:
+JSON-RPC:
 
-```javascript
-import { Discovery } from '@firebolt-js/sdk'
-
-Discovery.listen('requestUserInterest', (request) => {
-  console.log(request)
-})
-```
-
-Value of `request`:
-
-```javascript
-{
-	"correlationId": "xyz",
-	"parameters": {
-		"type": "interest",
-		"reason": "playlist"
-	}
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
 Request:
 
 ```json
@@ -4616,8 +5083,6 @@ Response:
   }
 }
 ```
-
-</details>
 
 ---
 

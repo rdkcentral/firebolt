@@ -215,7 +215,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Provides |
 | -------- |
-| [Discovery.details](./core/Discovery/#details)<br/>[Discovery.onRequestDetails](./core/Discovery/#requestdetails)<br/>[Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
+| [Discovery.details](./core/Discovery/#details)<br/>[Discovery.onRequestDetails](./core/Discovery/#requestdetails)<br/>[Discovery.detailsResponse](./core/Discovery/#detailsresponse)<br/>[Discovery.detailsError](./core/Discovery/#detailserror)<br/>[Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
 
 
 ### `xrn:firebolt:capability:discovery:navigate-to`
@@ -242,7 +242,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Provides |
 | -------- |
-| [Discovery.purchases](./core/Discovery/#purchases)<br/>[Discovery.onRequestPurchases](./core/Discovery/#requestpurchases)<br/>[Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
+| [Discovery.purchases](./core/Discovery/#purchases)<br/>[Discovery.onRequestPurchases](./core/Discovery/#requestpurchases)<br/>[Discovery.purchasesResponse](./core/Discovery/#purchasesresponse)<br/>[Discovery.purchasesError](./core/Discovery/#purchaseserror)<br/>[Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
 
 
 ### `xrn:firebolt:capability:discovery:sign-in-status`
@@ -268,7 +268,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Provides |
 | -------- |
-| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest) |
+| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest)<br/>[Discovery.userInterestResponse](./core/Discovery/#userinterestresponse)<br/>[Discovery.userInterestError](./core/Discovery/#userinteresterror) |
 
 
 ### `xrn:firebolt:capability:discovery:watch-next`

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.2.0-feature-user-interest.2
+Version UserGrants 1.2.0-feature-user-interest.4
 
 ## Table of Contents
 
