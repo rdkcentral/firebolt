@@ -20124,6 +20124,11 @@
 							"action": {
 								"const": "home"
 							}
+						},
+						"not": {
+							"required": [
+								"data"
+							]
 						}
 					}
 				],
@@ -20152,6 +20157,11 @@
 							"action": {
 								"const": "launch"
 							}
+						},
+						"not": {
+							"required": [
+								"data"
+							]
 						}
 					}
 				],
@@ -20340,7 +20350,10 @@
 								},
 								"additionalProperties": false
 							}
-						}
+						},
+						"required": [
+							"data"
+						]
 					}
 				],
 				"examples": [
@@ -20498,6 +20511,7 @@
 									"type": "object",
 									"properties": {
 										"options": {
+											"type": "object",
 											"maxProperties": 1
 										}
 									}
@@ -20506,6 +20520,7 @@
 									"type": "object",
 									"properties": {
 										"options": {
+											"type": "object",
 											"maxProperties": 0
 										}
 									}
