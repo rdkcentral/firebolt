@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.2.0-feature-user-interest.5
+Version AcknowledgeChallenge 1.2.0-feature-user-interest.6
 
 ## Table of Contents
 

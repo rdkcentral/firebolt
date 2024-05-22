@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.2.0-feature-user-interest.5
+Version Content 1.2.0-feature-user-interest.6
 
 ## Table of Contents
 
@@ -24,6 +24,8 @@ Version Content 1.2.0-feature-user-interest.5
 - [Events](#events)
   - [userInterest](#userinterest)
 - [Types](#types)
+  - [InterestResult](#interestresult)
+  - [InterestEvent](#interestevent)
 
 ## Usage
 
@@ -407,3 +409,38 @@ Response:
 ---
 
 ## Types
+
+### InterestResult
+
+````typescript
+```typescript
+
+````
+
+````
+
+See also:
+
+
+
+---
+
+### InterestEvent
+
+
+
+```typescript
+```typescript
+
+````
+
+```
+
+See also:
+
+
+
+
+
+---
+```

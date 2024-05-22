@@ -19,7 +19,6 @@ Version Discovery 0.0.0-unknown.0
 - [Types](#types)
   - [InterestType](#interesttype)
   - [InterestReason](#interestreason)
-  - [Interest](#interest)
   - [EntityInfoResult](#entityinforesult)
   - [PurchasedContentResult](#purchasedcontentresult)
 
@@ -58,28 +57,11 @@ InterestReason Enumeration:
 
 ---
 
-### Interest
-
-````typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
-
-
----
-
 ### EntityInfoResult
 
 The result for an `entityInfo()` push or pull.
 
-```typescript
+````typescript
 ```typescript
 
 ````
