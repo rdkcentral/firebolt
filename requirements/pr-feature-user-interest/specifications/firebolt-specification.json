@@ -684,8 +684,8 @@
 		"xrn:firebolt:capability:discovery:entity-info": {
 			"level": "must",
 			"use": {
-				"public": true,
-				"negotiable": true
+				"public": false,
+				"negotiable": false
 			},
 			"manage": {
 				"public": false,
@@ -729,8 +729,8 @@
 		"xrn:firebolt:capability:discovery:purchased-content": {
 			"level": "must",
 			"use": {
-				"public": true,
-				"negotiable": true
+				"public": false,
+				"negotiable": false
 			},
 			"manage": {
 				"public": false,
@@ -927,7 +927,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.2.0-feature-user-interest.4",
+				"version": "1.2.0-feature-user-interest.5",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -6553,273 +6553,10 @@
 					]
 				},
 				{
-					"name": "Content.requestDetails",
-					"tags": [
-						{
-							"name": "requestor",
-							"x-subscriber-type": "global"
-						},
-						{
-							"name": "capabilities",
-							"x-provided-by": "Discovery.onRequestDetails",
-							"x-uses": [
-								"xrn:firebolt:capability:discovery:entity-info"
-							]
-						}
-					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
-					"params": [
-						{
-							"name": "entityId",
-							"required": true,
-							"schema": {
-								"type": "string"
-							}
-						}
-					],
-					"result": {
-						"name": "details",
-						"schema": {
-							"$ref": "#/x-schemas/Discovery/DetailsResult"
-						},
-						"summary": "The entityInfo data."
-					},
-					"examples": [
-						{
-							"name": "Send entity info for a movie to the platform.",
-							"params": [
-								{
-									"name": "entityId",
-									"value": "345"
-								}
-							],
-							"result": {
-								"name": "details",
-								"value": {
-									"expires": "2025-01-01T00:00:00.000Z",
-									"details": {
-										"identifiers": {
-											"entityId": "345",
-											"entityType": "program",
-											"programType": "movie"
-										},
-										"info": {
-											"title": "Cool Runnings",
-											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-											"releaseDate": "1993-01-01T00:00:00.000Z",
-											"contentRatings": [
-												{
-													"scheme": "US-Movie",
-													"rating": "PG"
-												},
-												{
-													"scheme": "CA-Movie",
-													"rating": "G"
-												}
-											]
-										},
-										"waysToWatch": [
-											{
-												"identifiers": {
-													"assetId": "123"
-												},
-												"expires": "2025-01-01T00:00:00.000Z",
-												"entitled": true,
-												"entitledExpires": "2025-01-01T00:00:00.000Z",
-												"offeringType": "buy",
-												"price": 2.99,
-												"videoQuality": [
-													"UHD"
-												],
-												"audioProfile": [
-													"dolbyAtmos"
-												],
-												"audioLanguages": [
-													"en"
-												],
-												"closedCaptions": [
-													"en"
-												],
-												"subtitles": [
-													"es"
-												],
-												"audioDescriptions": [
-													"en"
-												]
-											}
-										]
-									}
-								}
-							}
-						},
-						{
-							"name": "Send entity info for a movie with a trailer to the platform.",
-							"params": [
-								{
-									"name": "entityId",
-									"value": "345"
-								}
-							],
-							"result": {
-								"name": "details",
-								"value": {
-									"expires": "2025-01-01T00:00:00.000Z",
-									"details": {
-										"identifiers": {
-											"entityId": "345",
-											"entityType": "program",
-											"programType": "movie"
-										},
-										"info": {
-											"title": "Cool Runnings",
-											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-											"releaseDate": "1993-01-01T00:00:00.000Z",
-											"contentRatings": [
-												{
-													"scheme": "US-Movie",
-													"rating": "PG"
-												},
-												{
-													"scheme": "CA-Movie",
-													"rating": "G"
-												}
-											]
-										},
-										"waysToWatch": [
-											{
-												"identifiers": {
-													"assetId": "123"
-												},
-												"expires": "2025-01-01T00:00:00.000Z",
-												"entitled": true,
-												"entitledExpires": "2025-01-01T00:00:00.000Z",
-												"offeringType": "buy",
-												"price": 2.99,
-												"videoQuality": [
-													"UHD"
-												],
-												"audioProfile": [
-													"dolbyAtmos"
-												],
-												"audioLanguages": [
-													"en"
-												],
-												"closedCaptions": [
-													"en"
-												],
-												"subtitles": [
-													"es"
-												],
-												"audioDescriptions": [
-													"en"
-												]
-											}
-										]
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "Content.requestPurchases",
-					"tags": [
-						{
-							"name": "requestor"
-						},
-						{
-							"name": "capabilities",
-							"x-provided-by": "Discovery.onRequestPurchases",
-							"x-uses": [
-								"xrn:firebolt:capability:discovery:purchased-content"
-							]
-						}
-					],
-					"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
-					"params": [],
-					"result": {
-						"name": "purchases",
-						"required": true,
-						"schema": {
-							"$ref": "#/x-schemas/Discovery/DetailsArrayResult"
-						},
-						"summary": "The data for the purchasedContent"
-					},
-					"examples": [
-						{
-							"name": "Inform the platform of the user's purchased content",
-							"params": [],
-							"result": {
-								"name": "purchases",
-								"value": {
-									"totalCount": 10,
-									"expires": "2025-01-01T00:00:00.000Z",
-									"entries": [
-										{
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									]
-								}
-							}
-						}
-					],
-					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
-				},
-				{
 					"name": "Content.requestUserInterest",
 					"tags": [
 						{
-							"name": "requestor"
+							"name": "push-pull"
 						},
 						{
 							"name": "capabilities",
@@ -6848,10 +6585,9 @@
 						}
 					],
 					"result": {
-						"name": "entity",
-						"required": true,
+						"name": "interest",
 						"schema": {
-							"$ref": "#/x-schemas/Entity/EntityDetails"
+							"$ref": "#/x-schemas/Discovery/Interest"
 						},
 						"summary": "The EntityDetails data."
 					},
@@ -6869,374 +6605,10 @@
 								}
 							],
 							"result": {
-								"name": "entity",
+								"name": "interest",
 								"value": {
-									"identifiers": {
-										"entityId": "345",
-										"entityType": "program",
-										"programType": "movie"
-									},
-									"info": {
-										"title": "Cool Runnings",
-										"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-										"releaseDate": "1993-01-01T00:00:00.000Z",
-										"contentRatings": [
-											{
-												"scheme": "US-Movie",
-												"rating": "PG"
-											},
-											{
-												"scheme": "CA-Movie",
-												"rating": "G"
-											}
-										]
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.details",
-					"tags": [
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:entity-info"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
-					"params": [
-						{
-							"name": "entityId",
-							"required": true,
-							"schema": {
-								"type": "string"
-							}
-						},
-						{
-							"name": "details",
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/DetailsResult"
-							},
-							"summary": "The entityInfo data.",
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Send entity info for a movie to the platform.",
-							"params": [
-								{
-									"name": "entityId",
-									"value": "345"
-								},
-								{
-									"name": "details",
-									"value": {
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						},
-						{
-							"name": "Send entity info for a movie with a trailer to the platform.",
-							"params": [
-								{
-									"name": "entityId",
-									"value": "345"
-								},
-								{
-									"name": "details",
-									"value": {
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.purchases",
-					"tags": [
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
-					"params": [
-						{
-							"name": "purchases",
-							"required": true,
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/DetailsArrayResult"
-							},
-							"summary": "The data for the purchasedContent"
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Inform the platform of the user's purchased content",
-							"params": [
-								{
-									"name": "purchases",
-									"value": {
-										"totalCount": 10,
-										"expires": "2025-01-01T00:00:00.000Z",
-										"entries": [
-											{
-												"identifiers": {
-													"entityId": "345",
-													"entityType": "program",
-													"programType": "movie"
-												},
-												"info": {
-													"title": "Cool Runnings",
-													"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-													"releaseDate": "1993-01-01T00:00:00.000Z",
-													"contentRatings": [
-														{
-															"scheme": "US-Movie",
-															"rating": "PG"
-														},
-														{
-															"scheme": "CA-Movie",
-															"rating": "G"
-														}
-													]
-												},
-												"waysToWatch": [
-													{
-														"identifiers": {
-															"assetId": "123"
-														},
-														"expires": "2025-01-01T00:00:00.000Z",
-														"entitled": true,
-														"entitledExpires": "2025-01-01T00:00:00.000Z",
-														"offeringType": "buy",
-														"price": 2.99,
-														"videoQuality": [
-															"UHD"
-														],
-														"audioProfile": [
-															"dolbyAtmos"
-														],
-														"audioLanguages": [
-															"en"
-														],
-														"closedCaptions": [
-															"en"
-														],
-														"subtitles": [
-															"es"
-														],
-														"audioDescriptions": [
-															"en"
-														]
-													}
-												]
-											}
-										]
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					],
-					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
-				},
-				{
-					"name": "Discovery.userInterest",
-					"tags": [
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Provide information about the entity currently displayed or selected on the screen.",
-					"description": "Provide information about the entity currently displayed or selected on the screen.",
-					"params": [
-						{
-							"name": "type",
-							"required": true,
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/InterestType"
-							}
-						},
-						{
-							"name": "reason",
-							"required": true,
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/InterestReason"
-							}
-						},
-						{
-							"name": "entity",
-							"required": true,
-							"schema": {
-								"$ref": "#/x-schemas/Entity/EntityDetails"
-							},
-							"summary": "The EntityDetails data."
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Default Example",
-							"params": [
-								{
-									"name": "type",
-									"value": "interest"
-								},
-								{
-									"name": "reason",
-									"value": "playlist"
-								},
-								{
-									"name": "entity",
-									"value": {
+									"appId": "cool-app",
+									"entity": {
 										"identifiers": {
 											"entityId": "345",
 											"entityType": "program",
@@ -7259,829 +6631,9 @@
 										}
 									}
 								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
 							}
 						}
 					]
-				},
-				{
-					"name": "Discovery.onRequestDetails",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "event",
-							"x-pulls-for": "Discovery.details",
-							"x-response": {
-								"$ref": "#/x-schemas/Discovery/DetailsResult",
-								"examples": [
-									{
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									},
-									{
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								]
-							},
-							"x-error": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"code",
-									"message"
-								],
-								"properties": {
-									"code": {
-										"title": "errorObjectCode",
-										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-										"type": "integer"
-									},
-									"message": {
-										"title": "errorObjectMessage",
-										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-										"type": "string"
-									},
-									"data": {
-										"title": "errorObjectData",
-										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-									}
-								}
-							}
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:entity-info"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
-					"params": [
-						{
-							"name": "listen",
-							"required": true,
-							"schema": {
-								"type": "boolean"
-							}
-						}
-					],
-					"result": {
-						"name": "request",
-						"schema": {
-							"anyOf": [
-								{
-									"$ref": "#/x-schemas/Types/ListenResponse"
-								},
-								{
-									"type": "object",
-									"required": [
-										"correlationId",
-										"parameters"
-									],
-									"properties": {
-										"correlationId": {
-											"type": "string"
-										},
-										"parameters": {
-											"$ref": "#/components/schemas/DetailsProviderParameters"
-										}
-									},
-									"additionalProperties": false
-								}
-							]
-						}
-					},
-					"examples": [
-						{
-							"name": "Send entity info for a movie to the platform.",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "request",
-								"value": {
-									"correlationId": "xyz",
-									"parameters": {
-										"entityId": "345"
-									}
-								}
-							}
-						},
-						{
-							"name": "Send entity info for a movie with a trailer to the platform.",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "request",
-								"value": {
-									"correlationId": "xyz",
-									"parameters": {
-										"entityId": "345"
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.onRequestPurchases",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "event",
-							"x-pulls-for": "Discovery.purchases",
-							"x-response": {
-								"$ref": "#/x-schemas/Discovery/DetailsArrayResult",
-								"examples": [
-									{
-										"totalCount": 10,
-										"expires": "2025-01-01T00:00:00.000Z",
-										"entries": [
-											{
-												"identifiers": {
-													"entityId": "345",
-													"entityType": "program",
-													"programType": "movie"
-												},
-												"info": {
-													"title": "Cool Runnings",
-													"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-													"releaseDate": "1993-01-01T00:00:00.000Z",
-													"contentRatings": [
-														{
-															"scheme": "US-Movie",
-															"rating": "PG"
-														},
-														{
-															"scheme": "CA-Movie",
-															"rating": "G"
-														}
-													]
-												},
-												"waysToWatch": [
-													{
-														"identifiers": {
-															"assetId": "123"
-														},
-														"expires": "2025-01-01T00:00:00.000Z",
-														"entitled": true,
-														"entitledExpires": "2025-01-01T00:00:00.000Z",
-														"offeringType": "buy",
-														"price": 2.99,
-														"videoQuality": [
-															"UHD"
-														],
-														"audioProfile": [
-															"dolbyAtmos"
-														],
-														"audioLanguages": [
-															"en"
-														],
-														"closedCaptions": [
-															"en"
-														],
-														"subtitles": [
-															"es"
-														],
-														"audioDescriptions": [
-															"en"
-														]
-													}
-												]
-											}
-										]
-									}
-								]
-							},
-							"x-error": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"code",
-									"message"
-								],
-								"properties": {
-									"code": {
-										"title": "errorObjectCode",
-										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-										"type": "integer"
-									},
-									"message": {
-										"title": "errorObjectMessage",
-										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-										"type": "string"
-									},
-									"data": {
-										"title": "errorObjectData",
-										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-									}
-								}
-							}
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
-					"params": [
-						{
-							"name": "listen",
-							"required": true,
-							"schema": {
-								"type": "boolean"
-							}
-						}
-					],
-					"result": {
-						"name": "request",
-						"schema": {
-							"anyOf": [
-								{
-									"$ref": "#/x-schemas/Types/ListenResponse"
-								},
-								{
-									"type": "object",
-									"required": [
-										"correlationId",
-										"parameters"
-									],
-									"properties": {
-										"correlationId": {
-											"type": "string"
-										},
-										"parameters": {
-											"$ref": "#/components/schemas/PurchasesProviderParameters"
-										}
-									},
-									"additionalProperties": false
-								}
-							]
-						}
-					},
-					"examples": [
-						{
-							"name": "Inform the platform of the user's purchased content",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "request",
-								"value": {
-									"correlationId": "xyz",
-									"parameters": {}
-								}
-							}
-						}
-					],
-					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
-				},
-				{
-					"name": "Discovery.onRequestUserInterest",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "event",
-							"x-pulls-for": "Discovery.userInterest",
-							"x-response": {
-								"$ref": "#/x-schemas/Entity/EntityDetails",
-								"examples": [
-									{
-										"identifiers": {
-											"entityId": "345",
-											"entityType": "program",
-											"programType": "movie"
-										},
-										"info": {
-											"title": "Cool Runnings",
-											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-											"releaseDate": "1993-01-01T00:00:00.000Z",
-											"contentRatings": [
-												{
-													"scheme": "US-Movie",
-													"rating": "PG"
-												},
-												{
-													"scheme": "CA-Movie",
-													"rating": "G"
-												}
-											]
-										}
-									}
-								]
-							},
-							"x-error": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"code",
-									"message"
-								],
-								"properties": {
-									"code": {
-										"title": "errorObjectCode",
-										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-										"type": "integer"
-									},
-									"message": {
-										"title": "errorObjectMessage",
-										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-										"type": "string"
-									},
-									"data": {
-										"title": "errorObjectData",
-										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-									}
-								}
-							}
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Provide information about the entity currently displayed or selected on the screen.",
-					"description": "Provide information about the entity currently displayed or selected on the screen.",
-					"params": [
-						{
-							"name": "listen",
-							"required": true,
-							"schema": {
-								"type": "boolean"
-							}
-						}
-					],
-					"result": {
-						"name": "request",
-						"schema": {
-							"anyOf": [
-								{
-									"$ref": "#/x-schemas/Types/ListenResponse"
-								},
-								{
-									"type": "object",
-									"required": [
-										"correlationId",
-										"parameters"
-									],
-									"properties": {
-										"correlationId": {
-											"type": "string"
-										},
-										"parameters": {
-											"$ref": "#/components/schemas/UserInterestProviderParameters"
-										}
-									},
-									"additionalProperties": false
-								}
-							]
-						}
-					},
-					"examples": [
-						{
-							"name": "Default Example",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "request",
-								"value": {
-									"correlationId": "xyz",
-									"parameters": {
-										"type": "interest",
-										"reason": "playlist"
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "Content.onDetails",
-					"tags": [
-						{
-							"name": "event"
-						},
-						{
-							"name": "capabilities",
-							"x-provided-by": "Discovery.details",
-							"x-uses": [
-								"xrn:firebolt:capability:discovery:entity-info"
-							]
-						}
-					],
-					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
-					"params": [
-						{
-							"name": "listen",
-							"required": true,
-							"schema": {
-								"type": "boolean"
-							}
-						}
-					],
-					"result": {
-						"name": "data",
-						"schema": {
-							"anyOf": [
-								{
-									"$ref": "#/x-schemas/Types/ListenResponse"
-								},
-								{
-									"$ref": "#/components/schemas/DetailsInfo"
-								}
-							]
-						}
-					},
-					"examples": [
-						{
-							"name": "Send entity info for a movie to the platform.",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "data",
-								"value": {
-									"entityId": "345",
-									"details": {
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								}
-							}
-						},
-						{
-							"name": "Send entity info for a movie with a trailer to the platform.",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "data",
-								"value": {
-									"entityId": "345",
-									"details": {
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "Content.onPurchases",
-					"tags": [
-						{
-							"name": "event"
-						},
-						{
-							"name": "capabilities",
-							"x-provided-by": "Discovery.purchases",
-							"x-uses": [
-								"xrn:firebolt:capability:discovery:purchased-content"
-							]
-						}
-					],
-					"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
-					"params": [
-						{
-							"name": "listen",
-							"required": true,
-							"schema": {
-								"type": "boolean"
-							}
-						}
-					],
-					"result": {
-						"name": "purchases",
-						"required": true,
-						"schema": {
-							"anyOf": [
-								{
-									"$ref": "#/x-schemas/Types/ListenResponse"
-								},
-								{
-									"$ref": "#/x-schemas/Discovery/DetailsArrayResult"
-								}
-							]
-						},
-						"summary": "The data for the purchasedContent"
-					},
-					"examples": [
-						{
-							"name": "Inform the platform of the user's purchased content",
-							"params": [
-								{
-									"name": "listen",
-									"value": true
-								}
-							],
-							"result": {
-								"name": "purchases",
-								"value": {
-									"totalCount": 10,
-									"expires": "2025-01-01T00:00:00.000Z",
-									"entries": [
-										{
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									]
-								}
-							}
-						}
-					],
-					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
 				},
 				{
 					"name": "Content.onUserInterest",
@@ -8101,20 +6653,6 @@
 					"description": "Provide information about the entity currently displayed or selected on the screen.",
 					"params": [
 						{
-							"name": "type",
-							"required": true,
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/InterestType"
-							}
-						},
-						{
-							"name": "reason",
-							"required": true,
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/InterestReason"
-							}
-						},
-						{
 							"name": "listen",
 							"required": true,
 							"schema": {
@@ -8123,15 +6661,14 @@
 						}
 					],
 					"result": {
-						"name": "entity",
-						"required": true,
+						"name": "interest",
 						"schema": {
 							"anyOf": [
 								{
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/x-schemas/Entity/EntityDetails"
+									"$ref": "#/x-schemas/Discovery/Interest"
 								}
 							]
 						},
@@ -8142,758 +6679,17 @@
 							"name": "Default Example",
 							"params": [
 								{
-									"name": "type",
-									"value": "interest"
-								},
-								{
-									"name": "reason",
-									"value": "playlist"
-								},
-								{
 									"name": "listen",
 									"value": true
 								}
 							],
 							"result": {
-								"name": "entity",
+								"name": "interest",
 								"value": {
-									"identifiers": {
-										"entityId": "345",
-										"entityType": "program",
-										"programType": "movie"
-									},
-									"info": {
-										"title": "Cool Runnings",
-										"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-										"releaseDate": "1993-01-01T00:00:00.000Z",
-										"contentRatings": [
-											{
-												"scheme": "US-Movie",
-												"rating": "PG"
-											},
-											{
-												"scheme": "CA-Movie",
-												"rating": "G"
-											}
-										]
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.detailsResponse",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:entity-info",
-							"x-response-for": "Discovery.onRequestDetails"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Internal API for .onRequestDetails Provider to send back response.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
-					"params": [
-						{
-							"name": "correlationId",
-							"schema": {
-								"type": "string"
-							},
-							"required": true
-						},
-						{
-							"name": "result",
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/DetailsResult",
-								"examples": [
-									{
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									},
-									{
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								]
-							},
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Example #1",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "result",
-									"value": {
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						},
-						{
-							"name": "Example #2",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "result",
-									"value": {
-										"expires": "2025-01-01T00:00:00.000Z",
-										"details": {
-											"identifiers": {
-												"entityId": "345",
-												"entityType": "program",
-												"programType": "movie"
-											},
-											"info": {
-												"title": "Cool Runnings",
-												"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-												"releaseDate": "1993-01-01T00:00:00.000Z",
-												"contentRatings": [
-													{
-														"scheme": "US-Movie",
-														"rating": "PG"
-													},
-													{
-														"scheme": "CA-Movie",
-														"rating": "G"
-													}
-												]
-											},
-											"waysToWatch": [
-												{
-													"identifiers": {
-														"assetId": "123"
-													},
-													"expires": "2025-01-01T00:00:00.000Z",
-													"entitled": true,
-													"entitledExpires": "2025-01-01T00:00:00.000Z",
-													"offeringType": "buy",
-													"price": 2.99,
-													"videoQuality": [
-														"UHD"
-													],
-													"audioProfile": [
-														"dolbyAtmos"
-													],
-													"audioLanguages": [
-														"en"
-													],
-													"closedCaptions": [
-														"en"
-													],
-													"subtitles": [
-														"es"
-													],
-													"audioDescriptions": [
-														"en"
-													]
-												}
-											]
-										}
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.detailsError",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:entity-info",
-							"x-error-for": "Discovery.onRequestDetails"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Internal API for .onRequestDetails Provider to send back error.",
-					"description": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow. Includes information about the program entity and its relevant associated entities, such as extras, previews, and, in the case of TV series, seasons and episodes.\n\nSee the `EntityInfo` and `WayToWatch` data structures below for more information.\n\nThe app only needs to implement Pull support for `entityInfo` at this time.",
-					"params": [
-						{
-							"name": "correlationId",
-							"schema": {
-								"type": "string"
-							},
-							"required": true
-						},
-						{
-							"name": "error",
-							"schema": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"code",
-									"message"
-								],
-								"properties": {
-									"code": {
-										"title": "errorObjectCode",
-										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-										"type": "integer"
-									},
-									"message": {
-										"title": "errorObjectMessage",
-										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-										"type": "string"
-									},
-									"data": {
-										"title": "errorObjectData",
-										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-									}
-								}
-							},
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Example 1",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "error",
-									"value": {
-										"code": 1,
-										"message": "Error"
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.purchasesResponse",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:purchased-content",
-							"x-response-for": "Discovery.onRequestPurchases"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Internal API for .onRequestPurchases Provider to send back response.",
-					"params": [
-						{
-							"name": "correlationId",
-							"schema": {
-								"type": "string"
-							},
-							"required": true
-						},
-						{
-							"name": "result",
-							"schema": {
-								"$ref": "#/x-schemas/Discovery/DetailsArrayResult",
-								"examples": [
-									{
-										"totalCount": 10,
-										"expires": "2025-01-01T00:00:00.000Z",
-										"entries": [
-											{
-												"identifiers": {
-													"entityId": "345",
-													"entityType": "program",
-													"programType": "movie"
-												},
-												"info": {
-													"title": "Cool Runnings",
-													"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-													"releaseDate": "1993-01-01T00:00:00.000Z",
-													"contentRatings": [
-														{
-															"scheme": "US-Movie",
-															"rating": "PG"
-														},
-														{
-															"scheme": "CA-Movie",
-															"rating": "G"
-														}
-													]
-												},
-												"waysToWatch": [
-													{
-														"identifiers": {
-															"assetId": "123"
-														},
-														"expires": "2025-01-01T00:00:00.000Z",
-														"entitled": true,
-														"entitledExpires": "2025-01-01T00:00:00.000Z",
-														"offeringType": "buy",
-														"price": 2.99,
-														"videoQuality": [
-															"UHD"
-														],
-														"audioProfile": [
-															"dolbyAtmos"
-														],
-														"audioLanguages": [
-															"en"
-														],
-														"closedCaptions": [
-															"en"
-														],
-														"subtitles": [
-															"es"
-														],
-														"audioDescriptions": [
-															"en"
-														]
-													}
-												]
-											}
-										]
-									}
-								]
-							},
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Example",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "result",
-									"value": {
-										"totalCount": 10,
-										"expires": "2025-01-01T00:00:00.000Z",
-										"entries": [
-											{
-												"identifiers": {
-													"entityId": "345",
-													"entityType": "program",
-													"programType": "movie"
-												},
-												"info": {
-													"title": "Cool Runnings",
-													"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-													"releaseDate": "1993-01-01T00:00:00.000Z",
-													"contentRatings": [
-														{
-															"scheme": "US-Movie",
-															"rating": "PG"
-														},
-														{
-															"scheme": "CA-Movie",
-															"rating": "G"
-														}
-													]
-												},
-												"waysToWatch": [
-													{
-														"identifiers": {
-															"assetId": "123"
-														},
-														"expires": "2025-01-01T00:00:00.000Z",
-														"entitled": true,
-														"entitledExpires": "2025-01-01T00:00:00.000Z",
-														"offeringType": "buy",
-														"price": 2.99,
-														"videoQuality": [
-															"UHD"
-														],
-														"audioProfile": [
-															"dolbyAtmos"
-														],
-														"audioLanguages": [
-															"en"
-														],
-														"closedCaptions": [
-															"en"
-														],
-														"subtitles": [
-															"es"
-														],
-														"audioDescriptions": [
-															"en"
-														]
-													}
-												]
-											}
-										]
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					],
-					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
-				},
-				{
-					"name": "Discovery.purchasesError",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:purchased-content",
-							"x-error-for": "Discovery.onRequestPurchases"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Internal API for .onRequestPurchases Provider to send back error.",
-					"params": [
-						{
-							"name": "correlationId",
-							"schema": {
-								"type": "string"
-							},
-							"required": true
-						},
-						{
-							"name": "error",
-							"schema": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"code",
-									"message"
-								],
-								"properties": {
-									"code": {
-										"title": "errorObjectCode",
-										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-										"type": "integer"
-									},
-									"message": {
-										"title": "errorObjectMessage",
-										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-										"type": "string"
-									},
-									"data": {
-										"title": "errorObjectData",
-										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-									}
-								}
-							},
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Example 1",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "error",
-									"value": {
-										"code": 1,
-										"message": "Error"
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					],
-					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
-				},
-				{
-					"name": "Discovery.userInterestResponse",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest",
-							"x-response-for": "Discovery.onRequestUserInterest"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Internal API for .onRequestUserInterest Provider to send back response.",
-					"description": "Provide information about the entity currently displayed or selected on the screen.",
-					"params": [
-						{
-							"name": "correlationId",
-							"schema": {
-								"type": "string"
-							},
-							"required": true
-						},
-						{
-							"name": "result",
-							"schema": {
-								"$ref": "#/x-schemas/Entity/EntityDetails",
-								"examples": [
-									{
-										"identifiers": {
-											"entityId": "345",
-											"entityType": "program",
-											"programType": "movie"
-										},
-										"info": {
-											"title": "Cool Runnings",
-											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-											"releaseDate": "1993-01-01T00:00:00.000Z",
-											"contentRatings": [
-												{
-													"scheme": "US-Movie",
-													"rating": "PG"
-												},
-												{
-													"scheme": "CA-Movie",
-													"rating": "G"
-												}
-											]
-										}
-									}
-								]
-							},
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Example",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "result",
-									"value": {
+									"appId": "cool-app",
+									"type": "interest",
+									"reason": "playlist",
+									"entity": {
 										"identifiers": {
 											"entityId": "345",
 											"entityType": "program",
@@ -8916,93 +6712,6 @@
 										}
 									}
 								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
-							}
-						}
-					]
-				},
-				{
-					"name": "Discovery.userInterestError",
-					"tags": [
-						{
-							"name": "rpc-only"
-						},
-						{
-							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest",
-							"x-error-for": "Discovery.onRequestUserInterest"
-						},
-						{
-							"name": "push"
-						}
-					],
-					"summary": "Internal API for .onRequestUserInterest Provider to send back error.",
-					"description": "Provide information about the entity currently displayed or selected on the screen.",
-					"params": [
-						{
-							"name": "correlationId",
-							"schema": {
-								"type": "string"
-							},
-							"required": true
-						},
-						{
-							"name": "error",
-							"schema": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"code",
-									"message"
-								],
-								"properties": {
-									"code": {
-										"title": "errorObjectCode",
-										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-										"type": "integer"
-									},
-									"message": {
-										"title": "errorObjectMessage",
-										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-										"type": "string"
-									},
-									"data": {
-										"title": "errorObjectData",
-										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-									}
-								}
-							},
-							"required": true
-						}
-					],
-					"result": {
-						"name": "result",
-						"schema": {
-							"type": "null"
-						}
-					},
-					"examples": [
-						{
-							"name": "Example 1",
-							"params": [
-								{
-									"name": "correlationId",
-									"value": "123"
-								},
-								{
-									"name": "error",
-									"value": {
-										"code": 1,
-										"message": "Error"
-									}
-								}
-							],
-							"result": {
-								"name": "result",
-								"value": null
 							}
 						}
 					]
@@ -11820,6 +9529,199 @@
 					]
 				},
 				{
+					"name": "Discovery.userInterest",
+					"summary": "Send an entity that the user has expressed interest in to the platform.",
+					"tags": [
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:user-interest"
+						}
+					],
+					"params": [
+						{
+							"name": "type",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							}
+						},
+						{
+							"name": "reason",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							}
+						},
+						{
+							"name": "entity",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Entity/EntityDetails"
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "type",
+									"value": "interest"
+								},
+								{
+									"name": "reason",
+									"value": "playlist"
+								},
+								{
+									"name": "entity",
+									"value": {
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {}
+									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Discovery.onRequestUserInterest",
+					"tags": [
+						{
+							"name": "rpc-only"
+						},
+						{
+							"name": "event",
+							"x-response": {
+								"$ref": "#/x-schemas/Entity/EntityDetails",
+								"examples": [
+									{
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								]
+							},
+							"x-error": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"code",
+									"message"
+								],
+								"properties": {
+									"code": {
+										"title": "errorObjectCode",
+										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+										"type": "integer"
+									},
+									"message": {
+										"title": "errorObjectMessage",
+										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+										"type": "string"
+									},
+									"data": {
+										"title": "errorObjectData",
+										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
+									}
+								}
+							}
+						},
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:user-interest"
+						}
+					],
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "request",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "object",
+									"required": [
+										"correlationId",
+										"parameters"
+									],
+									"properties": {
+										"correlationId": {
+											"type": "string"
+										},
+										"parameters": {
+											"$ref": "#/components/schemas/UserInterestProviderParameters"
+										}
+									},
+									"additionalProperties": false
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "request",
+								"value": {
+									"correlationId": "xyz",
+									"parameters": {
+										"type": "interest",
+										"reason": "playlist"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
 					"name": "Discovery.onPolicyChanged",
 					"summary": "get the discovery policy",
 					"params": [
@@ -12046,6 +9948,187 @@
 						}
 					],
 					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
+				},
+				{
+					"name": "Discovery.userInterestResponse",
+					"tags": [
+						{
+							"name": "rpc-only"
+						},
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:user-interest",
+							"x-response-for": "Discovery.onRequestUserInterest"
+						}
+					],
+					"summary": "Internal API for .onRequestUserInterest Provider to send back response.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "correlationId",
+							"schema": {
+								"type": "string"
+							},
+							"required": true
+						},
+						{
+							"name": "result",
+							"schema": {
+								"$ref": "#/x-schemas/Entity/EntityDetails",
+								"examples": [
+									{
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								]
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Example",
+							"params": [
+								{
+									"name": "correlationId",
+									"value": "123"
+								},
+								{
+									"name": "result",
+									"value": {
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Discovery.userInterestError",
+					"tags": [
+						{
+							"name": "rpc-only"
+						},
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:user-interest",
+							"x-error-for": "Discovery.onRequestUserInterest"
+						}
+					],
+					"summary": "Internal API for .onRequestUserInterest Provider to send back error.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "correlationId",
+							"schema": {
+								"type": "string"
+							},
+							"required": true
+						},
+						{
+							"name": "error",
+							"schema": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"code",
+									"message"
+								],
+								"properties": {
+									"code": {
+										"title": "errorObjectCode",
+										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+										"type": "integer"
+									},
+									"message": {
+										"title": "errorObjectMessage",
+										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+										"type": "string"
+									},
+									"data": {
+										"title": "errorObjectData",
+										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
+									}
+								}
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Example 1",
+							"params": [
+								{
+									"name": "correlationId",
+									"value": "123"
+								},
+								{
+									"name": "error",
+									"value": {
+										"code": 1,
+										"message": "Error"
+									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
 				},
 				{
 					"name": "HDMIInput.ports",
@@ -21472,59 +19555,6 @@
 							}
 						]
 					},
-					"DetailsProviderParameters": {
-						"title": "DetailsProviderParameters",
-						"type": "object",
-						"required": [
-							"entityId"
-						],
-						"properties": {
-							"entityId": {
-								"type": "string"
-							}
-						},
-						"additionalProperties": false
-					},
-					"PurchasesProviderParameters": {
-						"title": "PurchasesProviderParameters",
-						"type": "object",
-						"required": [],
-						"properties": {},
-						"additionalProperties": false
-					},
-					"UserInterestProviderParameters": {
-						"title": "UserInterestProviderParameters",
-						"type": "object",
-						"required": [
-							"type",
-							"reason"
-						],
-						"properties": {
-							"type": {
-								"$ref": "#/x-schemas/Discovery/InterestType"
-							},
-							"reason": {
-								"$ref": "#/x-schemas/Discovery/InterestReason"
-							}
-						},
-						"additionalProperties": false
-					},
-					"DetailsInfo": {
-						"title": "DetailsInfo",
-						"type": "object",
-						"properties": {
-							"entityId": {
-								"type": "string"
-							},
-							"details": {
-								"$ref": "#/x-schemas/Discovery/DetailsResult"
-							}
-						},
-						"required": [
-							"entityId",
-							"details"
-						]
-					},
 					"Resolution": {
 						"type": "array",
 						"items": [
@@ -21886,6 +19916,18 @@
 						"enum": [
 							"xrn:firebolt:channel:any"
 						]
+					},
+					"UserInterestProviderParameters": {
+						"title": "UserInterestProviderParameters",
+						"type": "object",
+						"properties": {
+							"type": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							},
+							"reason": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							}
+						}
 					},
 					"HDMIPortId": {
 						"type": "string",
@@ -23125,50 +21167,6 @@
 				},
 				"Discovery": {
 					"uri": "https://meta.comcast.com/firebolt/discovery",
-					"DetailsResult": {
-						"title": "DetailsResult",
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"expires",
-							"details"
-						],
-						"properties": {
-							"expires": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"details": {
-								"$ref": "#/x-schemas/Entity/EntityDetails"
-							}
-						}
-					},
-					"DetailsArrayResult": {
-						"title": "DetailsArrayResult",
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"expires",
-							"entries",
-							"totalCount"
-						],
-						"properties": {
-							"expires": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"totalCount": {
-								"type": "integer",
-								"minimum": 0
-							},
-							"entries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/x-schemas/Entity/EntityDetails"
-								}
-							}
-						}
-					},
 					"InterestType": {
 						"title": "InterestType",
 						"type": "string",
@@ -23184,6 +21182,28 @@
 							"playlist",
 							"reaction",
 							"recording"
+						]
+					},
+					"Interest": {
+						"title": "Interest",
+						"type": "object",
+						"properties": {
+							"appId": {
+								"type": "string"
+							},
+							"type": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							},
+							"reason": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							},
+							"entity": {
+								"$ref": "#/x-schemas/Entity/EntityDetails"
+							}
+						},
+						"required": [
+							"appId",
+							"entity"
 						]
 					},
 					"EntityInfoResult": {
@@ -23244,8 +21264,7 @@
 						"title": "EntityDetails",
 						"type": "object",
 						"required": [
-							"identifiers",
-							"info"
+							"identifiers"
 						],
 						"properties": {
 							"identifiers": {

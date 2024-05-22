@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.2.0-feature-user-interest.4
+Version Authentication 1.2.0-feature-user-interest.5
 
 ## Table of Contents
 

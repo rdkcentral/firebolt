@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Wifi 1.2.0-feature-user-interest.4
+Version Wifi 1.2.0-feature-user-interest.5
 
 ## Table of Contents
 

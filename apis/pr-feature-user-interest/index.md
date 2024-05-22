@@ -207,15 +207,9 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 ### `xrn:firebolt:capability:discovery:entity-info`
 
-| Uses |
-| ---- |
-| [Content.requestDetails](./manage/Content/#requestdetails)<br/>[Content.onDetails](./manage/Content/#details) |
-
-
-
 | Provides |
 | -------- |
-| [Discovery.details](./core/Discovery/#details)<br/>[Discovery.onRequestDetails](./core/Discovery/#requestdetails)<br/>[Discovery.detailsResponse](./core/Discovery/#detailsresponse)<br/>[Discovery.detailsError](./core/Discovery/#detailserror)<br/>[Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
+| [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
 
 
 ### `xrn:firebolt:capability:discovery:navigate-to`
@@ -234,15 +228,9 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 ### `xrn:firebolt:capability:discovery:purchased-content`
 
-| Uses |
-| ---- |
-| [Content.requestPurchases](./manage/Content/#requestpurchases)<br/>[Content.onPurchases](./manage/Content/#purchases) |
-
-
-
 | Provides |
 | -------- |
-| [Discovery.purchases](./core/Discovery/#purchases)<br/>[Discovery.onRequestPurchases](./core/Discovery/#requestpurchases)<br/>[Discovery.purchasesResponse](./core/Discovery/#purchasesresponse)<br/>[Discovery.purchasesError](./core/Discovery/#purchaseserror)<br/>[Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
+| [Discovery.purchasedContent](./core/Discovery/#purchasedcontent)<br/>[Discovery.onPullPurchasedContent](./core/Discovery/#pullpurchasedcontent) |
 
 
 ### `xrn:firebolt:capability:discovery:sign-in-status`

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.2.0-feature-user-interest.4
+Version SecureStorage 1.2.0-feature-user-interest.5
 
 ## Table of Contents
 

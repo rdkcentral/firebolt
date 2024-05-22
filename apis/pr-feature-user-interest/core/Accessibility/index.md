@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Accessibility 1.2.0-feature-user-interest.4
+Version Accessibility 1.2.0-feature-user-interest.5
 
 ## Table of Contents
 

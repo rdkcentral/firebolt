@@ -19,8 +19,7 @@ Version Discovery 0.0.0-unknown.0
 - [Types](#types)
   - [InterestType](#interesttype)
   - [InterestReason](#interestreason)
-  - [DetailsResult](#detailsresult)
-  - [DetailsArrayResult](#detailsarrayresult)
+  - [Interest](#interest)
   - [EntityInfoResult](#entityinforesult)
   - [PurchasedContentResult](#purchasedcontentresult)
 
@@ -59,7 +58,7 @@ InterestReason Enumeration:
 
 ---
 
-### DetailsResult
+### Interest
 
 ````typescript
 ```typescript
@@ -71,21 +70,6 @@ InterestReason Enumeration:
 See also:
 
 
-
----
-
-### DetailsArrayResult
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
 
 
 
