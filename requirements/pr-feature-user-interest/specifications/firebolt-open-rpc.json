@@ -8677,6 +8677,7 @@
 				},
 				{
 					"name": "event",
+					"x-response-name": "entity",
 					"x-response": {
 						"$ref": "#/x-schemas/Entity/EntityDetails",
 						"examples": [
