@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.2.0-feature-user-interest.6
+Version SecondScreen 1.2.0-feature-user-interest.7
 
 ## Table of Contents
 
