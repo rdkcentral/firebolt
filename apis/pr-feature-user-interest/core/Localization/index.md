@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.2.0-feature-user-interest.7
+Version Localization 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -57,17 +57,10 @@ Methods for accessessing location and language preferences
 Get any platform-specific localization information, in an Map<string, string>
 
 ```typescript
-${method.signature}
+function additionalInfo(): Promise<object>
 ```
 
 Promise resolution:
-
-```typescript
-| Property | Type | Description |
-|----------|------|-------------|
-| `${property}` | ${type} |  |
-
-```
 
 Capabilities:
 
@@ -129,14 +122,12 @@ Get the ISO 3166-1 alpha-2 code for the country device is located in
 To get the value of `countryCode` call the method like this:
 
 ```typescript
-${method.signature}
+function countryCode(): Promise<CountryCode>
 ```
 
 Promise resolution:
 
-```typescript
-
-```
+[CountryCode](../Localization/schemas/#CountryCode)
 
 Capabilities:
 
@@ -235,7 +226,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function countryCode(callback: (value) => ): Promise<number>
+function countryCode(callback: (value) => CountryCode): Promise<number>
 ```
 
 Promise resolution:
@@ -347,14 +338,12 @@ Get the ISO 639 1/2 code for the preferred language
 To get the value of `language` call the method like this:
 
 ```typescript
-${method.signature}
+function language(): Promise<Language>
 ```
 
 Promise resolution:
 
-```typescript
-
-```
+[Language](../Localization/schemas/#Language)
 
 Capabilities:
 
@@ -453,7 +442,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function language(callback: (value) => ): Promise<number>
+function language(callback: (value) => Language): Promise<number>
 ```
 
 Promise resolution:
@@ -563,27 +552,20 @@ Response:
 Get the approximate latitude and longitude coordinates of the device location
 
 ```typescript
-${method.signature}
+function latlon(): Promise<LatLon>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[LatLon](#latlon-1)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
 | uses | xrn:firebolt:capability:localization:location |
 
-
 #### Examples
-
 
 Default Example
 
@@ -594,7 +576,7 @@ import { Localization } from '@firebolt-js/sdk'
 
 let latlong = await Localization.latlon()
 console.log(latlong)
-````
+```
 
 Value of `latlong`:
 
@@ -690,14 +672,12 @@ Get the _full_ BCP 47 code, including script, region, variant, etc., for the pre
 To get the value of `locale` call the method like this:
 
 ```typescript
-${method.signature}
+function locale(): Promise<Locale>
 ```
 
 Promise resolution:
 
-```typescript
-
-```
+[Locale](../Localization/schemas/#Locale)
 
 Capabilities:
 
@@ -796,7 +776,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function locale(callback: (value) => ): Promise<number>
+function locale(callback: (value) => Locale): Promise<number>
 ```
 
 Promise resolution:
@@ -908,14 +888,12 @@ Get the locality/city the device is located in
 To get the value of `locality` call the method like this:
 
 ```typescript
-${method.signature}
+function locality(): Promise<Locality>
 ```
 
 Promise resolution:
 
-```typescript
-
-```
+[Locality](../Localization/schemas/#Locality)
 
 Capabilities:
 
@@ -1014,7 +992,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function locality(callback: (value) => ): Promise<number>
+function locality(callback: (value) => Locality): Promise<number>
 ```
 
 Promise resolution:
@@ -1182,14 +1160,10 @@ Get the postal code the device is located in
 To get the value of `postalCode` call the method like this:
 
 ```typescript
-${method.signature}
+function postalCode(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1400,14 +1374,10 @@ A prioritized list of ISO 639 1/2 codes for the preferred audio languages on thi
 To get the value of `preferredAudioLanguages` call the method like this:
 
 ```typescript
-${method.signature}
+function preferredAudioLanguages(): Promise<ISO639_2Language[]>
 ```
 
 Promise resolution:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -1506,7 +1476,9 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function preferredAudioLanguages(callback: (value) => ): Promise<number>
+function preferredAudioLanguages(
+  callback: (value) => ISO639_2Language[],
+): Promise<number>
 ```
 
 Promise resolution:
@@ -1641,14 +1613,11 @@ See: [preferredAudioLanguages](#preferredaudiolanguages)
 
 ### LatLon
 
-````typescript
 ```typescript
-
-````
-
+type LatLon = [
+  number, // undefined  item
+  number, // undefined  item
+]
 ```
-
-
 
 ---
-```

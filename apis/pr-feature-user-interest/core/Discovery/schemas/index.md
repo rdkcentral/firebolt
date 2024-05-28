@@ -31,12 +31,10 @@ undefined
 ### InterestType
 
 ```typescript
-InterestType Enumeration:
-
-| key | value |
-|-----|-------|
-| INTEREST | interest |
-| DISINTEREST | disinterest |
+InterestType: {
+    INTEREST: 'interest',
+    DISINTEREST: 'disinterest',
+},
 
 ```
 
@@ -45,13 +43,11 @@ InterestType Enumeration:
 ### InterestReason
 
 ```typescript
-InterestReason Enumeration:
-
-| key | value |
-|-----|-------|
-| PLAYLIST | playlist |
-| REACTION | reaction |
-| RECORDING | recording |
+InterestReason: {
+    PLAYLIST: 'playlist',
+    REACTION: 'reaction',
+    RECORDING: 'recording',
+},
 
 ```
 
@@ -61,33 +57,32 @@ InterestReason Enumeration:
 
 The result for an `entityInfo()` push or pull.
 
-````typescript
 ```typescript
-
-````
-
-````
+type EntityInfoResult = {
+  expires: string
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  related?: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+}
+```
 
 See also:
 
-
+[EntityInfo](../Entertainment/schemas/#EntityInfo)
 
 ---
 
 ### PurchasedContentResult
 
-
-
 ```typescript
-```typescript
-
-````
-
+type PurchasedContentResult = {
+  expires: string
+  totalCount: number
+  entries: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+}
 ```
 
 See also:
 
-
+[EntityInfo](../Entertainment/schemas/#EntityInfo)
 
 ---
-```

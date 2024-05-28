@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.2.0-feature-user-interest.7
+Version Discovery 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -83,14 +83,10 @@ Apps should provide prices in the same currency presented in the app. If multipl
 Clear both availabilities and entitlements from the subscriber. This is equivalent of calling `Discovery.contentAccess({ availabilities: [], entitlements: []})`. This is typically called when the user signs out of an account.
 
 ```typescript
-${method.signature}
+function clearContentAccess(): Promise<void>
 ```
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -149,20 +145,16 @@ Response:
 Inform the platform of what content the user can access either by discovering it or consuming it. Availabilities determine which content is discoverable to a user, while entitlements determine if the user can currently consume that content. Content can be available but not entitled, this means that user can see the content but when they try to open it they must gain an entitlement either through purchase or subscription upgrade. In case the access changed off-device, this API should be called any time the app comes to the foreground to refresh the access. This API should also be called any time the availabilities or entitlements change within the app for any reason. Typical reasons may include the user signing into an account or upgrading a subscription. Less common cases can cause availabilities to change, such as moving to a new service location. When availabilities or entitlements are removed from the subscriber (such as when the user signs out), then an empty array should be given. To clear both, use the Discovery.clearContentAccess convenience API.
 
 ```typescript
-${method.signature}
+function contentAccess(ids: ContentAccessIdentifiers): Promise<void>
 ```
 
 Parameters:
 
-| Param | Type | Required | Description                                                                                        |
-| ----- | ---- | -------- | -------------------------------------------------------------------------------------------------- |
-| `ids` | ``   | true     | A list of identifiers that represent content that is discoverable or consumable for the subscriber |
+| Param | Type                                                    | Required | Description                                                                                        |
+| ----- | ------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| `ids` | [`ContentAccessIdentifiers`](#contentaccessidentifiers) | true     | A list of identifiers that represent content that is discoverable or consumable for the subscriber |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -493,20 +485,16 @@ Response:
 Inform the platform of the users latest entitlements w/in this app.
 
 ```typescript
-${method.signature}
+function entitlements(entitlements: Entitlement[]): Promise<boolean>
 ```
 
 Parameters:
 
-| Param          | Type | Required | Description                  |
-| -------------- | ---- | -------- | ---------------------------- |
-| `entitlements` | ``   | true     | Array of entitlement objects |
+| Param          | Type            | Required | Description                  |
+| -------------- | --------------- | -------- | ---------------------------- |
+| `entitlements` | `Entitlement[]` | true     | Array of entitlement objects |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -596,42 +584,42 @@ To allow the platform to pull data, use `entityInfo(callback: Function)`:
 
 ```typescript
 function entityInfo(
-  callback: (parameters: EntityInfoParameters) => Promise<>,
+  callback: (parameters: EntityInfoParameters) => Promise<EntityInfoResult>,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type       | Required | Summary                                     |
-| ---------- | ---------- | -------- | ------------------------------------------- |
-| `callback` | `Function` | Yes      | A callback for the platform to pull objects |
+| Param      | Type       | Required | Summary                                                      |
+| ---------- | ---------- | -------- | ------------------------------------------------------------ |
+| `callback` | `Function` | Yes      | A callback for the platform to pull EntityInfoResult objects |
 
 Callback parameters:
 
-| Param        | Type                   | Required | Summary                                                     |
-| ------------ | ---------------------- | -------- | ----------------------------------------------------------- |
-| `parameters` | `EntityInfoParameters` | Yes      | An object describing the platform's query for an `` object. |
+| Param        | Type                   | Required | Summary                                                                     |
+| ------------ | ---------------------- | -------- | --------------------------------------------------------------------------- |
+| `parameters` | `EntityInfoParameters` | Yes      | An object describing the platform's query for an `EntityInfoResult` object. |
 
-````typescript
 ```typescript
-
-````
-
-````
+type EntityInfoParameters = {
+  entityId: string
+  assetId?: string
+}
+```
 
 Callback promise resolution:
 
 ```typescript
-```typescript
+type EntityInfoResult = {
+  expires: string
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  related?: EntityInfo[]
+}
+```
 
-````
-
-````
-
-
+See also: [EntityInfoResult](#entityinforesult-1)
 
 #### Examples
-
 
 Send entity info for a movie to the platform.
 
@@ -640,65 +628,54 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.entityInfo(async parameters => {
+let success = await Discovery.entityInfo(async (parameters) => {
   console.log(parameters.entityId)
   console.log(parameters.assetId)
   return {
-          	"expires": "2025-01-01T00:00:00.000Z",
-          	"entity": {
-          		"identifiers": {
-          			"entityId": "345"
-          		},
-          		"entityType": "program",
-          		"programType": "movie",
-          		"title": "Cool Runnings",
-          		"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-          		"releaseDate": "1993-01-01T00:00:00.000Z",
-          		"contentRatings": [
-          			{
-          				"scheme": "US-Movie",
-          				"rating": "PG"
-          			},
-          			{
-          				"scheme": "CA-Movie",
-          				"rating": "G"
-          			}
-          		],
-          		"waysToWatch": [
-          			{
-          				"identifiers": {
-          					"assetId": "123"
-          				},
-          				"expires": "2025-01-01T00:00:00.000Z",
-          				"entitled": true,
-          				"entitledExpires": "2025-01-01T00:00:00.000Z",
-          				"offeringType": "buy",
-          				"price": 2.99,
-          				"videoQuality": [
-          					"UHD"
-          				],
-          				"audioProfile": [
-          					"dolbyAtmos"
-          				],
-          				"audioLanguages": [
-          					"en"
-          				],
-          				"closedCaptions": [
-          					"en"
-          				],
-          				"subtitles": [
-          					"es"
-          				],
-          				"audioDescriptions": [
-          					"en"
-          				]
-          			}
-          		]
-          	}
-          }
+    expires: '2025-01-01T00:00:00.000Z',
+    entity: {
+      identifiers: {
+        entityId: '345',
+      },
+      entityType: 'program',
+      programType: 'movie',
+      title: 'Cool Runnings',
+      synopsis:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+      releaseDate: '1993-01-01T00:00:00.000Z',
+      contentRatings: [
+        {
+          scheme: 'US-Movie',
+          rating: 'PG',
+        },
+        {
+          scheme: 'CA-Movie',
+          rating: 'G',
+        },
+      ],
+      waysToWatch: [
+        {
+          identifiers: {
+            assetId: '123',
+          },
+          expires: '2025-01-01T00:00:00.000Z',
+          entitled: true,
+          entitledExpires: '2025-01-01T00:00:00.000Z',
+          offeringType: 'buy',
+          price: 2.99,
+          videoQuality: ['UHD'],
+          audioProfile: ['dolbyAtmos'],
+          audioLanguages: ['en'],
+          closedCaptions: ['en'],
+          subtitles: ['es'],
+          audioDescriptions: ['en'],
+        },
+      ],
+    },
+  }
 })
 console.log(success)
-````
+```
 
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -1276,35 +1253,35 @@ Push Request:
 
 </details>
 
-To push data to the platform, e.g. during app launch, use `entityInfo(result: )`:
+To push data to the platform, e.g. during app launch, use `entityInfo(result: EntityInfoResult)`:
 
 ```typescript
-function entityInfo(result: ): Promise<boolean>
+function entityInfo(result: EntityInfoResult): Promise<boolean>
 ```
 
 Parameters:
 
-| Param    | Type | Required | Summary                             |
-| -------- | ---- | -------- | ----------------------------------- |
-| `result` | ``   | Yes      | The `` data to push to the platform |
+| Param    | Type               | Required | Summary                                             |
+| -------- | ------------------ | -------- | --------------------------------------------------- |
+| `result` | `EntityInfoResult` | Yes      | The `EntityInfoResult` data to push to the platform |
 
-````typescript
 ```typescript
-
-````
-
-````
+type EntityInfoResult = {
+  expires: string
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  related?: EntityInfo[]
+}
+```
 
 See also: [EntityInfo](#entityinfo-1)
 
 Promise resolution:
 
-| Type | Summary |
-| ---- | ------- |
+| Type      | Summary                                |
+| --------- | -------------------------------------- |
 | `boolean` | Whether or not the push was successful |
 
 #### Examples
-
 
 Send entity info for a movie to the platform.
 
@@ -1314,60 +1291,49 @@ JavaScript:
 import { Discovery } from '@firebolt-js/sdk'
 
 let success = await Discovery.entityInfo({
-                                          	"expires": "2025-01-01T00:00:00.000Z",
-                                          	"entity": {
-                                          		"identifiers": {
-                                          			"entityId": "345"
-                                          		},
-                                          		"entityType": "program",
-                                          		"programType": "movie",
-                                          		"title": "Cool Runnings",
-                                          		"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-                                          		"releaseDate": "1993-01-01T00:00:00.000Z",
-                                          		"contentRatings": [
-                                          			{
-                                          				"scheme": "US-Movie",
-                                          				"rating": "PG"
-                                          			},
-                                          			{
-                                          				"scheme": "CA-Movie",
-                                          				"rating": "G"
-                                          			}
-                                          		],
-                                          		"waysToWatch": [
-                                          			{
-                                          				"identifiers": {
-                                          					"assetId": "123"
-                                          				},
-                                          				"expires": "2025-01-01T00:00:00.000Z",
-                                          				"entitled": true,
-                                          				"entitledExpires": "2025-01-01T00:00:00.000Z",
-                                          				"offeringType": "buy",
-                                          				"price": 2.99,
-                                          				"videoQuality": [
-                                          					"UHD"
-                                          				],
-                                          				"audioProfile": [
-                                          					"dolbyAtmos"
-                                          				],
-                                          				"audioLanguages": [
-                                          					"en"
-                                          				],
-                                          				"closedCaptions": [
-                                          					"en"
-                                          				],
-                                          				"subtitles": [
-                                          					"es"
-                                          				],
-                                          				"audioDescriptions": [
-                                          					"en"
-                                          				]
-                                          			}
-                                          		]
-                                          	}
-                                          })
+  expires: '2025-01-01T00:00:00.000Z',
+  entity: {
+    identifiers: {
+      entityId: '345',
+    },
+    entityType: 'program',
+    programType: 'movie',
+    title: 'Cool Runnings',
+    synopsis:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+    releaseDate: '1993-01-01T00:00:00.000Z',
+    contentRatings: [
+      {
+        scheme: 'US-Movie',
+        rating: 'PG',
+      },
+      {
+        scheme: 'CA-Movie',
+        rating: 'G',
+      },
+    ],
+    waysToWatch: [
+      {
+        identifiers: {
+          assetId: '123',
+        },
+        expires: '2025-01-01T00:00:00.000Z',
+        entitled: true,
+        entitledExpires: '2025-01-01T00:00:00.000Z',
+        offeringType: 'buy',
+        price: 2.99,
+        videoQuality: ['UHD'],
+        audioProfile: ['dolbyAtmos'],
+        audioLanguages: ['en'],
+        closedCaptions: ['en'],
+        subtitles: ['es'],
+        audioDescriptions: ['en'],
+      },
+    ],
+  },
+})
 console.log(success)
-````
+```
 
 Value of `success`:
 
@@ -1913,21 +1879,17 @@ For the Primary Experience, the appId can be any one of:
 - xrn:firebolt:application-type:settings
 
 ```typescript
-${method.signature}
+function launch(appId: string, intent: NavigationIntent): Promise<boolean>
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description                                                                                                                      |
-| -------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `appId`  | `string` | true     | The durable app Id of the app to launch                                                                                          |
-| `intent` | ``       | false    | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched |
+| Param    | Type                                                       | Required | Description                                                                                                                      |
+| -------- | ---------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `appId`  | `string`                                                   | true     | The durable app Id of the app to launch                                                                                          |
+| `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false    | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -2661,27 +2623,20 @@ get the discovery policy
 To get the value of `policy` call the method like this:
 
 ```typescript
-${method.signature}
+function policy(): Promise<DiscoveryPolicy>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[DiscoveryPolicy](#discoverypolicy)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:discovery:policy |
 
-
 #### Examples
-
 
 Getting the discovery policy
 
@@ -2692,7 +2647,7 @@ import { Discovery } from '@firebolt-js/sdk'
 
 let policy = await Discovery.policy()
 console.log(policy)
-````
+```
 
 Value of `policy`:
 
@@ -2738,7 +2693,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function policy(callback: (value) => ): Promise<number>
+function policy(callback: (value) => DiscoveryPolicy): Promise<number>
 ```
 
 Promise resolution:
@@ -2842,42 +2797,45 @@ To allow the platform to pull data, use `purchasedContent(callback: Function)`:
 
 ```typescript
 function purchasedContent(
-  callback: (parameters: PurchasedContentParameters) => Promise<>,
+  callback: (
+    parameters: PurchasedContentParameters,
+  ) => Promise<PurchasedContentResult>,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type       | Required | Summary                                     |
-| ---------- | ---------- | -------- | ------------------------------------------- |
-| `callback` | `Function` | Yes      | A callback for the platform to pull objects |
+| Param      | Type       | Required | Summary                                                            |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------ |
+| `callback` | `Function` | Yes      | A callback for the platform to pull PurchasedContentResult objects |
 
 Callback parameters:
 
-| Param        | Type                         | Required | Summary                                                     |
-| ------------ | ---------------------------- | -------- | ----------------------------------------------------------- |
-| `parameters` | `PurchasedContentParameters` | Yes      | An object describing the platform's query for an `` object. |
+| Param        | Type                         | Required | Summary                                                                           |
+| ------------ | ---------------------------- | -------- | --------------------------------------------------------------------------------- |
+| `parameters` | `PurchasedContentParameters` | Yes      | An object describing the platform's query for an `PurchasedContentResult` object. |
 
-````typescript
 ```typescript
-
-````
-
-````
+type PurchasedContentParameters = {
+  limit: number
+  offeringType?: OfferingType // The offering type of the WayToWatch.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
+}
+```
 
 Callback promise resolution:
 
 ```typescript
-```typescript
+type PurchasedContentResult = {
+  expires: string
+  totalCount: number
+  entries: EntityInfo[]
+}
+```
 
-````
-
-````
-
-
+See also: [PurchasedContentResult](#purchasedcontentresult-1)
 
 #### Examples
-
 
 Inform the platform of the user's purchased content
 
@@ -2886,68 +2844,57 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.purchasedContent(async parameters => {
+let success = await Discovery.purchasedContent(async (parameters) => {
   console.log(parameters.entityId)
   console.log(parameters.assetId)
   return {
-          	"totalCount": 10,
-          	"expires": "2025-01-01T00:00:00.000Z",
-          	"entries": [
-          		{
-          			"identifiers": {
-          				"entityId": "345"
-          			},
-          			"entityType": "program",
-          			"programType": "movie",
-          			"title": "Cool Runnings",
-          			"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-          			"releaseDate": "1993-01-01T00:00:00.000Z",
-          			"contentRatings": [
-          				{
-          					"scheme": "US-Movie",
-          					"rating": "PG"
-          				},
-          				{
-          					"scheme": "CA-Movie",
-          					"rating": "G"
-          				}
-          			],
-          			"waysToWatch": [
-          				{
-          					"identifiers": {
-          						"assetId": "123"
-          					},
-          					"expires": "2025-01-01T00:00:00.000Z",
-          					"entitled": true,
-          					"entitledExpires": "2025-01-01T00:00:00.000Z",
-          					"offeringType": "buy",
-          					"price": 2.99,
-          					"videoQuality": [
-          						"UHD"
-          					],
-          					"audioProfile": [
-          						"dolbyAtmos"
-          					],
-          					"audioLanguages": [
-          						"en"
-          					],
-          					"closedCaptions": [
-          						"en"
-          					],
-          					"subtitles": [
-          						"es"
-          					],
-          					"audioDescriptions": [
-          						"en"
-          					]
-          				}
-          			]
-          		}
-          	]
-          }
+    totalCount: 10,
+    expires: '2025-01-01T00:00:00.000Z',
+    entries: [
+      {
+        identifiers: {
+          entityId: '345',
+        },
+        entityType: 'program',
+        programType: 'movie',
+        title: 'Cool Runnings',
+        synopsis:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+        releaseDate: '1993-01-01T00:00:00.000Z',
+        contentRatings: [
+          {
+            scheme: 'US-Movie',
+            rating: 'PG',
+          },
+          {
+            scheme: 'CA-Movie',
+            rating: 'G',
+          },
+        ],
+        waysToWatch: [
+          {
+            identifiers: {
+              assetId: '123',
+            },
+            expires: '2025-01-01T00:00:00.000Z',
+            entitled: true,
+            entitledExpires: '2025-01-01T00:00:00.000Z',
+            offeringType: 'buy',
+            price: 2.99,
+            videoQuality: ['UHD'],
+            audioProfile: ['dolbyAtmos'],
+            audioLanguages: ['en'],
+            closedCaptions: ['en'],
+            subtitles: ['es'],
+            audioDescriptions: ['en'],
+          },
+        ],
+      },
+    ],
+  }
 })
 console.log(success)
-````
+```
 
 <details markdown="1" >
 <summary>JSON-RPC:</summary>
@@ -3038,35 +2985,35 @@ Push Request:
 
 </details>
 
-To push data to the platform, e.g. during app launch, use `purchasedContent(result: )`:
+To push data to the platform, e.g. during app launch, use `purchasedContent(result: PurchasedContentResult)`:
 
 ```typescript
-function purchasedContent(result: ): Promise<boolean>
+function purchasedContent(result: PurchasedContentResult): Promise<boolean>
 ```
 
 Parameters:
 
-| Param    | Type | Required | Summary                             |
-| -------- | ---- | -------- | ----------------------------------- |
-| `result` | ``   | Yes      | The `` data to push to the platform |
+| Param    | Type                     | Required | Summary                                                   |
+| -------- | ------------------------ | -------- | --------------------------------------------------------- |
+| `result` | `PurchasedContentResult` | Yes      | The `PurchasedContentResult` data to push to the platform |
 
-````typescript
 ```typescript
-
-````
-
-````
+type PurchasedContentResult = {
+  expires: string
+  totalCount: number
+  entries: EntityInfo[]
+}
+```
 
 See also: [PurchasedContent](#purchasedcontent-1)
 
 Promise resolution:
 
-| Type | Summary |
-| ---- | ------- |
+| Type      | Summary                                |
+| --------- | -------------------------------------- |
 | `boolean` | Whether or not the push was successful |
 
 #### Examples
-
 
 Inform the platform of the user's purchased content
 
@@ -3076,63 +3023,52 @@ JavaScript:
 import { Discovery } from '@firebolt-js/sdk'
 
 let success = await Discovery.purchasedContent({
-                                                	"totalCount": 10,
-                                                	"expires": "2025-01-01T00:00:00.000Z",
-                                                	"entries": [
-                                                		{
-                                                			"identifiers": {
-                                                				"entityId": "345"
-                                                			},
-                                                			"entityType": "program",
-                                                			"programType": "movie",
-                                                			"title": "Cool Runnings",
-                                                			"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-                                                			"releaseDate": "1993-01-01T00:00:00.000Z",
-                                                			"contentRatings": [
-                                                				{
-                                                					"scheme": "US-Movie",
-                                                					"rating": "PG"
-                                                				},
-                                                				{
-                                                					"scheme": "CA-Movie",
-                                                					"rating": "G"
-                                                				}
-                                                			],
-                                                			"waysToWatch": [
-                                                				{
-                                                					"identifiers": {
-                                                						"assetId": "123"
-                                                					},
-                                                					"expires": "2025-01-01T00:00:00.000Z",
-                                                					"entitled": true,
-                                                					"entitledExpires": "2025-01-01T00:00:00.000Z",
-                                                					"offeringType": "buy",
-                                                					"price": 2.99,
-                                                					"videoQuality": [
-                                                						"UHD"
-                                                					],
-                                                					"audioProfile": [
-                                                						"dolbyAtmos"
-                                                					],
-                                                					"audioLanguages": [
-                                                						"en"
-                                                					],
-                                                					"closedCaptions": [
-                                                						"en"
-                                                					],
-                                                					"subtitles": [
-                                                						"es"
-                                                					],
-                                                					"audioDescriptions": [
-                                                						"en"
-                                                					]
-                                                				}
-                                                			]
-                                                		}
-                                                	]
-                                                })
+  totalCount: 10,
+  expires: '2025-01-01T00:00:00.000Z',
+  entries: [
+    {
+      identifiers: {
+        entityId: '345',
+      },
+      entityType: 'program',
+      programType: 'movie',
+      title: 'Cool Runnings',
+      synopsis:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+      releaseDate: '1993-01-01T00:00:00.000Z',
+      contentRatings: [
+        {
+          scheme: 'US-Movie',
+          rating: 'PG',
+        },
+        {
+          scheme: 'CA-Movie',
+          rating: 'G',
+        },
+      ],
+      waysToWatch: [
+        {
+          identifiers: {
+            assetId: '123',
+          },
+          expires: '2025-01-01T00:00:00.000Z',
+          entitled: true,
+          entitledExpires: '2025-01-01T00:00:00.000Z',
+          offeringType: 'buy',
+          price: 2.99,
+          videoQuality: ['UHD'],
+          audioProfile: ['dolbyAtmos'],
+          audioLanguages: ['en'],
+          closedCaptions: ['en'],
+          subtitles: ['es'],
+          audioDescriptions: ['en'],
+        },
+      ],
+    },
+  ],
+})
 console.log(success)
-````
+```
 
 Value of `success`:
 
@@ -3218,20 +3154,16 @@ Response:
 Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
 
 ```typescript
-${method.signature}
+function signIn(entitlements: Entitlement[]): Promise<boolean>
 ```
 
 Parameters:
 
-| Param          | Type | Required | Description                                                                                             |
-| -------------- | ---- | -------- | ------------------------------------------------------------------------------------------------------- |
-| `entitlements` | ``   | false    | Optional array of Entitlements, in case of a different user account, or a long time since last sign-in. |
+| Param          | Type            | Required | Description                                                                                             |
+| -------------- | --------------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| `entitlements` | `Entitlement[]` | false    | Optional array of Entitlements, in case of a different user account, or a long time since last sign-in. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3346,14 +3278,10 @@ Response:
 Inform the platform that your user has signed out. See `Discovery.signIn` for more details on how the sign-in state is used.signOut will NOT clear entitlements, the app should make a separate call to Discovery.clearContentAccess. Apps should also call signOut when a login token has expired and the user is now in a signed-out state.
 
 ```typescript
-${method.signature}
+function signOut(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3412,22 +3340,22 @@ Response:
 Send an entity that the user has expressed interest in to the platform.
 
 ```typescript
-${method.signature}
+function userInterest(
+  type: InterestType,
+  reason: InterestReason,
+  entity: EntityDetails,
+): Promise<null>
 ```
 
 Parameters:
 
-| Param    | Type | Required | Description                                       |
-| -------- | ---- | -------- | ------------------------------------------------- |
-| `type`   | ``   | true     | values: `'interest' \| 'disinterest'`             |
-| `reason` | ``   | true     | values: `'playlist' \| 'reaction' \| 'recording'` |
-| `entity` | ``   | true     |                                                   |
+| Param    | Type                                                     | Required | Description                                            |
+| -------- | -------------------------------------------------------- | -------- | ------------------------------------------------------ |
+| `type`   | [`InterestType`](../Discovery/schemas/#InterestType)     | true     | <br/>values: `'interest' \| 'disinterest'`             |
+| `reason` | [`InterestReason`](../Discovery/schemas/#InterestReason) | true     | <br/>values: `'playlist' \| 'reaction' \| 'recording'` |
+| `entity` | [`EntityDetails`](../Entity/schemas/#EntityDetails)      | true     |                                                        |
 
 Promise resolution:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -3507,19 +3435,12 @@ Internal API for .onRequestUserInterest Provider to send back error.
 
 Parameters:
 
-| Param           | Type                    | Required       | Description |
-| --------------- | ----------------------- | -------------- | ----------- | ----------- |
-| `correlationId` | `string`                | true           |             |
-| `error`         | [`                      | Property       | Type        | Description |
-| ----------      | ------                  | -------------  |
-| `${property}`   | [${type}](${type.link}) | ${description} |
-| `](#)           | true                    |                |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -3570,16 +3491,12 @@ Internal API for .onRequestUserInterest Provider to send back response.
 
 Parameters:
 
-| Param           | Type     | Required | Description |
-| --------------- | -------- | -------- | ----------- |
-| `correlationId` | `string` | true     |             |
-| `result`        | ``       | true     |             |
+| Param           | Type                                                | Required | Description |
+| --------------- | --------------------------------------------------- | -------- | ----------- |
+| `correlationId` | `string`                                            | true     |             |
+| `result`        | [`EntityDetails`](../Entity/schemas/#EntityDetails) | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -3645,7 +3562,12 @@ Response:
 Notify the platform that content was partially or completely watched
 
 ```typescript
-${method.signature}
+function watched(
+  entityId: string,
+  progress: number,
+  completed: boolean,
+  watchedOn: string,
+): Promise<boolean>
 ```
 
 Parameters:
@@ -3658,10 +3580,6 @@ Parameters:
 | `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                     |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3730,26 +3648,24 @@ Response:
 Suggest a call-to-action for this app on the platform home screen
 
 ```typescript
-${method.signature}
+function watchNext(
+  title: LocalizedString,
+  identifiers: Entity,
+  expires: string,
+  images: object,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param         | Type                    | Required                                | Description                                                                            |
-| ------------- | ----------------------- | --------------------------------------- | -------------------------------------------------------------------------------------- | ----------- |
-| `title`       | ``                      | true                                    | The title of this call to action                                                       |
-| `identifiers` | ``                      | true                                    | A set of content identifiers for this call to action                                   |
-| `expires`     | `string`                | false                                   | When this call to action should no longer be presented to users <br/>format: date-time |
-| `images`      | [`                      | Property                                | Type                                                                                   | Description |
-| ----------    | ------                  | -------------                           |
-| `${property}` | [${type}](${type.link}) | ${description}                          |
-| `](#)         | false                   | A set of images for this call to action |
+| Param         | Type                                                   | Required | Description                                                                            |
+| ------------- | ------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------- |
+| `title`       | [`LocalizedString`](../Types/schemas/#LocalizedString) | true     | The title of this call to action                                                       |
+| `identifiers` | [`Entity`](../Entity/schemas/#Entity)                  | true     | A set of content identifiers for this call to action                                   |
+| `expires`     | `string`                                               | false    | When this call to action should no longer be presented to users <br/>format: date-time |
+| `images`      | `object`                                               | false    | A set of images for this call to action                                                |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3897,9 +3813,7 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-```typescript
-
-```
+[NavigationIntent](../Intents/schemas/#NavigationIntent)
 
 Capabilities:
 
@@ -3992,11 +3906,6 @@ Parameters:
 
 Result:
 
-| Property        | Type   | Description |
-| --------------- | ------ | ----------- |
-| `correlationId` | string |             |
-| `parameters`    |        |             |
-
 Capabilities:
 
 | Role     | Capability                                      |
@@ -4047,7 +3956,12 @@ Response:
 The provider interface for the `xrn:firebolt:capability:discovery:user-interest` capability.
 
 ```typescript
-
+interface UserInterestProvider {
+  userInterest(
+    parameters: UserInterestProviderParameters,
+    session: ProviderSession,
+  ): Promise<EntityDetails>
+}
 ```
 
 Usage:
@@ -4194,134 +4108,118 @@ Response:
 
 ### DiscoveryPolicy
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type DiscoveryPolicy = {
+  enableRecommendations: boolean // Whether or not to the user has enabled history-based recommendations
+  shareWatchHistory: boolean // Whether or not the user has enabled app watch history data to be shared with the platform
+  rememberWatchedPrograms: boolean // Whether or not the user has enabled watch history
+}
+```
 
 ---
 
 ### Availability
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type Availability = {
+  type: 'channel-lineup' | 'program-lineup'
+  id: string
+  catalogId?: string
+  startTime?: string
+  endTime?: string
+}
+```
 
 ---
 
 ### UserInterestProviderParameters
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
+type UserInterestProviderParameters = {
+  type?: InterestType
+  reason?: InterestReason
+}
+```
 
 See also:
 
-
-
+[InterestType](../Discovery/schemas/#InterestType)
+[InterestReason](../Discovery/schemas/#InterestReason)
 
 ---
 
 ### PurchasedContentParameters
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
+type PurchasedContentParameters = {
+  limit: number
+  offeringType?: OfferingType // The offering type of the WayToWatch.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
+}
+```
 
 See also:
 
-
-
+[OfferingType](../Entertainment/schemas/#OfferingType)
+[ProgramType](../Entertainment/schemas/#ProgramType)
 
 ---
 
 ### ContentAccessIdentifiers
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
+type ContentAccessIdentifiers = {
+  availabilities?: Availability[] // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
+  entitlements?: Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
+}
+```
 
 See also:
 
-
-
+[Availability](#availability)
+[Entitlement](../Entertainment/schemas/#Entitlement)
 
 ---
 
 ### EntityInfoParameters
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type EntityInfoParameters = {
+  entityId: string
+  assetId?: string
+}
+```
 
 ---
 
 ### EntityInfoFederatedRequest
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
+type EntityInfoFederatedRequest = {
+  parameters: EntityInfoParameters
+  correlationId: string
+}
+```
 
 See also:
 
-
-
+[FederatedRequest](#federatedrequest)
+[EntityInfoParameters](#entityinfoparameters)
 
 ---
 
 ### PurchasedContentFederatedRequest
 
-
-
 ```typescript
-```typescript
-
-````
-
+type PurchasedContentFederatedRequest = {
+  parameters: PurchasedContentParameters
+  correlationId: string
+}
 ```
 
 See also:
 
-
-
+[FederatedRequest](#federatedrequest)
+[PurchasedContentParameters](#purchasedcontentparameters)
 
 ---
-```

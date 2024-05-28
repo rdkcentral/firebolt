@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.2.0-feature-user-interest.7
+Version AcknowledgeChallenge 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -54,19 +54,12 @@ Internal API for Challenge Provider to send back error.
 
 Parameters:
 
-| Param           | Type                    | Required       | Description |
-| --------------- | ----------------------- | -------------- | ----------- | ----------- |
-| `correlationId` | `string`                | true           |             |
-| `error`         | [`                      | Property       | Type        | Description |
-| ----------      | ------                  | -------------  |
-| `${property}`   | [${type}](${type.link}) | ${description} |
-| `](#)           | true                    |                |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -117,10 +110,6 @@ Internal API for Challenge Provider to request focus for UX purposes.
 
 Result:
 
-```typescript
-
-```
-
 Capabilities:
 
 | Role     | Capability                                             |
@@ -164,16 +153,12 @@ Internal API for Challenge Provider to send back response.
 
 Parameters:
 
-| Param           | Type     | Required | Description |
-| --------------- | -------- | -------- | ----------- |
-| `correlationId` | `string` | true     |             |
-| `result`        | ``       | true     |             |
+| Param           | Type                          | Required | Description |
+| --------------- | ----------------------------- | -------- | ----------- |
+| `correlationId` | `string`                      | true     |             |
+| `result`        | [`GrantResult`](#grantresult) | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -308,22 +293,15 @@ Parameters:
 
 Result:
 
-````typescript
-```typescript
-
-````
-
-````
+[ChallengeProviderRequest](#challengeproviderrequest)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                                             |
+| -------- | ------------------------------------------------------ |
 | provides | xrn:firebolt:capability:usergrant:acknowledgechallenge |
 
-
 #### Examples
-
 
 Default Example
 
@@ -333,14 +311,14 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "AcknowledgeChallenge.onRequestChallenge",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AcknowledgeChallenge.onRequestChallenge",
+  "params": {
+    "listen": true
+  }
 }
-````
+```
 
 Response:
 
@@ -370,7 +348,12 @@ Response:
 The provider interface for the `xrn:firebolt:capability:usergrant:acknowledgechallenge` capability.
 
 ```typescript
-
+interface ChallengeProvider {
+  challenge(
+    parameters: Challenge,
+    session: FocusableProviderSession,
+  ): Promise<GrantResult>
+}
 ```
 
 Usage:
@@ -477,64 +460,52 @@ Response:
 
 ### GrantResult
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type GrantResult = {
+  granted: boolean
+}
+```
 
 ---
 
 ### ChallengeRequestor
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type ChallengeRequestor = {
+  id: string // The id of the app that requested the challenge
+  name: string // The name of the app that requested the challenge
+}
+```
 
 ---
 
 ### Challenge
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
+type Challenge = {
+  capability: string // The capability that is being requested by the user to approve
+  requestor: ChallengeRequestor // The identity of which app is requesting access to this capability
+}
+```
 
 See also:
 
-
+[ChallengeRequestor](#challengerequestor)
 
 ---
 
 ### ChallengeProviderRequest
 
-
-
 ```typescript
-```typescript
-
-````
-
+type ChallengeProviderRequest = {
+  parameters: Challenge // The result of the provider response.
+  correlationId: string // The id that was passed in to the event that triggered a provider method to be called
+}
 ```
 
 See also:
 
-
-
+[ProviderRequest](../Types/schemas/#ProviderRequest)
+[Challenge](#challenge-1)
 
 ---
-```

@@ -58,14 +58,18 @@ A Firebolt compliant representation of a user intention.
 
 A Firebolt compliant representation of a user intention to navigate an app to a specific entity page, and bring that app to the foreground if needed.
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type EntityIntent = {
+  action: 'entity'
+  data:
+    | ProgramEntity
+    | MusicEntity
+    | ChannelEntity
+    | UntypedEntity
+    | PlaylistEntity
+  context: object
+}
+```
 
 ---
 
@@ -74,15 +78,16 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
+type PlaybackIntent = {
+  action: 'playback'
+  data: PlayableEntity
+  context: object
+}
+```
 
 See also:
 
-
+[PlayableEntity](../Entity/schemas/#PlayableEntity)
 
 ---
 
@@ -91,13 +96,12 @@ See also:
 A Firebolt compliant representation of a user intention to navigate an app to it's search UI with a search term populated, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type SearchIntent = {
+  action: 'search'
+  data?: object
+  context: object
+}
+```
 
 ---
 
@@ -106,13 +110,12 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 A Firebolt compliant representation of a user intention to navigate an app to a section not covered by `home`, `entity`, `player`, or `search`, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type SectionIntent = {
+  action: 'section'
+  data?: object
+  context: object
+}
+```
 
 ---
 
@@ -121,15 +124,16 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.
 
 ```typescript
-```typescript
-
-````
-
-````
+type TuneIntent = {
+  action: 'tune'
+  data: object
+  context: object
+}
+```
 
 See also:
 
-
+[ChannelEntity](../Entity/schemas/#ChannelEntity)
 
 ---
 
@@ -138,15 +142,16 @@ See also:
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
+type PlayEntityIntent = {
+  action: 'play-entity'
+  data: object
+  context: object
+}
+```
 
 See also:
 
-
+[PlayableEntity](../Entity/schemas/#PlayableEntity)
 
 ---
 
@@ -155,16 +160,17 @@ See also:
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for an abstract query to be searched for and played by the app.
 
 ```typescript
-```typescript
-
-````
-
-````
+type PlayQueryIntent = {
+  action: 'play-query'
+  data: object
+  context: object
+}
+```
 
 See also:
 
-
-
+[ProgramType](../Entertainment/schemas/#ProgramType)
+[MusicType](../Entertainment/schemas/#MusicType)
 
 ---
 
@@ -173,13 +179,11 @@ See also:
 A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type HomeIntent = {
+  action: 'home'
+  context: object
+}
+```
 
 ---
 
@@ -188,13 +192,11 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 A Firebolt compliant representation of a user intention to launch an app.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type LaunchIntent = {
+  action: 'launch'
+  context: object
+}
+```
 
 ---
 
@@ -203,9 +205,28 @@ A Firebolt compliant representation of a user intention to launch an app.
 A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
 
 ```typescript
-
-````
+type NavigationIntent =
+  | HomeIntent
+  | LaunchIntent
+  | EntityIntent
+  | PlaybackIntent
+  | SearchIntent
+  | SectionIntent
+  | TuneIntent
+  | PlayEntityIntent
+  | PlayQueryIntent
+```
 
 See also:
+
+[HomeIntent](#homeintent)
+[LaunchIntent](#launchintent)
+[EntityIntent](#entityintent)
+[PlaybackIntent](#playbackintent)
+[SearchIntent](#searchintent)
+[SectionIntent](#sectionintent)
+[TuneIntent](#tuneintent)
+[PlayEntityIntent](#playentityintent)
+[PlayQueryIntent](#playqueryintent)
 
 ---

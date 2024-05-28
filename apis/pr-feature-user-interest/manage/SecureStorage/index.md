@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.2.0-feature-user-interest.7
+Version SecureStorage 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -44,21 +44,17 @@ A module for storing and retrieving secure data owned by the app
 Clears all the secure data values for a specific app
 
 ```typescript
-${method.signature}
+function clearForApp(appId: string, scope: StorageScope): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                                                |
-| ------- | -------- | -------- | ---------------------------------------------------------- |
-| `appId` | `string` | true     | appId for which values are removed                         |
-| `scope` | ``       | true     | The scope of the key/value values: `'device' \| 'account'` |
+| Param   | Type                            | Required | Description                                                     |
+| ------- | ------------------------------- | -------- | --------------------------------------------------------------- |
+| `appId` | `string`                        | true     | appId for which values are removed                              |
+| `scope` | [`StorageScope`](#storagescope) | true     | The scope of the key/value <br/>values: `'device' \| 'account'` |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -120,22 +116,22 @@ Response:
 Removes single data value for a specific app.
 
 ```typescript
-${method.signature}
+function removeForApp(
+  appId: string,
+  scope: StorageScope,
+  key: string,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                                                |
-| ------- | -------- | -------- | ---------------------------------------------------------- |
-| `appId` | `string` | true     | appId for which values are removed                         |
-| `scope` | ``       | true     | The scope of the key/value values: `'device' \| 'account'` |
-| `key`   | `string` | true     | Key to remove                                              |
+| Param   | Type                            | Required | Description                                                     |
+| ------- | ------------------------------- | -------- | --------------------------------------------------------------- |
+| `appId` | `string`                        | true     | appId for which values are removed                              |
+| `scope` | [`StorageScope`](#storagescope) | true     | The scope of the key/value <br/>values: `'device' \| 'account'` |
+| `key`   | `string`                        | true     | Key to remove                                                   |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -202,24 +198,26 @@ Response:
 Set or update a secure data value for a specific app.
 
 ```typescript
-${method.signature}
+function setForApp(
+  appId: string,
+  scope: StorageScope,
+  key: string,
+  value: string,
+  options: StorageOptions,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param     | Type     | Required | Description                                               |
-| --------- | -------- | -------- | --------------------------------------------------------- |
-| `appId`   | `string` | true     | appId for which value is being set                        |
-| `scope`   | ``       | true     | The scope of the data key values: `'device' \| 'account'` |
-| `key`     | `string` | true     | Key to set                                                |
-| `value`   | `string` | true     | Value to set                                              |
-| `options` | ``       | false    | Optional parameters to set                                |
+| Param     | Type                                | Required | Description                                                    |
+| --------- | ----------------------------------- | -------- | -------------------------------------------------------------- |
+| `appId`   | `string`                            | true     | appId for which value is being set                             |
+| `scope`   | [`StorageScope`](#storagescope)     | true     | The scope of the data key <br/>values: `'device' \| 'account'` |
+| `key`     | `string`                            | true     | Key to set                                                     |
+| `value`   | `string`                            | true     | Value to set                                                   |
+| `options` | [`StorageOptions`](#storageoptions) | false    | Optional parameters to set                                     |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -349,12 +347,10 @@ Response:
 The scope of the data
 
 ```typescript
-StorageScope Enumeration:
-
-| key | value |
-|-----|-------|
-| DEVICE | device |
-| ACCOUNT | account |
+StorageScope: {
+    DEVICE: 'device',
+    ACCOUNT: 'account',
+},
 
 ```
 
@@ -362,14 +358,10 @@ StorageScope Enumeration:
 
 ### StorageOptions
 
-````typescript
 ```typescript
-
-````
-
+type StorageOptions = {
+  ttl: number // Seconds from set time before the data expires and is removed
+}
 ```
-
-
 
 ---
-```

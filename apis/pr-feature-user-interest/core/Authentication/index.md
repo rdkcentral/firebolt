@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.2.0-feature-user-interest.7
+Version Authentication 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -44,14 +44,10 @@ A module for acquiring authentication tokens.
 Get a device token scoped to the current app.
 
 ```typescript
-${method.signature}
+function device(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -110,14 +106,10 @@ Response:
 Get a root device token.
 
 ```typescript
-${method.signature}
+function root(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -176,14 +168,10 @@ Response:
 Get a destributor session token.
 
 ```typescript
-${method.signature}
+function session(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -242,26 +230,17 @@ Response:
 Get a specific `type` of authentication token
 
 ```typescript
-${method.signature}
+function token(type: TokenType, options: object): Promise<object>
 ```
 
 Parameters:
 
-| Param         | Type                    | Required                                    | Description                                                                 |
-| ------------- | ----------------------- | ------------------------------------------- | --------------------------------------------------------------------------- | ----------- |
-| `type`        | ``                      | true                                        | What type of token to get values: `'platform' \| 'device' \| 'distributor'` |
-| `options`     | [`                      | Property                                    | Type                                                                        | Description |
-| ----------    | ------                  | -------------                               |
-| `${property}` | [${type}](${type.link}) | ${description}                              |
-| `](#)         | false                   | Additional options for acquiring the token. |
+| Param     | Type                      | Required | Description                                                                      |
+| --------- | ------------------------- | -------- | -------------------------------------------------------------------------------- |
+| `type`    | [`TokenType`](#tokentype) | true     | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
+| `options` | `object`                  | false    | Additional options for acquiring the token.                                      |
 
 Promise resolution:
-
-| Property  | Type   | Description |
-| --------- | ------ | ----------- |
-| `value`   | string |             |
-| `expires` | string |             |
-| `type`    | string |             |
 
 Capabilities:
 
@@ -441,13 +420,11 @@ Response:
 ### TokenType
 
 ```typescript
-TokenType Enumeration:
-
-| key | value |
-|-----|-------|
-| PLATFORM | platform |
-| DEVICE | device |
-| DISTRIBUTOR | distributor |
+TokenType: {
+    PLATFORM: 'platform',
+    DEVICE: 'device',
+    DISTRIBUTOR: 'distributor',
+},
 
 ```
 

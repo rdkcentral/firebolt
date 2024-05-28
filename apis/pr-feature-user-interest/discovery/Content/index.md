@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.2.0-feature-user-interest.7
+Version Content 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -156,34 +156,30 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Provide information about the entity currently displayed or selected on the screen.
 
 ```typescript
-${method.signature}
+function requestUserInterest(
+  type: InterestType,
+  reason: InterestReason,
+): Promise<InterestResult>
 ```
 
 Parameters:
 
-| Param    | Type | Required | Description                                       |
-| -------- | ---- | -------- | ------------------------------------------------- |
-| `type`   | ``   | true     | values: `'interest' \| 'disinterest'`             |
-| `reason` | ``   | true     | values: `'playlist' \| 'reaction' \| 'recording'` |
+| Param    | Type                                                     | Required | Description                                            |
+| -------- | -------------------------------------------------------- | -------- | ------------------------------------------------------ |
+| `type`   | [`InterestType`](../Discovery/schemas/#InterestType)     | true     | <br/>values: `'interest' \| 'disinterest'`             |
+| `reason` | [`InterestReason`](../Discovery/schemas/#InterestReason) | true     | <br/>values: `'playlist' \| 'reaction' \| 'recording'` |
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[InterestResult](#interestresult)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                      |
+| ---- | ----------------------------------------------- |
 | uses | xrn:firebolt:capability:discovery:user-interest |
 
-
 #### Examples
-
 
 Default Example
 
@@ -192,9 +188,9 @@ JavaScript:
 ```javascript
 import { Content } from '@firebolt-js/discovery-sdk'
 
-let interest = await Content.requestUserInterest("interest", "playlist")
+let interest = await Content.requestUserInterest('interest', 'playlist')
 console.log(interest)
-````
+```
 
 Value of `interest`:
 
@@ -292,22 +288,15 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-````typescript
-```typescript
-
-````
-
-````
+[InterestEvent](#interestevent)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                      |
+| ---- | ----------------------------------------------- |
 | uses | xrn:firebolt:capability:discovery:user-interest |
 
-
 #### Examples
-
 
 Default Example
 
@@ -316,10 +305,10 @@ JavaScript:
 ```javascript
 import { Content } from '@firebolt-js/discovery-sdk'
 
-Content.listen('userInterest', interest => {
+Content.listen('userInterest', (interest) => {
   console.log(interest)
 })
-````
+```
 
 Value of `interest`:
 
@@ -412,35 +401,34 @@ Response:
 
 ### InterestResult
 
-````typescript
 ```typescript
-
-````
-
-````
+type InterestResult = {
+  appId: string
+  entity: EntityDetails
+}
+```
 
 See also:
 
-
+[EntityDetails](../Entity/schemas/#EntityDetails)
 
 ---
 
 ### InterestEvent
 
-
-
 ```typescript
-```typescript
-
-````
-
+type InterestEvent = {
+  appId: string
+  type: InterestType
+  reason: InterestReason
+  entity: EntityDetails
+}
 ```
 
 See also:
 
-
-
-
+[InterestType](../Discovery/schemas/#InterestType)
+[InterestReason](../Discovery/schemas/#InterestReason)
+[EntityDetails](../Entity/schemas/#EntityDetails)
 
 ---
-```

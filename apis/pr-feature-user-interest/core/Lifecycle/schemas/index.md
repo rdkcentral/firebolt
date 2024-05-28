@@ -31,14 +31,12 @@ undefined
 The application close reason
 
 ```typescript
-CloseReason Enumeration:
-
-| key | value |
-|-----|-------|
-| REMOTE_BUTTON | remoteButton |
-| USER_EXIT | userExit |
-| DONE | done |
-| ERROR | error |
+CloseReason: {
+    REMOTE_BUTTON: 'remoteButton',
+    USER_EXIT: 'userExit',
+    DONE: 'done',
+    ERROR: 'error',
+},
 
 ```
 
@@ -49,16 +47,14 @@ CloseReason Enumeration:
 The application lifecycle state
 
 ```typescript
-LifecycleState Enumeration:
-
-| key | value |
-|-----|-------|
-| INITIALIZING | initializing |
-| INACTIVE | inactive |
-| FOREGROUND | foreground |
-| BACKGROUND | background |
-| UNLOADING | unloading |
-| SUSPENDED | suspended |
+LifecycleState: {
+    INITIALIZING: 'initializing',
+    INACTIVE: 'inactive',
+    FOREGROUND: 'foreground',
+    BACKGROUND: 'background',
+    UNLOADING: 'unloading',
+    SUSPENDED: 'suspended',
+},
 
 ```
 

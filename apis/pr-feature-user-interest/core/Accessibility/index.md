@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Accessibility 1.2.0-feature-user-interest.7
+Version Accessibility 1.2.0-feature-user-interest.8
 
 ## Table of Contents
 
@@ -55,27 +55,20 @@ Get the user's preferred audio description settings
 To get the value of `audioDescriptionSettings` call the method like this:
 
 ```typescript
-${method.signature}
+function audioDescriptionSettings(): Promise<AudioDescriptionSettings>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[AudioDescriptionSettings](#audiodescriptionsettings-1)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                              |
+| ---- | ------------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:audiodescriptions |
 
-
 #### Examples
-
 
 Getting the audio description settings
 
@@ -86,7 +79,7 @@ import { Accessibility } from '@firebolt-js/sdk'
 
 let settings = await Accessibility.audioDescriptionSettings()
 console.log(settings)
-````
+```
 
 Value of `settings`:
 
@@ -128,7 +121,9 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function audioDescriptionSettings(callback: (value) => ): Promise<number>
+function audioDescriptionSettings(
+  callback: (value) => AudioDescriptionSettings,
+): Promise<number>
 ```
 
 Promise resolution:
@@ -196,27 +191,20 @@ Response:
 Get the user's preferred closed-captions settings
 
 ```typescript
-${method.signature}
+function closedCaptions(): Promise<ClosedCaptionsSettings>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Getting the closed captions settings
 
@@ -227,7 +215,7 @@ import { Accessibility } from '@firebolt-js/sdk'
 
 let closedCaptionsSettings = await Accessibility.closedCaptions()
 console.log(closedCaptionsSettings)
-````
+```
 
 Value of `closedCaptionsSettings`:
 
@@ -306,27 +294,20 @@ Get the user's preferred closed-captions settings
 To get the value of `closedCaptionsSettings` call the method like this:
 
 ```typescript
-${method.signature}
+function closedCaptionsSettings(): Promise<ClosedCaptionsSettings>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:closedcaptions |
 
-
 #### Examples
-
 
 Getting the closed captions settings
 
@@ -337,7 +318,7 @@ import { Accessibility } from '@firebolt-js/sdk'
 
 let closedCaptionsSettings = await Accessibility.closedCaptionsSettings()
 console.log(closedCaptionsSettings)
-````
+```
 
 Value of `closedCaptionsSettings`:
 
@@ -412,7 +393,9 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function closedCaptionsSettings(callback: (value) => ): Promise<number>
+function closedCaptionsSettings(
+  callback: (value) => ClosedCaptionsSettings,
+): Promise<number>
 ```
 
 Promise resolution:
@@ -623,27 +606,20 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Get the user's preferred voice guidance settings
 
 ```typescript
-${method.signature}
+function voiceGuidance(): Promise<VoiceGuidanceSettings>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:voiceguidance |
 
-
 #### Examples
-
 
 Getting the voice guidance settings
 
@@ -654,7 +630,7 @@ import { Accessibility } from '@firebolt-js/sdk'
 
 let settings = await Accessibility.voiceGuidance()
 console.log(settings)
-````
+```
 
 Value of `settings`:
 
@@ -702,27 +678,20 @@ Get the user's preferred voice guidance settings
 To get the value of `voiceGuidanceSettings` call the method like this:
 
 ```typescript
-${method.signature}
+function voiceGuidanceSettings(): Promise<VoiceGuidanceSettings>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
 | uses | xrn:firebolt:capability:accessibility:voiceguidance |
 
-
 #### Examples
-
 
 Getting the voice guidance settings
 
@@ -733,7 +702,7 @@ import { Accessibility } from '@firebolt-js/sdk'
 
 let settings = await Accessibility.voiceGuidanceSettings()
 console.log(settings)
-````
+```
 
 Value of `settings`:
 
@@ -777,7 +746,9 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function voiceGuidanceSettings(callback: (value) => ): Promise<number>
+function voiceGuidanceSettings(
+  callback: (value) => VoiceGuidanceSettings,
+): Promise<number>
 ```
 
 Promise resolution:
@@ -860,14 +831,10 @@ See: [voiceGuidanceSettings](#voiceguidancesettings)
 
 ### AudioDescriptionSettings
 
-````typescript
 ```typescript
-
-````
-
+type AudioDescriptionSettings = {
+  enabled: boolean // Whether or not audio descriptions should be enabled by default
+}
 ```
-
-
 
 ---
-```
