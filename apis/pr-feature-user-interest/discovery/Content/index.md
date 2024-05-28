@@ -175,9 +175,9 @@ Promise resolution:
 
 Capabilities:
 
-| Role | Capability                                      |
-| ---- | ----------------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:user-interest |
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:interest |
 
 #### Examples
 
@@ -292,9 +292,9 @@ Event value:
 
 Capabilities:
 
-| Role | Capability                                      |
-| ---- | ----------------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:user-interest |
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:interest |
 
 #### Examples
 

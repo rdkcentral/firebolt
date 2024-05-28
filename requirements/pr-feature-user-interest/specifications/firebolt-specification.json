@@ -696,6 +696,21 @@
 				"negotiable": true
 			}
 		},
+		"xrn:firebolt:capability:discovery:interest": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
+		},
 		"xrn:firebolt:capability:discovery:navigate-to": {
 			"level": "must",
 			"use": {
@@ -731,21 +746,6 @@
 			"use": {
 				"public": false,
 				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:discovery:user-interest": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": true
 			},
 			"manage": {
 				"public": false,
@@ -6559,7 +6559,7 @@
 							"name": "capabilities",
 							"x-provided-by": "Discovery.onRequestUserInterest",
 							"x-uses": [
-								"xrn:firebolt:capability:discovery:user-interest"
+								"xrn:firebolt:capability:discovery:interest"
 							]
 						}
 					],
@@ -6642,7 +6642,7 @@
 							"name": "capabilities",
 							"x-provided-by": "Discovery.userInterest",
 							"x-uses": [
-								"xrn:firebolt:capability:discovery:user-interest"
+								"xrn:firebolt:capability:discovery:interest"
 							]
 						}
 					],
@@ -9531,7 +9531,7 @@
 					"tags": [
 						{
 							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest"
+							"x-provides": "xrn:firebolt:capability:discovery:interest"
 						}
 					],
 					"params": [
@@ -9657,7 +9657,7 @@
 						},
 						{
 							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest"
+							"x-provides": "xrn:firebolt:capability:discovery:interest"
 						}
 					],
 					"summary": "Provide information about the entity currently displayed or selected on the screen.",
@@ -9955,7 +9955,7 @@
 						},
 						{
 							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest",
+							"x-provides": "xrn:firebolt:capability:discovery:interest",
 							"x-response-for": "Discovery.onRequestUserInterest"
 						}
 					],
@@ -10056,7 +10056,7 @@
 						},
 						{
 							"name": "capabilities",
-							"x-provides": "xrn:firebolt:capability:discovery:user-interest",
+							"x-provides": "xrn:firebolt:capability:discovery:interest",
 							"x-error-for": "Discovery.onRequestUserInterest"
 						}
 					],

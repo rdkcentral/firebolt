@@ -3359,9 +3359,9 @@ Promise resolution:
 
 Capabilities:
 
-| Role     | Capability                                      |
-| -------- | ----------------------------------------------- |
-| provides | xrn:firebolt:capability:discovery:user-interest |
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
 
 #### Examples
 
@@ -3444,9 +3444,9 @@ Result:
 
 Capabilities:
 
-| Role     | Capability                                      |
-| -------- | ----------------------------------------------- |
-| provides | xrn:firebolt:capability:discovery:user-interest |
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
 
 #### Examples
 
@@ -3500,9 +3500,9 @@ Result:
 
 Capabilities:
 
-| Role     | Capability                                      |
-| -------- | ----------------------------------------------- |
-| provides | xrn:firebolt:capability:discovery:user-interest |
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
 
 #### Examples
 
@@ -3908,9 +3908,9 @@ Result:
 
 Capabilities:
 
-| Role     | Capability                                      |
-| -------- | ----------------------------------------------- |
-| provides | xrn:firebolt:capability:discovery:user-interest |
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
 
 #### Examples
 
@@ -3953,7 +3953,7 @@ Response:
 
 ### UserInterestProvider
 
-The provider interface for the `xrn:firebolt:capability:discovery:user-interest` capability.
+The provider interface for the `xrn:firebolt:capability:discovery:interest` capability.
 
 ```typescript
 interface UserInterestProvider {
@@ -3967,12 +3967,12 @@ interface UserInterestProvider {
 Usage:
 
 ```typescript
-Discovery.provide('xrn:firebolt:capability:discovery:user-interest', provider: UserInterestProvider | object)
+Discovery.provide('xrn:firebolt:capability:discovery:interest', provider: UserInterestProvider | object)
 ```
 
 #### Examples
 
-**Register your app to provide the `xrn:firebolt:capability:discovery:user-interest` capability.**
+**Register your app to provide the `xrn:firebolt:capability:discovery:interest` capability.**
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -4006,7 +4006,7 @@ class MyUserInterestProvider {
 }
 
 Discovery.provide(
-  'xrn:firebolt:capability:discovery:user-interest',
+  'xrn:firebolt:capability:discovery:interest',
   new MyUserInterestProvider(),
 )
 ```
