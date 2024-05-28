@@ -4136,8 +4136,8 @@ type Availability = {
 
 ```typescript
 type UserInterestProviderParameters = {
-  type?: InterestType
-  reason?: InterestReason
+  type: InterestType
+  reason: InterestReason
 }
 ```
 

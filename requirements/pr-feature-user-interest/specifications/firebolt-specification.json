@@ -19958,6 +19958,10 @@
 					"UserInterestProviderParameters": {
 						"title": "UserInterestProviderParameters",
 						"type": "object",
+						"required": [
+							"type",
+							"reason"
+						],
 						"properties": {
 							"type": {
 								"$ref": "#/x-schemas/Discovery/InterestType"
