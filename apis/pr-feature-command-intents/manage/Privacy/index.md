@@ -70,14 +70,10 @@ Whether the user allows their automatic content recognition data to be collected
 To get the value of `allowACRCollection` call the method like this:
 
 ```typescript
-${method.signature}
+function allowACRCollection(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -176,8 +172,7 @@ Response:
 To set the value of `allowACRCollection` call the method like this:
 
 ```typescript
-function allowACRCollection(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowACRCollection(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -187,10 +182,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -399,14 +390,10 @@ Whether the user allows ads to be targeted to the user while watching content in
 To get the value of `allowAppContentAdTargeting` call the method like this:
 
 ```typescript
-${method.signature}
+function allowAppContentAdTargeting(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -505,8 +492,7 @@ Response:
 To set the value of `allowAppContentAdTargeting` call the method like this:
 
 ```typescript
-function allowAppContentAdTargeting(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowAppContentAdTargeting(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -516,10 +502,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -730,14 +712,10 @@ Whether the user allows data from their camera to be used for Product Analytics
 To get the value of `allowCameraAnalytics` call the method like this:
 
 ```typescript
-${method.signature}
+function allowCameraAnalytics(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -836,8 +814,7 @@ Response:
 To set the value of `allowCameraAnalytics` call the method like this:
 
 ```typescript
-function allowCameraAnalytics(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowCameraAnalytics(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -847,10 +824,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -1059,14 +1032,10 @@ Whether the user allows their usage data to be used for personalization and reco
 To get the value of `allowPersonalization` call the method like this:
 
 ```typescript
-${method.signature}
+function allowPersonalization(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1165,8 +1134,7 @@ Response:
 To set the value of `allowPersonalization` call the method like this:
 
 ```typescript
-function allowPersonalization(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowPersonalization(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -1176,10 +1144,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -1388,14 +1352,10 @@ Whether the user allows ads to be targeted to the user while browsing in the pri
 To get the value of `allowPrimaryBrowseAdTargeting` call the method like this:
 
 ```typescript
-${method.signature}
+function allowPrimaryBrowseAdTargeting(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1494,8 +1454,7 @@ Response:
 To set the value of `allowPrimaryBrowseAdTargeting` call the method like this:
 
 ```typescript
-function allowPrimaryBrowseAdTargeting(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowPrimaryBrowseAdTargeting(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -1505,10 +1464,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -1719,14 +1674,10 @@ Whether the user allows ads to be targeted to the user while watching content in
 To get the value of `allowPrimaryContentAdTargeting` call the method like this:
 
 ```typescript
-${method.signature}
+function allowPrimaryContentAdTargeting(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1825,8 +1776,7 @@ Response:
 To set the value of `allowPrimaryContentAdTargeting` call the method like this:
 
 ```typescript
-function allowPrimaryContentAdTargeting(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowPrimaryContentAdTargeting(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -1836,10 +1786,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -2050,14 +1996,10 @@ Whether the user allows their usage data can be used for analytics about the pro
 To get the value of `allowProductAnalytics` call the method like this:
 
 ```typescript
-${method.signature}
+function allowProductAnalytics(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -2156,8 +2098,7 @@ Response:
 To set the value of `allowProductAnalytics` call the method like this:
 
 ```typescript
-function allowProductAnalytics(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowProductAnalytics(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -2167,10 +2108,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -2379,14 +2316,10 @@ Whether the user allows their personal data to be included in diagnostic telemet
 To get the value of `allowRemoteDiagnostics` call the method like this:
 
 ```typescript
-${method.signature}
+function allowRemoteDiagnostics(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -2485,8 +2418,7 @@ Response:
 To set the value of `allowRemoteDiagnostics` call the method like this:
 
 ```typescript
-function allowRemoteDiagnostics(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowRemoteDiagnostics(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -2496,10 +2428,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -2708,14 +2636,10 @@ Whether the user allows resume points for content to show in the main experience
 To get the value of `allowResumePoints` call the method like this:
 
 ```typescript
-${method.signature}
+function allowResumePoints(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -2814,8 +2738,7 @@ Response:
 To set the value of `allowResumePoints` call the method like this:
 
 ```typescript
-function allowResumePoints(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowResumePoints(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -2825,10 +2748,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -3037,14 +2956,10 @@ Whether the user allows their usage data to be used for personalization and reco
 To get the value of `allowUnentitledPersonalization` call the method like this:
 
 ```typescript
-${method.signature}
+function allowUnentitledPersonalization(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3143,8 +3058,7 @@ Response:
 To set the value of `allowUnentitledPersonalization` call the method like this:
 
 ```typescript
-function allowUnentitledPersonalization(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowUnentitledPersonalization(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -3154,10 +3068,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -3368,14 +3278,10 @@ Whether the user allows resume points for content from unentitled providers to s
 To get the value of `allowUnentitledResumePoints` call the method like this:
 
 ```typescript
-${method.signature}
+function allowUnentitledResumePoints(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3474,8 +3380,7 @@ Response:
 To set the value of `allowUnentitledResumePoints` call the method like this:
 
 ```typescript
-function allowUnentitledResumePoints(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowUnentitledResumePoints(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -3485,10 +3390,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -3699,14 +3600,10 @@ Whether the user allows their watch history from all sources to show in the main
 To get the value of `allowWatchHistory` call the method like this:
 
 ```typescript
-${method.signature}
+function allowWatchHistory(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3805,8 +3702,7 @@ Response:
 To set the value of `allowWatchHistory` call the method like this:
 
 ```typescript
-function allowWatchHistory(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function allowWatchHistory(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -3816,10 +3712,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -4136,27 +4028,20 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Gets the allowed value for all privacy settings
 
 ```typescript
-${method.signature}
+function settings(): Promise<PrivacySettings>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[PrivacySettings](#privacysettings)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:settings |
 
-
 #### Examples
-
 
 Default Example
 
@@ -4167,7 +4052,7 @@ import { Privacy } from '@firebolt-js/manage-sdk'
 
 let settings = await Privacy.settings()
 console.log(settings)
-````
+```
 
 Value of `settings`:
 
@@ -4282,14 +4167,21 @@ See: [allowWatchHistory](#allowwatchhistory)
 
 ### PrivacySettings
 
-````typescript
 ```typescript
-
-````
-
+type PrivacySettings = {
+  allowACRCollection: boolean
+  allowResumePoints: boolean
+  allowAppContentAdTargeting: boolean
+  allowCameraAnalytics: boolean
+  allowPersonalization: boolean
+  allowPrimaryBrowseAdTargeting: boolean
+  allowPrimaryContentAdTargeting: boolean
+  allowProductAnalytics: boolean
+  allowRemoteDiagnostics: boolean
+  allowUnentitledPersonalization: boolean
+  allowUnentitledResumePoints: boolean
+  allowWatchHistory: boolean
+}
 ```
-
-
 
 ---
-```

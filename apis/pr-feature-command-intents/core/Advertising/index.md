@@ -51,22 +51,16 @@ A module for platform provided advertising settings and functionality.
 Get the advertising ID
 
 ```typescript
-${method.signature}
+function advertisingId(options: AdvertisingIdOptions): Promise<object>
 ```
 
 Parameters:
 
-| Param     | Type | Required | Description           |
-| --------- | ---- | -------- | --------------------- |
-| `options` | ``   | false    | AdvertisingId options |
+| Param     | Type                                            | Required | Description           |
+| --------- | ----------------------------------------------- | -------- | --------------------- |
+| `options` | [`AdvertisingIdOptions`](#advertisingidoptions) | false    | AdvertisingId options |
 
 Promise resolution:
-
-| Property   | Type   | Description |
-| ---------- | ------ | ----------- |
-| `ifa`      | string |             |
-| `ifa_type` | string |             |
-| `lmt`      | string |             |
 
 Capabilities:
 
@@ -251,14 +245,10 @@ Response:
 Get the App's Bundle ID
 
 ```typescript
-${method.signature}
+function appBundleId(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -317,23 +307,16 @@ Response:
 Build configuration object for Ad Framework initialization
 
 ```typescript
-${method.signature}
+function config(options: AdConfigurationOptions): Promise<object>
 ```
 
 Parameters:
 
-| Param     | Type | Required | Description           |
-| --------- | ---- | -------- | --------------------- |
-| `options` | ``   | true     | Configuration options |
+| Param     | Type                                                | Required | Description           |
+| --------- | --------------------------------------------------- | -------- | --------------------- |
+| `options` | [`AdConfigurationOptions`](#adconfigurationoptions) | true     | Configuration options |
 
 Promise resolution:
-
-```typescript
-| Property | Type | Description |
-|----------|------|-------------|
-| `${property}` | ${type} | An opaque object represneting the AdConfiguration |
-
-```
 
 Capabilities:
 
@@ -432,17 +415,10 @@ Response:
 Get the device advertising device attributes
 
 ```typescript
-${method.signature}
+function deviceAttributes(): Promise<object>
 ```
 
 Promise resolution:
-
-```typescript
-| Property | Type | Description |
-|----------|------|-------------|
-| `${property}` | ${type} |  |
-
-```
 
 Capabilities:
 
@@ -614,27 +590,20 @@ Get the advertising privacy and playback policy
 To get the value of `policy` call the method like this:
 
 ```typescript
-${method.signature}
+function policy(): Promise<AdPolicy>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[AdPolicy](#adpolicy)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                                                                                        |
+| ---- | ------------------------------------------------------------------------------------------------- |
 | uses | xrn:firebolt:capability:privacy:advertising<br/>xrn:firebolt:capability:advertising:configuration |
 
-
 #### Examples
-
 
 Getting the advertising policy settings
 
@@ -645,7 +614,7 @@ import { Advertising } from '@firebolt-js/sdk'
 
 let adPolicy = await Advertising.policy()
 console.log(adPolicy)
-````
+```
 
 Value of `adPolicy`:
 
@@ -689,7 +658,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function policy(callback: (value) => ): Promise<number>
+function policy(callback: (value) => AdPolicy): Promise<number>
 ```
 
 Promise resolution:
@@ -764,14 +733,13 @@ See: [policy](#policy)
 
 ### AdConfigurationOptions
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type AdConfigurationOptions = {
+  coppa?: boolean // Whether or not the app requires US COPPA compliance.
+  environment?: 'prod' | 'test' // Whether the app is running in a production or test mode.
+  authenticationEntity?: string // The authentication provider, when it is separate entity than the app provider, e.g. an MVPD.
+}
+```
 
 ---
 
@@ -780,30 +748,24 @@ See: [policy](#policy)
 Describes various ad playback enforcement rules that the app should follow.
 
 ```typescript
-```typescript
-
-````
-
-````
+type AdPolicy = {
+  skipRestriction?: SkipRestriction // The advertisement skip restriction.
+  limitAdTracking?: boolean
+}
+```
 
 See also:
 
-
+[SkipRestriction](../Advertising/schemas/#SkipRestriction)
 
 ---
 
 ### AdvertisingIdOptions
 
-
-
 ```typescript
-```typescript
-
-````
-
+type AdvertisingIdOptions = {
+  scope?: object // Provides the options to send scope type and id to select desired advertising id
+}
 ```
-
-
 
 ---
-```

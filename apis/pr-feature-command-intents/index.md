@@ -212,6 +212,19 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
 
 
+### `xrn:firebolt:capability:discovery:interest`
+
+| Uses |
+| ---- |
+| [Content.requestUserInterest](./manage/Content/#requestuserinterest)<br/>[Content.onUserInterest](./manage/Content/#userinterest) |
+
+
+
+| Provides |
+| -------- |
+| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest)<br/>[Discovery.userInterestResponse](./core/Discovery/#userinterestresponse)<br/>[Discovery.userInterestError](./core/Discovery/#userinteresterror) |
+
+
 ### `xrn:firebolt:capability:discovery:navigate-to`
 
 | Uses |

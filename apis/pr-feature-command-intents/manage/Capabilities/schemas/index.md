@@ -35,13 +35,11 @@ undefined
 Role provides access level for the app for a given capability.
 
 ```typescript
-Role Enumeration:
-
-| key | value |
-|-----|-------|
-| USE | use |
-| MANAGE | manage |
-| PROVIDE | provide |
+Role: {
+    USE: 'use',
+    MANAGE: 'manage',
+    PROVIDE: 'provide',
+},
 
 ```
 
@@ -52,16 +50,14 @@ Role Enumeration:
 Reasons why a Capability might not be invokable
 
 ```typescript
-DenyReason Enumeration:
-
-| key | value |
-|-----|-------|
-| UNPERMITTED | unpermitted |
-| UNSUPPORTED | unsupported |
-| DISABLED | disabled |
-| UNAVAILABLE | unavailable |
-| GRANT_DENIED | grantDenied |
-| UNGRANTED | ungranted |
+DenyReason: {
+    UNPERMITTED: 'unpermitted',
+    UNSUPPORTED: 'unsupported',
+    DISABLED: 'disabled',
+    UNAVAILABLE: 'unavailable',
+    GRANT_DENIED: 'grantDenied',
+    UNGRANTED: 'ungranted',
+},
 
 ```
 
@@ -87,17 +83,22 @@ A Capability is a discrete unit of functionality that a Firebolt device might be
 
 ### CapabilityInfo
 
-````typescript
 ```typescript
-
-````
-
-````
+type CapabilityInfo = {
+  capability?: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  supported: boolean // Provides info whether the capability is supported
+  available: boolean // Provides info whether the capability is available
+  use: object
+  manage: object
+  provide: object
+  details?: DenyReason[] // Reasons why a Capability might not be invokable
+}
+```
 
 See also:
 
-
-
+[Capability](#capability)
+[DenyReason](#denyreason)
 
 ---
 
@@ -106,16 +107,15 @@ See also:
 A capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
 
 ```typescript
-```typescript
-
-````
-
+type Permission = {
+  role?: Role // Role provides access level for the app for a given capability.
+  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+}
 ```
 
 See also:
 
-
-
+[Role](#role)
+[Capability](#capability)
 
 ---
-```
