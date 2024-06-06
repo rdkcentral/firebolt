@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecureStorage 1.2.0-feature-command-intents.0
+Version SecureStorage 1.2.0-feature-command-intents.2
 
 ## Table of Contents
 

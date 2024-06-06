@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.2.0-feature-command-intents.0
+Version Account 1.2.0-feature-command-intents.2
 
 ## Table of Contents
 
