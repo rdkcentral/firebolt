@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.2.0-feature-user-interest.8
+Version Capabilities 1.2.0-feature-user-interest.9
 
 ## Table of Contents
 

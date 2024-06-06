@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.2.0-feature-user-interest.8
+Version PinChallenge 1.2.0-feature-user-interest.9
 
 ## Table of Contents
 
@@ -355,7 +355,7 @@ The provider interface for the `xrn:firebolt:capability:usergrant:pinchallenge` 
 ```typescript
 interface ChallengeProvider {
   challenge(
-    parameters: PinChallenge,
+    parameters: object,
     session: FocusableProviderSession,
   ): Promise<PinChallengeResult>
 }

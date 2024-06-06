@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.2.0-feature-user-interest.8
+Version AcknowledgeChallenge 1.2.0-feature-user-interest.9
 
 ## Table of Contents
 
@@ -350,7 +350,7 @@ The provider interface for the `xrn:firebolt:capability:usergrant:acknowledgecha
 ```typescript
 interface ChallengeProvider {
   challenge(
-    parameters: Challenge,
+    parameters: object,
     session: FocusableProviderSession,
   ): Promise<GrantResult>
 }

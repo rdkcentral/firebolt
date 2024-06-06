@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.2.0-feature-user-interest.8
+Version Content 1.2.0-feature-user-interest.9
 
 ## Table of Contents
 
