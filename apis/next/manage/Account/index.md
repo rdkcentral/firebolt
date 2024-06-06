@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Account 1.2.0-next.2
+Version Account 1.2.0-next.3
 
 ## Table of Contents
 
@@ -42,21 +42,17 @@ A module for querying about the device account.
 Used by a distributor to push Session token to firebolt.
 
 ```typescript
-${method.signature}
+function session(token: Token, expiresIn: Expiry): Promise<void>
 ```
 
 Parameters:
 
-| Param       | Type | Required | Description |
-| ----------- | ---- | -------- | ----------- |
-| `token`     | ``   | true     |             |
-| `expiresIn` | ``   | true     | minumum: 1  |
+| Param       | Type                | Required | Description     |
+| ----------- | ------------------- | -------- | --------------- |
+| `token`     | [`Token`](#token)   | true     |                 |
+| `expiresIn` | [`Expiry`](#expiry) | true     | <br/>minumum: 1 |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 

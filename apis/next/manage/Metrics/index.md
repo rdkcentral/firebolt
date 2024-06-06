@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.2.0-next.2
+Version Metrics 1.2.0-next.3
 
 ## Table of Contents
 
@@ -42,21 +42,17 @@ Methods for sending metrics
 Inform the platform of 1st party distributor metrics.
 
 ```typescript
-${method.signature}
+function event(schema: string, data: EventObject): Promise<null>
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description                                        |
-| -------- | -------- | -------- | -------------------------------------------------- |
-| `schema` | `string` | true     | The schema URI of the metric type <br/>format: uri |
-| `data`   | ``       | true     | A JSON payload conforming the the provided schema  |
+| Param    | Type                            | Required | Description                                        |
+| -------- | ------------------------------- | -------- | -------------------------------------------------- |
+| `schema` | `string`                        | true     | The schema URI of the metric type <br/>format: uri |
+| `data`   | [`EventObject`](#eventobject-1) | true     | A JSON payload conforming the the provided schema  |
 
 Promise resolution:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -122,24 +118,20 @@ Response:
 ### EventObjectPrimitives
 
 ```typescript
-
+type EventObjectPrimitives = string | number | number | boolean | null
 ```
 
 ---
 
 ### EventObject
 
-````typescript
 ```typescript
-
-````
-
+type EventObject = {}
 ```
 
 See also:
 
-
-
+[EventObjectPrimitives](#eventobjectprimitives)
+[EventObject](#eventobject-1)
 
 ---
-```

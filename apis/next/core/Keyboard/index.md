@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Keyboard 1.2.0-next.2
+Version Keyboard 1.2.0-next.3
 
 ## Table of Contents
 
@@ -43,21 +43,17 @@ Methods for prompting users to enter text with task-oriented UX
 Prompt the user for their email address with a simplified list of choices.
 
 ```typescript
-${method.signature}
+function email(type: EmailUsage, message: string): Promise<string>
 ```
 
 Parameters:
 
-| Param     | Type     | Required | Description                                                                              |
-| --------- | -------- | -------- | ---------------------------------------------------------------------------------------- |
-| `type`    | ``       | true     | Why the email is being requested, e.g. sign on or sign up values: `'signIn' \| 'signUp'` |
-| `message` | `string` | false    | The message to display while prompting                                                   |
+| Param     | Type                        | Required | Description                                                                                   |
+| --------- | --------------------------- | -------- | --------------------------------------------------------------------------------------------- |
+| `type`    | [`EmailUsage`](#emailusage) | true     | Why the email is being requested, e.g. sign on or sign up <br/>values: `'signIn' \| 'signUp'` |
+| `message` | `string`                    | false    | The message to display while prompting                                                        |
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -170,7 +166,7 @@ Response:
 Show the password entry keyboard, with typing obfuscated from visibility
 
 ```typescript
-${method.signature}
+function password(message: string): Promise<string>
 ```
 
 Parameters:
@@ -180,10 +176,6 @@ Parameters:
 | `message` | `string` | false    | The message to display while prompting |
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -244,7 +236,7 @@ Response:
 Show the standard platform keyboard, and return the submitted value
 
 ```typescript
-${method.signature}
+function standard(message: string): Promise<string>
 ```
 
 Parameters:
@@ -254,10 +246,6 @@ Parameters:
 | `message` | `string` | true     | The message to display while prompting |
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -320,12 +308,10 @@ Response:
 ### EmailUsage
 
 ```typescript
-EmailUsage Enumeration:
-
-| key | value |
-|-----|-------|
-| SIGN_IN | signIn |
-| SIGN_UP | signUp |
+EmailUsage: {
+    SIGN_IN: 'signIn',
+    SIGN_UP: 'signUp',
+},
 
 ```
 

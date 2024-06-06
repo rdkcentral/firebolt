@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.2.0-next.2
+Version Device 1.2.0-next.3
 
 ## Table of Contents
 
@@ -72,27 +72,20 @@ Get the supported audio profiles
 To get the value of `audio` call the method like this:
 
 ```typescript
-${method.signature}
+function audio(): Promise<AudioProfiles>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[AudioProfiles](#audioprofiles)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
 
-
 #### Examples
-
 
 Getting the supported audio profiles
 
@@ -103,7 +96,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let supportedAudioProfiles = await Device.audio()
 console.log(supportedAudioProfiles)
-````
+```
 
 Value of `supportedAudioProfiles`:
 
@@ -151,7 +144,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function audio(callback: (value) => ): Promise<number>
+function audio(callback: (value) => AudioProfiles): Promise<number>
 ```
 
 Promise resolution:
@@ -227,14 +220,10 @@ Get the distributor ID for this device
 To get the value of `distributor` call the method like this:
 
 ```typescript
-${method.signature}
+function distributor(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -295,27 +284,20 @@ Get the supported HDCP profiles
 To get the value of `hdcp` call the method like this:
 
 ```typescript
-${method.signature}
+function hdcp(): Promise<BooleanMap>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
 
-
 #### Examples
-
 
 Getting the supported HDCP profiles
 
@@ -326,7 +308,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let supportedHdcpProfiles = await Device.hdcp()
 console.log(supportedHdcpProfiles)
-````
+```
 
 Value of `supportedHdcpProfiles`:
 
@@ -370,7 +352,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdcp(callback: (value) => ): Promise<number>
+function hdcp(callback: (value) => BooleanMap): Promise<number>
 ```
 
 Promise resolution:
@@ -442,27 +424,20 @@ Get the supported HDR profiles
 To get the value of `hdr` call the method like this:
 
 ```typescript
-${method.signature}
+function hdr(): Promise<BooleanMap>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
 
-
 #### Examples
-
 
 Getting the supported HDR profiles
 
@@ -473,7 +448,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let supportedHdrProfiles = await Device.hdr()
 console.log(supportedHdrProfiles)
-````
+```
 
 Value of `supportedHdrProfiles`:
 
@@ -521,7 +496,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdr(callback: (value) => ): Promise<number>
+function hdr(callback: (value) => BooleanMap): Promise<number>
 ```
 
 Promise resolution:
@@ -597,14 +572,10 @@ Get the platform back-office device identifier
 To get the value of `id` call the method like this:
 
 ```typescript
-${method.signature}
+function id(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -719,14 +690,10 @@ Get the device make
 To get the value of `make` call the method like this:
 
 ```typescript
-${method.signature}
+function make(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -787,14 +754,10 @@ Get the device model
 To get the value of `model` call the method like this:
 
 ```typescript
-${method.signature}
+function model(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -855,14 +818,10 @@ The human readable name of the device
 To get the value of `name` call the method like this:
 
 ```typescript
-${method.signature}
+function name(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1073,15 +1032,10 @@ Get the current network status and type
 To get the value of `network` call the method like this:
 
 ```typescript
-${method.signature}
+function network(): Promise<object>
 ```
 
 Promise resolution:
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| `state`  |      |             |
-| `type`   |      |             |
 
 Capabilities:
 
@@ -1144,10 +1098,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function network(callback: (value) => | Property | Type | Description |
-|----------|------|-------------|
-| `${property}` | [${type}](${type.link}) | ${description} |
-): Promise<number>
+function network(callback: (value) => object): Promise<number>
 ```
 
 Promise resolution:
@@ -1275,14 +1226,10 @@ Get the platform ID for this device
 To get the value of `platform` call the method like this:
 
 ```typescript
-${method.signature}
+function platform(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1343,27 +1290,20 @@ Get the current screen resolution
 To get the value of `screenResolution` call the method like this:
 
 ```typescript
-${method.signature}
+function screenResolution(): Promise<Resolution>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[Resolution](#resolution)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
 
-
 #### Examples
-
 
 Getting the screen resolution
 
@@ -1374,7 +1314,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let screenResolution = await Device.screenResolution()
 console.log(screenResolution)
-````
+```
 
 Value of `screenResolution`:
 
@@ -1412,7 +1352,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function screenResolution(callback: (value) => ): Promise<number>
+function screenResolution(callback: (value) => Resolution): Promise<number>
 ```
 
 Promise resolution:
@@ -1478,14 +1418,10 @@ Get the device sku
 To get the value of `sku` call the method like this:
 
 ```typescript
-${method.signature}
+function sku(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1546,14 +1482,10 @@ Get the device type
 To get the value of `type` call the method like this:
 
 ```typescript
-${method.signature}
+function type(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1614,14 +1546,10 @@ Gets a unique id for the current app & device
 To get the value of `uid` call the method like this:
 
 ```typescript
-${method.signature}
+function uid(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1682,18 +1610,10 @@ Get the SDK, OS and other version info
 To get the value of `version` call the method like this:
 
 ```typescript
-${method.signature}
+function version(): Promise<object>
 ```
 
 Promise resolution:
-
-| Property   | Type   | Description                                                      |
-| ---------- | ------ | ---------------------------------------------------------------- |
-| `sdk`      |        | The Firebolt SDK version                                         |
-| `api`      |        | The lateset Firebolt API version supported by the curent device. |
-| `firmware` |        | The device firmware version.                                     |
-| `os`       |        | **Deprecated** Use `firmware`, instead.                          |
-| `debug`    | string | Detail version as a string, for debugging purposes               |
 
 Capabilities:
 
@@ -1806,27 +1726,20 @@ Get the current video resolution
 To get the value of `videoResolution` call the method like this:
 
 ```typescript
-${method.signature}
+function videoResolution(): Promise<Resolution>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[Resolution](#resolution)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
 
-
 #### Examples
-
 
 Getting the video resolution
 
@@ -1837,7 +1750,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let videoResolution = await Device.videoResolution()
 console.log(videoResolution)
-````
+```
 
 Value of `videoResolution`:
 
@@ -1875,7 +1788,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function videoResolution(callback: (value) => ): Promise<number>
+function videoResolution(callback: (value) => Resolution): Promise<number>
 ```
 
 Promise resolution:
@@ -1949,10 +1862,6 @@ function listen('deviceNameChanged', () => void): Promise<number>
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -2040,12 +1949,10 @@ See: [videoResolution](#videoresolution)
 The type of network that is currently active
 
 ```typescript
-NetworkState Enumeration:
-
-| key | value |
-|-----|-------|
-| CONNECTED | connected |
-| DISCONNECTED | disconnected |
+NetworkState: {
+    CONNECTED: 'connected',
+    DISCONNECTED: 'disconnected',
+},
 
 ```
 
@@ -2056,13 +1963,11 @@ NetworkState Enumeration:
 The type of network that is currently active
 
 ```typescript
-NetworkType Enumeration:
-
-| key | value |
-|-----|-------|
-| WIFI | wifi |
-| ETHERNET | ethernet |
-| HYBRID | hybrid |
+NetworkType: {
+    WIFI: 'wifi',
+    ETHERNET: 'ethernet',
+    HYBRID: 'hybrid',
+},
 
 ```
 
@@ -2070,32 +1975,36 @@ NetworkType Enumeration:
 
 ### AudioProfiles
 
-````typescript
 ```typescript
+type AudioProfiles = {
+  STEREO?: boolean
 
-````
+  DOLBY_DIGITAL_5_1?: boolean
 
-````
+  DOLBY_DIGITAL_7_1?: boolean
+
+  DOLBY_DIGITAL_5_1_PLUS?: boolean
+
+  DOLBY_DIGITAL_7_1_PLUS?: boolean
+
+  DOLBY_ATMOS?: boolean
+}
+```
 
 See also:
 
-
-
+[BooleanMap](../Types/schemas/#BooleanMap)
+[AudioProfile](../Types/schemas/#AudioProfile)
 
 ---
 
 ### Resolution
 
-
-
 ```typescript
-```typescript
-
-````
-
+type Resolution = [
+  number, // undefined  item
+  number, // undefined  item
+]
 ```
-
-
 
 ---
-```
