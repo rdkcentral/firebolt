@@ -112,7 +112,7 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 ```typescript
 type SectionIntent = {
   action: 'section'
-  data?: object
+  data: object
   context: object
 }
 ```

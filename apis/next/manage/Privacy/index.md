@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Privacy 1.2.0-next.3
+Version Privacy 1.2.0-next.4
 
 ## Table of Contents
 
