@@ -102,14 +102,10 @@ The human readable name of the device
 To get the value of `name` call the method like this:
 
 ```typescript
-${method.signature}
+function name(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -208,8 +204,7 @@ Response:
 To set the value of `name` call the method like this:
 
 ```typescript
-function name(| `value` | [`string`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function name(value: string): Promise<void>
 ```
 
 Parameters:
@@ -219,10 +214,6 @@ Parameters:
 | `value` | `string` | true     | the device friendly-name |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 
@@ -485,7 +476,11 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Used by a distributor to push provision info to firebolt.
 
 ```typescript
-${method.signature}
+function provision(
+  accountId: string,
+  deviceId: string,
+  distributorId: string,
+): Promise<void>
 ```
 
 Parameters:
@@ -497,10 +492,6 @@ Parameters:
 | `distributorId` | `string` | false    | The id of the distributor in the back office.                           |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -555,7 +546,7 @@ Response:
 
 </details>
 
-With distributor id
+With distributor ID
 
 JavaScript:
 
@@ -619,10 +610,6 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -631,7 +618,7 @@ Capabilities:
 
 #### Examples
 
-Getting the device name
+Default Example
 
 JavaScript:
 

@@ -19,11 +19,13 @@ Version Device 1.2.0-feature-media-info.0
 - [Overview](#overview)
 - [Methods](#methods)
   - [audio](#audio)
-  - [audioFormatPossible](#audioformatpossible)
   - [audioFormatSupported](#audioformatsupported)
   - [distributor](#distributor)
   - [hdcp](#hdcp)
+  - [hdcpVersionSupported](#hdcpversionsupported)
   - [hdr](#hdr)
+  - [hdrProfile](#hdrprofile)
+  - [hdrProfiles](#hdrprofiles)
   - [id](#id)
   - [listen](#listen)
   - [make](#make)
@@ -34,32 +36,34 @@ Version Device 1.2.0-feature-media-info.0
   - [platform](#platform)
   - [screenResolution](#screenresolution)
   - [sku](#sku)
-  - [supportedResolutions](#supportedresolutions)
+  - [sourceFrameRateUsed](#sourceframerateused)
   - [type](#type)
   - [uid](#uid)
   - [version](#version)
-  - [videoFormatPossible](#videoformatpossible)
   - [videoFormatSupported](#videoformatsupported)
+  - [videoMode](#videomode)
+  - [videoModes](#videomodes)
   - [videoResolution](#videoresolution)
 - [Events](#events)
   - [audioChanged](#audiochanged)
   - [deviceNameChanged](#devicenamechanged)
   - [hdcpChanged](#hdcpchanged)
+  - [hdcpVersionSupportedChanged](#hdcpversionsupportedchanged)
   - [hdrChanged](#hdrchanged)
+  - [hdrProfileChanged](#hdrprofilechanged)
+  - [hdrProfilesChanged](#hdrprofileschanged)
   - [nameChanged](#namechanged)
   - [networkChanged](#networkchanged)
   - [screenResolutionChanged](#screenresolutionchanged)
   - [videoResolutionChanged](#videoresolutionchanged)
 - [Types](#types)
-  - [VideoFormat](#videoformat)
-  - [VideoFormatResolution](#videoformatresolution)
-  - [AudioFormat](#audioformat)
-  - [AudioChannels](#audiochannels)
-  - [DeviceResolution](#deviceresolution)
+  - [HDCPVersion](#hdcpversion)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
-  - [Resolution](#resolution)
+  - [AudioFormatOptions](#audioformatoptions)
+  - [VideoFormatOptions](#videoformatoptions)
   - [AudioProfiles](#audioprofiles)
+  - [Resolution](#resolution)
 
 ## Usage
 
@@ -82,29 +86,22 @@ Get the supported audio profiles
 To get the value of `audio` call the method like this:
 
 ```typescript
-${method.signature}
+function audio(): Promise<AudioProfiles>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[AudioProfiles](#audioprofiles)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
-
 
 #### Examples
 
-
-Getting the supported audio profiles
+Default Example
 
 JavaScript:
 
@@ -113,7 +110,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let supportedAudioProfiles = await Device.audio()
 console.log(supportedAudioProfiles)
-````
+```
 
 Value of `supportedAudioProfiles`:
 
@@ -161,7 +158,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function audio(callback: (value) => ): Promise<number>
+function audio(callback: (value) => AudioProfiles): Promise<number>
 ```
 
 Promise resolution:
@@ -172,7 +169,7 @@ number
 
 #### Examples
 
-Getting the supported audio profiles
+Default Example
 
 JavaScript:
 
@@ -230,102 +227,25 @@ Response:
 
 ---
 
-### audioFormatPossible
-
-Check whether content of a given audio format and channel output is supported by the device regardless of its configuration. These values will never change without a restart of the device.
-
-```typescript
-${method.signature}
-```
-
-Parameters:
-
-| Param      | Type | Required | Description                                                                                                                                                                                                         |
-| ---------- | ---- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `format`   | ``   | true     | Audio format used to check whether its supported. values: `'AAC' \| 'AC3' \| 'AC4' \| 'DOLBY_MAT' \| 'DTS' \| 'DTS_X' \| 'EAC3' \| 'MPEG' \| 'MPEG1' \| 'MPEG2' \| 'MPEG4' \| 'OPUS' \| 'OGG' \| 'TRUEHD' \| 'WAV'` |
-| `channels` | ``   | false    | An audio channels value used to check whether its supported. values: `'MONO' \| 'STEREO' \| 'SURROUND' \| 'SURROUND_5_1' \| 'SURROUND_7_1'`                                                                         |
-
-Promise resolution:
-
-```typescript
-boolean
-```
-
-Capabilities:
-
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:info |
-
-#### Examples
-
-Specify the audio format and channel to check
-
-JavaScript:
-
-```javascript
-import { Device } from '@firebolt-js/sdk'
-
-let audioFormatPossible = await Device.audioFormatPossible('AAC', 'MONO')
-console.log(audioFormatPossible)
-```
-
-Value of `audioFormatPossible`:
-
-```javascript
-true
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Device.audioFormatPossible",
-  "params": {
-    "format": "AAC",
-    "channels": "MONO"
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
-</details>
-
----
-
 ### audioFormatSupported
 
-Check whether content of a given audio format and channel output is supported by the device's current configuration. These values may change as different AV inputs are activated or connected.
+Check whether content of a given audio format is supported by the device's current configuration. These values may change as different AV inputs or peripherals are activated or connected.
 
 ```typescript
-${method.signature}
+function audioFormatSupported(
+  codec: AudioCodec,
+  options: AudioFormatOptions,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type | Required | Description                                                                                                                                                                                                         |
-| ---------- | ---- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `format`   | ``   | true     | Audio format used to check whether its supported. values: `'AAC' \| 'AC3' \| 'AC4' \| 'DOLBY_MAT' \| 'DTS' \| 'DTS_X' \| 'EAC3' \| 'MPEG' \| 'MPEG1' \| 'MPEG2' \| 'MPEG4' \| 'OPUS' \| 'OGG' \| 'TRUEHD' \| 'WAV'` |
-| `channels` | ``   | false    | An audio channels value used to check whether its supported. values: `'MONO' \| 'STEREO' \| 'SURROUND' \| 'SURROUND_5_1' \| 'SURROUND_7_1'`                                                                         |
+| Param     | Type                                         | Required | Description                                                                                                                                                            |
+| --------- | -------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codec`   | [`AudioCodec`](../Media/schemas/#AudioCodec) | true     | Audio codec used to check whether its supported. <br/>values: `'aac' \| 'ac3' \| 'ac4' \| 'dts-x' \| 'eac3' \| 'mpeg3' \| 'opus' \| 'truehd' \| 'unknown' \| 'vorbis'` |
+| `options` | [`AudioFormatOptions`](#audioformatoptions)  | false    | Additional options to use for checking whether an audio format is supported by the device. All values must be true for the content to be playable.                     |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -335,14 +255,16 @@ Capabilities:
 
 #### Examples
 
-Specify the audio format and channel to check
+Specify the audio codec and channels value to check
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let audioFormatSupported = await Device.audioFormatSupported('AAC', 'MONO')
+let audioFormatSupported = await Device.audioFormatSupported('aac', {
+  channels: 2,
+})
 console.log(audioFormatSupported)
 ```
 
@@ -362,8 +284,10 @@ Request:
   "id": 1,
   "method": "Device.audioFormatSupported",
   "params": {
-    "format": "AAC",
-    "channels": "MONO"
+    "codec": "aac",
+    "options": {
+      "channels": 2
+    }
   }
 }
 ```
@@ -389,14 +313,10 @@ Get the distributor ID for this device
 To get the value of `distributor` call the method like this:
 
 ```typescript
-${method.signature}
+function distributor(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -452,45 +372,38 @@ Response:
 
 ### hdcp
 
-Get the supported HDCP profiles
+Get the supported HDCP versions available for content transmission
 
 To get the value of `hdcp` call the method like this:
 
 ```typescript
-${method.signature}
+function hdcp(): Promise<BooleanMap>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
-
 
 #### Examples
 
-
-Getting the supported HDCP profiles
+Default Example
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdcpProfiles = await Device.hdcp()
-console.log(supportedHdcpProfiles)
-````
+let hdcp = await Device.hdcp()
+console.log(hdcp)
+```
 
-Value of `supportedHdcpProfiles`:
+Value of `hdcp`:
 
 ```javascript
 {
@@ -532,7 +445,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdcp(callback: (value) => ): Promise<number>
+function hdcp(callback: (value) => BooleanMap): Promise<number>
 ```
 
 Promise resolution:
@@ -543,7 +456,7 @@ number
 
 #### Examples
 
-Getting the supported HDCP profiles
+Default Example
 
 JavaScript:
 
@@ -556,7 +469,7 @@ let listenerId = await hdcp((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdcpProfiles`:
+Value of `hdcp`:
 
 ```javascript
 {
@@ -597,6 +510,134 @@ Response:
 
 ---
 
+### hdcpVersionSupported
+
+Get the HDCP version supported by the device
+
+To get the value of `hdcpVersionSupported` call the method like this:
+
+```typescript
+function hdcpVersionSupported(): Promise<HDCPVersion>
+```
+
+Promise resolution:
+
+[HDCPVersion](#hdcpversion-1)
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:info |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let hdcpVersionSupported = await Device.hdcpVersionSupported()
+console.log(hdcpVersionSupported)
+```
+
+Value of `hdcpVersionSupported`:
+
+```javascript
+'2.2'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.hdcpVersionSupported",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "2.2"
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function hdcpVersionSupported(callback: (value) => HDCPVersion): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let listenerId = await hdcpVersionSupported((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdcpVersionSupported`:
+
+```javascript
+'2.2'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onHdcpVersionSupportedChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "2.2"
+}
+```
+
+</details>
+
+---
+
 ### hdr
 
 Returns an array of valid HDR profiles that the device supports
@@ -604,40 +645,33 @@ Returns an array of valid HDR profiles that the device supports
 To get the value of `hdr` call the method like this:
 
 ```typescript
-${method.signature}
+function hdr(): Promise<BooleanMap>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[BooleanMap](../Types/schemas/#BooleanMap)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
-
 
 #### Examples
 
-
-The supported HDR profiles
+Default Example
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdrProfiles = await Device.hdr()
-console.log(supportedHdrProfiles)
-````
+let hdr = await Device.hdr()
+console.log(hdr)
+```
 
-Value of `supportedHdrProfiles`:
+Value of `hdr`:
 
 ```javascript
 {
@@ -683,7 +717,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdr(callback: (value) => ): Promise<number>
+function hdr(callback: (value) => BooleanMap): Promise<number>
 ```
 
 Promise resolution:
@@ -694,7 +728,7 @@ number
 
 #### Examples
 
-The supported HDR profiles
+Default Example
 
 JavaScript:
 
@@ -707,7 +741,7 @@ let listenerId = await hdr((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdrProfiles`:
+Value of `hdr`:
 
 ```javascript
 {
@@ -752,6 +786,436 @@ Response:
 
 ---
 
+### hdrProfile
+
+Get the current HDR profile set on the device for video output.
+
+To get the value of `hdrProfile` call the method like this:
+
+```typescript
+function hdrProfile(): Promise<HDRProfile>
+```
+
+Promise resolution:
+
+[HDRProfile](../Media/schemas/#HDRProfile)
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:info |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let hdrProfile = await Device.hdrProfile()
+console.log(hdrProfile)
+```
+
+Value of `hdrProfile`:
+
+```javascript
+'hdr10'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.hdrProfile",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "hdr10"
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function hdrProfile(callback: (value) => HDRProfile): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let listenerId = await hdrProfile((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdrProfile`:
+
+```javascript
+'hdr10'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onHdrProfileChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "hdr10"
+}
+```
+
+</details>
+
+---
+
+### hdrProfiles
+
+Get all HDR profiles supported by the device, regardless of any connected display.
+
+To get the value of `hdrProfiles` call the method like this:
+
+```typescript
+function hdrProfiles(): Promise<HDRProfile[]>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:info |
+
+#### Examples
+
+Example with a device and display that both support HDR
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let hdrProfiles = await Device.hdrProfiles()
+console.log(hdrProfiles)
+```
+
+Value of `hdrProfiles`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.hdrProfiles",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["hdr10", "hdr10plus", "hlg"]
+}
+```
+
+</details>
+
+Example with either a device or display that does not support HDR
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let hdrProfiles = await Device.hdrProfiles()
+console.log(hdrProfiles)
+```
+
+Value of `hdrProfiles`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.hdrProfiles",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["sdr"]
+}
+```
+
+</details>
+
+Example where no display is present
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let hdrProfiles = await Device.hdrProfiles()
+console.log(hdrProfiles)
+```
+
+Value of `hdrProfiles`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.hdrProfiles",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function hdrProfiles(callback: (value) => HDRProfile[]): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Example with a device and display that both support HDR
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let listenerId = await hdrProfiles((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdrProfiles`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onHdrProfilesChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["hdr10", "hdr10plus", "hlg"]
+}
+```
+
+</details>
+
+Example with either a device or display that does not support HDR
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let listenerId = await hdrProfiles((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdrProfiles`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onHdrProfilesChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["sdr"]
+}
+```
+
+</details>
+
+Example where no display is present
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let listenerId = await hdrProfiles((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdrProfiles`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onHdrProfilesChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+</details>
+
+---
+
 ### id
 
 Get the platform back-office device identifier
@@ -759,14 +1223,10 @@ Get the platform back-office device identifier
 To get the value of `id` call the method like this:
 
 ```typescript
-${method.signature}
+function id(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -881,14 +1341,10 @@ Get the device make
 To get the value of `make` call the method like this:
 
 ```typescript
-${method.signature}
+function make(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -949,14 +1405,10 @@ Get the device model
 To get the value of `model` call the method like this:
 
 ```typescript
-${method.signature}
+function model(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1017,14 +1469,10 @@ The human readable name of the device
 To get the value of `name` call the method like this:
 
 ```typescript
-${method.signature}
+function name(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1235,15 +1683,10 @@ Get the current network status and type
 To get the value of `network` call the method like this:
 
 ```typescript
-${method.signature}
+function network(): Promise<object>
 ```
 
 Promise resolution:
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| `state`  |      |             |
-| `type`   |      |             |
 
 Capabilities:
 
@@ -1253,7 +1696,7 @@ Capabilities:
 
 #### Examples
 
-Getting the network info
+Default Example
 
 JavaScript:
 
@@ -1306,10 +1749,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function network(callback: (value) => | Property | Type | Description |
-|----------|------|-------------|
-| `${property}` | [${type}](${type.link}) | ${description} |
-): Promise<number>
+function network(callback: (value) => object): Promise<number>
 ```
 
 Promise resolution:
@@ -1320,7 +1760,7 @@ number
 
 #### Examples
 
-Getting the network info
+Default Example
 
 JavaScript:
 
@@ -1437,14 +1877,10 @@ Get the platform ID for this device
 To get the value of `platform` call the method like this:
 
 ```typescript
-${method.signature}
+function platform(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1500,34 +1936,27 @@ Response:
 
 ### screenResolution
 
-Get the current screen resolution
+Get the width and height of the current screen resolution.
 
 To get the value of `screenResolution` call the method like this:
 
 ```typescript
-${method.signature}
+function screenResolution(): Promise<Resolution>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[Resolution](#resolution)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
-
 
 #### Examples
 
-
-Getting the screen resolution
+Default Example
 
 JavaScript:
 
@@ -1536,7 +1965,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let screenResolution = await Device.screenResolution()
 console.log(screenResolution)
-````
+```
 
 Value of `screenResolution`:
 
@@ -1574,7 +2003,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function screenResolution(callback: (value) => ): Promise<number>
+function screenResolution(callback: (value) => Resolution): Promise<number>
 ```
 
 Promise resolution:
@@ -1585,7 +2014,7 @@ number
 
 #### Examples
 
-Getting the screen resolution
+Default Example
 
 JavaScript:
 
@@ -1640,14 +2069,10 @@ Get the device sku
 To get the value of `sku` call the method like this:
 
 ```typescript
-${method.signature}
+function sku(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1701,19 +2126,15 @@ Response:
 
 ---
 
-### supportedResolutions
+### sourceFrameRateUsed
 
-Returns an array of valid resolutions that the device supports, regardless of any connected display.
+Check whether the HDMI output frame rate is set to follow the video source frame rate.
 
 ```typescript
-${method.signature}
+function sourceFrameRateUsed(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -1730,24 +2151,14 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let resolutions = await Device.supportedResolutions()
-console.log(resolutions)
+let sourceFrameRateUsed = await Device.sourceFrameRateUsed()
+console.log(sourceFrameRateUsed)
 ```
 
-Value of `resolutions`:
+Value of `sourceFrameRateUsed`:
 
 ```javascript
-;[
-  '1080p24',
-  '1080i25',
-  '1080p30',
-  '1080i50',
-  '1080p50',
-  '1080p60',
-  '2160p30',
-  '2160p50',
-  '2160p60',
-]
+true
 ```
 
 <details markdown="1" >
@@ -1758,7 +2169,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "Device.supportedResolutions",
+  "method": "Device.sourceFrameRateUsed",
   "params": {}
 }
 ```
@@ -1769,17 +2180,7 @@ Response:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    "1080p24",
-    "1080i25",
-    "1080p30",
-    "1080i50",
-    "1080p50",
-    "1080p60",
-    "2160p30",
-    "2160p50",
-    "2160p60"
-  ]
+  "result": true
 }
 ```
 
@@ -1794,14 +2195,10 @@ Get the device type
 To get the value of `type` call the method like this:
 
 ```typescript
-${method.signature}
+function type(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1862,14 +2259,10 @@ Gets a unique id for the current app & device
 To get the value of `uid` call the method like this:
 
 ```typescript
-${method.signature}
+function uid(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1930,18 +2323,10 @@ Get the SDK, OS and other version info
 To get the value of `version` call the method like this:
 
 ```typescript
-${method.signature}
+function version(): Promise<object>
 ```
 
 Promise resolution:
-
-| Property   | Type   | Description                                                      |
-| ---------- | ------ | ---------------------------------------------------------------- |
-| `sdk`      |        | The Firebolt SDK version                                         |
-| `api`      |        | The lateset Firebolt API version supported by the curent device. |
-| `firmware` |        | The device firmware version.                                     |
-| `os`       |        | **Deprecated** Use firmware instead                              |
-| `debug`    | string | Detail version as a string, for debugging purposes               |
 
 Capabilities:
 
@@ -2047,102 +2432,25 @@ Response:
 
 ---
 
-### videoFormatPossible
-
-Check whether content of a given a video format and resolution is supported by the device regardless of its configuration. These values will never change without a restart of the device.
-
-```typescript
-${method.signature}
-```
-
-Parameters:
-
-| Param        | Type | Required | Description                                                                                                                                                                                                                                                                                         |
-| ------------ | ---- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `format`     | ``   | true     | The video format used to check whether its supported by the device. values: `'av1' \| 'dolbyVision' \| 'h263' \| 'h264' \| 'h265' \| 'h265M10' \| 'mpeg' \| 'vp8' \| 'vp9' \| 'vp9_p2' \| 'vp10' \| 'vc1'`                                                                                          |
-| `resolution` | ``   | false    | The video resolution used to check whether its supported by the device. values: `'480i' \| '480p' \| '576i' \| '576p' \| '576p50' \| '720p' \| '720p50' \| '1080i' \| '1080p' \| '1080p24' \| '1080i25' \| '1080p30' \| '1080i50' \| '1080p50' \| '1080p60' \| '2160p30' \| '2160p50' \| '2160p60'` |
-
-Promise resolution:
-
-```typescript
-boolean
-```
-
-Capabilities:
-
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:info |
-
-#### Examples
-
-Specify the video format and resolution to check.
-
-JavaScript:
-
-```javascript
-import { Device } from '@firebolt-js/sdk'
-
-let videoFormatPossible = await Device.videoFormatPossible('av1', '1080i')
-console.log(videoFormatPossible)
-```
-
-Value of `videoFormatPossible`:
-
-```javascript
-true
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Device.videoFormatPossible",
-  "params": {
-    "format": "av1",
-    "resolution": "1080i"
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
-</details>
-
----
-
 ### videoFormatSupported
 
-Check whether content of a given a video format and resolution is supported by the device's current configuration. These values may change as different AV inputs are activated or connected.
+Check whether video content of the given format is supported by the device's current configuration. These values may change as different AV inputs or peripherals are activated or connected.
 
 ```typescript
-${method.signature}
+function videoFormatSupported(
+  codec: VideoCodec,
+  options: VideoFormatOptions,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param        | Type | Required | Description                                                                                                                                                                                                                                                                                                                 |
-| ------------ | ---- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `format`     | ``   | true     | The video format used to check whether its supported by the device's current configuration. values: `'av1' \| 'dolbyVision' \| 'h263' \| 'h264' \| 'h265' \| 'h265M10' \| 'mpeg' \| 'vp8' \| 'vp9' \| 'vp9_p2' \| 'vp10' \| 'vc1'`                                                                                          |
-| `resolution` | ``   | false    | The video resolution used to check whether its supported by the device's current configuration. values: `'480i' \| '480p' \| '576i' \| '576p' \| '576p50' \| '720p' \| '720p50' \| '1080i' \| '1080p' \| '1080p24' \| '1080i25' \| '1080p30' \| '1080i50' \| '1080p50' \| '1080p60' \| '2160p30' \| '2160p50' \| '2160p60'` |
+| Param     | Type                                         | Required | Description                                                                                                                                                                     |
+| --------- | -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codec`   | [`VideoCodec`](../Media/schemas/#VideoCodec) | true     | The video codec to check whether its supported by the device's current configuration. <br/>values: `'av1' \| 'avc' \| 'hevc' \| 'mpeg1' \| 'mpeg2' \| 'vp8' \| 'vp9' \| 'vp10'` |
+| `options` | [`VideoFormatOptions`](#videoformatoptions)  | false    | Additional options to use for checking whether a video is supported by the device. All values must be true for the content to be playable.                                      |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -2152,14 +2460,16 @@ Capabilities:
 
 #### Examples
 
-Specify the video format and resolution to check
+Specify the video format to check
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let videoFormatSupported = await Device.videoFormatSupported('av1', '1080i')
+let videoFormatSupported = await Device.videoFormatSupported('avc', {
+  resolution: [1920, 1080],
+})
 console.log(videoFormatSupported)
 ```
 
@@ -2179,8 +2489,10 @@ Request:
   "id": 1,
   "method": "Device.videoFormatSupported",
   "params": {
-    "format": "av1",
-    "resolution": "1080i"
+    "codec": "avc",
+    "options": {
+      "resolution": [1920, 1080]
+    }
   }
 }
 ```
@@ -2199,36 +2511,173 @@ Response:
 
 ---
 
-### videoResolution
+### videoMode
 
-Get the current video resolution
-
-To get the value of `videoResolution` call the method like this:
+Get the current video output mode of the device.
 
 ```typescript
-${method.signature}
+function videoMode(): Promise<VideoMode>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[VideoMode](../Media/schemas/#VideoMode)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                          |
+| ---- | ----------------------------------- |
 | uses | xrn:firebolt:capability:device:info |
-
 
 #### Examples
 
+Default Example
 
-Getting the video resolution
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let videoMode = await Device.videoMode()
+console.log(videoMode)
+```
+
+Value of `videoMode`:
+
+```javascript
+'1080p60'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.videoMode",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "1080p60"
+}
+```
+
+</details>
+
+---
+
+### videoModes
+
+Returns an array of all valid video output modes that the device and display together support.
+
+```typescript
+function videoModes(): Promise<VideoMode[]>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:info |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Device } from '@firebolt-js/sdk'
+
+let videoModes = await Device.videoModes()
+console.log(videoModes)
+```
+
+Value of `videoModes`:
+
+```javascript
+;[
+  '720p50',
+  '720p60',
+  '1080i50',
+  '1080i60',
+  '1080p24',
+  '1080p30',
+  '1080p50',
+  '1080p60',
+]
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.videoModes",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    "720p50",
+    "720p60",
+    "1080i50",
+    "1080i60",
+    "1080p24",
+    "1080p30",
+    "1080p50",
+    "1080p60"
+  ]
+}
+```
+
+</details>
+
+---
+
+### videoResolution
+
+Get the resolution of the current video output in pixels. Returns a zero value for width and height if no display is present.
+
+To get the value of `videoResolution` call the method like this:
+
+```typescript
+function videoResolution(): Promise<Resolution>
+```
+
+Promise resolution:
+
+[Resolution](#resolution)
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:info |
+
+#### Examples
+
+Default Example
 
 JavaScript:
 
@@ -2237,7 +2686,7 @@ import { Device } from '@firebolt-js/sdk'
 
 let videoResolution = await Device.videoResolution()
 console.log(videoResolution)
-````
+```
 
 Value of `videoResolution`:
 
@@ -2275,7 +2724,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function videoResolution(callback: (value) => ): Promise<number>
+function videoResolution(callback: (value) => Resolution): Promise<number>
 ```
 
 Promise resolution:
@@ -2286,7 +2735,7 @@ number
 
 #### Examples
 
-Getting the video resolution
+Default Example
 
 JavaScript:
 
@@ -2350,10 +2799,6 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -2362,7 +2807,7 @@ Capabilities:
 
 #### Examples
 
-Getting the device name
+Default Example
 
 JavaScript:
 
@@ -2413,9 +2858,21 @@ Response:
 
 See: [hdcp](#hdcp)
 
+### hdcpVersionSupportedChanged
+
+See: [hdcpVersionSupported](#hdcpversionsupported)
+
 ### hdrChanged
 
 See: [hdr](#hdr)
+
+### hdrProfileChanged
+
+See: [hdrProfile](#hdrprofile)
+
+### hdrProfilesChanged
+
+See: [hdrProfiles](#hdrprofiles)
 
 ### nameChanged
 
@@ -2435,128 +2892,16 @@ See: [videoResolution](#videoresolution)
 
 ## Types
 
-### VideoFormat
+### HDCPVersion
 
-The video format supported by the platform
-
-```typescript
-VideoFormat Enumeration:
-
-| key | value |
-|-----|-------|
-| AV_1 | av1 |
-| DOLBY_VISION | dolbyVision |
-| H_263 | h263 |
-| H_264 | h264 |
-| H_265 | h265 |
-| H_265M10 | h265M10 |
-| MPEG | mpeg |
-| VP_8 | vp8 |
-| VP_9 | vp9 |
-| VP_9_P_2 | vp9_p2 |
-| VP_10 | vp10 |
-| VC_1 | vc1 |
-
-```
-
----
-
-### VideoFormatResolution
+The HDCP version
 
 ```typescript
-VideoFormatResolution Enumeration:
-
-| key | value |
-|-----|-------|
-| V480I | 480i |
-| V480P | 480p |
-| V576I | 576i |
-| V576P | 576p |
-| V576P_50 | 576p50 |
-| V720P | 720p |
-| V720P_50 | 720p50 |
-| V1080I | 1080i |
-| V1080P | 1080p |
-| V1080P_24 | 1080p24 |
-| V1080I_25 | 1080i25 |
-| V1080P_30 | 1080p30 |
-| V1080I_50 | 1080i50 |
-| V1080P_50 | 1080p50 |
-| V1080P_60 | 1080p60 |
-| V2160P_30 | 2160p30 |
-| V2160P_50 | 2160p50 |
-| V2160P_60 | 2160p60 |
-
-```
-
----
-
-### AudioFormat
-
-The audio format supported by the platform
-
-```typescript
-AudioFormat Enumeration:
-
-| key | value |
-|-----|-------|
-| AAC | AAC |
-| AC3 | AC3 |
-| AC4 | AC4 |
-| DOLBY_MAT | DOLBY_MAT |
-| DTS | DTS |
-| DTS_X | DTS_X |
-| EAC3 | EAC3 |
-| MPEG | MPEG |
-| MPEG1 | MPEG1 |
-| MPEG2 | MPEG2 |
-| MPEG4 | MPEG4 |
-| OPUS | OPUS |
-| OGG | OGG |
-| TRUEHD | TRUEHD |
-| WAV | WAV |
-
-```
-
----
-
-### AudioChannels
-
-The audio channels supported by the platform
-
-```typescript
-AudioChannels Enumeration:
-
-| key | value |
-|-----|-------|
-| MONO | MONO |
-| STEREO | STEREO |
-| SURROUND | SURROUND |
-| SURROUND_5_1 | SURROUND_5_1 |
-| SURROUND_7_1 | SURROUND_7_1 |
-
-```
-
----
-
-### DeviceResolution
-
-The list of resolutions supported by the device
-
-```typescript
-DeviceResolution Enumeration:
-
-| key | value |
-|-----|-------|
-| V1080P_24 | 1080p24 |
-| V1080I_25 | 1080i25 |
-| V1080P_30 | 1080p30 |
-| V1080I_50 | 1080i50 |
-| V1080P_50 | 1080p50 |
-| V1080P_60 | 1080p60 |
-| V2160P_30 | 2160p30 |
-| V2160P_50 | 2160p50 |
-| V2160P_60 | 2160p60 |
+HDCPVersion: {
+    HDCP_1_4: '1.4',
+    HDCP_2_2: '2.2',
+    HDCP_UNKNOWN: 'unknown',
+},
 
 ```
 
@@ -2564,15 +2909,13 @@ DeviceResolution Enumeration:
 
 ### NetworkState
 
-The type of network that is currently active
+The state of the network interface
 
 ```typescript
-NetworkState Enumeration:
-
-| key | value |
-|-----|-------|
-| CONNECTED | connected |
-| DISCONNECTED | disconnected |
+NetworkState: {
+    CONNECTED: 'connected',
+    DISCONNECTED: 'disconnected',
+},
 
 ```
 
@@ -2583,46 +2926,95 @@ NetworkState Enumeration:
 The type of network that is currently active
 
 ```typescript
-NetworkType Enumeration:
-
-| key | value |
-|-----|-------|
-| WIFI | wifi |
-| ETHERNET | ethernet |
-| HYBRID | hybrid |
+NetworkType: {
+    ETHERNET: 'ethernet',
+    HYBRID: 'hybrid',
+    WIFI: 'wifi',
+},
 
 ```
 
 ---
 
-### Resolution
+### AudioFormatOptions
 
-````typescript
+Options for checking audio playback support
+
 ```typescript
+type AudioFormatOptions = {
+  atmos?: boolean // Whether Dolby Atmos support is being requested
+  channels?: number // The number of audio channels being requested
+  codecLevel?: string // The level of the audio codec
+  codecprofile?: 'mp2lc' | 'mp4he' // The profile of the audio codec
+  container?: AudioContainer // Audio container
+  mode?: AudioOutputMode // Audio output mode
+  sampleRate?: number // The sample rate of the audio, in kHz
+}
+```
 
-````
+See also:
 
-````
+[AudioContainer](../Media/schemas/#AudioContainer)
+[AudioOutputMode](../Media/schemas/#AudioOutputMode)
 
+---
 
+### VideoFormatOptions
+
+Options for checking video playback support
+
+```typescript
+type VideoFormatOptions = {
+  atmos?: boolean // Whether Dolby Atmos support is being requested
+  codecLevel?: '4.1' | '4.2' | '5.0' | '5.1' | 'high' | 'main' // The level of the video codec
+  codecProfile?: 'high' | 'main' | 'main10' | 'p0' | 'p2' // The profile of the video codec
+  container?: VideoContainer // Video container format
+  frameRate?: number // The frame rate of the video content
+  hdr?: HDRProfile // HDR profile
+  resolution?: Dimensions // The dimensions specified as width and height.
+}
+```
+
+See also:
+
+[VideoContainer](../Media/schemas/#VideoContainer)
+[HDRProfile](../Media/schemas/#HDRProfile)
+[Dimensions](../Media/schemas/#Dimensions)
 
 ---
 
 ### AudioProfiles
 
-
-
 ```typescript
-```typescript
+type AudioProfiles = {
+  STEREO?: boolean
 
-````
+  DOLBY_DIGITAL_5_1?: boolean
 
+  DOLBY_DIGITAL_7_1?: boolean
+
+  DOLBY_DIGITAL_5_1_PLUS?: boolean
+
+  DOLBY_DIGITAL_7_1_PLUS?: boolean
+
+  DOLBY_ATMOS?: boolean
+}
 ```
 
 See also:
 
-
-
+[BooleanMap](../Types/schemas/#BooleanMap)
+[AudioProfile](../Types/schemas/#AudioProfile)
 
 ---
+
+### Resolution
+
+```typescript
+type Resolution = [
+  number, // undefined  item
+  number, // undefined  item
+]
 ```
+
+---

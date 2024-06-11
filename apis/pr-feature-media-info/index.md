@@ -161,7 +161,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.videoFormatSupported](./core/Device/#videoformatsupported)<br/>[Device.videoFormatPossible](./core/Device/#videoformatpossible)<br/>[Device.audioFormatSupported](./core/Device/#audioformatsupported)<br/>[Device.audioFormatPossible](./core/Device/#audioformatpossible)<br/>[Device.supportedResolutions](./core/Device/#supportedresolutions)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
+| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdcpVersionSupported](./core/Device/#hdcpversionsupported)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.hdrProfile](./core/Device/#hdrprofile)<br/>[Device.hdrProfiles](./core/Device/#hdrprofiles)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.audioFormatSupported](./core/Device/#audioformatsupported)<br/>[Device.videoFormatSupported](./core/Device/#videoformatsupported)<br/>[Device.videoMode](./core/Device/#videomode)<br/>[Device.videoModes](./core/Device/#videomodes)<br/>[Device.sourceFrameRateUsed](./core/Device/#sourceframerateused)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdcpVersionSupportedChanged](./core/Device/#hdcpversionsupportedchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onHdrProfileChanged](./core/Device/#hdrprofilechanged)<br/>[Device.onHdrProfilesChanged](./core/Device/#hdrprofileschanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
 
 
 ### `xrn:firebolt:capability:device:make`
@@ -219,6 +219,19 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Discovery.entityInfo](./core/Discovery/#entityinfo)<br/>[Discovery.onPullEntityInfo](./core/Discovery/#pullentityinfo) |
 
 
+### `xrn:firebolt:capability:discovery:interest`
+
+| Uses |
+| ---- |
+| [Content.requestUserInterest](./manage/Content/#requestuserinterest)<br/>[Content.onUserInterest](./manage/Content/#userinterest) |
+
+
+
+| Provides |
+| -------- |
+| [Discovery.userInterest](./core/Discovery/#userinterest)<br/>[Discovery.onRequestUserInterest](./core/Discovery/#requestuserinterest)<br/>[Discovery.userInterestResponse](./core/Discovery/#userinterestresponse)<br/>[Discovery.userInterestError](./core/Discovery/#userinteresterror) |
+
+
 ### `xrn:firebolt:capability:discovery:navigate-to`
 
 | Uses |
@@ -271,7 +284,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Display Properties.width](./manage/Display Properties/#width)<br/>[Display Properties.height](./manage/Display Properties/#height)<br/>[Display Properties.currentResolution](./manage/Display Properties/#currentresolution)<br/>[Display Properties.optimalResolution](./manage/Display Properties/#optimalresolution)<br/>[Display Properties.supportedResolutions](./manage/Display Properties/#supportedresolutions)<br/>[Display Properties.hdr](./manage/Display Properties/#hdr)<br/>[Display Properties.useSourceFrameRate](./manage/Display Properties/#usesourceframerate) |
+| [Display Properties.colorDepth](./manage/Display Properties/#colordepth)<br/>[Display Properties.colorimetry](./manage/Display Properties/#colorimetry)<br/>[Display Properties.hdrProfiles](./manage/Display Properties/#hdrprofiles)<br/>[Display Properties.manufacturer](./manage/Display Properties/#manufacturer)<br/>[Display Properties.productName](./manage/Display Properties/#productname)<br/>[Display Properties.refreshRate](./manage/Display Properties/#refreshrate)<br/>[Display Properties.resolution](./manage/Display Properties/#resolution)<br/>[Display Properties.resolutionName](./manage/Display Properties/#resolutionname)<br/>[Display Properties.size](./manage/Display Properties/#size)<br/>[Display Properties.sourcePhysicalAddress](./manage/Display Properties/#sourcephysicaladdress) |
 
 
 ### `xrn:firebolt:capability:grants:state`
@@ -439,50 +452,30 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setTimeZone](./manage/Localization/#settimezone) |
 
 
-### `xrn:firebolt:capability:media-info:audio-codec`
+### `xrn:firebolt:capability:media-info:audio-format`
 
 | Uses |
 | ---- |
-| [MediaInfo.audioCodec](./manage/MediaInfo/#audiocodec)<br/>[MediaInfo.onAudioCodecChanged](./manage/MediaInfo/#audiocodecchanged) |
+| [MediaInfo.audioFormat](./manage/MediaInfo/#audioformat)<br/>[MediaInfo.onAudioFormatChanged](./manage/MediaInfo/#audioformatchanged) |
 
 
 
 | Manages |
 | ------- |
-| [MediaInfo.setAudioCodec](./manage/MediaInfo/#setaudiocodec) |
+| [MediaInfo.activeAudioFormats](./manage/MediaInfo/#activeaudioformats)<br/>[MediaInfo.onActiveAudioFormatsChanged](./manage/MediaInfo/#activeaudioformatschanged)<br/>[MediaInfo.onActiveAudioFormatsChanged](./manage/MediaInfo/#activeaudioformatschanged) |
 
 
-### `xrn:firebolt:capability:media-info:audio-profile`
-
-| Uses |
-| ---- |
-| [MediaInfo.audioProfile](./manage/MediaInfo/#audioprofile) |
-
-
-### `xrn:firebolt:capability:media-info:hdr`
+### `xrn:firebolt:capability:media-info:video-format`
 
 | Uses |
 | ---- |
-| [MediaInfo.dynamicRangeProfile](./manage/MediaInfo/#dynamicrangeprofile)<br/>[MediaInfo.onDynamicRangeProfileChanged](./manage/MediaInfo/#dynamicrangeprofilechanged) |
+| [MediaInfo.videoFormat](./manage/MediaInfo/#videoformat)<br/>[MediaInfo.onVideoFormatChanged](./manage/MediaInfo/#videoformatchanged) |
 
 
 
 | Manages |
 | ------- |
-| [MediaInfo.setDynamicRangeProfile](./manage/MediaInfo/#setdynamicrangeprofile) |
-
-
-### `xrn:firebolt:capability:media-info:video-codec`
-
-| Uses |
-| ---- |
-| [MediaInfo.videoCodec](./manage/MediaInfo/#videocodec)<br/>[MediaInfo.onVideoCodecChanged](./manage/MediaInfo/#videocodecchanged) |
-
-
-
-| Manages |
-| ------- |
-| [MediaInfo.setVideoCodec](./manage/MediaInfo/#setvideocodec) |
+| [MediaInfo.activeVideoFormats](./manage/MediaInfo/#activevideoformats)<br/>[MediaInfo.onActiveVideoFormatsChanged](./manage/MediaInfo/#activevideoformatschanged)<br/>[MediaInfo.onActiveVideoFormatsChanged](./manage/MediaInfo/#activevideoformatschanged) |
 
 
 ### `xrn:firebolt:capability:metrics:distributor`
