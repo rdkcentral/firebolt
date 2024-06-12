@@ -14,7 +14,7 @@
       {%- assign specCount = site.pages | where: 'version': version | where: 'category': 'requirements' | where: 'type', 'specification' | size -%}
       {%- assign adrCount = site.pages | where: 'version': version | where: 'category': 'requirements' | where: 'type', 'adr' | size -%}
 
-      {%- assign sdks = 'core,manage' | split: ',' -%}
+      {%- assign sdks = 'core,discovery,manage' | split: ',' -%}
 
       <style>
         .site-title img {
