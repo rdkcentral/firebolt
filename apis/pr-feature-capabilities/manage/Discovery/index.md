@@ -174,10 +174,6 @@ See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
 
-| Property | Type   | Description |
-| -------- | ------ | ----------- |
-| `appId`  | string |             |
-
 Capabilities:
 
 | Role    | Capability                                       |
@@ -246,10 +242,6 @@ function listen('signOut', () => void): Promise<number>
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
-
-| Property | Type   | Description |
-| -------- | ------ | ----------- |
-| `appId`  | string |             |
 
 Capabilities:
 
