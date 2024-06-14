@@ -17,34 +17,24 @@ Version Media 0.0.0-unknown.0
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Types](#types)
-  - [AudioOutputMode](#audiooutputmode)
   - [HDRProfile](#hdrprofile)
   - [AudioCodec](#audiocodec)
   - [VideoCodec](#videocodec)
+  - [AudioMode](#audiomode)
   - [VideoMode](#videomode)
+  - [AudioCodecProfile](#audiocodecprofile)
   - [AudioContainer](#audiocontainer)
   - [VideoContainer](#videocontainer)
   - [Dimensions](#dimensions)
   - [Colorimetry](#colorimetry)
   - [ResolutionName](#resolutionname)
   - [AudioCodecLevel](#audiocodeclevel)
-  - [AudioCodecProfile](#audiocodecprofile)
 
 ## Overview
 
 undefined
 
 ## Types
-
-### AudioOutputMode
-
-Audio output mode
-
-```typescript
-
-```
-
----
 
 ### HDRProfile
 
@@ -76,9 +66,29 @@ video codec
 
 ---
 
+### AudioMode
+
+Audio output mode
+
+```typescript
+
+```
+
+---
+
 ### VideoMode
 
 Video output mode; the shorthand resolution and frame rate
+
+```typescript
+
+```
+
+---
+
+### AudioCodecProfile
+
+Audio codec profile
 
 ```typescript
 
@@ -139,16 +149,6 @@ User-friendly resolution name
 ### AudioCodecLevel
 
 Audio codec level
-
-```typescript
-
-```
-
----
-
-### AudioCodecProfile
-
-Audio codec profile
 
 ```typescript
 

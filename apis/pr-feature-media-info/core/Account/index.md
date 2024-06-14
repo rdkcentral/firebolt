@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.2.0-feature-media-info.0
+Version Account 1.2.0-feature-media-info.1
 
 ## Table of Contents
 
