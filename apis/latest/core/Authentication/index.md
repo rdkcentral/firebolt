@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.1.0
+Version Authentication 1.2.0
 
 ## Table of Contents
 
@@ -48,10 +48,6 @@ function device(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -115,10 +111,6 @@ function root(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                         |
@@ -181,10 +173,6 @@ function session(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -242,7 +230,7 @@ Response:
 Get a specific `type` of authentication token
 
 ```typescript
-function token(type: TokenType, options?: object): Promise<object>
+function token(type: TokenType, options: object): Promise<object>
 ```
 
 Parameters:
@@ -253,12 +241,6 @@ Parameters:
 | `options` | `object`                  | false    | Additional options for acquiring the token.                                      |
 
 Promise resolution:
-
-| Property  | Type   | Description |
-| --------- | ------ | ----------- |
-| `value`   | string |             |
-| `expires` | string |             |
-| `type`    | string |             |
 
 Capabilities:
 
@@ -438,11 +420,12 @@ Response:
 ### TokenType
 
 ```typescript
-enum TokenType {
-  PLATFORM = 'platform',
-  DEVICE = 'device',
-  DISTRIBUTOR = 'distributor',
-}
+TokenType: {
+    PLATFORM: 'platform',
+    DEVICE: 'device',
+    DISTRIBUTOR: 'distributor',
+},
+
 ```
 
 ---

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.1.0
+Version Profile 1.2.0
 
 ## Table of Contents
 
@@ -21,6 +21,7 @@ Version Profile 1.1.0
   - [approveContentRating](#approvecontentrating)
   - [approvePurchase](#approvepurchase)
   - [flags](#flags)
+- [Types](#types)
 
 ## Usage
 
@@ -45,10 +46,6 @@ function approveContentRating(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -112,10 +109,6 @@ function approvePurchase(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -173,16 +166,12 @@ Response:
 Get a map of profile flags for the current session.
 
 ```typescript
-function flags(): Promise<object>
+function flags(): Promise<FlatMap>
 ```
 
 Promise resolution:
 
-```typescript
-type FlatMap = {
-  [property: string]: string | number | boolean
-}
-```
+[FlatMap](../Types/schemas/#FlatMap)
 
 Capabilities:
 
@@ -239,3 +228,5 @@ Response:
 </details>
 
 ---
+
+## Types

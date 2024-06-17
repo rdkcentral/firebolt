@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Account 1.1.0
+Version Account 1.2.0
 
 ## Table of Contents
 
@@ -42,21 +42,17 @@ A module for querying about the device account.
 Used by a distributor to push Session token to firebolt.
 
 ```typescript
-function session(token: string, expiresIn: number): Promise<void>
+function session(token: Token, expiresIn: Expiry): Promise<void>
 ```
 
 Parameters:
 
-| Param       | Type     | Required | Description     |
-| ----------- | -------- | -------- | --------------- |
-| `token`     | `string` | true     |                 |
-| `expiresIn` | `number` | true     | <br/>minumum: 1 |
+| Param       | Type                | Required | Description     |
+| ----------- | ------------------- | -------- | --------------- |
+| `token`     | [`Token`](#token)   | true     |                 |
+| `expiresIn` | [`Expiry`](#expiry) | true     | <br/>minumum: 1 |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -123,7 +119,7 @@ Response:
 Encoded token provided by the Distributor for Device Authentication.
 
 ```typescript
-type Token = string
+
 ```
 
 ---
@@ -133,7 +129,7 @@ type Token = string
 Number of secs before the token expires
 
 ```typescript
-type Expiry = number
+
 ```
 
 ---

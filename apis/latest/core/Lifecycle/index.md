@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Lifecycle 1.1.0
+Version Lifecycle 1.2.0
 
 ## Table of Contents
 
@@ -62,10 +62,6 @@ Parameters:
 | `reason` | [`CloseReason`](../Lifecycle/schemas/#CloseReason) | true     | The reason the app is requesting to be closed <br/>values: `'remoteButton' \| 'userExit' \| 'done' \| 'error'` |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -174,10 +170,6 @@ function finished(): Promise<void>
 ```
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -351,10 +343,6 @@ function ready(): Promise<void>
 
 Promise resolution:
 
-```typescript
-void
-```
-
 Capabilities:
 
 | Role | Capability                              |
@@ -412,7 +400,7 @@ Response:
 Get the current state of the app. This function is **synchronous**.
 
 ```typescript
-function state(): LifecycleState
+function state(): Promise<LifecycleState>
 ```
 
 Promise resolution:
@@ -476,7 +464,7 @@ Response:
 ### background
 
 ```typescript
-function listen('background', (LifecycleEvent) => void): Promise<number>
+function listen('background', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -549,7 +537,7 @@ Response:
 ### foreground
 
 ```typescript
-function listen('foreground', (LifecycleEvent) => void): Promise<number>
+function listen('foreground', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -674,7 +662,7 @@ Response:
 ### inactive
 
 ```typescript
-function listen('inactive', (LifecycleEvent) => void): Promise<number>
+function listen('inactive', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -747,7 +735,7 @@ Response:
 ### suspended
 
 ```typescript
-function listen('suspended', (LifecycleEvent) => void): Promise<number>
+function listen('suspended', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -820,7 +808,7 @@ Response:
 ### unloading
 
 ```typescript
-function listen('unloading', (LifecycleEvent) => void): Promise<number>
+function listen('unloading', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -906,6 +894,6 @@ type LifecycleEvent = {
 
 See also:
 
-'initializing' | 'inactive' | 'foreground' | 'background' | 'unloading' | 'suspended'
+[LifecycleState](../Lifecycle/schemas/#LifecycleState)
 
 ---

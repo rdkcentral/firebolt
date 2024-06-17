@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AudioDescriptions 1.1.0
+Version AudioDescriptions 1.2.0
 
 ## Table of Contents
 
@@ -23,6 +23,7 @@ Version AudioDescriptions 1.1.0
   - [once](#once)
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
+- [Types](#types)
 
 ## Usage
 
@@ -49,10 +50,6 @@ function enabled(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -161,10 +158,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -481,3 +474,5 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 ### enabledChanged
 
 See: [enabled](#enabled)
+
+## Types

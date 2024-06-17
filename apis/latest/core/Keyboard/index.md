@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Keyboard 1.1.0
+Version Keyboard 1.2.0
 
 ## Table of Contents
 
@@ -43,7 +43,7 @@ Methods for prompting users to enter text with task-oriented UX
 Prompt the user for their email address with a simplified list of choices.
 
 ```typescript
-function email(type: EmailUsage, message?: string): Promise<string>
+function email(type: EmailUsage, message: string): Promise<string>
 ```
 
 Parameters:
@@ -54,10 +54,6 @@ Parameters:
 | `message` | `string`                    | false    | The message to display while prompting                                                        |
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -170,7 +166,7 @@ Response:
 Show the password entry keyboard, with typing obfuscated from visibility
 
 ```typescript
-function password(message?: string): Promise<string>
+function password(message: string): Promise<string>
 ```
 
 Parameters:
@@ -180,10 +176,6 @@ Parameters:
 | `message` | `string` | false    | The message to display while prompting |
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -255,10 +247,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                             |
@@ -320,10 +308,11 @@ Response:
 ### EmailUsage
 
 ```typescript
-enum EmailUsage {
-  SIGN_IN = 'signIn',
-  SIGN_UP = 'signUp',
-}
+EmailUsage: {
+    SIGN_IN: 'signIn',
+    SIGN_UP: 'signUp',
+},
+
 ```
 
 ---

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.1.0
+Version SecondScreen 1.2.0
 
 ## Table of Contents
 
@@ -27,6 +27,7 @@ Version SecondScreen 1.1.0
   - [closeRequest](#closerequest)
   - [friendlyNameChanged](#friendlynamechanged)
   - [launchRequest](#launchrequest)
+- [Types](#types)
 
 ## Usage
 
@@ -47,7 +48,7 @@ Methods for communicating with second screen devices
 Get the broadcasted id for the device
 
 ```typescript
-function device(type?: string): Promise<string>
+function device(type: string): Promise<string>
 ```
 
 Parameters:
@@ -57,10 +58,6 @@ Parameters:
 | `type` | `string` | false    | The type of second screen protocol, e.g. "dial" |
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -125,10 +122,6 @@ function friendlyName(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -427,7 +420,7 @@ Response:
 ### closeRequest
 
 ```typescript
-function listen('closeRequest', (SecondScreenEvent) => void): Promise<number>
+function listen('closeRequest', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -504,7 +497,7 @@ See: [friendlyName](#friendlyname)
 ### launchRequest
 
 ```typescript
-function listen('launchRequest', (SecondScreenEvent) => void): Promise<number>
+function listen('launchRequest', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -575,3 +568,5 @@ Response:
 </details>
 
 ---
+
+## Types

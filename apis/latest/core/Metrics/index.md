@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.1.0
+Version Metrics 1.2.0
 
 ## Table of Contents
 
@@ -61,25 +61,21 @@ Inform the platform of something not covered by other Metrics APIs.
 
 ```typescript
 function action(
-  category: 'user' | 'app',
+  category: string,
   type: string,
-  parameters?: object,
+  parameters: FlatMap,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param        | Type     | Required | Description                                                                                                                                 |
-| ------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `category`   | `string` | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
-| `type`       | `string` | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
-| `parameters` | `object` | false    |                                                                                                                                             |
+| Param        | Type                                   | Required | Description                                                                                                                                 |
+| ------------ | -------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `category`   | `string`                               | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
+| `type`       | `string`                               | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
+| `parameters` | [`FlatMap`](../Types/schemas/#FlatMap) | false    |                                                                                                                                             |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -146,25 +142,21 @@ function error(
   code: string,
   description: string,
   visible: boolean,
-  parameters?: object,
+  parameters: FlatMap,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param         | Type                      | Required | Description                                                                                        |
-| ------------- | ------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `type`        | [`ErrorType`](#errortype) | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
-| `code`        | `string`                  | true     | an app-specific error code                                                                         |
-| `description` | `string`                  | true     | A short description of the error                                                                   |
-| `visible`     | `boolean`                 | true     | Whether or not this error was visible to the user.                                                 |
-| `parameters`  | `object`                  | false    | Optional additional parameters to be logged with the error                                         |
+| Param         | Type                                   | Required | Description                                                                                        |
+| ------------- | -------------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| `type`        | [`ErrorType`](#errortype)              | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
+| `code`        | `string`                               | true     | an app-specific error code                                                                         |
+| `description` | `string`                               | true     | A short description of the error                                                                   |
+| `visible`     | `boolean`                              | true     | Whether or not this error was visible to the user.                                                 |
+| `parameters`  | [`FlatMap`](../Types/schemas/#FlatMap) | false    | Optional additional parameters to be logged with the error                                         |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -245,10 +237,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -318,10 +306,6 @@ Parameters:
 | `entityId` | `string` | true     | The entityId of the media. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -393,10 +377,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -467,10 +447,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -540,10 +516,6 @@ Parameters:
 | `entityId` | `string` | true     | The entityId of the media. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -619,10 +591,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -695,10 +663,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -764,7 +728,7 @@ function mediaRenditionChange(
   bitrate: number,
   width: number,
   height: number,
-  profile?: string,
+  profile: string,
 ): Promise<boolean>
 ```
 
@@ -779,10 +743,6 @@ Parameters:
 | `profile`  | `string` | false    | A description of the new profile, e.g. 'HDR' etc. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -868,10 +828,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -944,10 +900,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -1019,10 +971,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                            |
@@ -1092,10 +1040,6 @@ Parameters:
 | `pageId` | `string` | true     | Page ID of the content. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1203,10 +1147,6 @@ Inform the platform that your app is minimally usable. This method is called aut
 
 Result:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                              |
@@ -1249,10 +1189,6 @@ _This is an private RPC method._
 Log a sign in event, called by Discovery.signIn().
 
 Result:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1330,10 +1266,6 @@ Log a sign out event, called by Discovery.signOut().
 
 Result:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                              |
@@ -1374,7 +1306,7 @@ Response:
 Inform the platform that your user has started content.
 
 ```typescript
-function startContent(entityId?: string): Promise<boolean>
+function startContent(entityId: string): Promise<boolean>
 ```
 
 Parameters:
@@ -1384,10 +1316,6 @@ Parameters:
 | `entityId` | `string` | false    | Optional entity ID of the content. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1490,7 +1418,7 @@ Response:
 Inform the platform that your user has stopped content.
 
 ```typescript
-function stopContent(entityId?: string): Promise<boolean>
+function stopContent(entityId: string): Promise<boolean>
 ```
 
 Parameters:
@@ -1500,10 +1428,6 @@ Parameters:
 | `entityId` | `string` | false    | Optional entity ID of the content. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1606,13 +1530,14 @@ Response:
 ### ErrorType
 
 ```typescript
-enum ErrorType {
-  NETWORK = 'network',
-  MEDIA = 'media',
-  RESTRICTION = 'restriction',
-  ENTITLEMENT = 'entitlement',
-  OTHER = 'other',
-}
+ErrorType: {
+    NETWORK: 'network',
+    MEDIA: 'media',
+    RESTRICTION: 'restriction',
+    ENTITLEMENT: 'entitlement',
+    OTHER: 'other',
+},
+
 ```
 
 ---

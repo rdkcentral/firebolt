@@ -17,6 +17,8 @@ Version Discovery 0.0.0-unknown.0
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Types](#types)
+  - [InterestType](#interesttype)
+  - [InterestReason](#interestreason)
   - [EntityInfoResult](#entityinforesult)
   - [PurchasedContentResult](#purchasedcontentresult)
 
@@ -26,6 +28,31 @@ undefined
 
 ## Types
 
+### InterestType
+
+```typescript
+InterestType: {
+    INTEREST: 'interest',
+    DISINTEREST: 'disinterest',
+},
+
+```
+
+---
+
+### InterestReason
+
+```typescript
+InterestReason: {
+    PLAYLIST: 'playlist',
+    REACTION: 'reaction',
+    RECORDING: 'recording',
+},
+
+```
+
+---
+
 ### EntityInfoResult
 
 The result for an `entityInfo()` push or pull.
@@ -34,7 +61,7 @@ The result for an `entityInfo()` push or pull.
 type EntityInfoResult = {
   expires: string
   entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  related?: EntityInfo[]
+  related?: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
 }
 ```
 
@@ -50,7 +77,7 @@ See also:
 type PurchasedContentResult = {
   expires: string
   totalCount: number
-  entries: EntityInfo[]
+  entries: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
 }
 ```
 

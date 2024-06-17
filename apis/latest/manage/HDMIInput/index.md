@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version HDMIInput 1.1.0
+Version HDMIInput 1.2.0
 
 ## Table of Contents
 
@@ -36,13 +36,13 @@ Version HDMIInput 1.1.0
   - [signalChanged](#signalchanged)
 - [Types](#types)
   - [EDIDVersion](#edidversion-1)
-  - [HDMIPortId](#hdmiportid)
-  - [ConnectionChangedInfo](#connectionchangedinfo)
   - [HDMISignalStatus](#hdmisignalstatus)
+  - [HDMIPortId](#hdmiportid)
+  - [SignalChangedInfo](#signalchangedinfo)
   - [AutoLowLatencyModeSignalChangedInfo](#autolowlatencymodesignalchangedinfo)
   - [HDMIInputPort](#hdmiinputport)
   - [AutoLowLatencyModeCapableChangedInfo](#autolowlatencymodecapablechangedinfo)
-  - [SignalChangedInfo](#signalchangedinfo)
+  - [ConnectionChangedInfo](#connectionchangedinfo)
 
 ## Usage
 
@@ -65,20 +65,16 @@ Property for each port auto low latency mode setting.
 To get the value of `autoLowLatencyModeCapable` call the method like this:
 
 ```typescript
-function autoLowLatencyModeCapable(port: string): Promise<boolean>
+function autoLowLatencyModeCapable(port: HDMIPortId): Promise<boolean>
 ```
 
 Parameters:
 
-| Param  | Type     | Required | Description                |
-| ------ | -------- | -------- | -------------------------- |
-| `port` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param  | Type                        | Required | Description                |
+| ------ | --------------------------- | -------- | -------------------------- |
+| `port` | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -181,21 +177,20 @@ Response:
 To set the value of `autoLowLatencyModeCapable` call the method like this:
 
 ```typescript
-function autoLowLatencyModeCapable(port: string, value: boolean): Promise<void>
+function autoLowLatencyModeCapable(
+  port: HDMIPortId,
+  value: boolean,
+): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type      | Required | Description                |
-| ------- | --------- | -------- | -------------------------- |
-| `port`  | `string`  | true     | <br/>pattern: ^HDMI[0-9]+$ |
-| `value` | `boolean` | true     |                            |
+| Param   | Type                        | Required | Description                |
+| ------- | --------------------------- | -------- | -------------------------- |
+| `port`  | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| `value` | `boolean`                   | true     |                            |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -423,10 +418,6 @@ function close(): Promise<void>
 
 Promise resolution:
 
-```typescript
-void
-```
-
 Capabilities:
 
 | Role    | Capability                          |
@@ -486,14 +477,14 @@ Property for each port's active EDID version.
 To get the value of `edidVersion` call the method like this:
 
 ```typescript
-function edidVersion(port: string): Promise<EDIDVersion>
+function edidVersion(port: HDMIPortId): Promise<EDIDVersion>
 ```
 
 Parameters:
 
-| Param  | Type     | Required | Description                |
-| ------ | -------- | -------- | -------------------------- |
-| `port` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param  | Type                        | Required | Description                |
+| ------ | --------------------------- | -------- | -------------------------- |
+| `port` | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
@@ -600,21 +591,17 @@ Response:
 To set the value of `edidVersion` call the method like this:
 
 ```typescript
-function edidVersion(port: string, value: EDIDVersion): Promise<void>
+function edidVersion(port: HDMIPortId, value: EDIDVersion): Promise<void>
 ```
 
 Parameters:
 
 | Param   | Type                            | Required | Description                                |
 | ------- | ------------------------------- | -------- | ------------------------------------------ |
-| `port`  | `string`                        | true     | <br/>pattern: ^HDMI[0-9]+$                 |
+| `port`  | [`HDMIPortId`](#hdmiportid)     | true     | <br/>pattern: ^HDMI[0-9]+$                 |
 | `value` | [`EDIDVersion`](#edidversion-1) | true     | <br/>values: `'1.4' \| '2.0' \| 'unknown'` |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -714,16 +701,16 @@ To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
 function edidVersion(
-  port: string,
+  port: HDMIPortId,
   callback: (value) => EDIDVersion,
 ): Promise<number>
 ```
 
 Parameters:
 
-| Param  | Type     | Required | Description                |
-| ------ | -------- | -------- | -------------------------- |
-| `port` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param  | Type                        | Required | Description                |
+| ------ | --------------------------- | -------- | -------------------------- |
+| `port` | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
@@ -895,10 +882,6 @@ function lowLatencyMode(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -1006,10 +989,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -1272,20 +1251,16 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 Opens the HDMI Port allowing it to be the active source device. Incase there is a different HDMI portId already set as the active source, this call would stop the older portId before opening the given portId.
 
 ```typescript
-function open(portId: string): Promise<void>
+function open(portId: HDMIPortId): Promise<void>
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description                |
-| -------- | -------- | -------- | -------------------------- |
-| `portId` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param    | Type                        | Required | Description                |
+| -------- | --------------------------- | -------- | -------------------------- |
+| `portId` | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -1346,14 +1321,14 @@ Response:
 Retrieve a specific HDMI input port.
 
 ```typescript
-function port(portId: string): Promise<HDMIInputPort>
+function port(portId: HDMIPortId): Promise<HDMIInputPort>
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description                |
-| -------- | -------- | -------- | -------------------------- |
-| `portId` | `string` | true     | <br/>pattern: ^HDMI[0-9]+$ |
+| Param    | Type                        | Required | Description                |
+| -------- | --------------------------- | -------- | -------------------------- |
+| `portId` | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
 
 Promise resolution:
 
@@ -1441,10 +1416,6 @@ function ports(): Promise<HDMIInputPort[]>
 
 Promise resolution:
 
-```typescript
-HDMIInputPort[]
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -1528,7 +1499,7 @@ See: [autoLowLatencyModeCapable](#autolowlatencymodecapable)
 ### autoLowLatencyModeSignalChanged
 
 ```typescript
-function listen('autoLowLatencyModeSignalChanged', (AutoLowLatencyModeSignalChangedInfo) => void): Promise<number>
+function listen('autoLowLatencyModeSignalChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1601,7 +1572,7 @@ Response:
 ### connectionChanged
 
 ```typescript
-function listen('connectionChanged', (ConnectionChangedInfo) => void): Promise<number>
+function listen('connectionChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1682,7 +1653,7 @@ See: [lowLatencyMode](#lowlatencymode)
 ### signalChanged
 
 ```typescript
-function listen('signalChanged', (SignalChangedInfo) => void): Promise<number>
+function listen('signalChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1757,30 +1728,12 @@ Response:
 ### EDIDVersion
 
 ```typescript
-enum EDIDVersion {
-  V1_4 = '1.4',
-  V2_0 = '2.0',
-  UNKNOWN = 'unknown',
-}
-```
+EDIDVersion: {
+    V1_4: '1.4',
+    V2_0: '2.0',
+    UNKNOWN: 'unknown',
+},
 
----
-
-### HDMIPortId
-
-```typescript
-type HDMIPortId = string
-```
-
----
-
-### ConnectionChangedInfo
-
-```typescript
-type ConnectionChangedInfo = {
-  port?: string
-  connected?: boolean
-}
 ```
 
 ---
@@ -1788,14 +1741,39 @@ type ConnectionChangedInfo = {
 ### HDMISignalStatus
 
 ```typescript
-enum HDMISignalStatus {
-  NONE = 'none',
-  STABLE = 'stable',
-  UNSTABLE = 'unstable',
-  UNSUPPORTED = 'unsupported',
-  UNKNOWN = 'unknown',
+HDMISignalStatus: {
+    NONE: 'none',
+    STABLE: 'stable',
+    UNSTABLE: 'unstable',
+    UNSUPPORTED: 'unsupported',
+    UNKNOWN: 'unknown',
+},
+
+```
+
+---
+
+### HDMIPortId
+
+```typescript
+
+```
+
+---
+
+### SignalChangedInfo
+
+```typescript
+type SignalChangedInfo = {
+  port: HDMIPortId
+  signal: HDMISignalStatus
 }
 ```
+
+See also:
+
+[HDMIPortId](#hdmiportid)
+[HDMISignalStatus](#hdmisignalstatus)
 
 ---
 
@@ -1803,10 +1781,14 @@ enum HDMISignalStatus {
 
 ```typescript
 type AutoLowLatencyModeSignalChangedInfo = {
-  port?: string
+  port?: HDMIPortId
   autoLowLatencyModeSignalled?: boolean
 }
 ```
+
+See also:
+
+[HDMIPortId](#hdmiportid)
 
 ---
 
@@ -1814,9 +1796,9 @@ type AutoLowLatencyModeSignalChangedInfo = {
 
 ```typescript
 type HDMIInputPort = {
-  port: string
+  port: HDMIPortId
   connected: boolean
-  signal: 'none' | 'stable' | 'unstable' | 'unsupported' | 'unknown'
+  signal: HDMISignalStatus
   arcCapable: boolean
   arcConnected: boolean
   edidVersion: EDIDVersion
@@ -1827,7 +1809,9 @@ type HDMIInputPort = {
 
 See also:
 
-'1.4' | '2.0' | 'unknown'
+[HDMIPortId](#hdmiportid)
+[HDMISignalStatus](#hdmisignalstatus)
+[EDIDVersion](#edidversion-1)
 
 ---
 
@@ -1835,20 +1819,28 @@ See also:
 
 ```typescript
 type AutoLowLatencyModeCapableChangedInfo = {
-  port: string
+  port: HDMIPortId
   enabled: boolean
 }
 ```
 
+See also:
+
+[HDMIPortId](#hdmiportid)
+
 ---
 
-### SignalChangedInfo
+### ConnectionChangedInfo
 
 ```typescript
-type SignalChangedInfo = {
-  port: string
-  signal: 'none' | 'stable' | 'unstable' | 'unsupported' | 'unknown'
+type ConnectionChangedInfo = {
+  port?: HDMIPortId
+  connected?: boolean
 }
 ```
+
+See also:
+
+[HDMIPortId](#hdmiportid)
 
 ---

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.1.0
+Version Account 1.2.0
 
 ## Table of Contents
 
@@ -20,6 +20,7 @@ Version Account 1.1.0
 - [Methods](#methods)
   - [id](#id)
   - [uid](#uid)
+- [Types](#types)
 
 ## Usage
 
@@ -46,10 +47,6 @@ function id(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -115,10 +112,6 @@ function uid(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -170,3 +163,5 @@ Response:
 </details>
 
 ---
+
+## Types

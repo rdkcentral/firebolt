@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.1.0
+Version Discovery 1.2.0
 
 ## Table of Contents
 
@@ -27,17 +27,25 @@ Version Discovery 1.1.0
   - [listen](#listen)
   - [once](#once)
   - [policy](#policy)
+  - [provide](#provide)
   - [purchasedContent](#purchasedcontent)
   - [signIn](#signin)
   - [signOut](#signout)
+  - [userInterest](#userinterest)
+  - [userInterestError](#userinteresterror)
+  - [userInterestResponse](#userinterestresponse)
   - [watched](#watched)
   - [watchNext](#watchnext)
 - [Events](#events)
   - [navigateTo](#navigateto)
   - [policyChanged](#policychanged)
+  - [onRequestUserInterest](#onrequestuserinterest)
+- [Provider Interfaces](#provider-interfaces)
+  - [UserInterestProvider](#userinterestprovider)
 - [Types](#types)
   - [DiscoveryPolicy](#discoverypolicy)
   - [Availability](#availability)
+  - [UserInterestProviderParameters](#userinterestproviderparameters)
   - [PurchasedContentParameters](#purchasedcontentparameters)
   - [ContentAccessIdentifiers](#contentaccessidentifiers)
   - [EntityInfoParameters](#entityinfoparameters)
@@ -79,10 +87,6 @@ function clearContentAccess(): Promise<void>
 ```
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -151,10 +155,6 @@ Parameters:
 | `ids` | [`ContentAccessIdentifiers`](#contentaccessidentifiers) | true     | A list of identifiers that represent content that is discoverable or consumable for the subscriber |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -495,10 +495,6 @@ Parameters:
 | `entitlements` | `Entitlement[]` | true     | Array of entitlement objects |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1883,7 +1879,7 @@ For the Primary Experience, the appId can be any one of:
 - xrn:firebolt:application-type:settings
 
 ```typescript
-function launch(appId: string, intent?: NavigationIntent): Promise<boolean>
+function launch(appId: string, intent: NavigationIntent): Promise<boolean>
 ```
 
 Parameters:
@@ -1894,10 +1890,6 @@ Parameters:
 | `intent` | [`NavigationIntent`](../Intents/schemas/#NavigationIntent) | false    | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -2768,6 +2760,23 @@ Response:
 
 ---
 
+### provide
+
+To provide a specific capability to the platform. See [Provider Interfaces](#provider-interfaces) for a list of interfaces available to provide in this module.
+
+```typescript
+provide(capability: string, provider: any): void
+```
+
+Parameters:
+
+| Param        | Type     | Required | Summary                                      |
+| ------------ | -------- | -------- | -------------------------------------------- |
+| `capability` | `string` | Yes      | The capability that is being provided.       |
+| `provider`   | `any`    | Yes      | An implementation of the required interface. |
+
+See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
+
 ### purchasedContent
 
 Return content purchased by the user, such as rentals and electronic sell through purchases.
@@ -3145,7 +3154,7 @@ Response:
 Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
 
 ```typescript
-function signIn(entitlements?: Entitlement[]): Promise<boolean>
+function signIn(entitlements: Entitlement[]): Promise<boolean>
 ```
 
 Parameters:
@@ -3155,10 +3164,6 @@ Parameters:
 | `entitlements` | `Entitlement[]` | false    | Optional array of Entitlements, in case of a different user account, or a long time since last sign-in. |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3278,10 +3283,6 @@ function signOut(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                                       |
@@ -3334,6 +3335,228 @@ Response:
 
 ---
 
+### userInterest
+
+Send an entity that the user has expressed interest in to the platform.
+
+```typescript
+function userInterest(
+  type: InterestType,
+  reason: InterestReason,
+  entity: EntityDetails,
+): Promise<null>
+```
+
+Parameters:
+
+| Param    | Type                                                     | Required | Description                                            |
+| -------- | -------------------------------------------------------- | -------- | ------------------------------------------------------ |
+| `type`   | [`InterestType`](../Discovery/schemas/#InterestType)     | true     | <br/>values: `'interest' \| 'disinterest'`             |
+| `reason` | [`InterestReason`](../Discovery/schemas/#InterestReason) | true     | <br/>values: `'playlist' \| 'reaction' \| 'recording'` |
+| `entity` | [`EntityDetails`](../Entity/schemas/#EntityDetails)      | true     |                                                        |
+
+Promise resolution:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.userInterest('interest', 'playlist', {
+  identifiers: {
+    entityId: '345',
+    entityType: 'program',
+    programType: 'movie',
+  },
+  info: {},
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "entity": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {}
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### userInterestError
+
+_This is an private RPC method._
+
+Internal API for .onRequestUserInterest Provider to send back error.
+
+Parameters:
+
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
+
+Result:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Example 1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+### userInterestResponse
+
+_This is an private RPC method._
+
+Internal API for .onRequestUserInterest Provider to send back response.
+
+Parameters:
+
+| Param           | Type                                                | Required | Description |
+| --------------- | --------------------------------------------------- | -------- | ----------- |
+| `correlationId` | `string`                                            | true     |             |
+| `result`        | [`EntityDetails`](../Entity/schemas/#EntityDetails) | true     |             |
+
+Result:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
 ### watched
 
 Notify the platform that content was partially or completely watched
@@ -3341,9 +3564,9 @@ Notify the platform that content was partially or completely watched
 ```typescript
 function watched(
   entityId: string,
-  progress?: number,
-  completed?: boolean,
-  watchedOn?: string,
+  progress: number,
+  completed: boolean,
+  watchedOn: string,
 ): Promise<boolean>
 ```
 
@@ -3357,10 +3580,6 @@ Parameters:
 | `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                     |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3431,26 +3650,22 @@ Suggest a call-to-action for this app on the platform home screen
 ```typescript
 function watchNext(
   title: LocalizedString,
-  identifiers: ContentIdentifiers,
-  expires?: string,
-  images?: object,
+  identifiers: Entity,
+  expires: string,
+  images: object,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param         | Type                                                                 | Required | Description                                                                            |
-| ------------- | -------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------- |
-| `title`       | [`LocalizedString`](../Types/schemas/#LocalizedString)               | true     | The title of this call to action                                                       |
-| `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true     | A set of content identifiers for this call to action                                   |
-| `expires`     | `string`                                                             | false    | When this call to action should no longer be presented to users <br/>format: date-time |
-| `images`      | `object`                                                             | false    | A set of images for this call to action                                                |
+| Param         | Type                                                   | Required | Description                                                                            |
+| ------------- | ------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------- |
+| `title`       | [`LocalizedString`](../Types/schemas/#LocalizedString) | true     | The title of this call to action                                                       |
+| `identifiers` | [`Entity`](../Entity/schemas/#Entity)                  | true     | A set of content identifiers for this call to action                                   |
+| `expires`     | `string`                                               | false    | When this call to action should no longer be presented to users <br/>format: date-time |
+| `images`      | `object`                                               | false    | A set of images for this call to action                                                |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -3591,7 +3806,7 @@ Response:
 ### navigateTo
 
 ```typescript
-function listen('navigateTo', (NavigationIntent) => void): Promise<number>
+function listen('navigateTo', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -3677,6 +3892,218 @@ Response:
 
 See: [policy](#policy)
 
+### onRequestUserInterest
+
+_This is an private RPC method._
+
+Provide information about the entity currently displayed or selected on the screen.
+
+Parameters:
+
+| Param    | Type      | Required | Description |
+| -------- | --------- | -------- | ----------- |
+| `listen` | `boolean` | true     |             |
+
+Result:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onRequestUserInterest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "correlationId": "xyz",
+    "parameters": {
+      "type": "interest",
+      "reason": "playlist"
+    }
+  }
+}
+```
+
+---
+
+## Provider Interfaces
+
+### UserInterestProvider
+
+The provider interface for the `xrn:firebolt:capability:discovery:interest` capability.
+
+```typescript
+interface UserInterestProvider {
+  userInterest(
+    parameters: UserInterestProviderParameters,
+    session: ProviderSession,
+  ): Promise<EntityDetails>
+}
+```
+
+Usage:
+
+```typescript
+Discovery.provide('xrn:firebolt:capability:discovery:interest', provider: UserInterestProvider | object)
+```
+
+#### Examples
+
+**Register your app to provide the `xrn:firebolt:capability:discovery:interest` capability.**
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+class MyUserInterestProvider {
+  async userInterest(parameters, session) {
+    return {
+      identifiers: {
+        entityId: '345',
+        entityType: 'program',
+        programType: 'movie',
+      },
+      info: {
+        title: 'Cool Runnings',
+        synopsis:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+        releaseDate: '1993-01-01T00:00:00.000Z',
+        contentRatings: [
+          {
+            scheme: 'US-Movie',
+            rating: 'PG',
+          },
+          {
+            scheme: 'CA-Movie',
+            rating: 'G',
+          },
+        ],
+      },
+    }
+  }
+}
+
+Discovery.provide(
+  'xrn:firebolt:capability:discovery:interest',
+  new MyUserInterestProvider(),
+)
+```
+
+<details markdown="1" >
+    <summary>JSON-RPC</summary>
+
+**Register to recieve each provider API**
+
+Request:
+
+```json
+{
+  "id": 1,
+  "method": "Discovery.onRequestUserInterest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 1,
+  "result": {
+    "listening": true,
+    "event": "Discovery.onRequestUserInterest"
+  }
+}
+```
+
+**Asynchronous event to initiate userInterest()**
+
+Event Response:
+
+```json
+{
+  "id": 1,
+  "result": {
+    "correlationId": undefined,
+    "parameters": {
+      "type": "interest",
+      "reason": "playlist"
+    }
+  }
+}
+```
+
+**App initiated response to event**
+
+Request:
+
+```json
+{
+  "id": 2,
+  "method": "Discovery.userInterestResponse",
+  "params": {
+    "correlationId": undefined,
+    "result": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 2,
+  "result": true
+}
+```
+
+</details>
+
 ## Types
 
 ### DiscoveryPolicy
@@ -3705,6 +4132,22 @@ type Availability = {
 
 ---
 
+### UserInterestProviderParameters
+
+```typescript
+type UserInterestProviderParameters = {
+  type: InterestType
+  reason: InterestReason
+}
+```
+
+See also:
+
+[InterestType](../Discovery/schemas/#InterestType)
+[InterestReason](../Discovery/schemas/#InterestReason)
+
+---
+
 ### PurchasedContentParameters
 
 ```typescript
@@ -3717,8 +4160,8 @@ type PurchasedContentParameters = {
 
 See also:
 
-'free' | 'subscribe' | 'buy' | 'rent'
-'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
+[OfferingType](../Entertainment/schemas/#OfferingType)
+[ProgramType](../Entertainment/schemas/#ProgramType)
 
 ---
 

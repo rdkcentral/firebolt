@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.1.0
+Version Localization 1.2.0
 
 ## Table of Contents
 
@@ -61,10 +61,6 @@ function additionalInfo(): Promise<object>
 ```
 
 Promise resolution:
-
-```typescript
-object
-```
 
 Capabilities:
 
@@ -126,14 +122,12 @@ Get the ISO 3166-1 alpha-2 code for the country device is located in
 To get the value of `countryCode` call the method like this:
 
 ```typescript
-function countryCode(): Promise<string>
+function countryCode(): Promise<CountryCode>
 ```
 
 Promise resolution:
 
-```typescript
-type CountryCode = string
-```
+[CountryCode](../Localization/schemas/#CountryCode)
 
 Capabilities:
 
@@ -232,7 +226,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function countryCode(callback: (value) => string): Promise<number>
+function countryCode(callback: (value) => CountryCode): Promise<number>
 ```
 
 Promise resolution:
@@ -344,14 +338,12 @@ Get the ISO 639 1/2 code for the preferred language
 To get the value of `language` call the method like this:
 
 ```typescript
-function language(): Promise<string>
+function language(): Promise<Language>
 ```
 
 Promise resolution:
 
-```typescript
-type Language = string
-```
+[Language](../Localization/schemas/#Language)
 
 Capabilities:
 
@@ -450,7 +442,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function language(callback: (value) => string): Promise<number>
+function language(callback: (value) => Language): Promise<number>
 ```
 
 Promise resolution:
@@ -560,14 +552,12 @@ Response:
 Get the approximate latitude and longitude coordinates of the device location
 
 ```typescript
-function latlon(): Promise<[number, number]>
+function latlon(): Promise<LatLon>
 ```
 
 Promise resolution:
 
-```typescript
-type LatLon = [number, number]
-```
+[LatLon](#latlon-1)
 
 Capabilities:
 
@@ -682,14 +672,12 @@ Get the _full_ BCP 47 code, including script, region, variant, etc., for the pre
 To get the value of `locale` call the method like this:
 
 ```typescript
-function locale(): Promise<string>
+function locale(): Promise<Locale>
 ```
 
 Promise resolution:
 
-```typescript
-type Locale = string
-```
+[Locale](../Localization/schemas/#Locale)
 
 Capabilities:
 
@@ -788,7 +776,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function locale(callback: (value) => string): Promise<number>
+function locale(callback: (value) => Locale): Promise<number>
 ```
 
 Promise resolution:
@@ -900,14 +888,12 @@ Get the locality/city the device is located in
 To get the value of `locality` call the method like this:
 
 ```typescript
-function locality(): Promise<string>
+function locality(): Promise<Locality>
 ```
 
 Promise resolution:
 
-```typescript
-type Locality = string
-```
+[Locality](../Localization/schemas/#Locality)
 
 Capabilities:
 
@@ -1006,7 +992,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function locality(callback: (value) => string): Promise<number>
+function locality(callback: (value) => Locality): Promise<number>
 ```
 
 Promise resolution:
@@ -1178,10 +1164,6 @@ function postalCode(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1392,14 +1374,10 @@ A prioritized list of ISO 639 1/2 codes for the preferred audio languages on thi
 To get the value of `preferredAudioLanguages` call the method like this:
 
 ```typescript
-function preferredAudioLanguages(): Promise<string[]>
+function preferredAudioLanguages(): Promise<ISO639_2Language[]>
 ```
 
 Promise resolution:
-
-```typescript
-string[]
-```
 
 Capabilities:
 
@@ -1498,7 +1476,9 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function preferredAudioLanguages(callback: (value) => string[]): Promise<number>
+function preferredAudioLanguages(
+  callback: (value) => ISO639_2Language[],
+): Promise<number>
 ```
 
 Promise resolution:
@@ -1634,7 +1614,10 @@ See: [preferredAudioLanguages](#preferredaudiolanguages)
 ### LatLon
 
 ```typescript
-type LatLon = [number, number]
+type LatLon = [
+  number, // undefined  item
+  number, // undefined  item
+]
 ```
 
 ---

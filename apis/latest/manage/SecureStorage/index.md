@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.1.0
+Version SecureStorage 1.2.0
 
 ## Table of Contents
 
@@ -55,10 +55,6 @@ Parameters:
 | `scope` | [`StorageScope`](#storagescope) | true     | The scope of the key/value <br/>values: `'device' \| 'account'` |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -137,10 +133,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-void
-```
-
 Capabilities:
 
 | Role    | Capability                             |
@@ -211,7 +203,7 @@ function setForApp(
   scope: StorageScope,
   key: string,
   value: string,
-  options?: StorageOptions,
+  options: StorageOptions,
 ): Promise<void>
 ```
 
@@ -226,10 +218,6 @@ Parameters:
 | `options` | [`StorageOptions`](#storageoptions) | false    | Optional parameters to set                                     |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -359,10 +347,11 @@ Response:
 The scope of the data
 
 ```typescript
-enum StorageScope {
-  DEVICE = 'device',
-  ACCOUNT = 'account',
-}
+StorageScope: {
+    DEVICE: 'device',
+    ACCOUNT: 'account',
+},
+
 ```
 
 ---

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Privacy 1.1.0
+Version Privacy 1.2.0
 
 ## Table of Contents
 
@@ -74,10 +74,6 @@ function allowACRCollection(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -186,10 +182,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -403,10 +395,6 @@ function allowAppContentAdTargeting(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -514,10 +502,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -733,10 +717,6 @@ function allowCameraAnalytics(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -844,10 +824,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -1061,10 +1037,6 @@ function allowPersonalization(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -1172,10 +1144,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -1389,10 +1357,6 @@ function allowPrimaryBrowseAdTargeting(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -1500,10 +1464,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -1719,10 +1679,6 @@ function allowPrimaryContentAdTargeting(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -1830,10 +1786,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -2049,10 +2001,6 @@ function allowProductAnalytics(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -2160,10 +2108,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -2377,10 +2321,6 @@ function allowRemoteDiagnostics(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -2488,10 +2428,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -2705,10 +2641,6 @@ function allowResumePoints(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -2816,10 +2748,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -3033,10 +2961,6 @@ function allowUnentitledPersonalization(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -3144,10 +3068,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -3363,10 +3283,6 @@ function allowUnentitledResumePoints(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -3474,10 +3390,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -3693,10 +3605,6 @@ function allowWatchHistory(): Promise<boolean>
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                               |
@@ -3804,10 +3712,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 

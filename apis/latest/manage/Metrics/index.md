@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.1.0
+Version Metrics 1.2.0
 
 ## Table of Contents
 
@@ -53,10 +53,6 @@ Parameters:
 | `data`   | [`EventObject`](#eventobject-1) | true     | A JSON payload conforming the the provided schema  |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 Capabilities:
 
@@ -130,18 +126,12 @@ type EventObjectPrimitives = string | number | number | boolean | null
 ### EventObject
 
 ```typescript
-type EventObject = {
-  [property: string]:
-    | EventObjectPrimitives
-    | EventObjectPrimitives
-    | EventObject[]
-    | EventObject
-}
+type EventObject = {}
 ```
 
 See also:
 
-string | number | number | boolean | null
+[EventObjectPrimitives](#eventobjectprimitives)
 [EventObject](#eventobject-1)
 
 ---

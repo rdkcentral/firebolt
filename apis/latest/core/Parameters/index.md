@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.1.0
+Version Parameters 1.2.0
 
 ## Table of Contents
 
@@ -140,18 +140,14 @@ Response:
 type AppInitialization = {
   us_privacy?: string // The IAB US Privacy string.
   lmt?: number // The IAB limit ad tracking opt out value.
-  discovery?: {
-    navigateTo?: NavigationIntent // A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
-  }
-  secondScreen?: {
-    launchRequest?: SecondScreenEvent // An a message notification from a second screen device
-  }
+  discovery?: object
+  secondScreen?: object
 }
 ```
 
 See also:
 
-HomeIntent | LaunchIntent | EntityIntent | PlaybackIntent | SearchIntent | SectionIntent | TuneIntent | PlayEntityIntent | PlayQueryIntent
+[NavigationIntent](../Intents/schemas/#NavigationIntent)
 [SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 ---

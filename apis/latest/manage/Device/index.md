@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.1.0
+Version Device 1.2.0
 
 ## Table of Contents
 
@@ -25,6 +25,7 @@ Version Device 1.1.0
 - [Events](#events)
   - [deviceNameChanged](#devicenamechanged)
   - [nameChanged](#namechanged)
+- [Types](#types)
 
 ## Usage
 
@@ -105,10 +106,6 @@ function name(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -217,10 +214,6 @@ Parameters:
 | `value` | `string` | true     | the device friendly-name |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -486,7 +479,7 @@ Used by a distributor to push provision info to firebolt.
 function provision(
   accountId: string,
   deviceId: string,
-  distributorId?: string,
+  distributorId: string,
 ): Promise<void>
 ```
 
@@ -499,10 +492,6 @@ Parameters:
 | `distributorId` | `string` | false    | The id of the distributor in the back office.                           |
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -614,16 +603,12 @@ Response:
 ### deviceNameChanged
 
 ```typescript
-function listen('deviceNameChanged', (string) => void): Promise<number>
+function listen('deviceNameChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -683,3 +668,5 @@ Response:
 ### nameChanged
 
 See: [name](#name)
+
+## Types

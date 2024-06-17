@@ -18,13 +18,13 @@ Version Entertainment 0.0.0-unknown.0
 - [Overview](#overview)
 - [Types](#types)
   - [OfferingType](#offeringtype)
-  - [ProgramType](#programtype)
   - [MusicType](#musictype)
-  - [ContentIdentifiers](#contentidentifiers)
-  - [Entitlement](#entitlement)
+  - [ProgramType](#programtype)
   - [ContentRating](#contentrating)
 - [United States](#united-states)
 - [Canada](#canada)
+  - [ContentIdentifiers](#contentidentifiers)
+  - [Entitlement](#entitlement)
   - [WayToWatch](#waytowatch)
   - [EntityInfo](#entityinfo)
 
@@ -39,35 +39,13 @@ undefined
 The offering type of the WayToWatch.
 
 ```typescript
-enum OfferingType {
-  FREE = 'free',
-  SUBSCRIBE = 'subscribe',
-  BUY = 'buy',
-  RENT = 'rent',
-}
-```
+OfferingType: {
+    FREE: 'free',
+    SUBSCRIBE: 'subscribe',
+    BUY: 'buy',
+    RENT: 'rent',
+},
 
----
-
-### ProgramType
-
-In the case of a program `entityType`, specifies the program type.
-
-```typescript
-enum ProgramType {
-  MOVIE = 'movie',
-  EPISODE = 'episode',
-  SEASON = 'season',
-  SERIES = 'series',
-  OTHER = 'other',
-  PREVIEW = 'preview',
-  EXTRA = 'extra',
-  CONCERT = 'concert',
-  SPORTING_EVENT = 'sportingEvent',
-  ADVERTISEMENT = 'advertisement',
-  MUSIC_VIDEO = 'musicVideo',
-  MINISODE = 'minisode',
-}
 ```
 
 ---
@@ -77,44 +55,35 @@ enum ProgramType {
 In the case of a music `entityType`, specifies the type of music entity.
 
 ```typescript
-enum MusicType {
-  SONG = 'song',
-  ALBUM = 'album',
-}
+MusicType: {
+    SONG: 'song',
+    ALBUM: 'album',
+},
+
 ```
 
 ---
 
-### ContentIdentifiers
+### ProgramType
 
-The ContentIdentifiers object is how the app identifies an entity or asset to
-the Firebolt platform. These ids are used to look up metadata and deep link into
-the app.
-
-Apps do not need to provide all ids. They only need to provide the minimum
-required to target a playable stream or an entity detail screen via a deep link.
-If an id isn't needed to get to those pages, it doesn't need to be included.
+In the case of a program `entityType`, specifies the program type.
 
 ```typescript
-type ContentIdentifiers = {
-  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
-  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
-  seasonId?: string // The TV Season for a TV Episode.
-  seriesId?: string // The TV Series for a TV Episode or TV Season.
-  appContentData?: string // App-specific content identifiers.
-}
-```
+ProgramType: {
+    MOVIE: 'movie',
+    EPISODE: 'episode',
+    SEASON: 'season',
+    SERIES: 'series',
+    OTHER: 'other',
+    PREVIEW: 'preview',
+    EXTRA: 'extra',
+    CONCERT: 'concert',
+    SPORTING_EVENT: 'sportingEvent',
+    ADVERTISEMENT: 'advertisement',
+    MUSIC_VIDEO: 'musicVideo',
+    MINISODE: 'minisode',
+},
 
----
-
-### Entitlement
-
-```typescript
-type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
-}
 ```
 
 ---
@@ -168,6 +137,40 @@ type ContentRating = {
     | 'US-TV' // The rating scheme.
   rating: string // The content rating.
   advisories?: string[] // Optional list of subratings or content advisories.
+}
+```
+
+---
+
+### ContentIdentifiers
+
+The ContentIdentifiers object is how the app identifies an entity or asset to
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included.
+
+```typescript
+type ContentIdentifiers = {
+  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
+  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
+  seasonId?: string // The TV Season for a TV Episode.
+  seriesId?: string // The TV Series for a TV Episode or TV Season.
+  appContentData?: string // App-specific content identifiers.
+}
+```
+
+---
+
+### Entitlement
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
 }
 ```
 
@@ -231,8 +234,8 @@ type WayToWatch = {
 See also:
 
 [ContentIdentifiers](#contentidentifiers)
-'free' | 'subscribe' | 'buy' | 'rent'
-'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
+[OfferingType](#offeringtype)
+[AudioProfile](../Types/schemas/#AudioProfile)
 
 ---
 
@@ -258,7 +261,7 @@ type EntityInfo = {
   identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
   title: string // Title of the entity.
   entityType: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
-  programType: ProgramType // In the case of a program `entityType`, specifies the program type.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
   musicType?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
   synopsis?: string // Short description of the entity.
   seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
@@ -266,16 +269,16 @@ type EntityInfo = {
   episodeNumber?: number // For TV episodes, the episode number.
   episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
   releaseDate?: string // The date that the program or entity was released or first aired.
-  contentRatings?: ContentRating[] // A list of ContentRating objects, describing the entity's ratings in various rating schemes.
-  waysToWatch?: WayToWatch[] // An array of ways a user is might watch this entity, regardless of entitlements.
+  contentRatings?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+  waysToWatch?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
 }
 ```
 
 See also:
 
 [ContentIdentifiers](#contentidentifiers)
-'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
-'song' | 'album'
+[ProgramType](#programtype)
+[MusicType](#musictype)
 [ContentRating](#contentrating)
 [WayToWatch](#waytowatch)
 

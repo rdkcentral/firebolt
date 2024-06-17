@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Advertising 1.1.0
+Version Advertising 1.2.0
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ A module for platform provided advertising settings and functionality.
 Get the advertising ID
 
 ```typescript
-function advertisingId(options?: AdvertisingIdOptions): Promise<object>
+function advertisingId(options: AdvertisingIdOptions): Promise<object>
 ```
 
 Parameters:
@@ -61,12 +61,6 @@ Parameters:
 | `options` | [`AdvertisingIdOptions`](#advertisingidoptions) | false    | AdvertisingId options |
 
 Promise resolution:
-
-| Property   | Type   | Description |
-| ---------- | ------ | ----------- |
-| `ifa`      | string |             |
-| `ifa_type` | string |             |
-| `lmt`      | string |             |
 
 Capabilities:
 
@@ -256,10 +250,6 @@ function appBundleId(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                                        |
@@ -327,10 +317,6 @@ Parameters:
 | `options` | [`AdConfigurationOptions`](#adconfigurationoptions) | true     | Configuration options |
 
 Promise resolution:
-
-```typescript
-object
-```
 
 Capabilities:
 
@@ -433,10 +419,6 @@ function deviceAttributes(): Promise<object>
 ```
 
 Promise resolution:
-
-```typescript
-object
-```
 
 Capabilities:
 
@@ -774,7 +756,7 @@ type AdPolicy = {
 
 See also:
 
-'none' | 'adsUnwatched' | 'adsAll' | 'all'
+[SkipRestriction](../Advertising/schemas/#SkipRestriction)
 
 ---
 
@@ -782,10 +764,7 @@ See also:
 
 ```typescript
 type AdvertisingIdOptions = {
-  scope?: {
-    type: 'browse' | 'content' // The scope type, which will determine where to show advertisement
-    id: string // A value that identifies a specific scope within the scope type
-  }
+  scope?: object // Provides the options to send scope type and id to select desired advertising id
 }
 ```
 

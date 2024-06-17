@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.1.0
+Version Advertising 1.2.0
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ Version Advertising 1.1.0
   - [skipRestriction](#skiprestriction)
 - [Events](#events)
   - [skipRestrictionChanged](#skiprestrictionchanged)
+- [Types](#types)
 
 ## Usage
 
@@ -158,10 +159,6 @@ function resetIdentifier(): Promise<void>
 ```
 
 Promise resolution:
-
-```typescript
-void
-```
 
 Capabilities:
 
@@ -336,10 +333,6 @@ Parameters:
 | `value` | [`SkipRestriction`](../Advertising/schemas/#SkipRestriction) | true     | <br/>values: `'none' \| 'adsUnwatched' \| 'adsAll' \| 'all'` |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -546,3 +539,5 @@ Response:
 ### skipRestrictionChanged
 
 See: [skipRestriction](#skiprestriction)
+
+## Types

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.1.0
+Version Device 1.2.0
 
 ## Table of Contents
 
@@ -224,10 +224,6 @@ function distributor(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -581,10 +577,6 @@ function id(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                        |
@@ -703,10 +695,6 @@ function make(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -771,10 +759,6 @@ function model(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                           |
@@ -838,10 +822,6 @@ function name(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1057,11 +1037,6 @@ function network(): Promise<object>
 
 Promise resolution:
 
-| Property | Type                          | Description |
-| -------- | ----------------------------- | ----------- |
-| `state`  | [NetworkState](#networkstate) |             |
-| `type`   | [NetworkType](#networktype)   |             |
-
 Capabilities:
 
 | Role | Capability                             |
@@ -1256,10 +1231,6 @@ function platform(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                          |
@@ -1319,14 +1290,12 @@ Get the current screen resolution
 To get the value of `screenResolution` call the method like this:
 
 ```typescript
-function screenResolution(): Promise<[number, number]>
+function screenResolution(): Promise<Resolution>
 ```
 
 Promise resolution:
 
-```typescript
-type Resolution = [number, number]
-```
+[Resolution](#resolution)
 
 Capabilities:
 
@@ -1383,9 +1352,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function screenResolution(
-  callback: (value) => [number, number],
-): Promise<number>
+function screenResolution(callback: (value) => Resolution): Promise<number>
 ```
 
 Promise resolution:
@@ -1456,10 +1423,6 @@ function sku(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                         |
@@ -1523,10 +1486,6 @@ function type(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -1592,10 +1551,6 @@ function uid(): Promise<string>
 
 Promise resolution:
 
-```typescript
-string
-```
-
 Capabilities:
 
 | Role | Capability                         |
@@ -1659,14 +1614,6 @@ function version(): Promise<object>
 ```
 
 Promise resolution:
-
-| Property   | Type                                                 | Description                                                      |
-| ---------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
-| `sdk`      | [SemanticVersion](../Types/schemas/#SemanticVersion) | The Firebolt SDK version                                         |
-| `api`      | [SemanticVersion](../Types/schemas/#SemanticVersion) | The lateset Firebolt API version supported by the curent device. |
-| `firmware` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The device firmware version.                                     |
-| `os`       | [SemanticVersion](../Types/schemas/#SemanticVersion) | **Deprecated** Use `firmware`, instead.                          |
-| `debug`    | string                                               | Detail version as a string, for debugging purposes               |
 
 Capabilities:
 
@@ -1779,14 +1726,12 @@ Get the current video resolution
 To get the value of `videoResolution` call the method like this:
 
 ```typescript
-function videoResolution(): Promise<[number, number]>
+function videoResolution(): Promise<Resolution>
 ```
 
 Promise resolution:
 
-```typescript
-type Resolution = [number, number]
-```
+[Resolution](#resolution)
 
 Capabilities:
 
@@ -1843,7 +1788,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function videoResolution(callback: (value) => [number, number]): Promise<number>
+function videoResolution(callback: (value) => Resolution): Promise<number>
 ```
 
 Promise resolution:
@@ -1911,16 +1856,12 @@ See: [audio](#audio)
 ### deviceNameChanged
 
 ```typescript
-function listen('deviceNameChanged', (string) => void): Promise<number>
+function listen('deviceNameChanged', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -2008,10 +1949,11 @@ See: [videoResolution](#videoresolution)
 The type of network that is currently active
 
 ```typescript
-enum NetworkState {
-  CONNECTED = 'connected',
-  DISCONNECTED = 'disconnected',
-}
+NetworkState: {
+    CONNECTED: 'connected',
+    DISCONNECTED: 'disconnected',
+},
+
 ```
 
 ---
@@ -2021,11 +1963,12 @@ enum NetworkState {
 The type of network that is currently active
 
 ```typescript
-enum NetworkType {
-  WIFI = 'wifi',
-  ETHERNET = 'ethernet',
-  HYBRID = 'hybrid',
-}
+NetworkType: {
+    WIFI: 'wifi',
+    ETHERNET: 'ethernet',
+    HYBRID: 'hybrid',
+},
+
 ```
 
 ---
@@ -2034,26 +1977,34 @@ enum NetworkType {
 
 ```typescript
 type AudioProfiles = {
-  stereo: boolean
-  'dolbyDigital5.1': boolean
-  'dolbyDigital7.1': boolean
-  'dolbyDigital5.1+': boolean
-  'dolbyDigital7.1+': boolean
-  dolbyAtmos: boolean
+  STEREO?: boolean
+
+  DOLBY_DIGITAL_5_1?: boolean
+
+  DOLBY_DIGITAL_7_1?: boolean
+
+  DOLBY_DIGITAL_5_1_PLUS?: boolean
+
+  DOLBY_DIGITAL_7_1_PLUS?: boolean
+
+  DOLBY_ATMOS?: boolean
 }
 ```
 
 See also:
 
 [BooleanMap](../Types/schemas/#BooleanMap)
-'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDigital5.1+' | 'dolbyDigital7.1+' | 'dolbyAtmos'
+[AudioProfile](../Types/schemas/#AudioProfile)
 
 ---
 
 ### Resolution
 
 ```typescript
-type Resolution = [number, number]
+type Resolution = [
+  number, // undefined  item
+  number, // undefined  item
+]
 ```
 
 ---

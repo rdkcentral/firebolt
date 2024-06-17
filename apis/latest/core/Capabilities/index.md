@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.1.0
+Version Capabilities 1.2.0
 
 ## Table of Contents
 
@@ -63,10 +63,6 @@ Parameters:
 | `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -177,8 +173,8 @@ Returns whether the current App has a user grant for passed capability and role.
 ```typescript
 function granted(
   capability: Capability,
-  options?: CapabilityOption,
-): Promise<boolean | void>
+  options: CapabilityOption,
+): Promise<boolean>
 ```
 
 Parameters:
@@ -189,10 +185,6 @@ Parameters:
 | `options`    | [`CapabilityOption`](#capabilityoption)             | false    | Capability options                                                     |
 
 Promise resolution:
-
-```typescript
-boolean | void
-```
 
 Capabilities:
 
@@ -360,10 +352,6 @@ Parameters:
 | `capabilities` | `Capability[]` | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
 
 Promise resolution:
-
-```typescript
-CapabilityInfo[]
-```
 
 Capabilities:
 
@@ -912,7 +900,7 @@ Returns whether the current App has permission to the passed capability and role
 ```typescript
 function permitted(
   capability: Capability,
-  options?: CapabilityOption,
+  options: CapabilityOption,
 ): Promise<boolean>
 ```
 
@@ -924,10 +912,6 @@ Parameters:
 | `options`    | [`CapabilityOption`](#capabilityoption)             | false    | Capability options                                                     |
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -1099,10 +1083,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-CapabilityInfo[]
-```
-
 Capabilities:
 
 | Role | Capability                                   |
@@ -1216,10 +1196,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-boolean
-```
-
 Capabilities:
 
 | Role | Capability                                |
@@ -1327,7 +1303,7 @@ Response:
 ### available
 
 ```typescript
-function listen('available', capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('available', capability: Capability, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1437,7 +1413,7 @@ Response:
 ### granted
 
 ```typescript
-function listen('granted', role: Role, capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('granted', role: Role, capability: Capability, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1545,7 +1521,7 @@ Response:
 ### revoked
 
 ```typescript
-function listen('revoked', role: Role, capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('revoked', role: Role, capability: Capability, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1657,7 +1633,7 @@ Response:
 ### unavailable
 
 ```typescript
-function listen('unavailable', capability: Capability, (CapabilityInfo) => void): Promise<number>
+function listen('unavailable', capability: Capability, () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -1776,6 +1752,6 @@ type CapabilityOption = {
 
 See also:
 
-'use' | 'manage' | 'provide'
+[Role](../Capabilities/schemas/#Role)
 
 ---

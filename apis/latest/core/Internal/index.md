@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.1.0
+Version Internal 1.2.0
 
 ## Table of Contents
 
@@ -18,6 +18,7 @@ Version Internal 1.1.0
 - [Overview](#overview)
 - [Methods](#methods)
   - [initialize](#initialize)
+- [Types](#types)
 
 ## Overview
 
@@ -38,10 +39,6 @@ Parameters:
 | `version` | [`SemanticVersion`](../Types/schemas/#SemanticVersion) | true     | The semantic version of the SDK. |
 
 Result:
-
-| Property  | Type                                                 | Description                      |
-| --------- | ---------------------------------------------------- | -------------------------------- |
-| `version` | [SemanticVersion](../Types/schemas/#SemanticVersion) | The semantic version of the FEE. |
 
 Capabilities:
 
@@ -91,3 +88,5 @@ Response:
 ```
 
 ---
+
+## Types

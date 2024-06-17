@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.1.0
+Version AcknowledgeChallenge 1.2.0
 
 ## Table of Contents
 
@@ -61,10 +61,6 @@ Parameters:
 
 Result:
 
-```typescript
-null
-```
-
 Capabilities:
 
 | Role     | Capability                                             |
@@ -113,10 +109,6 @@ _This is an private RPC method._
 Internal API for Challenge Provider to request focus for UX purposes.
 
 Result:
-
-```typescript
-null
-```
 
 Capabilities:
 
@@ -167,10 +159,6 @@ Parameters:
 | `result`        | [`GrantResult`](#grantresult) | true     |             |
 
 Result:
-
-```typescript
-null
-```
 
 Capabilities:
 
@@ -360,7 +348,12 @@ Response:
 The provider interface for the `xrn:firebolt:capability:usergrant:acknowledgechallenge` capability.
 
 ```typescript
-
+interface ChallengeProvider {
+  challenge(
+    parameters: object,
+    session: FocusableProviderSession,
+  ): Promise<GrantResult>
+}
 ```
 
 Usage:
@@ -368,39 +361,6 @@ Usage:
 ```typescript
 AcknowledgeChallenge.provide('xrn:firebolt:capability:usergrant:acknowledgechallenge', provider: ChallengeProvider | object)
 ```
-
-#### challenge
-
-Registers as a provider for when the user should be challenged in order to confirm access to a capability
-
-```typescript
-function challenge(
-  parameters?: Challenge,
-  session?: FocusableProviderSession,
-): Promise<GrantResult>
-```
-
-Provider methods always have two arguments:
-
-| Param        | Type                       | Required | Summary |
-| ------------ | -------------------------- | -------- | ------- |
-| `parameters` | `Challenge`                | false    |         |
-| `session`    | `FocusableProviderSession` | false    |         |
-
-| Parameters Property | Type                                        | Required | Summary                                                       |
-| ------------------- | ------------------------------------------- | -------- | ------------------------------------------------------------- |
-| `capability`        | `string`                                    | true     | The capability that is being requested by the user to approve |
-| `requestor`         | [`ChallengeRequestor`](#challengerequestor) | true     |                                                               |
-
-```typescript
-type Challenge = object
-```
-
-Promise resolution:
-
-| Property  | Type    | Description |
-| --------- | ------- | ----------- | --- |
-| `granted` | boolean | void        |     |
 
 #### Examples
 
@@ -411,9 +371,7 @@ import { AcknowledgeChallenge } from '@firebolt-js/manage-sdk'
 
 class MyChallengeProvider {
   async challenge(parameters, session) {
-    return {
-      granted: true,
-    }
+    return null
   }
 }
 
@@ -460,7 +418,7 @@ Event Response:
 {
   "id": 1,
   "result": {
-    "correlationId": "abc",
+    "correlationId": undefined,
     "parameters": {
       "capability": "xrn:firebolt:capability:localization::postal-code",
       "requestor": {
@@ -481,10 +439,8 @@ Request:
   "id": 2,
   "method": "AcknowledgeChallenge.challengeResponse",
   "params": {
-    "correlationId": "abc",
-    "result": {
-      "granted": true
-    }
+    "correlationId": undefined,
+    "result": null
   }
 }
 ```
@@ -506,7 +462,7 @@ Response:
 
 ```typescript
 type GrantResult = {
-  granted: boolean | void
+  granted: boolean
 }
 ```
 
@@ -528,7 +484,7 @@ type ChallengeRequestor = {
 ```typescript
 type Challenge = {
   capability: string // The capability that is being requested by the user to approve
-  requestor: ChallengeRequestor
+  requestor: ChallengeRequestor // The identity of which app is requesting access to this capability
 }
 ```
 
@@ -542,7 +498,7 @@ See also:
 
 ```typescript
 type ChallengeProviderRequest = {
-  parameters: Challenge
+  parameters: Challenge // The result of the provider response.
   correlationId: string // The id that was passed in to the event that triggered a provider method to be called
 }
 ```

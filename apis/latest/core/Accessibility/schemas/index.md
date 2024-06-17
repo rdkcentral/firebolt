@@ -38,7 +38,7 @@ undefined
 ### FontFamily
 
 ```typescript
-type FontFamily = string
+
 ```
 
 ---
@@ -46,7 +46,7 @@ type FontFamily = string
 ### VoiceSpeed
 
 ```typescript
-type VoiceSpeed = number
+
 ```
 
 ---
@@ -56,20 +56,20 @@ type VoiceSpeed = number
 ```typescript
 type VoiceGuidanceSettings = {
   enabled: boolean // Whether or not voice guidance should be enabled by default
-  speed: VoiceSpeed
+  speed: VoiceSpeed // The speed at which voice guidance speech will be read back to the user
 }
 ```
 
 See also:
 
-number
+[VoiceSpeed](#voicespeed)
 
 ---
 
 ### FontSize
 
 ```typescript
-type FontSize = number
+
 ```
 
 ---
@@ -77,7 +77,7 @@ type FontSize = number
 ### Color
 
 ```typescript
-type Color = string
+
 ```
 
 ---
@@ -85,7 +85,7 @@ type Color = string
 ### FontEdge
 
 ```typescript
-type FontEdge = string
+
 ```
 
 ---
@@ -93,7 +93,7 @@ type FontEdge = string
 ### Opacity
 
 ```typescript
-type Opacity = number
+
 ```
 
 ---
@@ -101,7 +101,7 @@ type Opacity = number
 ### HorizontalAlignment
 
 ```typescript
-type HorizontalAlignment = string
+
 ```
 
 ---
@@ -109,7 +109,7 @@ type HorizontalAlignment = string
 ### VerticalAlignment
 
 ```typescript
-type VerticalAlignment = string
+
 ```
 
 ---

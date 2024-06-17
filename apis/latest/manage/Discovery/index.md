@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Discovery 1.1.0
+Version Discovery 1.2.0
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ Version Discovery 1.1.0
 - [Events](#events)
   - [signIn](#signin)
   - [signOut](#signout)
+- [Types](#types)
 
 ## Usage
 
@@ -166,16 +167,12 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 ### signIn
 
 ```typescript
-function listen('signIn', (object) => void): Promise<number>
+function listen('signIn', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
-
-| Property | Type   | Description |
-| -------- | ------ | ----------- |
-| `appId`  | string |             |
 
 Capabilities:
 
@@ -239,16 +236,12 @@ Response:
 ### signOut
 
 ```typescript
-function listen('signOut', (object) => void): Promise<number>
+function listen('signOut', () => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
 Event value:
-
-| Property | Type   | Description |
-| -------- | ------ | ----------- |
-| `appId`  | string |             |
 
 Capabilities:
 
@@ -308,3 +301,5 @@ Response:
 </details>
 
 ---
+
+## Types

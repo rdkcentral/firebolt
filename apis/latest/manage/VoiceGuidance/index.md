@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version VoiceGuidance 1.1.0
+Version VoiceGuidance 1.2.0
 
 ## Table of Contents
 
@@ -25,6 +25,7 @@ Version VoiceGuidance 1.1.0
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
   - [speedChanged](#speedchanged)
+- [Types](#types)
 
 ## Usage
 
@@ -51,10 +52,6 @@ function enabled(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -163,10 +160,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-null
-```
 
 #### Examples
 
@@ -601,10 +594,6 @@ Parameters:
 
 Promise resolution:
 
-```typescript
-null
-```
-
 #### Examples
 
 Voice guidance speed to 1
@@ -814,3 +803,5 @@ See: [enabled](#enabled)
 ### speedChanged
 
 See: [speed](#speed)
+
+## Types
