@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.2.0-feature-cert-extn-sdk.0
+Version Account 1.2.1-feature-cert-extn-sdk.0
 
 ## Table of Contents
 
@@ -43,14 +43,10 @@ Get the platform back-office account identifier
 To get the value of `id` call the method like this:
 
 ```typescript
-${method.signature}
+function id(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 
@@ -111,14 +107,10 @@ Gets a unique id for the current app & account
 To get the value of `uid` call the method like this:
 
 ```typescript
-${method.signature}
+function uid(): Promise<string>
 ```
 
 Promise resolution:
-
-```typescript
-string
-```
 
 Capabilities:
 

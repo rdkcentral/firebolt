@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AudioDescriptions 1.2.0-feature-cert-extn-sdk.0
+Version AudioDescriptions 1.2.1-feature-cert-extn-sdk.0
 
 ## Table of Contents
 
@@ -46,14 +46,10 @@ Whether or not audio-descriptions are enabled.
 To get the value of `enabled` call the method like this:
 
 ```typescript
-${method.signature}
+function enabled(): Promise<boolean>
 ```
 
 Promise resolution:
-
-```typescript
-boolean
-```
 
 Capabilities:
 
@@ -152,8 +148,7 @@ Response:
 To set the value of `enabled` call the method like this:
 
 ```typescript
-function enabled(| `value` | [`boolean`](${method.param.link}) | ${method.param.required} | ${method.param.summary} ${method.param.constraints} |
-): Promise<void>
+function enabled(value: boolean): Promise<void>
 ```
 
 Parameters:
@@ -163,10 +158,6 @@ Parameters:
 | `value` | `boolean` | true     |             |
 
 Promise resolution:
-
-```typescript
-
-```
 
 #### Examples
 

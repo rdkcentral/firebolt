@@ -19,34 +19,32 @@ Version Intents 0.0.0-unknown.0
 - [Types](#types)
   - [Intent](#intent)
   - [IntentProperties](#intentproperties)
+  - [SelectIntent](#selectintent)
+  - [BackIntent](#backintent)
+  - [ExitIntent](#exitintent)
+  - [ChannelIntent](#channelintent)
+  - [ScrollIntent](#scrollintent)
+  - [PowerIntent](#powerintent)
   - [VolumeIntent](#volumeintent)
   - [BooleanToggle](#booleantoggle)
-  - [InputIntent](#inputintent)
-  - [ChannelEntity](#channelentity)
-  - [ButtonIntent](#buttonintent)
-  - [PowerIntent](#powerintent)
   - [MicrophoneIntent](#microphoneintent)
+  - [InputIntent](#inputintent)
   - [TuneIntent](#tuneintent)
+  - [VoiceGuidanceIntent](#voiceguidanceintent)
+  - [HighContrastIntent](#highcontrastintent)
+  - [ScreenMagnificationIntent](#screenmagnificationintent)
+  - [ButtonIntent](#buttonintent)
+  - [FocusIntent](#focusintent)
+  - [MuteIntent](#muteintent)
   - [DeviceIntent](#deviceintent)
   - [HomeIntent](#homeintent)
   - [LaunchIntent](#launchintent)
-  - [ProgramEntity](#programentity)
-  - [Identifier](#identifier)
+  - [EntityIntent](#entityintent)
+  - [PlaybackIntent](#playbackintent)
   - [SearchIntent](#searchintent)
   - [SectionIntent](#sectionintent)
-  - [MusicEntity](#musicentity)
-  - [PlayQueryIntent](#playqueryintent)
-  - [TVSeriesEntity](#tvseriesentity)
-  - [PlaylistEntity](#playlistentity)
-  - [TVSeasonEntity](#tvseasonentity)
-  - [AdditionalEntity](#additionalentity)
-  - [MovieEntity](#movieentity)
-  - [TVEpisodeEntity](#tvepisodeentity)
-  - [UntypedEntity](#untypedentity)
-  - [EntityIntent](#entityintent)
-  - [PlayableEntity](#playableentity)
   - [PlayEntityIntent](#playentityintent)
-  - [PlaybackIntent](#playbackintent)
+  - [PlayQueryIntent](#playqueryintent)
   - [NavigationIntent](#navigationintent)
 
 ## Overview
@@ -73,73 +71,70 @@ A Firebolt compliant representation of a user intention.
 
 ---
 
-### VolumeIntent
+### SelectIntent
 
-A Firebolt compliant representation of a user intention to change the device volume.
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'select' button.
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type SelectIntent = {
+  action: 'select'
+  context: object
+}
+```
 
 ---
 
-### BooleanToggle
+### BackIntent
 
-
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'back' button.
 
 ```typescript
-
-````
+type BackIntent = {
+  action: 'back'
+  context: object
+}
+```
 
 ---
 
-### InputIntent
+### ExitIntent
 
-A Firebolt compliant representation of a user intention to change which video input is active.
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'back' button.
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type ExitIntent = {
+  action: 'exit'
+  context: object
+}
+```
 
 ---
 
-### ChannelEntity
+### ChannelIntent
 
-
+A Firebolt compliant representation of a user intent to 'surf' to the next or previous channel.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type ChannelIntent = {
+  action: 'channel'
+  data: 'next' | 'previous'
+  context: object
+}
+```
 
 ---
 
-### ButtonIntent
+### ScrollIntent
 
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing one of the remote buttons.
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type ScrollIntent = {
+  action: 'scroll'
+  data: object
+  context: object
+}
+```
 
 ---
 
@@ -148,13 +143,34 @@ A Firebolt compliant representation of a user intention to interact with their d
 A Firebolt compliant representation of a user intention to turn their device on or off.
 
 ```typescript
+type PowerIntent = {
+  action: 'power'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### VolumeIntent
+
+A Firebolt compliant representation of a user intention to change the device volume.
+
+```typescript
+type VolumeIntent = {
+  action: 'volume'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### BooleanToggle
+
 ```typescript
 
-````
-
-````
-
-
+```
 
 ---
 
@@ -163,13 +179,26 @@ A Firebolt compliant representation of a user intention to turn their device on 
 A Firebolt compliant representation of a user intention to turn their microphone on or off.
 
 ```typescript
+type MicrophoneIntent = {
+  action: 'microphone'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### InputIntent
+
+A Firebolt compliant representation of a user intention to change which video input is active.
+
 ```typescript
-
-````
-
-````
-
-
+type InputIntent = {
+  action: 'input'
+  data?: object
+  context: object
+}
+```
 
 ---
 
@@ -178,15 +207,100 @@ A Firebolt compliant representation of a user intention to turn their microphone
 A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.
 
 ```typescript
-```typescript
-
-````
-
-````
+type TuneIntent = {
+  action: 'tune'
+  data: object
+  context: object
+}
+```
 
 See also:
 
+[ChannelEntity](../Entity/schemas/#ChannelEntity)
 
+---
+
+### VoiceGuidanceIntent
+
+A Firebolt compliant representation of a user intention to enable/disable voice guidance.
+
+```typescript
+type VoiceGuidanceIntent = {
+  action: 'voice-guidance'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### HighContrastIntent
+
+A Firebolt compliant representation of a user intention to enable or disable high contrast mode.
+
+```typescript
+type HighContrastIntent = {
+  action: 'high-contrast'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### ScreenMagnificationIntent
+
+A Firebolt compliant representation of a user intention to turn screen magnification on or off.
+
+```typescript
+type ScreenMagnificationIntent = {
+  action: 'screen-magnification'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### ButtonIntent
+
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing one of the remote buttons.
+
+```typescript
+type ButtonIntent = {
+  action: 'button'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### FocusIntent
+
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.
+
+```typescript
+type FocusIntent = {
+  action: 'focus'
+  data: object
+  context: object
+}
+```
+
+---
+
+### MuteIntent
+
+A Firebolt compliant representation of a user intention to mute or unmute the device.
+
+```typescript
+type MuteIntent = {
+  action: 'mute'
+  data?: object
+  context: object
+}
+```
 
 ---
 
@@ -196,9 +310,26 @@ A Firebolt compliant representation of a user intention to control some aspect o
 
 ```typescript
 
-````
+```
 
 See also:
+
+[ButtonIntent](#buttonintent)
+[FocusIntent](#focusintent)
+[SelectIntent](#selectintent)
+[BackIntent](#backintent)
+[ExitIntent](#exitintent)
+[ChannelIntent](#channelintent)
+[ScrollIntent](#scrollintent)
+[PowerIntent](#powerintent)
+[VolumeIntent](#volumeintent)
+[MuteIntent](#muteintent)
+[MicrophoneIntent](#microphoneintent)
+[InputIntent](#inputintent)
+[TuneIntent](#tuneintent)
+[VoiceGuidanceIntent](#voiceguidanceintent)
+[HighContrastIntent](#highcontrastintent)
+[ScreenMagnificationIntent](#screenmagnificationintent)
 
 ---
 
@@ -206,14 +337,12 @@ See also:
 
 A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
 
-````typescript
 ```typescript
-
-````
-
-````
-
-
+type HomeIntent = {
+  action: 'home'
+  context: object
+}
+```
 
 ---
 
@@ -222,220 +351,11 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 A Firebolt compliant representation of a user intention to launch an app.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-
-
----
-
-### ProgramEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### Identifier
-
-
-
-```typescript
-
-````
-
----
-
-### SearchIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to it's search UI with a search term populated, and bring that app to the foreground if needed.
-
-````typescript
-```typescript
-
-````
-
-````
-
-
-
----
-
-### SectionIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to a section not covered by `home`, `entity`, `player`, or `search`, and bring that app to the foreground if needed.
-
-```typescript
-```typescript
-
-````
-
-````
-
-
-
----
-
-### MusicEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### PlayQueryIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to a the video player for an abstract query to be searched for and played by the app.
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
-
----
-
-### TVSeriesEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### PlaylistEntity
-
-A Firebolt compliant representation of a Playlist entity.
-
-```typescript
-```typescript
-
-````
-
-````
-
-
-
----
-
-### TVSeasonEntity
-
-A Firebolt compliant representation of a TV Season entity.
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### AdditionalEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### MovieEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### TVEpisodeEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
----
-
-### UntypedEntity
-
-
-
-```typescript
-```typescript
-
-````
-
-````
-
-
+type LaunchIntent = {
+  action: 'launch'
+  context: object
+}
+```
 
 ---
 
@@ -444,51 +364,17 @@ See also:
 A Firebolt compliant representation of a user intention to navigate an app to a specific entity page, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
-
-
-
-
-
-
-
-
----
-
-### PlayableEntity
-
-
-
-```typescript
-
-````
-
-See also:
-
----
-
-### PlayEntityIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
-
-````typescript
-```typescript
-
-````
-
-````
-
-See also:
-
-
+type EntityIntent = {
+  action: 'entity'
+  data:
+    | ProgramEntity
+    | MusicEntity
+    | ChannelEntity
+    | UntypedEntity
+    | PlaylistEntity
+  context: object
+}
+```
 
 ---
 
@@ -497,15 +383,81 @@ See also:
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
 
 ```typescript
-```typescript
-
-````
-
-````
+type PlaybackIntent = {
+  action: 'playback'
+  data: PlayableEntity
+  context: object
+}
+```
 
 See also:
 
+[PlayableEntity](../Entity/schemas/#PlayableEntity)
 
+---
+
+### SearchIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to it's search UI with a search term populated, and bring that app to the foreground if needed.
+
+```typescript
+type SearchIntent = {
+  action: 'search'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### SectionIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a section not covered by `home`, `entity`, `player`, or `search`, and bring that app to the foreground if needed.
+
+```typescript
+type SectionIntent = {
+  action: 'section'
+  data: object
+  context: object
+}
+```
+
+---
+
+### PlayEntityIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
+
+```typescript
+type PlayEntityIntent = {
+  action: 'play-entity'
+  data: object
+  context: object
+}
+```
+
+See also:
+
+[PlayableEntity](../Entity/schemas/#PlayableEntity)
+
+---
+
+### PlayQueryIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for an abstract query to be searched for and played by the app.
+
+```typescript
+type PlayQueryIntent = {
+  action: 'play-query'
+  data: object
+  context: object
+}
+```
+
+See also:
+
+[ProgramType](../Entertainment/schemas/#ProgramType)
+[MusicType](../Entertainment/schemas/#MusicType)
 
 ---
 
@@ -514,9 +466,28 @@ See also:
 A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
 
 ```typescript
-
-````
+type NavigationIntent =
+  | HomeIntent
+  | LaunchIntent
+  | EntityIntent
+  | PlaybackIntent
+  | SearchIntent
+  | SectionIntent
+  | TuneIntent
+  | PlayEntityIntent
+  | PlayQueryIntent
+```
 
 See also:
+
+[HomeIntent](#homeintent)
+[LaunchIntent](#launchintent)
+[EntityIntent](#entityintent)
+[PlaybackIntent](#playbackintent)
+[SearchIntent](#searchintent)
+[SectionIntent](#sectionintent)
+[TuneIntent](#tuneintent)
+[PlayEntityIntent](#playentityintent)
+[PlayQueryIntent](#playqueryintent)
 
 ---

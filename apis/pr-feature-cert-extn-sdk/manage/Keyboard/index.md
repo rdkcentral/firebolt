@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.2.0-feature-cert-extn-sdk.0
+Version Keyboard 1.2.1-feature-cert-extn-sdk.0
 
 ## Table of Contents
 
@@ -35,7 +35,6 @@ Version Keyboard 1.2.0-feature-cert-extn-sdk.0
 - [Provider Interfaces](#provider-interfaces)
   - [KeyboardInputProvider](#keyboardinputprovider)
 - [Types](#types)
-  - [KeyboardResult](#keyboardresult)
   - [KeyboardParameters](#keyboardparameters)
   - [KeyboardProviderRequest](#keyboardproviderrequest)
 
@@ -61,19 +60,12 @@ Internal API for Email Provider to send back error.
 
 Parameters:
 
-| Param           | Type                    | Required       | Description |
-| --------------- | ----------------------- | -------------- | ----------- | ----------- |
-| `correlationId` | `string`                | true           |             |
-| `error`         | [`                      | Property       | Type        | Description |
-| ----------      | ------                  | -------------  |
-| `${property}`   | [${type}](${type.link}) | ${description} |
-| `](#)           | true                    |                |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -124,10 +116,6 @@ Internal API for Email Provider to request focus for UX purposes.
 
 Result:
 
-```typescript
-
-```
-
 Capabilities:
 
 | Role     | Capability                             |
@@ -174,13 +162,9 @@ Parameters:
 | Param           | Type     | Required | Description |
 | --------------- | -------- | -------- | ----------- |
 | `correlationId` | `string` | true     |             |
-| `result`        | ``       | true     |             |
+| `result`        | `string` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -203,9 +187,7 @@ Request:
   "method": "Keyboard.emailResponse",
   "params": {
     "correlationId": "123",
-    "result": {
-      "text": "email@address.com"
-    }
+    "result": "email@address.com"
   }
 }
 ```
@@ -230,19 +212,12 @@ Internal API for Password Provider to send back error.
 
 Parameters:
 
-| Param           | Type                    | Required       | Description |
-| --------------- | ----------------------- | -------------- | ----------- | ----------- |
-| `correlationId` | `string`                | true           |             |
-| `error`         | [`                      | Property       | Type        | Description |
-| ----------      | ------                  | -------------  |
-| `${property}`   | [${type}](${type.link}) | ${description} |
-| `](#)           | true                    |                |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -293,10 +268,6 @@ Internal API for Password Provider to request focus for UX purposes.
 
 Result:
 
-```typescript
-
-```
-
 Capabilities:
 
 | Role     | Capability                             |
@@ -343,13 +314,9 @@ Parameters:
 | Param           | Type     | Required | Description |
 | --------------- | -------- | -------- | ----------- |
 | `correlationId` | `string` | true     |             |
-| `result`        | ``       | true     |             |
+| `result`        | `string` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -372,9 +339,7 @@ Request:
   "method": "Keyboard.passwordResponse",
   "params": {
     "correlationId": "123",
-    "result": {
-      "text": "password"
-    }
+    "result": "password"
   }
 }
 ```
@@ -416,19 +381,12 @@ Internal API for Standard Provider to send back error.
 
 Parameters:
 
-| Param           | Type                    | Required       | Description |
-| --------------- | ----------------------- | -------------- | ----------- | ----------- |
-| `correlationId` | `string`                | true           |             |
-| `error`         | [`                      | Property       | Type        | Description |
-| ----------      | ------                  | -------------  |
-| `${property}`   | [${type}](${type.link}) | ${description} |
-| `](#)           | true                    |                |
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -479,10 +437,6 @@ Internal API for Standard Provider to request focus for UX purposes.
 
 Result:
 
-```typescript
-
-```
-
 Capabilities:
 
 | Role     | Capability                             |
@@ -529,13 +483,9 @@ Parameters:
 | Param           | Type     | Required | Description |
 | --------------- | -------- | -------- | ----------- |
 | `correlationId` | `string` | true     |             |
-| `result`        | ``       | true     |             |
+| `result`        | `string` | true     |             |
 
 Result:
-
-```typescript
-
-```
 
 Capabilities:
 
@@ -558,9 +508,7 @@ Request:
   "method": "Keyboard.standardResponse",
   "params": {
     "correlationId": "123",
-    "result": {
-      "text": "username"
-    }
+    "result": "username"
   }
 }
 ```
@@ -593,22 +541,15 @@ Parameters:
 
 Result:
 
-````typescript
-```typescript
-
-````
-
-````
+[KeyboardProviderRequest](#keyboardproviderrequest)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                             |
+| -------- | -------------------------------------- |
 | provides | xrn:firebolt:capability:input:keyboard |
 
-
 #### Examples
-
 
 Default Example
 
@@ -618,14 +559,14 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Keyboard.onRequestEmail",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.onRequestEmail",
+  "params": {
+    "listen": true
+  }
 }
-````
+```
 
 Response:
 
@@ -658,22 +599,15 @@ Parameters:
 
 Result:
 
-````typescript
-```typescript
-
-````
-
-````
+[KeyboardProviderRequest](#keyboardproviderrequest)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                             |
+| -------- | -------------------------------------- |
 | provides | xrn:firebolt:capability:input:keyboard |
 
-
 #### Examples
-
 
 Default Example
 
@@ -683,14 +617,14 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Keyboard.onRequestPassword",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.onRequestPassword",
+  "params": {
+    "listen": true
+  }
 }
-````
+```
 
 Response:
 
@@ -723,22 +657,15 @@ Parameters:
 
 Result:
 
-````typescript
-```typescript
-
-````
-
-````
+[KeyboardProviderRequest](#keyboardproviderrequest)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role     | Capability                             |
+| -------- | -------------------------------------- |
 | provides | xrn:firebolt:capability:input:keyboard |
 
-
 #### Examples
-
 
 Default Example
 
@@ -748,14 +675,14 @@ Request:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": 1,
-	"method": "Keyboard.onRequestStandard",
-	"params": {
-		"listen": true
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.onRequestStandard",
+  "params": {
+    "listen": true
+  }
 }
-````
+```
 
 Response:
 
@@ -781,7 +708,20 @@ Response:
 The provider interface for the `xrn:firebolt:capability:input:keyboard` capability.
 
 ```typescript
-
+interface KeyboardInputProvider {
+  standard(
+    parameters: KeyboardParameters,
+    session: FocusableProviderSession,
+  ): Promise<string>
+  password(
+    parameters: KeyboardParameters,
+    session: FocusableProviderSession,
+  ): Promise<string>
+  email(
+    parameters: KeyboardParameters,
+    session: FocusableProviderSession,
+  ): Promise<string>
+}
 ```
 
 Usage:
@@ -799,21 +739,15 @@ import { Keyboard } from '@firebolt-js/manage-sdk'
 
 class MyKeyboardInputProvider {
   async standard(parameters, session) {
-    return {
-      text: 'username',
-    }
+    return 'username'
   }
 
   async password(parameters, session) {
-    return {
-      text: 'password',
-    }
+    return 'password'
   }
 
   async email(parameters, session) {
-    return {
-      text: 'email@address.com',
-    }
+    return 'email@address.com'
   }
 }
 
@@ -917,9 +851,7 @@ Request:
   "method": "Keyboard.standardResponse",
   "params": {
     "correlationId": undefined,
-    "result": {
-      "text": "username"
-    }
+    "result": "username"
   }
 }
 ```
@@ -959,9 +891,7 @@ Request:
   "method": "Keyboard.passwordResponse",
   "params": {
     "correlationId": undefined,
-    "result": {
-      "text": "password"
-    }
+    "result": "password"
   }
 }
 ```
@@ -1001,9 +931,7 @@ Request:
   "method": "Keyboard.emailResponse",
   "params": {
     "correlationId": undefined,
-    "result": {
-      "text": "email@address.com"
-    }
+    "result": "email@address.com"
   }
 }
 ```
@@ -1021,48 +949,27 @@ Response:
 
 ## Types
 
-### KeyboardResult
-
-````typescript
-```typescript
-
-````
-
-````
-
-
-
----
-
 ### KeyboardParameters
 
-
-
 ```typescript
-```typescript
-
-````
-
-````
-
-
+type KeyboardParameters = {
+  message: string // The message to display to the user so the user knows what they are entering
+}
+```
 
 ---
 
 ### KeyboardProviderRequest
 
-
-
 ```typescript
-```typescript
-
-````
-
+type KeyboardProviderRequest = {
+  correlationId: string // An id to correlate the provider response with this request
+  parameters: KeyboardParameters // The request to start a keyboard session
+}
 ```
 
 See also:
 
-
+[KeyboardParameters](#keyboardparameters)
 
 ---
-```

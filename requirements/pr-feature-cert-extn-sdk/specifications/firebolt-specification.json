@@ -771,6 +771,21 @@
 				"negotiable": true
 			}
 		},
+		"xrn:firebolt:capability:discovery:interest": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
+		},
 		"xrn:firebolt:capability:discovery:navigate-to": {
 			"level": "must",
 			"use": {
@@ -987,7 +1002,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.2.0-feature-cert-extn-sdk.0",
+				"version": "1.2.1-feature-cert-extn-sdk.0",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -1349,7 +1364,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "closedCaptionsSettings"
+							"x-subscriber-for": "Accessibility.closedCaptionsSettings"
 						},
 						{
 							"name": "event",
@@ -1427,7 +1442,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "voiceGuidanceSettings"
+							"x-subscriber-for": "Accessibility.voiceGuidanceSettings"
 						},
 						{
 							"name": "event",
@@ -1488,7 +1503,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "audioDescriptionSettings"
+							"x-subscriber-for": "Accessibility.audioDescriptionSettings"
 						},
 						{
 							"name": "event",
@@ -2288,7 +2303,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "skipRestriction"
+							"x-subscriber-for": "Advertising.skipRestriction"
 						},
 						{
 							"name": "event",
@@ -2367,7 +2382,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "policy"
+							"x-subscriber-for": "Advertising.policy"
 						},
 						{
 							"name": "event",
@@ -2518,7 +2533,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "enabled"
+							"x-subscriber-for": "AudioDescriptions.enabled"
 						},
 						{
 							"name": "event",
@@ -3811,7 +3826,7 @@
 				},
 				{
 					"name": "CertificationExtension.onFireboltInteractions",
-					"summary": "",
+					"summary": "Event to fetch the interaction details for the firebolt api call",
 					"tags": [
 						{
 							"name": "event"
@@ -3847,7 +3862,7 @@
 					},
 					"examples": [
 						{
-							"name": "Firebolt interaction to acquire platform token",
+							"name": "Firebolt interaction to acquire device token",
 							"params": [
 								{
 									"name": "listen",
@@ -3855,21 +3870,9 @@
 								}
 							],
 							"result": {
-								"name": "event",
+								"name": "Default Result",
 								"value": {
-									"interactionRequest": {
-										"id": "1",
-										"jsonrpc": "2.0",
-										"method": "token",
-										"params": {
-											"type": "platform"
-										}
-									},
-									"interactionResponse": {
-										"id": "1",
-										"jsonrpc": "2.0",
-										"state": true
-									}
+									"payload": "{\"request\":{\"type\":\"method\",\"method\":\"Authentication.device\"},\"response\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"}"
 								}
 							}
 						}
@@ -3921,7 +3924,7 @@
 								}
 							],
 							"result": {
-								"name": "success",
+								"name": "Default Result",
 								"value": true
 							}
 						}
@@ -3980,15 +3983,15 @@
 								}
 							],
 							"result": {
-								"name": "success",
+								"name": "Default Result",
 								"value": true
 							}
 						}
 					]
 				},
 				{
-					"name": "CertificationExtension.healthCheck",
-					"summary": "",
+					"name": "CertificationExtension.platformHealthCheck",
+					"summary": "Health check for the device and process. It provides the load, memory, cpu usage and total live firebolt connections.",
 					"tags": [
 						{
 							"name": "capabilities",
@@ -4011,19 +4014,21 @@
 							"result": {
 								"name": "healthCheckResult",
 								"value": {
-									"load": 0.5,
-									"deviceMemory": 0.5,
-									"processMemory": 0.5,
-									"cpu": 0.5,
-									"connections": 10
+									"cpuLoad1minAverage": 2.2,
+									"cpuLoad5minAverage": 1.8,
+									"deviceMemoryUsed": 886,
+									"deviceMemoryLimit": 1024,
+									"processMemoryPSS": 500,
+									"processMemoryRSS": 600,
+									"activeConnections": 10
 								}
 							}
 						}
 					]
 				},
 				{
-					"name": "CertificationExtension.appPerformance",
-					"summary": "",
+					"name": "CertificationExtension.appHealthCheck",
+					"summary": "App healthCheck",
 					"tags": [
 						{
 							"name": "capabilities",
@@ -4738,7 +4743,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "enabled"
+							"x-subscriber-for": "ClosedCaptions.enabled"
 						},
 						{
 							"name": "event",
@@ -4808,7 +4813,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "fontFamily"
+							"x-subscriber-for": "ClosedCaptions.fontFamily"
 						},
 						{
 							"name": "event",
@@ -4891,7 +4896,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "fontSize"
+							"x-subscriber-for": "ClosedCaptions.fontSize"
 						},
 						{
 							"name": "event",
@@ -4974,7 +4979,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "fontColor"
+							"x-subscriber-for": "ClosedCaptions.fontColor"
 						},
 						{
 							"name": "event",
@@ -5057,7 +5062,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "fontEdge"
+							"x-subscriber-for": "ClosedCaptions.fontEdge"
 						},
 						{
 							"name": "event",
@@ -5140,7 +5145,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "fontEdgeColor"
+							"x-subscriber-for": "ClosedCaptions.fontEdgeColor"
 						},
 						{
 							"name": "event",
@@ -5223,7 +5228,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "fontOpacity"
+							"x-subscriber-for": "ClosedCaptions.fontOpacity"
 						},
 						{
 							"name": "event",
@@ -5306,7 +5311,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "backgroundColor"
+							"x-subscriber-for": "ClosedCaptions.backgroundColor"
 						},
 						{
 							"name": "event",
@@ -5389,7 +5394,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "backgroundOpacity"
+							"x-subscriber-for": "ClosedCaptions.backgroundOpacity"
 						},
 						{
 							"name": "event",
@@ -5472,7 +5477,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "textAlign"
+							"x-subscriber-for": "ClosedCaptions.textAlign"
 						},
 						{
 							"name": "event",
@@ -5555,7 +5560,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "textAlignVertical"
+							"x-subscriber-for": "ClosedCaptions.textAlignVertical"
 						},
 						{
 							"name": "event",
@@ -5638,7 +5643,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "windowColor"
+							"x-subscriber-for": "ClosedCaptions.windowColor"
 						},
 						{
 							"name": "event",
@@ -5721,7 +5726,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "windowOpacity"
+							"x-subscriber-for": "ClosedCaptions.windowOpacity"
 						},
 						{
 							"name": "event",
@@ -5814,7 +5819,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "preferredLanguages"
+							"x-subscriber-for": "ClosedCaptions.preferredLanguages"
 						},
 						{
 							"name": "event",
@@ -6872,6 +6877,167 @@
 					]
 				},
 				{
+					"name": "Content.requestUserInterest",
+					"tags": [
+						{
+							"name": "capabilities",
+							"x-provided-by": "Discovery.onRequestUserInterest",
+							"x-uses": [
+								"xrn:firebolt:capability:discovery:interest"
+							]
+						}
+					],
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "type",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							}
+						},
+						{
+							"name": "reason",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							}
+						}
+					],
+					"result": {
+						"name": "interest",
+						"schema": {
+							"$ref": "#/components/schemas/InterestResult"
+						},
+						"summary": "The EntityDetails data."
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "type",
+									"value": "interest"
+								},
+								{
+									"name": "reason",
+									"value": "playlist"
+								}
+							],
+							"result": {
+								"name": "interest",
+								"value": {
+									"appId": "cool-app",
+									"entity": {
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Content.onUserInterest",
+					"tags": [
+						{
+							"name": "event"
+						},
+						{
+							"name": "capabilities",
+							"x-provided-by": "Discovery.userInterest",
+							"x-uses": [
+								"xrn:firebolt:capability:discovery:interest"
+							]
+						}
+					],
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "interest",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"$ref": "#/components/schemas/InterestEvent"
+								}
+							]
+						},
+						"summary": "The EntityDetails data."
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "interest",
+								"value": {
+									"appId": "cool-app",
+									"type": "interest",
+									"reason": "playlist",
+									"entity": {
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				{
 					"name": "Device.id",
 					"summary": "Get the platform back-office device identifier",
 					"params": [],
@@ -7655,7 +7821,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "name"
+							"x-subscriber-for": "Device.name"
 						},
 						{
 							"name": "event",
@@ -7726,7 +7892,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "hdcp"
+							"x-subscriber-for": "Device.hdcp"
 						},
 						{
 							"name": "event",
@@ -7787,7 +7953,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "hdr"
+							"x-subscriber-for": "Device.hdr"
 						},
 						{
 							"name": "event",
@@ -7850,7 +8016,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "audio"
+							"x-subscriber-for": "Device.audio"
 						},
 						{
 							"name": "event",
@@ -7913,7 +8079,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "screenResolution"
+							"x-subscriber-for": "Device.screenResolution"
 						},
 						{
 							"name": "event",
@@ -7974,7 +8140,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "videoResolution"
+							"x-subscriber-for": "Device.videoResolution"
 						},
 						{
 							"name": "event",
@@ -8035,7 +8201,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "network"
+							"x-subscriber-for": "Device.network"
 						},
 						{
 							"name": "event",
@@ -8199,6 +8365,9 @@
 						{
 							"name": "capabilities",
 							"x-provides": "xrn:firebolt:capability:discovery:entity-info"
+						},
+						{
+							"name": "deprecated"
 						}
 					],
 					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
@@ -8556,7 +8725,7 @@
 								}
 							],
 							"result": {
-								"name": "success",
+								"name": "result",
 								"value": true
 							}
 						}
@@ -8571,6 +8740,9 @@
 						{
 							"name": "capabilities",
 							"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
+						},
+						{
+							"name": "deprecated"
 						}
 					],
 					"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
@@ -8783,7 +8955,7 @@
 							"name": "identifiers",
 							"summary": "A set of content identifiers for this call to action",
 							"schema": {
-								"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
+								"$ref": "#/x-schemas/Entity/Entity"
 							},
 							"required": true
 						},
@@ -9676,6 +9848,200 @@
 					]
 				},
 				{
+					"name": "Discovery.userInterest",
+					"summary": "Send an entity that the user has expressed interest in to the platform.",
+					"tags": [
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:interest"
+						}
+					],
+					"params": [
+						{
+							"name": "type",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							}
+						},
+						{
+							"name": "reason",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							}
+						},
+						{
+							"name": "entity",
+							"required": true,
+							"schema": {
+								"$ref": "#/x-schemas/Entity/EntityDetails"
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "type",
+									"value": "interest"
+								},
+								{
+									"name": "reason",
+									"value": "playlist"
+								},
+								{
+									"name": "entity",
+									"value": {
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {}
+									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Discovery.onRequestUserInterest",
+					"tags": [
+						{
+							"name": "rpc-only"
+						},
+						{
+							"name": "event",
+							"x-response-name": "entity",
+							"x-response": {
+								"$ref": "#/x-schemas/Entity/EntityDetails",
+								"examples": [
+									{
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								]
+							},
+							"x-error": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"code",
+									"message"
+								],
+								"properties": {
+									"code": {
+										"title": "errorObjectCode",
+										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+										"type": "integer"
+									},
+									"message": {
+										"title": "errorObjectMessage",
+										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+										"type": "string"
+									},
+									"data": {
+										"title": "errorObjectData",
+										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
+									}
+								}
+							}
+						},
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:interest"
+						}
+					],
+					"summary": "Provide information about the entity currently displayed or selected on the screen.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "request",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "object",
+									"required": [
+										"correlationId",
+										"parameters"
+									],
+									"properties": {
+										"correlationId": {
+											"type": "string"
+										},
+										"parameters": {
+											"$ref": "#/components/schemas/UserInterestProviderParameters"
+										}
+									},
+									"additionalProperties": false
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "request",
+								"value": {
+									"correlationId": "xyz",
+									"parameters": {
+										"type": "interest",
+										"reason": "playlist"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
 					"name": "Discovery.onPolicyChanged",
 					"summary": "get the discovery policy",
 					"params": [
@@ -9690,7 +10056,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "policy"
+							"x-subscriber-for": "Discovery.policy"
 						},
 						{
 							"name": "event",
@@ -9750,6 +10116,9 @@
 						{
 							"name": "capabilities",
 							"x-provides": "xrn:firebolt:capability:discovery:entity-info"
+						},
+						{
+							"name": "deprecated"
 						}
 					],
 					"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
@@ -9847,6 +10216,9 @@
 						{
 							"name": "capabilities",
 							"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
+						},
+						{
+							"name": "deprecated"
 						}
 					],
 					"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
@@ -9894,6 +10266,187 @@
 						}
 					],
 					"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
+				},
+				{
+					"name": "Discovery.userInterestResponse",
+					"tags": [
+						{
+							"name": "rpc-only"
+						},
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:interest",
+							"x-response-for": "Discovery.onRequestUserInterest"
+						}
+					],
+					"summary": "Internal API for .onRequestUserInterest Provider to send back response.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "correlationId",
+							"schema": {
+								"type": "string"
+							},
+							"required": true
+						},
+						{
+							"name": "result",
+							"schema": {
+								"$ref": "#/x-schemas/Entity/EntityDetails",
+								"examples": [
+									{
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								]
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Example",
+							"params": [
+								{
+									"name": "correlationId",
+									"value": "123"
+								},
+								{
+									"name": "result",
+									"value": {
+										"identifiers": {
+											"entityId": "345",
+											"entityType": "program",
+											"programType": "movie"
+										},
+										"info": {
+											"title": "Cool Runnings",
+											"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+											"releaseDate": "1993-01-01T00:00:00.000Z",
+											"contentRatings": [
+												{
+													"scheme": "US-Movie",
+													"rating": "PG"
+												},
+												{
+													"scheme": "CA-Movie",
+													"rating": "G"
+												}
+											]
+										}
+									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Discovery.userInterestError",
+					"tags": [
+						{
+							"name": "rpc-only"
+						},
+						{
+							"name": "capabilities",
+							"x-provides": "xrn:firebolt:capability:discovery:interest",
+							"x-error-for": "Discovery.onRequestUserInterest"
+						}
+					],
+					"summary": "Internal API for .onRequestUserInterest Provider to send back error.",
+					"description": "Provide information about the entity currently displayed or selected on the screen.",
+					"params": [
+						{
+							"name": "correlationId",
+							"schema": {
+								"type": "string"
+							},
+							"required": true
+						},
+						{
+							"name": "error",
+							"schema": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"code",
+									"message"
+								],
+								"properties": {
+									"code": {
+										"title": "errorObjectCode",
+										"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+										"type": "integer"
+									},
+									"message": {
+										"title": "errorObjectMessage",
+										"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+										"type": "string"
+									},
+									"data": {
+										"title": "errorObjectData",
+										"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
+									}
+								}
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Example 1",
+							"params": [
+								{
+									"name": "correlationId",
+									"value": "123"
+								},
+								{
+									"name": "error",
+									"value": {
+										"code": 1,
+										"message": "Error"
+									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
 				},
 				{
 					"name": "HDMIInput.ports",
@@ -10388,7 +10941,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "lowLatencyMode"
+							"x-subscriber-for": "HDMIInput.lowLatencyMode"
 						},
 						{
 							"name": "event",
@@ -10458,7 +11011,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "autoLowLatencyModeCapable"
+							"x-subscriber-for": "HDMIInput.autoLowLatencyModeCapable"
 						},
 						{
 							"name": "event",
@@ -10534,7 +11087,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "edidVersion"
+							"x-subscriber-for": "HDMIInput.edidVersion"
 						},
 						{
 							"name": "event",
@@ -10825,6 +11378,7 @@
 					"tags": [
 						{
 							"name": "capabilities",
+							"x-provided-by": "Keyboard.onRequestEmail",
 							"x-uses": [
 								"xrn:firebolt:capability:input:keyboard"
 							],
@@ -10899,6 +11453,7 @@
 					"tags": [
 						{
 							"name": "capabilities",
+							"x-provided-by": "Keyboard.onRequestPassword",
 							"x-uses": [
 								"xrn:firebolt:capability:input:keyboard"
 							],
@@ -10944,6 +11499,7 @@
 					"tags": [
 						{
 							"name": "capabilities",
+							"x-provided-by": "Keyboard.onRequestStandard",
 							"x-uses": [
 								"xrn:firebolt:capability:input:keyboard"
 							],
@@ -11003,11 +11559,9 @@
 						{
 							"name": "event",
 							"x-response": {
-								"$ref": "#/components/schemas/KeyboardResult",
+								"type": "string",
 								"examples": [
-									{
-										"text": "username"
-									}
+									"username"
 								]
 							},
 							"x-error": {
@@ -11095,11 +11649,9 @@
 						{
 							"name": "event",
 							"x-response": {
-								"$ref": "#/components/schemas/KeyboardResult",
+								"type": "string",
 								"examples": [
-									{
-										"text": "password"
-									}
+									"password"
 								]
 							},
 							"x-error": {
@@ -11187,11 +11739,9 @@
 						{
 							"name": "event",
 							"x-response": {
-								"$ref": "#/components/schemas/KeyboardResult",
+								"type": "string",
 								"examples": [
-									{
-										"text": "email@address.com"
-									}
+									"email@address.com"
 								]
 							},
 							"x-error": {
@@ -11370,11 +11920,9 @@
 						{
 							"name": "result",
 							"schema": {
-								"$ref": "#/components/schemas/KeyboardResult",
+								"type": "string",
 								"examples": [
-									{
-										"text": "username"
-									}
+									"username"
 								]
 							},
 							"required": true
@@ -11407,9 +11955,7 @@
 								},
 								{
 									"name": "result",
-									"value": {
-										"text": "username"
-									}
+									"value": "username"
 								}
 							],
 							"result": {
@@ -11513,11 +12059,9 @@
 						{
 							"name": "result",
 							"schema": {
-								"$ref": "#/components/schemas/KeyboardResult",
+								"type": "string",
 								"examples": [
-									{
-										"text": "password"
-									}
+									"password"
 								]
 							},
 							"required": true
@@ -11550,9 +12094,7 @@
 								},
 								{
 									"name": "result",
-									"value": {
-										"text": "password"
-									}
+									"value": "password"
 								}
 							],
 							"result": {
@@ -11656,11 +12198,9 @@
 						{
 							"name": "result",
 							"schema": {
-								"$ref": "#/components/schemas/KeyboardResult",
+								"type": "string",
 								"examples": [
-									{
-										"text": "email@address.com"
-									}
+									"email@address.com"
 								]
 							},
 							"required": true
@@ -11693,9 +12233,7 @@
 								},
 								{
 									"name": "result",
-									"value": {
-										"text": "email@address.com"
-									}
+									"value": "email@address.com"
 								}
 							],
 							"result": {
@@ -12707,7 +13245,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "locality"
+							"x-subscriber-for": "Localization.locality"
 						},
 						{
 							"name": "event",
@@ -12778,7 +13316,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "postalCode"
+							"x-subscriber-for": "Localization.postalCode"
 						},
 						{
 							"name": "event",
@@ -12849,7 +13387,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "countryCode"
+							"x-subscriber-for": "Localization.countryCode"
 						},
 						{
 							"name": "event",
@@ -12930,7 +13468,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "language"
+							"x-subscriber-for": "Localization.language"
 						},
 						{
 							"name": "event",
@@ -13006,7 +13544,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "preferredAudioLanguages"
+							"x-subscriber-for": "Localization.preferredAudioLanguages"
 						},
 						{
 							"name": "event",
@@ -13076,7 +13614,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "locale"
+							"x-subscriber-for": "Localization.locale"
 						},
 						{
 							"name": "event",
@@ -13147,7 +13685,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "timeZone"
+							"x-subscriber-for": "Localization.timeZone"
 						},
 						{
 							"name": "event",
@@ -15615,7 +16153,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowResumePoints"
+							"x-subscriber-for": "Privacy.allowResumePoints"
 						},
 						{
 							"name": "event",
@@ -15685,7 +16223,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowUnentitledResumePoints"
+							"x-subscriber-for": "Privacy.allowUnentitledResumePoints"
 						},
 						{
 							"name": "event",
@@ -15755,7 +16293,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowWatchHistory"
+							"x-subscriber-for": "Privacy.allowWatchHistory"
 						},
 						{
 							"name": "event",
@@ -15825,7 +16363,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowProductAnalytics"
+							"x-subscriber-for": "Privacy.allowProductAnalytics"
 						},
 						{
 							"name": "event",
@@ -15895,7 +16433,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowPersonalization"
+							"x-subscriber-for": "Privacy.allowPersonalization"
 						},
 						{
 							"name": "event",
@@ -15965,7 +16503,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowUnentitledPersonalization"
+							"x-subscriber-for": "Privacy.allowUnentitledPersonalization"
 						},
 						{
 							"name": "event",
@@ -16035,7 +16573,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowRemoteDiagnostics"
+							"x-subscriber-for": "Privacy.allowRemoteDiagnostics"
 						},
 						{
 							"name": "event",
@@ -16105,7 +16643,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowPrimaryContentAdTargeting"
+							"x-subscriber-for": "Privacy.allowPrimaryContentAdTargeting"
 						},
 						{
 							"name": "event",
@@ -16175,7 +16713,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowPrimaryBrowseAdTargeting"
+							"x-subscriber-for": "Privacy.allowPrimaryBrowseAdTargeting"
 						},
 						{
 							"name": "event",
@@ -16245,7 +16783,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowAppContentAdTargeting"
+							"x-subscriber-for": "Privacy.allowAppContentAdTargeting"
 						},
 						{
 							"name": "event",
@@ -16315,7 +16853,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowACRCollection"
+							"x-subscriber-for": "Privacy.allowACRCollection"
 						},
 						{
 							"name": "event",
@@ -16385,7 +16923,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "allowCameraAnalytics"
+							"x-subscriber-for": "Privacy.allowCameraAnalytics"
 						},
 						{
 							"name": "event",
@@ -17481,7 +18019,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "friendlyName"
+							"x-subscriber-for": "SecondScreen.friendlyName"
 						},
 						{
 							"name": "event",
@@ -18630,7 +19168,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "enabled"
+							"x-subscriber-for": "VoiceGuidance.enabled"
 						},
 						{
 							"name": "event",
@@ -18700,7 +19238,7 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "speed"
+							"x-subscriber-for": "VoiceGuidance.speed"
 						},
 						{
 							"name": "event",
@@ -19318,70 +19856,14 @@
 						"title": "InteractionResult",
 						"type": "object",
 						"required": [
-							"interactionRequest",
-							"interactionResponse"
+							"payload"
 						],
 						"properties": {
-							"interactionRequest": {
-								"type": "object",
-								"required": [
-									"method",
-									"params"
-								],
-								"properties": {
-									"method": {
-										"type": "string",
-										"description": "The method name"
-									},
-									"params": {
-										"oneOf": [
-											{
-												"type": "object",
-												"description": "JSON object that represents the interaction request"
-											},
-											{
-												"const": null
-											}
-										]
-									}
-								},
-								"description": "JSON object that represents the interaction request"
-							},
-							"interactionResponse": {
-								"type": "object",
-								"required": [
-									"state"
-								],
-								"properties": {
-									"method": {
-										"type": "string",
-										"description": "The method name"
-									},
-									"state": {
-										"type": "boolean",
-										"description": "The state of the response whether it is success or failure"
-									}
-								},
-								"description": "JSON object that represents the state of the interaction response"
+							"payload": {
+								"type": "string",
+								"description": "The stringyfy payload of the interaction contains firebolt api request and response"
 							}
-						},
-						"examples": [
-							{
-								"interactionRequest": {
-									"id": "1",
-									"jsonrpc": "2.0",
-									"method": "token",
-									"params": {
-										"type": "platform"
-									}
-								},
-								"interactionResponse": {
-									"id": "1",
-									"jsonrpc": "2.0",
-									"state": true
-								}
-							}
-						]
+						}
 					},
 					"PlatformIntent": {
 						"title": "PlatformIntent",
@@ -19397,32 +19879,42 @@
 						"description": "Performance and healthcheck snapshot for the device and process which includes load, memory, cpu usage. It also provides total live firebolt connections.",
 						"type": "object",
 						"required": [
-							"load",
-							"processMemory",
-							"cpu",
-							"deviceMemory",
-							"connections"
+							"cpuLoad1minAverage",
+							"cpuLoad5minAverage",
+							"deviceMemoryUsed",
+							"deviceMemoryLimit",
+							"processMemoryPSS",
+							"processMemoryRSS",
+							"activeConnections"
 						],
 						"properties": {
-							"load": {
+							"cpuLoad1minAverage": {
 								"type": "number",
-								"description": "The load average of the system"
+								"description": "The load average of the system for 1 min, typically known as short term load."
 							},
-							"processMemory": {
+							"cpuLoad5minAverage": {
 								"type": "number",
-								"description": "The memory usage of the process"
+								"description": "The load average of the system for 5 min, typically known as mid term load."
 							},
-							"cpu": {
+							"processMemoryPSS": {
 								"type": "number",
-								"description": "The cpu usage of the system"
+								"description": "Process memory usage as proportional set size (PSS) in KB. This data provides a way to account for memory shared between processes more accurately"
 							},
-							"deviceMemory": {
+							"processMemoryRSS": {
+								"type": "number",
+								"description": "Process memory usage as resident set size (RSS) in KB. It represents the portion of a process's memory that is held in RAM"
+							},
+							"deviceMemoryUsed": {
 								"type": "number",
 								"description": "The memory usage of the device"
 							},
-							"connections": {
+							"deviceMemoryLimit": {
 								"type": "number",
-								"description": "The total number of live firebolt connections"
+								"description": "Total memory limit of the device"
+							},
+							"activeConnections": {
+								"type": "number",
+								"description": "The total number of active firebolt connections"
 							}
 						}
 					},
@@ -19464,6 +19956,46 @@
 							{
 								"correlationId": "abc"
 							}
+						]
+					},
+					"InterestResult": {
+						"title": "InterestResult",
+						"type": "object",
+						"properties": {
+							"appId": {
+								"type": "string"
+							},
+							"entity": {
+								"$ref": "#/x-schemas/Entity/EntityDetails"
+							}
+						},
+						"required": [
+							"appId",
+							"entity"
+						]
+					},
+					"InterestEvent": {
+						"title": "InterestEvent",
+						"type": "object",
+						"properties": {
+							"appId": {
+								"type": "string"
+							},
+							"type": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							},
+							"reason": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							},
+							"entity": {
+								"$ref": "#/x-schemas/Entity/EntityDetails"
+							}
+						},
+						"required": [
+							"appId",
+							"entity",
+							"type",
+							"reason"
 						]
 					},
 					"Resolution": {
@@ -19828,6 +20360,22 @@
 							"xrn:firebolt:channel:any"
 						]
 					},
+					"UserInterestProviderParameters": {
+						"title": "UserInterestProviderParameters",
+						"type": "object",
+						"required": [
+							"type",
+							"reason"
+						],
+						"properties": {
+							"type": {
+								"$ref": "#/x-schemas/Discovery/InterestType"
+							},
+							"reason": {
+								"$ref": "#/x-schemas/Discovery/InterestReason"
+							}
+						}
+					},
 					"HDMIPortId": {
 						"type": "string",
 						"pattern": "^HDMI[0-9]+$"
@@ -20021,23 +20569,6 @@
 							"parameters": {
 								"description": "The request to start a keyboard session",
 								"$ref": "#/components/schemas/KeyboardParameters"
-							}
-						}
-					},
-					"KeyboardResult": {
-						"title": "KeyboardResult",
-						"type": "object",
-						"required": [
-							"text"
-						],
-						"properties": {
-							"text": {
-								"type": "string",
-								"description": "The text the user entered into the keyboard"
-							},
-							"canceled": {
-								"type": "boolean",
-								"description": "Whether the user canceled entering text before they were finished typing on the keyboard"
 							}
 						}
 					},
@@ -20657,13 +21188,6 @@
 							}
 						}
 					},
-					"BooleanMap": {
-						"title": "BooleanMap",
-						"type": "object",
-						"additionalProperties": {
-							"type": "boolean"
-						}
-					},
 					"AudioProfile": {
 						"title": "AudioProfile",
 						"type": "string",
@@ -20675,6 +21199,13 @@
 							"dolbyDigital7.1+",
 							"dolbyAtmos"
 						]
+					},
+					"BooleanMap": {
+						"title": "BooleanMap",
+						"type": "object",
+						"additionalProperties": {
+							"type": "boolean"
+						}
 					},
 					"LocalizedString": {
 						"title": "LocalizedString",
@@ -21090,10 +21621,31 @@
 								"$ref": "#/x-schemas/Intents/ButtonIntent"
 							},
 							{
+								"$ref": "#/x-schemas/Intents/FocusIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/SelectIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/BackIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/ExitIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/ChannelIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/ScrollIntent"
+							},
+							{
 								"$ref": "#/x-schemas/Intents/PowerIntent"
 							},
 							{
 								"$ref": "#/x-schemas/Intents/VolumeIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/MuteIntent"
 							},
 							{
 								"$ref": "#/x-schemas/Intents/MicrophoneIntent"
@@ -21103,6 +21655,15 @@
 							},
 							{
 								"$ref": "#/x-schemas/Intents/TuneIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/VoiceGuidanceIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/HighContrastIntent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/ScreenMagnificationIntent"
 							}
 						]
 					},
@@ -21162,6 +21723,247 @@
 							}
 						]
 					},
+					"FocusIntent": {
+						"description": "A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.",
+						"title": "FocusIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"required": [
+									"data"
+								],
+								"properties": {
+									"action": {
+										"const": "focus"
+									},
+									"data": {
+										"type": "object",
+										"required": [
+											"direction"
+										],
+										"properties": {
+											"direction": {
+												"type": "string",
+												"enum": [
+													"up",
+													"down",
+													"left",
+													"right"
+												]
+											}
+										},
+										"additionalProperties": false
+									}
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "focus",
+								"data": {
+									"direction": "up"
+								},
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"SelectIntent": {
+						"description": "A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'select' button.",
+						"title": "SelectIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "select"
+									}
+								},
+								"not": {
+									"required": [
+										"data"
+									]
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "select",
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"BackIntent": {
+						"description": "A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'back' button.",
+						"title": "BackIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "back"
+									}
+								},
+								"not": {
+									"required": [
+										"data"
+									]
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "back",
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"ExitIntent": {
+						"description": "A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'back' button.",
+						"title": "ExitIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "exit"
+									}
+								},
+								"not": {
+									"required": [
+										"data"
+									]
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "exit",
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"ChannelIntent": {
+						"description": "A Firebolt compliant representation of a user intent to 'surf' to the next or previous channel.",
+						"title": "ChannelIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"required": [
+									"data"
+								],
+								"properties": {
+									"action": {
+										"const": "channel"
+									},
+									"data": {
+										"type": "string",
+										"enum": [
+											"next",
+											"previous"
+										]
+									}
+								}
+							}
+						]
+					},
+					"ScrollIntent": {
+						"description": "A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.",
+						"title": "ScrollIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"required": [
+									"data"
+								],
+								"properties": {
+									"action": {
+										"const": "scroll"
+									},
+									"data": {
+										"type": "object",
+										"required": [
+											"direction"
+										],
+										"properties": {
+											"direction": {
+												"type": "string",
+												"enum": [
+													"up",
+													"down",
+													"left",
+													"right"
+												]
+											},
+											"unit": {
+												"type": "string",
+												"enum": [
+													"line",
+													"page",
+													"percent"
+												]
+											}
+										},
+										"additionalProperties": false
+									}
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "scroll",
+								"data": {
+									"direction": "up"
+								},
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
 					"PowerIntent": {
 						"description": "A Firebolt compliant representation of a user intention to turn their device on or off.",
 						"title": "PowerIntent",
@@ -21179,7 +21981,37 @@
 										"const": "power"
 									},
 									"data": {
-										"$ref": "#/x-schemas/Intents/BooleanToggle"
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "boolean"
+											},
+											"toggle": {
+												"const": true
+											},
+											"delay": {
+												"type": "integer",
+												"minimum": 0
+											}
+										},
+										"if": {
+											"required": [
+												"value"
+											]
+										},
+										"then": {
+											"not": {
+												"required": [
+													"toggle"
+												]
+											}
+										},
+										"else": {
+											"required": [
+												"toggle"
+											]
+										},
+										"additionalProperties": false
 									}
 								}
 							}
@@ -21198,6 +22030,16 @@
 								"action": "power",
 								"data": {
 									"toggle": true
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "power",
+								"data": {
+									"value": false,
+									"delay": 900
 								},
 								"context": {
 									"source": "voice"
@@ -21222,38 +22064,42 @@
 										"const": "volume"
 									},
 									"data": {
-										"anyOf": [
-											{
-												"type": "object",
-												"properties": {
-													"value": {
-														"type": "number",
-														"minimum": 0,
-														"maximum": 1
-													},
-													"toggle": {
-														"const": true
-													}
-												},
-												"minProperties": 1,
-												"maxProperties": 1,
-												"additionalProperties": false
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
 											},
-											{
-												"type": "object",
-												"properties": {
-													"value": {
-														"type": "number",
-														"minimum": 0,
-														"maximum": 1
-													},
-													"relative": {
-														"const": true
-													}
-												},
-												"additionalProperties": false
+											"relative": {
+												"const": true
 											}
-										]
+										},
+										"required": [
+											"value"
+										],
+										"if": {
+											"required": [
+												"relative"
+											]
+										},
+										"then": {
+											"properties": {
+												"value": {
+													"type": "number",
+													"minimum": -50,
+													"maximum": 50
+												}
+											}
+										},
+										"else": {
+											"properties": {
+												"value": {
+													"type": "number",
+													"minimum": 0,
+													"maximum": 100
+												}
+											}
+										},
+										"additionalProperties": false
 									}
 								}
 							}
@@ -21262,7 +22108,7 @@
 							{
 								"action": "volume",
 								"data": {
-									"toggle": true
+									"value": 70
 								},
 								"context": {
 									"source": "voice"
@@ -21271,17 +22117,51 @@
 							{
 								"action": "volume",
 								"data": {
-									"value": 0.7
-								},
-								"context": {
-									"source": "voice"
-								}
-							},
-							{
-								"action": "volume",
-								"data": {
-									"value": 0.1,
+									"value": 10,
 									"relative": true
+								},
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"MuteIntent": {
+						"description": "A Firebolt compliant representation of a user intention to mute or unmute the device.",
+						"title": "MuteIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "mute"
+									},
+									"data": {
+										"$ref": "#/x-schemas/Intents/BooleanToggle"
+									}
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "mute",
+								"data": {
+									"value": false
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "mute",
+								"data": {
+									"toggle": true
 								},
 								"context": {
 									"source": "voice"
@@ -21357,10 +22237,7 @@
 											"interface": {
 												"type": "string",
 												"enum": [
-													"hdmi",
-													"rca",
-													"vga",
-													"etc..."
+													"hdmi"
 												]
 											},
 											"number": {
@@ -21423,7 +22300,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"entity": {
-												"$ref": "#/x-schemas/Intents/ChannelEntity"
+												"$ref": "#/x-schemas/Entity/ChannelEntity"
 											},
 											"options": {
 												"description": "The options property of the data property MUST have only one of the following fields.",
@@ -21465,6 +22342,259 @@
 									"options": {
 										"restartCurrentProgram": true
 									}
+								},
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"VoiceGuidanceIntent": {
+						"description": "A Firebolt compliant representation of a user intention to enable/disable voice guidance.",
+						"title": "VoiceGuidanceIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "voice-guidance"
+									},
+									"data": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "boolean"
+											},
+											"toggle": {
+												"const": true
+											},
+											"speed": {
+												"type": "integer"
+											},
+											"relative": {
+												"const": true
+											},
+											"verbosity": {
+												"type": "string",
+												"enum": [
+													"low",
+													"hight"
+												]
+											}
+										},
+										"if": {
+											"required": [
+												"value"
+											]
+										},
+										"then": {
+											"not": {
+												"required": [
+													"toggle"
+												]
+											},
+											"if": {
+												"required": [
+													"relative"
+												]
+											},
+											"then": {
+												"properties": {
+													"speed": {
+														"type": "integer",
+														"minimum": -10,
+														"maximum": 10
+													}
+												}
+											},
+											"else": {
+												"properties": {
+													"speed": {
+														"type": "integer",
+														"exclusiveMinimum": 0,
+														"maximum": 10
+													}
+												}
+											}
+										},
+										"else": {
+											"if": {
+												"required": [
+													"toggle"
+												]
+											},
+											"then": {
+												"not": {
+													"required": [
+														"value"
+													]
+												}
+											}
+										},
+										"additionalProperties": false
+									}
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "voice-guidance",
+								"data": {
+									"value": true,
+									"verbosity": "low"
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "voice-guidance",
+								"data": {
+									"speed": -1,
+									"relative": true
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "voice-guidance",
+								"data": {
+									"toggle": true
+								},
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"HighContrastIntent": {
+						"description": "A Firebolt compliant representation of a user intention to enable or disable high contrast mode.",
+						"title": "HighContrastIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "high-contrast"
+									},
+									"data": {
+										"$ref": "#/x-schemas/Intents/BooleanToggle"
+									}
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "high-contrast",
+								"data": {
+									"value": false
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "high-contrast",
+								"data": {
+									"toggle": true
+								},
+								"context": {
+									"source": "voice"
+								}
+							}
+						]
+					},
+					"ScreenMagnificationIntent": {
+						"description": "A Firebolt compliant representation of a user intention to turn screen magnification on or off.",
+						"title": "ScreenMagnificationIntent",
+						"allOf": [
+							{
+								"$ref": "#/x-schemas/Intents/Intent"
+							},
+							{
+								"$ref": "#/x-schemas/Intents/IntentProperties"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"action": {
+										"const": "screen-magnification"
+									},
+									"data": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "boolean"
+											},
+											"toggle": {
+												"const": true
+											},
+											"scale": {
+												"type": "number",
+												"minimum": 1,
+												"maximum": 10
+											}
+										},
+										"if": {
+											"required": [
+												"toggle"
+											]
+										},
+										"then": {
+											"type": "object",
+											"maxProperties": 1
+										},
+										"additionalProperties": false
+									}
+								}
+							}
+						],
+						"examples": [
+							{
+								"action": "screen-magnification",
+								"data": {
+									"value": false
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "screen-magnification",
+								"data": {
+									"value": true,
+									"scale": 2.5
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "screen-magnification",
+								"data": {
+									"toggle": true
+								},
+								"context": {
+									"source": "voice"
+								}
+							},
+							{
+								"action": "screen-magnification",
+								"data": {
+									"value": false
 								},
 								"context": {
 									"source": "voice"
@@ -21520,36 +22650,6 @@
 						"maxProperties": 1,
 						"additionalProperties": false
 					},
-					"ChannelEntity": {
-						"title": "ChannelEntity",
-						"type": "object",
-						"properties": {
-							"entityType": {
-								"const": "channel"
-							},
-							"channelType": {
-								"type": "string",
-								"enum": [
-									"streaming",
-									"overTheAir"
-								]
-							},
-							"entityId": {
-								"type": "string",
-								"description": "ID of the channel, in the target App's scope."
-							},
-							"appContentData": {
-								"type": "string",
-								"maxLength": 256
-							}
-						},
-						"required": [
-							"entityType",
-							"channelType",
-							"entityId"
-						],
-						"additionalProperties": false
-					},
 					"NavigationIntent": {
 						"title": "NavigationIntent",
 						"description": "A Firebolt compliant representation of a user intention to navigate to a specific place in an app.",
@@ -21602,6 +22702,11 @@
 									"action": {
 										"const": "home"
 									}
+								},
+								"not": {
+									"required": [
+										"data"
+									]
 								}
 							}
 						],
@@ -21630,6 +22735,11 @@
 									"action": {
 										"const": "launch"
 									}
+								},
+								"not": {
+									"required": [
+										"data"
+									]
 								}
 							}
 						],
@@ -21662,32 +22772,7 @@
 										"const": "entity"
 									},
 									"data": {
-										"anyOf": [
-											{
-												"$ref": "#/x-schemas/Intents/MovieEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/TVEpisodeEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/TVSeriesEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/TVSeasonEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/MusicEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/PlaylistEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/AdditionalEntity"
-											},
-											{
-												"$ref": "#/x-schemas/Intents/UntypedEntity"
-											}
-										]
+										"$ref": "#/x-schemas/Entity/Entity"
 									}
 								}
 							}
@@ -21726,7 +22811,7 @@
 										"const": "playback"
 									},
 									"data": {
-										"$ref": "#/x-schemas/Intents/PlayableEntity"
+										"$ref": "#/x-schemas/Entity/PlayableEntity"
 									}
 								}
 							}
@@ -21818,7 +22903,10 @@
 										},
 										"additionalProperties": false
 									}
-								}
+								},
+								"required": [
+									"data"
+								]
 							}
 						],
 						"examples": [
@@ -21856,7 +22944,7 @@
 										"type": "object",
 										"properties": {
 											"entity": {
-												"$ref": "#/x-schemas/Intents/PlayableEntity"
+												"$ref": "#/x-schemas/Entity/PlayableEntity"
 											},
 											"options": {
 												"type": "object",
@@ -21900,6 +22988,7 @@
 											"type": "object",
 											"properties": {
 												"options": {
+													"type": "object",
 													"maxProperties": 1
 												}
 											}
@@ -21908,6 +22997,7 @@
 											"type": "object",
 											"properties": {
 												"options": {
+													"type": "object",
 													"maxProperties": 0
 												}
 											}
@@ -22048,193 +23138,140 @@
 								}
 							}
 						]
+					}
+				},
+				"Entity": {
+					"uri": "https://meta.comcast.com/firebolt/entity",
+					"ChannelEntity": {
+						"title": "ChannelEntity",
+						"type": "object",
+						"properties": {
+							"entityType": {
+								"const": "channel"
+							},
+							"channelType": {
+								"type": "string",
+								"enum": [
+									"streaming",
+									"overTheAir"
+								]
+							},
+							"entityId": {
+								"type": "string",
+								"description": "ID of the channel, in the target App's scope."
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"required": [
+							"entityType",
+							"channelType",
+							"entityId"
+						],
+						"additionalProperties": false
 					},
-					"MovieEntity": {
-						"title": "MovieEntity",
-						"allOf": [
+					"EntityDetails": {
+						"title": "EntityDetails",
+						"type": "object",
+						"required": [
+							"identifiers"
+						],
+						"properties": {
+							"identifiers": {
+								"$ref": "#/x-schemas/Entity/Entity"
+							},
+							"info": {
+								"$ref": "#/x-schemas/Entity/Metadata"
+							},
+							"waysToWatch": {
+								"type": "array",
+								"items": {
+									"$ref": "#/x-schemas/Entertainment/WayToWatch"
+								},
+								"description": "An array of ways a user is might watch this entity, regardless of entitlements."
+							}
+						}
+					},
+					"Entity": {
+						"oneOf": [
 							{
-								"$ref": "#/x-schemas/Intents/ProgramEntity"
+								"$ref": "#/x-schemas/Entity/ProgramEntity"
 							},
 							{
-								"description": "A Firebolt compliant representation of a Movie entity.",
-								"title": "MovieEntity",
-								"type": "object",
-								"required": [
-									"entityType",
-									"programType",
-									"entityId"
-								],
-								"properties": {
-									"entityType": {
-										"const": "program"
-									},
-									"programType": {
-										"const": "movie"
-									},
-									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"appContentData": {
-										"type": "string",
-										"maxLength": 256
-									}
-								},
-								"additionalProperties": false
-							}
-						],
-						"examples": [
+								"$ref": "#/x-schemas/Entity/MusicEntity"
+							},
 							{
-								"entityType": "program",
-								"programType": "movie",
-								"entityId": "el-camino"
+								"$ref": "#/x-schemas/Entity/ChannelEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/UntypedEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/PlaylistEntity"
 							}
 						]
 					},
-					"TVEpisodeEntity": {
-						"title": "TVEpisodeEntity",
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Intents/ProgramEntity"
+					"Metadata": {
+						"title": "Metadata",
+						"type": "object",
+						"properties": {
+							"title": {
+								"type": "string",
+								"description": "Title of the entity."
 							},
-							{
-								"description": "A Firebolt compliant representation of a TV Episode entity.",
-								"title": "TVEpisodeEntity",
-								"type": "object",
-								"required": [
-									"entityType",
-									"programType",
-									"entityId",
-									"seriesId",
-									"seasonId"
-								],
-								"properties": {
-									"entityType": {
-										"const": "program"
-									},
-									"programType": {
-										"const": "episode"
-									},
-									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"seriesId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"seasonId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"appContentData": {
-										"type": "string",
-										"maxLength": 256
-									}
+							"synopsis": {
+								"type": "string",
+								"description": "Short description of the entity."
+							},
+							"seasonNumber": {
+								"type": "number",
+								"description": "For TV seasons, the season number. For TV episodes, the season that the episode belongs to."
+							},
+							"seasonCount": {
+								"type": "number",
+								"description": "For TV series, seasons, and episodes, the total number of seasons."
+							},
+							"episodeNumber": {
+								"type": "number",
+								"description": "For TV episodes, the episode number."
+							},
+							"episodeCount": {
+								"type": "number",
+								"description": "For TV seasons and episodes, the total number of episodes in the current season."
+							},
+							"releaseDate": {
+								"type": "string",
+								"format": "date-time",
+								"description": "The date that the program or entity was released or first aired."
+							},
+							"contentRatings": {
+								"type": "array",
+								"items": {
+									"$ref": "#/x-schemas/Entertainment/ContentRating"
 								},
-								"additionalProperties": false
+								"description": "A list of ContentRating objects, describing the entity's ratings in various rating schemes."
 							}
-						],
-						"examples": [
-							{
-								"entityType": "program",
-								"programType": "episode",
-								"entityId": "breaking-bad-pilot",
-								"seriesId": "breaking-bad",
-								"seasonId": "breaking-bad-season-1"
-							}
-						]
+						}
 					},
-					"TVSeriesEntity": {
-						"title": "TVSeriesEntity",
-						"allOf": [
+					"ProgramEntity": {
+						"title": "ProgramEntity",
+						"oneOf": [
 							{
-								"$ref": "#/x-schemas/Intents/ProgramEntity"
+								"$ref": "#/x-schemas/Entity/MovieEntity"
 							},
 							{
-								"description": "A Firebolt compliant representation of a TV Series entity.",
-								"type": "object",
-								"required": [
-									"entityType",
-									"programType",
-									"entityId"
-								],
-								"properties": {
-									"entityType": {
-										"const": "program"
-									},
-									"programType": {
-										"const": "series"
-									},
-									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"appContentData": {
-										"type": "string",
-										"maxLength": 256
-									}
-								},
-								"additionalProperties": false
-							}
-						],
-						"examples": [
-							{
-								"entityType": "program",
-								"programType": "series",
-								"entityId": "breaking-bad"
-							}
-						]
-					},
-					"TVSeasonEntity": {
-						"title": "TVSeasonEntity",
-						"description": "A Firebolt compliant representation of a TV Season entity.",
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Intents/ProgramEntity"
+								"$ref": "#/x-schemas/Entity/TVEpisodeEntity"
 							},
 							{
-								"type": "object",
-								"required": [
-									"entityType",
-									"programType",
-									"entityId",
-									"seriesId"
-								],
-								"properties": {
-									"entityType": {
-										"const": "program"
-									},
-									"programType": {
-										"const": "season"
-									},
-									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"seriesId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"appContentData": {
-										"type": "string",
-										"maxLength": 256
-									}
-								},
-								"additionalProperties": false
-							}
-						],
-						"examples": [
+								"$ref": "#/x-schemas/Entity/TVSeasonEntity"
+							},
 							{
-								"entityType": "program",
-								"programType": "season",
-								"entityId": "breaking-bad-season-1",
-								"seriesId": "breaking-bad"
+								"$ref": "#/x-schemas/Entity/TVSeriesEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/AdditionalEntity"
 							}
 						]
 					},
@@ -22258,89 +23295,6 @@
 							"entityId"
 						]
 					},
-					"PlaylistEntity": {
-						"title": "PlaylistEntity",
-						"description": "A Firebolt compliant representation of a Playlist entity.",
-						"type": "object",
-						"required": [
-							"entityType",
-							"entityId"
-						],
-						"properties": {
-							"entityType": {
-								"const": "playlist"
-							},
-							"entityId": {
-								"$ref": "#/x-schemas/Intents/Identifier"
-							},
-							"assetId": {
-								"$ref": "#/x-schemas/Intents/Identifier"
-							},
-							"appContentData": {
-								"type": "string",
-								"maxLength": 256
-							}
-						},
-						"additionalProperties": false,
-						"examples": [
-							{
-								"entityType": "playlist",
-								"entityId": "playlist/xyz"
-							}
-						]
-					},
-					"AdditionalEntity": {
-						"title": "AdditionalEntity",
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Intents/ProgramEntity"
-							},
-							{
-								"description": "A Firebolt compliant representation of the remaining entity types.",
-								"type": "object",
-								"required": [
-									"entityType",
-									"entityId"
-								],
-								"properties": {
-									"entityType": {
-										"const": "program"
-									},
-									"programType": {
-										"type": "string",
-										"enum": [
-											"concert",
-											"sportingEvent",
-											"preview",
-											"other",
-											"advertisement",
-											"musicVideo",
-											"minisode",
-											"extra"
-										]
-									},
-									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
-									},
-									"appContentData": {
-										"type": "string",
-										"maxLength": 256
-									}
-								},
-								"additionalProperties": false
-							}
-						],
-						"examples": [
-							{
-								"entityType": "program",
-								"programType": "concert",
-								"entityId": "live-aid"
-							}
-						]
-					},
 					"UntypedEntity": {
 						"title": "UntypedEntity",
 						"allOf": [
@@ -22352,10 +23306,10 @@
 								],
 								"properties": {
 									"entityId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
+										"type": "string"
 									},
 									"assetId": {
-										"$ref": "#/x-schemas/Intents/Identifier"
+										"type": "string"
 									},
 									"appContentData": {
 										"type": "string",
@@ -22371,52 +23325,282 @@
 							}
 						]
 					},
-					"PlayableEntity": {
-						"title": "PlayableEntity",
-						"anyOf": [
-							{
-								"$ref": "#/x-schemas/Intents/MovieEntity"
+					"PlaylistEntity": {
+						"title": "PlaylistEntity",
+						"description": "A Firebolt compliant representation of a Playlist entity.",
+						"type": "object",
+						"required": [
+							"entityType",
+							"entityId"
+						],
+						"properties": {
+							"entityType": {
+								"const": "playlist"
 							},
-							{
-								"$ref": "#/x-schemas/Intents/TVEpisodeEntity"
+							"entityId": {
+								"type": "string"
 							},
-							{
-								"$ref": "#/x-schemas/Intents/PlaylistEntity"
+							"assetId": {
+								"type": "string"
 							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
+						"examples": [
 							{
-								"$ref": "#/x-schemas/Intents/MusicEntity"
-							},
-							{
-								"$ref": "#/x-schemas/Intents/AdditionalEntity"
+								"entityType": "playlist",
+								"entityId": "playlist/xyz"
 							}
 						]
 					},
-					"ProgramEntity": {
-						"title": "ProgramEntity",
+					"MovieEntity": {
+						"title": "MovieEntity",
+						"description": "A Firebolt compliant representation of a Movie entity.",
 						"type": "object",
+						"required": [
+							"entityType",
+							"programType",
+							"entityId"
+						],
 						"properties": {
 							"entityType": {
 								"const": "program"
 							},
 							"programType": {
-								"$ref": "#/x-schemas/Entertainment/ProgramType"
+								"const": "movie"
 							},
 							"entityId": {
 								"type": "string"
+							},
+							"assetId": {
+								"type": "string"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
 							}
 						},
+						"additionalProperties": false,
+						"examples": [
+							{
+								"entityType": "program",
+								"programType": "movie",
+								"entityId": "el-camino"
+							}
+						]
+					},
+					"TVEpisodeEntity": {
+						"title": "TVEpisodeEntity",
+						"description": "A Firebolt compliant representation of a TV Episode entity.",
+						"type": "object",
+						"required": [
+							"entityType",
+							"programType",
+							"entityId",
+							"seriesId",
+							"seasonId"
+						],
+						"properties": {
+							"entityType": {
+								"const": "program"
+							},
+							"programType": {
+								"const": "episode"
+							},
+							"entityId": {
+								"type": "string"
+							},
+							"seriesId": {
+								"type": "string"
+							},
+							"seasonId": {
+								"type": "string"
+							},
+							"assetId": {
+								"type": "string"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
+						"examples": [
+							{
+								"entityType": "program",
+								"programType": "episode",
+								"entityId": "breaking-bad-pilot",
+								"seriesId": "breaking-bad",
+								"seasonId": "breaking-bad-season-1"
+							}
+						]
+					},
+					"TVSeasonEntity": {
+						"title": "TVSeasonEntity",
+						"description": "A Firebolt compliant representation of a TV Season entity.",
+						"type": "object",
+						"required": [
+							"entityType",
+							"programType",
+							"entityId",
+							"seriesId"
+						],
+						"properties": {
+							"entityType": {
+								"const": "program"
+							},
+							"programType": {
+								"const": "season"
+							},
+							"entityId": {
+								"type": "string"
+							},
+							"seriesId": {
+								"type": "string"
+							},
+							"assetId": {
+								"type": "string"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
+						"examples": [
+							{
+								"entityType": "program",
+								"programType": "season",
+								"entityId": "breaking-bad-season-1",
+								"seriesId": "breaking-bad"
+							}
+						]
+					},
+					"TVSeriesEntity": {
+						"title": "TVSeriesEntity",
+						"description": "A Firebolt compliant representation of a TV Series entity.",
+						"type": "object",
 						"required": [
 							"entityType",
 							"programType",
 							"entityId"
+						],
+						"properties": {
+							"entityType": {
+								"const": "program"
+							},
+							"programType": {
+								"const": "series"
+							},
+							"entityId": {
+								"type": "string"
+							},
+							"assetId": {
+								"type": "string"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
+						"examples": [
+							{
+								"entityType": "program",
+								"programType": "series",
+								"entityId": "breaking-bad"
+							}
 						]
 					},
-					"Identifier": {
-						"type": "string"
+					"AdditionalEntity": {
+						"title": "AdditionalEntity",
+						"description": "A Firebolt compliant representation of the remaining program entity types.",
+						"type": "object",
+						"required": [
+							"entityType",
+							"programType",
+							"entityId"
+						],
+						"properties": {
+							"entityType": {
+								"const": "program"
+							},
+							"programType": {
+								"type": "string",
+								"enum": [
+									"concert",
+									"sportingEvent",
+									"preview",
+									"other",
+									"advertisement",
+									"musicVideo",
+									"minisode",
+									"extra"
+								]
+							},
+							"entityId": {
+								"type": "string"
+							},
+							"assetId": {
+								"type": "string"
+							},
+							"appContentData": {
+								"type": "string",
+								"maxLength": 256
+							}
+						},
+						"additionalProperties": false,
+						"examples": [
+							{
+								"entityType": "program",
+								"programType": "concert",
+								"entityId": "live-aid"
+							}
+						]
+					},
+					"PlayableEntity": {
+						"title": "PlayableEntity",
+						"anyOf": [
+							{
+								"$ref": "#/x-schemas/Entity/MovieEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/TVEpisodeEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/PlaylistEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/MusicEntity"
+							},
+							{
+								"$ref": "#/x-schemas/Entity/AdditionalEntity"
+							}
+						]
 					}
 				},
 				"Discovery": {
 					"uri": "https://meta.comcast.com/firebolt/discovery",
+					"InterestType": {
+						"title": "InterestType",
+						"type": "string",
+						"enum": [
+							"interest",
+							"disinterest"
+						]
+					},
+					"InterestReason": {
+						"title": "InterestReason",
+						"type": "string",
+						"enum": [
+							"playlist",
+							"reaction",
+							"recording"
+						]
+					},
 					"EntityInfoResult": {
 						"title": "EntityInfoResult",
 						"description": "The result for an `entityInfo()` push or pull.",
@@ -22471,6 +23655,103 @@
 				},
 				"Entertainment": {
 					"uri": "https://meta.comcast.com/firebolt/entertainment",
+					"WayToWatch": {
+						"title": "WayToWatch",
+						"type": "object",
+						"required": [
+							"identifiers",
+							"audioProfile"
+						],
+						"properties": {
+							"identifiers": {
+								"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
+							},
+							"expires": {
+								"type": "string",
+								"format": "date-time",
+								"description": "Time when the WayToWatch is no longer available."
+							},
+							"entitled": {
+								"type": "boolean",
+								"description": "Specify if the user is entitled to watch the entity."
+							},
+							"entitledExpires": {
+								"type": "string",
+								"format": "date-time",
+								"description": "Time when the entity is no longer entitled."
+							},
+							"offeringType": {
+								"$ref": "#/x-schemas/Entertainment/OfferingType"
+							},
+							"hasAds": {
+								"type": "boolean",
+								"description": "True if the streamable asset contains ads."
+							},
+							"price": {
+								"type": "number",
+								"description": "For \"buy\" and \"rent\" WayToWatch, the price to buy or rent in the user's preferred currency."
+							},
+							"videoQuality": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"enum": [
+										"SD",
+										"HD",
+										"UHD"
+									]
+								},
+								"description": "List of the video qualities available via the WayToWatch."
+							},
+							"audioProfile": {
+								"type": "array",
+								"items": {
+									"$ref": "#/x-schemas/Types/AudioProfile"
+								},
+								"description": "List of the audio types available via the WayToWatch."
+							},
+							"audioLanguages": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "List of audio track languages available on the WayToWatch. The first is considered the primary language. Languages are expressed as ISO 639 1/2 codes."
+							},
+							"closedCaptions": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "List of languages for which closed captions are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes."
+							},
+							"subtitles": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "List of languages for which subtitles are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes."
+							},
+							"audioDescriptions": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "List of languages for which audio descriptions (DVD) as available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes."
+							}
+						},
+						"description": "A WayToWatch describes a way to watch a video program. It may describe a single\nstreamable asset or a set of streamable assets. For example, an app provider may\ndescribe HD, SD, and UHD assets as individual WayToWatch objects or rolled into\na single WayToWatch.\n\nIf the WayToWatch represents a single streamable asset, the provided\nContentIdentifiers must be sufficient to play back the specific asset when sent\nvia a playback intent or deep link. If the WayToWatch represents multiple\nstreamable assets, the provided ContentIdentifiers must be sufficient to\nplayback one of the assets represented with no user action. In this scenario,\nthe app SHOULD choose the best asset for the user based on their device and\nsettings. The ContentIdentifiers MUST also be sufficient for navigating the user\nto the appropriate entity or detail screen via an entity intent.\n\nThe app should set the `entitled` property to indicate if the user can watch, or\nnot watch, the asset without making a purchase. If the entitlement is known to\nexpire at a certain time (e.g., a rental), the app should also provide the\n`entitledExpires` property. If the entitlement is not expired, the UI will use\nthe `entitled` property to display watchable assets to the user, adjust how\nassets are presented to the user, and how intents into the app are generated.\nFor example, the the Aggregated Experience could render a \"Watch\" button for an\nentitled asset versus a \"Subscribe\" button for an non-entitled asset.\n\nThe app should set the `offeringType` to define how the content may be\nauthorized. The UI will use this to adjust how content is presented to the user.\n\nA single WayToWatch cannot represent streamable assets available via multiple\npurchase paths. If, for example, an asset has both Buy, Rent and Subscription\navailability, the three different entitlement paths MUST be represented as\nmultiple WayToWatch objects.\n\n`price` should be populated for WayToWatch objects with `buy` or `rent`\n`offeringType`. If the WayToWatch represents a set of assets with various price\npoints, the `price` provided must be the lowest available price."
+					},
+					"OfferingType": {
+						"title": "OfferingType",
+						"type": "string",
+						"enum": [
+							"free",
+							"subscribe",
+							"buy",
+							"rent"
+						],
+						"description": "The offering type of the WayToWatch."
+					},
 					"ContentIdentifiers": {
 						"title": "ContentIdentifiers",
 						"type": "object",
@@ -22499,6 +23780,49 @@
 						},
 						"description": "The ContentIdentifiers object is how the app identifies an entity or asset to\nthe Firebolt platform. These ids are used to look up metadata and deep link into\nthe app.\n\nApps do not need to provide all ids. They only need to provide the minimum\nrequired to target a playable stream or an entity detail screen via a deep link.\nIf an id isn't needed to get to those pages, it doesn't need to be included."
 					},
+					"ContentRating": {
+						"title": "ContentRating",
+						"type": "object",
+						"required": [
+							"scheme",
+							"rating"
+						],
+						"properties": {
+							"scheme": {
+								"type": "string",
+								"enum": [
+									"CA-Movie",
+									"CA-TV",
+									"CA-Movie-Fr",
+									"CA-TV-Fr",
+									"US-Movie",
+									"US-TV"
+								],
+								"description": "The rating scheme."
+							},
+							"rating": {
+								"type": "string",
+								"description": "The content rating."
+							},
+							"advisories": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "Optional list of subratings or content advisories."
+							}
+						},
+						"description": "A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.\n\n## United States\n\n`US-Movie` (MPAA):\n\nRatings: `NR`, `G`, `PG`, `PG13`, `R`, `NC17`\n\nAdvisories: `AT`, `BN`, `SL`, `SS`, `N`, `V`\n\n`US-TV` (Vchip):\n\nRatings: `TVY`, `TVY7`, `TVG`, `TVPG`, `TV14`, `TVMA`\n\nAdvisories: `FV`, `D`, `L`, `S`, `V`\n\n## Canada\n\n`CA-Movie` (OFRB):\n\nRatings: `G`, `PG`, `14A`, `18A`, `R`, `E`\n\n`CA-TV` (AGVOT)\n\nRatings: `E`, `C`, `C8`, `G`, `PG`, `14+`, `18+`\n\nAdvisories: `C`, `C8`, `G`, `PG`, `14+`, `18+`\n\n`CA-Movie-Fr` (Canadian French language movies):\n\nRatings: `G`, `8+`, `13+`, `16+`, `18+`\n\n`CA-TV-Fr` (Canadian French language TV):\n\nRatings: `G`, `8+`, `13+`, `16+`, `18+`\n"
+					},
+					"MusicType": {
+						"title": "MusicType",
+						"type": "string",
+						"description": "In the case of a music `entityType`, specifies the type of music entity.",
+						"enum": [
+							"song",
+							"album"
+						]
+					},
 					"Entitlement": {
 						"title": "Entitlement",
 						"type": "object",
@@ -22526,7 +23850,6 @@
 						"required": [
 							"identifiers",
 							"entityType",
-							"programType",
 							"title"
 						],
 						"properties": {
@@ -22619,17 +23942,6 @@
 							}
 						}
 					},
-					"OfferingType": {
-						"title": "OfferingType",
-						"type": "string",
-						"enum": [
-							"free",
-							"subscribe",
-							"buy",
-							"rent"
-						],
-						"description": "The offering type of the WayToWatch."
-					},
 					"ProgramType": {
 						"title": "ProgramType",
 						"type": "string",
@@ -22648,135 +23960,6 @@
 							"musicVideo",
 							"minisode"
 						]
-					},
-					"MusicType": {
-						"title": "MusicType",
-						"type": "string",
-						"description": "In the case of a music `entityType`, specifies the type of music entity.",
-						"enum": [
-							"song",
-							"album"
-						]
-					},
-					"ContentRating": {
-						"title": "ContentRating",
-						"type": "object",
-						"required": [
-							"scheme",
-							"rating"
-						],
-						"properties": {
-							"scheme": {
-								"type": "string",
-								"enum": [
-									"CA-Movie",
-									"CA-TV",
-									"CA-Movie-Fr",
-									"CA-TV-Fr",
-									"US-Movie",
-									"US-TV"
-								],
-								"description": "The rating scheme."
-							},
-							"rating": {
-								"type": "string",
-								"description": "The content rating."
-							},
-							"advisories": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"description": "Optional list of subratings or content advisories."
-							}
-						},
-						"description": "A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.\n\n## United States\n\n`US-Movie` (MPAA):\n\nRatings: `NR`, `G`, `PG`, `PG13`, `R`, `NC17`\n\nAdvisories: `AT`, `BN`, `SL`, `SS`, `N`, `V`\n\n`US-TV` (Vchip):\n\nRatings: `TVY`, `TVY7`, `TVG`, `TVPG`, `TV14`, `TVMA`\n\nAdvisories: `FV`, `D`, `L`, `S`, `V`\n\n## Canada\n\n`CA-Movie` (OFRB):\n\nRatings: `G`, `PG`, `14A`, `18A`, `R`, `E`\n\n`CA-TV` (AGVOT)\n\nRatings: `E`, `C`, `C8`, `G`, `PG`, `14+`, `18+`\n\nAdvisories: `C`, `C8`, `G`, `PG`, `14+`, `18+`\n\n`CA-Movie-Fr` (Canadian French language movies):\n\nRatings: `G`, `8+`, `13+`, `16+`, `18+`\n\n`CA-TV-Fr` (Canadian French language TV):\n\nRatings: `G`, `8+`, `13+`, `16+`, `18+`\n"
-					},
-					"WayToWatch": {
-						"title": "WayToWatch",
-						"type": "object",
-						"required": [
-							"identifiers",
-							"audioProfile"
-						],
-						"properties": {
-							"identifiers": {
-								"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
-							},
-							"expires": {
-								"type": "string",
-								"format": "date-time",
-								"description": "Time when the WayToWatch is no longer available."
-							},
-							"entitled": {
-								"type": "boolean",
-								"description": "Specify if the user is entitled to watch the entity."
-							},
-							"entitledExpires": {
-								"type": "string",
-								"format": "date-time",
-								"description": "Time when the entity is no longer entitled."
-							},
-							"offeringType": {
-								"$ref": "#/x-schemas/Entertainment/OfferingType"
-							},
-							"hasAds": {
-								"type": "boolean",
-								"description": "True if the streamable asset contains ads."
-							},
-							"price": {
-								"type": "number",
-								"description": "For \"buy\" and \"rent\" WayToWatch, the price to buy or rent in the user's preferred currency."
-							},
-							"videoQuality": {
-								"type": "array",
-								"items": {
-									"type": "string",
-									"enum": [
-										"SD",
-										"HD",
-										"UHD"
-									]
-								},
-								"description": "List of the video qualities available via the WayToWatch."
-							},
-							"audioProfile": {
-								"type": "array",
-								"items": {
-									"$ref": "#/x-schemas/Types/AudioProfile"
-								},
-								"description": "List of the audio types available via the WayToWatch."
-							},
-							"audioLanguages": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"description": "List of audio track languages available on the WayToWatch. The first is considered the primary language. Languages are expressed as ISO 639 1/2 codes."
-							},
-							"closedCaptions": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"description": "List of languages for which closed captions are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes."
-							},
-							"subtitles": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"description": "List of languages for which subtitles are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes."
-							},
-							"audioDescriptions": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"description": "List of languages for which audio descriptions (DVD) as available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes."
-							}
-						},
-						"description": "A WayToWatch describes a way to watch a video program. It may describe a single\nstreamable asset or a set of streamable assets. For example, an app provider may\ndescribe HD, SD, and UHD assets as individual WayToWatch objects or rolled into\na single WayToWatch.\n\nIf the WayToWatch represents a single streamable asset, the provided\nContentIdentifiers must be sufficient to play back the specific asset when sent\nvia a playback intent or deep link. If the WayToWatch represents multiple\nstreamable assets, the provided ContentIdentifiers must be sufficient to\nplayback one of the assets represented with no user action. In this scenario,\nthe app SHOULD choose the best asset for the user based on their device and\nsettings. The ContentIdentifiers MUST also be sufficient for navigating the user\nto the appropriate entity or detail screen via an entity intent.\n\nThe app should set the `entitled` property to indicate if the user can watch, or\nnot watch, the asset without making a purchase. If the entitlement is known to\nexpire at a certain time (e.g., a rental), the app should also provide the\n`entitledExpires` property. If the entitlement is not expired, the UI will use\nthe `entitled` property to display watchable assets to the user, adjust how\nassets are presented to the user, and how intents into the app are generated.\nFor example, the the Aggregated Experience could render a \"Watch\" button for an\nentitled asset versus a \"Subscribe\" button for an non-entitled asset.\n\nThe app should set the `offeringType` to define how the content may be\nauthorized. The UI will use this to adjust how content is presented to the user.\n\nA single WayToWatch cannot represent streamable assets available via multiple\npurchase paths. If, for example, an asset has both Buy, Rent and Subscription\navailability, the three different entitlement paths MUST be represented as\nmultiple WayToWatch objects.\n\n`price` should be populated for WayToWatch objects with `buy` or `rent`\n`offeringType`. If the WayToWatch represents a set of assets with various price\npoints, the `price` provided must be the lowest available price."
 					}
 				},
 				"Lifecycle": {

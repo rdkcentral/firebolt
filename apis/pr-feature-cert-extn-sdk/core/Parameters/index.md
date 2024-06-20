@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.2.0-feature-cert-extn-sdk.0
+Version Parameters 1.2.1-feature-cert-extn-sdk.0
 
 ## Table of Contents
 
@@ -41,27 +41,20 @@ Methods for getting initialization parameters for an app cold launch.
 Returns any initialization parameters for the app, e.g. initialial `NavigationIntent`.
 
 ```typescript
-${method.signature}
+function initialization(): Promise<AppInitialization>
 ```
 
 Promise resolution:
 
-````typescript
-```typescript
-
-````
-
-````
+[AppInitialization](#appinitialization)
 
 Capabilities:
 
-| Role                  | Capability                 |
-| --------------------- | -------------------------- |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
 | uses | xrn:firebolt:capability:lifecycle:state |
 
-
 #### Examples
-
 
 Default Example
 
@@ -72,7 +65,7 @@ import { Parameters } from '@firebolt-js/sdk'
 
 let init = await Parameters.initialization()
 console.log(init)
-````
+```
 
 Value of `init`:
 
@@ -143,17 +136,18 @@ Response:
 
 ### AppInitialization
 
-````typescript
 ```typescript
-
-````
-
+type AppInitialization = {
+  us_privacy?: string // The IAB US Privacy string.
+  lmt?: number // The IAB limit ad tracking opt out value.
+  discovery?: object
+  secondScreen?: object
+}
 ```
 
 See also:
 
-
-
+[NavigationIntent](../Intents/schemas/#NavigationIntent)
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
 
 ---
-```
