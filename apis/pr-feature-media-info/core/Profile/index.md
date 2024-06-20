@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.2.0-feature-media-info.1
+Version Profile 1.2.0-feature-media-info.2
 
 ## Table of Contents
 

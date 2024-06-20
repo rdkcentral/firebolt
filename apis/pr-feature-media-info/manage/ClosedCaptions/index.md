@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version ClosedCaptions 1.2.0-feature-media-info.1
+Version ClosedCaptions 1.2.0-feature-media-info.2
 
 ## Table of Contents
 
