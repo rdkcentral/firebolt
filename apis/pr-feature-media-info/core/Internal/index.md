@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.2.0-feature-media-info.2
+Version Internal 1.2.0-feature-media-info.3
 
 ## Table of Contents
 
