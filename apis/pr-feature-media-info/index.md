@@ -449,7 +449,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [MediaInfo.audioFormat](./manage/MediaInfo/#audioformat)<br/>[MediaInfo.onAudioFormatChanged](./manage/MediaInfo/#audioformatchanged) |
+| [MediaInfo.audioFormat](./core/MediaInfo/#audioformat)<br/>[MediaInfo.onAudioFormatChanged](./core/MediaInfo/#audioformatchanged) |
 
 
 
@@ -462,7 +462,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [MediaInfo.videoFormat](./manage/MediaInfo/#videoformat)<br/>[MediaInfo.onVideoFormatChanged](./manage/MediaInfo/#videoformatchanged) |
+| [MediaInfo.videoFormat](./core/MediaInfo/#videoformat)<br/>[MediaInfo.onVideoFormatChanged](./core/MediaInfo/#videoformatchanged) |
 
 
 

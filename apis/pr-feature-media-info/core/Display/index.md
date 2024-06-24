@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Display 1.2.0-feature-media-info.3
+Version Display 1.2.0-feature-media-info.4
 
 ## Table of Contents
 

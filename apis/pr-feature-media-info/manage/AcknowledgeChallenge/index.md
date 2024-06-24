@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.2.0-feature-media-info.3
+Version AcknowledgeChallenge 1.2.0-feature-media-info.4
 
 ## Table of Contents
 

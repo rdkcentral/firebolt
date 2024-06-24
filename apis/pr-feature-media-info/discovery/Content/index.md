@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.2.0-feature-media-info.3
+Version Content 1.2.0-feature-media-info.4
 
 ## Table of Contents
 
