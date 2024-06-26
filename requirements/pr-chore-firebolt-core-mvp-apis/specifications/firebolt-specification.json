@@ -382,7 +382,7 @@
 			}
 		},
 		"xrn:firebolt:capability:discovery:sign-in-status": {
-			"level": "should",
+			"level": "must",
 			"use": {
 				"public": true,
 				"negotiable": true
@@ -412,7 +412,7 @@
 			}
 		},
 		"xrn:firebolt:capability:discovery:watched": {
-			"level": "should",
+			"level": "must",
 			"use": {
 				"public": true,
 				"negotiable": true
