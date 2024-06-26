@@ -131,20 +131,6 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [CertificationExtension.appHealthCheck](./manage/CertificationExtension/#apphealthcheck) |
 
 
-### `xrn:firebolt:capability:certification:commandandcontrol`
-
-| Uses |
-| ---- |
-| [CertificationExtension.commandAndControl](./manage/CertificationExtension/#commandandcontrol) |
-
-
-### `xrn:firebolt:capability:certification:fireboltinteractions`
-
-| Provides |
-| -------- |
-| [CertificationExtension.onFireboltInteractions](./manage/CertificationExtension/#fireboltinteractions) |
-
-
 ### `xrn:firebolt:capability:certification:healthcheck`
 
 | Provides |
@@ -152,11 +138,18 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [CertificationExtension.platformHealthCheck](./manage/CertificationExtension/#platformhealthcheck) |
 
 
+### `xrn:firebolt:capability:certification:interactions`
+
+| Uses |
+| ---- |
+| [CertificationExtension.deviceInteractions](./manage/CertificationExtension/#deviceinteractions)<br/>[CertificationExtension.playbackControl](./manage/CertificationExtension/#playbackcontrol) |
+
+
 ### `xrn:firebolt:capability:certification:screencapture`
 
 | Uses |
 | ---- |
-| [CertificationExtension.screenCapture](./manage/CertificationExtension/#screencapture) |
+| [CertificationExtension.getScreenshot](./manage/CertificationExtension/#getscreenshot)<br/>[CertificationExtension.onScreenshotComplete](./manage/CertificationExtension/#screenshotcomplete) |
 
 
 ### `xrn:firebolt:capability:device:distributor`

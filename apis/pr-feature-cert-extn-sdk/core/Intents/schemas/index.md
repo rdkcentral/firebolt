@@ -19,6 +19,7 @@ Version Intents 0.0.0-unknown.0
 - [Types](#types)
   - [Intent](#intent)
   - [IntentProperties](#intentproperties)
+  - [FocusIntent](#focusintent)
   - [SelectIntent](#selectintent)
   - [BackIntent](#backintent)
   - [ExitIntent](#exitintent)
@@ -34,9 +35,21 @@ Version Intents 0.0.0-unknown.0
   - [HighContrastIntent](#highcontrastintent)
   - [ScreenMagnificationIntent](#screenmagnificationintent)
   - [ButtonIntent](#buttonintent)
-  - [FocusIntent](#focusintent)
+  - [PauseIntent](#pauseintent)
+  - [ReplayIntent](#replayintent)
+  - [StopIntent](#stopintent)
+  - [PlaybackSpeedIntent](#playbackspeedintent)
+  - [DirectionalOperation](#directionaloperation)
+  - [SkipIntent](#skipintent)
+  - [FastForwardIntent](#fastforwardintent)
+  - [RewindIntent](#rewindintent)
+  - [ClosedCaptionsIntent](#closedcaptionsintent)
+  - [AudioDescriptionsIntent](#audiodescriptionsintent)
+  - [PlayIntent](#playintent)
   - [MuteIntent](#muteintent)
+  - [SeekIntent](#seekintent)
   - [DeviceIntent](#deviceintent)
+  - [PlaybackControlIntent](#playbackcontrolintent)
   - [HomeIntent](#homeintent)
   - [LaunchIntent](#launchintent)
   - [EntityIntent](#entityintent)
@@ -67,6 +80,20 @@ A Firebolt compliant representation of a user intention.
 
 ```typescript
 
+```
+
+---
+
+### FocusIntent
+
+A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.
+
+```typescript
+type FocusIntent = {
+  action: 'focus'
+  data: object
+  context: object
+}
 ```
 
 ---
@@ -276,14 +303,144 @@ type ButtonIntent = {
 
 ---
 
-### FocusIntent
+### PauseIntent
 
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.
+A Firebolt compliant representation of a user intention to pause in-progress playback.
 
 ```typescript
-type FocusIntent = {
-  action: 'focus'
-  data: object
+type PauseIntent = {
+  action: 'pause'
+  context: object
+}
+```
+
+---
+
+### ReplayIntent
+
+A Firebolt compliant representation of a user intention to replay content.
+
+```typescript
+type ReplayIntent = {
+  action: 'replay'
+  context: object
+}
+```
+
+---
+
+### StopIntent
+
+A Firebolt compliant representation of a user intention to stop content.
+
+```typescript
+type StopIntent = {
+  action: 'stop'
+  context: object
+}
+```
+
+---
+
+### PlaybackSpeedIntent
+
+A Firebolt compliant representation of a user intention to change the speed of in-progress playback.
+
+```typescript
+type PlaybackSpeedIntent = {
+  action: 'speed'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### DirectionalOperation
+
+```typescript
+
+```
+
+---
+
+### SkipIntent
+
+A Firebolt compliant representation of a user intention to skip a scene/chapter/ad during in-progress playback.
+
+```typescript
+type SkipIntent = {
+  action: 'skip'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### FastForwardIntent
+
+A Firebolt compliant representation of a user intention to fast-forward in-progress playback.
+
+```typescript
+type FastForwardIntent = {
+  action: 'fast-forward'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### RewindIntent
+
+A Firebolt compliant representation of a user intention to rewind in-progress playback.
+
+```typescript
+type RewindIntent = {
+  action: 'rewind'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### ClosedCaptionsIntent
+
+A Firebolt compliant representation of a user intention to enable/disable closed captions.
+
+```typescript
+type ClosedCaptionsIntent = {
+  action: 'closed-captions'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### AudioDescriptionsIntent
+
+A Firebolt compliant representation of a user intention to enable/disable audio descriptions.
+
+```typescript
+type AudioDescriptionsIntent = {
+  action: 'audio-descriptions'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### PlayIntent
+
+A Firebolt compliant representation of a user intention to play/resume content.
+
+```typescript
+type PlayIntent = {
+  action: 'play'
   context: object
 }
 ```
@@ -297,6 +454,20 @@ A Firebolt compliant representation of a user intention to mute or unmute the de
 ```typescript
 type MuteIntent = {
   action: 'mute'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### SeekIntent
+
+A Firebolt compliant representation of a user intention to seek to a different time for in-progress playback.
+
+```typescript
+type SeekIntent = {
+  action: 'seek'
   data?: object
   context: object
 }
@@ -330,6 +501,30 @@ See also:
 [VoiceGuidanceIntent](#voiceguidanceintent)
 [HighContrastIntent](#highcontrastintent)
 [ScreenMagnificationIntent](#screenmagnificationintent)
+
+---
+
+### PlaybackControlIntent
+
+A Firebolt compliant representation of a user intention to control some aspect of in-progress playback.
+
+```typescript
+
+```
+
+See also:
+
+[PlayIntent](#playintent)
+[PauseIntent](#pauseintent)
+[ReplayIntent](#replayintent)
+[StopIntent](#stopintent)
+[PlaybackSpeedIntent](#playbackspeedintent)
+[SeekIntent](#seekintent)
+[SkipIntent](#skipintent)
+[FastForwardIntent](#fastforwardintent)
+[RewindIntent](#rewindintent)
+[ClosedCaptionsIntent](#closedcaptionsintent)
+[AudioDescriptionsIntent](#audiodescriptionsintent)
 
 ---
 

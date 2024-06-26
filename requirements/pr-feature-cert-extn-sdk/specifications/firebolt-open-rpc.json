@@ -2825,77 +2825,23 @@
 			]
 		},
 		{
-			"name": "CertificationExtension.onFireboltInteractions",
-			"summary": "Event to fetch the interaction details for the firebolt api call",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-provides": "xrn:firebolt:capability:certification:fireboltinteractions",
-					"x-allow-focus": true
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "value",
-				"summary": "Result of the interaction",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/InteractionResult"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Firebolt interaction to acquire device token",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"payload": "{\"request\":{\"type\":\"method\",\"method\":\"Authentication.device\"},\"response\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"}"
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "CertificationExtension.commandAndControl",
+			"name": "CertificationExtension.deviceInteractions",
 			"tags": [
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:certification:commandandcontrol"
+						"xrn:firebolt:capability:certification:interactions"
 					]
 				}
 			],
-			"summary": "Performs interaction and media control on firebolt compatible devices.",
+			"summary": "Performs interactions on firebolt compatible devices.",
 			"params": [
 				{
 					"name": "intent",
 					"required": true,
-					"summary": "An `PlatformIntent` with details what interaction or control needs to be performed.",
+					"summary": "A `DeviceIntent` with details what interaction needs to be performed.",
 					"schema": {
-						"$ref": "#/components/schemas/PlatformIntent"
+						"$ref": "#/x-schemas/Intents/DeviceIntent"
 					}
 				}
 			],
@@ -2931,7 +2877,56 @@
 			]
 		},
 		{
-			"name": "CertificationExtension.screenCapture",
+			"name": "CertificationExtension.playbackControl",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:certification:interactions"
+					]
+				}
+			],
+			"summary": "Performs controlling actions of in-progress playback on firebolt compatible devices.",
+			"params": [
+				{
+					"name": "intent",
+					"required": true,
+					"summary": "A `PlaybackControlIntent` with details what playback control needs to be performed.",
+					"schema": {
+						"$ref": "#/x-schemas/Intents/PlaybackControlIntent"
+					}
+				}
+			],
+			"result": {
+				"name": "success",
+				"summary": "whether the call was successful or not",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Pause the in-progress playback",
+					"params": [
+						{
+							"name": "intent",
+							"value": {
+								"action": "pause",
+								"context": {
+									"source": "voice"
+								}
+							}
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "CertificationExtension.getScreenshot",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -2941,23 +2936,54 @@
 				}
 			],
 			"summary": "Fetch the current screen on the device and upload to the given server",
-			"params": [
-				{
-					"name": "uploadPath",
-					"required": false,
-					"summary": "An optional `path` where screenshot can be uploaded. If not provided, base64 encoded image stream will be returned in the response.",
-					"schema": {
-						"type": "string"
-					}
-				}
-			],
+			"params": [],
 			"result": {
 				"name": "success",
 				"summary": "whether the call was successful or not",
 				"schema": {
-					"oneOf": [
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Screen capture and sends back the status",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "CertificationExtension.onScreenshotComplete",
+			"tags": [
+				{
+					"name": "event"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:certification:screencapture"
+					]
+				}
+			],
+			"summary": "Listens for capturing the screenshot and provides the image data back in Base64 encoded format.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "imageStream",
+				"schema": {
+					"anyOf": [
 						{
-							"type": "boolean"
+							"$ref": "#/x-schemas/Types/ListenResponse"
 						},
 						{
 							"type": "string"
@@ -2967,24 +2993,16 @@
 			},
 			"examples": [
 				{
-					"name": "Screen capture and sends back the image stream with base64 encoded",
-					"params": [],
-					"result": {
-						"name": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgMBApDPF90AAAAASUVORK5CYII=",
-						"value": true
-					}
-				},
-				{
-					"name": "Screen capture and sends back the status",
+					"name": "Screenshot is taken",
 					"params": [
 						{
-							"name": "uploadPath",
-							"value": "http://example.com/upload"
+							"name": "listen",
+							"value": true
 						}
 					],
 					"result": {
-						"name": "Default Result",
-						"value": true
+						"name": "imageStream",
+						"value": "AAAAAAAAAA"
 					}
 				}
 			]
@@ -3004,7 +3022,7 @@
 				"name": "healthCheckResult",
 				"summary": "Result of the interaction",
 				"schema": {
-					"$ref": "#/components/schemas/HealthCheckResult"
+					"$ref": "#/components/schemas/PlatformHealthCheckResult"
 				}
 			},
 			"examples": [
@@ -3050,7 +3068,7 @@
 				"name": "appPerformanceResult",
 				"summary": "Result of the interaction",
 				"schema": {
-					"$ref": "#/components/schemas/AppPerformanceSnapshotResult"
+					"$ref": "#/components/schemas/AppHealthCheckResult"
 				}
 			},
 			"examples": [
@@ -18852,30 +18870,8 @@
 					}
 				}
 			},
-			"InteractionResult": {
-				"title": "InteractionResult",
-				"type": "object",
-				"required": [
-					"payload"
-				],
-				"properties": {
-					"payload": {
-						"type": "string",
-						"description": "The stringyfy payload of the interaction contains firebolt api request and response"
-					}
-				}
-			},
-			"PlatformIntent": {
-				"title": "PlatformIntent",
-				"description": "A Firebolt compliant representation of a user intention to interact to a specific place in an app or control the media",
-				"anyOf": [
-					{
-						"$ref": "#/x-schemas/Intents/DeviceIntent"
-					}
-				]
-			},
-			"HealthCheckResult": {
-				"title": "HealthCheckResult",
+			"PlatformHealthCheckResult": {
+				"title": "PlatformHealthCheckResult",
 				"description": "Performance and healthcheck snapshot for the device and process which includes load, memory, cpu usage. It also provides total live firebolt connections.",
 				"type": "object",
 				"required": [
@@ -18918,8 +18914,8 @@
 					}
 				}
 			},
-			"AppPerformanceSnapshotResult": {
-				"title": "AppPerformanceSnapshotResult",
+			"AppHealthCheckResult": {
+				"title": "AppHealthCheckResult",
 				"description": "Performance snapshot for the given appId which includes memory usage, cpu usage.",
 				"type": "object",
 				"required": [
@@ -20667,6 +20663,44 @@
 					}
 				]
 			},
+			"PlaybackControlIntent": {
+				"description": "A Firebolt compliant representation of a user intention to control some aspect of in-progress playback.",
+				"anyOf": [
+					{
+						"$ref": "#/x-schemas/Intents/PlayIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/PauseIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/ReplayIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/StopIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/PlaybackSpeedIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/SeekIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/SkipIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/FastForwardIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/RewindIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/ClosedCaptionsIntent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/AudioDescriptionsIntent"
+					}
+				]
+			},
 			"ButtonIntent": {
 				"description": "A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing one of the remote buttons.",
 				"title": "ButtonIntent",
@@ -21602,6 +21636,563 @@
 					}
 				]
 			},
+			"PlayIntent": {
+				"description": "A Firebolt compliant representation of a user intention to play/resume content.",
+				"title": "PlayIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "play"
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "play",
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"PauseIntent": {
+				"description": "A Firebolt compliant representation of a user intention to pause in-progress playback.",
+				"title": "PauseIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "pause"
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "pause",
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"ReplayIntent": {
+				"description": "A Firebolt compliant representation of a user intention to replay content.",
+				"title": "ReplayIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "replay"
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "replay",
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"StopIntent": {
+				"description": "A Firebolt compliant representation of a user intention to stop content.",
+				"title": "StopIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "stop"
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "stop",
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"PlaybackSpeedIntent": {
+				"description": "A Firebolt compliant representation of a user intention to change the speed of in-progress playback.",
+				"title": "PlaybackSpeedIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "speed"
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number",
+										"exclusiveMinimum": 0,
+										"maximum": 4
+									},
+									"toggle": {
+										"type": "boolean"
+									}
+								},
+								"minProperties": 1,
+								"maxProperties": 1,
+								"additionalProperties": false
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "speed",
+						"data": {
+							"value": 2
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "speed",
+						"data": {
+							"toggle": true
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"SeekIntent": {
+				"description": "A Firebolt compliant representation of a user intention to seek to a different time for in-progress playback.",
+				"title": "SeekIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "seek"
+							},
+							"data": {
+								"allOf": [
+									{
+										"$ref": "#/x-schemas/Intents/DirectionalOperation"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"seconds": {
+												"type": "number"
+											},
+											"relative": {
+												"const": true
+											}
+										},
+										"required": [
+											"seconds"
+										],
+										"if": {
+											"not": {
+												"required": [
+													"relative"
+												]
+											}
+										},
+										"then": {
+											"properties": {
+												"seconds": {
+													"type": "number",
+													"minimum": 0,
+													"maximum": 86400
+												}
+											}
+										},
+										"else": {
+											"properties": {
+												"seconds": {
+													"type": "number",
+													"minimum": -43200,
+													"maximum": 43200
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "seek",
+						"data": {
+							"seconds": 300
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "seek",
+						"data": {
+							"relative": true,
+							"seconds": -30
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"SkipIntent": {
+				"description": "A Firebolt compliant representation of a user intention to skip a scene/chapter/ad during in-progress playback.",
+				"title": "SkipIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "skip"
+							},
+							"data": {
+								"allOf": [
+									{
+										"$ref": "#/x-schemas/Intents/DirectionalOperation"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"count": {
+												"type": "number",
+												"exclusiveMinimum": 0,
+												"maximum": 100
+											}
+										},
+										"propertyNames": {
+											"enum": [
+												"direction",
+												"count"
+											]
+										}
+									}
+								]
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "skip",
+						"data": {
+							"direction": "forward",
+							"count": 1
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "skip",
+						"data": {
+							"direction": "backward",
+							"count": 1
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"FastForwardIntent": {
+				"description": "A Firebolt compliant representation of a user intention to fast-forward in-progress playback.",
+				"title": "FastForwardIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "fast-forward"
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"speed": {
+										"type": "number",
+										"exclusiveMinimum": 0,
+										"maximum": 10
+									}
+								}
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "fast-forward",
+						"data": {
+							"speed": 2
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "fast-forward",
+						"data": {
+							"speed": 0.5
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "fast-forward",
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"RewindIntent": {
+				"description": "A Firebolt compliant representation of a user intention to rewind in-progress playback.",
+				"title": "RewindIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "rewind"
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"speed": {
+										"type": "number",
+										"exclusiveMinimum": 0,
+										"maximum": 10
+									}
+								}
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "rewind",
+						"data": {
+							"speed": 2
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "rewind",
+						"data": {
+							"speed": 0.5
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "rewind",
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"ClosedCaptionsIntent": {
+				"description": "A Firebolt compliant representation of a user intention to enable/disable closed captions.",
+				"title": "ClosedCaptionsIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "closed-captions"
+							},
+							"data": {
+								"$ref": "#/x-schemas/Intents/BooleanToggle"
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "closed-captions",
+						"data": {
+							"value": false
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "closed-captions",
+						"data": {
+							"toggle": true
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
+			"AudioDescriptionsIntent": {
+				"description": "A Firebolt compliant representation of a user intention to enable/disable audio descriptions.",
+				"title": "AudioDescriptionsIntent",
+				"allOf": [
+					{
+						"$ref": "#/x-schemas/Intents/Intent"
+					},
+					{
+						"$ref": "#/x-schemas/Intents/IntentProperties"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"action": {
+								"const": "audio-descriptions"
+							},
+							"data": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "boolean"
+									},
+									"toggle": {
+										"const": true
+									},
+									"language": {
+										"$ref": "#/x-schemas/Localization/ISO639_2Language"
+									}
+								},
+								"if": {
+									"required": [
+										"value"
+									]
+								},
+								"then": {
+									"not": {
+										"required": [
+											"toggle"
+										]
+									}
+								},
+								"else": {
+									"required": [
+										"toggle"
+									]
+								},
+								"additionalProperties": false
+							}
+						}
+					}
+				],
+				"examples": [
+					{
+						"action": "audio-descriptions",
+						"data": {
+							"value": false
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "audio-descriptions",
+						"data": {
+							"toggle": true
+						},
+						"context": {
+							"source": "voice"
+						}
+					},
+					{
+						"action": "audio-descriptions",
+						"data": {
+							"value": true,
+							"language": "eng"
+						},
+						"context": {
+							"source": "voice"
+						}
+					}
+				]
+			},
 			"Intent": {
 				"description": "A Firebolt compliant representation of a user intention.",
 				"type": "object",
@@ -21649,6 +22240,18 @@
 				"minProperties": 1,
 				"maxProperties": 1,
 				"additionalProperties": false
+			},
+			"DirectionalOperation": {
+				"type": "object",
+				"properties": {
+					"direction": {
+						"type": "string",
+						"enum": [
+							"forward",
+							"backward"
+						]
+					}
+				}
 			},
 			"NavigationIntent": {
 				"title": "NavigationIntent",
