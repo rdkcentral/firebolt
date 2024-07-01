@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "1.2.0-feature-run-cpp-tests-simultaneously.0",
+		"version": "1.2.1-feature-run-cpp-tests-simultaneously.0",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -7118,8 +7118,7 @@
 					"x-provides": "xrn:firebolt:capability:discovery:entity-info"
 				},
 				{
-					"name": "deprecated",
-					"x-alternative": "Discovery.details"
+					"name": "deprecated"
 				}
 			],
 			"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
@@ -7494,8 +7493,7 @@
 					"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
 				},
 				{
-					"name": "deprecated",
-					"x-alternative": "Discovery.purchases"
+					"name": "deprecated"
 				}
 			],
 			"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
@@ -8871,8 +8869,7 @@
 					"x-provides": "xrn:firebolt:capability:discovery:entity-info"
 				},
 				{
-					"name": "deprecated",
-					"x-alternative": "Discovery.details"
+					"name": "deprecated"
 				}
 			],
 			"summary": "Provide information about a program entity and its available watchable assets, such as entitlement status and price, via either a push or pull call flow.",
@@ -8972,8 +8969,7 @@
 					"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
 				},
 				{
-					"name": "deprecated",
-					"x-alternative": "Discovery.purchases"
+					"name": "deprecated"
 				}
 			],
 			"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",

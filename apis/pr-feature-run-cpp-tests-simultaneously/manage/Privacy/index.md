@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Privacy 1.2.0-feature-run-cpp-tests-simultaneously.0
+Version Privacy 1.2.1-feature-run-cpp-tests-simultaneously.0
 
 ## Table of Contents
 
