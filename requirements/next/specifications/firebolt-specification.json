@@ -6,471 +6,6 @@
 		"readable": "Firebolt Version Manifest v1.0.0"
 	},
 	"capabilities": {
-		"xrn:firebolt:capability:lifecycle:initialize": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:lifecycle:ready": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:lifecycle:state": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:advertising:configuration": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:account:id": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:advertising:identifier": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:discovery:sign-in-status": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:discovery:watch-next": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:discovery:watched": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:input:keyboard": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:grants:state": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:locality": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:location": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:postal-code": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:time-zone": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:protocol:dial": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:protocol:wifi": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:privacy:settings": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:account": {
-			"level": "should",
-			"use": {
-				"public": false,
-				"negotiable": false
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:device": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:platform": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:root": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:session": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:usergrant:acknowledgechallenge": {
-			"level": "should",
-			"use": {
-				"public": false,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:usergrant:pinchallenge": {
-			"level": "should",
-			"use": {
-				"public": false,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:capabilities:info": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:capabilities:request": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:privacy:advertising": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:metrics:distributor": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:storage:secure": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:account:uid": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
 		"xrn:firebolt:capability:accessibility:audiodescriptions": {
 			"level": "must",
 			"use": {
@@ -516,6 +51,66 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:account:id": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:account:uid": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:advertising:configuration": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:advertising:identifier": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:approve:content": {
 			"level": "must",
 			"use": {
@@ -536,6 +131,36 @@
 			"use": {
 				"public": true,
 				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:capabilities:info": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:capabilities:request": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
 			},
 			"manage": {
 				"public": false,
@@ -756,6 +381,81 @@
 				"negotiable": true
 			}
 		},
+		"xrn:firebolt:capability:discovery:sign-in-status": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:discovery:watch-next": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:discovery:watched": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:grants:state": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:input:keyboard": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
+		},
 		"xrn:firebolt:capability:inputs:hdmi": {
 			"level": "must",
 			"use": {
@@ -765,6 +465,21 @@
 			"manage": {
 				"public": true,
 				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:lifecycle:initialize": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
 			},
 			"provide": {
 				"public": false,
@@ -784,6 +499,36 @@
 			"provide": {
 				"public": false,
 				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:lifecycle:ready": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:lifecycle:state": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": true
 			}
 		},
 		"xrn:firebolt:capability:localization:additional-info": {
@@ -846,6 +591,81 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:localization:locality": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:localization:location": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:localization:postal-code": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:localization:time-zone": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:metrics:distributor": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:metrics:general": {
 			"level": "must",
 			"use": {
@@ -891,8 +711,68 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:privacy:advertising": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:privacy:settings": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:profile:flags": {
 			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:protocol:dial": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:protocol:wifi": {
+			"level": "could",
 			"use": {
 				"public": true,
 				"negotiable": true
@@ -920,6 +800,126 @@
 				"public": false,
 				"negotiable": false
 			}
+		},
+		"xrn:firebolt:capability:storage:secure": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:account": {
+			"level": "should",
+			"use": {
+				"public": false,
+				"negotiable": false
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:device": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:platform": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:root": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:session": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:usergrant:acknowledgechallenge": {
+			"level": "should",
+			"use": {
+				"public": false,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
+		},
+		"xrn:firebolt:capability:usergrant:pinchallenge": {
+			"level": "should",
+			"use": {
+				"public": false,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
 		}
 	},
 	"apis": {
@@ -927,7 +927,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.2.0-next.7",
+				"version": "1.2.1-next.2",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
