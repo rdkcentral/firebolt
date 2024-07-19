@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.2.0-feature-media-info.4
+Version Parameters 1.2.0-feature-media-info.5
 
 ## Table of Contents
 

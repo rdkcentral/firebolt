@@ -21,6 +21,7 @@ Version Types 0.0.0-unknown.0
   - [SemanticVersion](#semanticversion)
   - [BooleanMap](#booleanmap)
   - [LocalizedString](#localizedstring)
+  - [Dimensions](#dimensions)
   - [FlatMap](#flatmap)
   - [Timeout](#timeout)
 
@@ -73,6 +74,14 @@ Localized string supports either a simple `string` or a Map<string, string> of l
 
 ```typescript
 type LocalizedString = string | object
+```
+
+---
+
+### Dimensions
+
+```typescript
+
 ```
 
 ---

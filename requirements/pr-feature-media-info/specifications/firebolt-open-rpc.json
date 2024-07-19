@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "1.2.0-feature-media-info.4",
+		"version": "1.2.0-feature-media-info.5",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -10,17 +10,18 @@
 			"AcknowledgeChallenge": "A module for registering as a provider for a user grant in which the user confirms access to a capability",
 			"Advertising": "A module for platform provided advertising settings and functionality.",
 			"AudioDescriptions": "A module for managing audio-description Settings.",
+			"AudioOutput": "A module for the device's audio output system, including its output capabilities and configuration.",
 			"Authentication": "A module for acquiring authentication tokens.",
 			"Capabilities": "The Capabilities module provides information about which discreet unit of functionality is enabled for the apps.",
 			"ClosedCaptions": "A module for managing closed-captions Settings.",
-			"Device": "A module for querying about the device and it's capabilities.",
+			"Device": "A module for querying the device and it's capabilities.",
 			"Discovery": "Your App likely wants to integrate with the Platform's discovery capabilities. For example to add a \"Watch Next\" tile that links to your app from the platform's home screen.\n\nGetting access to this information requires to connect to lower level APIs made available by the platform. Since implementations differ between operators and platforms, the Firebolt SDK offers a Discovery module, that exposes a generic, agnostic interface to the developer.\n\nUnder the hood, an underlaying transport layer will then take care of calling the right APIs for the actual platform implementation that your App is running on.\n\nThe Discovery plugin is used to _send_ information to the Platform.\n\n### Localization\nApps should provide all user-facing strings in the device's language, as specified by the Firebolt `Localization.language` property.\n\nApps should provide prices in the same currency presented in the app. If multiple currencies are supported in the app, the app should provide prices in the user's current default currency.",
-			"Display": "A module for querying various aspects of the current (or built-in) display on a device",
+			"Display": "A module for querying various aspects of the currently connected display (connected or built-in).",
 			"HDMIInput": "Methods for managing HDMI inputs on an HDMI sink device.",
 			"Keyboard": "Methods for prompting users to enter text with task-oriented UX",
 			"Lifecycle": "Methods and events for responding to lifecycle changes in your app",
 			"Localization": "Methods for accessessing location and language preferences",
-			"MediaInfo": "A module for query info about the media currently in the media pipeline (either playing or paused).",
+			"MediaCapabilities": "A module for querying the capabilities of the device all of its connected perirpherals (such as displays and soundbars).",
 			"Metrics": "Methods for sending metrics",
 			"Parameters": "Methods for getting initialization parameters for an app cold launch.",
 			"PinChallenge": "A module for registering as a provider for a user grant in which the user is prompted for a pin for access to a capability",
@@ -29,6 +30,7 @@
 			"SecondScreen": "Methods for communicating with second screen devices",
 			"SecureStorage": "A module for storing and retrieving secure data owned by the app",
 			"UserGrants": "A module for managing grants given by the user",
+			"VideoOutput": "A module for the device's video output system, including its output capabilities and configuration.",
 			"VoiceGuidance": "A module for managing voice-guidance Settings.",
 			"Wifi": "A module for providing support for Wifi."
 		}
@@ -1654,6 +1656,36 @@
 					"result": {
 						"name": "enabled",
 						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "AudioOutput.mode",
+			"summary": "The current audio output mode of the device.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:audio-output:config"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "mode",
+				"summary": "The audio output mode.",
+				"schema": {
+					"$ref": "#/x-schemas/Media/AudioMode"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "stereo"
 					}
 				}
 			]
@@ -5792,7 +5824,7 @@
 		},
 		{
 			"name": "Device.id",
-			"summary": "Get the platform back-office device identifier",
+			"summary": "The platform back-office device identifier",
 			"params": [],
 			"tags": [
 				{
@@ -5825,7 +5857,7 @@
 		},
 		{
 			"name": "Device.distributor",
-			"summary": "Get the distributor ID for this device",
+			"summary": "The distributor ID for this device",
 			"params": [],
 			"tags": [
 				{
@@ -5858,7 +5890,7 @@
 		},
 		{
 			"name": "Device.platform",
-			"summary": "Get the platform ID for this device",
+			"summary": "The platform ID for this device",
 			"params": [],
 			"tags": [
 				{
@@ -5924,7 +5956,7 @@
 		},
 		{
 			"name": "Device.type",
-			"summary": "Get the device type",
+			"summary": "The device type",
 			"params": [],
 			"tags": [
 				{
@@ -5957,7 +5989,7 @@
 		},
 		{
 			"name": "Device.model",
-			"summary": "Get the device model",
+			"summary": "The device model",
 			"params": [],
 			"tags": [
 				{
@@ -5990,7 +6022,7 @@
 		},
 		{
 			"name": "Device.sku",
-			"summary": "Get the device sku",
+			"summary": "The device sku",
 			"params": [],
 			"tags": [
 				{
@@ -6023,7 +6055,7 @@
 		},
 		{
 			"name": "Device.make",
-			"summary": "Get the device make",
+			"summary": "The device make",
 			"params": [],
 			"tags": [
 				{
@@ -6056,7 +6088,7 @@
 		},
 		{
 			"name": "Device.version",
-			"summary": "Get the SDK, OS and other version info",
+			"summary": "The SDK, OS and other version info",
 			"params": [],
 			"tags": [
 				{
@@ -6202,7 +6234,7 @@
 					]
 				}
 			],
-			"summary": "Get the human readable name of the device",
+			"summary": "The human readable name of the device",
 			"params": [
 				{
 					"name": "listen",
@@ -6214,7 +6246,7 @@
 			],
 			"result": {
 				"name": "value",
-				"summary": "the device friendly-name",
+				"summary": "The device friendly-name",
 				"schema": {
 					"anyOf": [
 						{
@@ -6244,7 +6276,7 @@
 		},
 		{
 			"name": "Device.hdcp",
-			"summary": "Get the supported HDCP versions available for content transmission",
+			"summary": "The supported HDCP versions available for content transmission",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -6254,11 +6286,6 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
-				},
-				{
-					"name": "deprecated",
-					"x-since": "1.2.0",
-					"x-alternative": "Device.hdcpVersionSupported()"
 				}
 			],
 			"params": [],
@@ -6284,44 +6311,11 @@
 			]
 		},
 		{
-			"name": "Device.hdcpVersionSupported",
-			"summary": "Get the HDCP version supported by the device",
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "hdcpVersionSupported",
-				"summary": "The supported HDCP version",
-				"schema": {
-					"$ref": "#/components/schemas/HDCPVersion"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "2.2"
-					}
-				}
-			]
-		},
-		{
 			"name": "Device.hdr",
 			"summary": "Returns an array of valid HDR profiles that the device supports",
 			"tags": [
 				{
-					"name": "property:immutable"
+					"name": "property:readonly"
 				},
 				{
 					"name": "capabilities",
@@ -6332,7 +6326,7 @@
 				{
 					"name": "deprecated",
 					"x-since": "1.2.0",
-					"x-alternative": "Device.hdrProfiles()"
+					"x-alternative": "MediaCapabilies.hdrProfiles()"
 				}
 			],
 			"params": [],
@@ -6360,99 +6354,8 @@
 			]
 		},
 		{
-			"name": "Device.hdrProfile",
-			"summary": "Get the current HDR profile set on the device for video output.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "hdrProfile",
-				"summary": "The current HDR profile",
-				"schema": {
-					"$ref": "#/x-schemas/Media/HDRProfile"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "hdr10"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.hdrProfiles",
-			"summary": "Get all HDR profiles supported by the device, regardless of any connected display.",
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "hdrProfiles",
-				"summary": "The supported HDR profiles",
-				"schema": {
-					"type": "array",
-					"items": {
-						"$ref": "#/x-schemas/Media/HDRProfile"
-					}
-				}
-			},
-			"examples": [
-				{
-					"name": "Example with a device and display that both support HDR",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"hdr10",
-							"hdr10plus",
-							"hlg"
-						]
-					}
-				},
-				{
-					"name": "Example with either a device or display that does not support HDR",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"sdr"
-						]
-					}
-				},
-				{
-					"name": "Example where no display is present",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": []
-					}
-				}
-			]
-		},
-		{
 			"name": "Device.audio",
-			"summary": "Get the supported audio profiles",
+			"summary": "The supported audio profiles",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -6490,7 +6393,7 @@
 		},
 		{
 			"name": "Device.screenResolution",
-			"summary": "Get the width and height of the current screen resolution.",
+			"summary": "The width and height of the current screen resolution.",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -6504,7 +6407,7 @@
 				{
 					"name": "deprecated",
 					"x-since": "1.2.0",
-					"x-alternative": "Display.resolution()"
+					"x-alternative": "Video.resolution()"
 				}
 			],
 			"params": [],
@@ -6531,7 +6434,7 @@
 		},
 		{
 			"name": "Device.videoResolution",
-			"summary": "Get the resolution of the current video output in pixels. Returns a zero value for width and height if no display is present.",
+			"summary": "The width and height of the current video output resolution",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -6541,12 +6444,17 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-since": "1.2.0",
+					"x-alternative": "Video.resolution()"
 				}
 			],
 			"params": [],
 			"result": {
 				"name": "videoResolution",
-				"summary": "The resolution",
+				"summary": "The video output resolution",
 				"schema": {
 					"$ref": "#/components/schemas/Resolution"
 				}
@@ -6566,236 +6474,8 @@
 			]
 		},
 		{
-			"name": "Device.audioFormatSupported",
-			"summary": "Check whether content of a given audio format is supported by the device's current configuration.  The result is based on the device's best possible audio output configuration. These values may change as different AV inputs or peripherals are activated or connected.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "codec",
-					"summary": "Audio codec used to check whether its supported.",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Media/AudioCodec"
-					}
-				},
-				{
-					"name": "options",
-					"summary": "Additional options to use for checking whether an audio format is supported by the device.  All values must be true for the content to be playable.",
-					"schema": {
-						"$ref": "#/components/schemas/AudioFormatOptions"
-					}
-				}
-			],
-			"result": {
-				"name": "audioFormatSupported",
-				"summary": "Whether audio content of the given format is supported by the device's current configuration.",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Check whether EAC3 codec with Atmos is supported",
-					"params": [
-						{
-							"name": "codec",
-							"value": "eac3"
-						},
-						{
-							"name": "options",
-							"value": {
-								"atmos": true
-							}
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.videoFormatSupported",
-			"summary": "Check whether video content of the given format is supported by the device's current configuration.  These values may change as different AV inputs or peripherals are activated or connected.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "codec",
-					"summary": "The video codec to check whether its supported by the device's current configuration.",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Media/VideoCodec"
-					}
-				},
-				{
-					"name": "options",
-					"summary": "Additional options to use for checking whether a video is supported by the device.  All values must be true for the content to be playable.",
-					"schema": {
-						"$ref": "#/components/schemas/VideoFormatOptions"
-					}
-				}
-			],
-			"result": {
-				"name": "videoFormatSupported",
-				"summary": "Whether video content of the given format is supported by the device's current configuration.",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Specify the video format to check",
-					"params": [
-						{
-							"name": "codec",
-							"value": "avc"
-						},
-						{
-							"name": "options",
-							"value": {
-								"resolution": [
-									1920,
-									1080
-								]
-							}
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.audioMode",
-			"summary": "Get the current audio output mode of the device.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "audioMode",
-				"summary": "The current audio output mode.",
-				"schema": {
-					"$ref": "#/x-schemas/Media/AudioMode"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "stereo"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.videoMode",
-			"summary": "Get the current video output mode of the device.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "videoMode",
-				"summary": "The current video output mode.",
-				"schema": {
-					"$ref": "#/x-schemas/Media/VideoMode"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "1080p60"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.videoModes",
-			"summary": "Returns an array of all valid video output modes that the device and display together support.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "videoModes",
-				"summary": "An array of video output modes",
-				"schema": {
-					"type": "array",
-					"items": {
-						"$ref": "#/x-schemas/Media/VideoMode"
-					}
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"720p50",
-							"720p60",
-							"1080i50",
-							"1080i60",
-							"1080p24",
-							"1080p30",
-							"1080p50",
-							"1080p60"
-						]
-					}
-				}
-			]
-		},
-		{
 			"name": "Device.network",
-			"summary": "Get the current network status and type",
+			"summary": "The network status and type",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -6810,7 +6490,7 @@
 			"params": [],
 			"result": {
 				"name": "networkInfo",
-				"summary": "the status and type",
+				"summary": "The network status and type",
 				"schema": {
 					"type": "object",
 					"properties": {
@@ -6843,7 +6523,7 @@
 		},
 		{
 			"name": "Device.provision",
-			"summary": "Used by a distributor to push provision info to firebolt.",
+			"summary": "Used by a distributor to push provision info to Firebolt.",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -6927,178 +6607,6 @@
 			]
 		},
 		{
-			"name": "Device.sourceFrameRateUsed",
-			"summary": "Check whether the HDMI output frame rate is set to follow the video source frame rate.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "sourceFrameRateUsed",
-				"summary": "Whether the HDMI output frame rate is set to follow the video source frame rate.",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.onAudioOutputChanged",
-			"summary": "Get notified when any of the audio output properties have been changed.",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "onAudioOutputChanged",
-				"summary": "The current audio output properties.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "object",
-							"properties": {
-								"audioMode": {
-									"$ref": "#/x-schemas/Media/AudioMode"
-								}
-							},
-							"required": [
-								"audioMode"
-							]
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"audioMode": "stereo"
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.onVideoOutputChanged",
-			"summary": "Get notified when any of the video output settings have been changed.",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "onVideoOutputChanged",
-				"summary": "The current video output configuration.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "object",
-							"properties": {
-								"hdrProfile": {
-									"description": "",
-									"$ref": "#/x-schemas/Media/HDRProfile"
-								},
-								"sourceFrameRateUsed": {
-									"description": "Whether the HDMI output frame rate is set to follow the video source frame rate.",
-									"type": "boolean"
-								},
-								"videoMode": {
-									"description": "",
-									"$ref": "#/x-schemas/Media/VideoMode"
-								}
-							},
-							"required": [
-								"hdrProfile",
-								"sourceFrameRateUsed",
-								"videoMode"
-							]
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"hdrProfile": "hdr10",
-							"sourceFrameRateUsed": true,
-							"videoMode": "1080p60"
-						}
-					}
-				}
-			]
-		},
-		{
 			"name": "Device.onNameChanged",
 			"summary": "The human readable name of the device",
 			"params": [
@@ -7171,7 +6679,7 @@
 		},
 		{
 			"name": "Device.onHdcpChanged",
-			"summary": "Get the supported HDCP versions available for content transmission",
+			"summary": "The supported HDCP versions available for content transmission",
 			"tags": [
 				{
 					"name": "subscriber",
@@ -7186,11 +6694,6 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
-				},
-				{
-					"name": "deprecated",
-					"x-since": "1.2.0",
-					"x-alternative": "Device.hdcpVersionSupported()"
 				}
 			],
 			"params": [
@@ -7236,22 +6739,27 @@
 			]
 		},
 		{
-			"name": "Device.onHdrProfileChanged",
-			"summary": "Get the current HDR profile set on the device for video output.",
+			"name": "Device.onHdrChanged",
+			"summary": "Returns an array of valid HDR profiles that the device supports",
 			"tags": [
 				{
 					"name": "subscriber",
-					"x-subscriber-for": "Device.hdrProfile"
+					"x-subscriber-for": "Device.hdr"
 				},
 				{
 					"name": "event",
-					"x-alternative": "hdrProfile"
+					"x-alternative": "hdr"
 				},
 				{
 					"name": "capabilities",
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-since": "1.2.0",
+					"x-alternative": "MediaCapabilies.hdrProfiles()"
 				}
 			],
 			"params": [
@@ -7264,15 +6772,15 @@
 				}
 			],
 			"result": {
-				"name": "hdrProfile",
-				"summary": "The current HDR profile",
+				"name": "hdr",
+				"summary": "The supported HDR profiles",
 				"schema": {
 					"anyOf": [
 						{
 							"$ref": "#/x-schemas/Types/ListenResponse"
 						},
 						{
-							"$ref": "#/x-schemas/Media/HDRProfile"
+							"$ref": "#/x-schemas/Types/BooleanMap"
 						}
 					]
 				}
@@ -7288,14 +6796,19 @@
 					],
 					"result": {
 						"name": "Default Result",
-						"value": "hdr10"
+						"value": {
+							"hdr10": true,
+							"hdr10Plus": true,
+							"dolbyVision": true,
+							"hlg": true
+						}
 					}
 				}
 			]
 		},
 		{
 			"name": "Device.onAudioChanged",
-			"summary": "Get the supported audio profiles",
+			"summary": "The supported audio profiles",
 			"tags": [
 				{
 					"name": "subscriber",
@@ -7358,7 +6871,7 @@
 		},
 		{
 			"name": "Device.onScreenResolutionChanged",
-			"summary": "Get the width and height of the current screen resolution.",
+			"summary": "The width and height of the current screen resolution.",
 			"tags": [
 				{
 					"name": "subscriber",
@@ -7377,7 +6890,7 @@
 				{
 					"name": "deprecated",
 					"x-since": "1.2.0",
-					"x-alternative": "Display.resolution()"
+					"x-alternative": "Video.resolution()"
 				}
 			],
 			"params": [
@@ -7424,7 +6937,7 @@
 		},
 		{
 			"name": "Device.onVideoResolutionChanged",
-			"summary": "Get the resolution of the current video output in pixels. Returns a zero value for width and height if no display is present.",
+			"summary": "The width and height of the current video output resolution",
 			"tags": [
 				{
 					"name": "subscriber",
@@ -7439,6 +6952,11 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-since": "1.2.0",
+					"x-alternative": "Video.resolution()"
 				}
 			],
 			"params": [
@@ -7452,7 +6970,7 @@
 			],
 			"result": {
 				"name": "videoResolution",
-				"summary": "The resolution",
+				"summary": "The video output resolution",
 				"schema": {
 					"anyOf": [
 						{
@@ -7484,194 +7002,8 @@
 			]
 		},
 		{
-			"name": "Device.onAudioModeChanged",
-			"summary": "Get the current audio output mode of the device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.audioMode"
-				},
-				{
-					"name": "event",
-					"x-alternative": "audioMode"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "audioMode",
-				"summary": "The current audio output mode.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Media/AudioMode"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "stereo"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.onVideoModeChanged",
-			"summary": "Get the current video output mode of the device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.videoMode"
-				},
-				{
-					"name": "event",
-					"x-alternative": "videoMode"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "videoMode",
-				"summary": "The current video output mode.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Media/VideoMode"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "1080p60"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.onVideoModesChanged",
-			"summary": "Returns an array of all valid video output modes that the device and display together support.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.videoModes"
-				},
-				{
-					"name": "event",
-					"x-alternative": "videoModes"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "videoModes",
-				"summary": "An array of video output modes",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/x-schemas/Media/VideoMode"
-							}
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"720p50",
-							"720p60",
-							"1080i50",
-							"1080i60",
-							"1080p24",
-							"1080p30",
-							"1080p50",
-							"1080p60"
-						]
-					}
-				}
-			]
-		},
-		{
 			"name": "Device.onNetworkChanged",
-			"summary": "Get the current network status and type",
+			"summary": "The network status and type",
 			"tags": [
 				{
 					"name": "subscriber",
@@ -7699,7 +7031,7 @@
 			],
 			"result": {
 				"name": "networkInfo",
-				"summary": "the status and type",
+				"summary": "The network status and type",
 				"schema": {
 					"anyOf": [
 						{
@@ -7738,64 +7070,6 @@
 							"state": "connected",
 							"type": "wifi"
 						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.onSourceFrameRateUsedChanged",
-			"summary": "Check whether the HDMI output frame rate is set to follow the video source frame rate.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.sourceFrameRateUsed"
-				},
-				{
-					"name": "event",
-					"x-alternative": "sourceFrameRateUsed"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "sourceFrameRateUsed",
-				"summary": "Whether the HDMI output frame rate is set to follow the video source frame rate.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "boolean"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": true
 					}
 				}
 			]
@@ -9991,12 +9265,9 @@
 		},
 		{
 			"name": "Display.colorDepth",
-			"summary": "Get the maximum color depth supported by the display panel.",
+			"summary": "The color depth supported by the display.",
 			"params": [],
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10006,7 +9277,7 @@
 			],
 			"result": {
 				"name": "colorDepth",
-				"summary": "The color depth supported by the display panel.",
+				"summary": "The color depth supported by the display.",
 				"schema": {
 					"type": "number"
 				}
@@ -10032,12 +9303,9 @@
 		},
 		{
 			"name": "Display.colorimetry",
-			"summary": "Get all colorimetry values from the display panel.",
+			"summary": "The colorimetry values supported by the display.",
 			"params": [],
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10047,11 +9315,11 @@
 			],
 			"result": {
 				"name": "colorimetry",
-				"summary": "The colorimetry values supported by the display panel.",
+				"summary": "The colorimetry values supported by the display.",
 				"schema": {
 					"type": "array",
 					"items": {
-						"$ref": "#/x-schemas/Media/Colorimetry"
+						"$ref": "#/components/schemas/Colorimetry"
 					}
 				}
 			},
@@ -10063,21 +9331,24 @@
 						"name": "Default Result",
 						"value": [
 							"BT2020RGB",
-							"BT2020YCC",
-							"xvYCC601",
-							"xvYCC709"
+							"BT2020YCC"
 						]
+					}
+				},
+				{
+					"name": "Example with no display",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": []
 					}
 				}
 			]
 		},
 		{
 			"name": "Display.hdrProfiles",
-			"summary": "Get all HDR profiles supported by the display.",
+			"summary": "The display's supported HDR profiles.",
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10088,13 +9359,12 @@
 			"params": [],
 			"result": {
 				"name": "hdrProfiles",
-				"summary": "An array of all valid HDR profiles that the display supports.",
+				"summary": "An array of all HDR profiles supported by the display.",
 				"schema": {
 					"type": "array",
 					"items": {
 						"$ref": "#/x-schemas/Media/HDRProfile"
-					},
-					"minItems": 1
+					}
 				}
 			},
 			"examples": [
@@ -10110,82 +9380,21 @@
 							"hlg"
 						]
 					}
-				}
-			]
-		},
-		{
-			"name": "Display.manufacturer",
-			"summary": "Get the manufacturer of the display device.",
-			"tags": [
-				{
-					"name": "property:readonly"
 				},
 				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "manufacturer",
-				"summary": "The manufacturer of the display device.",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
+					"name": "Example with no display",
 					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": "Samsung Electric Company"
+						"value": []
 					}
 				}
 			]
 		},
 		{
-			"name": "Display.productName",
-			"summary": "Get the product/model name of the display device.",
+			"name": "Display.nativeRefreshRate",
+			"summary": "The native refresh rate of the display device.",
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "productName",
-				"summary": "The product/model name of the display device.",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "Q80A"
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.refreshRate",
-			"summary": "Get the native refresh rate of the display device.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10209,16 +9418,21 @@
 						"name": "Default Result",
 						"value": 60
 					}
+				},
+				{
+					"name": "Example with no display",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": 0
+					}
 				}
 			]
 		},
 		{
-			"name": "Display.resolution",
-			"summary": "Get the resolution of the display device in pixels. Returns a zero value for width and height if no display is present.",
+			"name": "Display.nativeResolution",
+			"summary": "The native resolution of the display device in pixels. Returns a zero value for width and height if no display is present.",
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10231,7 +9445,7 @@
 				"name": "resolution",
 				"summary": "The resolution of the display device.",
 				"schema": {
-					"$ref": "#/x-schemas/Media/Dimensions"
+					"$ref": "#/x-schemas/Types/Dimensions"
 				}
 			},
 			"examples": [
@@ -10240,32 +9454,29 @@
 					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": [
-							1920,
-							1080
-						]
+						"value": {
+							"width": 1920,
+							"height": 1080
+						}
 					}
 				},
 				{
-					"name": "No Display Example",
+					"name": "Example with no display",
 					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": [
-							0,
-							0
-						]
+						"value": {
+							"width": 0,
+							"height": 0
+						}
 					}
 				}
 			]
 		},
 		{
-			"name": "Display.resolutionName",
-			"summary": "Get a user-friendly resolution name of the display device.",
+			"name": "Display.nativeResolutionName",
+			"summary": "The user-friendly representation of the display's native resolution.",
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10289,16 +9500,21 @@
 						"name": "Default Result",
 						"value": "uhd"
 					}
+				},
+				{
+					"name": "Example with no display",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "unknown"
+					}
 				}
 			]
 		},
 		{
 			"name": "Display.size",
-			"summary": "Get the width and height of the display panel (in centimeters).",
+			"summary": "The physical width and height of the display panel (in centimeters).",
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10311,7 +9527,7 @@
 				"name": "size",
 				"summary": "The width and height of the display.",
 				"schema": {
-					"$ref": "#/x-schemas/Media/Dimensions"
+					"$ref": "#/x-schemas/Types/Dimensions"
 				}
 			},
 			"examples": [
@@ -10320,139 +9536,29 @@
 					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": [
-							157,
-							91
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.sourcePhysicalAddress",
-			"summary": "Get the source physical address of the display device.",
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "sourcePhysicalAddress",
-				"summary": "The source physical address of the display device.",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "3.0.0.0"
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onColorDepthChanged",
-			"summary": "Get the maximum color depth supported by the display panel.",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.colorDepth"
-				},
-				{
-					"name": "event",
-					"x-alternative": "colorDepth"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"result": {
-				"name": "colorDepth",
-				"summary": "The color depth supported by the display panel.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "number"
+						"value": {
+							"width": 157,
+							"height": 91
 						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": 10
 					}
 				},
 				{
 					"name": "Example with no display",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": 0
+						"value": {
+							"width": 0,
+							"height": 0
+						}
 					}
 				}
 			]
 		},
 		{
-			"name": "Display.onColorimetryChanged",
-			"summary": "Get all colorimetry values from the display panel.",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"name": "Display.videoModes",
+			"summary": "The video modes supported by the display device.",
 			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.colorimetry"
-				},
-				{
-					"name": "event",
-					"x-alternative": "colorimetry"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -10460,535 +9566,41 @@
 					]
 				}
 			],
+			"params": [],
 			"result": {
-				"name": "colorimetry",
-				"summary": "The colorimetry values supported by the display panel.",
+				"name": "videoModes",
+				"summary": "The video modes",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/x-schemas/Media/Colorimetry"
-							}
-						}
-					]
+					"type": "array",
+					"items": {
+						"$ref": "#/x-schemas/Media/VideoMode"
+					}
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": [
-							"BT2020RGB",
-							"BT2020YCC",
-							"xvYCC601",
-							"xvYCC709"
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onHdrProfilesChanged",
-			"summary": "Get all HDR profiles supported by the display.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.hdrProfiles"
-				},
-				{
-					"name": "event",
-					"x-alternative": "hdrProfiles"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "hdrProfiles",
-				"summary": "An array of all valid HDR profiles that the display supports.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/x-schemas/Media/HDRProfile"
-							},
-							"minItems": 1
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"dolbyVision",
-							"hdr10",
-							"hdr10plus",
-							"hlg"
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onManufacturerChanged",
-			"summary": "Get the manufacturer of the display device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.manufacturer"
-				},
-				{
-					"name": "event",
-					"x-alternative": "manufacturer"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "manufacturer",
-				"summary": "The manufacturer of the display device.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "string"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "Samsung Electric Company"
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onProductNameChanged",
-			"summary": "Get the product/model name of the display device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.productName"
-				},
-				{
-					"name": "event",
-					"x-alternative": "productName"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "productName",
-				"summary": "The product/model name of the display device.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "string"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "Q80A"
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onRefreshRateChanged",
-			"summary": "Get the native refresh rate of the display device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.refreshRate"
-				},
-				{
-					"name": "event",
-					"x-alternative": "refreshRate"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "refreshRate",
-				"summary": "The refresh rate of the display device.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "number"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": 60
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onResolutionChanged",
-			"summary": "Get the resolution of the display device in pixels. Returns a zero value for width and height if no display is present.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.resolution"
-				},
-				{
-					"name": "event",
-					"x-alternative": "resolution"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "resolution",
-				"summary": "The resolution of the display device.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Media/Dimensions"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							1920,
-							1080
+							"720p50",
+							"720p60",
+							"1080i50",
+							"1080i60",
+							"1080p24",
+							"1080p30",
+							"1080p50",
+							"1080p60"
 						]
 					}
 				},
 				{
-					"name": "No Display Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"name": "Example with no display",
+					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": [
-							0,
-							0
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onResolutionNameChanged",
-			"summary": "Get a user-friendly resolution name of the display device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.resolutionName"
-				},
-				{
-					"name": "event",
-					"x-alternative": "resolutionName"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "resolutionName",
-				"summary": "The resoltuion name of the display device.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Media/ResolutionName"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "uhd"
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onSizeChanged",
-			"summary": "Get the width and height of the display panel (in centimeters).",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.size"
-				},
-				{
-					"name": "event",
-					"x-alternative": "size"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "size",
-				"summary": "The width and height of the display.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Media/Dimensions"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							157,
-							91
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Display.onSourcePhysicalAddressChanged",
-			"summary": "Get the source physical address of the display device.",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Display.sourcePhysicalAddress"
-				},
-				{
-					"name": "event",
-					"x-alternative": "sourcePhysicalAddress"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:display:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "sourcePhysicalAddress",
-				"summary": "The source physical address of the display device.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "string"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "3.0.0.0"
+						"value": []
 					}
 				}
 			]
@@ -14729,27 +13341,24 @@
 			]
 		},
 		{
-			"name": "MediaInfo.activeAudioFormats",
-			"summary": "Get a list of the active audio formats currently used across all media pipelines.",
+			"name": "MediaCapabilities.audioCodecs",
+			"summary": "The audio codecs commonly supported by the device and all its connected audio peripherals.",
 			"tags": [
 				{
-					"name": "property:readonly"
-				},
-				{
 					"name": "capabilities",
-					"x-manages": [
-						"xrn:firebolt:capability:media-info:audio-format"
+					"x-uses": [
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
 			"params": [],
 			"result": {
-				"name": "activeAudioFormats",
-				"summary": "The active audio formats used across all pipelines.",
+				"name": "audioCodecs",
+				"summary": "The supported audio codecs",
 				"schema": {
 					"type": "array",
 					"items": {
-						"$ref": "#/components/schemas/AudioFormat"
+						"$ref": "#/x-schemas/Media/AudioCodec"
 					}
 				}
 			},
@@ -14760,42 +13369,36 @@
 					"result": {
 						"name": "Default Result",
 						"value": [
-							{
-								"bitRate": 128,
-								"channels": "2",
-								"codec": "aac",
-								"codecProfile": "mp2lc",
-								"container": "audio/mp4",
-								"pipelineId": 1,
-								"sampleRate": 48
-							}
+							"aac",
+							"ac3",
+							"ac4",
+							"eac3",
+							"mpeg3",
+							"pcm"
 						]
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.activeVideoFormats",
-			"summary": "Get a list of the active video formats currently used across all media pipelines.",
+			"name": "MediaCapabilities.videoCodecs",
+			"summary": "The video codecs commonly supported by the device and all of its connected video peripherals.",
 			"tags": [
 				{
-					"name": "property:readonly"
-				},
-				{
 					"name": "capabilities",
-					"x-manages": [
-						"xrn:firebolt:capability:media-info:video-format"
+					"x-uses": [
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
 			"params": [],
 			"result": {
-				"name": "activeVideoFormats",
-				"summary": "The active video formats used across all pipelines.",
+				"name": "videoCodecs",
+				"summary": "The supported video codecs",
 				"schema": {
 					"type": "array",
 					"items": {
-						"$ref": "#/components/schemas/VideoFormat"
+						"$ref": "#/x-schemas/Media/VideoCodec"
 					}
 				}
 			},
@@ -14806,583 +13409,303 @@
 					"result": {
 						"name": "Default Result",
 						"value": [
-							{
-								"codec": "hevc",
-								"codecLevel": "4.2",
-								"codecProfile": "main",
-								"container": "video/mp4",
-								"frameRate": 30,
-								"hdr": [
-									"hdr10"
-								],
-								"pipelineId": 1,
-								"resolution": [
-									1920,
-									1080
-								]
-							}
+							"av1",
+							"avc",
+							"hevc",
+							"mpeg1",
+							"mpeg2",
+							"vp8",
+							"vp9"
 						]
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.audioFormat",
-			"summary": "Get the audio format currently used by the specified media pipeline.",
+			"name": "MediaCapabilities.audioFormatSupported",
+			"summary": "Check whether content of a given audio format is supported by the device's current configuration and its AV output system.  The result is based on the device's best possible audio output configuration. These values may change as different AV inputs or peripherals are activated or connected.",
 			"tags": [
-				{
-					"name": "property:readonly",
-					"x-session": "sessionId",
-					"x-session-name": "mediaSession"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:media-info:audio-format"
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
 			"params": [
 				{
-					"name": "pipelineId",
+					"name": "codec",
+					"summary": "Audio codec used to check whether its supported.",
 					"required": true,
 					"schema": {
-						"$ref": "#/components/schemas/PipelineId"
+						"$ref": "#/x-schemas/Media/AudioCodec"
+					}
+				},
+				{
+					"name": "options",
+					"summary": "Additional options to use for checking whether an audio format is supported by the device.  All values must be true for the content to be playable.",
+					"schema": {
+						"$ref": "#/components/schemas/AudioFormatOptions"
 					}
 				}
 			],
 			"result": {
-				"name": "audioFormat",
-				"summary": "Audio format used by the pipeline.",
+				"name": "audioFormatSupported",
+				"summary": "Whether audio content of the given format is supported by the device's current configuration.",
 				"schema": {
-					"$ref": "#/components/schemas/AudioFormat"
+					"type": "boolean"
 				}
 			},
 			"examples": [
 				{
-					"name": "Default Example",
+					"name": "Check whether EAC3 codec with Atmos is supported",
 					"params": [
 						{
-							"name": "pipelineId",
-							"value": 1
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"bitRate": 128,
-							"channels": "2",
-							"codec": "aac",
-							"container": "audio/mp4",
-							"pipelineId": 1,
-							"sampleRate": 48
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "MediaInfo.onActiveAudioFormatsChanged",
-			"summary": "Get notified when the active audio formats used across all media pipelines starts, stops, or changes.",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-manages": [
-						"xrn:firebolt:capability:media-info:audio-format"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "onActiveAudioFormatsChanged",
-				"summary": "The updated audio formats used across all pipelines.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
+							"name": "codec",
+							"value": "eac3"
 						},
 						{
-							"type": "array",
-							"items": {
-								"$ref": "#/components/schemas/AudioFormat"
+							"name": "options",
+							"value": {
+								"atmos": true
 							}
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
 						}
 					],
 					"result": {
 						"name": "Default Result",
-						"value": [
-							{
-								"bitRate": 128,
-								"channels": "5.1",
-								"codec": "aac",
-								"container": "audio/mp4",
-								"pipelineId": 1,
-								"sampleRate": 48
-							}
-						]
+						"value": true
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.onActiveVideoFormatsChanged",
-			"summary": "Get notified when the active video formats used across all media pipelines starts, stops, or changes.",
+			"name": "MediaCapabilities.videoFormatSupported",
+			"summary": "Check whether video content of the given format is supported by the device's current configuration and its AV output system.  These values may change as different AV inputs or peripherals are activated or connected.",
 			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-manages": [
-						"xrn:firebolt:capability:media-info:video-format"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "onActiveVideoFormatsChanged",
-				"summary": "The updated video formats used across all pipelines.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/components/schemas/VideoFormat"
-							}
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							{
-								"codec": "hevc",
-								"codecLevel": "4.2",
-								"codecProfile": "main",
-								"container": "video/mp4",
-								"frameRate": 30,
-								"hdr": [
-									"hdr10"
-								],
-								"pipelineId": 1,
-								"resolution": [
-									1920,
-									1080
-								]
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "MediaInfo.videoFormat",
-			"summary": "Get the video format currently used by the specified media pipeline.",
-			"tags": [
-				{
-					"name": "property:readonly",
-					"x-session": "sessionId",
-					"x-session-name": "mediaSession"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:media-info:video-format"
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
 			"params": [
 				{
-					"name": "pipelineId",
+					"name": "codec",
+					"summary": "The video codec to check whether its supported by the device's current configuration.",
 					"required": true,
 					"schema": {
-						"$ref": "#/components/schemas/PipelineId"
+						"$ref": "#/x-schemas/Media/VideoCodec"
+					}
+				},
+				{
+					"name": "options",
+					"summary": "Additional options to use for checking whether a video is supported by the device.  All values must be true for the content to be playable.",
+					"schema": {
+						"$ref": "#/components/schemas/VideoFormatOptions"
 					}
 				}
 			],
 			"result": {
-				"name": "videoFormat",
-				"summary": "Video format used by the pipeline.",
+				"name": "videoFormatSupported",
+				"summary": "Whether video content of the given format is supported by the device's current configuration.",
 				"schema": {
-					"$ref": "#/components/schemas/VideoFormat"
+					"type": "boolean"
 				}
 			},
 			"examples": [
 				{
-					"name": "Default Example",
+					"name": "Specify the video format to check",
 					"params": [
 						{
-							"name": "pipelineId",
-							"value": 1
+							"name": "codec",
+							"value": "hevc"
+						},
+						{
+							"name": "options",
+							"value": {
+								"resolution": {
+									"width": 1920,
+									"height": 1080
+								}
+							}
 						}
 					],
 					"result": {
 						"name": "Default Result",
-						"value": {
-							"codec": "hevc",
-							"codecLevel": "4.2",
-							"codecProfile": "main",
-							"container": "video/mp4",
-							"frameRate": 30,
-							"hdr": [
-								"hdr10"
-							],
-							"pipelineId": 1,
-							"resolution": [
-								1920,
-								1080
-							]
-						}
+						"value": true
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.onActiveAudioFormatsChanged",
-			"summary": "Get a list of the active audio formats currently used across all media pipelines.",
+			"name": "MediaCapabilities.audioModes",
+			"summary": "The audio output modes commonly supported by the device and its connected audio peripherals",
 			"tags": [
 				{
-					"name": "subscriber",
-					"x-subscriber-for": "MediaInfo.activeAudioFormats"
-				},
-				{
-					"name": "event",
-					"x-alternative": "activeAudioFormats"
-				},
-				{
 					"name": "capabilities",
-					"x-manages": [
-						"xrn:firebolt:capability:media-info:audio-format"
+					"x-uses": [
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"params": [],
 			"result": {
-				"name": "activeAudioFormats",
-				"summary": "The active audio formats used across all pipelines.",
+				"name": "audioModes",
+				"summary": "The supported audio output modes",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/components/schemas/AudioFormat"
-							}
-						}
-					]
+					"type": "array",
+					"items": {
+						"$ref": "#/x-schemas/Media/AudioMode"
+					}
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": [
-							{
-								"bitRate": 128,
-								"channels": "2",
-								"codec": "aac",
-								"codecProfile": "mp2lc",
-								"container": "audio/mp4",
-								"pipelineId": 1,
-								"sampleRate": 48
-							}
+							"passthrough",
+							"stereo",
+							"surround"
 						]
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.onActiveVideoFormatsChanged",
-			"summary": "Get a list of the active video formats currently used across all media pipelines.",
+			"name": "MediaCapabilities.videoModes",
+			"summary": "The video output modes commonly supported by the device and its connected video peripherals.",
 			"tags": [
 				{
-					"name": "subscriber",
-					"x-subscriber-for": "MediaInfo.activeVideoFormats"
-				},
-				{
-					"name": "event",
-					"x-alternative": "activeVideoFormats"
-				},
-				{
 					"name": "capabilities",
-					"x-manages": [
-						"xrn:firebolt:capability:media-info:video-format"
+					"x-uses": [
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"params": [],
 			"result": {
-				"name": "activeVideoFormats",
-				"summary": "The active video formats used across all pipelines.",
+				"name": "videoModes",
+				"summary": "The supported video output modes",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/components/schemas/VideoFormat"
-							}
-						}
-					]
+					"type": "array",
+					"items": {
+						"$ref": "#/x-schemas/Media/VideoMode"
+					}
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": [
-							{
-								"codec": "hevc",
-								"codecLevel": "4.2",
-								"codecProfile": "main",
-								"container": "video/mp4",
-								"frameRate": 30,
-								"hdr": [
-									"hdr10"
-								],
-								"pipelineId": 1,
-								"resolution": [
-									1920,
-									1080
-								]
-							}
+							"720p50",
+							"720p60",
+							"1080p50",
+							"1080p60"
 						]
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.onAudioFormatChanged",
-			"summary": "Get the audio format currently used by the specified media pipeline.",
+			"name": "MediaCapabilities.colorDepth",
+			"summary": "The maximum color depth commonly supported by the device and its connected video peripherals.",
+			"params": [],
 			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "MediaInfo.audioFormat"
-				},
-				{
-					"name": "event",
-					"x-alternative": "audioFormat"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:media-info:audio-format"
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
-				}
-			],
-			"params": [
-				{
-					"name": "pipelineId",
-					"required": true,
-					"schema": {
-						"$ref": "#/components/schemas/PipelineId"
-					}
-				},
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
 				}
 			],
 			"result": {
-				"name": "audioFormat",
-				"summary": "Audio format used by the pipeline.",
+				"name": "colorDepth",
+				"summary": "The supported color depth",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/AudioFormat"
-						}
-					]
+					"type": "number"
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [
-						{
-							"name": "pipelineId",
-							"value": 1
-						},
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": {
-							"bitRate": 128,
-							"channels": "2",
-							"codec": "aac",
-							"container": "audio/mp4",
-							"pipelineId": 1,
-							"sampleRate": 48
-						}
+						"value": 10
 					}
 				}
 			]
 		},
 		{
-			"name": "MediaInfo.onVideoFormatChanged",
-			"summary": "Get the video format currently used by the specified media pipeline.",
+			"name": "MediaCapabilities.hdrProfiles",
+			"summary": "The HDR profiles commonly supported by the device and its connected video peripherals.",
 			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "MediaInfo.videoFormat"
-				},
-				{
-					"name": "event",
-					"x-alternative": "videoFormat"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:media-info:video-format"
+						"xrn:firebolt:capability:media-capabilities:info"
 					]
 				}
 			],
-			"params": [
-				{
-					"name": "pipelineId",
-					"required": true,
-					"schema": {
-						"$ref": "#/components/schemas/PipelineId"
-					}
-				},
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"params": [],
 			"result": {
-				"name": "videoFormat",
-				"summary": "Video format used by the pipeline.",
+				"name": "hdrProfiles",
+				"summary": "The supported HDR profiles",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/VideoFormat"
-						}
-					]
+					"type": "array",
+					"items": {
+						"$ref": "#/x-schemas/Media/HDRProfile"
+					}
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [
-						{
-							"name": "pipelineId",
-							"value": 1
-						},
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": {
-							"codec": "hevc",
-							"codecLevel": "4.2",
-							"codecProfile": "main",
-							"container": "video/mp4",
-							"frameRate": 30,
-							"hdr": [
-								"hdr10"
-							],
-							"pipelineId": 1,
-							"resolution": [
-								1920,
-								1080
-							]
-						}
+						"value": [
+							"hdr10",
+							"hdr10plus",
+							"hlg"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "MediaCapabilities.atmosSupported",
+			"summary": "Whether or not Dolby Atmos immersive audio is commonly supported by the device and its connected audio peripherals.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:media-capabilities:info"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "atmosSupported",
+				"summary": "Whether Dolby Atmos is supported",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": true
 					}
 				}
 			]
@@ -20288,6 +18611,707 @@
 			]
 		},
 		{
+			"name": "VideoOutput.colorDepth",
+			"summary": "The color depth set for video output.",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"result": {
+				"name": "colorDepth",
+				"summary": "The color depth set.",
+				"schema": {
+					"$ref": "#/x-schemas/Media/ColorDepth"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "10"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.colorSpace",
+			"summary": "The color space and chroma set for video output.",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"result": {
+				"name": "colorSpace",
+				"summary": "The color space set on the device.",
+				"schema": {
+					"$ref": "#/x-schemas/Media/ColorSpace"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "YCbCr422"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.currentSettings",
+			"summary": "A convenience method that returns various properties currently set on the device related to video output.",
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "currentSettings",
+				"summary": "Current video output properties",
+				"schema": {
+					"type": "object",
+					"properties": {
+						"colorDepth": {
+							"$ref": "#/x-schemas/Media/ColorDepth"
+						},
+						"colorSpace": {
+							"$ref": "#/x-schemas/Media/ColorSpace"
+						},
+						"hdrProfile": {
+							"$ref": "#/x-schemas/Media/HDRProfile"
+						},
+						"mode": {
+							"$ref": "#/x-schemas/Media/VideoMode"
+						},
+						"resolution": {
+							"$ref": "#/x-schemas/Types/Dimensions"
+						}
+					},
+					"required": [
+						"colorDepth",
+						"colorSpace",
+						"hdrProfile",
+						"mode",
+						"resolution"
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"colorDepth": "10",
+							"colorSpace": "YCbCr422",
+							"hdrProfile": "hdr10plus",
+							"mode": "1080p60",
+							"resolution": {
+								"width": 1920,
+								"height": 1080
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.hdrProfile",
+			"summary": "The HDR profile set for video output.",
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "hdrProfile",
+				"summary": "The HDR profile",
+				"schema": {
+					"$ref": "#/x-schemas/Media/HDRProfile"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "hdr10plus"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.quantizationRange",
+			"summary": "The quantization range set for video output.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "quantizationRange",
+				"summary": "The quantization range",
+				"schema": {
+					"$ref": "#/components/schemas/QuantizationRange"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "limited"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.mode",
+			"summary": "The current video output mode of the device.",
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "mode",
+				"summary": "The video output mode.",
+				"schema": {
+					"$ref": "#/x-schemas/Media/VideoMode"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "1080p60"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onModeWillChange",
+			"summary": "Be notified when the video output mode setting has changed but it has not yet taken effect on the device.",
+			"tags": [
+				{
+					"name": "event"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "mode",
+				"summary": "The video output mode.",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Media/VideoMode"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "1080p60"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.resolution",
+			"summary": "The width and height of the current video output, in pixels.",
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "resolution",
+				"summary": "The video output resolution",
+				"schema": {
+					"$ref": "#/x-schemas/Types/Dimensions"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"width": 1920,
+							"height": 1080
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onColorDepthChanged",
+			"summary": "The color depth set for video output.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VideoOutput.colorDepth"
+				},
+				{
+					"name": "event",
+					"x-alternative": "colorDepth"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"result": {
+				"name": "colorDepth",
+				"summary": "The color depth set.",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Media/ColorDepth"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "10"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onColorSpaceChanged",
+			"summary": "The color space and chroma set for video output.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VideoOutput.colorSpace"
+				},
+				{
+					"name": "event",
+					"x-alternative": "colorSpace"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"result": {
+				"name": "colorSpace",
+				"summary": "The color space set on the device.",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Media/ColorSpace"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "YCbCr422"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onCurrentSettingsChanged",
+			"summary": "A convenience method that returns various properties currently set on the device related to video output.",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VideoOutput.currentSettings"
+				},
+				{
+					"name": "event",
+					"x-alternative": "currentSettings"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "currentSettings",
+				"summary": "Current video output properties",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "object",
+							"properties": {
+								"colorDepth": {
+									"$ref": "#/x-schemas/Media/ColorDepth"
+								},
+								"colorSpace": {
+									"$ref": "#/x-schemas/Media/ColorSpace"
+								},
+								"hdrProfile": {
+									"$ref": "#/x-schemas/Media/HDRProfile"
+								},
+								"mode": {
+									"$ref": "#/x-schemas/Media/VideoMode"
+								},
+								"resolution": {
+									"$ref": "#/x-schemas/Types/Dimensions"
+								}
+							},
+							"required": [
+								"colorDepth",
+								"colorSpace",
+								"hdrProfile",
+								"mode",
+								"resolution"
+							]
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"colorDepth": "10",
+							"colorSpace": "YCbCr422",
+							"hdrProfile": "hdr10plus",
+							"mode": "1080p60",
+							"resolution": {
+								"width": 1920,
+								"height": 1080
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onHdrProfileChanged",
+			"summary": "The HDR profile set for video output.",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VideoOutput.hdrProfile"
+				},
+				{
+					"name": "event",
+					"x-alternative": "hdrProfile"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "hdrProfile",
+				"summary": "The HDR profile",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Media/HDRProfile"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "hdr10plus"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onModeChanged",
+			"summary": "The current video output mode of the device.",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VideoOutput.mode"
+				},
+				{
+					"name": "event",
+					"x-alternative": "mode"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "mode",
+				"summary": "The video output mode.",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Media/VideoMode"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "1080p60"
+					}
+				}
+			]
+		},
+		{
+			"name": "VideoOutput.onResolutionChanged",
+			"summary": "The width and height of the current video output, in pixels.",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VideoOutput.resolution"
+				},
+				{
+					"name": "event",
+					"x-alternative": "resolution"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:video-output:config"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "resolution",
+				"summary": "The video output resolution",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Types/Dimensions"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"width": 1920,
+							"height": 1080
+						}
+					}
+				}
+			]
+		},
+		{
 			"name": "VoiceGuidance.enabled",
 			"tags": [
 				{
@@ -21117,33 +20141,8 @@
 					"reason"
 				]
 			},
-			"AudioFormatOptions": {
-				"description": "Options for checking audio playback support",
-				"type": "object",
-				"properties": {
-					"atmos": {
-						"description": "Whether Dolby Atmos support is being requested",
-						"type": "boolean"
-					},
-					"codecLevel": {
-						"description": "The level of the audio codec",
-						"type": "string"
-					},
-					"codecProfile": {
-						"description": "The profile of the audio codec",
-						"$ref": "#/x-schemas/Media/AudioCodecProfile"
-					},
-					"container": {
-						"$ref": "#/x-schemas/Media/AudioContainer"
-					},
-					"sampleRate": {
-						"description": "The sample rate of the audio, in kHz",
-						"type": "number"
-					}
-				}
-			},
 			"AudioProfiles": {
-				"title": "AudioProfiles",
+				"description": "The audio profiles",
 				"allOf": [
 					{
 						"$ref": "#/x-schemas/Types/BooleanMap"
@@ -21154,16 +20153,6 @@
 							"$ref": "#/x-schemas/Types/AudioProfile"
 						}
 					}
-				]
-			},
-			"HDCPVersion": {
-				"description": "The HDCP version",
-				"type": "string",
-				"enumKeyPrefix": "hdcp",
-				"enum": [
-					"1.4",
-					"2.2",
-					"unknown"
 				]
 			},
 			"NetworkState": {
@@ -21196,52 +20185,6 @@
 				"additionalItems": false,
 				"minItems": 2,
 				"maxItems": 2
-			},
-			"VideoFormatOptions": {
-				"description": "Options for checking video playback support",
-				"type": "object",
-				"properties": {
-					"atmos": {
-						"description": "Whether Dolby Atmos support is being requested",
-						"type": "boolean"
-					},
-					"codecLevel": {
-						"description": "The level of the video codec",
-						"type": "string",
-						"enum": [
-							"4.1",
-							"4.2",
-							"5.0",
-							"5.1",
-							"high",
-							"main"
-						]
-					},
-					"codecProfile": {
-						"description": "The profile of the video codec",
-						"type": "string",
-						"enum": [
-							"high",
-							"main",
-							"main10",
-							"p0",
-							"p2"
-						]
-					},
-					"container": {
-						"$ref": "#/x-schemas/Media/VideoContainer"
-					},
-					"frameRate": {
-						"description": "The frame rate of the video content",
-						"type": "integer"
-					},
-					"hdr": {
-						"$ref": "#/x-schemas/Media/HDRProfile"
-					},
-					"resolution": {
-						"$ref": "#/x-schemas/Media/Dimensions"
-					}
-				}
 			},
 			"DiscoveryPolicy": {
 				"title": "DiscoveryPolicy",
@@ -21574,23 +20517,21 @@
 					}
 				}
 			},
-			"EDIDProperties": {
-				"description": "Properties of the display",
-				"type": "object",
-				"properties": {
-					"productName": {
-						"description": "Product name of the display device",
-						"type": "string"
-					},
-					"manufacturerName": {
-						"description": "Manufacturer of the display device",
-						"type": "string"
-					},
-					"sourcePhysicalAddress": {
-						"description": "Source physical address of the display device",
-						"type": "string"
-					}
-				}
+			"Colorimetry": {
+				"description": "Colorimetry",
+				"type": "string",
+				"enum": [
+					"BT2020cYCC",
+					"BT2020RGB",
+					"BT2020YCC",
+					"DCI-P3",
+					"opRGB",
+					"opYCC601",
+					"sYCC601",
+					"xvYCC601",
+					"xvYCC709",
+					"unknown"
+				]
 			},
 			"HDMIPortId": {
 				"type": "string",
@@ -21829,59 +20770,41 @@
 				"minItems": 2,
 				"maxItems": 2
 			},
-			"AudioFormat": {
+			"AudioFormatOptions": {
+				"description": "Options for checking audio playback support",
 				"type": "object",
-				"description": "Details on the audio content format.",
 				"properties": {
-					"bitRate": {
-						"description": "The audio bitrate in kbps.",
-						"type": "number"
-					},
-					"channels": {
-						"description": "The audio output channels.",
-						"type": "string"
-					},
-					"codec": {
-						"$ref": "#/x-schemas/Media/AudioCodec"
+					"atmos": {
+						"description": "Whether Dolby Atmos support is being requested",
+						"type": "boolean"
 					},
 					"codecLevel": {
-						"$ref": "#/x-schemas/Media/AudioCodecLevel"
+						"description": "The level of the audio codec",
+						"type": "string"
 					},
 					"codecProfile": {
+						"description": "The profile of the audio codec",
 						"$ref": "#/x-schemas/Media/AudioCodecProfile"
 					},
 					"container": {
 						"$ref": "#/x-schemas/Media/AudioContainer"
 					},
-					"pipelineId": {
-						"$ref": "#/components/schemas/PipelineId"
-					},
 					"sampleRate": {
-						"description": "The audio sample rate in kHz.",
+						"description": "The sample rate of the audio, in kHz",
 						"type": "number"
 					}
-				},
-				"required": [
-					"codec",
-					"channels",
-					"pipelineId",
-					"sampleRate"
-				]
+				}
 			},
-			"PipelineId": {
-				"type": "integer",
-				"description": "The media pipeline/session ID",
-				"minimum": 0,
-				"maximum": 15
-			},
-			"VideoFormat": {
+			"VideoFormatOptions": {
+				"description": "Options for checking video playback support",
 				"type": "object",
-				"description": "Details on the video content format.",
 				"properties": {
-					"codec": {
-						"$ref": "#/x-schemas/Media/VideoCodec"
+					"atmos": {
+						"description": "Whether Dolby Atmos support is being requested",
+						"type": "boolean"
 					},
 					"codecLevel": {
+						"description": "The level of the video codec",
 						"type": "string",
 						"enum": [
 							"4.1",
@@ -21893,6 +20816,7 @@
 						]
 					},
 					"codecProfile": {
+						"description": "The profile of the video codec",
 						"type": "string",
 						"enum": [
 							"high",
@@ -21906,27 +20830,16 @@
 						"$ref": "#/x-schemas/Media/VideoContainer"
 					},
 					"frameRate": {
-						"type": "number"
+						"description": "The frame rate of the video content",
+						"type": "integer"
 					},
 					"hdr": {
-						"type": "array",
-						"items": {
-							"$ref": "#/x-schemas/Media/HDRProfile"
-						}
-					},
-					"pipelineId": {
-						"$ref": "#/components/schemas/PipelineId"
+						"$ref": "#/x-schemas/Media/HDRProfile"
 					},
 					"resolution": {
-						"$ref": "#/x-schemas/Media/Dimensions"
+						"$ref": "#/x-schemas/Types/Dimensions"
 					}
-				},
-				"required": [
-					"codec",
-					"hdr",
-					"pipelineId",
-					"resolution"
-				]
+				}
 			},
 			"MediaPosition": {
 				"title": "MediaPosition",
@@ -22324,6 +21237,15 @@
 					}
 				}
 			},
+			"QuantizationRange": {
+				"description": "The quantization range of video output",
+				"type": "string",
+				"enum": [
+					"full",
+					"limited",
+					"unknown"
+				]
+			},
 			"AccessPointList": {
 				"title": "AccessPointList",
 				"type": "object",
@@ -22542,6 +21464,21 @@
 						"en": "This is english",
 						"es": "esto es español"
 					}
+				]
+			},
+			"Dimensions": {
+				"type": "object",
+				"properties": {
+					"width": {
+						"type": "number"
+					},
+					"height": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"width",
+					"height"
 				]
 			},
 			"FlatMap": {
@@ -22794,6 +21731,159 @@
 					"all"
 				],
 				"description": "The advertisement skip restriction.\n\nApplies to fast-forward/rewind (e.g. trick mode), seeking over an entire opportunity (e.g. jump), seeking out of what's currently playing, and \"Skip this ad...\" features. Seeking over multiple ad opportunities only requires playback of the _last_ opportunity, not all opportunities, preceding the seek destination.\n\n| Value        | Description                                                                    |\n|--------------|--------------------------------------------------------------------------------|\n| none         |No fast-forward, jump, or skip restrictions                                    |\n| adsUnwatched | Restrict fast-forward, jump, and skip for unwatched ad opportunities only.     |\n| adsAll       | Restrict fast-forward, jump, and skip for all ad opportunities                 |\n| all          | Restrict fast-forward, jump, and skip for all ad opportunities and all content |\n\nNamespace: `xrn:advertising:policy:skipRestriction:`\n\n"
+			}
+		},
+		"Media": {
+			"uri": "https://meta.comcast.com/firebolt/schemas/media",
+			"AudioMode": {
+				"description": "Audio output mode",
+				"type": "string",
+				"enum": [
+					"auto",
+					"mono",
+					"passthrough",
+					"stereo",
+					"surround",
+					"unknown"
+				]
+			},
+			"HDRProfile": {
+				"type": "string",
+				"description": "HDR profile",
+				"enum": [
+					"dolbyVision",
+					"hdr10",
+					"hdr10plus",
+					"hlg",
+					"sdr",
+					"technicolor",
+					"unknown"
+				]
+			},
+			"ResolutionName": {
+				"description": "User-friendly resolution name",
+				"type": "string",
+				"enum": [
+					"sd",
+					"hd",
+					"fhd",
+					"uhd",
+					"unknown"
+				]
+			},
+			"VideoMode": {
+				"description": "Video output mode; the shorthand resolution and frame rate",
+				"type": "string",
+				"enumKeyPrefix": "mode",
+				"enum": [
+					"480i",
+					"480p",
+					"576i25",
+					"576p50",
+					"576p60",
+					"720p50",
+					"720p60",
+					"1080i50",
+					"1080i60",
+					"1080p24",
+					"1080p25",
+					"1080p30",
+					"1080p50",
+					"1080p60",
+					"2160p24",
+					"2160p25",
+					"2160p30",
+					"2160p50",
+					"2160p60",
+					"4320p60",
+					"unknown"
+				]
+			},
+			"AudioCodec": {
+				"type": "string",
+				"description": "Audio codec",
+				"enum": [
+					"aac",
+					"ac3",
+					"ac4",
+					"eac3",
+					"mpeg3",
+					"opus",
+					"pcm",
+					"truehd",
+					"vorbis"
+				]
+			},
+			"VideoCodec": {
+				"type": "string",
+				"description": "Video codec",
+				"enum": [
+					"av1",
+					"avc",
+					"hevc",
+					"mpeg1",
+					"mpeg2",
+					"vp8",
+					"vp9"
+				]
+			},
+			"AudioCodecProfile": {
+				"description": "Audio codec profile",
+				"type": "string",
+				"enum": [
+					"high",
+					"main",
+					"main10",
+					"mp2lc",
+					"mp4he",
+					"p0",
+					"p2"
+				]
+			},
+			"AudioContainer": {
+				"description": "Audio container",
+				"type": "string",
+				"enum": [
+					"audio/mpeg",
+					"audio/mp4",
+					"audio/ogg",
+					"audio/wave",
+					"audio/webm"
+				]
+			},
+			"VideoContainer": {
+				"description": "Video container format",
+				"type": "string",
+				"enum": [
+					"video/mpeg",
+					"video/mp2t",
+					"video/mp4",
+					"video/webm"
+				]
+			},
+			"ColorDepth": {
+				"type": "string",
+				"description": "Color depth",
+				"enumKeyPrefix": "colorDepth",
+				"enum": [
+					"8",
+					"10",
+					"12",
+					"auto",
+					"unknown"
+				]
+			},
+			"ColorSpace": {
+				"type": "string",
+				"description": "Color space",
+				"enum": [
+					"RGB444",
+					"YCbCr420",
+					"YCbCr422",
+					"YCbCr444",
+					"other",
+					"unknown"
+				]
 			}
 		},
 		"Capabilities": {
@@ -23746,182 +22836,6 @@
 					"advertisement",
 					"musicVideo",
 					"minisode"
-				]
-			}
-		},
-		"Media": {
-			"uri": "https://meta.comcast.com/firebolt/schemas/media",
-			"HDRProfile": {
-				"type": "string",
-				"description": "HDR profile",
-				"enum": [
-					"dolbyVision",
-					"hdr10",
-					"hdr10plus",
-					"hlg",
-					"sdr",
-					"unknown"
-				]
-			},
-			"AudioCodec": {
-				"type": "string",
-				"description": "Audio codec",
-				"enum": [
-					"aac",
-					"ac3",
-					"ac4",
-					"dts-x",
-					"eac3",
-					"mpeg3",
-					"opus",
-					"truehd",
-					"unknown",
-					"vorbis"
-				]
-			},
-			"VideoCodec": {
-				"type": "string",
-				"description": "video codec",
-				"enum": [
-					"av1",
-					"avc",
-					"hevc",
-					"mpeg1",
-					"mpeg2",
-					"vp8",
-					"vp9",
-					"vp10"
-				]
-			},
-			"AudioMode": {
-				"description": "Audio output mode",
-				"type": "string",
-				"enum": [
-					"auto",
-					"mono",
-					"none",
-					"passthrough",
-					"stereo",
-					"surround",
-					"unknown"
-				]
-			},
-			"VideoMode": {
-				"description": "Video output mode; the shorthand resolution and frame rate",
-				"type": "string",
-				"enumKeyPrefix": "mode",
-				"enum": [
-					"480i",
-					"480p",
-					"576i25",
-					"576p50",
-					"576p60",
-					"720p50",
-					"720p60",
-					"1080i50",
-					"1080i60",
-					"1080p24",
-					"1080p25",
-					"1080p30",
-					"1080p50",
-					"1080p60",
-					"2160p24",
-					"2160p25",
-					"2160p30",
-					"2160p50",
-					"2160p60",
-					"4320p60",
-					"unknown"
-				]
-			},
-			"AudioCodecProfile": {
-				"description": "Audio codec profile",
-				"type": "string",
-				"enum": [
-					"high",
-					"main",
-					"main10",
-					"mp2lc",
-					"mp4he",
-					"p0",
-					"p2"
-				]
-			},
-			"AudioContainer": {
-				"description": "Audio container",
-				"type": "string",
-				"enum": [
-					"audio/mpeg",
-					"audio/mp4",
-					"audio/ogg",
-					"audio/webm"
-				]
-			},
-			"VideoContainer": {
-				"description": "Video container format",
-				"type": "string",
-				"enum": [
-					"video/mpeg",
-					"video/mp2t",
-					"video/mp4",
-					"video/webm"
-				]
-			},
-			"Dimensions": {
-				"type": "array",
-				"description": "The dimensions specified as width and height.",
-				"items": [
-					{
-						"type": "number"
-					},
-					{
-						"type": "number"
-					}
-				],
-				"additionalItems": false,
-				"minItems": 2,
-				"maxItems": 2
-			},
-			"Colorimetry": {
-				"description": "Colorimetry",
-				"type": "string",
-				"enum": [
-					"BT2020cYCC",
-					"BT2020RGB",
-					"BT2020YCC",
-					"DCI-P3",
-					"ICtCp",
-					"opRGB",
-					"opYCC601",
-					"sYCC601",
-					"xvYCC601",
-					"xvYCC709",
-					"unknown"
-				]
-			},
-			"ResolutionName": {
-				"description": "User-friendly resolution name",
-				"type": "string",
-				"enum": [
-					"sd",
-					"hd",
-					"fhd",
-					"uhd",
-					"unknown"
-				]
-			},
-			"AudioCodecLevel": {
-				"description": "Audio codec level",
-				"type": "string",
-				"enumKeyPrefix": "level",
-				"enum": [
-					"3.0",
-					"3.1",
-					"4.0",
-					"4.1",
-					"4.2",
-					"5.0",
-					"5.1"
 				]
 			}
 		},

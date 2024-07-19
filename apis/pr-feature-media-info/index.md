@@ -110,6 +110,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Profile.approvePurchase](./core/Profile/#approvepurchase) |
 
 
+### `xrn:firebolt:capability:audio-output:config`
+
+| Uses |
+| ---- |
+| [AudioOutput.mode](./manage/AudioOutput/#mode) |
+
+
 ### `xrn:firebolt:capability:capabilities:info`
 
 | Uses |
@@ -154,7 +161,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdcpVersionSupported](./core/Device/#hdcpversionsupported)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.hdrProfile](./core/Device/#hdrprofile)<br/>[Device.hdrProfiles](./core/Device/#hdrprofiles)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.audioFormatSupported](./core/Device/#audioformatsupported)<br/>[Device.videoFormatSupported](./core/Device/#videoformatsupported)<br/>[Device.audioMode](./core/Device/#audiomode)<br/>[Device.videoMode](./core/Device/#videomode)<br/>[Device.videoModes](./core/Device/#videomodes)<br/>[Device.sourceFrameRateUsed](./core/Device/#sourceframerateused)<br/>[Device.onAudioOutputChanged](./core/Device/#audiooutputchanged)<br/>[Device.onVideoOutputChanged](./core/Device/#videooutputchanged)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrProfileChanged](./core/Device/#hdrprofilechanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[Device.onAudioModeChanged](./core/Device/#audiomodechanged)<br/>[Device.onVideoModeChanged](./core/Device/#videomodechanged)<br/>[Device.onVideoModesChanged](./core/Device/#videomodeschanged)<br/>[Device.onSourceFrameRateUsedChanged](./core/Device/#sourceframerateusedchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
+| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
 
 
 ### `xrn:firebolt:capability:device:make`
@@ -277,7 +284,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Display.colorDepth](./core/Display/#colordepth)<br/>[Display.colorimetry](./core/Display/#colorimetry)<br/>[Display.hdrProfiles](./core/Display/#hdrprofiles)<br/>[Display.manufacturer](./core/Display/#manufacturer)<br/>[Display.productName](./core/Display/#productname)<br/>[Display.refreshRate](./core/Display/#refreshrate)<br/>[Display.resolution](./core/Display/#resolution)<br/>[Display.resolutionName](./core/Display/#resolutionname)<br/>[Display.size](./core/Display/#size)<br/>[Display.sourcePhysicalAddress](./core/Display/#sourcephysicaladdress)<br/>[Display.onColorDepthChanged](./core/Display/#colordepthchanged)<br/>[Display.onColorimetryChanged](./core/Display/#colorimetrychanged)<br/>[Display.onHdrProfilesChanged](./core/Display/#hdrprofileschanged)<br/>[Display.onManufacturerChanged](./core/Display/#manufacturerchanged)<br/>[Display.onProductNameChanged](./core/Display/#productnamechanged)<br/>[Display.onRefreshRateChanged](./core/Display/#refreshratechanged)<br/>[Display.onResolutionChanged](./core/Display/#resolutionchanged)<br/>[Display.onResolutionNameChanged](./core/Display/#resolutionnamechanged)<br/>[Display.onSizeChanged](./core/Display/#sizechanged)<br/>[Display.onSourcePhysicalAddressChanged](./core/Display/#sourcephysicaladdresschanged) |
+| [Display.colorDepth](./core/Display/#colordepth)<br/>[Display.colorimetry](./core/Display/#colorimetry)<br/>[Display.hdrProfiles](./core/Display/#hdrprofiles)<br/>[Display.nativeRefreshRate](./core/Display/#nativerefreshrate)<br/>[Display.nativeResolution](./core/Display/#nativeresolution)<br/>[Display.nativeResolutionName](./core/Display/#nativeresolutionname)<br/>[Display.size](./core/Display/#size)<br/>[Display.videoModes](./core/Display/#videomodes) |
 
 
 ### `xrn:firebolt:capability:grants:state`
@@ -445,30 +452,11 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Localization.setTimeZone](./manage/Localization/#settimezone) |
 
 
-### `xrn:firebolt:capability:media-info:audio-format`
+### `xrn:firebolt:capability:media-capabilities:info`
 
 | Uses |
 | ---- |
-| [MediaInfo.audioFormat](./core/MediaInfo/#audioformat)<br/>[MediaInfo.onAudioFormatChanged](./core/MediaInfo/#audioformatchanged) |
-
-
-
-| Manages |
-| ------- |
-| [MediaInfo.activeAudioFormats](./manage/MediaInfo/#activeaudioformats)<br/>[MediaInfo.onActiveAudioFormatsChanged](./manage/MediaInfo/#activeaudioformatschanged)<br/>[MediaInfo.onActiveAudioFormatsChanged](./manage/MediaInfo/#activeaudioformatschanged) |
-
-
-### `xrn:firebolt:capability:media-info:video-format`
-
-| Uses |
-| ---- |
-| [MediaInfo.videoFormat](./core/MediaInfo/#videoformat)<br/>[MediaInfo.onVideoFormatChanged](./core/MediaInfo/#videoformatchanged) |
-
-
-
-| Manages |
-| ------- |
-| [MediaInfo.activeVideoFormats](./manage/MediaInfo/#activevideoformats)<br/>[MediaInfo.onActiveVideoFormatsChanged](./manage/MediaInfo/#activevideoformatschanged)<br/>[MediaInfo.onActiveVideoFormatsChanged](./manage/MediaInfo/#activevideoformatschanged) |
+| [MediaCapabilities.audioCodecs](./core/MediaCapabilities/#audiocodecs)<br/>[MediaCapabilities.videoCodecs](./core/MediaCapabilities/#videocodecs)<br/>[MediaCapabilities.audioFormatSupported](./core/MediaCapabilities/#audioformatsupported)<br/>[MediaCapabilities.videoFormatSupported](./core/MediaCapabilities/#videoformatsupported)<br/>[MediaCapabilities.audioModes](./core/MediaCapabilities/#audiomodes)<br/>[MediaCapabilities.videoModes](./core/MediaCapabilities/#videomodes)<br/>[MediaCapabilities.colorDepth](./core/MediaCapabilities/#colordepth)<br/>[MediaCapabilities.hdrProfiles](./core/MediaCapabilities/#hdrprofiles)<br/>[MediaCapabilities.atmosSupported](./core/MediaCapabilities/#atmossupported) |
 
 
 ### `xrn:firebolt:capability:metrics:distributor`
@@ -607,5 +595,12 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Provides |
 | -------- |
 | [PinChallenge.onRequestChallenge](./manage/PinChallenge/#requestchallenge)<br/>[PinChallenge.challengeFocus](./manage/PinChallenge/#challengefocus)<br/>[PinChallenge.challengeResponse](./manage/PinChallenge/#challengeresponse)<br/>[PinChallenge.challengeError](./manage/PinChallenge/#challengeerror) |
+
+
+### `xrn:firebolt:capability:video-output:config`
+
+| Uses |
+| ---- |
+| [VideoOutput.colorDepth](./manage/VideoOutput/#colordepth)<br/>[VideoOutput.colorSpace](./manage/VideoOutput/#colorspace)<br/>[VideoOutput.currentSettings](./manage/VideoOutput/#currentsettings)<br/>[VideoOutput.hdrProfile](./manage/VideoOutput/#hdrprofile)<br/>[VideoOutput.quantizationRange](./manage/VideoOutput/#quantizationrange)<br/>[VideoOutput.mode](./manage/VideoOutput/#mode)<br/>[VideoOutput.onModeWillChange](./manage/VideoOutput/#modewillchange)<br/>[VideoOutput.resolution](./manage/VideoOutput/#resolution)<br/>[VideoOutput.onColorDepthChanged](./manage/VideoOutput/#colordepthchanged)<br/>[VideoOutput.onColorSpaceChanged](./manage/VideoOutput/#colorspacechanged)<br/>[VideoOutput.onCurrentSettingsChanged](./manage/VideoOutput/#currentsettingschanged)<br/>[VideoOutput.onHdrProfileChanged](./manage/VideoOutput/#hdrprofilechanged)<br/>[VideoOutput.onModeChanged](./manage/VideoOutput/#modechanged)<br/>[VideoOutput.onResolutionChanged](./manage/VideoOutput/#resolutionchanged) |
 
 

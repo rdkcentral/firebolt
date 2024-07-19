@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.2.0-feature-media-info.4
+Version Device 1.2.0-feature-media-info.5
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ import { Device } from '@firebolt-js/manage-sdk'
 
 ## Overview
 
-A module for querying about the device and it's capabilities.
+A module for querying the device and it's capabilities.
 
 ## Methods
 
@@ -473,7 +473,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### provision
 
-Used by a distributor to push provision info to firebolt.
+Used by a distributor to push provision info to Firebolt.
 
 ```typescript
 function provision(

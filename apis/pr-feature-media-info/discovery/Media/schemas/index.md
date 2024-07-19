@@ -17,18 +17,17 @@ Version Media 0.0.0-unknown.0
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Types](#types)
+  - [AudioMode](#audiomode)
   - [HDRProfile](#hdrprofile)
+  - [ResolutionName](#resolutionname)
+  - [VideoMode](#videomode)
   - [AudioCodec](#audiocodec)
   - [VideoCodec](#videocodec)
-  - [AudioMode](#audiomode)
-  - [VideoMode](#videomode)
   - [AudioCodecProfile](#audiocodecprofile)
   - [AudioContainer](#audiocontainer)
   - [VideoContainer](#videocontainer)
-  - [Dimensions](#dimensions)
-  - [Colorimetry](#colorimetry)
-  - [ResolutionName](#resolutionname)
-  - [AudioCodecLevel](#audiocodeclevel)
+  - [ColorDepth](#colordepth)
+  - [ColorSpace](#colorspace)
 
 ## Overview
 
@@ -36,9 +35,39 @@ undefined
 
 ## Types
 
+### AudioMode
+
+Audio output mode
+
+```typescript
+
+```
+
+---
+
 ### HDRProfile
 
 HDR profile
+
+```typescript
+
+```
+
+---
+
+### ResolutionName
+
+User-friendly resolution name
+
+```typescript
+
+```
+
+---
+
+### VideoMode
+
+Video output mode; the shorthand resolution and frame rate
 
 ```typescript
 
@@ -58,27 +87,7 @@ Audio codec
 
 ### VideoCodec
 
-video codec
-
-```typescript
-
-```
-
----
-
-### AudioMode
-
-Audio output mode
-
-```typescript
-
-```
-
----
-
-### VideoMode
-
-Video output mode; the shorthand resolution and frame rate
+Video codec
 
 ```typescript
 
@@ -116,19 +125,9 @@ Video container format
 
 ---
 
-### Dimensions
+### ColorDepth
 
-The dimensions specified as width and height.
-
-```typescript
-
-```
-
----
-
-### Colorimetry
-
-Colorimetry
+Color depth
 
 ```typescript
 
@@ -136,19 +135,9 @@ Colorimetry
 
 ---
 
-### ResolutionName
+### ColorSpace
 
-User-friendly resolution name
-
-```typescript
-
-```
-
----
-
-### AudioCodecLevel
-
-Audio codec level
+Color space
 
 ```typescript
 
