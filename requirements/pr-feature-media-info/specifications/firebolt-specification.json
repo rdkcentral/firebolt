@@ -981,6 +981,21 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:video-output:colorimetry": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:video-output:colorspace": {
 			"level": "must",
 			"use": {
@@ -10379,7 +10394,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/components/schemas/Colorimetry"
+								"$ref": "#/x-schemas/Media/Colorimetry"
 							}
 						}
 					},
@@ -19704,6 +19719,36 @@
 					]
 				},
 				{
+					"name": "VideoOutput.colorimetry",
+					"summary": "The colorimetry value set for video output.",
+					"params": [],
+					"tags": [
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:video-output:colorimetry"
+							]
+						}
+					],
+					"result": {
+						"name": "colorimetry",
+						"summary": "The colorimetry value set.",
+						"schema": {
+							"$ref": "#/x-schemas/Media/Colorimetry"
+						}
+					},
+					"examples": [
+						{
+							"name": "Default Example",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": "BT2020YCC"
+							}
+						}
+					]
+				},
+				{
 					"name": "VideoOutput.colorSpace",
 					"summary": "The color space and chroma set for video output.",
 					"params": [],
@@ -19760,6 +19805,9 @@
 								"colorDepth": {
 									"$ref": "#/x-schemas/Media/ColorDepth"
 								},
+								"colorimetry": {
+									"$ref": "#/x-schemas/Media/Colorimetry"
+								},
 								"colorSpace": {
 									"$ref": "#/x-schemas/Media/ColorSpace"
 								},
@@ -19775,6 +19823,7 @@
 							},
 							"required": [
 								"colorDepth",
+								"colorimetry",
 								"colorSpace",
 								"hdrProfile",
 								"mode",
@@ -19790,6 +19839,7 @@
 								"name": "Default Result",
 								"value": {
 									"colorDepth": "10",
+									"colorimetry": "BT2020YCC",
 									"colorSpace": "YCbCr422",
 									"hdrProfile": "hdr10plus",
 									"mode": "1080p60",
@@ -20145,6 +20195,9 @@
 										"colorDepth": {
 											"$ref": "#/x-schemas/Media/ColorDepth"
 										},
+										"colorimetry": {
+											"$ref": "#/x-schemas/Media/Colorimetry"
+										},
 										"colorSpace": {
 											"$ref": "#/x-schemas/Media/ColorSpace"
 										},
@@ -20160,6 +20213,7 @@
 									},
 									"required": [
 										"colorDepth",
+										"colorimetry",
 										"colorSpace",
 										"hdrProfile",
 										"mode",
@@ -20182,6 +20236,7 @@
 								"name": "Default Result",
 								"value": {
 									"colorDepth": "10",
+									"colorimetry": "BT2020YCC",
 									"colorSpace": "YCbCr422",
 									"hdrProfile": "hdr10plus",
 									"mode": "1080p60",
@@ -21577,22 +21632,6 @@
 							}
 						}
 					},
-					"Colorimetry": {
-						"description": "Colorimetry",
-						"type": "string",
-						"enum": [
-							"BT2020cYCC",
-							"BT2020RGB",
-							"BT2020YCC",
-							"DCI-P3",
-							"opRGB",
-							"opYCC601",
-							"sYCC601",
-							"xvYCC601",
-							"xvYCC709",
-							"unknown"
-						]
-					},
 					"HDMIPortId": {
 						"type": "string",
 						"pattern": "^HDMI[0-9]+$"
@@ -22804,6 +22843,22 @@
 							"passthrough",
 							"stereo",
 							"surround",
+							"unknown"
+						]
+					},
+					"Colorimetry": {
+						"description": "Colorimetry",
+						"type": "string",
+						"enum": [
+							"BT2020cYCC",
+							"BT2020RGB",
+							"BT2020YCC",
+							"DCI-P3",
+							"opRGB",
+							"opYCC601",
+							"sYCC601",
+							"xvYCC601",
+							"xvYCC709",
 							"unknown"
 						]
 					},

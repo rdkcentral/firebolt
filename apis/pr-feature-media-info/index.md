@@ -604,6 +604,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [VideoOutput.colorDepth](./core/VideoOutput/#colordepth)<br/>[VideoOutput.onColorDepthChanged](./core/VideoOutput/#colordepthchanged) |
 
 
+### `xrn:firebolt:capability:video-output:colorimetry`
+
+| Uses |
+| ---- |
+| [VideoOutput.colorimetry](./core/VideoOutput/#colorimetry) |
+
+
 ### `xrn:firebolt:capability:video-output:colorspace`
 
 | Uses |

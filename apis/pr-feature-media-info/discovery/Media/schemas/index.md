@@ -18,6 +18,7 @@ Version Media 0.0.0-unknown.0
 - [Overview](#overview)
 - [Types](#types)
   - [AudioMode](#audiomode)
+  - [Colorimetry](#colorimetry)
   - [HDRProfile](#hdrprofile)
   - [ResolutionName](#resolutionname)
   - [VideoMode](#videomode)
@@ -38,6 +39,16 @@ undefined
 ### AudioMode
 
 Audio output mode
+
+```typescript
+
+```
+
+---
+
+### Colorimetry
+
+Colorimetry
 
 ```typescript
 

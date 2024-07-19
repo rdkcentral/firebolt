@@ -27,7 +27,6 @@ Version Display 1.2.0-feature-media-info.5
   - [size](#size)
   - [videoModes](#videomodes)
 - [Types](#types)
-  - [Colorimetry](#colorimetry-1)
 
 ## Usage
 
@@ -933,25 +932,3 @@ Response:
 ---
 
 ## Types
-
-### Colorimetry
-
-Colorimetry
-
-```typescript
-Colorimetry: {
-    BT2020C_YCC: 'BT2020cYCC',
-    BT2020RGB: 'BT2020RGB',
-    BT2020YCC: 'BT2020YCC',
-    DCI_P3: 'DCI-P3',
-    OP_RGB: 'opRGB',
-    OP_YCC601: 'opYCC601',
-    S_YCC601: 'sYCC601',
-    XV_YCC601: 'xvYCC601',
-    XV_YCC709: 'xvYCC709',
-    UNKNOWN: 'unknown',
-},
-
-```
-
----

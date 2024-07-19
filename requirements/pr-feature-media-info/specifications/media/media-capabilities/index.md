@@ -109,9 +109,10 @@ I want to show an audio/videophile overlay with detailed information:
   - [7.2. Resolution](#72-resolution)
   - [7.3. HDR Profile](#73-hdr-profile)
   - [7.4. Color Depth](#74-color-depth)
-  - [7.5. Color Space \& Chroma Subsampling](#75-color-space--chroma-subsampling)
-  - [7.6. Quantization Range](#76-quantization-range)
-  - [7.7. Current Output Settings](#77-current-output-settings)
+  - [7.5. Colorimetry](#75-colorimetry)
+  - [7.6. Color Space \& Chroma Subsampling](#76-color-space--chroma-subsampling)
+  - [7.7. Quantization Range](#77-quantization-range)
+  - [7.8. Current Output Settings](#78-current-output-settings)
 
 ## 3. Constants, Types, and Schemas
 
@@ -229,7 +230,7 @@ The Firebolt `Media` module **MUST** have an `HDRProfile` enumeration:
 
 ### 3.7. Colorimetry
 
-The Firebolt `Display` module **MUST** have a `Colorimetry` enumeration:
+The Firebolt `Media` module **MUST** have a `Colorimetry` enumeration:
 
 - `BT2020cYCC`
 - `BT2020RGB`
@@ -652,7 +653,18 @@ VideoOutput.colorDepth()
 //> "10"
 ```
 
-### 7.5. Color Space & Chroma Subsampling
+### 7.5. Colorimetry
+
+The `VideoOutput` module **MUST** have a `colorimetry` method that returns a `Media.Colorimetry` value describing the current colorimetry setting for video output.
+
+Access to this method **MUST** require the `use` role of the `xrn:firebolt:capability:video-output:colorimetry` capability.
+
+```javascript
+VideoOutput.colorimetry()
+//> "BT2020YCC"
+```
+
+### 7.6. Color Space & Chroma Subsampling
 
 The `VideoOutput` module **MUST** have a `colorSpace` method that returns a `Media.ColorSpace` value describing the color space and chroma subsampling value currently set for video output.
 
@@ -665,7 +677,7 @@ VideoOutput.colorSpace()
 //> "YCbCr422"
 ```
 
-### 7.6. Quantization Range
+### 7.7. Quantization Range
 
 The `VideoOutput` module **MUST** have a `quantizationRange` method that returns a `VideoOutput.QuantizationRange` value describing the quantization range currently set for video output.
 
@@ -676,19 +688,20 @@ VideoOutput.quantizationRange()
 //> "limited"
 ```
 
-### 7.7. Current Output Settings
+### 7.8. Current Output Settings
 
 The `VideoOutput` module **MUST** have a `currentSettings` method that returns an object describing various properties currently used for video output.
 
 This method **MUST** return the following properties:
 
-| Property     | Type               |
-| ------------ | ------------------ |
-| `colorDepth` | `Media.ColorDepth` |
-| `colorSpace` | `Media.ColorSpace` |
-| `hdrProfile` | `Media.HDRProfile` |
-| `mode`       | `Media.VideoMode`  |
-| `resolution` | `Types.Dimensions` |
+| Property      | Type                |
+| ------------- | ------------------- |
+| `colorDepth`  | `Media.ColorDepth`  |
+| `colorimetry` | `Media.Colorimetry` |
+| `colorSpace`  | `Media.ColorSpace`  |
+| `hdrProfile`  | `Media.HDRProfile`  |
+| `mode`        | `Media.VideoMode`   |
+| `resolution`  | `Types.Dimensions`  |
 
 Access to this method **MUST** be governed by the `xrn:firebolt:capability:video-output:info` capability.
 
@@ -698,6 +711,7 @@ This method **MUST** have a corresponding `onCurrentSettingsChanged` event to no
 Video.currentSettings()
 //> {
 //>   "colorDepth": "10",
+//>   "colorimetry": "BT2020YCC",
 //>   "colorSpace": "YCbCr422",
 //>   "hdrProfile": "hdr10plus",
 //>   "mode": "1080p60",

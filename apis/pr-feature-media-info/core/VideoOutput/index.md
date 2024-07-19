@@ -19,6 +19,7 @@ Version VideoOutput 1.2.0-feature-media-info.5
 - [Overview](#overview)
 - [Methods](#methods)
   - [colorDepth](#colordepth)
+  - [colorimetry](#colorimetry)
   - [colorSpace](#colorspace)
   - [currentSettings](#currentsettings)
   - [hdrProfile](#hdrprofile)
@@ -173,6 +174,70 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": "10"
+}
+```
+
+</details>
+
+---
+
+### colorimetry
+
+The colorimetry value set for video output.
+
+```typescript
+function colorimetry(): Promise<Colorimetry>
+```
+
+Promise resolution:
+
+[Colorimetry](../Media/schemas/#Colorimetry)
+
+Capabilities:
+
+| Role | Capability                                       |
+| ---- | ------------------------------------------------ |
+| uses | xrn:firebolt:capability:video-output:colorimetry |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { VideoOutput } from '@firebolt-js/sdk'
+
+let colorimetry = await VideoOutput.colorimetry()
+console.log(colorimetry)
+```
+
+Value of `colorimetry`:
+
+```javascript
+'BT2020YCC'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VideoOutput.colorimetry",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "BT2020YCC"
 }
 ```
 
@@ -344,6 +409,7 @@ Value of `currentSettings`:
 ```javascript
 {
 	"colorDepth": "10",
+	"colorimetry": "BT2020YCC",
 	"colorSpace": "YCbCr422",
 	"hdrProfile": "hdr10plus",
 	"mode": "1080p60",
@@ -375,6 +441,7 @@ Response:
   "id": 1,
   "result": {
     "colorDepth": "10",
+    "colorimetry": "BT2020YCC",
     "colorSpace": "YCbCr422",
     "hdrProfile": "hdr10plus",
     "mode": "1080p60",
@@ -422,6 +489,7 @@ Value of `currentSettings`:
 ```javascript
 {
 	"colorDepth": "10",
+	"colorimetry": "BT2020YCC",
 	"colorSpace": "YCbCr422",
 	"hdrProfile": "hdr10plus",
 	"mode": "1080p60",
@@ -455,6 +523,7 @@ Response:
   "id": 1,
   "result": {
     "colorDepth": "10",
+    "colorimetry": "BT2020YCC",
     "colorSpace": "YCbCr422",
     "hdrProfile": "hdr10plus",
     "mode": "1080p60",
