@@ -597,10 +597,45 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [PinChallenge.onRequestChallenge](./manage/PinChallenge/#requestchallenge)<br/>[PinChallenge.challengeFocus](./manage/PinChallenge/#challengefocus)<br/>[PinChallenge.challengeResponse](./manage/PinChallenge/#challengeresponse)<br/>[PinChallenge.challengeError](./manage/PinChallenge/#challengeerror) |
 
 
-### `xrn:firebolt:capability:video-output:config`
+### `xrn:firebolt:capability:video-output:colordepth`
 
 | Uses |
 | ---- |
-| [VideoOutput.colorDepth](./manage/VideoOutput/#colordepth)<br/>[VideoOutput.colorSpace](./manage/VideoOutput/#colorspace)<br/>[VideoOutput.currentSettings](./manage/VideoOutput/#currentsettings)<br/>[VideoOutput.hdrProfile](./manage/VideoOutput/#hdrprofile)<br/>[VideoOutput.quantizationRange](./manage/VideoOutput/#quantizationrange)<br/>[VideoOutput.mode](./manage/VideoOutput/#mode)<br/>[VideoOutput.onModeWillChange](./manage/VideoOutput/#modewillchange)<br/>[VideoOutput.resolution](./manage/VideoOutput/#resolution)<br/>[VideoOutput.onColorDepthChanged](./manage/VideoOutput/#colordepthchanged)<br/>[VideoOutput.onColorSpaceChanged](./manage/VideoOutput/#colorspacechanged)<br/>[VideoOutput.onCurrentSettingsChanged](./manage/VideoOutput/#currentsettingschanged)<br/>[VideoOutput.onHdrProfileChanged](./manage/VideoOutput/#hdrprofilechanged)<br/>[VideoOutput.onModeChanged](./manage/VideoOutput/#modechanged)<br/>[VideoOutput.onResolutionChanged](./manage/VideoOutput/#resolutionchanged) |
+| [VideoOutput.colorDepth](./core/VideoOutput/#colordepth)<br/>[VideoOutput.onColorDepthChanged](./core/VideoOutput/#colordepthchanged) |
+
+
+### `xrn:firebolt:capability:video-output:colorspace`
+
+| Uses |
+| ---- |
+| [VideoOutput.colorSpace](./core/VideoOutput/#colorspace)<br/>[VideoOutput.onColorSpaceChanged](./core/VideoOutput/#colorspacechanged) |
+
+
+### `xrn:firebolt:capability:video-output:hdrprofile`
+
+| Uses |
+| ---- |
+| [VideoOutput.hdrProfile](./core/VideoOutput/#hdrprofile)<br/>[VideoOutput.onHdrProfileChanged](./core/VideoOutput/#hdrprofilechanged) |
+
+
+### `xrn:firebolt:capability:video-output:info`
+
+| Uses |
+| ---- |
+| [VideoOutput.currentSettings](./core/VideoOutput/#currentsettings)<br/>[VideoOutput.onCurrentSettingsChanged](./core/VideoOutput/#currentsettingschanged) |
+
+
+### `xrn:firebolt:capability:video-output:mode`
+
+| Uses |
+| ---- |
+| [VideoOutput.mode](./core/VideoOutput/#mode)<br/>[VideoOutput.onModeWillChange](./core/VideoOutput/#modewillchange)<br/>[VideoOutput.resolution](./core/VideoOutput/#resolution)<br/>[VideoOutput.onModeChanged](./core/VideoOutput/#modechanged)<br/>[VideoOutput.onResolutionChanged](./core/VideoOutput/#resolutionchanged) |
+
+
+### `xrn:firebolt:capability:video-output:quantization`
+
+| Uses |
+| ---- |
+| [VideoOutput.quantizationRange](./core/VideoOutput/#quantizationrange) |
 
 

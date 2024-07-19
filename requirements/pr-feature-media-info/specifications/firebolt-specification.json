@@ -966,7 +966,82 @@
 				"negotiable": true
 			}
 		},
-		"xrn:firebolt:capability:video-output:config": {
+		"xrn:firebolt:capability:video-output:colordepth": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:video-output:colorspace": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:video-output:hdrprofile": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:video-output:info": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:video-output:mode": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:video-output:quantization": {
 			"level": "must",
 			"use": {
 				"public": true,
@@ -19606,7 +19681,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:colordepth"
 							]
 						}
 					],
@@ -19639,7 +19714,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:colorspace"
 							]
 						}
 					],
@@ -19671,7 +19746,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:info"
 							]
 						}
 					],
@@ -19737,7 +19812,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:hdrprofile"
 							]
 						}
 					],
@@ -19767,7 +19842,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:quantization"
 							]
 						}
 					],
@@ -19800,7 +19875,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:mode"
 							]
 						}
 					],
@@ -19833,7 +19908,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:mode"
 							]
 						}
 					],
@@ -19886,7 +19961,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:mode"
 							]
 						}
 					],
@@ -19936,7 +20011,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:colordepth"
 							]
 						}
 					],
@@ -19994,7 +20069,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:colorspace"
 							]
 						}
 					],
@@ -20043,7 +20118,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:info"
 							]
 						}
 					],
@@ -20134,7 +20209,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:hdrprofile"
 							]
 						}
 					],
@@ -20192,7 +20267,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:mode"
 							]
 						}
 					],
@@ -20250,7 +20325,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:video-output:config"
+								"xrn:firebolt:capability:video-output:mode"
 							]
 						}
 					],
