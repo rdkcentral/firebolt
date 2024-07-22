@@ -24,9 +24,6 @@ Version Media 0.0.0-unknown.0
   - [VideoMode](#videomode)
   - [AudioCodec](#audiocodec)
   - [VideoCodec](#videocodec)
-  - [AudioCodecProfile](#audiocodecprofile)
-  - [AudioContainer](#audiocontainer)
-  - [VideoContainer](#videocontainer)
   - [ColorDepth](#colordepth)
   - [ColorSpace](#colorspace)
 
@@ -99,36 +96,6 @@ Audio codec
 ### VideoCodec
 
 Video codec
-
-```typescript
-
-```
-
----
-
-### AudioCodecProfile
-
-Audio codec profile
-
-```typescript
-
-```
-
----
-
-### AudioContainer
-
-Audio container
-
-```typescript
-
-```
-
----
-
-### VideoContainer
-
-Video container format
 
 ```typescript
 

@@ -72,27 +72,24 @@ I want to show an audio/videophile overlay with detailed information:
     - [1.1.2. As a first-party App developer](#112-as-a-first-party-app-developer)
 - [2. Table of Contents](#2-table-of-contents)
 - [3. Constants, Types, and Schemas](#3-constants-types-and-schemas)
-  - [3.1. Media Container Types](#31-media-container-types)
-  - [3.2. Media Codecs](#32-media-codecs)
-  - [3.3. Dimensions](#33-dimensions)
-  - [3.4. Resolution User-Friendly Name](#34-resolution-user-friendly-name)
-  - [3.5. Video Modes](#35-video-modes)
-  - [3.6. HDR Profiles](#36-hdr-profiles)
-  - [3.7. Colorimetry](#37-colorimetry)
-  - [3.8. Color Depth](#38-color-depth)
-  - [3.9. Color Space \& Chroma Subsampling](#39-color-space--chroma-subsampling)
-  - [3.10. Audio Output Mode](#310-audio-output-mode)
-  - [3.11. Quantization Range](#311-quantization-range)
+  - [3.1. Media Codecs](#31-media-codecs)
+  - [3.2. Dimensions](#32-dimensions)
+  - [3.3. Resolution User-Friendly Name](#33-resolution-user-friendly-name)
+  - [3.4. Video Modes](#34-video-modes)
+  - [3.5. HDR Profiles](#35-hdr-profiles)
+  - [3.6. Colorimetry](#36-colorimetry)
+  - [3.7. Color Depth](#37-color-depth)
+  - [3.8. Color Space \& Chroma Subsampling](#38-color-space--chroma-subsampling)
+  - [3.9. Audio Output Mode](#39-audio-output-mode)
+  - [3.10. Quantization Range](#310-quantization-range)
 - [4. Media Capabilities](#4-media-capabilities)
-  - [4.1. Audio Format Supported](#41-audio-format-supported)
-  - [4.2. Video Format Supported](#42-video-format-supported)
-  - [4.3. Supported Audio Modes](#43-supported-audio-modes)
-  - [4.4. Supported Video Modes](#44-supported-video-modes)
-  - [4.5. Supported Audio Codecs](#45-supported-audio-codecs)
-  - [4.6. Supported Video Codecs](#46-supported-video-codecs)
-  - [4.7. Color Depth](#47-color-depth)
-  - [4.8. HDR Profiles](#48-hdr-profiles)
-  - [4.9. Atmos Supported](#49-atmos-supported)
+  - [4.1. Supported Audio Modes](#41-supported-audio-modes)
+  - [4.2. Supported Video Modes](#42-supported-video-modes)
+  - [4.3. Supported Audio Codecs](#43-supported-audio-codecs)
+  - [4.4. Supported Video Codecs](#44-supported-video-codecs)
+  - [4.5. Color Depth](#45-color-depth)
+  - [4.6. HDR Profiles](#46-hdr-profiles)
+  - [4.7. Atmos Supported](#47-atmos-supported)
 - [5. Display Support](#5-display-support)
   - [5.1. HDR Profiles](#51-hdr-profiles)
   - [5.2. Color Depth](#52-color-depth)
@@ -116,28 +113,7 @@ I want to show an audio/videophile overlay with detailed information:
 
 ## 3. Constants, Types, and Schemas
 
-### 3.1. Media Container Types
-
-The Firebolt `Media` module **MUST** have an `AudioContainer` enumeration of the following media container content types:
-
-| Name         | Description                                                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `audio/mp4`  | [MP4 Audio](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#mpeg-4_mp4)                                  |
-| `audio/mpeg` | [Moving Picture Experts Group (MPEG1/MPEG2)](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#mpegmpeg-2) |
-| `audio/ogg`  | [OGG](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#ogg)                                               |
-| `audio/wave` | [Waveform Audio File Format](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#wave_wav)                   |
-| `audio/webm` | [Web Media](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#webm)                                        |
-
-The Firebolt `Media` module **MUST** have a `VideoContainer` enumeration of the following media container content types:
-
-| Name         | Description                                                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `video/mp2t` | [MPEG transport stream](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)              |
-| `video/mp4`  | [MP4 Audio](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/)                                                       |
-| `video/mpeg` | [Moving Picture Experts Group (MPEG1/MPEG2)](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#mpegmpeg-2) |
-| `video/webm` | [Web Media](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#webm)                                        |
-
-### 3.2. Media Codecs
+### 3.1. Media Codecs
 
 The Firebolt `Media` module **MUST** have an `AudioCodec` enumeration:
 
@@ -165,7 +141,7 @@ The Firebolt `Media` module **MUST** have a `VideoCodec` enumeration:
 | `vp8`   | Video Processor 8                              |
 | `vp9`   | Video Processor 9                              |
 
-### 3.3. Dimensions
+### 3.2. Dimensions
 
 The Firebolt `Types` module must have a `Dimensions` object of the following schema:
 
@@ -174,7 +150,7 @@ The Firebolt `Types` module must have a `Dimensions` object of the following sch
 | `height` | `number` |
 | `width`  | `number` |
 
-### 3.4. Resolution User-Friendly Name
+### 3.3. Resolution User-Friendly Name
 
 The Firebolt `Media` module **MUST** have a `ResolutionName` enumeration:
 
@@ -186,7 +162,7 @@ The Firebolt `Media` module **MUST** have a `ResolutionName` enumeration:
 | `uhd`     | `2160` and higher      |
 | `unknown` | unknown or no display  |
 
-### 3.5. Video Modes
+### 3.4. Video Modes
 
 For the purposes of the Firebolt API, a `VideoMode` shall be defined as the shorthand vertical resolution and frame rate of video content.
 
@@ -216,7 +192,7 @@ The Firebolt `Media` module **MUST** have a `VideoMode` enumeration:
 
 Any methods relating to the video mode (such as a device's video output mode) **MUST** return `Media.VideoMode` values.
 
-### 3.6. HDR Profiles
+### 3.5. HDR Profiles
 
 The Firebolt `Media` module **MUST** have an `HDRProfile` enumeration:
 
@@ -228,7 +204,7 @@ The Firebolt `Media` module **MUST** have an `HDRProfile` enumeration:
 - `technicolor`
 - `unknown`
 
-### 3.7. Colorimetry
+### 3.6. Colorimetry
 
 The Firebolt `Media` module **MUST** have a `Colorimetry` enumeration:
 
@@ -245,7 +221,7 @@ The Firebolt `Media` module **MUST** have a `Colorimetry` enumeration:
 
 > TODO: Do we need to add `ICtCp`?  https://professional.dolby.com/siteassets/pdfs/ictcp_dolbywhitepaper_v071.pdf
 
-### 3.8. Color Depth
+### 3.7. Color Depth
 
 The Firebolt `Media` module **MUST** have a `ColorDepth` enumeration:
 
@@ -255,7 +231,7 @@ The Firebolt `Media` module **MUST** have a `ColorDepth` enumeration:
 - `auto`
 - `unknown`
 
-### 3.9. Color Space & Chroma Subsampling
+### 3.8. Color Space & Chroma Subsampling
 
 The Firebolt `Media` module **MUST** have a `ColorSpace` enumeration:
 
@@ -268,7 +244,7 @@ The Firebolt `Media` module **MUST** have a `ColorSpace` enumeration:
 | `other`    |        |
 | `unknown`  |        |
 
-### 3.10. Audio Output Mode
+### 3.9. Audio Output Mode
 
 The Firebolt `Media` module **MUST** have an `AudioMode` enumeration:
 
@@ -279,7 +255,7 @@ The Firebolt `Media` module **MUST** have an `AudioMode` enumeration:
 - `surround`
 - `unknown`
 
-### 3.11. Quantization Range
+### 3.10. Quantization Range
 
 The Firebolt `VideoOutput` module **MUST** have a `QuantizationRange` enumeration:
 
@@ -289,83 +265,13 @@ The Firebolt `VideoOutput` module **MUST** have a `QuantizationRange` enumeratio
 
 ## 4. Media Capabilities
 
-Apps need to know what types of media support the device and any connected peripherals are together capable of.
+Apps need to know what type of media the device and its connected peripherals are together capable of playing.
 
 To facilitate this, the `MediaCapabilities` module will provide convenience methods that encapsulate the media-playing capabilities of the device as well as any of its connected peripherals, including (but not limited to) displays, sound bars, and receivers.
 
 These values **MUST NOT** change without a settings change, peripheral change, or firmware update.
 
-### 4.1. Audio Format Supported
-
-The `MediaCapabilities` module **MUST** have an `audioFormatSupported` method that returns a boolean that provides whether or not the specified format is commonly supported by the device and all relevant peripherals in the user's AV chain.
-
-This method **MUST** have a required `codec` parameter with the type `Media.AudioCodec`.
-
-This method **MUST** have an optional `options` parameter which **MUST** be an object with zero or more of the following properties:
-
-| Property       | Type              | Description                                           |
-| -------------- | ----------------- | ----------------------------------------------------- |
-| `atmos`        | `boolean`         | Whether or not Dolby Atmos support is being requested |
-| `codecLevel`   | `string`          | The codec level                                       |
-| `codecProfile` | `string`          | The codec profile:<br>**aac**: `mp2lc`, `mp4he`       |
-| `container`    | `Media.Container` | The container format type                             |
-| `sampleRate`   | `number`          | The sample rate being requested, in kHz               |
-
-If the `options` parameter is provided, then this method **MUST NOT** return `true` unless the format specified is supported with **all** of the properties specified by `options` *at the same time*.
-
-As multiple audio output modes may be set at the same time, the response **MUST** be based on the best possible audio configuration supported by the device and its AV chain.  For instance, if the device is configured for stereo output (which cannot support Atmos) but the AV chain supports Surround 5.1 (which can support Atmos), the latter would be considered the best possible audio configuration and thus used as the basis for the decision.
-
-```javascript
-MediaCapabilities.audioFormatSupported(Media.AudioCodec.AC4, {
-  atmos: true
-})
-//> true
-
-MediaCapabilities.audioFormatSupported(Media.AudioCodec.TRUEHD, {
-  atmos: true
-  mode: 'mono'
-})
-//> false (mono output not supported with dolby atmos)
-```
-
-Access to this method **MUST** require the `use` role of the `xrn:firebolt:capability:media-capabilities:info` capability.
-
-### 4.2. Video Format Supported
-
-The `MediaCapabilities` module **MUST** have a `videoFormatSupported` method that returns boolean that provides whether or not the specified format is commonly supported by the device and all relevant peripherals in the user's AV chain.
-
-This method **MUST** have a required `codec` parameter with the type `Media.VideoCodec`.
-
-This method **MUST** have an optional `info` parameter which **MUST** be an object with zero or more of the following properties:
-
-| Property     | Type                   | Description                                                                                                  |
-| ------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `container`  | `Media.VideoContainer` | The content container format                                                                                 |
-| `hdr`        | `Media.HDRProfile`     | The HDR profile to check                                                                                     |
-| `level`      | `string`               | The codec level:<br>**hevc**: `4.1`, `4.2`, `5.0`, `5.1`<br>**vp9**:`3.0`, `3.1`, `4.0`, `4.1`, `5.0`, `5.1` |
-| `profile`    | `string`               | The codec profile:<br>**hevc**: `main`, `high`, `main10`<br>**vp9**: `p0`, `p2`                              |
-| `resolution` | `Types.Dimensions`     | The dimensions of the media content, in pixels                                                               |
-
-Access to this method **MUST** require the `use` role of the `xrn:firebolt:capability:device:info` capability.
-
-```javascript
-MediaCapabilities.videoFormatSupported(Media.VideoCodec.HEVC, {
-  profile: "main10",
-  hdr: Media.HDRProfile.HDR10_PLUS
-})
-//> true
-
-MediaCapabilities.videoFormatSupported(Media.VideoCodec.VP9, {
-  profile: "p2",
-  hdr: Media.HDRProfile.HDR10_PLUS,
-  resolution: { "width": 3840, "height": 2160 }
-})
-//> true
-```
-
-Access to this method **MUST** require the `use` role of the `xrn:firebolt:capability:media-capabilities:info` capability.
-
-### 4.3. Supported Audio Modes
+### 4.1. Supported Audio Modes
 
 The `MediaCapabilities` module **MUST** have an `audioModes` method that returns an array of `Media.AudioMode` values describing the audio modes commonly supported across all relevant peripherals in the user's AV chain.
 
@@ -376,7 +282,7 @@ MediaCapabilities.audioModes()
 //> ["passthrough", "stereo", "surround"]
 ```
 
-### 4.4. Supported Video Modes
+### 4.2. Supported Video Modes
 
 The `MediaCapabilities` module **MUST** have a `videoModes` method that returns an array of `Media.VideoMode` values describing the video modes commonly supported across all relevant peripherals in the user's AV chain.
 
@@ -387,7 +293,7 @@ MediaCapabilities.videoModes()
 //> ["720p50", "720p60", "1080p50", "1080p60"]
 ```
 
-### 4.5. Supported Audio Codecs
+### 4.3. Supported Audio Codecs
 
 The `MediaCapabilities` module **MUST** have an `audioCodecs` method that returns an array of `Media.AudioCodec` values describing the audio codecs commonly supported across all relevant peripherals in the user's AV chain.
 
@@ -405,7 +311,7 @@ MediaCapabilities.audioCodecs()
 //> ]
 ```
 
-### 4.6. Supported Video Codecs
+### 4.4. Supported Video Codecs
 
 The `MediaCapabilities` module **MUST** have an `videoCodecs` method that returns an array of `Media.VideoCodec` values describing the video codecs commonly supported across all relevant peripherals in the user's AV chain.
 
@@ -425,7 +331,7 @@ MediaCapabilities.videoCodecs()
 //> ]
 ```
 
-### 4.7. Color Depth
+### 4.5. Color Depth
 
 The `MediaCapabilities` module **MUST** have a `colorDepth` method that returns a numeric value describing the maximum color depth commonly supported across all relevant peripherals in the user's AV chain.
 
@@ -436,7 +342,7 @@ MediaCapabilities.colorDepth()
 //> 10
 ```
 
-### 4.8. HDR Profiles
+### 4.6. HDR Profiles
 
 The `MediaCapabilities` module **MUST** have an `hdrProfiles` method that returns an array of `Media.HDRProfile` values describing the HDR capabilities commonly supported across all relevant peripherals in the user's AV chain.
 
@@ -449,7 +355,7 @@ MediaCapabilities.hdrProfiles()
 //> ["dolbyVision", "hdr10", "hdr10plus", "hlg"]
 ```
 
-### 4.9. Atmos Supported
+### 4.7. Atmos Supported
 
 The `MediaCapabilities` module **MUST** have an `atmosSupported` method that returns a boolean describing whether or not Dolby Atmos is commonly  supported across all relevant peripherals in the user's AV chain for immersive audio output.
 
