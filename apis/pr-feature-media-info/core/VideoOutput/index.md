@@ -723,7 +723,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### mode
 
-The current video output mode of the device.
+The current video output mode setting of the device.
 
 To get the value of `mode` call the method like this:
 
@@ -971,7 +971,7 @@ Response:
 
 ### resolution
 
-The width and height of the current video output, in pixels.
+The width and height of the current video mode setting, in pixels.
 
 To get the value of `resolution` call the method like this:
 

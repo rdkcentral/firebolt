@@ -9404,8 +9404,8 @@
 			],
 			"params": [],
 			"result": {
-				"name": "refreshRate",
-				"summary": "The refresh rate of the display device.",
+				"name": "nativeRefreshRate",
+				"summary": "The native refresh rate of the display device.",
 				"schema": {
 					"type": "number"
 				}
@@ -18725,7 +18725,7 @@
 		},
 		{
 			"name": "VideoOutput.mode",
-			"summary": "The current video output mode of the device.",
+			"summary": "The current video output mode setting of the device.",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -18811,7 +18811,7 @@
 		},
 		{
 			"name": "VideoOutput.resolution",
-			"summary": "The width and height of the current video output, in pixels.",
+			"summary": "The width and height of the current video mode setting, in pixels.",
 			"tags": [
 				{
 					"name": "property:readonly"
@@ -19117,7 +19117,7 @@
 		},
 		{
 			"name": "VideoOutput.onModeChanged",
-			"summary": "The current video output mode of the device.",
+			"summary": "The current video output mode setting of the device.",
 			"tags": [
 				{
 					"name": "subscriber",
@@ -19175,7 +19175,7 @@
 		},
 		{
 			"name": "VideoOutput.onResolutionChanged",
-			"summary": "The width and height of the current video output, in pixels.",
+			"summary": "The width and height of the current video mode setting, in pixels.",
 			"tags": [
 				{
 					"name": "subscriber",

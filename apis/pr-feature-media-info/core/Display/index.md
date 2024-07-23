@@ -379,11 +379,11 @@ JavaScript:
 ```javascript
 import { Display } from '@firebolt-js/sdk'
 
-let refreshRate = await Display.nativeRefreshRate()
-console.log(refreshRate)
+let nativeRefreshRate = await Display.nativeRefreshRate()
+console.log(nativeRefreshRate)
 ```
 
-Value of `refreshRate`:
+Value of `nativeRefreshRate`:
 
 ```javascript
 60
@@ -421,11 +421,11 @@ JavaScript:
 ```javascript
 import { Display } from '@firebolt-js/sdk'
 
-let refreshRate = await Display.nativeRefreshRate()
-console.log(refreshRate)
+let nativeRefreshRate = await Display.nativeRefreshRate()
+console.log(nativeRefreshRate)
 ```
 
-Value of `refreshRate`:
+Value of `nativeRefreshRate`:
 
 ```javascript
 60
