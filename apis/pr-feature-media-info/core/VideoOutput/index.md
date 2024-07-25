@@ -411,8 +411,10 @@ Value of `currentSettings`:
 	"colorDepth": "10",
 	"colorimetry": "BT2020YCC",
 	"colorSpace": "YCbCr422",
+	"frameRate": 60,
 	"hdrProfile": "hdr10plus",
 	"mode": "1080p60",
+	"quantizationRange": "limited",
 	"resolution": {
 		"width": 1920,
 		"height": 1080
@@ -443,8 +445,10 @@ Response:
     "colorDepth": "10",
     "colorimetry": "BT2020YCC",
     "colorSpace": "YCbCr422",
+    "frameRate": 60,
     "hdrProfile": "hdr10plus",
     "mode": "1080p60",
+    "quantizationRange": "limited",
     "resolution": {
       "width": 1920,
       "height": 1080
@@ -491,8 +495,10 @@ Value of `currentSettings`:
 	"colorDepth": "10",
 	"colorimetry": "BT2020YCC",
 	"colorSpace": "YCbCr422",
+	"frameRate": 60,
 	"hdrProfile": "hdr10plus",
 	"mode": "1080p60",
+	"quantizationRange": "limited",
 	"resolution": {
 		"width": 1920,
 		"height": 1080
@@ -525,8 +531,10 @@ Response:
     "colorDepth": "10",
     "colorimetry": "BT2020YCC",
     "colorSpace": "YCbCr422",
+    "frameRate": 60,
     "hdrProfile": "hdr10plus",
     "mode": "1080p60",
+    "quantizationRange": "limited",
     "resolution": {
       "width": 1920,
       "height": 1080

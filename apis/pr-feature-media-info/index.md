@@ -456,7 +456,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [MediaCapabilities.audioCodecs](./core/MediaCapabilities/#audiocodecs)<br/>[MediaCapabilities.videoCodecs](./core/MediaCapabilities/#videocodecs)<br/>[MediaCapabilities.audioModes](./core/MediaCapabilities/#audiomodes)<br/>[MediaCapabilities.videoModes](./core/MediaCapabilities/#videomodes)<br/>[MediaCapabilities.colorDepth](./core/MediaCapabilities/#colordepth)<br/>[MediaCapabilities.hdrProfiles](./core/MediaCapabilities/#hdrprofiles)<br/>[MediaCapabilities.atmosSupported](./core/MediaCapabilities/#atmossupported) |
+| [MediaCapabilities.audioCodecs](./core/MediaCapabilities/#audiocodecs)<br/>[MediaCapabilities.videoCodecs](./core/MediaCapabilities/#videocodecs)<br/>[MediaCapabilities.audioModes](./core/MediaCapabilities/#audiomodes)<br/>[MediaCapabilities.videoModes](./core/MediaCapabilities/#videomodes)<br/>[MediaCapabilities.colorDepth](./core/MediaCapabilities/#colordepth)<br/>[MediaCapabilities.hdrProfiles](./core/MediaCapabilities/#hdrprofiles)<br/>[MediaCapabilities.atmosSupported](./core/MediaCapabilities/#atmossupported)<br/>[MediaCapabilities.onAudioCodecsChanged](./core/MediaCapabilities/#audiocodecschanged) |
 
 
 ### `xrn:firebolt:capability:metrics:distributor`

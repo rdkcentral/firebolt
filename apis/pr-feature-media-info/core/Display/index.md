@@ -102,48 +102,6 @@ Response:
 
 </details>
 
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let colorDepth = await Display.colorDepth()
-console.log(colorDepth)
-```
-
-Value of `colorDepth`:
-
-```javascript
-10
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.colorDepth",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": 0
-}
-```
-
-</details>
-
 ---
 
 ### colorimetry
@@ -201,48 +159,6 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": ["BT2020RGB", "BT2020YCC"]
-}
-```
-
-</details>
-
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let colorimetry = await Display.colorimetry()
-console.log(colorimetry)
-```
-
-Value of `colorimetry`:
-
-```javascript
-;['BT2020RGB', 'BT2020YCC']
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.colorimetry",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": []
 }
 ```
 
@@ -310,48 +226,6 @@ Response:
 
 </details>
 
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let hdrProfiles = await Display.hdrProfiles()
-console.log(hdrProfiles)
-```
-
-Value of `hdrProfiles`:
-
-```javascript
-;['dolbyVision', 'hdr10', 'hdr10plus', 'hlg']
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.hdrProfiles",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": []
-}
-```
-
-</details>
-
 ---
 
 ### nativeRefreshRate
@@ -414,48 +288,6 @@ Response:
 
 </details>
 
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let nativeRefreshRate = await Display.nativeRefreshRate()
-console.log(nativeRefreshRate)
-```
-
-Value of `nativeRefreshRate`:
-
-```javascript
-60
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.nativeRefreshRate",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": 0
-}
-```
-
-</details>
-
 ---
 
 ### nativeResolution
@@ -485,11 +317,11 @@ JavaScript:
 ```javascript
 import { Display } from '@firebolt-js/sdk'
 
-let resolution = await Display.nativeResolution()
-console.log(resolution)
+let nativeResolution = await Display.nativeResolution()
+console.log(nativeResolution)
 ```
 
-Value of `resolution`:
+Value of `nativeResolution`:
 
 ```javascript
 {
@@ -526,54 +358,6 @@ Response:
 
 </details>
 
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let resolution = await Display.nativeResolution()
-console.log(resolution)
-```
-
-Value of `resolution`:
-
-```javascript
-{
-	"width": 1920,
-	"height": 1080
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.nativeResolution",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "width": 0,
-    "height": 0
-  }
-}
-```
-
-</details>
-
 ---
 
 ### nativeResolutionName
@@ -603,11 +387,11 @@ JavaScript:
 ```javascript
 import { Display } from '@firebolt-js/sdk'
 
-let resolutionName = await Display.nativeResolutionName()
-console.log(resolutionName)
+let nativeResolutionName = await Display.nativeResolutionName()
+console.log(nativeResolutionName)
 ```
 
-Value of `resolutionName`:
+Value of `nativeResolutionName`:
 
 ```javascript
 'uhd'
@@ -633,48 +417,6 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": "uhd"
-}
-```
-
-</details>
-
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let resolutionName = await Display.nativeResolutionName()
-console.log(resolutionName)
-```
-
-Value of `resolutionName`:
-
-```javascript
-'uhd'
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.nativeResolutionName",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "unknown"
 }
 ```
 
@@ -744,54 +486,6 @@ Response:
   "result": {
     "width": 157,
     "height": 91
-  }
-}
-```
-
-</details>
-
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let size = await Display.size()
-console.log(size)
-```
-
-Value of `size`:
-
-```javascript
-{
-	"width": 157,
-	"height": 91
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.size",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "width": 0,
-    "height": 0
   }
 }
 ```
@@ -873,57 +567,6 @@ Response:
     "1080p50",
     "1080p60"
   ]
-}
-```
-
-</details>
-
-Example with no display
-
-JavaScript:
-
-```javascript
-import { Display } from '@firebolt-js/sdk'
-
-let videoModes = await Display.videoModes()
-console.log(videoModes)
-```
-
-Value of `videoModes`:
-
-```javascript
-;[
-  '720p50',
-  '720p60',
-  '1080i50',
-  '1080i60',
-  '1080p24',
-  '1080p30',
-  '1080p50',
-  '1080p60',
-]
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Display.videoModes",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": []
 }
 ```
 

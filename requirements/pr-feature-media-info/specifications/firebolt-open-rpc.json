@@ -9282,6 +9282,12 @@
 					"type": "number"
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9289,14 +9295,6 @@
 					"result": {
 						"name": "Default Result",
 						"value": 10
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": 0
 					}
 				}
 			]
@@ -9323,6 +9321,12 @@
 					}
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9333,14 +9337,6 @@
 							"BT2020RGB",
 							"BT2020YCC"
 						]
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": []
 					}
 				}
 			]
@@ -9367,6 +9363,12 @@
 					}
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9379,14 +9381,6 @@
 							"hdr10plus",
 							"hlg"
 						]
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": []
 					}
 				}
 			]
@@ -9410,6 +9404,12 @@
 					"type": "number"
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9417,14 +9417,6 @@
 					"result": {
 						"name": "Default Result",
 						"value": 60
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": 0
 					}
 				}
 			]
@@ -9442,12 +9434,18 @@
 			],
 			"params": [],
 			"result": {
-				"name": "resolution",
-				"summary": "The resolution of the display device.",
+				"name": "nativeResolution",
+				"summary": "The native resolution of the display device.",
 				"schema": {
 					"$ref": "#/x-schemas/Types/Dimensions"
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9457,17 +9455,6 @@
 						"value": {
 							"width": 1920,
 							"height": 1080
-						}
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"width": 0,
-							"height": 0
 						}
 					}
 				}
@@ -9486,12 +9473,18 @@
 			],
 			"params": [],
 			"result": {
-				"name": "resolutionName",
-				"summary": "The resoltuion name of the display device.",
+				"name": "nativeResolutionName",
+				"summary": "The native resolution name of the display device.",
 				"schema": {
 					"$ref": "#/x-schemas/Media/ResolutionName"
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9499,14 +9492,6 @@
 					"result": {
 						"name": "Default Result",
 						"value": "uhd"
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "unknown"
 					}
 				}
 			]
@@ -9530,6 +9515,12 @@
 					"$ref": "#/x-schemas/Types/Dimensions"
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9539,17 +9530,6 @@
 						"value": {
 							"width": 157,
 							"height": 91
-						}
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"width": 0,
-							"height": 0
 						}
 					}
 				}
@@ -9577,6 +9557,12 @@
 					}
 				}
 			},
+			"errors": [
+				{
+					"code": -51000,
+					"message": "No display connected"
+				}
+			],
 			"examples": [
 				{
 					"name": "Default Example",
@@ -9593,14 +9579,6 @@
 							"1080p50",
 							"1080p60"
 						]
-					}
-				},
-				{
-					"name": "Example with no display",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": []
 					}
 				}
 			]
@@ -13342,8 +13320,11 @@
 		},
 		{
 			"name": "MediaCapabilities.audioCodecs",
-			"summary": "The audio codecs commonly supported by the device and all its connected audio peripherals.",
+			"summary": "The audio codecs supported by the audio output sink.  The response is based on the current audio output mode.  If the output mode is passthrough, the codecs of the audio sink (such as the soundbar or AV receiver) are returned.  Otherwise, the supported audio codecs of the device are returned.",
 			"tags": [
+				{
+					"name": "property:readonly"
+				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -13382,7 +13363,7 @@
 		},
 		{
 			"name": "MediaCapabilities.videoCodecs",
-			"summary": "The video codecs commonly supported by the device and all of its connected video peripherals.",
+			"summary": "The video codecs supported by the device.",
 			"tags": [
 				{
 					"name": "capabilities",
@@ -13589,6 +13570,74 @@
 					"result": {
 						"name": "Default Result",
 						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "MediaCapabilities.onAudioCodecsChanged",
+			"summary": "The audio codecs supported by the audio output sink.  The response is based on the current audio output mode.  If the output mode is passthrough, the codecs of the audio sink (such as the soundbar or AV receiver) are returned.  Otherwise, the supported audio codecs of the device are returned.",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "MediaCapabilities.audioCodecs"
+				},
+				{
+					"name": "event",
+					"x-alternative": "audioCodecs"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:media-capabilities:info"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "audioCodecs",
+				"summary": "The supported audio codecs",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/x-schemas/Media/AudioCodec"
+							}
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": [
+							"aac",
+							"ac3",
+							"ac4",
+							"eac3",
+							"mpeg3",
+							"pcm"
+						]
 					}
 				}
 			]
@@ -18619,11 +18668,17 @@
 						"colorSpace": {
 							"$ref": "#/x-schemas/Media/ColorSpace"
 						},
+						"frameRate": {
+							"type": "number"
+						},
 						"hdrProfile": {
 							"$ref": "#/x-schemas/Media/HDRProfile"
 						},
 						"mode": {
 							"$ref": "#/x-schemas/Media/VideoMode"
+						},
+						"quantizationRange": {
+							"$ref": "#/components/schemas/QuantizationRange"
 						},
 						"resolution": {
 							"$ref": "#/x-schemas/Types/Dimensions"
@@ -18633,8 +18688,10 @@
 						"colorDepth",
 						"colorimetry",
 						"colorSpace",
+						"frameRate",
 						"hdrProfile",
 						"mode",
+						"quantizationRange",
 						"resolution"
 					]
 				}
@@ -18649,8 +18706,10 @@
 							"colorDepth": "10",
 							"colorimetry": "BT2020YCC",
 							"colorSpace": "YCbCr422",
+							"frameRate": 60,
 							"hdrProfile": "hdr10plus",
 							"mode": "1080p60",
+							"quantizationRange": "limited",
 							"resolution": {
 								"width": 1920,
 								"height": 1080
@@ -19009,11 +19068,17 @@
 								"colorSpace": {
 									"$ref": "#/x-schemas/Media/ColorSpace"
 								},
+								"frameRate": {
+									"type": "number"
+								},
 								"hdrProfile": {
 									"$ref": "#/x-schemas/Media/HDRProfile"
 								},
 								"mode": {
 									"$ref": "#/x-schemas/Media/VideoMode"
+								},
+								"quantizationRange": {
+									"$ref": "#/components/schemas/QuantizationRange"
 								},
 								"resolution": {
 									"$ref": "#/x-schemas/Types/Dimensions"
@@ -19023,8 +19088,10 @@
 								"colorDepth",
 								"colorimetry",
 								"colorSpace",
+								"frameRate",
 								"hdrProfile",
 								"mode",
+								"quantizationRange",
 								"resolution"
 							]
 						}
@@ -19046,8 +19113,10 @@
 							"colorDepth": "10",
 							"colorimetry": "BT2020YCC",
 							"colorSpace": "YCbCr422",
+							"frameRate": 60,
 							"hdrProfile": "hdr10plus",
 							"mode": "1080p60",
+							"quantizationRange": "limited",
 							"resolution": {
 								"width": 1920,
 								"height": 1080
@@ -21590,9 +21659,12 @@
 					"BT2020cYCC",
 					"BT2020RGB",
 					"BT2020YCC",
-					"DCI-P3",
+					"defaultRGB",
+					"ICtCp",
 					"opRGB",
 					"opYCC601",
+					"sRGB",
+					"ST2113RGB24",
 					"sYCC601",
 					"xvYCC601",
 					"xvYCC709",
@@ -21658,6 +21730,7 @@
 					"aac",
 					"ac3",
 					"ac4",
+					"dts-x",
 					"eac3",
 					"mpeg3",
 					"opus",

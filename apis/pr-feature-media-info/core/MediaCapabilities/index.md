@@ -23,8 +23,12 @@ Version MediaCapabilities 1.2.0-feature-media-info.5
   - [audioModes](#audiomodes)
   - [colorDepth](#colordepth)
   - [hdrProfiles](#hdrprofiles)
+  - [listen](#listen)
+  - [once](#once)
   - [videoCodecs](#videocodecs)
   - [videoModes](#videomodes)
+- [Events](#events)
+  - [audioCodecsChanged](#audiocodecschanged)
 - [Types](#types)
 
 ## Usage
@@ -105,7 +109,9 @@ Response:
 
 ### audioCodecs
 
-The audio codecs commonly supported by the device and all its connected audio peripherals.
+The audio codecs supported by the audio output sink. The response is based on the current audio output mode. If the output mode is passthrough, the codecs of the audio sink (such as the soundbar or AV receiver) are returned. Otherwise, the supported audio codecs of the device are returned.
+
+To get the value of `audioCodecs` call the method like this:
 
 ```typescript
 function audioCodecs(): Promise<AudioCodec[]>
@@ -148,6 +154,68 @@ Request:
   "id": 1,
   "method": "MediaCapabilities.audioCodecs",
   "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["aac", "ac3", "ac4", "eac3", "mpeg3", "pcm"]
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function audioCodecs(callback: (value) => AudioCodec[]): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let listenerId = await audioCodecs((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `audioCodecs`:
+
+```javascript
+;['aac', 'ac3', 'ac4', 'eac3', 'mpeg3', 'pcm']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.onAudioCodecsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -351,9 +419,119 @@ Response:
 
 ---
 
+### listen
+
+To listen to a specific event pass the event name as the first parameter:
+
+```typescript
+listen(event: string, callback: (data: any) => void): Promise<number>
+```
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
+
+Promise resolution:
+
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `MediaCapabilities.clear(id)` |
+
+Callback parameters:
+
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+To listen to all events from this module pass only a callback, without specifying an event name:
+
+```typescript
+listen(callback: (event: string, data: any) => void): Promise<number>
+```
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
+
+Callback parameters:
+
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+Promise resolution:
+
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `MediaCapabilities.clear(id)` |
+
+See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
+### once
+
+To listen to a single instance of a specific event pass the event name as the first parameter:
+
+```typescript
+once(event: string, callback: (data: any) => void): Promise<number>
+```
+
+The `once` method will only pass the next instance of this event, and then dicard the listener you provided.
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
+
+Promise resolution:
+
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `MediaCapabilities.clear(id)` |
+
+Callback parameters:
+
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
+
+```typescript
+once(callback: (event: string, data: any) => void): Promise<number>
+```
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
+
+Callback parameters:
+
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+Promise resolution:
+
+| Type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `MediaCapabilities.clear(id)` |
+
+See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
 ### videoCodecs
 
-The video codecs commonly supported by the device and all of its connected video peripherals.
+The video codecs supported by the device.
 
 ```typescript
 function videoCodecs(): Promise<VideoCodec[]>
@@ -474,5 +652,11 @@ Response:
 </details>
 
 ---
+
+## Events
+
+### audioCodecsChanged
+
+See: [audioCodecs](#audiocodecs)
 
 ## Types
