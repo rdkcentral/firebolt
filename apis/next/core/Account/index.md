@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Account 1.2.1-next.2
+Version Account 1.2.1-next.3
 
 ## Table of Contents
 
