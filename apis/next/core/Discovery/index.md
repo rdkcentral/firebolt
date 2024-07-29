@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.2.1-next.4
+Version Discovery 1.3.0-next.1
 
 ## Table of Contents
 
@@ -3650,7 +3650,7 @@ Suggest a call-to-action for this app on the platform home screen
 ```typescript
 function watchNext(
   title: LocalizedString,
-  identifiers: Entity,
+  identifiers: ContentIdentifiers,
   expires: string,
   images: object,
 ): Promise<boolean>
@@ -3658,12 +3658,12 @@ function watchNext(
 
 Parameters:
 
-| Param         | Type                                                   | Required | Description                                                                            |
-| ------------- | ------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------- |
-| `title`       | [`LocalizedString`](../Types/schemas/#LocalizedString) | true     | The title of this call to action                                                       |
-| `identifiers` | [`Entity`](../Entity/schemas/#Entity)                  | true     | A set of content identifiers for this call to action                                   |
-| `expires`     | `string`                                               | false    | When this call to action should no longer be presented to users <br/>format: date-time |
-| `images`      | `object`                                               | false    | A set of images for this call to action                                                |
+| Param         | Type                                                                 | Required | Description                                                                            |
+| ------------- | -------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------- |
+| `title`       | [`LocalizedString`](../Types/schemas/#LocalizedString)               | true     | The title of this call to action                                                       |
+| `identifiers` | [`ContentIdentifiers`](../Entertainment/schemas/#ContentIdentifiers) | true     | A set of content identifiers for this call to action                                   |
+| `expires`     | `string`                                                             | false    | When this call to action should no longer be presented to users <br/>format: date-time |
+| `images`      | `object`                                                             | false    | A set of images for this call to action                                                |
 
 Promise resolution:
 
