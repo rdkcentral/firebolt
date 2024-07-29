@@ -348,12 +348,7 @@ Response:
 The provider interface for the `xrn:firebolt:capability:usergrant:acknowledgechallenge` capability.
 
 ```typescript
-interface ChallengeProvider {
-  challenge(
-    parameters: object,
-    session: FocusableProviderSession,
-  ): Promise<GrantResult>
-}
+
 ```
 
 Usage:

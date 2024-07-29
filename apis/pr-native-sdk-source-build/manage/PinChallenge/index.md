@@ -353,12 +353,7 @@ Response:
 The provider interface for the `xrn:firebolt:capability:usergrant:pinchallenge` capability.
 
 ```typescript
-interface ChallengeProvider {
-  challenge(
-    parameters: object,
-    session: FocusableProviderSession,
-  ): Promise<PinChallengeResult>
-}
+
 ```
 
 Usage:

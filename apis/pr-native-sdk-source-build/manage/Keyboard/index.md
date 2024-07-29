@@ -708,20 +708,7 @@ Response:
 The provider interface for the `xrn:firebolt:capability:input:keyboard` capability.
 
 ```typescript
-interface KeyboardInputProvider {
-  standard(
-    parameters: KeyboardParameters,
-    session: FocusableProviderSession,
-  ): Promise<string>
-  password(
-    parameters: KeyboardParameters,
-    session: FocusableProviderSession,
-  ): Promise<string>
-  email(
-    parameters: KeyboardParameters,
-    session: FocusableProviderSession,
-  ): Promise<string>
-}
+
 ```
 
 Usage:
