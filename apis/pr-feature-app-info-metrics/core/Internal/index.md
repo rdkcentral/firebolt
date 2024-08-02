@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.3.0-feature-app-info-metrics.0
+Version Internal 1.2.0-feature-app-info-metrics.1
 
 ## Table of Contents
 

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.3.0-feature-app-info-metrics.0
+Version SecureStorage 1.2.0-feature-app-info-metrics.1
 
 ## Table of Contents
 
