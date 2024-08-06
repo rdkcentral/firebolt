@@ -48,9 +48,10 @@ Version Device 1.3.0-modify-spec-example.0
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
-  - [Resolution](#resolution)
-  - [HDRType](#hdrtype)
   - [AudioProfiles](#audioprofiles)
+  - [Resolution](#resolution)
+  - [HDCPType](#hdcptype)
+  - [HDRType](#hdrtype)
 
 ## Usage
 
@@ -285,12 +286,12 @@ Get the supported HDCP profiles
 To get the value of `hdcp` call the method like this:
 
 ```typescript
-function hdcp(): Promise<BooleanMap>
+function hdcp(): Promise<HDCPType>
 ```
 
 Promise resolution:
 
-[BooleanMap](../Types/schemas/#BooleanMap)
+[HDCPType](#hdcptype)
 
 Capabilities:
 
@@ -353,7 +354,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdcp(callback: (value) => BooleanMap): Promise<number>
+function hdcp(callback: (value) => HDCPType): Promise<number>
 ```
 
 Promise resolution:
@@ -1974,32 +1975,6 @@ NetworkType: {
 
 ---
 
-### Resolution
-
-```typescript
-type Resolution = [
-  number, // undefined  item
-  number, // undefined  item
-]
-```
-
----
-
-### HDRType
-
-The type of HDR that is supported
-
-```typescript
-type HDRType = {
-  hdr10?: boolean
-  hdr10plus?: boolean
-  dolbyVision?: boolean
-  hlg?: boolean
-}
-```
-
----
-
 ### AudioProfiles
 
 ```typescript
@@ -2022,5 +1997,45 @@ See also:
 
 [BooleanMap](../Types/schemas/#BooleanMap)
 [AudioProfile](../Types/schemas/#AudioProfile)
+
+---
+
+### Resolution
+
+```typescript
+type Resolution = [
+  number, // undefined  item
+  number, // undefined  item
+]
+```
+
+---
+
+### HDCPType
+
+The type of HDCP that is supported
+
+```typescript
+type HDCPType = {
+    hdcp1.4?: boolean
+    hdcp2.2?: boolean
+}
+
+```
+
+---
+
+### HDRType
+
+The type of HDR that is supported
+
+```typescript
+type HDRType = {
+  hdr10?: boolean
+  hdr10plus?: boolean
+  dolbyVision?: boolean
+  hlg?: boolean
+}
+```
 
 ---

@@ -6160,7 +6160,7 @@
 				"name": "supportedHdcpProfiles",
 				"summary": "the supported HDCP profiles",
 				"schema": {
-					"$ref": "#/x-schemas/Types/BooleanMap"
+					"$ref": "#/components/schemas/HDCPType"
 				}
 			},
 			"examples": [
@@ -6665,7 +6665,7 @@
 							"$ref": "#/x-schemas/Types/ListenResponse"
 						},
 						{
-							"$ref": "#/x-schemas/Types/BooleanMap"
+							"$ref": "#/components/schemas/HDCPType"
 						}
 					]
 				}
