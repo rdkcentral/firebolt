@@ -1,7 +1,7 @@
 ---
 title: Intents
 
-version: 0.8.1
+version: 0.5.3
 layout: default
 sdk: core
 ---
