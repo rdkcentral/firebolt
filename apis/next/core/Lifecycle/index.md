@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Lifecycle 1.3.0-next.2
+Version Lifecycle 1.3.0-next.3
 
 ## Table of Contents
 
