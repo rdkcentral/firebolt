@@ -1,5 +1,9 @@
 ---
 title: Intents
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 # Intents Schema
 ---

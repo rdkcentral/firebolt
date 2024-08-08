@@ -1,5 +1,9 @@
 ---
 title: Accessibility
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 
 # Accessibility Module

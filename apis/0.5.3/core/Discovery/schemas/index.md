@@ -1,5 +1,9 @@
 ---
 title: Discovery
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 # Discovery Schema
 ---

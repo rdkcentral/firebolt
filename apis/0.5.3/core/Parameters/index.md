@@ -1,5 +1,9 @@
 ---
 title: Parameters
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 
 # Parameters Module
@@ -18,20 +22,20 @@ For the full schema, see the link below.
 
 ## Table of Contents
 - [Parameters Module](#parameters-module)
-	- [OpenRPC](#openrpc)
-	- [Table of Contents](#table-of-contents)
-	- [Usage](#usage)
-	- [Overview](#overview)
-	- [Events](#events)
-	- [Methods](#methods)
-		- [initialization](#initialization)
-			- [Promise Resolution](#promise-resolution)
-			- [Examples](#examples)
-				- [Default Example](#default-example)
-					- [Request](#request)
-					- [Response](#response)
-	- [Schemas](#schemas)
-		- [AppInitialization](#appinitialization)
+  - [OpenRPC](#openrpc)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+  - [Overview](#overview)
+  - [Events](#events)
+  - [Methods](#methods)
+    - [initialization](#initialization)
+      - [Promise Resolution](#promise-resolution)
+      - [Examples](#examples)
+        - [Default Example](#default-example)
+          - [Request](#request)
+          - [Response](#response)
+  - [Schemas](#schemas)
+    - [AppInitialization](#appinitialization)
 
 <span></span>
 

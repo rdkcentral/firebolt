@@ -1,5 +1,9 @@
 ---
 title: Types
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 # Types Schema
 ---

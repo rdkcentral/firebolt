@@ -1,5 +1,10 @@
 ---
 title: Account
+
+version: 0.8.1
+layout: default
+sdk: core
+---
 ---
 
 # Account Module

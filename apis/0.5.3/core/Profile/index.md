@@ -1,5 +1,9 @@
 ---
 title: Profile
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 
 # Profile Module

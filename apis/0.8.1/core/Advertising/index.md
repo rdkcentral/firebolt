@@ -1,5 +1,9 @@
 ---
 title: Advertising
+
+version: 0.8.1
+layout: default
+sdk: core
 ---
 
 # Advertising Module

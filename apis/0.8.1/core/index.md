@@ -1,7 +1,7 @@
 ---
 title: Firebolt Core SDK
 
-version: 0.5.3
+version: 0.8.1
 layout: default
 sdk: core
 ---
