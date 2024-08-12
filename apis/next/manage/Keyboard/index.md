@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.3.0-next.3
+Version Keyboard 1.3.0-next.4
 
 ## Table of Contents
 
@@ -708,20 +708,7 @@ Response:
 The provider interface for the `xrn:firebolt:capability:input:keyboard` capability.
 
 ```typescript
-interface KeyboardInputProvider {
-  standard(
-    parameters: KeyboardParameters,
-    session: FocusableProviderSession,
-  ): Promise<string>
-  password(
-    parameters: KeyboardParameters,
-    session: FocusableProviderSession,
-  ): Promise<string>
-  email(
-    parameters: KeyboardParameters,
-    session: FocusableProviderSession,
-  ): Promise<string>
-}
+
 ```
 
 Usage:

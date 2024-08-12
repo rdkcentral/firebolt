@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.2.1-app-passthrough-additions.0
+Version UserGrants 1.3.0-app-passthrough-additions.0
 
 ## Table of Contents
 

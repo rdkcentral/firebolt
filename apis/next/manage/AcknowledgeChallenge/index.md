@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.3.0-next.3
+Version AcknowledgeChallenge 1.3.0-next.4
 
 ## Table of Contents
 
@@ -348,12 +348,7 @@ Response:
 The provider interface for the `xrn:firebolt:capability:usergrant:acknowledgechallenge` capability.
 
 ```typescript
-interface ChallengeProvider {
-  challenge(
-    parameters: object,
-    session: FocusableProviderSession,
-  ): Promise<GrantResult>
-}
+
 ```
 
 Usage:
@@ -371,7 +366,9 @@ import { AcknowledgeChallenge } from '@firebolt-js/manage-sdk'
 
 class MyChallengeProvider {
   async challenge(parameters, session) {
-    return null
+    return {
+      granted: true,
+    }
   }
 }
 
@@ -440,7 +437,9 @@ Request:
   "method": "AcknowledgeChallenge.challengeResponse",
   "params": {
     "correlationId": undefined,
-    "result": null
+    "result": {
+      "granted": true
+    }
   }
 }
 ```
