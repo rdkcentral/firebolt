@@ -189,7 +189,7 @@ Promise resolution:
 
 | Type | Description |
 | ---- | ----------- |
-| [`FlatMap`](../schemas/types#/definitions/flatmap) | The profile flags. |
+| [`FlatMap`](../Types/schemas/#flatmap) | The profile flags. |
 
 
 **Examples**

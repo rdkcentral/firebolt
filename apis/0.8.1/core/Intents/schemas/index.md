@@ -535,7 +535,7 @@ type ProgramEntity = {
 
 See also: 
 
- - [ProgramType](../../schemas/entertainment#programtype)
+ - [ProgramType](../Entertainment/schemas/#programtype)
 
 
 <details>

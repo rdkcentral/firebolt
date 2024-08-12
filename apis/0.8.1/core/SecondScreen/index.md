@@ -425,7 +425,7 @@ Promise resolution:
 
 | Type | Description |
 | ---- | ----------- |
-| [`BooleanMap`](../schemas/types#/definitions/booleanmap) | the supported protocols |
+| [`BooleanMap`](../Types/schemas/#booleanmap) | the supported protocols |
 
 
 **Examples**
@@ -501,7 +501,7 @@ Event value:
 
 | Type | Description |
 | ---- | ----------- |
-| [`SecondScreenEvent`](../schemas/secondscreen#/definitions/secondscreenevent) | An a message notification from a second screen device |
+| [`SecondScreenEvent`](../SecondScreen/schemas/#secondscreenevent) | An a message notification from a second screen device |
 
 
 **Examples**
@@ -572,7 +572,7 @@ Event value:
 
 | Type | Description |
 | ---- | ----------- |
-| [`SecondScreenEvent`](../schemas/secondscreen#/definitions/secondscreenevent) | An a message notification from a second screen device |
+| [`SecondScreenEvent`](../SecondScreen/schemas/#secondscreenevent) | An a message notification from a second screen device |
 
 
 **Examples**

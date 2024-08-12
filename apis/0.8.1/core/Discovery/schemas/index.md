@@ -40,7 +40,7 @@ type PurchasedContentResult = {
 
 See also: 
 
- - [EntityInfo](../../schemas/entertainment#entityinfo)
+ - [EntityInfo](../Entertainment/schemas/#entityinfo)
 
 
 <details>
@@ -68,7 +68,7 @@ type EntityInfoResult = {
 
 See also: 
 
- - [EntityInfo](../../schemas/entertainment#entityinfo)
+ - [EntityInfo](../Entertainment/schemas/#entityinfo)
 
 
 <details>

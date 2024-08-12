@@ -63,7 +63,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `reason` | [`CloseReason`](../schemas/lifecycle#/definitions/closereason) | true | The reason the app is requesting to be closed  |
+| `reason` | [`CloseReason`](../Lifecycle/schemas/#closereason) | true | The reason the app is requesting to be closed  |
 
 
 Promise resolution:
@@ -449,7 +449,7 @@ Promise resolution:
 
 | Type | Description |
 | ---- | ----------- |
-| [`LifecycleState`](../schemas/lifecycle#/definitions/lifecyclestate) | The application lifecycle state |
+| [`LifecycleState`](../Lifecycle/schemas/#lifecyclestate) | The application lifecycle state |
 
 
 **Examples**
@@ -946,7 +946,7 @@ type LifecycleEvent = {
 
 See also: 
 
- - [LifecycleState](../schemas/lifecycle#lifecyclestate)
+ - [LifecycleState](../Lifecycle/schemas/#lifecyclestate)
 
 ---
 

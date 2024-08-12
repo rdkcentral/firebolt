@@ -446,7 +446,7 @@ Parameters:
 | `category` | `'user' | 'app'` | true | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions  |
 | `type` | `string` | true | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256
 maxLength: 256 |
-| `parameters` | [`FlatMap`](../schemas/types#/definitions/flatmap) | false |   |
+| `parameters` | [`FlatMap`](../Types/schemas/#flatmap) | false |   |
 
 
 Promise resolution:
@@ -527,7 +527,7 @@ Parameters:
 | `code` | `string` | true | an app-specific error code  |
 | `description` | `string` | true | A short description of the error  |
 | `visible` | `boolean` | true | Whether or not this error was visible to the user.  |
-| `parameters` | [`FlatMap`](../schemas/types#/definitions/flatmap) | false | Optional additional parameters to be logged with the error  |
+| `parameters` | [`FlatMap`](../Types/schemas/#flatmap) | false | Optional additional parameters to be logged with the error  |
 
 
 Promise resolution:

@@ -340,7 +340,7 @@ Promise resolution:
 
 | Type | Description |
 | ---- | ----------- |
-| [`BooleanMap`](../schemas/types#/definitions/booleanmap) | the supported HDCP profiles |
+| [`BooleanMap`](../Types/schemas/#booleanmap) | the supported HDCP profiles |
 
 
 **Examples**
@@ -426,7 +426,7 @@ Callback parameters:
 
 | Param                  | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `supportedHdcpProfiles` | [`BooleanMap`](../schemas/types#/definitions/booleanmap) | Yes | the supported HDCP profiles  |
+| `supportedHdcpProfiles` | [`BooleanMap`](../Types/schemas/#booleanmap) | Yes | the supported HDCP profiles  |
 
 **Examples**
 
@@ -518,7 +518,7 @@ Promise resolution:
 
 | Type | Description |
 | ---- | ----------- |
-| [`BooleanMap`](../schemas/types#/definitions/booleanmap) | the supported HDR profiles |
+| [`BooleanMap`](../Types/schemas/#booleanmap) | the supported HDR profiles |
 
 
 **Examples**
@@ -608,7 +608,7 @@ Callback parameters:
 
 | Param                  | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `supportedHdrProfiles` | [`BooleanMap`](../schemas/types#/definitions/booleanmap) | Yes | the supported HDR profiles  |
+| `supportedHdrProfiles` | [`BooleanMap`](../Types/schemas/#booleanmap) | Yes | the supported HDR profiles  |
 
 **Examples**
 
@@ -1875,10 +1875,10 @@ the versions
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `sdk` | [`SemanticVersion`](../schemas/types#/definitions/semanticversion) | The Firebolt SDK version |
-| `api` | [`SemanticVersion`](../schemas/types#/definitions/semanticversion) | The lateset Firebolt API vresion supported by the curent device. |
-| `firmware` | [`SemanticVersion`](../schemas/types#/definitions/semanticversion) | The device firmware version. |
-| `os` | [`SemanticVersion`](../schemas/types#/definitions/semanticversion) | **Deprecated** |
+| `sdk` | [`SemanticVersion`](../Types/schemas/#semanticversion) | The Firebolt SDK version |
+| `api` | [`SemanticVersion`](../Types/schemas/#semanticversion) | The lateset Firebolt API vresion supported by the curent device. |
+| `firmware` | [`SemanticVersion`](../Types/schemas/#semanticversion) | The device firmware version. |
+| `os` | [`SemanticVersion`](../Types/schemas/#semanticversion) | **Deprecated** |
 | `debug` | `string` | Detail version as a string, for debugging purposes |
 
 
@@ -2248,8 +2248,8 @@ For more information, follow the links under the "Documentation" column.
 
 | JavaScript | RPC | Payload | Documentation |
 |------------|-----|---------|---------------|
-| hdcpChanged | onHdcpChanged | [BooleanMap](../schemas/types#/definitions/booleanmap) | [hdcp](#hdcp) |
-| hdrChanged | onHdrChanged | [BooleanMap](../schemas/types#/definitions/booleanmap) | [hdr](#hdr) |
+| hdcpChanged | onHdcpChanged | [BooleanMap](../Types/schemas/#booleanmap) | [hdcp](#hdcp) |
+| hdrChanged | onHdrChanged | [BooleanMap](../Types/schemas/#booleanmap) | [hdr](#hdr) |
 | audioChanged | onAudioChanged | [AudioProfiles](#audioprofiles) | [audio](#audio) |
 | screenResolutionChanged | onScreenResolutionChanged | [number, number] | [screenResolution](#screenresolution) |
 | videoResolutionChanged | onVideoResolutionChanged | [number, number] | [videoResolution](#videoresolution) |
@@ -2317,8 +2317,8 @@ type AudioProfiles = {
 
 See also: 
 
- - [BooleanMap](../schemas/types#booleanmap)
- - [AudioProfile](../schemas/types#audioprofile)
+ - [BooleanMap](../Types/schemas/#booleanmap)
+ - [AudioProfile](../Types/schemas/#audioprofile)
 
 ---
 

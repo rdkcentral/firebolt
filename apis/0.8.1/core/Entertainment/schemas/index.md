@@ -105,7 +105,7 @@ type EntityInfo = {
 
 See also: 
 
- - [ProgramType](../../schemas/entertainment#programtype)
+ - [ProgramType](../Entertainment/schemas/#programtype)
 
 
 <details>
@@ -184,8 +184,8 @@ type WayToWatch = {
 
 See also: 
 
- - [OfferingType](../../schemas/entertainment#offeringtype)
- - [AudioProfile](../../schemas/types#audioprofile)
+ - [OfferingType](../Entertainment/schemas/#offeringtype)
+ - [AudioProfile](../Types/schemas/#audioprofile)
 
 
 <details>

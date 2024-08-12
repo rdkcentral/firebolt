@@ -169,8 +169,8 @@ type AppInitialization = {
 
 See also: 
 
- - [NavigationIntent](../schemas/intents#navigationintent)
- - [SecondScreenEvent](../schemas/secondscreen#secondscreenevent)
+ - [NavigationIntent](../Intents/schemas/#navigationintent)
+ - [SecondScreenEvent](../SecondScreen/schemas/#secondscreenevent)
 
 ---
 

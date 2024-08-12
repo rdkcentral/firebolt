@@ -720,7 +720,7 @@ type AdPolicy = {
 
 See also: 
 
- - [SkipRestriction](../schemas/advertising#skiprestriction)
+ - [SkipRestriction](../Advertising/schemas/#skiprestriction)
 
 ---
 

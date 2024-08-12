@@ -1400,7 +1400,7 @@ Parameters:
 | Param                  | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
 | `appId` | `string` | true | The durable app Id of the app to launch  |
-| `intent` | [`NavigationIntent`](../schemas/intents#/definitions/navigationintent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
+| `intent` | [`NavigationIntent`](../Intents/schemas/#navigationintent) | false | An optional `NavigationIntent` with details about what part of the app to show first, and context around how/why it was launched  |
 
 
 Promise resolution:
@@ -2997,7 +2997,7 @@ Parameters:
 
 | Param                  | Type                 | Required                 | Summary                 |
 | ---------------------- | -------------------- | ------------------------ | ----------------------- |
-| `title` | [`LocalizedString`](../schemas/types#/definitions/localizedstring) | false | The title of this call to action  |
+| `title` | [`LocalizedString`](../Types/schemas/#localizedstring) | false | The title of this call to action  |
 | `identifiers` | [`ContentIdentifiers`](#contentidentifiers) | false | A set of content identifiers for this call to action  |
 | `expires` | `string` | false | When this call to action should no longer be presented to users <br/>format: date-time |
 | `images` | `object` | false | A set of images for this call to action  |
@@ -3107,7 +3107,7 @@ Event value:
 
 | Type | Description |
 | ---- | ----------- |
-| [`NavigationIntent`](../schemas/intents#/definitions/navigationintent) | A Firebolt compliant representation of a user intention to navigate to a specific place in an app. |
+| [`NavigationIntent`](../Intents/schemas/#navigationintent) | A Firebolt compliant representation of a user intention to navigate to a specific place in an app. |
 
 
 **Examples**
@@ -3250,7 +3250,7 @@ type EntityInfo = {
 
 See also: 
 
- - [ProgramType](../schemas/entertainment#programtype)
+ - [ProgramType](../Entertainment/schemas/#programtype)
 
 ---
 
@@ -3312,8 +3312,8 @@ type WayToWatch = {
 
 See also: 
 
- - [OfferingType](../schemas/entertainment#offeringtype)
- - [AudioProfile](../schemas/types#audioprofile)
+ - [OfferingType](../Entertainment/schemas/#offeringtype)
+ - [AudioProfile](../Types/schemas/#audioprofile)
 
 ---
 
@@ -3506,8 +3506,8 @@ type PurchasedContentParameters = {
 
 See also: 
 
- - [OfferingType](../schemas/entertainment#offeringtype)
- - [ProgramType](../schemas/entertainment#programtype)
+ - [OfferingType](../Entertainment/schemas/#offeringtype)
+ - [ProgramType](../Entertainment/schemas/#programtype)
 
 ---
 
