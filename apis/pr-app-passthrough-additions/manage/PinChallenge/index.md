@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.2.1-app-passthrough-additions.0
+Version PinChallenge 1.3.0-app-passthrough-additions.0
 
 ## Table of Contents
 
@@ -353,12 +353,7 @@ Response:
 The provider interface for the `xrn:firebolt:capability:usergrant:pinchallenge` capability.
 
 ```typescript
-interface ChallengeProvider {
-  challenge(
-    parameters: object,
-    session: FocusableProviderSession,
-  ): Promise<PinChallengeResult>
-}
+
 ```
 
 Usage:

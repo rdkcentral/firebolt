@@ -927,7 +927,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.2.1-app-passthrough-additions.0",
+				"version": "1.3.0-app-passthrough-additions.0",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -8631,7 +8631,7 @@
 							"name": "identifiers",
 							"summary": "A set of content identifiers for this call to action",
 							"schema": {
-								"$ref": "#/x-schemas/Entity/Entity"
+								"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
 							},
 							"required": true
 						},
@@ -14904,6 +14904,49 @@
 									"value": {
 										"foo": "foo"
 									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Metrics.appInfo",
+					"tags": [
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:metrics:general"
+							]
+						}
+					],
+					"summary": "Inform the platform about an app's build info.",
+					"params": [
+						{
+							"name": "build",
+							"summary": "The build / version of this app.",
+							"schema": {
+								"type": "string"
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Send appInfo metric",
+							"params": [
+								{
+									"name": "build",
+									"value": "1.2.2"
 								}
 							],
 							"result": {

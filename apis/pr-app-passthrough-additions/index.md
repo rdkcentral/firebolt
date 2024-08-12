@@ -449,7 +449,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Metrics.ready](./core/Metrics/#ready)<br/>[Metrics.signIn](./core/Metrics/#signin)<br/>[Metrics.signOut](./core/Metrics/#signout)<br/>[Metrics.startContent](./core/Metrics/#startcontent)<br/>[Metrics.stopContent](./core/Metrics/#stopcontent)<br/>[Metrics.page](./core/Metrics/#page)<br/>[Metrics.action](./core/Metrics/#action)<br/>[Metrics.error](./core/Metrics/#error) |
+| [Metrics.ready](./core/Metrics/#ready)<br/>[Metrics.signIn](./core/Metrics/#signin)<br/>[Metrics.signOut](./core/Metrics/#signout)<br/>[Metrics.startContent](./core/Metrics/#startcontent)<br/>[Metrics.stopContent](./core/Metrics/#stopcontent)<br/>[Metrics.page](./core/Metrics/#page)<br/>[Metrics.action](./core/Metrics/#action)<br/>[Metrics.error](./core/Metrics/#error)<br/>[Metrics.appInfo](./core/Metrics/#appinfo) |
 
 
 ### `xrn:firebolt:capability:metrics:media`
