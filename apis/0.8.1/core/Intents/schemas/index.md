@@ -86,8 +86,8 @@ type AppIntentMessage = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -148,8 +148,8 @@ type PlatformIntentMessage = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -215,13 +215,7 @@ type Intent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -244,13 +238,7 @@ type IntentProperties = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -266,13 +254,7 @@ type NavigationIntent = HomeIntent | LaunchIntent | EntityIntent | PlaybackInten
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -291,13 +273,7 @@ type DiscoveryIntent = ContentDiscoveryIntent | EntityAppSelectionIntent
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -316,13 +292,7 @@ type DeviceIntent = ButtonIntent | PowerIntent | VolumeIntent | MicrophoneIntent
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -341,13 +311,7 @@ type PlaybackControlIntent = PauseIntent | SeekIntent | SkipIntent | TrickPlayIn
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -366,13 +330,7 @@ type DialogIntent = MessageIntent
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -396,8 +354,8 @@ type LaunchIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -432,8 +390,8 @@ type HomeIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -469,8 +427,8 @@ type EntityIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -510,13 +468,7 @@ type ChannelEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -538,13 +490,7 @@ See also:
  - [ProgramType](../Entertainment/schemas/#programtype)
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -566,8 +512,8 @@ type MovieEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -601,8 +547,8 @@ type TVEpisodeEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -637,8 +583,8 @@ type TVSeasonEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -674,8 +620,8 @@ type TVSeriesEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -707,8 +653,8 @@ type AdditionalEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -738,8 +684,8 @@ type UntypedEntity = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -776,8 +722,8 @@ type TuneIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -823,8 +769,8 @@ type PlaybackIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -869,8 +815,8 @@ type SearchIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -911,8 +857,8 @@ type SectionIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -957,8 +903,8 @@ type ContentDiscoveryIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1031,8 +977,8 @@ type EntityAppSelectionIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1105,8 +1051,8 @@ type ButtonIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1145,8 +1091,8 @@ type VolumeIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1209,8 +1155,8 @@ type PowerIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1262,8 +1208,8 @@ type MicrophoneIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1315,8 +1261,8 @@ type InputIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1369,8 +1315,8 @@ type PauseIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1422,8 +1368,8 @@ type PlaybackSpeedIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1472,8 +1418,8 @@ type TrickPlayIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1524,8 +1470,8 @@ type SeekIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1586,8 +1532,8 @@ type SkipIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1641,8 +1587,8 @@ type ClosedCaptionsIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1694,8 +1640,8 @@ type AudioDescriptionIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1746,8 +1692,8 @@ type MessageIntent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 {
@@ -1780,13 +1726,7 @@ type Identifier = string
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -1805,13 +1745,7 @@ type Filter = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -1831,13 +1765,7 @@ type Keyword = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -1855,13 +1783,7 @@ type DirectionalOperation = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -1880,13 +1802,7 @@ type BooleanToggle = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -1904,13 +1820,7 @@ type IntentMessage = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 

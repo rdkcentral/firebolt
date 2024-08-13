@@ -43,13 +43,6 @@ See also:
  - [EntityInfo](../Entertainment/schemas/#entityinfo)
 
 
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 
 
@@ -71,13 +64,6 @@ See also:
  - [EntityInfo](../Entertainment/schemas/#entityinfo)
 
 
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 
 #### Details

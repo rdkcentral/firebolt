@@ -36,14 +36,6 @@ type SkipRestriction = 'none' | 'adsUnwatched' | 'adsAll' | 'all'
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
-
 
 #### Details
 

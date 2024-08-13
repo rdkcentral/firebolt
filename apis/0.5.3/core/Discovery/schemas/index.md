@@ -42,13 +42,7 @@ See also:
  - [EntityInfo](../../schemas/entertainment#/definitions/entityinfo)
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -67,13 +61,7 @@ See also:
  - [EntityInfo](../../schemas/entertainment#/definitions/entityinfo)
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 

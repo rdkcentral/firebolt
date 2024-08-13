@@ -206,13 +206,7 @@ type Intent = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -233,13 +227,7 @@ type IntentProperties = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -252,13 +240,7 @@ type NavigationIntent = HomeIntent | LaunchIntent | EntityIntent | PlayerIntent 
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -275,13 +257,7 @@ type DiscoveryIntent = ContentDiscoveryIntent | EntityAppSelectionIntent
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -298,13 +274,7 @@ type DeviceIntent = ButtonIntent | PowerIntent | VolumeIntent | MicrophoneIntent
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -321,13 +291,7 @@ type PlaybackIntent = PauseIntent | SeekIntent | SkipIntent | TrickPlayIntent | 
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -344,13 +308,7 @@ type DialogIntent = MessageIntent
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -481,13 +439,7 @@ See also:
  - [ProgramType](../../schemas/entertainment#/definitions/programtype)
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -818,13 +770,7 @@ type ContentDiscoveryIntent = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
@@ -1574,13 +1520,7 @@ type Identifier = string
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -1595,13 +1535,7 @@ type DirectionalOperation = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -1617,13 +1551,7 @@ type BooleanToggle = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -1638,13 +1566,7 @@ type IntentMessage = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 

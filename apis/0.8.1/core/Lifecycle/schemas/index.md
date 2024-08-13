@@ -37,13 +37,7 @@ type LifecycleState = 'initializing' | 'inactive' | 'foreground' | 'background' 
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -62,13 +56,7 @@ type CloseReason = 'remoteButton' | 'userExit' | 'error'
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details

@@ -42,13 +42,6 @@ type ProgramType = 'movie' | 'episode' | 'season' | 'series' | 'other' | 'previe
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 
 #### Details
@@ -71,13 +64,6 @@ type Entitlement = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 
 
@@ -108,13 +94,7 @@ See also:
  - [ProgramType](../Entertainment/schemas/#programtype)
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -146,13 +126,7 @@ type OfferingType = 'free' | 'subscribe' | 'buy' | 'rent'
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -188,13 +162,7 @@ See also:
  - [AudioProfile](../Types/schemas/#audioprofile)
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -250,13 +218,7 @@ type ContentRating = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details
@@ -316,13 +278,7 @@ type ContentIdentifiers = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details

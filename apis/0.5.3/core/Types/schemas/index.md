@@ -45,13 +45,7 @@ type SemanticVersion = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -64,13 +58,7 @@ type AudioProfile = 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDig
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -84,13 +72,7 @@ type BooleanMap = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -104,13 +86,7 @@ type FlatMap = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 
@@ -155,13 +131,7 @@ type ListenResponse = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 ---
 

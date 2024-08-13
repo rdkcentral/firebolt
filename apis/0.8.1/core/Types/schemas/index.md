@@ -49,13 +49,7 @@ type SemanticVersion = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -71,13 +65,7 @@ type AudioProfile = 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDig
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -95,13 +83,7 @@ type BooleanMap = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -119,13 +101,7 @@ type FlatMap = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -141,8 +117,8 @@ type LocalizedString = string | object
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 "A simple string, with no language code"
@@ -175,13 +151,7 @@ type ListenResponse = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -200,13 +170,7 @@ type ProviderRequest = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -225,13 +189,7 @@ type ProviderResponse = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 
@@ -247,13 +205,7 @@ type Timeout = number
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details

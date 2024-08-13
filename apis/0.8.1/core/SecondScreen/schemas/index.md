@@ -40,13 +40,7 @@ type SecondScreenEvent = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
 
-```json
-```
-
-</details>
 
 
 #### Details

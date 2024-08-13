@@ -39,13 +39,7 @@ type SecondScreenEvent = {
 
 
 
-<details markdown="1" >
-<summary>Examples:</summary>
 
-```json
-```
-
-</details>
 
 #### Details
 
