@@ -42,8 +42,8 @@ See also:
  - [EntityInfo](../../schemas/entertainment#/definitions/entityinfo)
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```
@@ -67,8 +67,8 @@ See also:
  - [EntityInfo](../../schemas/entertainment#/definitions/entityinfo)
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```

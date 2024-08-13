@@ -74,8 +74,7 @@ the token value, type, and expiration
 #### Examples
 
 ##### Acquire a Firebolt platform token
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
@@ -95,9 +94,8 @@ Value of `token`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -129,8 +127,7 @@ Value of `token`
 </details>
 
 ##### Acquire a Firebolt device identity (XACT) token
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
@@ -150,9 +147,8 @@ Value of `token`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -184,8 +180,7 @@ Value of `token`
 </details>
 
 ##### Acquire a Firebolt distributor token
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Authentication } from '@firebolt-js/sdk'
@@ -209,9 +204,8 @@ Value of `token`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

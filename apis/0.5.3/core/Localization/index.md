@@ -69,8 +69,7 @@ function locality(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -86,9 +85,8 @@ Value of `locality`
 "Philadelphia"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -136,8 +134,7 @@ function postalCode(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -153,9 +150,8 @@ Value of `postalCode`
 "19103"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -203,8 +199,7 @@ function countryCode(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -220,9 +215,8 @@ Value of `code`
 "US"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -270,8 +264,7 @@ function language(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -287,9 +280,8 @@ Value of `lang`
 "en"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -337,8 +329,7 @@ function locale(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -354,9 +345,8 @@ Value of `locale`
 "en-US"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -404,8 +394,7 @@ function latlon(): Promise<[number, number]>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -424,9 +413,8 @@ Value of `latlong`
 ]
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -477,8 +465,7 @@ function additionalInfo(): Promise<object>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Localization } from '@firebolt-js/sdk'
@@ -494,9 +481,8 @@ Value of `info`
 {}
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

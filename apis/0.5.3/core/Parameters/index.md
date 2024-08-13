@@ -70,8 +70,7 @@ function initialization(): Promise<AppInitialization>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Parameters } from '@firebolt-js/sdk'
@@ -101,9 +100,8 @@ Value of `init`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

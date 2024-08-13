@@ -77,8 +77,8 @@ false
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -145,8 +145,8 @@ false
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -215,8 +215,8 @@ Value of `flags`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 

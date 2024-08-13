@@ -91,8 +91,7 @@ Device.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Getting the device name
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -107,11 +106,10 @@ Value of `value`
 "Living Room"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -122,7 +120,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -137,8 +135,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Device.listen('deviceNameChanged', (value) => {
@@ -155,17 +152,14 @@ Device.once('deviceNameChanged', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Device.clear('deviceNameChanged')
 ```
-</details>
-
+=
 ---
 
 
@@ -189,8 +183,7 @@ function id(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -206,9 +199,8 @@ Value of `id`
 "123"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -256,8 +248,7 @@ function distributor(): Promise<string>
 #### Examples
 
 ##### Getting the distributor ID
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -273,9 +264,8 @@ Value of `distributorId`
 "Company"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -323,8 +313,7 @@ function platform(): Promise<string>
 #### Examples
 
 ##### Getting the platform ID
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -340,9 +329,8 @@ Value of `platformId`
 "WPE"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -390,8 +378,7 @@ function uid(): Promise<string>
 #### Examples
 
 ##### Getting the unique ID
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -407,9 +394,8 @@ Value of `uniqueId`
 "ee6723b8-7ab3-462c-8d93-dbf61227998e"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -457,8 +443,7 @@ function type(): Promise<string>
 #### Examples
 
 ##### Getting the device type
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -474,9 +459,8 @@ Value of `deviceType`
 "STB"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -524,8 +508,7 @@ function model(): Promise<string>
 #### Examples
 
 ##### Getting the device model
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -541,9 +524,8 @@ Value of `model`
 "xi6"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -591,8 +573,7 @@ function sku(): Promise<string>
 #### Examples
 
 ##### Getting the device sku
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -608,9 +589,8 @@ Value of `sku`
 "AX061AEI"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -658,8 +638,7 @@ function make(): Promise<string>
 #### Examples
 
 ##### Getting the device make
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -675,9 +654,8 @@ Value of `make`
 "Arris"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -729,8 +707,7 @@ the versions
 #### Examples
 
 ##### Getting the os and sdk versions
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -760,9 +737,8 @@ Value of `versions`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -824,8 +800,7 @@ function hdcp(): Promise<BooleanMap>
 #### Examples
 
 ##### Getting the supported HDCP profiles
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -844,9 +819,8 @@ Value of `supportedHdcpProfiles`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -897,8 +871,7 @@ function hdr(): Promise<BooleanMap>
 #### Examples
 
 ##### Getting the supported HDR profiles
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -919,9 +892,8 @@ Value of `supportedHdrProfiles`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -974,8 +946,7 @@ function audio(): Promise<AudioProfiles>
 #### Examples
 
 ##### Getting the supported audio profiles
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -996,9 +967,8 @@ Value of `supportedAudioProfiles`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1051,8 +1021,7 @@ function screenResolution(): Promise<[bigint, bigint]>
 #### Examples
 
 ##### Getting the screen resolution
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -1071,9 +1040,8 @@ Value of `screenResolution`
 ]
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1124,8 +1092,7 @@ function videoResolution(): Promise<[bigint, bigint]>
 #### Examples
 
 ##### Getting the video resolution
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -1144,9 +1111,8 @@ Value of `videoResolution`
 ]
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1197,8 +1163,7 @@ function name(): Promise<string>
 #### Examples
 
 ##### Getting the device name
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -1214,9 +1179,8 @@ Value of `deviceName`
 "Living Room"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1267,8 +1231,7 @@ the status and type
 #### Examples
 
 ##### Getting the network info
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
@@ -1287,9 +1250,8 @@ Value of `networkInfo`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

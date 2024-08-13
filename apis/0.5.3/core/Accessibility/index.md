@@ -24,8 +24,8 @@ For the full schema, see the link below.
  - [Usage](#usage)
  - [Overview](#overview)
  - [Events](#events)
-    - [closedCaptionsSettingsChanged](#losedcaptionssettingschanged)
-    - [voiceGuidanceSettingsChanged](#oiceguidancesettingschanged)
+    - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
+    - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
  - [Methods](#methods)
     - [closedCaptions](#closedcaptions)
     - [voiceGuidance](#voiceguidance)
@@ -78,52 +78,50 @@ Accessibility.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Getting the closed captions settings
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
-```javascript
-import { Accessibility } from '@firebolt-js/sdk'
+  ```javascript
+  import { Accessibility } from '@firebolt-js/sdk'
 
-Accessibility.listen('closedCaptionsSettingsChanged', settings => {
-  console.log(settings)
-})
-```
+  Accessibility.listen('closedCaptionsSettingsChanged', settings => {
+    console.log(settings)
+  })
+  ```
 Value of `settings`
 
-```javascript
-{
-  "enabled": true,
-  "styles": {
-    "fontFamily": "Monospace sans-serif",
-    "fontSize": 1,
-    "fontColor": "#ffffff",
-    "fontEdge": "none",
-    "fontEdgeColor": "#7F7F7F",
-    "fontOpacity": 100,
-    "backgroundColor": "#000000",
-    "backgroundOpacity": 100,
-    "textAlign": "center",
-    "textAlignVertical": "middle"
+  ```javascript
+  {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "Monospace sans-serif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle"
+    }
   }
-}
-```
+  ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+  Request:
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "accessibility.onClosedCaptionsSettingsChanged",
-  "params": {}
-}
-```
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "accessibility.onClosedCaptionsSettingsChanged",
+    "params": {}
+  }
+  ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -152,8 +150,7 @@ Value of `settings`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Accessibility.listen('closedCaptionsSettingsChanged', (value) => {
@@ -170,16 +167,13 @@ Accessibility.once('closedCaptionsSettingsChanged', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Accessibility.clear('closedCaptionsSettingsChanged')
 ```
-</details>
 
 ---
 
@@ -213,8 +207,7 @@ Accessibility.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Getting the voice guidance settings
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
@@ -232,11 +225,10 @@ Value of `settings`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -247,7 +239,7 @@ Value of `settings`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -265,8 +257,7 @@ Value of `settings`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Accessibility.listen('voiceGuidanceSettingsChanged', (value) => {
@@ -283,16 +274,13 @@ Accessibility.once('voiceGuidanceSettingsChanged', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Accessibility.clear('voiceGuidanceSettingsChanged')
 ```
-</details>
 
 ---
 
@@ -317,8 +305,7 @@ function closedCaptions(): Promise<ClosedCaptionsSettings>
 #### Examples
 
 ##### Getting the closed captions settings
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
@@ -348,9 +335,8 @@ Value of `closedCaptionsSettings`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -412,8 +398,7 @@ function voiceGuidance(): Promise<VoiceGuidanceSettings>
 #### Examples
 
 ##### Getting the voice guidance settings
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
@@ -432,9 +417,8 @@ Value of `settings`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

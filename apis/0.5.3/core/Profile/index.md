@@ -63,8 +63,7 @@ function approveContentRating(): Promise<boolean>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
@@ -80,9 +79,8 @@ Value of `allow`
 false
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -130,8 +128,7 @@ function approvePurchase(): Promise<boolean>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
@@ -147,9 +144,8 @@ Value of `allow`
 false
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -197,8 +193,7 @@ function flags(): Promise<FlatMap>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Profile } from '@firebolt-js/sdk'
@@ -216,9 +211,8 @@ Value of `flags`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

@@ -73,8 +73,7 @@ SecondScreen.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
@@ -93,11 +92,10 @@ Value of `launchRequestEvent`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -110,7 +108,7 @@ Value of `launchRequestEvent`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -129,8 +127,7 @@ Value of `launchRequestEvent`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 SecondScreen.listen('launchRequest', (value) => {
@@ -147,16 +144,13 @@ SecondScreen.once('launchRequest', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 SecondScreen.clear('launchRequest')
 ```
-</details>
 
 ---
 
@@ -190,8 +184,7 @@ SecondScreen.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
@@ -209,11 +202,10 @@ Value of `closeRequestEvent`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -226,7 +218,7 @@ Value of `closeRequestEvent`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -244,8 +236,7 @@ Value of `closeRequestEvent`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 SecondScreen.listen('closeRequest', (value) => {
@@ -265,8 +256,7 @@ SecondScreen.once('closeRequest', (value) => {
 </details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 SecondScreen.clear('closeRequest')
@@ -296,8 +286,7 @@ function protocols(): Promise<BooleanMap>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
@@ -315,9 +304,8 @@ Value of `protocols`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -373,8 +361,7 @@ function device(type?: string): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
@@ -390,9 +377,8 @@ Value of `deviceId`
 "device-id"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -446,8 +432,7 @@ function friendlyName(type?: string): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
@@ -463,9 +448,8 @@ Value of `friendlyName`
 "Living Room"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

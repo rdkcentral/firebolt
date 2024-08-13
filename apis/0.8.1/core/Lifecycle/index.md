@@ -93,8 +93,8 @@ null
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -142,8 +142,8 @@ null
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -212,8 +212,8 @@ null
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -405,8 +405,8 @@ null
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -471,8 +471,8 @@ Value of `state`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -545,8 +545,8 @@ Value of `value`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -616,8 +616,8 @@ Value of `value`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -671,8 +671,8 @@ Value of `value`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -744,8 +744,8 @@ Value of `value`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -815,8 +815,8 @@ Value of `value`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -886,8 +886,8 @@ Value of `value`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 

@@ -87,8 +87,8 @@ Value of `info`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -155,8 +155,8 @@ Value of `code`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -227,8 +227,8 @@ Value of `lang`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -310,8 +310,8 @@ value of `lang`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -392,8 +392,8 @@ Value of `latlong`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -526,8 +526,8 @@ Value of `locale`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -594,8 +594,8 @@ Value of `locality`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -725,8 +725,8 @@ Value of `postalCode`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 

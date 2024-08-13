@@ -94,8 +94,8 @@ Value of `advertisingId`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -166,8 +166,8 @@ Value of `appBundleId`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -256,8 +256,8 @@ Value of `adFrameworkConfig`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -345,8 +345,8 @@ Value of `deviceAttributes`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -546,8 +546,8 @@ Value of `adPolicy`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -635,8 +635,8 @@ value of `adPolicy`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 

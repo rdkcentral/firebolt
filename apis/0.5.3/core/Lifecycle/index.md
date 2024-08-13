@@ -81,8 +81,7 @@ Lifecycle.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -100,11 +99,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -117,7 +115,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -135,8 +133,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.listen('inactive', (value) => {
@@ -153,16 +150,13 @@ Lifecycle.once('inactive', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.clear('inactive')
 ```
-</details>
 
 ---
 
@@ -196,8 +190,7 @@ Lifecycle.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -215,11 +208,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -232,7 +224,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -248,8 +240,7 @@ Value of `value`
 </details>
 
 ##### Move to foreground via remote branded buton
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -268,11 +259,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -285,7 +275,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -304,8 +294,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.listen('foreground', (value) => {
@@ -322,16 +311,13 @@ Lifecycle.once('foreground', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.clear('foreground')
 ```
-</details>
 
 ---
 
@@ -365,8 +351,7 @@ Lifecycle.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -384,11 +369,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -401,7 +385,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -419,8 +403,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.listen('background', (value) => {
@@ -437,16 +420,13 @@ Lifecycle.once('background', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.clear('background')
 ```
-</details>
 
 ---
 
@@ -480,8 +460,7 @@ Lifecycle.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -499,11 +478,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -516,7 +494,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -534,8 +512,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.listen('suspended', (value) => {
@@ -552,16 +529,13 @@ Lifecycle.once('suspended', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.clear('suspended')
 ```
-</details>
 
 ---
 
@@ -595,8 +569,7 @@ Lifecycle.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -614,11 +587,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -631,7 +603,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -649,8 +621,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.listen('unloading', (value) => {
@@ -667,16 +638,13 @@ Lifecycle.once('unloading', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Lifecycle.clear('unloading')
 ```
-</details>
 
 ---
 
@@ -701,8 +669,7 @@ function ready(): Promise<void>
 #### Examples
 
 ##### Let the platform know that your app is ready
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -718,9 +685,8 @@ Value of `result`
 null
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -774,8 +740,7 @@ function close(reason: CloseReason): Promise<void>
 #### Examples
 
 ##### Close the app when the user presses back on the app home screen
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -791,9 +756,8 @@ Value of `success`
 null
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -821,8 +785,7 @@ null
 </details>
 
 ##### Close the app when the user selects an exit menu item
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -838,9 +801,8 @@ Value of `success`
 null
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -890,8 +852,7 @@ function finished(): Promise<void>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -907,9 +868,8 @@ Value of `results`
 null
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -957,8 +917,7 @@ function state(): LifecycleState
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
@@ -974,9 +933,8 @@ Value of `state`
 "foreground"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

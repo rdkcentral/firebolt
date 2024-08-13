@@ -75,8 +75,7 @@ function config(options: AdConfigurationOptions): Promise<AdConfiguration>
 #### Examples
 
 ##### Initializing the Ad Framework
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
@@ -108,9 +107,8 @@ Value of `adFrameworkConfig`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -179,8 +177,7 @@ function policy(): Promise<AdPolicy>
 #### Examples
 
 ##### Getting the advertising policy settings
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
@@ -199,9 +196,8 @@ Value of `adPolicy`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -256,8 +252,7 @@ the advertising ID
 #### Examples
 
 ##### Getting the advertising ID
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
@@ -277,9 +272,8 @@ Value of `advertisingId`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -331,8 +325,7 @@ function deviceAttributes(): Promise<object>
 #### Examples
 
 ##### Getting the device attributes
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
@@ -348,9 +341,8 @@ Value of `deviceAttributes`
 {}
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -398,8 +390,7 @@ function appBundleId(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
@@ -415,9 +406,8 @@ Value of `appBundleId`
 "operator.app"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

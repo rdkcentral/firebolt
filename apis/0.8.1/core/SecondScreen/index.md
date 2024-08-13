@@ -89,8 +89,8 @@ Value of `deviceId`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -161,8 +161,8 @@ Value of `friendlyName`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -244,8 +244,8 @@ value of `friendlyName`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -451,8 +451,8 @@ Value of `protocols`:
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -527,8 +527,8 @@ Value of `closeRequestEvent`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 
@@ -599,8 +599,8 @@ Value of `launchRequestEvent`
 ```
 
 
-<details>
-  <summary>JSON-RPC:</summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 Request:
 

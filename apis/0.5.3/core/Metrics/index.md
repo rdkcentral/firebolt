@@ -82,8 +82,8 @@ Inform the platform that your app is minimally usable. This method is called aut
 #### Examples
 
 ##### Send ready metric
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -131,8 +131,8 @@ Log a sign in event, called by Discovery.signIn().
 #### Examples
 
 ##### Send signIn metric
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -158,8 +158,8 @@ Log a sign in event, called by Discovery.signIn().
 </details>
 
 ##### Send signIn metric with entitlements
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -207,8 +207,8 @@ Log a sign out event, called by Discovery.signOut().
 #### Examples
 
 ##### Send signOut metric
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -262,8 +262,7 @@ function startContent(entityId?: string): Promise<boolean>
 #### Examples
 
 ##### Send startContent metric
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -279,9 +278,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -307,8 +305,7 @@ true
 </details>
 
 ##### Send startContent metric w/ entity
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -324,9 +321,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -382,8 +378,7 @@ function stopContent(entityId?: string): Promise<boolean>
 #### Examples
 
 ##### Send stopContent metric
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -399,9 +394,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -427,8 +421,7 @@ true
 </details>
 
 ##### Send stopContent metric w/ entity
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -444,9 +437,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -502,8 +494,7 @@ function page(pageId: string): Promise<boolean>
 #### Examples
 
 ##### Send page metric
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -519,9 +510,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -547,8 +537,7 @@ true
 </details>
 
 ##### Send startContent metric w/ entity
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -564,9 +553,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -625,8 +613,7 @@ maxLength: 256 |
 #### Examples
 
 ##### Send page metric
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -642,9 +629,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -670,8 +656,7 @@ true
 </details>
 
 ##### Send startContent metric w/ entity
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -687,9 +672,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -747,8 +731,7 @@ function error(type: ErrorType, code: string, description: string, visible: bool
 #### Examples
 
 ##### Send error metric
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -764,9 +747,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -825,8 +807,7 @@ function mediaLoadStart(entityId: string): Promise<boolean>
 #### Examples
 
 ##### Send loadstart metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -842,9 +823,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -900,8 +880,7 @@ function mediaPlay(entityId: string): Promise<boolean>
 #### Examples
 
 ##### Send play metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -917,9 +896,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -975,8 +953,7 @@ function mediaPlaying(entityId: string): Promise<boolean>
 #### Examples
 
 ##### Send playing metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -992,9 +969,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1050,8 +1026,7 @@ function mediaPause(entityId: string): Promise<boolean>
 #### Examples
 
 ##### Send pause metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1067,9 +1042,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1125,8 +1099,7 @@ function mediaWaiting(entityId: string): Promise<boolean>
 #### Examples
 
 ##### Send waiting metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1142,9 +1115,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1201,8 +1173,7 @@ function mediaProgress(entityId: string, progress: MediaPosition): Promise<boole
 #### Examples
 
 ##### Send progress metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1218,9 +1189,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1278,8 +1248,7 @@ function mediaSeeking(entityId: string, target: MediaPosition): Promise<boolean>
 #### Examples
 
 ##### Send seeking metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1295,9 +1264,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1355,8 +1323,7 @@ function mediaSeeked(entityId: string, position: MediaPosition): Promise<boolean
 #### Examples
 
 ##### Send seeked metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1372,9 +1339,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1432,8 +1398,7 @@ function mediaRateChange(entityId: string, rate: number): Promise<boolean>
 #### Examples
 
 ##### Send ratechange metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1449,9 +1414,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1512,8 +1476,7 @@ function mediaRenditionChange(entityId: string, bitrate: number, width: number, 
 #### Examples
 
 ##### Send renditionchange metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1529,9 +1492,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1591,8 +1553,7 @@ function mediaEnded(entityId: string): Promise<boolean>
 #### Examples
 
 ##### Send ended metric.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
@@ -1608,9 +1569,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

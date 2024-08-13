@@ -45,8 +45,8 @@ type SemanticVersion = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```
@@ -64,8 +64,8 @@ type AudioProfile = 'stereo' | 'dolbyDigital5.1' | 'dolbyDigital7.1' | 'dolbyDig
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```
@@ -84,8 +84,8 @@ type BooleanMap = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```
@@ -104,8 +104,8 @@ type FlatMap = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```
@@ -123,8 +123,8 @@ type LocalizedString = string | object
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 "A simple string, with no language code"
@@ -155,8 +155,8 @@ type ListenResponse = {
 
 
 
-<details>
-  <summary><b>Examples</b></summary>
+<details markdown="1" >
+<summary>Examples:</summary>
 
 ```json
 ```

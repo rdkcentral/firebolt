@@ -62,8 +62,7 @@ function id(): Promise<string>
 #### Examples
 
 ##### Default Example
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Account } from '@firebolt-js/sdk'
@@ -79,9 +78,8 @@ Value of `id`
 "123"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -129,8 +127,7 @@ function uid(): Promise<string>
 #### Examples
 
 ##### Getting the unique ID
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Account } from '@firebolt-js/sdk'
@@ -146,9 +143,8 @@ Value of `uniqueId`
 "ee6723b8-7ab3-462c-8d93-dbf61227998e"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

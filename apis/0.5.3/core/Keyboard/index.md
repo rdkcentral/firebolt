@@ -72,8 +72,7 @@ function email(type: EmailUsage, message?: string): Promise<string>
 #### Examples
 
 ##### Prompt the user to select or type an email address
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Keyboard } from '@firebolt-js/sdk'
@@ -89,9 +88,8 @@ Value of `email`
 "user@domain.com"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -120,8 +118,7 @@ Value of `email`
 </details>
 
 ##### Prompt the user to type an email address to sign up
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Keyboard } from '@firebolt-js/sdk'
@@ -137,9 +134,8 @@ Value of `email`
 "user@domain.com"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -196,8 +192,7 @@ function password(message?: string): Promise<string>
 #### Examples
 
 ##### Prompt the user to enter their password
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Keyboard } from '@firebolt-js/sdk'
@@ -213,9 +208,8 @@ Value of `value`
 "abc123"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -271,8 +265,7 @@ function standard(message: string): Promise<string>
 #### Examples
 
 ##### Prompt the user for an arbitrary string
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Keyboard } from '@firebolt-js/sdk'
@@ -288,9 +281,8 @@ Value of `value`
 "Living Room"
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 

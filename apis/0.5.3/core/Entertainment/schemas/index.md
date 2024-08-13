@@ -38,17 +38,6 @@ For the full schema, see the link below.
 type ProgramType = 'movie' | 'episode' | 'season' | 'series' | 'other' | 'preview' | 'extra' | 'concert' | 'sportingEvent' | 'advertisement' | 'musicVideo' | 'minisode'
 ```
 
-
-
-
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
-
 #### Details
 
 In the case of a program `entityType`, specifies the program type.
@@ -64,17 +53,6 @@ type Entitlement = {
   endTime?: string
 }
 ```
-
-
-
-
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 ---
 
@@ -98,15 +76,6 @@ type EntityInfo = {
 ```
 
 
-
-
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 #### Details
 
@@ -134,15 +103,6 @@ type OfferingType = 'free' | 'subscribe' | 'buy' | 'rent'
 ```
 
 
-
-
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 #### Details
 
@@ -176,13 +136,6 @@ See also:
  - [AudioProfile](../../schemas/types#/definitions/audioprofile)
 
 
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 #### Details
 
@@ -233,16 +186,6 @@ type ContentRating = {
 }
 ```
 
-
-
-
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 #### Details
 
@@ -297,16 +240,6 @@ type ContentIdentifiers = {
 }
 ```
 
-
-
-
-<details>
-  <summary><b>Examples</b></summary>
-
-```json
-```
-
-</details>
 
 #### Details
 

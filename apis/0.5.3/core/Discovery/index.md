@@ -108,8 +108,7 @@ Discovery.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Getting the discovery policy
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -128,11 +127,10 @@ Value of `policy`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -143,7 +141,7 @@ Value of `policy`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -162,8 +160,7 @@ Value of `policy`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.listen('policyChanged', (value) => {
@@ -180,16 +177,13 @@ Discovery.once('policyChanged', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.clear('policyChanged')
 ```
-</details>
 
 ---
 
@@ -223,8 +217,7 @@ Discovery.clear(listenerId?: bigint): void
 #### Examples
 
 ##### Listening for `navigateTo` events
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -248,11 +241,10 @@ Value of `value`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -265,7 +257,7 @@ Value of `value`
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -289,8 +281,7 @@ Value of `value`
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.listen('navigateTo', (value) => {
@@ -307,16 +298,13 @@ Discovery.once('navigateTo', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.clear('navigateTo')
 ```
-</details>
 
 ---
 
@@ -341,10 +329,10 @@ listen to `entityInfo` pull events
 #### Examples
 
 ##### Platform requests entity `abc`
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -357,7 +345,7 @@ listen to `entityInfo` pull events
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -377,8 +365,7 @@ listen to `entityInfo` pull events
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.listen('pullEntityInfo', (value) => {
@@ -395,16 +382,13 @@ Discovery.once('pullEntityInfo', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.clear('pullEntityInfo')
 ```
-</details>
 
 ---
 
@@ -429,10 +413,10 @@ listen to `pullPurchaseContent` events
 #### Examples
 
 ##### Platform requests purchased content from app
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
-<h6>Request</h6>
+Request:
 
 ```json
 {
@@ -445,7 +429,7 @@ listen to `pullPurchaseContent` events
 }
 ```
 
-<h6>Response</h6>
+Response:
 
 ```json
 {
@@ -465,8 +449,7 @@ listen to `pullPurchaseContent` events
 
 
 ##### Listen to an event only once
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.listen('pullPurchasedContent', (value) => {
@@ -483,16 +466,13 @@ Discovery.once('pullPurchasedContent', (value) => {
   console.log(value)
 })
 ```
-</details>
 
 ##### Clear all listeners for an event
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.clear('pullPurchasedContent')
 ```
-</details>
 
 ---
 
@@ -517,8 +497,7 @@ function policy(): Promise<DiscoveryPolicy>
 #### Examples
 
 ##### Getting the discovery policy
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -538,9 +517,8 @@ Value of `policy`
 }
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -616,8 +594,7 @@ function entityInfo(callback: (parameters: EntityInfoParameters) => Promise<Enti
 #### Examples
 
 ##### Send entity info for a movie to the platform. (Pull)
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.entityInfo(function(parameters) {
@@ -686,9 +663,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request (from callback)
 
@@ -769,8 +745,7 @@ true
 </details>
 
 ##### Send entity info for a movie with a trailer to the platform. (Pull)
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.entityInfo(function(parameters) {
@@ -870,9 +845,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request (from callback)
 
@@ -984,8 +958,7 @@ true
 </details>
 
 ##### Send entity info for a TV Series with seasons and episodes to the platform. (Pull)
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.entityInfo(function(parameters) {
@@ -1145,9 +1118,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request (from callback)
 
@@ -1341,8 +1313,7 @@ boolean
 #### Examples
 
 ##### Send entity info for a movie to the platform.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -1407,9 +1378,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1489,8 +1459,7 @@ true
 </details>
 
 ##### Send entity info for a movie with a trailer to the platform.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -1586,9 +1555,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -1699,8 +1667,7 @@ true
 </details>
 
 ##### Send entity info for a TV Series with seasons and episodes to the platform.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -1856,9 +1823,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2082,8 +2048,7 @@ function purchasedContent(callback: (parameters: PurchasedContentParameters) => 
 #### Examples
 
 ##### Inform the platform of the user's purchased content (Pull)
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 Discovery.purchasedContent(function(parameters) {
@@ -2155,9 +2120,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request (from callback)
 
@@ -2263,8 +2227,7 @@ boolean
 #### Examples
 
 ##### Inform the platform of the user's purchased content
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2332,9 +2295,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2447,8 +2409,7 @@ function watched(entityId: string, progress?: number, completed?: boolean, watch
 #### Examples
 
 ##### Notifying the platform of watched content
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2464,9 +2425,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2528,8 +2488,7 @@ function watchNext(title?: LocalizedString, identifiers?: ContentIdentifiers, ex
 #### Examples
 
 ##### Suggest a watch-next tile for the home screen
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2558,9 +2517,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2629,8 +2587,7 @@ function entitlements(entitlements: Entitlement[]): Promise<boolean>
 #### Examples
 
 ##### Update user's entitlements
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2657,9 +2614,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2727,8 +2683,7 @@ function launch(appId: string, intent?: NavigationIntent): Promise<boolean>
 #### Examples
 
 ##### Launch the 'Foo' app to it's home screen.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2744,9 +2699,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2780,8 +2734,7 @@ true
 </details>
 
 ##### Launch the 'Foo' app to it's own page for a specific entity.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2808,9 +2761,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2849,8 +2801,7 @@ true
 </details>
 
 ##### Launch the 'Foo' app to a fullscreen playback experience for a specific entity.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2877,9 +2828,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2918,8 +2868,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to a global page for a specific entity.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -2946,9 +2895,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -2987,8 +2935,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to a global page for the company / partner with the ID 'foo'.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3013,9 +2960,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3052,8 +2998,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to it's home screen, as if the Home remote button was pressed.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3069,9 +3014,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3105,8 +3049,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to it's search screen.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3122,9 +3065,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3158,8 +3100,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to it's settings screen.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3184,9 +3125,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3223,8 +3163,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to it's linear/epg guide.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3249,9 +3188,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3288,8 +3226,7 @@ true
 </details>
 
 ##### Launch the Aggregated Experience to the App Store details page for a specfic app with the ID 'foo'.
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3314,9 +3251,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3381,8 +3317,7 @@ function signIn(entitlements?: Entitlement[]): Promise<boolean>
 #### Examples
 
 ##### Send signIn metric
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3398,9 +3333,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3426,8 +3360,7 @@ true
 </details>
 
 ##### Send signIn notification with entitlements
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3449,9 +3382,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
@@ -3507,8 +3439,7 @@ function signOut(): Promise<boolean>
 #### Examples
 
 ##### Send signOut notification
-<details>
-  <summary><b>JavaScript</b></summary>
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
@@ -3524,9 +3455,8 @@ Value of `success`
 true
 ```
 
-</details>
-<details>
-  <summary><b>JSON-RPC</b></summary>
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 
 ###### Request
 
