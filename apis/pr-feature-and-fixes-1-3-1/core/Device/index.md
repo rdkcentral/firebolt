@@ -48,11 +48,12 @@ Version Device 1.3.1-feature-and-fixes-1-3-1.0
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
-  - [HDRType](#hdrtype)
+  - [HDRFormat](#hdrformat)
+  - [AudioProfiles](#audioprofiles)
   - [Resolution](#resolution)
   - [NetworkInfoResult](#networkinforesult)
   - [DeviceVersion](#deviceversion)
-  - [HDCPType](#hdcptype)
+  - [HDCPVersion](#hdcpversion)
 
 ## Usage
 
@@ -79,10 +80,12 @@ It is not recommended to use this API for visual badging on content within your 
 To get the value of `audio` call the method like this:
 
 ```typescript
-function audio(): Promise<string>
+function audio(): Promise<AudioProfiles>
 ```
 
 Promise resolution:
+
+[AudioProfiles](#audioprofiles)
 
 Capabilities:
 
@@ -149,7 +152,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function audio(callback: (value) => string): Promise<number>
+function audio(callback: (value) => AudioProfiles): Promise<number>
 ```
 
 Promise resolution:
@@ -289,12 +292,12 @@ Get the supported HDCP profiles
 To get the value of `hdcp` call the method like this:
 
 ```typescript
-function hdcp(): Promise<HDCPType>
+function hdcp(): Promise<HDCPVersion>
 ```
 
 Promise resolution:
 
-[HDCPType](#hdcptype)
+[HDCPVersion](#hdcpversion)
 
 Capabilities:
 
@@ -357,7 +360,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdcp(callback: (value) => HDCPType): Promise<number>
+function hdcp(callback: (value) => HDCPVersion): Promise<number>
 ```
 
 Promise resolution:
@@ -429,12 +432,12 @@ Get the supported HDR profiles
 To get the value of `hdr` call the method like this:
 
 ```typescript
-function hdr(): Promise<HDRType>
+function hdr(): Promise<HDRFormat>
 ```
 
 Promise resolution:
 
-[HDRType](#hdrtype)
+[HDRFormat](#hdrformat)
 
 Capabilities:
 
@@ -501,7 +504,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdr(callback: (value) => HDRType): Promise<number>
+function hdr(callback: (value) => HDRFormat): Promise<number>
 ```
 
 Promise resolution:
@@ -2010,17 +2013,31 @@ NetworkType: {
 
 ---
 
-### HDRType
+### HDRFormat
 
 The type of HDR that is supported
 
 ```typescript
-type HDRType = {
+type HDRFormat = {
   hdr10: boolean
   hdr10Plus: boolean
   dolbyVision: boolean
   hlg: boolean
 }
+```
+
+---
+
+### AudioProfiles
+
+```typescript
+type AudioProfiles = {
+    stereo: boolean
+    dolbyDigital5.1: boolean
+    dolbyDigital5.1+: boolean
+    dolbyAtmos: boolean
+}
+
 ```
 
 ---
@@ -2074,7 +2091,7 @@ See also:
 ```typescript
 type DeviceVersion = {
   sdk?: SemanticVersion // The Firebolt SDK version
-  api: SemanticVersion // The lateset Firebolt API version supported by the curent device.
+  api: SemanticVersion // The latest Firebolt API version supported by the current device.
   firmware: SemanticVersion // The device firmware version.
   os: SemanticVersion // **Deprecated** Use `firmware`, instead.
   debug?: string // Detail version as a string, for debugging purposes
@@ -2087,12 +2104,12 @@ See also:
 
 ---
 
-### HDCPType
+### HDCPVersion
 
 The type of HDCP that is supported
 
 ```typescript
-type HDCPType = {
+type HDCPVersion = {
     hdcp1.4: boolean
     hdcp2.2: boolean
 }

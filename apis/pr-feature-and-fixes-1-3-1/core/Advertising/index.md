@@ -780,8 +780,8 @@ type AdvertisingIdOptions = {
 ```typescript
 type AdvertisingIdResult = {
   ifa: string // UUID conforming to IAB standard
-  ifa_type?: string // source of the IFA as defined by IAB
-  lmt?: string // boolean that if set to 1, user has requested ad tracking and measurement is disabled
+  ifa_type: string // source of the IFA as defined by IAB
+  lmt: '0' | '1' // boolean that if set to 1, user has requested ad tracking and measurement is disabled
 }
 ```
 

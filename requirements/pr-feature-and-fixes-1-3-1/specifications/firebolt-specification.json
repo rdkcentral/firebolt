@@ -7017,7 +7017,7 @@
 						"name": "supportedHdcpProfiles",
 						"summary": "the supported HDCP profiles",
 						"schema": {
-							"$ref": "#/components/schemas/HDCPType"
+							"$ref": "#/components/schemas/HDCPVersion"
 						}
 					},
 					"examples": [
@@ -7053,7 +7053,7 @@
 						"name": "supportedHdrProfiles",
 						"summary": "the supported HDR profiles",
 						"schema": {
-							"$ref": "#/components/schemas/HDRType"
+							"$ref": "#/components/schemas/HDRFormat"
 						}
 					},
 					"examples": [
@@ -7510,7 +7510,7 @@
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/components/schemas/HDCPType"
+									"$ref": "#/components/schemas/HDCPVersion"
 								}
 							]
 						}
@@ -7571,7 +7571,7 @@
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/components/schemas/HDRType"
+									"$ref": "#/components/schemas/HDRFormat"
 								}
 							]
 						}
@@ -19487,11 +19487,17 @@
 							},
 							"lmt": {
 								"type": "string",
+								"enum": [
+									"0",
+									"1"
+								],
 								"description": "boolean that if set to 1, user has requested ad tracking and measurement is disabled"
 							}
 						},
 						"required": [
-							"ifa"
+							"ifa",
+							"ifa_type",
+							"lmt"
 						]
 					},
 					"TokenType": {
@@ -19709,6 +19715,7 @@
 					},
 					"AudioProfiles": {
 						"title": "AudioProfiles",
+						"type": "object",
 						"properties": {
 							"stereo": {
 								"type": "boolean"
@@ -19722,10 +19729,16 @@
 							"dolbyAtmos": {
 								"type": "boolean"
 							}
-						}
+						},
+						"required": [
+							"stereo",
+							"dolbyDigital5.1",
+							"dolbyDigital5.1+",
+							"dolbyAtmos"
+						]
 					},
-					"HDRType": {
-						"title": "HDRType",
+					"HDRFormat": {
+						"title": "HDRFormat",
 						"type": "object",
 						"properties": {
 							"hdr10": {
@@ -19749,8 +19762,8 @@
 						],
 						"description": "The type of HDR that is supported"
 					},
-					"HDCPType": {
-						"title": "HDCPType",
+					"HDCPVersion": {
+						"title": "HDCPVersion",
 						"type": "object",
 						"properties": {
 							"hdcp1.4": {
@@ -19776,7 +19789,7 @@
 							},
 							"api": {
 								"$ref": "#/x-schemas/Types/SemanticVersion",
-								"description": "The lateset Firebolt API version supported by the curent device."
+								"description": "The latest Firebolt API version supported by the current device."
 							},
 							"firmware": {
 								"$ref": "#/x-schemas/Types/SemanticVersion",
