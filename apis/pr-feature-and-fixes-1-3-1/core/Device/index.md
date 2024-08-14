@@ -285,7 +285,9 @@ Response:
 
 ### hdcp
 
-Get the supported HDCP profiles
+Get the negotiated HDCP profiles for a connected device.
+
+For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.
 
 To get the value of `hdcp` call the method like this:
 
@@ -425,7 +427,7 @@ Response:
 
 ### hdr
 
-Get the supported HDR profiles
+Get the negotiated HDR formats for the connected display and device
 
 To get the value of `hdr` call the method like this:
 
@@ -2086,9 +2088,9 @@ See also:
 type DeviceVersion = {
   sdk?: SemanticVersion // The Firebolt SDK version
   api: SemanticVersion // The latest Firebolt API version supported by the current device.
-  firmware: SemanticVersion // The device firmware version.
+  firmware: SemanticVersion // The firmware version as reported by the device
   os: SemanticVersion // **Deprecated** Use `firmware`, instead.
-  debug?: string // Detail version as a string, for debugging purposes
+  debug?: string // Detailed version as a string, for debugging purposes
 }
 ```
 

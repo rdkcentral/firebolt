@@ -7000,7 +7000,7 @@
 				},
 				{
 					"name": "Device.hdcp",
-					"summary": "Get the supported HDCP profiles",
+					"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 					"params": [],
 					"tags": [
 						{
@@ -7036,7 +7036,7 @@
 				},
 				{
 					"name": "Device.hdr",
-					"summary": "Get the supported HDR profiles",
+					"summary": "Get the negotiated HDR formats for the connected display and device",
 					"params": [],
 					"tags": [
 						{
@@ -7475,7 +7475,7 @@
 				},
 				{
 					"name": "Device.onHdcpChanged",
-					"summary": "Get the supported HDCP profiles",
+					"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 					"params": [
 						{
 							"name": "listen",
@@ -7536,7 +7536,7 @@
 				},
 				{
 					"name": "Device.onHdrChanged",
-					"summary": "Get the supported HDR profiles",
+					"summary": "Get the negotiated HDR formats for the connected display and device",
 					"params": [
 						{
 							"name": "listen",
@@ -19793,7 +19793,7 @@
 							},
 							"firmware": {
 								"$ref": "#/x-schemas/Types/SemanticVersion",
-								"description": "The device firmware version."
+								"description": "The firmware version as reported by the device"
 							},
 							"os": {
 								"$ref": "#/x-schemas/Types/SemanticVersion",
@@ -19801,7 +19801,7 @@
 							},
 							"debug": {
 								"type": "string",
-								"description": "Detail version as a string, for debugging purposes"
+								"description": "Detailed version as a string, for debugging purposes"
 							}
 						},
 						"required": [
