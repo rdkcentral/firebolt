@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.3.0-feature-media-metrics.0
+Version Metrics 1.3.1-feature-media-metrics.0
 
 ## Table of Contents
 
@@ -19,6 +19,7 @@ Version Metrics 1.3.0-feature-media-metrics.0
 - [Overview](#overview)
 - [Methods](#methods)
   - [action](#action)
+  - [appInfo](#appinfo)
   - [error](#error)
   - [mediaEnded](#mediaended)
   - [mediaLoadStart](#medialoadstart)
@@ -125,6 +126,76 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": true
+}
+```
+
+</details>
+
+---
+
+### appInfo
+
+Inform the platform about an app's build info.
+
+```typescript
+function appInfo(build: string): Promise<null>
+```
+
+Parameters:
+
+| Param   | Type     | Required | Description                      |
+| ------- | -------- | -------- | -------------------------------- |
+| `build` | `string` | true     | The build / version of this app. |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send appInfo metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let result = await Metrics.appInfo('1.2.2')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.appInfo",
+  "params": {
+    "build": "1.2.2"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
 

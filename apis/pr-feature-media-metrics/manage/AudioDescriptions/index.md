@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AudioDescriptions 1.3.0-feature-media-metrics.0
+Version AudioDescriptions 1.3.1-feature-media-metrics.0
 
 ## Table of Contents
 
