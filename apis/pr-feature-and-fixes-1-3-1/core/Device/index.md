@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.3.1-feature-and-fixes-1-3-1.0
+Version Device 1.3.1-feature-and-fixes-1-3-1.1
 
 ## Table of Contents
 
@@ -74,8 +74,6 @@ A module for querying about the device and it's capabilities.
 Get the supported audio profiles for the connected devices.
 
 It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.
-
-**Note:** This method is planned to be deprecated with a future Firebolt release
 
 To get the value of `audio` call the method like this:
 
@@ -1309,8 +1307,6 @@ Full HD (FHD): [1920, 1080]
 
 4K Ultra High Definition (UHD): [1920, 1080]
 
-**Note:** This method will be deprecated with a future Firebolt release
-
 To get the value of `screenResolution` call the method like this:
 
 ```typescript
@@ -1760,8 +1756,6 @@ High Definition (HD): [1280, 720]
 Full HD (FHD): [1920, 1080]
 
 4K Ultra High Definition (UHD): [1920, 1080]
-
-**Note:** This method will be deprecated with a future Firebolt release
 
 To get the value of `videoResolution` call the method like this:
 

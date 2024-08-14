@@ -927,7 +927,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.3.1-feature-and-fixes-1-3-1.0",
+				"version": "1.3.1-feature-and-fixes-1-3-1.1",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -7074,7 +7074,7 @@
 				},
 				{
 					"name": "Device.audio",
-					"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user. \n\n  **Note:** This method is planned to be deprecated with a future Firebolt release",
+					"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.",
 					"params": [],
 					"tags": [
 						{
@@ -7112,7 +7112,7 @@
 				},
 				{
 					"name": "Device.screenResolution",
-					"summary": "Get the maximum supported screen resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080] \n\n**Note:** This method will be deprecated with a future Firebolt release",
+					"summary": "Get the maximum supported screen resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080]",
 					"params": [],
 					"tags": [
 						{
@@ -7148,7 +7148,7 @@
 				},
 				{
 					"name": "Device.videoResolution",
-					"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080] \n\n**Note:** This method will be deprecated with a future Firebolt release",
+					"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080]",
 					"params": [],
 					"tags": [
 						{
@@ -7599,7 +7599,7 @@
 				},
 				{
 					"name": "Device.onAudioChanged",
-					"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user. \n\n  **Note:** This method is planned to be deprecated with a future Firebolt release",
+					"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.",
 					"params": [
 						{
 							"name": "listen",
@@ -7662,7 +7662,7 @@
 				},
 				{
 					"name": "Device.onScreenResolutionChanged",
-					"summary": "Get the maximum supported screen resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080] \n\n**Note:** This method will be deprecated with a future Firebolt release",
+					"summary": "Get the maximum supported screen resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080]",
 					"params": [
 						{
 							"name": "listen",
@@ -7723,7 +7723,7 @@
 				},
 				{
 					"name": "Device.onVideoResolutionChanged",
-					"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080] \n\n**Note:** This method will be deprecated with a future Firebolt release",
+					"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [1920, 1080]",
 					"params": [
 						{
 							"name": "listen",

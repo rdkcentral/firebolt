@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.3.1-feature-and-fixes-1-3-1.0
+Version Profile 1.3.1-feature-and-fixes-1-3-1.1
 
 ## Table of Contents
 

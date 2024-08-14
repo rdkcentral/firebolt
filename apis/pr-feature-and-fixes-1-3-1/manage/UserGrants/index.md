@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.3.1-feature-and-fixes-1-3-1.0
+Version UserGrants 1.3.1-feature-and-fixes-1-3-1.1
 
 ## Table of Contents
 
