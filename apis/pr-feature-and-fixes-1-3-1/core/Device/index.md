@@ -48,10 +48,11 @@ Version Device 1.3.1-feature-and-fixes-1-3-1.0
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
+  - [HDRType](#hdrtype)
   - [Resolution](#resolution)
   - [NetworkInfoResult](#networkinforesult)
+  - [DeviceVersion](#deviceversion)
   - [HDCPType](#hdcptype)
-  - [HDRType](#hdrtype)
 
 ## Usage
 
@@ -1291,7 +1292,7 @@ Response:
 
 ### screenResolution
 
-Get the maximum supported video resolution for the graphical surface of the app.
+Get the maximum supported screen resolution for the graphical surface of the app.
 
 The pairs returned will be of a [width, height] format and will correspond to the following values:
 
@@ -1630,12 +1631,12 @@ Get the SDK, OS and other version info
 To get the value of `version` call the method like this:
 
 ```typescript
-function version(): Promise<HDCPType>
+function version(): Promise<DeviceVersion>
 ```
 
 Promise resolution:
 
-[HDCPType](#hdcptype)
+[DeviceVersion](#deviceversion)
 
 Capabilities:
 
@@ -2009,6 +2010,21 @@ NetworkType: {
 
 ---
 
+### HDRType
+
+The type of HDR that is supported
+
+```typescript
+type HDRType = {
+  hdr10: boolean
+  hdr10Plus: boolean
+  dolbyVision: boolean
+  hlg: boolean
+}
+```
+
+---
+
 ### Resolution
 
 ```typescript
@@ -2053,31 +2069,34 @@ See also:
 
 ---
 
+### DeviceVersion
+
+```typescript
+type DeviceVersion = {
+  sdk?: SemanticVersion // The Firebolt SDK version
+  api: SemanticVersion // The lateset Firebolt API version supported by the curent device.
+  firmware: SemanticVersion // The device firmware version.
+  os: SemanticVersion // **Deprecated** Use `firmware`, instead.
+  debug?: string // Detail version as a string, for debugging purposes
+}
+```
+
+See also:
+
+[SemanticVersion](../Types/schemas/#SemanticVersion)
+
+---
+
 ### HDCPType
 
 The type of HDCP that is supported
 
 ```typescript
 type HDCPType = {
-    hdcp1.4?: boolean
-    hdcp2.2?: boolean
+    hdcp1.4: boolean
+    hdcp2.2: boolean
 }
 
-```
-
----
-
-### HDRType
-
-The type of HDR that is supported
-
-```typescript
-type HDRType = {
-  hdr10?: boolean
-  hdr10plus?: boolean
-  dolbyVision?: boolean
-  hlg?: boolean
-}
 ```
 
 ---
