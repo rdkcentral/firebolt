@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecureStorage 1.3.1-feature-and-fixes-1-3-1.1
+Version SecureStorage 1.3.1-feature-and-fixes-1-3-1.2
 
 ## Table of Contents
 

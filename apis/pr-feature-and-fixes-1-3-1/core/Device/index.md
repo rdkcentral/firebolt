@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.3.1-feature-and-fixes-1-3-1.1
+Version Device 1.3.1-feature-and-fixes-1-3-1.2
 
 ## Table of Contents
 
@@ -307,18 +307,18 @@ Capabilities:
 
 #### Examples
 
-Getting the supported HDCP profiles
+Getting the supported HDCP versions
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdcpProfiles = await Device.hdcp()
-console.log(supportedHdcpProfiles)
+let supportedHdcpVersions = await Device.hdcp()
+console.log(supportedHdcpVersions)
 ```
 
-Value of `supportedHdcpProfiles`:
+Value of `supportedHdcpVersions`:
 
 ```javascript
 {
@@ -371,7 +371,7 @@ number
 
 #### Examples
 
-Getting the supported HDCP profiles
+Getting the supported HDCP versions
 
 JavaScript:
 
@@ -384,7 +384,7 @@ let listenerId = await hdcp((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdcpProfiles`:
+Value of `supportedHdcpVersions`:
 
 ```javascript
 {
@@ -447,18 +447,18 @@ Capabilities:
 
 #### Examples
 
-Getting the supported HDR profiles
+Getting the supported HDR formats
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdrProfiles = await Device.hdr()
-console.log(supportedHdrProfiles)
+let supportedHdrFormats = await Device.hdr()
+console.log(supportedHdrFormats)
 ```
 
-Value of `supportedHdrProfiles`:
+Value of `supportedHdrFormats`:
 
 ```javascript
 {
@@ -515,7 +515,7 @@ number
 
 #### Examples
 
-Getting the supported HDR profiles
+Getting the supported HDR formats
 
 JavaScript:
 
@@ -528,7 +528,7 @@ let listenerId = await hdr((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdrProfiles`:
+Value of `supportedHdrFormats`:
 
 ```javascript
 {
@@ -1295,7 +1295,7 @@ Response:
 
 ### screenResolution
 
-Get the maximum supported screen resolution for the graphical surface of the app.
+Get the resolution for the graphical surface of the app.
 
 The pairs returned will be of a [width, height] format and will correspond to the following values:
 
@@ -1307,7 +1307,7 @@ High Definition (HD): [1280, 720]
 
 Full HD (FHD): [1920, 1080]
 
-4K Ultra High Definition (UHD): [1920, 1080]
+4K Ultra High Definition (UHD): [3840, 2160]
 
 To get the value of `screenResolution` call the method like this:
 
@@ -1757,7 +1757,7 @@ High Definition (HD): [1280, 720]
 
 Full HD (FHD): [1920, 1080]
 
-4K Ultra High Definition (UHD): [1920, 1080]
+4K Ultra High Definition (UHD): [3840, 2160]
 
 To get the value of `videoResolution` call the method like this:
 

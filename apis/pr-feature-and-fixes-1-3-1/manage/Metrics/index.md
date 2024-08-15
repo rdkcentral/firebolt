@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.3.1-feature-and-fixes-1-3-1.1
+Version Metrics 1.3.1-feature-and-fixes-1-3-1.2
 
 ## Table of Contents
 

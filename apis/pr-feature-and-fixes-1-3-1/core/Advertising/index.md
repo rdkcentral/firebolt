@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Advertising 1.3.1-feature-and-fixes-1-3-1.1
+Version Advertising 1.3.1-feature-and-fixes-1-3-1.2
 
 ## Table of Contents
 
@@ -91,7 +91,7 @@ Value of `advertisingId`:
 ```javascript
 {
 	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-	"ifa_type": "idfa",
+	"ifa_type": "sspid",
 	"lmt": "0"
 }
 ```
@@ -117,7 +117,7 @@ Response:
   "id": 1,
   "result": {
     "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-    "ifa_type": "idfa",
+    "ifa_type": "sspid",
     "lmt": "0"
   }
 }
@@ -143,7 +143,7 @@ Value of `advertisingId`:
 ```javascript
 {
 	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-	"ifa_type": "idfa",
+	"ifa_type": "sspid",
 	"lmt": "0"
 }
 ```
@@ -176,7 +176,7 @@ Response:
   "id": 1,
   "result": {
     "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-    "ifa_type": "idfa",
+    "ifa_type": "sspid",
     "lmt": "0"
   }
 }
@@ -202,7 +202,7 @@ Value of `advertisingId`:
 ```javascript
 {
 	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-	"ifa_type": "idfa",
+	"ifa_type": "sspid",
 	"lmt": "0"
 }
 ```
