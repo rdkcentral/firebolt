@@ -48,12 +48,12 @@ Version Device 1.3.1-feature-and-fixes-1-3-1.2
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
-  - [HDRFormat](#hdrformat)
+  - [HDRFormatMap](#hdrformatmap)
   - [AudioProfiles](#audioprofiles)
   - [Resolution](#resolution)
   - [NetworkInfoResult](#networkinforesult)
   - [DeviceVersion](#deviceversion)
-  - [HDCPVersion](#hdcpversion)
+  - [HDCPVersionMap](#hdcpversionmap)
 
 ## Usage
 
@@ -292,12 +292,12 @@ For devices that do not require additional connections (e.g. panels), `true` wil
 To get the value of `hdcp` call the method like this:
 
 ```typescript
-function hdcp(): Promise<HDCPVersion>
+function hdcp(): Promise<HDCPVersionMap>
 ```
 
 Promise resolution:
 
-[HDCPVersion](#hdcpversion)
+[HDCPVersionMap](#hdcpversionmap)
 
 Capabilities:
 
@@ -360,7 +360,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdcp(callback: (value) => HDCPVersion): Promise<number>
+function hdcp(callback: (value) => HDCPVersionMap): Promise<number>
 ```
 
 Promise resolution:
@@ -432,12 +432,12 @@ Get the negotiated HDR formats for the connected display and device
 To get the value of `hdr` call the method like this:
 
 ```typescript
-function hdr(): Promise<HDRFormat>
+function hdr(): Promise<HDRFormatMap>
 ```
 
 Promise resolution:
 
-[HDRFormat](#hdrformat)
+[HDRFormatMap](#hdrformatmap)
 
 Capabilities:
 
@@ -504,7 +504,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdr(callback: (value) => HDRFormat): Promise<number>
+function hdr(callback: (value) => HDRFormatMap): Promise<number>
 ```
 
 Promise resolution:
@@ -2009,12 +2009,12 @@ NetworkType: {
 
 ---
 
-### HDRFormat
+### HDRFormatMap
 
 The type of HDR that is supported
 
 ```typescript
-type HDRFormat = {
+type HDRFormatMap = {
   hdr10: boolean
   hdr10Plus: boolean
   dolbyVision: boolean
@@ -2100,12 +2100,12 @@ See also:
 
 ---
 
-### HDCPVersion
+### HDCPVersionMap
 
 The type of HDCP that is supported
 
 ```typescript
-type HDCPVersion = {
+type HDCPVersionMap = {
     hdcp1.4: boolean
     hdcp2.2: boolean
 }

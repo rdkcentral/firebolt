@@ -7017,7 +7017,7 @@
 						"name": "supportedHdcpVersions",
 						"summary": "the supported HDCP versions",
 						"schema": {
-							"$ref": "#/components/schemas/HDCPVersion"
+							"$ref": "#/components/schemas/HDCPVersionMap"
 						}
 					},
 					"examples": [
@@ -7053,7 +7053,7 @@
 						"name": "supportedHdrFormats",
 						"summary": "the supported HDR formats",
 						"schema": {
-							"$ref": "#/components/schemas/HDRFormat"
+							"$ref": "#/components/schemas/HDRFormatMap"
 						}
 					},
 					"examples": [
@@ -7510,7 +7510,7 @@
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/components/schemas/HDCPVersion"
+									"$ref": "#/components/schemas/HDCPVersionMap"
 								}
 							]
 						}
@@ -7571,7 +7571,7 @@
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/components/schemas/HDRFormat"
+									"$ref": "#/components/schemas/HDRFormatMap"
 								}
 							]
 						}
@@ -19737,8 +19737,8 @@
 							"dolbyAtmos"
 						]
 					},
-					"HDRFormat": {
-						"title": "HDRFormat",
+					"HDRFormatMap": {
+						"title": "HDRFormatMap",
 						"type": "object",
 						"properties": {
 							"hdr10": {
@@ -19762,8 +19762,8 @@
 						],
 						"description": "The type of HDR that is supported"
 					},
-					"HDCPVersion": {
-						"title": "HDCPVersion",
+					"HDCPVersionMap": {
+						"title": "HDCPVersionMap",
 						"type": "object",
 						"properties": {
 							"hdcp1.4": {
