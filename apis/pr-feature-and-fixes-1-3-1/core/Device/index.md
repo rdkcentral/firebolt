@@ -2011,7 +2011,7 @@ NetworkType: {
 
 ### HDRFormatMap
 
-The type of HDR that is supported
+The type of HDR format that is supported
 
 ```typescript
 type HDRFormatMap = {
@@ -2102,7 +2102,7 @@ See also:
 
 ### HDCPVersionMap
 
-The type of HDCP that is supported
+The type of HDCP versions that is supported
 
 ```typescript
 type HDCPVersionMap = {
