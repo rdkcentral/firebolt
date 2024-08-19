@@ -74,7 +74,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
+| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid) |
 
 
 
@@ -94,6 +94,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Manages |
 | ------- |
 | [Advertising.resetIdentifier](./manage/Advertising/#resetidentifier) |
+
+
+### `xrn:firebolt:capability:advertising:policy`
+
+| Uses |
+| ---- |
+| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
 
 
 ### `xrn:firebolt:capability:approve:content`
@@ -464,13 +471,6 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Uses |
 | ---- |
 | [Device.network](./core/Device/#network)<br/>[Device.onNetworkChanged](./core/Device/#networkchanged) |
-
-
-### `xrn:firebolt:capability:privacy:advertising`
-
-| Uses |
-| ---- |
-| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
 
 
 ### `xrn:firebolt:capability:privacy:settings`

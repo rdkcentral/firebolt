@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.3.0-next.4
+Version Authentication 1.3.1-next.1
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ Version Authentication 1.3.0-next.4
   - [token](#token)
 - [Types](#types)
   - [TokenType](#tokentype)
+  - [AuthenticationTokenResult](#authenticationtokenresult)
 
 ## Usage
 
@@ -230,7 +231,10 @@ Response:
 Get a specific `type` of authentication token
 
 ```typescript
-function token(type: TokenType, options: object): Promise<object>
+function token(
+  type: TokenType,
+  options: object,
+): Promise<AuthenticationTokenResult>
 ```
 
 Parameters:
@@ -241,6 +245,8 @@ Parameters:
 | `options` | `object`                  | false    | Additional options for acquiring the token.                                      |
 
 Promise resolution:
+
+[AuthenticationTokenResult](#authenticationtokenresult)
 
 Capabilities:
 
@@ -426,6 +432,18 @@ TokenType: {
     DISTRIBUTOR: 'distributor',
 },
 
+```
+
+---
+
+### AuthenticationTokenResult
+
+```typescript
+type AuthenticationTokenResult = {
+  value: string
+  expires?: string
+  type?: string
+}
 ```
 
 ---
