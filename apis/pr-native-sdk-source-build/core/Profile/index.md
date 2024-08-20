@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.2.1-native-sdk-source-build.0
+Version Profile 1.3.1-native-sdk-source-build.0
 
 ## Table of Contents
 

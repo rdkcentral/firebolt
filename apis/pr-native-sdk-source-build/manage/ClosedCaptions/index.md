@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version ClosedCaptions 1.2.1-native-sdk-source-build.0
+Version ClosedCaptions 1.3.1-native-sdk-source-build.0
 
 ## Table of Contents
 

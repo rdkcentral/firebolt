@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.2.1-native-sdk-source-build.0
+Version Parameters 1.3.1-native-sdk-source-build.0
 
 ## Table of Contents
 

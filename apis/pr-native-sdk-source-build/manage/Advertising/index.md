@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.2.1-native-sdk-source-build.0
+Version Advertising 1.3.1-native-sdk-source-build.0
 
 ## Table of Contents
 

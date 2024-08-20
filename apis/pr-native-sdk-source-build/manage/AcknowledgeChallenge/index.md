@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.2.1-native-sdk-source-build.0
+Version AcknowledgeChallenge 1.3.1-native-sdk-source-build.0
 
 ## Table of Contents
 
@@ -366,7 +366,9 @@ import { AcknowledgeChallenge } from '@firebolt-js/manage-sdk'
 
 class MyChallengeProvider {
   async challenge(parameters, session) {
-    return null
+    return {
+      granted: true,
+    }
   }
 }
 
@@ -435,7 +437,9 @@ Request:
   "method": "AcknowledgeChallenge.challengeResponse",
   "params": {
     "correlationId": undefined,
-    "result": null
+    "result": {
+      "granted": true
+    }
   }
 }
 ```
