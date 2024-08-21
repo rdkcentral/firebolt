@@ -35,8 +35,7 @@ undefined
 ```typescript
 AudioProfile: {
     STEREO: 'stereo',
-    DOLBY_DIGITAL_5_1: 'dolbyDigital5.1',
-    DOLBY_DIGITAL_5_1_PLUS: 'dolbyDigital5.1+',
+    DOLBY_DIGITAL_51: 'dolbyDigital51',
     DOLBY_ATMOS: 'dolbyAtmos',
 },
 

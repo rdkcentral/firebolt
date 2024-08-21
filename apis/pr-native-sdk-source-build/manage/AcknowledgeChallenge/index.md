@@ -366,9 +366,7 @@ import { AcknowledgeChallenge } from '@firebolt-js/manage-sdk'
 
 class MyChallengeProvider {
   async challenge(parameters, session) {
-    return {
-      granted: true,
-    }
+    return null
   }
 }
 
@@ -437,9 +435,7 @@ Request:
   "method": "AcknowledgeChallenge.challengeResponse",
   "params": {
     "correlationId": undefined,
-    "result": {
-      "granted": true
-    }
+    "result": null
   }
 }
 ```

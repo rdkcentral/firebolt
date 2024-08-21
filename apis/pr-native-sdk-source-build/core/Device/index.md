@@ -48,12 +48,11 @@ Version Device 1.3.1-native-sdk-source-build.0
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
-  - [HDRFormatMap](#hdrformatmap)
   - [AudioProfiles](#audioprofiles)
   - [Resolution](#resolution)
   - [NetworkInfoResult](#networkinforesult)
-  - [DeviceVersion](#deviceversion)
   - [HDCPVersionMap](#hdcpversionmap)
+  - [HDRFormatMap](#hdrformatmap)
 
 ## Usage
 
@@ -109,8 +108,7 @@ Value of `supportedAudioProfiles`:
 ```javascript
 {
 	"stereo": true,
-	"dolbyDigital5.1": true,
-	"dolbyDigital5.1+": true,
+	"dolbyDigital51": true,
 	"dolbyAtmos": true
 }
 ```
@@ -136,8 +134,7 @@ Response:
   "id": 1,
   "result": {
     "stereo": true,
-    "dolbyDigital5.1": true,
-    "dolbyDigital5.1+": true,
+    "dolbyDigital51": true,
     "dolbyAtmos": true
   }
 }
@@ -179,8 +176,7 @@ Value of `supportedAudioProfiles`:
 ```javascript
 {
 	"stereo": true,
-	"dolbyDigital5.1": true,
-	"dolbyDigital5.1+": true,
+	"dolbyDigital51": true,
 	"dolbyAtmos": true
 }
 ```
@@ -208,8 +204,7 @@ Response:
   "id": 1,
   "result": {
     "stereo": true,
-    "dolbyDigital5.1": true,
-    "dolbyDigital5.1+": true,
+    "dolbyDigital51": true,
     "dolbyAtmos": true
   }
 }
@@ -322,8 +317,8 @@ Value of `supportedHdcpVersions`:
 
 ```javascript
 {
-	"hdcp1.4": true,
-	"hdcp2.2": true
+	"hdcp14": true,
+	"hdcp22": true
 }
 ```
 
@@ -347,8 +342,8 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "hdcp1.4": true,
-    "hdcp2.2": true
+    "hdcp14": true,
+    "hdcp22": true
   }
 }
 ```
@@ -388,8 +383,8 @@ Value of `supportedHdcpVersions`:
 
 ```javascript
 {
-	"hdcp1.4": true,
-	"hdcp2.2": true
+	"hdcp14": true,
+	"hdcp22": true
 }
 ```
 
@@ -415,8 +410,8 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "hdcp1.4": true,
-    "hdcp2.2": true
+    "hdcp14": true,
+    "hdcp22": true
   }
 }
 ```
@@ -1632,12 +1627,10 @@ Get the SDK, OS and other version info
 To get the value of `version` call the method like this:
 
 ```typescript
-function version(): Promise<DeviceVersion>
+function version(): Promise<object>
 ```
 
 Promise resolution:
-
-[DeviceVersion](#deviceversion)
 
 Capabilities:
 
@@ -2009,31 +2002,14 @@ NetworkType: {
 
 ---
 
-### HDRFormatMap
-
-The type of HDR format that is supported
-
-```typescript
-type HDRFormatMap = {
-  hdr10: boolean
-  hdr10Plus: boolean
-  dolbyVision: boolean
-  hlg: boolean
-}
-```
-
----
-
 ### AudioProfiles
 
 ```typescript
 type AudioProfiles = {
-    stereo: boolean
-    dolbyDigital5.1: boolean
-    dolbyDigital5.1+: boolean
-    dolbyAtmos: boolean
+  stereo: boolean
+  dolbyDigital51: boolean
+  dolbyAtmos: boolean
 }
-
 ```
 
 ---
@@ -2041,27 +2017,10 @@ type AudioProfiles = {
 ### Resolution
 
 ```typescript
-type Resolution =
-  | [
-      720, // undefined Width in pixels item
-      480, // undefined Height in pixels item
-    ]
-  | [
-      720, // undefined Width in pixels item
-      576, // undefined Height in pixels item
-    ]
-  | [
-      1280, // undefined Width in pixels item
-      720, // undefined Height in pixels item
-    ]
-  | [
-      1920, // undefined Width in pixels item
-      1080, // undefined Height in pixels item
-    ]
-  | [
-      3840, // undefined Width in pixels item
-      2160, // undefined Height in pixels item
-    ]
+type Resolution = [
+  number, // undefined Width in pixels item
+  number, // undefined Height in pixels item
+]
 ```
 
 ---
@@ -2082,34 +2041,30 @@ See also:
 
 ---
 
-### DeviceVersion
-
-```typescript
-type DeviceVersion = {
-  sdk?: SemanticVersion // The Firebolt SDK version
-  api: SemanticVersion // The latest Firebolt API version supported by the current device.
-  firmware: SemanticVersion // The firmware version as reported by the device
-  os: SemanticVersion // **Deprecated** Use `firmware`, instead.
-  debug?: string // Detailed version as a string, for debugging purposes
-}
-```
-
-See also:
-
-[SemanticVersion](../Types/schemas/#SemanticVersion)
-
----
-
 ### HDCPVersionMap
 
 The type of HDCP versions that is supported
 
 ```typescript
 type HDCPVersionMap = {
-    hdcp1.4: boolean
-    hdcp2.2: boolean
+  hdcp14: boolean
+  hdcp22: boolean
 }
+```
 
+---
+
+### HDRFormatMap
+
+The type of HDR format that is supported
+
+```typescript
+type HDRFormatMap = {
+  hdr10: boolean
+  hdr10Plus: boolean
+  dolbyVision: boolean
+  hlg: boolean
+}
 ```
 
 ---

@@ -6958,7 +6958,34 @@
 						"name": "versions",
 						"summary": "the versions",
 						"schema": {
-							"$ref": "#/components/schemas/DeviceVersion"
+							"type": "object",
+							"properties": {
+								"sdk": {
+									"$ref": "#/x-schemas/Types/SemanticVersion",
+									"description": "The Firebolt SDK version"
+								},
+								"api": {
+									"$ref": "#/x-schemas/Types/SemanticVersion",
+									"description": "The lateset Firebolt API version supported by the curent device."
+								},
+								"firmware": {
+									"$ref": "#/x-schemas/Types/SemanticVersion",
+									"description": "The device firmware version."
+								},
+								"os": {
+									"$ref": "#/x-schemas/Types/SemanticVersion",
+									"description": "**Deprecated** Use `firmware`, instead."
+								},
+								"debug": {
+									"type": "string",
+									"description": "Detail version as a string, for debugging purposes"
+								}
+							},
+							"required": [
+								"api",
+								"firmware",
+								"os"
+							]
 						}
 					},
 					"examples": [
@@ -7027,8 +7054,8 @@
 							"result": {
 								"name": "Default Result",
 								"value": {
-									"hdcp1.4": true,
-									"hdcp2.2": true
+									"hdcp14": true,
+									"hdcp22": true
 								}
 							}
 						}
@@ -7102,8 +7129,7 @@
 								"name": "Default Result",
 								"value": {
 									"stereo": true,
-									"dolbyDigital5.1": true,
-									"dolbyDigital5.1+": true,
+									"dolbyDigital51": true,
 									"dolbyAtmos": true
 								}
 							}
@@ -7527,8 +7553,8 @@
 							"result": {
 								"name": "Default Result",
 								"value": {
-									"hdcp1.4": true,
-									"hdcp2.2": true
+									"hdcp14": true,
+									"hdcp22": true
 								}
 							}
 						}
@@ -7652,8 +7678,7 @@
 								"name": "Default Result",
 								"value": {
 									"stereo": true,
-									"dolbyDigital5.1": true,
-									"dolbyDigital5.1+": true,
+									"dolbyDigital51": true,
 									"dolbyAtmos": true
 								}
 							}
@@ -19601,98 +19626,20 @@
 						]
 					},
 					"Resolution": {
-						"oneOf": [
+						"type": "array",
+						"items": [
 							{
-								"type": "array",
-								"items": [
-									{
-										"type": "integer",
-										"const": 720,
-										"description": "Width in pixels"
-									},
-									{
-										"type": "integer",
-										"const": 480,
-										"description": "Height in pixels"
-									}
-								],
-								"additionalItems": false,
-								"minItems": 2,
-								"maxItems": 2
+								"type": "integer",
+								"description": "Width in pixels"
 							},
 							{
-								"type": "array",
-								"items": [
-									{
-										"type": "integer",
-										"const": 720,
-										"description": "Width in pixels"
-									},
-									{
-										"type": "integer",
-										"const": 576,
-										"description": "Height in pixels"
-									}
-								],
-								"additionalItems": false,
-								"minItems": 2,
-								"maxItems": 2
-							},
-							{
-								"type": "array",
-								"items": [
-									{
-										"type": "integer",
-										"const": 1280,
-										"description": "Width in pixels"
-									},
-									{
-										"type": "integer",
-										"const": 720,
-										"description": "Height in pixels"
-									}
-								],
-								"additionalItems": false,
-								"minItems": 2,
-								"maxItems": 2
-							},
-							{
-								"type": "array",
-								"items": [
-									{
-										"type": "integer",
-										"const": 1920,
-										"description": "Width in pixels"
-									},
-									{
-										"type": "integer",
-										"const": 1080,
-										"description": "Height in pixels"
-									}
-								],
-								"additionalItems": false,
-								"minItems": 2,
-								"maxItems": 2
-							},
-							{
-								"type": "array",
-								"items": [
-									{
-										"type": "integer",
-										"const": 3840,
-										"description": "Width in pixels"
-									},
-									{
-										"type": "integer",
-										"const": 2160,
-										"description": "Height in pixels"
-									}
-								],
-								"additionalItems": false,
-								"minItems": 2,
-								"maxItems": 2
+								"type": "integer",
+								"description": "Height in pixels"
 							}
-						]
+						],
+						"additionalItems": false,
+						"minItems": 2,
+						"maxItems": 2
 					},
 					"NetworkType": {
 						"title": "NetworkType",
@@ -19720,10 +19667,7 @@
 							"stereo": {
 								"type": "boolean"
 							},
-							"dolbyDigital5.1": {
-								"type": "boolean"
-							},
-							"dolbyDigital5.1+": {
+							"dolbyDigital51": {
 								"type": "boolean"
 							},
 							"dolbyAtmos": {
@@ -19732,8 +19676,7 @@
 						},
 						"required": [
 							"stereo",
-							"dolbyDigital5.1",
-							"dolbyDigital5.1+",
+							"dolbyDigital51",
 							"dolbyAtmos"
 						]
 					},
@@ -19766,16 +19709,16 @@
 						"title": "HDCPVersionMap",
 						"type": "object",
 						"properties": {
-							"hdcp1.4": {
+							"hdcp14": {
 								"type": "boolean"
 							},
-							"hdcp2.2": {
+							"hdcp22": {
 								"type": "boolean"
 							}
 						},
 						"required": [
-							"hdcp1.4",
-							"hdcp2.2"
+							"hdcp14",
+							"hdcp22"
 						],
 						"description": "The type of HDCP versions that is supported"
 					},
@@ -20974,8 +20917,7 @@
 						"type": "string",
 						"enum": [
 							"stereo",
-							"dolbyDigital5.1",
-							"dolbyDigital5.1+",
+							"dolbyDigital51",
 							"dolbyAtmos"
 						]
 					},
