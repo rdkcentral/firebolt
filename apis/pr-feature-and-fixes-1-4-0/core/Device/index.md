@@ -2015,10 +2015,10 @@ The type of HDR format that is supported
 
 ```typescript
 type HDRFormatMap = {
-  hdr10: boolean
-  hdr10Plus: boolean
-  dolbyVision: boolean
-  hlg: boolean
+  HDR_10: boolean
+  HDR_10PLUS: boolean
+  DOLBY_VISION: boolean
+  HLG: boolean
 }
 ```
 
@@ -2028,12 +2028,11 @@ type HDRFormatMap = {
 
 ```typescript
 type AudioProfiles = {
-    stereo: boolean
-    dolbyDigital5.1: boolean
-    dolbyDigital5.1+: boolean
-    dolbyAtmos: boolean
+  STEREO: boolean
+  DOLBY_DIGITAL_5_1: boolean
+  DOLBY_DIGITAL_5_1_PLUS: boolean
+  DOLBY_ATMOS: boolean
 }
-
 ```
 
 ---
@@ -2070,8 +2069,8 @@ type Resolution =
 
 ```typescript
 type NetworkInfoResult = {
-  state: NetworkState // The type of network that is currently active
-  type: NetworkType // The type of network that is currently active
+  STATE: NetworkState // The type of network that is currently active
+  TYPE: NetworkType // The type of network that is currently active
 }
 ```
 
@@ -2086,11 +2085,11 @@ See also:
 
 ```typescript
 type DeviceVersion = {
-  sdk?: SemanticVersion // The Firebolt SDK version
-  api: SemanticVersion // The latest Firebolt API version supported by the current device.
-  firmware: SemanticVersion // The firmware version as reported by the device
-  os: SemanticVersion // **Deprecated** Use `firmware`, instead.
-  debug?: string // Detailed version as a string, for debugging purposes
+  SDK?: SemanticVersion // The Firebolt SDK version
+  API: SemanticVersion // The latest Firebolt API version supported by the current device.
+  FIRMWARE: SemanticVersion // The firmware version as reported by the device
+  OS: SemanticVersion // **Deprecated** Use `firmware`, instead.
+  DEBUG?: string // Detailed version as a string, for debugging purposes
 }
 ```
 
@@ -2106,10 +2105,9 @@ The type of HDCP versions that is supported
 
 ```typescript
 type HDCPVersionMap = {
-    hdcp1.4: boolean
-    hdcp2.2: boolean
+  HDCP_1_4: boolean
+  HDCP_2_2: boolean
 }
-
 ```
 
 ---

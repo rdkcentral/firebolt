@@ -60,14 +60,14 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 
 ```typescript
 type EntityIntent = {
-  action: 'entity'
-  data:
+  ACTION: 'entity'
+  DATA:
     | ProgramEntity
     | MusicEntity
     | ChannelEntity
     | UntypedEntity
     | PlaylistEntity
-  context: object
+  CONTEXT: object
 }
 ```
 
@@ -79,9 +79,9 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 
 ```typescript
 type PlaybackIntent = {
-  action: 'playback'
-  data: PlayableEntity
-  context: object
+  ACTION: 'playback'
+  DATA: PlayableEntity
+  CONTEXT: object
 }
 ```
 
@@ -97,9 +97,9 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 
 ```typescript
 type SearchIntent = {
-  action: 'search'
-  data?: object
-  context: object
+  ACTION: 'search'
+  DATA?: object
+  CONTEXT: object
 }
 ```
 
@@ -111,9 +111,9 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 
 ```typescript
 type SectionIntent = {
-  action: 'section'
-  data: object
-  context: object
+  ACTION: 'section'
+  DATA: object
+  CONTEXT: object
 }
 ```
 
@@ -125,9 +125,9 @@ A Firebolt compliant representation of a user intention to 'tune' to a tradition
 
 ```typescript
 type TuneIntent = {
-  action: 'tune'
-  data: object
-  context: object
+  ACTION: 'tune'
+  DATA: object
+  CONTEXT: object
 }
 ```
 
@@ -143,9 +143,9 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 
 ```typescript
 type PlayEntityIntent = {
-  action: 'play-entity'
-  data: object
-  context: object
+  ACTION: 'play-entity'
+  DATA: object
+  CONTEXT: object
 }
 ```
 
@@ -161,9 +161,9 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 
 ```typescript
 type PlayQueryIntent = {
-  action: 'play-query'
-  data: object
-  context: object
+  ACTION: 'play-query'
+  DATA: object
+  CONTEXT: object
 }
 ```
 
@@ -180,8 +180,8 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 
 ```typescript
 type HomeIntent = {
-  action: 'home'
-  context: object
+  ACTION: 'home'
+  CONTEXT: object
 }
 ```
 
@@ -193,8 +193,8 @@ A Firebolt compliant representation of a user intention to launch an app.
 
 ```typescript
 type LaunchIntent = {
-  action: 'launch'
-  context: object
+  ACTION: 'launch'
+  CONTEXT: object
 }
 ```
 

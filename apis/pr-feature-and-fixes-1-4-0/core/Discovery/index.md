@@ -602,8 +602,8 @@ Callback parameters:
 
 ```typescript
 type EntityInfoParameters = {
-  entityId: string
-  assetId?: string
+  ENTITY_ID: string
+  ASSET_ID?: string
 }
 ```
 
@@ -611,9 +611,9 @@ Callback promise resolution:
 
 ```typescript
 type EntityInfoResult = {
-  expires: string
-  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  related?: EntityInfo[]
+  EXPIRES: string
+  ENTITY: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  RELATED?: EntityInfo[]
 }
 ```
 
@@ -1267,9 +1267,9 @@ Parameters:
 
 ```typescript
 type EntityInfoResult = {
-  expires: string
-  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  related?: EntityInfo[]
+  EXPIRES: string
+  ENTITY: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  RELATED?: EntityInfo[]
 }
 ```
 
@@ -2899,9 +2899,9 @@ Callback parameters:
 
 ```typescript
 type PurchasedContentParameters = {
-  limit: number
-  offeringType?: OfferingType // The offering type of the WayToWatch.
-  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  LIMIT: number
+  OFFERING_TYPE?: OfferingType // The offering type of the WayToWatch.
+  PROGRAM_TYPE?: ProgramType // In the case of a program `entityType`, specifies the program type.
 }
 ```
 
@@ -2909,9 +2909,9 @@ Callback promise resolution:
 
 ```typescript
 type PurchasedContentResult = {
-  expires: string
-  totalCount: number
-  entries: EntityInfo[]
+  EXPIRES: string
+  TOTAL_COUNT: number
+  ENTRIES: EntityInfo[]
 }
 ```
 
@@ -3081,9 +3081,9 @@ Parameters:
 
 ```typescript
 type PurchasedContentResult = {
-  expires: string
-  totalCount: number
-  entries: EntityInfo[]
+  EXPIRES: string
+  TOTAL_COUNT: number
+  ENTRIES: EntityInfo[]
 }
 ```
 
@@ -4192,9 +4192,9 @@ Response:
 
 ```typescript
 type DiscoveryPolicy = {
-  enableRecommendations: boolean // Whether or not to the user has enabled history-based recommendations
-  shareWatchHistory: boolean // Whether or not the user has enabled app watch history data to be shared with the platform
-  rememberWatchedPrograms: boolean // Whether or not the user has enabled watch history
+  ENABLE_RECOMMENDATIONS: boolean // Whether or not to the user has enabled history-based recommendations
+  SHARE_WATCH_HISTORY: boolean // Whether or not the user has enabled app watch history data to be shared with the platform
+  REMEMBER_WATCHED_PROGRAMS: boolean // Whether or not the user has enabled watch history
 }
 ```
 
@@ -4204,11 +4204,11 @@ type DiscoveryPolicy = {
 
 ```typescript
 type Availability = {
-  type: 'channel-lineup' | 'program-lineup'
-  id: string
-  catalogId?: string
-  startTime?: string
-  endTime?: string
+  TYPE: 'channel-lineup' | 'program-lineup'
+  ID: string
+  CATALOG_ID?: string
+  START_TIME?: string
+  END_TIME?: string
 }
 ```
 
@@ -4218,8 +4218,8 @@ type Availability = {
 
 ```typescript
 type UserInterestProviderParameters = {
-  type: InterestType
-  reason: InterestReason
+  TYPE: InterestType
+  REASON: InterestReason
 }
 ```
 
@@ -4234,9 +4234,9 @@ See also:
 
 ```typescript
 type PurchasedContentParameters = {
-  limit: number
-  offeringType?: OfferingType // The offering type of the WayToWatch.
-  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  LIMIT: number
+  OFFERING_TYPE?: OfferingType // The offering type of the WayToWatch.
+  PROGRAM_TYPE?: ProgramType // In the case of a program `entityType`, specifies the program type.
 }
 ```
 
@@ -4251,8 +4251,8 @@ See also:
 
 ```typescript
 type ContentAccessIdentifiers = {
-  availabilities?: Availability[] // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
-  entitlements?: Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
+  AVAILABILITIES?: Availability[] // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
+  ENTITLEMENTS?: Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
 }
 ```
 
@@ -4267,8 +4267,8 @@ See also:
 
 ```typescript
 type EntityInfoParameters = {
-  entityId: string
-  assetId?: string
+  ENTITY_ID: string
+  ASSET_ID?: string
 }
 ```
 
@@ -4278,8 +4278,8 @@ type EntityInfoParameters = {
 
 ```typescript
 type EntityInfoFederatedRequest = {
-  parameters: EntityInfoParameters
-  correlationId: string
+  PARAMETERS: EntityInfoParameters
+  CORRELATION_ID: string
 }
 ```
 
@@ -4294,8 +4294,8 @@ See also:
 
 ```typescript
 type PurchasedContentFederatedRequest = {
-  parameters: PurchasedContentParameters
-  correlationId: string
+  PARAMETERS: PurchasedContentParameters
+  CORRELATION_ID: string
 }
 ```
 

@@ -440,9 +440,9 @@ TokenType: {
 
 ```typescript
 type AuthenticationTokenResult = {
-  value: string
-  expires?: string
-  type?: string
+  VALUE: string
+  EXPIRES?: string
+  TYPE?: string
 }
 ```
 

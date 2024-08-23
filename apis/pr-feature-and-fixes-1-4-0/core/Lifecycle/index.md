@@ -886,9 +886,9 @@ A an object describing the previous and current states
 
 ```typescript
 type LifecycleEvent = {
-  state: LifecycleState // The application lifecycle state
-  previous: LifecycleState // The application lifecycle state
-  source?: 'voice' | 'remote' // The source of the lifecycle change.
+  STATE: LifecycleState // The application lifecycle state
+  PREVIOUS: LifecycleState // The application lifecycle state
+  SOURCE?: 'voice' | 'remote' // The source of the lifecycle change.
 }
 ```
 

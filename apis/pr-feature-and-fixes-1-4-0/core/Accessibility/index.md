@@ -833,7 +833,7 @@ See: [voiceGuidanceSettings](#voiceguidancesettings)
 
 ```typescript
 type AudioDescriptionSettings = {
-  enabled: boolean // Whether or not audio descriptions should be enabled by default
+  ENABLED: boolean // Whether or not audio descriptions should be enabled by default
 }
 ```
 

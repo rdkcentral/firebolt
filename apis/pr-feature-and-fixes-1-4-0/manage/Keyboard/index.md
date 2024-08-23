@@ -940,7 +940,7 @@ Response:
 
 ```typescript
 type KeyboardParameters = {
-  message: string // The message to display to the user so the user knows what they are entering
+  MESSAGE: string // The message to display to the user so the user knows what they are entering
 }
 ```
 
@@ -950,8 +950,8 @@ type KeyboardParameters = {
 
 ```typescript
 type KeyboardProviderRequest = {
-  correlationId: string // An id to correlate the provider response with this request
-  parameters: KeyboardParameters // The request to start a keyboard session
+  CORRELATION_ID: string // An id to correlate the provider response with this request
+  PARAMETERS: KeyboardParameters // The request to start a keyboard session
 }
 ```
 

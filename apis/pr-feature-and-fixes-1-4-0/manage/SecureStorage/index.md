@@ -360,7 +360,7 @@ StorageScope: {
 
 ```typescript
 type StorageOptions = {
-  ttl: number // Seconds from set time before the data expires and is removed
+  TTL: number // Seconds from set time before the data expires and is removed
 }
 ```
 
