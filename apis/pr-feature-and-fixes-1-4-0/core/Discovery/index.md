@@ -2325,18 +2325,15 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.launch(
-  'xrn:firebolt:application-type:settings ',
-  {
-    action: 'section',
-    data: {
-      sectionName: 'settings',
-    },
-    context: {
-      source: 'voice',
-    },
+let success = await Discovery.launch('xrn:firebolt:application-type:settings', {
+  action: 'section',
+  data: {
+    sectionName: 'settings',
   },
-)
+  context: {
+    source: 'voice',
+  },
+})
 console.log(success)
 ```
 
@@ -2356,7 +2353,7 @@ Request:
   "id": 1,
   "method": "Discovery.launch",
   "params": {
-    "appId": "xrn:firebolt:application-type:settings ",
+    "appId": "xrn:firebolt:application-type:settings",
     "intent": {
       "action": "section",
       "data": {

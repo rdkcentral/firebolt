@@ -8153,7 +8153,7 @@
 					"params": [
 						{
 							"name": "appId",
-							"value": "xrn:firebolt:application-type:settings "
+							"value": "xrn:firebolt:application-type:settings"
 						},
 						{
 							"name": "intent",
@@ -21534,29 +21534,8 @@
 									},
 									"suggestions": {
 										"type": "array",
-										"properties": {
-											"entity": {
-												"type": "object",
-												"items": {
-													"anyOf": [
-														{
-															"$ref": "#/x-schemas/Entity/MovieEntity"
-														},
-														{
-															"$ref": "#/x-schemas/Entity/TVEpisodeEntity"
-														},
-														{
-															"$ref": "#/x-schemas/Entity/TVSeriesEntity"
-														},
-														{
-															"$ref": "#/x-schemas/Entity/TVSeasonEntity"
-														},
-														{
-															"$ref": "#/x-schemas/Entity/AdditionalEntity"
-														}
-													]
-												}
-											}
+										"items": {
+											"$ref": "#/x-schemas/Entity/Entity"
 										}
 									}
 								},

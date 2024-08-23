@@ -103,14 +103,6 @@ type SearchIntent = {
 }
 ```
 
-See also:
-
-[MovieEntity](../Entity/schemas/#MovieEntity)
-[TVEpisodeEntity](../Entity/schemas/#TVEpisodeEntity)
-[TVSeriesEntity](../Entity/schemas/#TVSeriesEntity)
-[TVSeasonEntity](../Entity/schemas/#TVSeasonEntity)
-[AdditionalEntity](../Entity/schemas/#AdditionalEntity)
-
 ---
 
 ### SectionIntent
