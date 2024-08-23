@@ -2519,8 +2519,8 @@ let success = await Discovery.launch('xrn:firebolt:application-type:main', {
         entityId: 'xyz',
       },
       {
-        entityType: 'program',
-        programType: 'movie',
+        entityType: 'music',
+        musicType: 'song',
         entityId: 'abc',
       },
     ],
@@ -2560,8 +2560,8 @@ Request:
             "entityId": "xyz"
           },
           {
-            "entityType": "program",
-            "programType": "movie",
+            "entityType": "music",
+            "musicType": "song",
             "entityId": "abc"
           }
         ]
