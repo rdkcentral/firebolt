@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Advertising 1.3.1-next.1
+Version Advertising 1.3.1-next.2
 
 ## Table of Contents
 
@@ -740,9 +740,9 @@ See: [policy](#policy)
 
 ```typescript
 type AdConfigurationOptions = {
-  coppa?: boolean // Whether or not the app requires US COPPA compliance.
-  environment?: 'prod' | 'test' // Whether the app is running in a production or test mode.
-  authenticationEntity?: string // The authentication provider, when it is separate entity than the app provider, e.g. an MVPD.
+  COPPA?: boolean // Whether or not the app requires US COPPA compliance.
+  ENVIRONMENT?: 'prod' | 'test' // Whether the app is running in a production or test mode.
+  AUTHENTICATION_ENTITY?: string // The authentication provider, when it is separate entity than the app provider, e.g. an MVPD.
 }
 ```
 
@@ -754,8 +754,8 @@ Describes various ad playback enforcement rules that the app should follow.
 
 ```typescript
 type AdPolicy = {
-  skipRestriction?: SkipRestriction // The advertisement skip restriction.
-  limitAdTracking?: boolean
+  SKIP_RESTRICTION?: SkipRestriction // The advertisement skip restriction.
+  LIMIT_AD_TRACKING?: boolean
 }
 ```
 
@@ -769,7 +769,7 @@ See also:
 
 ```typescript
 type AdvertisingIdOptions = {
-  scope?: object // Provides the options to send scope type and id to select desired advertising id
+  SCOPE?: object // Provides the options to send scope type and id to select desired advertising id
 }
 ```
 
@@ -779,9 +779,9 @@ type AdvertisingIdOptions = {
 
 ```typescript
 type AdvertisingIdResult = {
-  ifa: string // UUID conforming to IAB standard
-  ifa_type: string // source of the IFA as defined by IAB
-  lmt: '0' | '1' // boolean that if set to 1, user has requested ad tracking and measurement is disabled
+  IFA: string // UUID conforming to IAB standard
+  IFA_TYPE: string // source of the IFA as defined by IAB
+  LMT: '0' | '1' // boolean that if set to 1, user has requested ad tracking and measurement is disabled
 }
 ```
 

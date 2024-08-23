@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Wifi 1.3.1-next.1
+Version Wifi 1.3.1-next.2
 
 ## Table of Contents
 
@@ -519,10 +519,10 @@ Properties of a scanned wifi list item.
 
 ```typescript
 type AccessPoint = {
-  ssid?: string // Name of the wifi.
-  securityMode?: WifiSecurityMode // Security Mode supported for Wifi
-  signalStrength?: WifiSignalStrength // Strength of Wifi signal, value is negative based on RSSI specification.
-  frequency?: WifiFrequency // Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
+  SSID?: string // Name of the wifi.
+  SECURITY_MODE?: WifiSecurityMode // Security Mode supported for Wifi
+  SIGNAL_STRENGTH?: WifiSignalStrength // Strength of Wifi signal, value is negative based on RSSI specification.
+  FREQUENCY?: WifiFrequency // Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
 }
 ```
 
@@ -540,7 +540,7 @@ List of scanned Wifi networks available near the device.
 
 ```typescript
 type AccessPointList = {
-  list?: AccessPoint[] // Properties of a scanned wifi list item.
+  LIST?: AccessPoint[] // Properties of a scanned wifi list item.
 }
 ```
 

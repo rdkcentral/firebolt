@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Privacy 1.3.1-next.1
+Version Privacy 1.3.1-next.2
 
 ## Table of Contents
 
@@ -4169,18 +4169,18 @@ See: [allowWatchHistory](#allowwatchhistory)
 
 ```typescript
 type PrivacySettings = {
-  allowACRCollection: boolean
-  allowResumePoints: boolean
-  allowAppContentAdTargeting: boolean
-  allowCameraAnalytics: boolean
-  allowPersonalization: boolean
-  allowPrimaryBrowseAdTargeting: boolean
-  allowPrimaryContentAdTargeting: boolean
-  allowProductAnalytics: boolean
-  allowRemoteDiagnostics: boolean
-  allowUnentitledPersonalization: boolean
-  allowUnentitledResumePoints: boolean
-  allowWatchHistory: boolean
+  ALLOW_ACRCOLLECTION: boolean
+  ALLOW_RESUME_POINTS: boolean
+  ALLOW_APP_CONTENT_AD_TARGETING: boolean
+  ALLOW_CAMERA_ANALYTICS: boolean
+  ALLOW_PERSONALIZATION: boolean
+  ALLOW_PRIMARY_BROWSE_AD_TARGETING: boolean
+  ALLOW_PRIMARY_CONTENT_AD_TARGETING: boolean
+  ALLOW_PRODUCT_ANALYTICS: boolean
+  ALLOW_REMOTE_DIAGNOSTICS: boolean
+  ALLOW_UNENTITLED_PERSONALIZATION: boolean
+  ALLOW_UNENTITLED_RESUME_POINTS: boolean
+  ALLOW_WATCH_HISTORY: boolean
 }
 ```
 

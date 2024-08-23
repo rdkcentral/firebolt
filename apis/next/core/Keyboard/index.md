@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Keyboard 1.3.1-next.1
+Version Keyboard 1.3.1-next.2
 
 ## Table of Contents
 

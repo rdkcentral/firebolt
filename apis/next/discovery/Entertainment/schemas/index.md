@@ -128,15 +128,15 @@ Ratings: `G`, `8+`, `13+`, `16+`, `18+`
 
 ```typescript
 type ContentRating = {
-  scheme:
+  SCHEME:
     | 'CA-Movie'
     | 'CA-TV'
     | 'CA-Movie-Fr'
     | 'CA-TV-Fr'
     | 'US-Movie'
     | 'US-TV' // The rating scheme.
-  rating: string // The content rating.
-  advisories?: string[] // Optional list of subratings or content advisories.
+  RATING: string // The content rating.
+  ADVISORIES?: string[] // Optional list of subratings or content advisories.
 }
 ```
 
@@ -154,11 +154,11 @@ If an id isn't needed to get to those pages, it doesn't need to be included.
 
 ```typescript
 type ContentIdentifiers = {
-  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
-  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
-  seasonId?: string // The TV Season for a TV Episode.
-  seriesId?: string // The TV Series for a TV Episode or TV Season.
-  appContentData?: string // App-specific content identifiers.
+  ASSET_ID?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
+  ENTITY_ID?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
+  SEASON_ID?: string // The TV Season for a TV Episode.
+  SERIES_ID?: string // The TV Series for a TV Episode or TV Season.
+  APP_CONTENT_DATA?: string // App-specific content identifiers.
 }
 ```
 
@@ -168,9 +168,9 @@ type ContentIdentifiers = {
 
 ```typescript
 type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
+  ENTITLEMENT_ID: string
+  START_TIME?: string
+  END_TIME?: string
 }
 ```
 
@@ -215,19 +215,19 @@ points, the `price` provided must be the lowest available price.
 
 ```typescript
 type WayToWatch = {
-  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
-  expires?: string // Time when the WayToWatch is no longer available.
-  entitled?: boolean // Specify if the user is entitled to watch the entity.
-  entitledExpires?: string // Time when the entity is no longer entitled.
-  offeringType?: OfferingType // The offering type of the WayToWatch.
-  hasAds?: boolean // True if the streamable asset contains ads.
-  price?: number // For "buy" and "rent" WayToWatch, the price to buy or rent in the user's preferred currency.
-  videoQuality?: 'SD' | 'HD' | 'UHD'[] // List of the video qualities available via the WayToWatch.
-  audioProfile: AudioProfile[] // List of the audio types available via the WayToWatch.
-  audioLanguages?: string[] // List of audio track languages available on the WayToWatch. The first is considered the primary language. Languages are expressed as ISO 639 1/2 codes.
-  closedCaptions?: string[] // List of languages for which closed captions are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
-  subtitles?: string[] // List of languages for which subtitles are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
-  audioDescriptions?: string[] // List of languages for which audio descriptions (DVD) as available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
+  IDENTIFIERS: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
+  EXPIRES?: string // Time when the WayToWatch is no longer available.
+  ENTITLED?: boolean // Specify if the user is entitled to watch the entity.
+  ENTITLED_EXPIRES?: string // Time when the entity is no longer entitled.
+  OFFERING_TYPE?: OfferingType // The offering type of the WayToWatch.
+  HAS_ADS?: boolean // True if the streamable asset contains ads.
+  PRICE?: number // For "buy" and "rent" WayToWatch, the price to buy or rent in the user's preferred currency.
+  VIDEO_QUALITY?: 'SD' | 'HD' | 'UHD'[] // List of the video qualities available via the WayToWatch.
+  AUDIO_PROFILE: AudioProfile[] // List of the audio types available via the WayToWatch.
+  AUDIO_LANGUAGES?: string[] // List of audio track languages available on the WayToWatch. The first is considered the primary language. Languages are expressed as ISO 639 1/2 codes.
+  CLOSED_CAPTIONS?: string[] // List of languages for which closed captions are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
+  SUBTITLES?: string[] // List of languages for which subtitles are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
+  AUDIO_DESCRIPTIONS?: string[] // List of languages for which audio descriptions (DVD) as available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
 }
 ```
 
@@ -258,19 +258,19 @@ may use those data.
 
 ```typescript
 type EntityInfo = {
-  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
-  title: string // Title of the entity.
-  entityType: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
-  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
-  musicType?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
-  synopsis?: string // Short description of the entity.
-  seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
-  seasonCount?: number // For TV series, seasons, and episodes, the total number of seasons.
-  episodeNumber?: number // For TV episodes, the episode number.
-  episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
-  releaseDate?: string // The date that the program or entity was released or first aired.
-  contentRatings?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
-  waysToWatch?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
+  IDENTIFIERS: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
+  TITLE: string // Title of the entity.
+  ENTITY_TYPE: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
+  PROGRAM_TYPE?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  MUSIC_TYPE?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
+  SYNOPSIS?: string // Short description of the entity.
+  SEASON_NUMBER?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
+  SEASON_COUNT?: number // For TV series, seasons, and episodes, the total number of seasons.
+  EPISODE_NUMBER?: number // For TV episodes, the episode number.
+  EPISODE_COUNT?: number // For TV seasons and episodes, the total number of episodes in the current season.
+  RELEASE_DATE?: string // The date that the program or entity was released or first aired.
+  CONTENT_RATINGS?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+  WAYS_TO_WATCH?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
 }
 ```
 
