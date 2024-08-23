@@ -1746,7 +1746,7 @@ Response:
 
 ```typescript
 type CapabilityOption = {
-  role?: Role // Role provides access level for the app for a given capability.
+  ROLE?: Role // Role provides access level for the app for a given capability.
 }
 ```
 

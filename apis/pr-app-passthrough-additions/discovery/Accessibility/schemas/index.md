@@ -55,8 +55,8 @@ undefined
 
 ```typescript
 type VoiceGuidanceSettings = {
-  enabled: boolean // Whether or not voice guidance should be enabled by default
-  speed?: VoiceSpeed // The speed at which voice guidance speech will be read back to the user
+  ENABLED: boolean // Whether or not voice guidance should be enabled by default
+  SPEED?: VoiceSpeed // The speed at which voice guidance speech will be read back to the user
 }
 ```
 
@@ -120,18 +120,18 @@ The default styles to use when displaying closed-captions
 
 ```typescript
 type ClosedCaptionsStyles = {
-  fontFamily?: string
-  fontSize?: number
-  fontColor?: string
-  fontEdge?: string
-  fontEdgeColor?: string
-  fontOpacity?: number
-  backgroundColor?: string
-  backgroundOpacity?: number
-  textAlign?: string
-  textAlignVertical?: string
-  windowColor?: string
-  windowOpacity?: number
+  FONT_FAMILY?: string
+  FONT_SIZE?: number
+  FONT_COLOR?: string
+  FONT_EDGE?: string
+  FONT_EDGE_COLOR?: string
+  FONT_OPACITY?: number
+  BACKGROUND_COLOR?: string
+  BACKGROUND_OPACITY?: number
+  TEXT_ALIGN?: string
+  TEXT_ALIGN_VERTICAL?: string
+  WINDOW_COLOR?: string
+  WINDOW_OPACITY?: number
 }
 ```
 
@@ -141,9 +141,9 @@ type ClosedCaptionsStyles = {
 
 ```typescript
 type ClosedCaptionsSettings = {
-  enabled: boolean // Whether or not closed-captions should be enabled by default
-  styles?: ClosedCaptionsStyles // The default styles to use when displaying closed-captions
-  preferredLanguages?: string[]
+  ENABLED: boolean // Whether or not closed-captions should be enabled by default
+  STYLES?: ClosedCaptionsStyles // The default styles to use when displaying closed-captions
+  PREFERRED_LANGUAGES?: string[]
 }
 ```
 

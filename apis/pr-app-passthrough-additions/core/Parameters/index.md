@@ -138,10 +138,10 @@ Response:
 
 ```typescript
 type AppInitialization = {
-  us_privacy?: string // The IAB US Privacy string.
-  lmt?: number // The IAB limit ad tracking opt out value.
-  discovery?: object
-  secondScreen?: object
+  US_PRIVACY?: string // The IAB US Privacy string.
+  LMT?: number // The IAB limit ad tracking opt out value.
+  DISCOVERY?: object
+  SECOND_SCREEN?: object
 }
 ```
 

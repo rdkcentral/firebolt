@@ -1765,8 +1765,8 @@ HDMISignalStatus: {
 
 ```typescript
 type SignalChangedInfo = {
-  port: HDMIPortId
-  signal: HDMISignalStatus
+  PORT: HDMIPortId
+  SIGNAL: HDMISignalStatus
 }
 ```
 
@@ -1781,8 +1781,8 @@ See also:
 
 ```typescript
 type AutoLowLatencyModeSignalChangedInfo = {
-  port?: HDMIPortId
-  autoLowLatencyModeSignalled?: boolean
+  PORT?: HDMIPortId
+  AUTO_LOW_LATENCY_MODE_SIGNALLED?: boolean
 }
 ```
 
@@ -1796,14 +1796,14 @@ See also:
 
 ```typescript
 type HDMIInputPort = {
-  port: HDMIPortId
-  connected: boolean
-  signal: HDMISignalStatus
-  arcCapable: boolean
-  arcConnected: boolean
-  edidVersion: EDIDVersion
-  autoLowLatencyModeCapable: boolean
-  autoLowLatencyModeSignalled: boolean
+  PORT: HDMIPortId
+  CONNECTED: boolean
+  SIGNAL: HDMISignalStatus
+  ARC_CAPABLE: boolean
+  ARC_CONNECTED: boolean
+  EDID_VERSION: EDIDVersion
+  AUTO_LOW_LATENCY_MODE_CAPABLE: boolean
+  AUTO_LOW_LATENCY_MODE_SIGNALLED: boolean
 }
 ```
 
@@ -1819,8 +1819,8 @@ See also:
 
 ```typescript
 type AutoLowLatencyModeCapableChangedInfo = {
-  port: HDMIPortId
-  enabled: boolean
+  PORT: HDMIPortId
+  ENABLED: boolean
 }
 ```
 
@@ -1834,8 +1834,8 @@ See also:
 
 ```typescript
 type ConnectionChangedInfo = {
-  port?: HDMIPortId
-  connected?: boolean
+  PORT?: HDMIPortId
+  CONNECTED?: boolean
 }
 ```
 

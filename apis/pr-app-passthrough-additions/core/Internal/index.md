@@ -98,7 +98,7 @@ Response:
 
 ```typescript
 type InitializeResult = {
-  version: SemanticVersion // The semantic version of the FEE.
+  VERSION: SemanticVersion // The semantic version of the FEE.
 }
 ```
 

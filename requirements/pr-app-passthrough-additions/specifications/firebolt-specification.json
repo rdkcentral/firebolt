@@ -6517,6 +6517,7 @@
 						{
 							"name": "capabilities",
 							"x-provided-by": "Discovery.onRequestUserInterest",
+							"x-provider-selection": "focus",
 							"x-uses": [
 								"xrn:firebolt:capability:discovery:interest"
 							]
@@ -6600,6 +6601,7 @@
 						{
 							"name": "capabilities",
 							"x-provided-by": "Discovery.userInterest",
+							"x-provider-selection": "focus",
 							"x-uses": [
 								"xrn:firebolt:capability:discovery:interest"
 							]
