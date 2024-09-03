@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.3.1-next.3
+Version Device 1.4.0-next.2
 
 ## Table of Contents
 
@@ -221,7 +221,7 @@ Response:
 
 ### distributor
 
-Get the distributor ID for this device
+Get the name of the entity which is distributing the current device. There can be multiple distributors which distribute the same device model.
 
 To get the value of `distributor` call the method like this:
 
@@ -693,7 +693,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### make
 
-Get the device make
+Get the manufacturer of the device model
 
 To get the value of `make` call the method like this:
 
@@ -757,7 +757,7 @@ Response:
 
 ### model
 
-Get the device model
+Get the manufacturer designated model of the device
 
 To get the value of `model` call the method like this:
 
@@ -1231,7 +1231,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### platform
 
-Get the platform ID for this device
+Get a transient platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.
 
 To get the value of `platform` call the method like this:
 
@@ -2015,10 +2015,10 @@ The type of HDR format that is supported
 
 ```typescript
 type HDRFormatMap = {
-  HDR_10: boolean
-  HDR_10PLUS: boolean
-  DOLBY_VISION: boolean
-  HLG: boolean
+  hdr10: boolean
+  hdr10Plus: boolean
+  dolbyVision: boolean
+  hlg: boolean
 }
 ```
 
@@ -2028,10 +2028,10 @@ type HDRFormatMap = {
 
 ```typescript
 type AudioProfiles = {
-  STEREO: boolean
-  DOLBY_DIGITAL_5_1: boolean
-  DOLBY_DIGITAL_5_1_PLUS: boolean
-  DOLBY_ATMOS: boolean
+  stereo: boolean
+  dolbyDigital5_1: boolean
+  dolbyDigital5_1_plus: boolean
+  dolbyAtmos: boolean
 }
 ```
 
@@ -2069,8 +2069,8 @@ type Resolution =
 
 ```typescript
 type NetworkInfoResult = {
-  STATE: NetworkState // The type of network that is currently active
-  TYPE: NetworkType // The type of network that is currently active
+  state: NetworkState // The type of network that is currently active
+  type: NetworkType // The type of network that is currently active
 }
 ```
 
@@ -2085,11 +2085,11 @@ See also:
 
 ```typescript
 type DeviceVersion = {
-  SDK?: SemanticVersion // The Firebolt SDK version
-  API: SemanticVersion // The latest Firebolt API version supported by the current device.
-  FIRMWARE: SemanticVersion // The firmware version as reported by the device
-  OS: SemanticVersion // **Deprecated** Use `firmware`, instead.
-  DEBUG?: string // Detailed version as a string, for debugging purposes
+  sdk?: SemanticVersion // The Firebolt SDK version
+  api: SemanticVersion // The latest Firebolt API version supported by the current device.
+  firmware: SemanticVersion // The firmware version as reported by the device
+  os: SemanticVersion // **Deprecated** Use `firmware`, instead.
+  debug?: string // Detailed version as a string, for debugging purposes
 }
 ```
 
@@ -2105,8 +2105,8 @@ The type of HDCP versions that is supported
 
 ```typescript
 type HDCPVersionMap = {
-  HDCP_1_4: boolean
-  HDCP_2_2: boolean
+  hdcp1_4: boolean
+  hdcp2_2: boolean
 }
 ```
 

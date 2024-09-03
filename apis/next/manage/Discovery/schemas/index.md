@@ -59,9 +59,9 @@ The result for an `entityInfo()` push or pull.
 
 ```typescript
 type EntityInfoResult = {
-  EXPIRES: string
-  ENTITY: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  RELATED?: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  expires: string
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  related?: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
 }
 ```
 
@@ -75,9 +75,9 @@ See also:
 
 ```typescript
 type PurchasedContentResult = {
-  EXPIRES: string
-  TOTAL_COUNT: number
-  ENTRIES: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  expires: string
+  totalCount: number
+  entries: EntityInfo[] // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
 }
 ```
 

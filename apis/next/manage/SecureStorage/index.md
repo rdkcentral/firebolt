@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.3.1-next.3
+Version SecureStorage 1.4.0-next.2
 
 ## Table of Contents
 
@@ -360,7 +360,7 @@ StorageScope: {
 
 ```typescript
 type StorageOptions = {
-  TTL: number // Seconds from set time before the data expires and is removed
+  ttl: number // Seconds from set time before the data expires and is removed
 }
 ```
 

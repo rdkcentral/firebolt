@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.3.1-next.3
+Version Parameters 1.4.0-next.2
 
 ## Table of Contents
 
@@ -138,10 +138,10 @@ Response:
 
 ```typescript
 type AppInitialization = {
-  US_PRIVACY?: string // The IAB US Privacy string.
-  LMT?: number // The IAB limit ad tracking opt out value.
-  DISCOVERY?: object
-  SECOND_SCREEN?: object
+  us_privacy?: string // The IAB US Privacy string.
+  lmt?: number // The IAB limit ad tracking opt out value.
+  discovery?: object
+  secondScreen?: object
 }
 ```
 

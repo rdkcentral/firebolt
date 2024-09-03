@@ -48,10 +48,10 @@ AudioProfile: {
 
 ```typescript
 type SemanticVersion = {
-  MAJOR: number
-  MINOR: number
-  PATCH: number
-  READABLE: string
+  major: number
+  minor: number
+  patch: number
+  readable: string
 }
 ```
 

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.3.1-next.3
+Version Authentication 1.4.0-next.2
 
 ## Table of Contents
 
@@ -440,9 +440,9 @@ TokenType: {
 
 ```typescript
 type AuthenticationTokenResult = {
-  VALUE: string
-  EXPIRES?: string
-  TYPE?: string
+  value: string
+  expires?: string
+  type?: string
 }
 ```
 

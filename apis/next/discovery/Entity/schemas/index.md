@@ -44,11 +44,11 @@ A Firebolt compliant representation of a Movie entity.
 
 ```typescript
 type MovieEntity = {
-  ENTITY_TYPE: 'program'
-  PROGRAM_TYPE: 'movie'
-  ENTITY_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityType: 'program'
+  programType: 'movie'
+  entityId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -58,14 +58,14 @@ type MovieEntity = {
 
 ```typescript
 type Metadata = {
-  TITLE?: string // Title of the entity.
-  SYNOPSIS?: string // Short description of the entity.
-  SEASON_NUMBER?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
-  SEASON_COUNT?: number // For TV series, seasons, and episodes, the total number of seasons.
-  EPISODE_NUMBER?: number // For TV episodes, the episode number.
-  EPISODE_COUNT?: number // For TV seasons and episodes, the total number of episodes in the current season.
-  RELEASE_DATE?: string // The date that the program or entity was released or first aired.
-  CONTENT_RATINGS?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+  title?: string // Title of the entity.
+  synopsis?: string // Short description of the entity.
+  seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
+  seasonCount?: number // For TV series, seasons, and episodes, the total number of seasons.
+  episodeNumber?: number // For TV episodes, the episode number.
+  episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
+  releaseDate?: string // The date that the program or entity was released or first aired.
+  contentRatings?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
 }
 ```
 
@@ -79,9 +79,9 @@ See also:
 
 ```typescript
 type MusicEntity = {
-  ENTITY_TYPE: 'music'
-  MUSIC_TYPE: MusicType // In the case of a music `entityType`, specifies the type of music entity.
-  ENTITY_ID: string
+  entityType: 'music'
+  musicType: MusicType // In the case of a music `entityType`, specifies the type of music entity.
+  entityId: string
 }
 ```
 
@@ -95,10 +95,10 @@ See also:
 
 ```typescript
 type ChannelEntity = {
-  ENTITY_TYPE: 'channel'
-  CHANNEL_TYPE: 'streaming' | 'overTheAir'
-  ENTITY_ID: string // ID of the channel, in the target App's scope.
-  APP_CONTENT_DATA?: string
+  entityType: 'channel'
+  channelType: 'streaming' | 'overTheAir'
+  entityId: string // ID of the channel, in the target App's scope.
+  appContentData?: string
 }
 ```
 
@@ -108,9 +108,9 @@ type ChannelEntity = {
 
 ```typescript
 type UntypedEntity = {
-  ENTITY_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -122,10 +122,10 @@ A Firebolt compliant representation of a Playlist entity.
 
 ```typescript
 type PlaylistEntity = {
-  ENTITY_TYPE: 'playlist'
-  ENTITY_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityType: 'playlist'
+  entityId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -137,13 +137,13 @@ A Firebolt compliant representation of a TV Episode entity.
 
 ```typescript
 type TVEpisodeEntity = {
-  ENTITY_TYPE: 'program'
-  PROGRAM_TYPE: 'episode'
-  ENTITY_ID: string
-  SERIES_ID: string
-  SEASON_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityType: 'program'
+  programType: 'episode'
+  entityId: string
+  seriesId: string
+  seasonId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -155,12 +155,12 @@ A Firebolt compliant representation of a TV Season entity.
 
 ```typescript
 type TVSeasonEntity = {
-  ENTITY_TYPE: 'program'
-  PROGRAM_TYPE: 'season'
-  ENTITY_ID: string
-  SERIES_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityType: 'program'
+  programType: 'season'
+  entityId: string
+  seriesId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -172,11 +172,11 @@ A Firebolt compliant representation of a TV Series entity.
 
 ```typescript
 type TVSeriesEntity = {
-  ENTITY_TYPE: 'program'
-  PROGRAM_TYPE: 'series'
-  ENTITY_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityType: 'program'
+  programType: 'series'
+  entityId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -188,8 +188,8 @@ A Firebolt compliant representation of the remaining program entity types.
 
 ```typescript
 type AdditionalEntity = {
-  ENTITY_TYPE: 'program'
-  PROGRAM_TYPE:
+  entityType: 'program'
+  programType:
     | 'concert'
     | 'sportingEvent'
     | 'preview'
@@ -198,9 +198,9 @@ type AdditionalEntity = {
     | 'musicVideo'
     | 'minisode'
     | 'extra'
-  ENTITY_ID: string
-  ASSET_ID?: string
-  APP_CONTENT_DATA?: string
+  entityId: string
+  assetId?: string
+  appContentData?: string
 }
 ```
 
@@ -247,14 +247,14 @@ See also:
 
 ```typescript
 type EntityDetails = {
-  IDENTIFIERS:
+  identifiers:
     | ProgramEntity
     | MusicEntity
     | ChannelEntity
     | UntypedEntity
     | PlaylistEntity
-  INFO?: Metadata
-  WAYS_TO_WATCH?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
+  info?: Metadata
+  waysToWatch?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
 }
 ```
 

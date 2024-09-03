@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Accessibility 1.3.1-next.3
+Version Accessibility 1.4.0-next.2
 
 ## Table of Contents
 
@@ -833,7 +833,7 @@ See: [voiceGuidanceSettings](#voiceguidancesettings)
 
 ```typescript
 type AudioDescriptionSettings = {
-  ENABLED: boolean // Whether or not audio descriptions should be enabled by default
+  enabled: boolean // Whether or not audio descriptions should be enabled by default
 }
 ```
 

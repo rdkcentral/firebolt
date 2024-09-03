@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.3.1-next.3
+Version AcknowledgeChallenge 1.4.0-next.2
 
 ## Table of Contents
 
@@ -461,7 +461,7 @@ Response:
 
 ```typescript
 type GrantResult = {
-  GRANTED: boolean
+  granted: boolean
 }
 ```
 
@@ -471,8 +471,8 @@ type GrantResult = {
 
 ```typescript
 type ChallengeRequestor = {
-  ID: string // The id of the app that requested the challenge
-  NAME: string // The name of the app that requested the challenge
+  id: string // The id of the app that requested the challenge
+  name: string // The name of the app that requested the challenge
 }
 ```
 
@@ -482,8 +482,8 @@ type ChallengeRequestor = {
 
 ```typescript
 type Challenge = {
-  CAPABILITY: string // The capability that is being requested by the user to approve
-  REQUESTOR: ChallengeRequestor // The identity of which app is requesting access to this capability
+  capability: string // The capability that is being requested by the user to approve
+  requestor: ChallengeRequestor // The identity of which app is requesting access to this capability
 }
 ```
 
@@ -497,8 +497,8 @@ See also:
 
 ```typescript
 type ChallengeProviderRequest = {
-  PARAMETERS: Challenge // The result of the provider response.
-  CORRELATION_ID: string // The id that was passed in to the event that triggered a provider method to be called
+  parameters: Challenge // The result of the provider response.
+  correlationId: string // The id that was passed in to the event that triggered a provider method to be called
 }
 ```
 

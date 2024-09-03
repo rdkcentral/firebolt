@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.3.1-next.3
+Version UserGrants 1.4.0-next.2
 
 ## Table of Contents
 
@@ -795,7 +795,7 @@ Options when modifying any grant
 
 ```typescript
 type GrantModificationOptions = {
-  APP_ID?: string
+  appId?: string
 }
 ```
 
@@ -805,7 +805,7 @@ type GrantModificationOptions = {
 
 ```typescript
 type RequestOptions = {
-  FORCE?: boolean // Whether to force for user grant even if the previous decision stored
+  force?: boolean // Whether to force for user grant even if the previous decision stored
 }
 ```
 
@@ -817,8 +817,8 @@ Information about an app that a grant was for
 
 ```typescript
 type AppInfo = {
-  ID: string
-  TITLE?: string
+  id: string
+  title?: string
 }
 ```
 
@@ -830,12 +830,12 @@ Information about a grant given by a user
 
 ```typescript
 type GrantInfo = {
-  APP?: AppInfo // Information about an app that a grant was for
-  STATE: GrantState // The state the grant is in
-  CAPABILITY: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-  ROLE: Role // Role provides access level for the app for a given capability.
-  LIFESPAN: 'once' | 'forever' | 'appActive' | 'powerActive' | 'seconds'
-  EXPIRES?: string
+  app?: AppInfo // Information about an app that a grant was for
+  state: GrantState // The state the grant is in
+  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  role: Role // Role provides access level for the app for a given capability.
+  lifespan: 'once' | 'forever' | 'appActive' | 'powerActive' | 'seconds'
+  expires?: string
 }
 ```
 

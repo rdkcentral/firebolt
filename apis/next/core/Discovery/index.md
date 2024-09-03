@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.3.1-next.3
+Version Discovery 1.4.0-next.2
 
 ## Table of Contents
 
@@ -602,8 +602,8 @@ Callback parameters:
 
 ```typescript
 type EntityInfoParameters = {
-  ENTITY_ID: string
-  ASSET_ID?: string
+  entityId: string
+  assetId?: string
 }
 ```
 
@@ -611,9 +611,9 @@ Callback promise resolution:
 
 ```typescript
 type EntityInfoResult = {
-  EXPIRES: string
-  ENTITY: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  RELATED?: EntityInfo[]
+  expires: string
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  related?: EntityInfo[]
 }
 ```
 
@@ -1267,9 +1267,9 @@ Parameters:
 
 ```typescript
 type EntityInfoResult = {
-  EXPIRES: string
-  ENTITY: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
-  RELATED?: EntityInfo[]
+  expires: string
+  entity: EntityInfo // An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+  related?: EntityInfo[]
 }
 ```
 
@@ -2325,18 +2325,15 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.launch(
-  'xrn:firebolt:application-type:settings ',
-  {
-    action: 'section',
-    data: {
-      sectionName: 'settings',
-    },
-    context: {
-      source: 'voice',
-    },
+let success = await Discovery.launch('xrn:firebolt:application-type:settings', {
+  action: 'section',
+  data: {
+    sectionName: 'settings',
   },
-)
+  context: {
+    source: 'voice',
+  },
+})
 console.log(success)
 ```
 
@@ -2356,7 +2353,7 @@ Request:
   "id": 1,
   "method": "Discovery.launch",
   "params": {
-    "appId": "xrn:firebolt:application-type:settings ",
+    "appId": "xrn:firebolt:application-type:settings",
     "intent": {
       "action": "section",
       "data": {
@@ -2483,6 +2480,91 @@ Request:
       "action": "section",
       "data": {
         "sectionName": "app:foo"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to it's search screen.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'search',
+  data: {
+    query: 'a cool show',
+    suggestions: [
+      {
+        entityType: 'program',
+        programType: 'movie',
+        entityId: 'xyz',
+      },
+      {
+        entityType: 'music',
+        musicType: 'song',
+        entityId: 'abc',
+      },
+    ],
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "search",
+      "data": {
+        "query": "a cool show",
+        "suggestions": [
+          {
+            "entityType": "program",
+            "programType": "movie",
+            "entityId": "xyz"
+          },
+          {
+            "entityType": "music",
+            "musicType": "song",
+            "entityId": "abc"
+          }
+        ]
       },
       "context": {
         "source": "voice"
@@ -2817,9 +2899,9 @@ Callback parameters:
 
 ```typescript
 type PurchasedContentParameters = {
-  LIMIT: number
-  OFFERING_TYPE?: OfferingType // The offering type of the WayToWatch.
-  PROGRAM_TYPE?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  limit: number
+  offeringType?: OfferingType // The offering type of the WayToWatch.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
 }
 ```
 
@@ -2827,9 +2909,9 @@ Callback promise resolution:
 
 ```typescript
 type PurchasedContentResult = {
-  EXPIRES: string
-  TOTAL_COUNT: number
-  ENTRIES: EntityInfo[]
+  expires: string
+  totalCount: number
+  entries: EntityInfo[]
 }
 ```
 
@@ -2999,9 +3081,9 @@ Parameters:
 
 ```typescript
 type PurchasedContentResult = {
-  EXPIRES: string
-  TOTAL_COUNT: number
-  ENTRIES: EntityInfo[]
+  expires: string
+  totalCount: number
+  entries: EntityInfo[]
 }
 ```
 
@@ -3572,12 +3654,12 @@ function watched(
 
 Parameters:
 
-| Param       | Type      | Required | Description                                                                                                      |
-| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                            |
-| `progress`  | `number`  | false    | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
-| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                           |
-| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                     |
+| Param       | Type      | Required | Description                                                                                                            |
+| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                                  |
+| `progress`  | `number`  | false    | How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) <br/>minumum: 0 |
+| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                                 |
+| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                           |
 
 Promise resolution:
 
@@ -4110,9 +4192,9 @@ Response:
 
 ```typescript
 type DiscoveryPolicy = {
-  ENABLE_RECOMMENDATIONS: boolean // Whether or not to the user has enabled history-based recommendations
-  SHARE_WATCH_HISTORY: boolean // Whether or not the user has enabled app watch history data to be shared with the platform
-  REMEMBER_WATCHED_PROGRAMS: boolean // Whether or not the user has enabled watch history
+  enableRecommendations: boolean // Whether or not to the user has enabled history-based recommendations
+  shareWatchHistory: boolean // Whether or not the user has enabled app watch history data to be shared with the platform
+  rememberWatchedPrograms: boolean // Whether or not the user has enabled watch history
 }
 ```
 
@@ -4122,11 +4204,11 @@ type DiscoveryPolicy = {
 
 ```typescript
 type Availability = {
-  TYPE: 'channel-lineup' | 'program-lineup'
-  ID: string
-  CATALOG_ID?: string
-  START_TIME?: string
-  END_TIME?: string
+  type: 'channel-lineup' | 'program-lineup'
+  id: string
+  catalogId?: string
+  startTime?: string
+  endTime?: string
 }
 ```
 
@@ -4136,8 +4218,8 @@ type Availability = {
 
 ```typescript
 type UserInterestProviderParameters = {
-  TYPE: InterestType
-  REASON: InterestReason
+  type: InterestType
+  reason: InterestReason
 }
 ```
 
@@ -4152,9 +4234,9 @@ See also:
 
 ```typescript
 type PurchasedContentParameters = {
-  LIMIT: number
-  OFFERING_TYPE?: OfferingType // The offering type of the WayToWatch.
-  PROGRAM_TYPE?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  limit: number
+  offeringType?: OfferingType // The offering type of the WayToWatch.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
 }
 ```
 
@@ -4169,8 +4251,8 @@ See also:
 
 ```typescript
 type ContentAccessIdentifiers = {
-  AVAILABILITIES?: Availability[] // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
-  ENTITLEMENTS?: Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
+  availabilities?: Availability[] // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
+  entitlements?: Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
 }
 ```
 
@@ -4185,8 +4267,8 @@ See also:
 
 ```typescript
 type EntityInfoParameters = {
-  ENTITY_ID: string
-  ASSET_ID?: string
+  entityId: string
+  assetId?: string
 }
 ```
 
@@ -4196,8 +4278,8 @@ type EntityInfoParameters = {
 
 ```typescript
 type EntityInfoFederatedRequest = {
-  PARAMETERS: EntityInfoParameters
-  CORRELATION_ID: string
+  parameters: EntityInfoParameters
+  correlationId: string
 }
 ```
 
@@ -4212,8 +4294,8 @@ See also:
 
 ```typescript
 type PurchasedContentFederatedRequest = {
-  PARAMETERS: PurchasedContentParameters
-  CORRELATION_ID: string
+  parameters: PurchasedContentParameters
+  correlationId: string
 }
 ```
 

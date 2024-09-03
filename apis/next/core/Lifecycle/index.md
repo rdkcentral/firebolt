@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Lifecycle 1.3.1-next.3
+Version Lifecycle 1.4.0-next.2
 
 ## Table of Contents
 
@@ -886,9 +886,9 @@ A an object describing the previous and current states
 
 ```typescript
 type LifecycleEvent = {
-  STATE: LifecycleState // The application lifecycle state
-  PREVIOUS: LifecycleState // The application lifecycle state
-  SOURCE?: 'voice' | 'remote' // The source of the lifecycle change.
+  state: LifecycleState // The application lifecycle state
+  previous: LifecycleState // The application lifecycle state
+  source?: 'voice' | 'remote' // The source of the lifecycle change.
 }
 ```
 

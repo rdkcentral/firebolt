@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version HDMIInput 1.3.1-next.3
+Version HDMIInput 1.4.0-next.2
 
 ## Table of Contents
 
@@ -1765,8 +1765,8 @@ HDMISignalStatus: {
 
 ```typescript
 type SignalChangedInfo = {
-  PORT: HDMIPortId
-  SIGNAL: HDMISignalStatus
+  port: HDMIPortId
+  signal: HDMISignalStatus
 }
 ```
 
@@ -1781,8 +1781,8 @@ See also:
 
 ```typescript
 type AutoLowLatencyModeSignalChangedInfo = {
-  PORT?: HDMIPortId
-  AUTO_LOW_LATENCY_MODE_SIGNALLED?: boolean
+  port?: HDMIPortId
+  autoLowLatencyModeSignalled?: boolean
 }
 ```
 
@@ -1796,14 +1796,14 @@ See also:
 
 ```typescript
 type HDMIInputPort = {
-  PORT: HDMIPortId
-  CONNECTED: boolean
-  SIGNAL: HDMISignalStatus
-  ARC_CAPABLE: boolean
-  ARC_CONNECTED: boolean
-  EDID_VERSION: EDIDVersion
-  AUTO_LOW_LATENCY_MODE_CAPABLE: boolean
-  AUTO_LOW_LATENCY_MODE_SIGNALLED: boolean
+  port: HDMIPortId
+  connected: boolean
+  signal: HDMISignalStatus
+  arcCapable: boolean
+  arcConnected: boolean
+  edidVersion: EDIDVersion
+  autoLowLatencyModeCapable: boolean
+  autoLowLatencyModeSignalled: boolean
 }
 ```
 
@@ -1819,8 +1819,8 @@ See also:
 
 ```typescript
 type AutoLowLatencyModeCapableChangedInfo = {
-  PORT: HDMIPortId
-  ENABLED: boolean
+  port: HDMIPortId
+  enabled: boolean
 }
 ```
 
@@ -1834,8 +1834,8 @@ See also:
 
 ```typescript
 type ConnectionChangedInfo = {
-  PORT?: HDMIPortId
-  CONNECTED?: boolean
+  port?: HDMIPortId
+  connected?: boolean
 }
 ```
 

@@ -85,13 +85,13 @@ A Capability is a discrete unit of functionality that a Firebolt device might be
 
 ```typescript
 type CapabilityInfo = {
-  CAPABILITY?: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-  SUPPORTED: boolean // Provides info whether the capability is supported
-  AVAILABLE: boolean // Provides info whether the capability is available
-  USE: object
-  MANAGE: object
-  PROVIDE: object
-  DETAILS?: DenyReason[] // Reasons why a Capability might not be invokable
+  capability?: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  supported: boolean // Provides info whether the capability is supported
+  available: boolean // Provides info whether the capability is available
+  use: object
+  manage: object
+  provide: object
+  details?: DenyReason[] // Reasons why a Capability might not be invokable
 }
 ```
 
@@ -108,8 +108,8 @@ A capability combined with a Role, which an app may be permitted (by a distribut
 
 ```typescript
 type Permission = {
-  ROLE?: Role // Role provides access level for the app for a given capability.
-  CAPABILITY: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  role?: Role // Role provides access level for the app for a given capability.
+  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
 }
 ```
 

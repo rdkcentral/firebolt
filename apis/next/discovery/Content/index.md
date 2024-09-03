@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.3.1-next.3
+Version Content 1.4.0-next.2
 
 ## Table of Contents
 
@@ -403,8 +403,8 @@ Response:
 
 ```typescript
 type InterestResult = {
-  APP_ID: string
-  ENTITY: EntityDetails
+  appId: string
+  entity: EntityDetails
 }
 ```
 
@@ -418,10 +418,10 @@ See also:
 
 ```typescript
 type InterestEvent = {
-  APP_ID: string
-  TYPE: InterestType
-  REASON: InterestReason
-  ENTITY: EntityDetails
+  appId: string
+  type: InterestType
+  reason: InterestReason
+  entity: EntityDetails
 }
 ```
 

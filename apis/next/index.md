@@ -161,7 +161,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
+| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged) |
 
 
 ### `xrn:firebolt:capability:device:make`
@@ -512,6 +512,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Uses |
 | ---- |
 | [rpc.discover](./manage/rpc/#discover) |
+
+
+### `xrn:firebolt:capability:secondscreen:protocol`
+
+| Uses |
+| ---- |
+| [SecondScreen.protocols](./core/SecondScreen/#protocols) |
 
 
 ### `xrn:firebolt:capability:storage:secure`

@@ -801,6 +801,21 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:secondscreen:protocol": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:storage:secure": {
 			"level": "could",
 			"use": {
@@ -927,7 +942,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.3.1-next.3",
+				"version": "1.4.0-next.2",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -6709,7 +6724,7 @@
 				},
 				{
 					"name": "Device.distributor",
-					"summary": "Get the distributor ID for this device",
+					"summary": "Get the name of the entity which is distributing the current device. There can be multiple distributors which distribute the same device model.",
 					"params": [],
 					"tags": [
 						{
@@ -6742,7 +6757,7 @@
 				},
 				{
 					"name": "Device.platform",
-					"summary": "Get the platform ID for this device",
+					"summary": "Get a transient platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.",
 					"params": [],
 					"tags": [
 						{
@@ -6841,7 +6856,7 @@
 				},
 				{
 					"name": "Device.model",
-					"summary": "Get the device model",
+					"summary": "Get the manufacturer designated model of the device",
 					"params": [],
 					"tags": [
 						{
@@ -6907,7 +6922,7 @@
 				},
 				{
 					"name": "Device.make",
-					"summary": "Get the device make",
+					"summary": "Get the manufacturer of the device model",
 					"params": [],
 					"tags": [
 						{
@@ -8460,7 +8475,7 @@
 						},
 						{
 							"name": "progress",
-							"summary": "How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live)",
+							"summary": "How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live)",
 							"schema": {
 								"type": "number",
 								"minimum": 0
@@ -9080,7 +9095,7 @@
 							"params": [
 								{
 									"name": "appId",
-									"value": "xrn:firebolt:application-type:settings "
+									"value": "xrn:firebolt:application-type:settings"
 								},
 								{
 									"name": "intent",
@@ -9138,6 +9153,43 @@
 										"action": "section",
 										"data": {
 											"sectionName": "app:foo"
+										},
+										"context": {
+											"source": "voice"
+										}
+									}
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
+						},
+						{
+							"name": "Launch the Aggregated Experience to it's search screen.",
+							"params": [
+								{
+									"name": "appId",
+									"value": "xrn:firebolt:application-type:main"
+								},
+								{
+									"name": "intent",
+									"value": {
+										"action": "search",
+										"data": {
+											"query": "a cool show",
+											"suggestions": [
+												{
+													"entityType": "program",
+													"programType": "movie",
+													"entityId": "xyz"
+												},
+												{
+													"entityType": "music",
+													"musicType": "song",
+													"entityId": "abc"
+												}
+											]
 										},
 										"context": {
 											"source": "voice"
@@ -12663,7 +12715,7 @@
 							]
 						}
 					],
-					"summary": "Get any platform-specific localization information, in an Map<string, string>",
+					"summary": "Get any platform-specific localization information",
 					"params": [],
 					"result": {
 						"name": "info",
@@ -12671,7 +12723,11 @@
 						"schema": {
 							"type": "object",
 							"additionalProperties": {
-								"type": "string",
+								"type": [
+									"number",
+									"string",
+									"boolean"
+								],
 								"maxLength": 1024
 							},
 							"maxProperties": 32
@@ -12710,9 +12766,13 @@
 						},
 						{
 							"name": "value",
-							"summary": "Value to be set for additionalInfo",
+							"summary": "Value to be set for additionalInfo. Value can be a number, string or boolean",
 							"schema": {
-								"type": "string"
+								"type": [
+									"number",
+									"string",
+									"boolean"
+								]
 							},
 							"required": true
 						}
@@ -17424,7 +17484,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:device:info"
+								"xrn:firebolt:capability:secondscreen:protocol"
 							]
 						}
 					],
@@ -22421,6 +22481,12 @@
 										"properties": {
 											"query": {
 												"type": "string"
+											},
+											"suggestions": {
+												"type": "array",
+												"items": {
+													"$ref": "#/x-schemas/Entity/Entity"
+												}
 											}
 										},
 										"additionalProperties": false

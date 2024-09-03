@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Localization 1.3.1-next.3
+Version Localization 1.4.0-next.2
 
 ## Table of Contents
 
@@ -59,15 +59,15 @@ Methods for accessessing location and language preferences
 Add any platform-specific localization information in key/value pair
 
 ```typescript
-function addAdditionalInfo(key: string, value: string): Promise<void>
+function addAdditionalInfo(key: string, value: number): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                        |
-| ------- | -------- | -------- | ---------------------------------- |
-| `key`   | `string` | true     | Key to add additionalInfo          |
-| `value` | `string` | true     | Value to be set for additionalInfo |
+| Param   | Type     | Required | Description                                                                  |
+| ------- | -------- | -------- | ---------------------------------------------------------------------------- |
+| `key`   | `string` | true     | Key to add additionalInfo                                                    |
+| `value` | `number` | true     | Value to be set for additionalInfo. Value can be a number, string or boolean |
 
 Promise resolution:
 
@@ -128,7 +128,7 @@ Response:
 
 ### additionalInfo
 
-Get any platform-specific localization information, in an Map<string, string>
+Get any platform-specific localization information
 
 ```typescript
 function additionalInfo(): Promise<object>

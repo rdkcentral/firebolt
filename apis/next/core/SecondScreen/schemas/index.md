@@ -31,9 +31,9 @@ An a message notification from a second screen device
 
 ```typescript
 type SecondScreenEvent = {
-  TYPE: 'dial'
-  VERSION?: string
-  DATA?: string
+  type: 'dial'
+  version?: string
+  data?: string
 }
 ```
 

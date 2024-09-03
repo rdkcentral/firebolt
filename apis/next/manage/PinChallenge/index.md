@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.3.1-next.3
+Version PinChallenge 1.4.0-next.2
 
 ## Table of Contents
 
@@ -486,8 +486,8 @@ ResultReason: {
 
 ```typescript
 type ChallengeRequestor = {
-  ID: string // The id of the app that requested the challenge
-  NAME: string // The name of the app that requested the challenge
+  id: string // The id of the app that requested the challenge
+  name: string // The name of the app that requested the challenge
 }
 ```
 
@@ -497,8 +497,8 @@ type ChallengeRequestor = {
 
 ```typescript
 type PinChallengeResult = {
-  GRANTED: boolean
-  REASON: ResultReason // The reason for the result of challenging the user
+  granted: boolean
+  reason: ResultReason // The reason for the result of challenging the user
 }
 ```
 
@@ -512,9 +512,9 @@ See also:
 
 ```typescript
 type PinChallenge = {
-  PIN_SPACE: 'purchase' | 'content' // The pin space that this challenge is for
-  CAPABILITY?: string // The capability that is gated by a pin challenge
-  REQUESTOR: ChallengeRequestor // The identity of which app is requesting access to this capability
+  pinSpace: 'purchase' | 'content' // The pin space that this challenge is for
+  capability?: string // The capability that is gated by a pin challenge
+  requestor: ChallengeRequestor // The identity of which app is requesting access to this capability
 }
 ```
 
@@ -528,8 +528,8 @@ See also:
 
 ```typescript
 type PinChallengeProviderRequest = {
-  PARAMETERS: PinChallenge // The result of the provider response.
-  CORRELATION_ID: string // The id that was passed in to the event that triggered a provider method to be called
+  parameters: PinChallenge // The result of the provider response.
+  correlationId: string // The id that was passed in to the event that triggered a provider method to be called
 }
 ```
 

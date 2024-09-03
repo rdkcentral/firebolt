@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.3.1-next.3
+Version Internal 1.4.0-next.2
 
 ## Table of Contents
 
@@ -98,7 +98,7 @@ Response:
 
 ```typescript
 type InitializeResult = {
-  VERSION: SemanticVersion // The semantic version of the FEE.
+  version: SemanticVersion // The semantic version of the FEE.
 }
 ```
 

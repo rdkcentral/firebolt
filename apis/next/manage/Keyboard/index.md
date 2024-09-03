@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.3.1-next.3
+Version Keyboard 1.4.0-next.2
 
 ## Table of Contents
 
@@ -940,7 +940,7 @@ Response:
 
 ```typescript
 type KeyboardParameters = {
-  MESSAGE: string // The message to display to the user so the user knows what they are entering
+  message: string // The message to display to the user so the user knows what they are entering
 }
 ```
 
@@ -950,8 +950,8 @@ type KeyboardParameters = {
 
 ```typescript
 type KeyboardProviderRequest = {
-  CORRELATION_ID: string // An id to correlate the provider response with this request
-  PARAMETERS: KeyboardParameters // The request to start a keyboard session
+  correlationId: string // An id to correlate the provider response with this request
+  parameters: KeyboardParameters // The request to start a keyboard session
 }
 ```
 

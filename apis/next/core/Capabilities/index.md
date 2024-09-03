@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.3.1-next.3
+Version Capabilities 1.4.0-next.2
 
 ## Table of Contents
 
@@ -1746,7 +1746,7 @@ Response:
 
 ```typescript
 type CapabilityOption = {
-  ROLE?: Role // Role provides access level for the app for a given capability.
+  role?: Role // Role provides access level for the app for a given capability.
 }
 ```
 
