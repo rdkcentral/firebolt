@@ -1,7 +1,7 @@
 ---
 title: Content
 
-version: 1.3.0
+version: next
 layout: default
 sdk: discovery
 ---
@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.3.0
+Version Content 1.4.0-next.3
 
 ## Table of Contents
 

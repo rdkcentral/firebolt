@@ -1,7 +1,7 @@
 ---
 title: UserGrants
 
-version: 1.3.0
+version: next
 layout: default
 sdk: manage
 ---
@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.3.0
+Version UserGrants 1.4.0-next.3
 
 ## Table of Contents
 

@@ -1,7 +1,7 @@
 ---
 title: Intents
 
-version: 1.3.0
+version: next
 layout: default
 sdk: manage
 ---
