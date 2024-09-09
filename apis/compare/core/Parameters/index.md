@@ -1,7 +1,7 @@
 ---
 title: Parameters
 
-version: 1.3.0
+version: next
 layout: default
 sdk: core
 ---
@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.3.0
+Version Parameters 1.4.0-next.3
 
 ## Table of Contents
 

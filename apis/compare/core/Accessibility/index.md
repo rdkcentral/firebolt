@@ -1,7 +1,7 @@
 ---
 title: Accessibility
 
-version: 1.3.0
+version: next
 layout: default
 sdk: core
 ---
@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Accessibility 1.3.0
+Version Accessibility 1.4.0-next.3
 
 ## Table of Contents
 

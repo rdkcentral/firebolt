@@ -1,7 +1,7 @@
 ---
 title: Discovery
 
-version: 1.3.0
+version: next
 layout: default
 sdk: core
 ---
@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.3.0
+Version Discovery 1.4.0-next.3
 
 ## Table of Contents
 
@@ -2325,18 +2325,15 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.launch(
-  'xrn:firebolt:application-type:settings ',
-  {
-    action: 'section',
-    data: {
-      sectionName: 'settings',
-    },
-    context: {
-      source: 'voice',
-    },
+let success = await Discovery.launch('xrn:firebolt:application-type:settings', {
+  action: 'section',
+  data: {
+    sectionName: 'settings',
   },
-)
+  context: {
+    source: 'voice',
+  },
+})
 console.log(success)
 ```
 
@@ -2356,7 +2353,7 @@ Request:
   "id": 1,
   "method": "Discovery.launch",
   "params": {
-    "appId": "xrn:firebolt:application-type:settings ",
+    "appId": "xrn:firebolt:application-type:settings",
     "intent": {
       "action": "section",
       "data": {
@@ -2483,6 +2480,91 @@ Request:
       "action": "section",
       "data": {
         "sectionName": "app:foo"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to it's search screen.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'search',
+  data: {
+    query: 'a cool show',
+    suggestions: [
+      {
+        entityType: 'program',
+        programType: 'movie',
+        entityId: 'xyz',
+      },
+      {
+        entityType: 'music',
+        musicType: 'song',
+        entityId: 'abc',
+      },
+    ],
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "search",
+      "data": {
+        "query": "a cool show",
+        "suggestions": [
+          {
+            "entityType": "program",
+            "programType": "movie",
+            "entityId": "xyz"
+          },
+          {
+            "entityType": "music",
+            "musicType": "song",
+            "entityId": "abc"
+          }
+        ]
       },
       "context": {
         "source": "voice"
@@ -3572,12 +3654,12 @@ function watched(
 
 Parameters:
 
-| Param       | Type      | Required | Description                                                                                                      |
-| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                            |
-| `progress`  | `number`  | false    | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
-| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                           |
-| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                     |
+| Param       | Type      | Required | Description                                                                                                            |
+| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                                  |
+| `progress`  | `number`  | false    | How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) <br/>minumum: 0 |
+| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                                 |
+| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                           |
 
 Promise resolution:
 

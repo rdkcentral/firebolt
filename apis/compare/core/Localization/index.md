@@ -1,7 +1,7 @@
 ---
 title: Localization
 
-version: 1.3.0
+version: next
 layout: default
 sdk: core
 ---
@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.3.0
+Version Localization 1.4.0-next.3
 
 ## Table of Contents
 
@@ -54,7 +54,7 @@ Methods for accessessing location and language preferences
 
 ### additionalInfo
 
-Get any platform-specific localization information, in an Map<string, string>
+Get any platform-specific localization information
 
 ```typescript
 function additionalInfo(): Promise<object>
