@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Manage SDK",
-		"version": "1.4.0-next.5",
+		"version": "1.4.0-next.6",
 		"x-module-descriptions": {
 			"Account": "A module for querying about the device account.",
 			"AcknowledgeChallenge": "A module for registering as a provider for a user grant in which the user confirms access to a capability",
