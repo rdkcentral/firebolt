@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.4.0-next.4
+Version UserGrants 1.4.0-next.5
 
 ## Table of Contents
 
