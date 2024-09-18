@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.4.0-next.6
+Version Device 1.4.0-next.7
 
 ## Table of Contents
 
@@ -307,18 +307,18 @@ Capabilities:
 
 #### Examples
 
-Getting the supported HDCP versions
+Getting the negotiated HDCP versions
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdcpVersions = await Device.hdcp()
-console.log(supportedHdcpVersions)
+let negotiatedHdcpVersions = await Device.hdcp()
+console.log(negotiatedHdcpVersions)
 ```
 
-Value of `supportedHdcpVersions`:
+Value of `negotiatedHdcpVersions`:
 
 ```javascript
 {
@@ -371,7 +371,7 @@ number
 
 #### Examples
 
-Getting the supported HDCP versions
+Getting the negotiated HDCP versions
 
 JavaScript:
 
@@ -384,7 +384,7 @@ let listenerId = await hdcp((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdcpVersions`:
+Value of `negotiatedHdcpVersions`:
 
 ```javascript
 {
@@ -427,7 +427,9 @@ Response:
 
 ### hdr
 
-Get the negotiated HDR formats for the connected display and device
+Get the negotiated HDR formats for the connected display and device.
+
+For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.
 
 To get the value of `hdr` call the method like this:
 
@@ -447,18 +449,18 @@ Capabilities:
 
 #### Examples
 
-Getting the supported HDR formats
+Getting the negotiated HDR formats
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdrFormats = await Device.hdr()
-console.log(supportedHdrFormats)
+let negotiatedHdrFormats = await Device.hdr()
+console.log(negotiatedHdrFormats)
 ```
 
-Value of `supportedHdrFormats`:
+Value of `negotiatedHdrFormats`:
 
 ```javascript
 {
@@ -515,7 +517,7 @@ number
 
 #### Examples
 
-Getting the supported HDR formats
+Getting the negotiated HDR formats
 
 JavaScript:
 
@@ -528,7 +530,7 @@ let listenerId = await hdr((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdrFormats`:
+Value of `negotiatedHdrFormats`:
 
 ```javascript
 {
@@ -1231,7 +1233,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### platform
 
-Get a transient platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.
+Get a platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.
 
 To get the value of `platform` call the method like this:
 
@@ -2011,7 +2013,7 @@ NetworkType: {
 
 ### HDRFormatMap
 
-The type of HDR format that is supported
+The type of HDR format
 
 ```typescript
 type HDRFormatMap = {
@@ -2101,7 +2103,7 @@ See also:
 
 ### HDCPVersionMap
 
-The type of HDCP versions that is supported
+The type of HDCP versions
 
 ```typescript
 type HDCPVersionMap = {
