@@ -427,9 +427,7 @@ Response:
 
 ### hdr
 
-Get the negotiated HDR formats for the connected display and device.
-
-For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.
+Get the negotiated HDR formats for the connected display and device
 
 To get the value of `hdr` call the method like this:
 

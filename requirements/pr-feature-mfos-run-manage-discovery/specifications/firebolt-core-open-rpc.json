@@ -2329,7 +2329,7 @@
 		},
 		{
 			"name": "Device.hdr",
-			"summary": "Get the negotiated HDR formats for the connected display and device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
+			"summary": "Get the negotiated HDR formats for the connected display and device",
 			"params": [],
 			"tags": [
 				{
@@ -2747,7 +2747,7 @@
 		},
 		{
 			"name": "Device.onHdrChanged",
-			"summary": "Get the negotiated HDR formats for the connected display and device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
+			"summary": "Get the negotiated HDR formats for the connected display and device",
 			"params": [
 				{
 					"name": "listen",
