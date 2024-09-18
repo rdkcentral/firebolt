@@ -2033,7 +2033,7 @@
 		},
 		{
 			"name": "Device.platform",
-			"summary": "Get a transient platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.",
+			"summary": "Get a platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.",
 			"params": [],
 			"tags": [
 				{
@@ -2307,15 +2307,15 @@
 				}
 			],
 			"result": {
-				"name": "supportedHdcpVersions",
-				"summary": "the supported HDCP versions",
+				"name": "negotiatedHdcpVersions",
+				"summary": "the negotiated HDCP versions",
 				"schema": {
 					"$ref": "#/components/schemas/HDCPVersionMap"
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the supported HDCP versions",
+					"name": "Getting the negotiated HDCP versions",
 					"params": [],
 					"result": {
 						"name": "Default Result",
@@ -2329,7 +2329,7 @@
 		},
 		{
 			"name": "Device.hdr",
-			"summary": "Get the negotiated HDR formats for the connected display and device",
+			"summary": "Get the negotiated HDR formats for the connected display and device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 			"params": [],
 			"tags": [
 				{
@@ -2343,15 +2343,15 @@
 				}
 			],
 			"result": {
-				"name": "supportedHdrFormats",
-				"summary": "the supported HDR formats",
+				"name": "negotiatedHdrFormats",
+				"summary": "the negotiated HDR formats",
 				"schema": {
 					"$ref": "#/components/schemas/HDRFormatMap"
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the supported HDR formats",
+					"name": "Getting the negotiated HDR formats",
 					"params": [],
 					"result": {
 						"name": "Default Result",
@@ -2416,6 +2416,9 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated"
 				}
 			],
 			"result": {
@@ -2710,8 +2713,8 @@
 				}
 			],
 			"result": {
-				"name": "supportedHdcpVersions",
-				"summary": "the supported HDCP versions",
+				"name": "negotiatedHdcpVersions",
+				"summary": "the negotiated HDCP versions",
 				"schema": {
 					"anyOf": [
 						{
@@ -2725,7 +2728,7 @@
 			},
 			"examples": [
 				{
-					"name": "Getting the supported HDCP versions",
+					"name": "Getting the negotiated HDCP versions",
 					"params": [
 						{
 							"name": "listen",
@@ -2744,7 +2747,7 @@
 		},
 		{
 			"name": "Device.onHdrChanged",
-			"summary": "Get the negotiated HDR formats for the connected display and device",
+			"summary": "Get the negotiated HDR formats for the connected display and device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 			"params": [
 				{
 					"name": "listen",
@@ -2771,8 +2774,8 @@
 				}
 			],
 			"result": {
-				"name": "supportedHdrFormats",
-				"summary": "the supported HDR formats",
+				"name": "negotiatedHdrFormats",
+				"summary": "the negotiated HDR formats",
 				"schema": {
 					"anyOf": [
 						{
@@ -2786,7 +2789,7 @@
 			},
 			"examples": [
 				{
-					"name": "Getting the supported HDR formats",
+					"name": "Getting the negotiated HDR formats",
 					"params": [
 						{
 							"name": "listen",
@@ -2894,6 +2897,9 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated"
 				}
 			],
 			"result": {
@@ -4284,43 +4290,6 @@
 								"action": "section",
 								"data": {
 									"sectionName": "app:foo"
-								},
-								"context": {
-									"source": "voice"
-								}
-							}
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				},
-				{
-					"name": "Launch the Aggregated Experience to it's search screen.",
-					"params": [
-						{
-							"name": "appId",
-							"value": "xrn:firebolt:application-type:main"
-						},
-						{
-							"name": "intent",
-							"value": {
-								"action": "search",
-								"data": {
-									"query": "a cool show",
-									"suggestions": [
-										{
-											"entityType": "program",
-											"programType": "movie",
-											"entityId": "xyz"
-										},
-										{
-											"entityType": "music",
-											"musicType": "song",
-											"entityId": "abc"
-										}
-									]
 								},
 								"context": {
 									"source": "voice"
@@ -8650,7 +8619,7 @@
 					"dolbyVision",
 					"hlg"
 				],
-				"description": "The type of HDR format that is supported"
+				"description": "The type of HDR format"
 			},
 			"HDCPVersionMap": {
 				"title": "HDCPVersionMap",
@@ -8667,7 +8636,7 @@
 					"hdcp1.4",
 					"hdcp2.2"
 				],
-				"description": "The type of HDCP versions that is supported"
+				"description": "The type of HDCP versions"
 			},
 			"DeviceVersion": {
 				"title": "DeviceVersion",
