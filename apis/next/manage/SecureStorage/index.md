@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.4.0-next.9
+Version SecureStorage 1.4.0-next.10
 
 ## Table of Contents
 
