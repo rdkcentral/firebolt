@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "1.4.0-next.11",
+		"version": "1.4.0-next.12",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -6187,7 +6187,7 @@
 		},
 		{
 			"name": "Device.screenResolution",
-			"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160]",
+			"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160] \n\n**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
 			"params": [],
 			"tags": [
 				{
@@ -6200,7 +6200,9 @@
 					]
 				},
 				{
-					"name": "deprecated"
+					"name": "deprecated",
+					"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+					"x-since": "1.4.0"
 				}
 			],
 			"result": {
@@ -6740,7 +6742,7 @@
 		},
 		{
 			"name": "Device.onScreenResolutionChanged",
-			"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160]",
+			"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160] \n\n**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
 			"params": [
 				{
 					"name": "listen",
@@ -6766,7 +6768,9 @@
 					]
 				},
 				{
-					"name": "deprecated"
+					"name": "deprecated",
+					"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+					"x-since": "1.4.0"
 				}
 			],
 			"result": {
