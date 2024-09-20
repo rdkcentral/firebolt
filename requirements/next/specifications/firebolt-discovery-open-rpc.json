@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Discovery SDK",
-		"version": "1.4.0-next.10",
+		"version": "1.4.0-next.11",
 		"x-module-descriptions": {}
 	},
 	"methods": [
@@ -12,7 +12,6 @@
 				{
 					"name": "capabilities",
 					"x-provided-by": "Discovery.onRequestUserInterest",
-					"x-provider-selection": "focus",
 					"x-uses": [
 						"xrn:firebolt:capability:discovery:interest"
 					]
@@ -96,7 +95,6 @@
 				{
 					"name": "capabilities",
 					"x-provided-by": "Discovery.userInterest",
-					"x-provider-selection": "focus",
 					"x-uses": [
 						"xrn:firebolt:capability:discovery:interest"
 					]
