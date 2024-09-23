@@ -1309,6 +1309,8 @@ Full HD (FHD): [1920, 1080]
 
 4K Ultra High Definition (UHD): [3840, 2160]
 
+**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs
+
 To get the value of `screenResolution` call the method like this:
 
 ```typescript
