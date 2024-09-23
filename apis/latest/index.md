@@ -74,7 +74,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
+| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid) |
 
 
 
@@ -94,6 +94,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Manages |
 | ------- |
 | [Advertising.resetIdentifier](./manage/Advertising/#resetidentifier) |
+
+
+### `xrn:firebolt:capability:advertising:policy`
+
+| Uses |
+| ---- |
+| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
 
 
 ### `xrn:firebolt:capability:approve:content`
@@ -154,7 +161,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
+| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged) |
 
 
 ### `xrn:firebolt:capability:device:make`
@@ -466,13 +473,6 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Device.network](./core/Device/#network)<br/>[Device.onNetworkChanged](./core/Device/#networkchanged) |
 
 
-### `xrn:firebolt:capability:privacy:advertising`
-
-| Uses |
-| ---- |
-| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
-
-
 ### `xrn:firebolt:capability:privacy:settings`
 
 | Uses |
@@ -512,6 +512,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Uses |
 | ---- |
 | [rpc.discover](./manage/rpc/#discover) |
+
+
+### `xrn:firebolt:capability:secondscreen:protocol`
+
+| Uses |
+| ---- |
+| [SecondScreen.protocols](./core/SecondScreen/#protocols) |
 
 
 ### `xrn:firebolt:capability:storage:secure`

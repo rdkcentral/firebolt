@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.3.0
+Version SecondScreen 1.4.0
 
 ## Table of Contents
 
@@ -361,9 +361,9 @@ Promise resolution:
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:info |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:secondscreen:protocol |
 
 #### Examples
 

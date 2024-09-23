@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.3.0
+Version Capabilities 1.4.0
 
 ## Table of Contents
 

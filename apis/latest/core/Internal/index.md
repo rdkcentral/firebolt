@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.3.0
+Version Internal 1.4.0
 
 ## Table of Contents
 
@@ -19,6 +19,7 @@ Version Internal 1.3.0
 - [Methods](#methods)
   - [initialize](#initialize)
 - [Types](#types)
+  - [InitializeResult](#initializeresult)
 
 ## Overview
 
@@ -39,6 +40,8 @@ Parameters:
 | `version` | [`SemanticVersion`](../Types/schemas/#SemanticVersion) | true     | The semantic version of the SDK. |
 
 Result:
+
+[InitializeResult](#initializeresult)
 
 Capabilities:
 
@@ -90,3 +93,17 @@ Response:
 ---
 
 ## Types
+
+### InitializeResult
+
+```typescript
+type InitializeResult = {
+  version: SemanticVersion // The semantic version of the FEE.
+}
+```
+
+See also:
+
+[SemanticVersion](../Types/schemas/#SemanticVersion)
+
+---
