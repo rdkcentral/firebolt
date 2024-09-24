@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Parameters 1.4.0-feature-core-sdk-unit-test.0
+Version Parameters 1.4.1-feature-core-sdk-unit-test.0
 
 ## Table of Contents
 
