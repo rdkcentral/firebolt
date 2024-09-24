@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.4.0-feature-mfos-run-manage-discovery.0
+Version Device 1.4.1-feature-mfos-run-manage-discovery.0
 
 ## Table of Contents
 

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.4.0-feature-mfos-run-manage-discovery.0
+Version Capabilities 1.4.1-feature-mfos-run-manage-discovery.0
 
 ## Table of Contents
 
