@@ -22,6 +22,11 @@ sdk: core
     * SecondScreen.protocol() got new capability - xrn:firebolt:capability:secondscreen:protocol.
 * Added individual sdk openrpcs to the doc specification ([#311](https://github.com/rdkcentral/firebolt-apis/issues/311)) ([ace1d64](https://github.com/rdkcentral/firebolt-apis/commit/ace1d644cac114c457a739a4e4cdfe8990a96fc8))
 
+### Deprecation
+* Method: **Device.screenResolution()**
+  * Alternative: **Use non-Firebolt APIs specific to your platform, e.g. W3C APIs**
+
+
 # [1.3.0](https://github.com/rdkcentral/firebolt-apis/compare/v1.2.0...v1.3.0) (2024-08-12)
 
 ### Features
@@ -74,6 +79,10 @@ fix: Add enumerated values for fontFamily/fontEdge (#181)
 ### Bug Fixes
 
 * fix: Using 3 letter ISO639 language codes ([#173](https://github.com/rdkcentral/firebolt-apis/issues/173))
+
+### Deprecation
+* Method: **Localization.language()**
+    * Alternative: **Localization.locale()** [See here](./Localization/index.md#locale)
 
 # [0.15.0](https://github.com/rdkcentral/firebolt-apis/compare/v0.14.0...v0.15.0) (2023-07-31)
 
@@ -147,6 +156,9 @@ fix: Add enumerated values for fontFamily/fontEdge (#181)
 * Trigger ([607825b](https://github.com/rdkcentral/firebolt-core-sdk/commit/607825bd5547c74a8a7707f751446ab0e069d9f9))
 * Turn on dryRun ([dcddc60](https://github.com/rdkcentral/firebolt-core-sdk/commit/dcddc6068f91505d97457ed04eb8e2996dab9278))
 
+### Deprecation
+* Method: **Discovery.entitlements()**
+  * Alternative: **Discovery.contentAccess()** [See here](./Discovery/index.md#contentaccess)
 
 # 0.9.0
 
@@ -160,6 +172,13 @@ fix: Add enumerated values for fontFamily/fontEdge (#181)
 * Don't ignore source files when publishing to npm [skip ci] ([cb26ff2](https://github.com/rdkcentral/firebolt-core-sdk/commit/cb26ff2e09416613c5557e76966eccbe0ec66d54))
 * Build SDK before npm publish ([#64](https://github.com/rdkcentral/firebolt-core-sdk/issues/64)) ([f221fa3](https://github.com/rdkcentral/firebolt-core-sdk/commit/f221fa34e24e29e86487b1ec98468b64f495d134))
 * **Lifecycle:** lifecycle state api returns correct state in all circumstances ([31e405c](https://github.com/rdkcentral/firebolt-core-sdk/commit/31e405c124d29a3e87294dc4b356ff8df9972af8))
+
+### Deprecation
+* Method: **Authentication.token()**
+  * Alternative: Authentication module has individual methods for each token type.
+    * **type=platform : Authentication.root()** [See here](./Authentication/index.md#root)
+    * **type=device : Authentication.device()** [See here](./Authentication/index.md#device)
+    * **type=distributor : Authentication.session()** [See here](./Authentication/index.md#session)
 
 # 0.8.1
 
@@ -220,6 +239,16 @@ const res:[number, number] = await Device.screenResolution()
 - Added support for subscribing to property changes: Device.audio, hdcp, hdr, name, network, screenResolution, videoResolution, Advertising.policy, Discovery.policy, Localization.language
 - Added proper TypeScript declarations for Discovery.entityInfo and Discovery.purchasedContent
 - Fixed race condition w/ Transport Layer initialization
+
+### Deprecation
+* Method: **Accessibility.closedCaptions()**
+  * Alternative: **Accessibility.closedCaptionsSettings()** [See here](./Accessibility/index.md#closedcaptionssettings)
+
+* Method: **Accessibility.voiceGuidance()**
+  * Alternative: **Accessibility.voiceGuidanceSettings()** [See here](./Accessibility/index.md#voiceguidancesettings)
+
+* Method: **Device.listen('deviceNameChanged')**
+  * Alternative: **Device.name()** [See here](./Device/index.md#name)
 
 # 0.5.2
 
