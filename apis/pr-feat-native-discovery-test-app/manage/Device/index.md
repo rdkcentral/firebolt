@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.4.0-feat-native-discovery-test-app.0
+Version Device 1.4.1-feat-native-discovery-test-app.0
 
 ## Table of Contents
 

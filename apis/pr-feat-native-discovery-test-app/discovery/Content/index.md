@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.4.0-feat-native-discovery-test-app.0
+Version Content 1.4.1-feat-native-discovery-test-app.0
 
 ## Table of Contents
 

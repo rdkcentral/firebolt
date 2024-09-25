@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.4.0-feat-native-discovery-test-app.0
+Version PinChallenge 1.4.1-feat-native-discovery-test-app.0
 
 ## Table of Contents
 
