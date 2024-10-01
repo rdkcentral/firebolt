@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.4.0
+Version Keyboard 1.4.1
 
 ## Table of Contents
 

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.4.0
+Version Device 1.4.1
 
 ## Table of Contents
 

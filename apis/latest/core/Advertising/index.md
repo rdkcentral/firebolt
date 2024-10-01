@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Advertising 1.4.0
+Version Advertising 1.4.1
 
 ## Table of Contents
 
