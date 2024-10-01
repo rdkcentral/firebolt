@@ -19,10 +19,10 @@ Version Types 0.0.0-unknown.0
 - [Types](#types)
   - [AudioProfile](#audioprofile)
   - [SemanticVersion](#semanticversion)
-  - [BooleanMap](#booleanmap)
   - [LocalizedString](#localizedstring)
   - [Dimensions](#dimensions)
   - [FlatMap](#flatmap)
+  - [BooleanMap](#booleanmap)
   - [Timeout](#timeout)
 
 ## Overview
@@ -60,14 +60,6 @@ type SemanticVersion = {
 
 ---
 
-### BooleanMap
-
-```typescript
-type BooleanMap = {}
-```
-
----
-
 ### LocalizedString
 
 Localized string supports either a simple `string` or a Map<string, string> of language codes to strings. When using a simple `string`, the current preferred langauge from `Localization.langauge()` is assumed.
@@ -90,6 +82,14 @@ type LocalizedString = string | object
 
 ```typescript
 
+```
+
+---
+
+### BooleanMap
+
+```typescript
+type BooleanMap = {}
 ```
 
 ---

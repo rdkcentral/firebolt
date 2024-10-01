@@ -54,7 +54,7 @@ Methods for accessessing location and language preferences
 
 ### additionalInfo
 
-Get any platform-specific localization information, in an Map<string, string>
+Get any platform-specific localization information
 
 ```typescript
 function additionalInfo(): Promise<object>

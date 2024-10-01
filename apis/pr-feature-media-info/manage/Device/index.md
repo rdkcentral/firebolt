@@ -37,7 +37,7 @@ import { Device } from '@firebolt-js/manage-sdk'
 
 ## Overview
 
-A module for querying the device and it's capabilities.
+A module for querying about the device and it's capabilities.
 
 ## Methods
 
@@ -473,7 +473,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### provision
 
-Used by a distributor to push provision info to Firebolt.
+Used by a distributor to push provision info to firebolt.
 
 ```typescript
 function provision(
@@ -546,7 +546,7 @@ Response:
 
 </details>
 
-With distributor ID
+With distributor id
 
 JavaScript:
 
@@ -618,7 +618,7 @@ Capabilities:
 
 #### Examples
 
-Default Example
+Getting the device name
 
 JavaScript:
 

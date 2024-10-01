@@ -361,9 +361,9 @@ Promise resolution:
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:info |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:secondscreen:protocol |
 
 #### Examples
 

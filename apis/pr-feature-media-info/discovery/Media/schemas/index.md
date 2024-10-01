@@ -19,13 +19,12 @@ Version Media 0.0.0-unknown.0
 - [Types](#types)
   - [AudioMode](#audiomode)
   - [Colorimetry](#colorimetry)
-  - [HDRProfile](#hdrprofile)
-  - [ResolutionName](#resolutionname)
   - [VideoMode](#videomode)
   - [AudioCodec](#audiocodec)
   - [VideoCodec](#videocodec)
-  - [ColorDepth](#colordepth)
+  - [HDRFormat](#hdrformat)
   - [ColorSpace](#colorspace)
+  - [QuantizationRange](#quantizationrange)
 
 ## Overview
 
@@ -46,26 +45,6 @@ Audio output mode
 ### Colorimetry
 
 Colorimetry
-
-```typescript
-
-```
-
----
-
-### HDRProfile
-
-HDR profile
-
-```typescript
-
-```
-
----
-
-### ResolutionName
-
-User-friendly resolution name
 
 ```typescript
 
@@ -103,9 +82,9 @@ Video codec
 
 ---
 
-### ColorDepth
+### HDRFormat
 
-Color depth
+HDR format
 
 ```typescript
 
@@ -116,6 +95,16 @@ Color depth
 ### ColorSpace
 
 Color space
+
+```typescript
+
+```
+
+---
+
+### QuantizationRange
+
+The quantization range of video output
 
 ```typescript
 
