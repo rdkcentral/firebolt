@@ -1,16 +1,16 @@
 ---
-title: VideoOutput
+title: AudioOutput
 
 version: pr-feature-media-info
 layout: default
 sdk: core
 ---
 
-# VideoOutput Module
+# AudioOutput Module
 
 ---
 
-Version VideoOutput 1.2.0-feature-media-info.5
+Version AudioOutput 1.2.0-feature-media-info.5
 
 ## Table of Contents
 
@@ -19,24 +19,25 @@ Version VideoOutput 1.2.0-feature-media-info.5
 - [Overview](#overview)
 - [Methods](#methods)
   - [listen](#listen)
+  - [mode](#mode)
   - [once](#once)
   - [status](#status)
 - [Events](#events)
-  - [modeWillChange](#modewillchange)
+  - [modeChanged](#modechanged)
   - [statusChanged](#statuschanged)
 - [Types](#types)
 
 ## Usage
 
-To use the VideoOutput module, you can import it into your project from the Firebolt SDK:
+To use the AudioOutput module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
-import { VideoOutput } from '@firebolt-js/sdk'
+import { AudioOutput } from '@firebolt-js/sdk'
 ```
 
 ## Overview
 
-A module for the device's video output system, including its output capabilities and configuration.
+A module for the device's audio output system, including its output capabilities and configuration.
 
 ## Methods
 
@@ -59,7 +60,7 @@ Promise resolution:
 
 | Type     | Description                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------- |
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VideoOutput.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioOutput.clear(id)` |
 
 Callback parameters:
 
@@ -90,9 +91,137 @@ Promise resolution:
 
 | Type     | Description                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------- |
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VideoOutput.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioOutput.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
+### mode
+
+The current audio output mode setting of the device.
+
+To get the value of `mode` call the method like this:
+
+```typescript
+function mode(): Promise<AudioMode>
+```
+
+Promise resolution:
+
+[AudioMode](../Media/schemas/#AudioMode)
+
+Capabilities:
+
+| Role | Capability                                |
+| ---- | ----------------------------------------- |
+| uses | xrn:firebolt:capability:audio-output:mode |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { AudioOutput } from '@firebolt-js/sdk'
+
+let mode = await AudioOutput.mode()
+console.log(mode)
+```
+
+Value of `mode`:
+
+```javascript
+'auto'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioOutput.mode",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "auto"
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function mode(callback: (value) => AudioMode): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { AudioOutput } from '@firebolt-js/sdk'
+
+let listenerId = await mode((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `mode`:
+
+```javascript
+'auto'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioOutput.onModeChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "auto"
+}
+```
+
+</details>
+
+---
 
 ### once
 
@@ -115,7 +244,7 @@ Promise resolution:
 
 | Type     | Description                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------- |
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VideoOutput.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioOutput.clear(id)` |
 
 Callback parameters:
 
@@ -146,13 +275,13 @@ Promise resolution:
 
 | Type     | Description                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------- |
-| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VideoOutput.clear(id)` |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `AudioOutput.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
 ### status
 
-Various properties describing the current video output status of the device.
+Various properties describing the current audio output status of the device.
 
 To get the value of `status` call the method like this:
 
@@ -166,7 +295,7 @@ Capabilities:
 
 | Role | Capability                                  |
 | ---- | ------------------------------------------- |
-| uses | xrn:firebolt:capability:video-output:status |
+| uses | xrn:firebolt:capability:audio-output:status |
 
 #### Examples
 
@@ -175,27 +304,17 @@ Default Example
 JavaScript:
 
 ```javascript
-import { VideoOutput } from '@firebolt-js/sdk'
+import { AudioOutput } from '@firebolt-js/sdk'
 
-let properties = await VideoOutput.status()
-console.log(properties)
+let status = await AudioOutput.status()
+console.log(status)
 ```
 
-Value of `properties`:
+Value of `status`:
 
 ```javascript
 {
-	"colorDepth": 10,
-	"colorimetry": "BT2020YCC",
-	"colorSpace": "YCbCr422",
-	"frameRate": 60,
-	"hdrFormat": "hdr10plus",
-	"mode": "2160p60",
-	"quantizationRange": "full",
-	"resolution": {
-		"width": 3840,
-		"height": 2160
-	}
+	"mode": "surround"
 }
 ```
 
@@ -207,7 +326,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "VideoOutput.status",
+  "method": "AudioOutput.status",
   "params": {}
 }
 ```
@@ -219,17 +338,7 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "colorDepth": 10,
-    "colorimetry": "BT2020YCC",
-    "colorSpace": "YCbCr422",
-    "frameRate": 60,
-    "hdrFormat": "hdr10plus",
-    "mode": "2160p60",
-    "quantizationRange": "full",
-    "resolution": {
-      "width": 3840,
-      "height": 2160
-    }
+    "mode": "surround"
   }
 }
 ```
@@ -257,7 +366,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { VideoOutput } from '@firebolt-js/sdk'
+import { AudioOutput } from '@firebolt-js/sdk'
 
 let listenerId = await status((value) => {
   console.log(value)
@@ -265,21 +374,11 @@ let listenerId = await status((value) => {
 console.log(listenerId)
 ```
 
-Value of `properties`:
+Value of `status`:
 
 ```javascript
 {
-	"colorDepth": 10,
-	"colorimetry": "BT2020YCC",
-	"colorSpace": "YCbCr422",
-	"frameRate": 60,
-	"hdrFormat": "hdr10plus",
-	"mode": "2160p60",
-	"quantizationRange": "full",
-	"resolution": {
-		"width": 3840,
-		"height": 2160
-	}
+	"mode": "surround"
 }
 ```
 
@@ -291,7 +390,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "VideoOutput.onStatusChanged",
+  "method": "AudioOutput.onStatusChanged",
   "params": {
     "listen": true
   }
@@ -305,17 +404,7 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "colorDepth": 10,
-    "colorimetry": "BT2020YCC",
-    "colorSpace": "YCbCr422",
-    "frameRate": 60,
-    "hdrFormat": "hdr10plus",
-    "mode": "2160p60",
-    "quantizationRange": "full",
-    "resolution": {
-      "width": 3840,
-      "height": 2160
-    }
+    "mode": "surround"
   }
 }
 ```
@@ -326,72 +415,9 @@ Response:
 
 ## Events
 
-### modeWillChange
+### modeChanged
 
-```typescript
-function listen('modeWillChange', () => void): Promise<number>
-```
-
-See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-Event value:
-
-[VideoMode](../Media/schemas/#VideoMode)
-
-Capabilities:
-
-| Role | Capability                                |
-| ---- | ----------------------------------------- |
-| uses | xrn:firebolt:capability:video-output:mode |
-
-#### Examples
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { VideoOutput } from '@firebolt-js/sdk'
-
-VideoOutput.listen('modeWillChange', (mode) => {
-  console.log(mode)
-})
-```
-
-Value of `mode`:
-
-```javascript
-'2160p60'
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "VideoOutput.onModeWillChange",
-  "params": {
-    "listen": true
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "2160p60"
-}
-```
-
-</details>
-
----
+See: [mode](#mode)
 
 ### statusChanged
 

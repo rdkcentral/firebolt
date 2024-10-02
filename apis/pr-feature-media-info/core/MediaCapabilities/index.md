@@ -20,15 +20,19 @@ Version MediaCapabilities 1.2.0-feature-media-info.5
 - [Methods](#methods)
   - [atmosSupported](#atmossupported)
   - [audioCodecs](#audiocodecs)
-  - [audioModes](#audiomodes)
   - [colorDepth](#colordepth)
-  - [hdrProfiles](#hdrprofiles)
+  - [hdrFormats](#hdrformats)
   - [listen](#listen)
   - [once](#once)
+  - [preferredVideoMode](#preferredvideomode)
   - [videoCodecs](#videocodecs)
-  - [videoModes](#videomodes)
 - [Events](#events)
+  - [atmosSupportedChanged](#atmossupportedchanged)
   - [audioCodecsChanged](#audiocodecschanged)
+  - [colorDepthChanged](#colordepthchanged)
+  - [hdrFormatsChanged](#hdrformatschanged)
+  - [preferredVideoModeChanged](#preferredvideomodechanged)
+  - [videoCodecsChanged](#videocodecschanged)
 - [Types](#types)
 
 ## Usage
@@ -48,6 +52,8 @@ A module for querying the capabilities of the device all of its connected perirp
 ### atmosSupported
 
 Whether or not Dolby Atmos immersive audio is commonly supported by the device and its connected audio peripherals.
+
+To get the value of `atmosSupported` call the method like this:
 
 ```typescript
 function atmosSupported(): Promise<boolean>
@@ -107,9 +113,71 @@ Response:
 
 ---
 
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function atmosSupported(callback: (value) => boolean): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let listenerId = await atmosSupported((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `atmosSupported`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.onAtmosSupportedChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
 ### audioCodecs
 
-The audio codecs supported by the audio output sink. The response is based on the current audio output mode. If the output mode is passthrough, the codecs of the audio sink (such as the soundbar or AV receiver) are returned. Otherwise, the supported audio codecs of the device are returned.
+The audio codecs supported by the audio decoding device. The response is based on the current audio output mode. For example, if the output mode is passthrough, the codecs of the audio sink (such as the soundbar or AV receiver) are returned.
 
 To get the value of `audioCodecs` call the method like this:
 
@@ -233,71 +301,11 @@ Response:
 
 ---
 
-### audioModes
-
-The audio output modes commonly supported by the device and its connected audio peripherals
-
-```typescript
-function audioModes(): Promise<AudioMode[]>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                      |
-| ---- | ----------------------------------------------- |
-| uses | xrn:firebolt:capability:media-capabilities:info |
-
-#### Examples
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { MediaCapabilities } from '@firebolt-js/sdk'
-
-let audioModes = await MediaCapabilities.audioModes()
-console.log(audioModes)
-```
-
-Value of `audioModes`:
-
-```javascript
-;['passthrough', 'stereo', 'surround']
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "MediaCapabilities.audioModes",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": ["passthrough", "stereo", "surround"]
-}
-```
-
-</details>
-
----
-
 ### colorDepth
 
 The maximum color depth commonly supported by the device and its connected video peripherals.
+
+To get the value of `colorDepth` call the method like this:
 
 ```typescript
 function colorDepth(): Promise<number>
@@ -357,12 +365,76 @@ Response:
 
 ---
 
-### hdrProfiles
-
-The HDR profiles commonly supported by the device and its connected video peripherals.
+To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdrProfiles(): Promise<HDRProfile[]>
+function colorDepth(callback: (value) => number): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let listenerId = await colorDepth((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `colorDepth`:
+
+```javascript
+10
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.onColorDepthChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 10
+}
+```
+
+</details>
+
+---
+
+### hdrFormats
+
+The HDR formats commonly supported by the device and its connected video peripherals.
+
+To get the value of `hdrFormats` call the method like this:
+
+```typescript
+function hdrFormats(): Promise<HDRFormat[]>
 ```
 
 Promise resolution:
@@ -382,11 +454,11 @@ JavaScript:
 ```javascript
 import { MediaCapabilities } from '@firebolt-js/sdk'
 
-let hdrProfiles = await MediaCapabilities.hdrProfiles()
-console.log(hdrProfiles)
+let hdrFormats = await MediaCapabilities.hdrFormats()
+console.log(hdrFormats)
 ```
 
-Value of `hdrProfiles`:
+Value of `hdrFormats`:
 
 ```javascript
 ;['hdr10', 'hdr10plus', 'hlg']
@@ -400,7 +472,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "MediaCapabilities.hdrProfiles",
+  "method": "MediaCapabilities.hdrFormats",
   "params": {}
 }
 ```
@@ -412,6 +484,156 @@ Response:
   "jsonrpc": "2.0",
   "id": 1,
   "result": ["hdr10", "hdr10plus", "hlg"]
+}
+```
+
+</details>
+
+Device connected to an SDR (non-HDR) display
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let hdrFormats = await MediaCapabilities.hdrFormats()
+console.log(hdrFormats)
+```
+
+Value of `hdrFormats`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.hdrFormats",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function hdrFormats(callback: (value) => HDRFormat[]): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let listenerId = await hdrFormats((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdrFormats`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.onHdrFormatsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": ["hdr10", "hdr10plus", "hlg"]
+}
+```
+
+</details>
+
+Device connected to an SDR (non-HDR) display
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let listenerId = await hdrFormats((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `hdrFormats`:
+
+```javascript
+;['hdr10', 'hdr10plus', 'hlg']
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.onHdrFormatsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": []
 }
 ```
 
@@ -529,9 +751,139 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+### preferredVideoMode
+
+The best-possible video mode commonly supported by the device and its connected video peripherals.
+
+To get the value of `preferredVideoMode` call the method like this:
+
+```typescript
+function preferredVideoMode(): Promise<VideoMode>
+```
+
+Promise resolution:
+
+[VideoMode](../Media/schemas/#VideoMode)
+
+Capabilities:
+
+| Role | Capability                                      |
+| ---- | ----------------------------------------------- |
+| uses | xrn:firebolt:capability:media-capabilities:info |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let videoModes = await MediaCapabilities.preferredVideoMode()
+console.log(videoModes)
+```
+
+Value of `videoModes`:
+
+```javascript
+'2160p60'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.preferredVideoMode",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "2160p60"
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function preferredVideoMode(callback: (value) => VideoMode): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { MediaCapabilities } from '@firebolt-js/sdk'
+
+let listenerId = await preferredVideoMode((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `videoModes`:
+
+```javascript
+'2160p60'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "MediaCapabilities.onPreferredVideoModeChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "2160p60"
+}
+```
+
+</details>
+
+---
+
 ### videoCodecs
 
 The video codecs supported by the device.
+
+To get the value of `videoCodecs` call the method like this:
 
 ```typescript
 function videoCodecs(): Promise<VideoCodec[]>
@@ -591,21 +943,17 @@ Response:
 
 ---
 
-### videoModes
-
-The video output modes commonly supported by the device and its connected video peripherals.
+To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function videoModes(): Promise<VideoMode[]>
+function videoCodecs(callback: (value) => VideoCodec[]): Promise<number>
 ```
 
 Promise resolution:
 
-Capabilities:
-
-| Role | Capability                                      |
-| ---- | ----------------------------------------------- |
-| uses | xrn:firebolt:capability:media-capabilities:info |
+```
+number
+```
 
 #### Examples
 
@@ -616,14 +964,16 @@ JavaScript:
 ```javascript
 import { MediaCapabilities } from '@firebolt-js/sdk'
 
-let videoModes = await MediaCapabilities.videoModes()
-console.log(videoModes)
+let listenerId = await videoCodecs((value) => {
+  console.log(value)
+})
+console.log(listenerId)
 ```
 
-Value of `videoModes`:
+Value of `videoCodecs`:
 
 ```javascript
-;['720p50', '720p60', '1080p50', '1080p60']
+;['av1', 'avc', 'hevc', 'mpeg1', 'mpeg2', 'vp8', 'vp9']
 ```
 
 <details markdown="1" >
@@ -634,8 +984,10 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "MediaCapabilities.videoModes",
-  "params": {}
+  "method": "MediaCapabilities.onVideoCodecsChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -645,7 +997,7 @@ Response:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": ["720p50", "720p60", "1080p50", "1080p60"]
+  "result": ["av1", "avc", "hevc", "mpeg1", "mpeg2", "vp8", "vp9"]
 }
 ```
 
@@ -655,8 +1007,28 @@ Response:
 
 ## Events
 
+### atmosSupportedChanged
+
+See: [atmosSupported](#atmossupported)
+
 ### audioCodecsChanged
 
 See: [audioCodecs](#audiocodecs)
+
+### colorDepthChanged
+
+See: [colorDepth](#colordepth)
+
+### hdrFormatsChanged
+
+See: [hdrFormats](#hdrformats)
+
+### preferredVideoModeChanged
+
+See: [preferredVideoMode](#preferredvideomode)
+
+### videoCodecsChanged
+
+See: [videoCodecs](#videocodecs)
 
 ## Types

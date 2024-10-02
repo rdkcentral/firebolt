@@ -121,14 +121,14 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [AudioOutput.mode](./manage/AudioOutput/#mode)<br/>[AudioOutput.onModeChanged](./manage/AudioOutput/#modechanged) |
+| [AudioOutput.mode](./core/AudioOutput/#mode)<br/>[AudioOutput.onModeChanged](./core/AudioOutput/#modechanged) |
 
 
 ### `xrn:firebolt:capability:audio-output:status`
 
 | Uses |
 | ---- |
-| [AudioOutput.status](./manage/AudioOutput/#status)<br/>[AudioOutput.onStatusChanged](./manage/AudioOutput/#statuschanged) |
+| [AudioOutput.status](./core/AudioOutput/#status)<br/>[AudioOutput.onStatusChanged](./core/AudioOutput/#statuschanged) |
 
 
 ### `xrn:firebolt:capability:capabilities:info`
@@ -298,7 +298,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Display.colorimetry](./manage/Display/#colorimetry)<br/>[Display.nativeResolution](./manage/Display/#nativeresolution)<br/>[Display.size](./manage/Display/#size)<br/>[Display.videoModes](./manage/Display/#videomodes) |
+| [Display.colorimetry](./core/Display/#colorimetry)<br/>[Display.nativeResolution](./core/Display/#nativeresolution)<br/>[Display.size](./core/Display/#size)<br/>[Display.videoModes](./core/Display/#videomodes) |
 
 
 ### `xrn:firebolt:capability:grants:state`
@@ -470,7 +470,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [MediaCapabilities.audioCodecs](./manage/MediaCapabilities/#audiocodecs)<br/>[MediaCapabilities.videoCodecs](./manage/MediaCapabilities/#videocodecs)<br/>[MediaCapabilities.atmosSupported](./manage/MediaCapabilities/#atmossupported)<br/>[MediaCapabilities.colorDepth](./manage/MediaCapabilities/#colordepth)<br/>[MediaCapabilities.hdrFormats](./manage/MediaCapabilities/#hdrformats)<br/>[MediaCapabilities.preferredVideoMode](./manage/MediaCapabilities/#preferredvideomode)<br/>[MediaCapabilities.onAudioCodecsChanged](./manage/MediaCapabilities/#audiocodecschanged)<br/>[MediaCapabilities.onVideoCodecsChanged](./manage/MediaCapabilities/#videocodecschanged)<br/>[MediaCapabilities.onAtmosSupportedChanged](./manage/MediaCapabilities/#atmossupportedchanged)<br/>[MediaCapabilities.onColorDepthChanged](./manage/MediaCapabilities/#colordepthchanged)<br/>[MediaCapabilities.onHdrFormatsChanged](./manage/MediaCapabilities/#hdrformatschanged)<br/>[MediaCapabilities.onPreferredVideoModeChanged](./manage/MediaCapabilities/#preferredvideomodechanged) |
+| [MediaCapabilities.audioCodecs](./core/MediaCapabilities/#audiocodecs)<br/>[MediaCapabilities.videoCodecs](./core/MediaCapabilities/#videocodecs)<br/>[MediaCapabilities.atmosSupported](./core/MediaCapabilities/#atmossupported)<br/>[MediaCapabilities.colorDepth](./core/MediaCapabilities/#colordepth)<br/>[MediaCapabilities.hdrFormats](./core/MediaCapabilities/#hdrformats)<br/>[MediaCapabilities.preferredVideoMode](./core/MediaCapabilities/#preferredvideomode)<br/>[MediaCapabilities.onAudioCodecsChanged](./core/MediaCapabilities/#audiocodecschanged)<br/>[MediaCapabilities.onVideoCodecsChanged](./core/MediaCapabilities/#videocodecschanged)<br/>[MediaCapabilities.onAtmosSupportedChanged](./core/MediaCapabilities/#atmossupportedchanged)<br/>[MediaCapabilities.onColorDepthChanged](./core/MediaCapabilities/#colordepthchanged)<br/>[MediaCapabilities.onHdrFormatsChanged](./core/MediaCapabilities/#hdrformatschanged)<br/>[MediaCapabilities.onPreferredVideoModeChanged](./core/MediaCapabilities/#preferredvideomodechanged) |
 
 
 ### `xrn:firebolt:capability:metrics:distributor`
@@ -615,13 +615,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [VideoOutput.onModeWillChange](./manage/VideoOutput/#modewillchange) |
+| [VideoOutput.onModeWillChange](./core/VideoOutput/#modewillchange) |
 
 
 ### `xrn:firebolt:capability:video-output:status`
 
 | Uses |
 | ---- |
-| [VideoOutput.status](./manage/VideoOutput/#status)<br/>[VideoOutput.onStatusChanged](./manage/VideoOutput/#statuschanged) |
+| [VideoOutput.status](./core/VideoOutput/#status)<br/>[VideoOutput.onStatusChanged](./core/VideoOutput/#statuschanged) |
 
 

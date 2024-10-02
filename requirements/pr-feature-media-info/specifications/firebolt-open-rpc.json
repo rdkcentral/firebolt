@@ -6328,6 +6328,11 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "MediaCapabilities.hdrFormats",
+					"x-since": "1.4.0"
 				}
 			],
 			"result": {
@@ -6445,6 +6450,11 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "MediaCapabilities.preferredVideoMode",
+					"x-since": "1.4.0"
 				}
 			],
 			"result": {
@@ -6846,6 +6856,11 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "MediaCapabilities.hdrFormats",
+					"x-since": "1.4.0"
 				}
 			],
 			"result": {
@@ -7038,6 +7053,11 @@
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "MediaCapabilities.preferredVideoMode",
+					"x-since": "1.4.0"
 				}
 			],
 			"result": {
