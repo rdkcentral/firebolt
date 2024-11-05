@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Discovery SDK",
-		"version": "1.5.0-next.5",
+		"version": "1.5.0-next.6",
 		"x-module-descriptions": {}
 	},
 	"methods": [
