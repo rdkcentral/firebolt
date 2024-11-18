@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.3.1-feature-media-metrics.0
+Version AcknowledgeChallenge 1.5.0-feature-media-metrics.0
 
 ## Table of Contents
 

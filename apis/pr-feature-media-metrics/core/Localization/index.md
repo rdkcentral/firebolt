@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.3.1-feature-media-metrics.0
+Version Localization 1.5.0-feature-media-metrics.0
 
 ## Table of Contents
 
@@ -54,7 +54,7 @@ Methods for accessessing location and language preferences
 
 ### additionalInfo
 
-Get any platform-specific localization information, in an Map<string, string>
+Get any platform-specific localization information
 
 ```typescript
 function additionalInfo(): Promise<object>

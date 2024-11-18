@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.3.1-feature-media-metrics.0
+Version Discovery 1.5.0-feature-media-metrics.0
 
 ## Table of Contents
 
@@ -2325,18 +2325,15 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.launch(
-  'xrn:firebolt:application-type:settings ',
-  {
-    action: 'section',
-    data: {
-      sectionName: 'settings',
-    },
-    context: {
-      source: 'voice',
-    },
+let success = await Discovery.launch('xrn:firebolt:application-type:settings', {
+  action: 'section',
+  data: {
+    sectionName: 'settings',
   },
-)
+  context: {
+    source: 'voice',
+  },
+})
 console.log(success)
 ```
 
@@ -2356,7 +2353,7 @@ Request:
   "id": 1,
   "method": "Discovery.launch",
   "params": {
-    "appId": "xrn:firebolt:application-type:settings ",
+    "appId": "xrn:firebolt:application-type:settings",
     "intent": {
       "action": "section",
       "data": {
@@ -3572,12 +3569,12 @@ function watched(
 
 Parameters:
 
-| Param       | Type      | Required | Description                                                                                                      |
-| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                            |
-| `progress`  | `number`  | false    | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
-| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                           |
-| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                     |
+| Param       | Type      | Required | Description                                                                                                            |
+| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                                  |
+| `progress`  | `number`  | false    | How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) <br/>minumum: 0 |
+| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                                 |
+| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                           |
 
 Promise resolution:
 

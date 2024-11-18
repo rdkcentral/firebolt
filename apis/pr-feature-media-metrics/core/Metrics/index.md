@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.3.1-feature-media-metrics.0
+Version Metrics 1.5.0-feature-media-metrics.0
 
 ## Table of Contents
 

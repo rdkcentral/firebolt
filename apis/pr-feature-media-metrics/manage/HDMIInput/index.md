@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version HDMIInput 1.3.1-feature-media-metrics.0
+Version HDMIInput 1.5.0-feature-media-metrics.0
 
 ## Table of Contents
 

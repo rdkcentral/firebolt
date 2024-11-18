@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.3.1-feature-media-metrics.0
+Version Device 1.5.0-feature-media-metrics.0
 
 ## Table of Contents
 
@@ -48,8 +48,12 @@ Version Device 1.3.1-feature-media-metrics.0
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
+  - [HDRFormatMap](#hdrformatmap)
   - [AudioProfiles](#audioprofiles)
   - [Resolution](#resolution)
+  - [NetworkInfoResult](#networkinforesult)
+  - [DeviceVersion](#deviceversion)
+  - [HDCPVersionMap](#hdcpversionmap)
 
 ## Usage
 
@@ -67,7 +71,9 @@ A module for querying about the device and it's capabilities.
 
 ### audio
 
-Get the supported audio profiles
+Get the supported audio profiles for the connected devices.
+
+It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.
 
 To get the value of `audio` call the method like this:
 
@@ -215,7 +221,7 @@ Response:
 
 ### distributor
 
-Get the distributor ID for this device
+Get the name of the entity which is distributing the current device. There can be multiple distributors which distribute the same device model.
 
 To get the value of `distributor` call the method like this:
 
@@ -279,17 +285,19 @@ Response:
 
 ### hdcp
 
-Get the supported HDCP profiles
+Get the negotiated HDCP profiles for a connected device.
+
+For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.
 
 To get the value of `hdcp` call the method like this:
 
 ```typescript
-function hdcp(): Promise<BooleanMap>
+function hdcp(): Promise<HDCPVersionMap>
 ```
 
 Promise resolution:
 
-[BooleanMap](../Types/schemas/#BooleanMap)
+[HDCPVersionMap](#hdcpversionmap)
 
 Capabilities:
 
@@ -299,18 +307,18 @@ Capabilities:
 
 #### Examples
 
-Getting the supported HDCP profiles
+Getting the negotiated HDCP versions
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdcpProfiles = await Device.hdcp()
-console.log(supportedHdcpProfiles)
+let negotiatedHdcpVersions = await Device.hdcp()
+console.log(negotiatedHdcpVersions)
 ```
 
-Value of `supportedHdcpProfiles`:
+Value of `negotiatedHdcpVersions`:
 
 ```javascript
 {
@@ -352,7 +360,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdcp(callback: (value) => BooleanMap): Promise<number>
+function hdcp(callback: (value) => HDCPVersionMap): Promise<number>
 ```
 
 Promise resolution:
@@ -363,7 +371,7 @@ number
 
 #### Examples
 
-Getting the supported HDCP profiles
+Getting the negotiated HDCP versions
 
 JavaScript:
 
@@ -376,7 +384,7 @@ let listenerId = await hdcp((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdcpProfiles`:
+Value of `negotiatedHdcpVersions`:
 
 ```javascript
 {
@@ -419,17 +427,17 @@ Response:
 
 ### hdr
 
-Get the supported HDR profiles
+Get the negotiated HDR formats for the connected display and device
 
 To get the value of `hdr` call the method like this:
 
 ```typescript
-function hdr(): Promise<BooleanMap>
+function hdr(): Promise<HDRFormatMap>
 ```
 
 Promise resolution:
 
-[BooleanMap](../Types/schemas/#BooleanMap)
+[HDRFormatMap](#hdrformatmap)
 
 Capabilities:
 
@@ -439,18 +447,18 @@ Capabilities:
 
 #### Examples
 
-Getting the supported HDR profiles
+Getting the negotiated HDR formats
 
 JavaScript:
 
 ```javascript
 import { Device } from '@firebolt-js/sdk'
 
-let supportedHdrProfiles = await Device.hdr()
-console.log(supportedHdrProfiles)
+let negotiatedHdrFormats = await Device.hdr()
+console.log(negotiatedHdrFormats)
 ```
 
-Value of `supportedHdrProfiles`:
+Value of `negotiatedHdrFormats`:
 
 ```javascript
 {
@@ -496,7 +504,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function hdr(callback: (value) => BooleanMap): Promise<number>
+function hdr(callback: (value) => HDRFormatMap): Promise<number>
 ```
 
 Promise resolution:
@@ -507,7 +515,7 @@ number
 
 #### Examples
 
-Getting the supported HDR profiles
+Getting the negotiated HDR formats
 
 JavaScript:
 
@@ -520,7 +528,7 @@ let listenerId = await hdr((value) => {
 console.log(listenerId)
 ```
 
-Value of `supportedHdrProfiles`:
+Value of `negotiatedHdrFormats`:
 
 ```javascript
 {
@@ -685,7 +693,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### make
 
-Get the device make
+Get the manufacturer of the device model
 
 To get the value of `make` call the method like this:
 
@@ -749,7 +757,7 @@ Response:
 
 ### model
 
-Get the device model
+Get the manufacturer designated model of the device
 
 To get the value of `model` call the method like this:
 
@@ -1032,10 +1040,12 @@ Get the current network status and type
 To get the value of `network` call the method like this:
 
 ```typescript
-function network(): Promise<object>
+function network(): Promise<NetworkInfoResult>
 ```
 
 Promise resolution:
+
+[NetworkInfoResult](#networkinforesult)
 
 Capabilities:
 
@@ -1098,7 +1108,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function network(callback: (value) => object): Promise<number>
+function network(callback: (value) => NetworkInfoResult): Promise<number>
 ```
 
 Promise resolution:
@@ -1221,7 +1231,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### platform
 
-Get the platform ID for this device
+Get a platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.
 
 To get the value of `platform` call the method like this:
 
@@ -1285,7 +1295,21 @@ Response:
 
 ### screenResolution
 
-Get the current screen resolution
+Get the resolution for the graphical surface of the app.
+
+The pairs returned will be of a [width, height] format and will correspond to the following values:
+
+NTSC Standard Definition (SD): [720, 480]
+
+PAL Standard Definition (SD): [720, 576]
+
+High Definition (HD): [1280, 720]
+
+Full HD (FHD): [1920, 1080]
+
+4K Ultra High Definition (UHD): [3840, 2160]
+
+**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs
 
 To get the value of `screenResolution` call the method like this:
 
@@ -1610,10 +1634,12 @@ Get the SDK, OS and other version info
 To get the value of `version` call the method like this:
 
 ```typescript
-function version(): Promise<object>
+function version(): Promise<DeviceVersion>
 ```
 
 Promise resolution:
+
+[DeviceVersion](#deviceversion)
 
 Capabilities:
 
@@ -1721,7 +1747,19 @@ Response:
 
 ### videoResolution
 
-Get the current video resolution
+Get the maximum supported video resolution of the currently connected device and display.
+
+The pairs returned will be of a [width, height] format and will correspond to the following values:
+
+NTSC Standard Definition (SD): [720, 480]
+
+PAL Standard Definition (SD): [720, 576]
+
+High Definition (HD): [1280, 720]
+
+Full HD (FHD): [1920, 1080]
+
+4K Ultra High Definition (UHD): [3840, 2160]
 
 To get the value of `videoResolution` call the method like this:
 
@@ -1973,38 +2011,105 @@ NetworkType: {
 
 ---
 
+### HDRFormatMap
+
+The type of HDR format
+
+```typescript
+type HDRFormatMap = {
+  hdr10: boolean
+  hdr10Plus: boolean
+  dolbyVision: boolean
+  hlg: boolean
+}
+```
+
+---
+
 ### AudioProfiles
 
 ```typescript
 type AudioProfiles = {
-  STEREO?: boolean
-
-  DOLBY_DIGITAL_5_1?: boolean
-
-  DOLBY_DIGITAL_7_1?: boolean
-
-  DOLBY_DIGITAL_5_1_PLUS?: boolean
-
-  DOLBY_DIGITAL_7_1_PLUS?: boolean
-
-  DOLBY_ATMOS?: boolean
+  stereo: boolean
+  dolbyDigital5_1: boolean
+  dolbyDigital5_1_plus: boolean
+  dolbyAtmos: boolean
 }
 ```
-
-See also:
-
-[BooleanMap](../Types/schemas/#BooleanMap)
-[AudioProfile](../Types/schemas/#AudioProfile)
 
 ---
 
 ### Resolution
 
 ```typescript
-type Resolution = [
-  number, // undefined  item
-  number, // undefined  item
-]
+type Resolution =
+  | [
+      720, // undefined Width in pixels item
+      480, // undefined Height in pixels item
+    ]
+  | [
+      720, // undefined Width in pixels item
+      576, // undefined Height in pixels item
+    ]
+  | [
+      1280, // undefined Width in pixels item
+      720, // undefined Height in pixels item
+    ]
+  | [
+      1920, // undefined Width in pixels item
+      1080, // undefined Height in pixels item
+    ]
+  | [
+      3840, // undefined Width in pixels item
+      2160, // undefined Height in pixels item
+    ]
+```
+
+---
+
+### NetworkInfoResult
+
+```typescript
+type NetworkInfoResult = {
+  state: NetworkState // The type of network that is currently active
+  type: NetworkType // The type of network that is currently active
+}
+```
+
+See also:
+
+[NetworkState](#networkstate)
+[NetworkType](#networktype)
+
+---
+
+### DeviceVersion
+
+```typescript
+type DeviceVersion = {
+  sdk?: SemanticVersion // The Firebolt SDK version
+  api: SemanticVersion // The latest Firebolt API version supported by the current device.
+  firmware: SemanticVersion // The firmware version as reported by the device
+  os: SemanticVersion // **Deprecated** Use `firmware`, instead.
+  debug?: string // Detailed version as a string, for debugging purposes
+}
+```
+
+See also:
+
+[SemanticVersion](../Types/schemas/#SemanticVersion)
+
+---
+
+### HDCPVersionMap
+
+The type of HDCP versions
+
+```typescript
+type HDCPVersionMap = {
+  hdcp1_4: boolean
+  hdcp2_2: boolean
+}
 ```
 
 ---
