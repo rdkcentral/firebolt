@@ -10,12 +10,9 @@ sdk: discovery
 
 ---
 
-Version Accessibility 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [FontFamily](#fontfamily)
   - [VoiceSpeed](#voicespeed)
@@ -29,15 +26,20 @@ Version Accessibility 0.0.0-unknown.0
   - [ClosedCaptionsStyles](#closedcaptionsstyles)
   - [ClosedCaptionsSettings](#closedcaptionssettings)
 
-## Overview
-
-undefined
-
 ## Types
 
 ### FontFamily
 
 ```typescript
+FontFamily: {
+    MONOSPACED_SERIF: 'monospaced_serif',
+    PROPORTIONAL_SERIF: 'proportional_serif',
+    MONOSPACED_SANSERIF: 'monospaced_sanserif',
+    PROPORTIONAL_SANSERIF: 'proportional_sanserif',
+    SMALLCAPS: 'smallcaps',
+    CURSIVE: 'cursive',
+    CASUAL: 'casual',
+},
 
 ```
 
@@ -46,7 +48,7 @@ undefined
 ### VoiceSpeed
 
 ```typescript
-
+type VoiceSpeed = number
 ```
 
 ---
@@ -69,7 +71,7 @@ See also:
 ### FontSize
 
 ```typescript
-
+type FontSize = number
 ```
 
 ---
@@ -77,7 +79,7 @@ See also:
 ### Color
 
 ```typescript
-
+type Color = string
 ```
 
 ---
@@ -85,6 +87,14 @@ See also:
 ### FontEdge
 
 ```typescript
+FontEdge: {
+    NONE: 'none',
+    RAISED: 'raised',
+    DEPRESSED: 'depressed',
+    UNIFORM: 'uniform',
+    DROP_SHADOW_LEFT: 'drop_shadow_left',
+    DROP_SHADOW_RIGHT: 'drop_shadow_right',
+},
 
 ```
 
@@ -93,7 +103,7 @@ See also:
 ### Opacity
 
 ```typescript
-
+type Opacity = number
 ```
 
 ---
@@ -101,7 +111,7 @@ See also:
 ### HorizontalAlignment
 
 ```typescript
-
+type HorizontalAlignment = string
 ```
 
 ---
@@ -109,7 +119,7 @@ See also:
 ### VerticalAlignment
 
 ```typescript
-
+type VerticalAlignment = string
 ```
 
 ---

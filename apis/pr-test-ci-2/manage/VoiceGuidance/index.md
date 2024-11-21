@@ -25,6 +25,9 @@ Version VoiceGuidance 1.5.0-test-ci-2.0
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
   - [speedChanged](#speedchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [speedChanged](#speedchanged-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -803,5 +806,20 @@ See: [enabled](#enabled)
 ### speedChanged
 
 See: [speed](#speed)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### enabledChanged
+
+See: [enabled](#enabled)
+
+### speedChanged
+
+See: [speed](#speed)
+
+</details>
 
 ## Types

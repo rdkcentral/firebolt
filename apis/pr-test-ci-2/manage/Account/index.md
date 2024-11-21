@@ -119,7 +119,7 @@ Response:
 Encoded token provided by the Distributor for Device Authentication.
 
 ```typescript
-
+type Token = string
 ```
 
 ---
@@ -129,7 +129,7 @@ Encoded token provided by the Distributor for Device Authentication.
 Number of secs before the token expires
 
 ```typescript
-
+type Expiry = number
 ```
 
 ---

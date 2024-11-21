@@ -27,6 +27,8 @@ Version Advertising 1.5.0-test-ci-2.0
   - [policy](#policy)
 - [Events](#events)
   - [policyChanged](#policychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
   - [AdConfigurationOptions](#adconfigurationoptions)
   - [AdPolicy](#adpolicy)
@@ -82,7 +84,7 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
 
-let advertisingId = await Advertising.advertisingId(null)
+let advertisingId = await Advertising.advertisingId()
 console.log(advertisingId)
 ```
 
@@ -733,6 +735,17 @@ Response:
 ### policyChanged
 
 See: [policy](#policy)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### policyChanged
+
+See: [policy](#policy)
+
+</details>
 
 ## Types
 

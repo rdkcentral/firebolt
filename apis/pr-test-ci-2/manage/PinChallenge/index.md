@@ -18,12 +18,13 @@ Version PinChallenge 1.5.0-test-ci-2.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [challengeError](#challengeerror)
+  - [provide](#provide)
+- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
   - [challengeFocus](#challengefocus)
   - [challengeResponse](#challengeresponse)
-  - [provide](#provide)
-- [Events](#events)
-  - [onRequestChallenge](#onrequestchallenge)
+  </details>
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Provider Interfaces](#provider-interfaces)
   - [ChallengeProvider](#challengeprovider)
 - [Types](#types)
@@ -47,9 +48,31 @@ A module for registering as a provider for a user grant in which the user is pro
 
 ## Methods
 
+### provide
+
+To provide a specific capability to the platform. See [Provider Interfaces](#provider-interfaces) for a list of interfaces available to provide in this module.
+
+```typescript
+provide(capability: string, provider: any): void
+```
+
+Parameters:
+
+| Param        | Type     | Required | Summary                                      |
+| ------------ | -------- | -------- | -------------------------------------------- |
+| `capability` | `string` | Yes      | The capability that is being provided.       |
+| `provider`   | `any`    | Yes      | An implementation of the required interface. |
+
+See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
+
+## Private Methods
+
+<details markdown="1"  id="private-methods-details">
+  <summary>View</summary>
+
 ### challengeError
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Challenge Provider to send back error.
 
@@ -105,7 +128,7 @@ Response:
 
 ### challengeFocus
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Challenge Provider to request focus for UX purposes.
 
@@ -148,7 +171,7 @@ Response:
 
 ### challengeResponse
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Challenge Provider to send back response.
 
@@ -264,28 +287,16 @@ Response:
 
 ---
 
-### provide
+</details>
 
-To provide a specific capability to the platform. See [Provider Interfaces](#provider-interfaces) for a list of interfaces available to provide in this module.
+## Private Events
 
-```typescript
-provide(capability: string, provider: any): void
-```
-
-Parameters:
-
-| Param        | Type     | Required | Summary                                      |
-| ------------ | -------- | -------- | -------------------------------------------- |
-| `capability` | `string` | Yes      | The capability that is being provided.       |
-| `provider`   | `any`    | Yes      | An implementation of the required interface. |
-
-See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
-
-## Events
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
 
 ### onRequestChallenge
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Registers as a provider for when the user should be challenged in order to confirm access to a capability through a pin prompt
 
@@ -345,6 +356,8 @@ Response:
 ```
 
 ---
+
+</details>
 
 ## Provider Interfaces
 

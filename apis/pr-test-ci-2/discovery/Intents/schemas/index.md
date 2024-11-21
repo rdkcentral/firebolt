@@ -10,12 +10,9 @@ sdk: discovery
 
 ---
 
-Version Intents 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [Intent](#intent)
   - [IntentProperties](#intentproperties)
@@ -30,10 +27,6 @@ Version Intents 0.0.0-unknown.0
   - [LaunchIntent](#launchintent)
   - [NavigationIntent](#navigationintent)
 
-## Overview
-
-undefined
-
 ## Types
 
 ### Intent
@@ -41,7 +34,10 @@ undefined
 A Firebolt compliant representation of a user intention.
 
 ```typescript
-
+type Intent = {
+  action: string
+  context: object
+}
 ```
 
 ---
@@ -49,7 +45,7 @@ A Firebolt compliant representation of a user intention.
 ### IntentProperties
 
 ```typescript
-
+type IntentProperties = {}
 ```
 
 ---
