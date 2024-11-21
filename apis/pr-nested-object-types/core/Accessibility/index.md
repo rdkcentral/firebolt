@@ -29,10 +29,6 @@ Version Accessibility 1.5.0-nested-object-types.0
   - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
   - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
   - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged-1)
-  - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged-1)
-  </details>
 - [Types](#types)
   - [AudioDescriptionSettings](#audiodescriptionsettings-1)
 
@@ -192,11 +188,102 @@ Response:
 
 ### closedCaptions
 
-[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Accessibility.closedCaptionsSettings()` as a replacement.
+Get the user's preferred closed-captions settings
 
 ```typescript
 function closedCaptions(): Promise<ClosedCaptionsSettings>
 ```
+
+Promise resolution:
+
+[ClosedCaptionsSettings](../Accessibility/schemas/#ClosedCaptionsSettings)
+
+Capabilities:
+
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:closedcaptions |
+
+#### Examples
+
+Getting the closed captions settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let closedCaptionsSettings = await Accessibility.closedCaptions()
+console.log(closedCaptionsSettings)
+```
+
+Value of `closedCaptionsSettings`:
+
+```javascript
+{
+	"enabled": true,
+	"styles": {
+		"fontFamily": "monospaced_sanserif",
+		"fontSize": 1,
+		"fontColor": "#ffffff",
+		"fontEdge": "none",
+		"fontEdgeColor": "#7F7F7F",
+		"fontOpacity": 100,
+		"backgroundColor": "#000000",
+		"backgroundOpacity": 100,
+		"textAlign": "center",
+		"textAlignVertical": "middle",
+		"windowColor": "white",
+		"windowOpacity": 50
+	},
+	"preferredLanguages": [
+		"eng",
+		"spa"
+	]
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.closedCaptions",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "monospaced_sanserif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle",
+      "windowColor": "white",
+      "windowOpacity": 50
+    },
+    "preferredLanguages": ["eng", "spa"]
+  }
+}
+```
+
+</details>
 
 ---
 
@@ -516,11 +603,71 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### voiceGuidance
 
-[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Accessibility.voiceGuidanceSettings()` as a replacement.
+Get the user's preferred voice guidance settings
 
 ```typescript
 function voiceGuidance(): Promise<VoiceGuidanceSettings>
 ```
+
+Promise resolution:
+
+[VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Getting the voice guidance settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let settings = await Accessibility.voiceGuidance()
+console.log(settings)
+```
+
+Value of `settings`:
+
+```javascript
+{
+	"enabled": true,
+	"speed": 2
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.voiceGuidance",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "speed": 2
+  }
+}
+```
+
+</details>
 
 ---
 
@@ -679,25 +826,6 @@ See: [closedCaptionsSettings](#closedcaptionssettings)
 ### voiceGuidanceSettingsChanged
 
 See: [voiceGuidanceSettings](#voiceguidancesettings)
-
-## Private Events
-
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
-
-### audioDescriptionSettingsChanged
-
-See: [audioDescriptionSettings](#audiodescriptionsettings)
-
-### closedCaptionsSettingsChanged
-
-See: [closedCaptionsSettings](#closedcaptionssettings)
-
-### voiceGuidanceSettingsChanged
-
-See: [voiceGuidanceSettings](#voiceguidancesettings)
-
-</details>
 
 ## Types
 

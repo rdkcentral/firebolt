@@ -140,12 +140,8 @@ Response:
 type AppInitialization = {
   us_privacy?: string // The IAB US Privacy string.
   lmt?: number // The IAB limit ad tracking opt out value.
-  discovery?: {
-    navigateTo?: NavigationIntent // A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
-  }
-  secondScreen?: {
-    launchRequest?: SecondScreenEvent // An a message notification from a second screen device
-  }
+  discovery?: object
+  secondScreen?: object
 }
 ```
 

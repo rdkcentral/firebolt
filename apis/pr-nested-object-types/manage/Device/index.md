@@ -25,9 +25,6 @@ Version Device 1.5.0-nested-object-types.0
 - [Events](#events)
   - [deviceNameChanged](#devicenamechanged)
   - [nameChanged](#namechanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  - [nameChanged](#namechanged-1)
-  </details>
 - [Types](#types)
 
 ## Usage
@@ -511,7 +508,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let result = await Device.provision('12345678910', '987654321111')
+let result = await Device.provision('12345678910', '987654321111', null)
 console.log(result)
 ```
 
@@ -605,29 +602,71 @@ Response:
 
 ### deviceNameChanged
 
-[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
+```typescript
+function listen('deviceNameChanged', () => void): Promise<number>
+```
 
----
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
-### nameChanged
+Event value:
 
-See: [name](#name)
+Capabilities:
 
-## Private Events
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:name |
 
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
+#### Examples
 
-### deviceNameChanged
+Getting the device name
 
-[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
+JavaScript:
 
----
+```javascript
+import { Device } from '@firebolt-js/manage-sdk'
 
-### nameChanged
+Device.listen('deviceNameChanged', (value) => {
+  console.log(value)
+})
+```
 
-See: [name](#name)
+Value of `value`:
+
+```javascript
+'Living Room'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onDeviceNameChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
+}
+```
 
 </details>
+
+---
+
+### nameChanged
+
+See: [name](#name)
 
 ## Types

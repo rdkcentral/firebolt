@@ -24,8 +24,6 @@ Version Advertising 1.5.0-nested-object-types.0
   - [skipRestriction](#skiprestriction)
 - [Events](#events)
   - [skipRestrictionChanged](#skiprestrictionchanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  </details>
 - [Types](#types)
 
 ## Usage
@@ -541,16 +539,5 @@ Response:
 ### skipRestrictionChanged
 
 See: [skipRestriction](#skiprestriction)
-
-## Private Events
-
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
-
-### skipRestrictionChanged
-
-See: [skipRestriction](#skiprestriction)
-
-</details>
 
 ## Types

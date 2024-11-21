@@ -38,14 +38,6 @@ Version Localization 1.5.0-nested-object-types.0
   - [postalCodeChanged](#postalcodechanged)
   - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
   - [timeZoneChanged](#timezonechanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  - [languageChanged](#languagechanged-1)
-  - [localeChanged](#localechanged-1)
-  - [localityChanged](#localitychanged-1)
-  - [postalCodeChanged](#postalcodechanged-1)
-  - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged-1)
-  - [timeZoneChanged](#timezonechanged-1)
-  </details>
 - [Types](#types)
 
 ## Usage
@@ -2658,40 +2650,5 @@ See: [preferredAudioLanguages](#preferredaudiolanguages)
 ### timeZoneChanged
 
 See: [timeZone](#timezone)
-
-## Private Events
-
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
-
-### countryCodeChanged
-
-See: [countryCode](#countrycode)
-
-### languageChanged
-
-See: [language](#language)
-
-### localeChanged
-
-See: [locale](#locale)
-
-### localityChanged
-
-See: [locality](#locality)
-
-### postalCodeChanged
-
-See: [postalCode](#postalcode)
-
-### preferredAudioLanguagesChanged
-
-See: [preferredAudioLanguages](#preferredaudiolanguages)
-
-### timeZoneChanged
-
-See: [timeZone](#timezone)
-
-</details>
 
 ## Types

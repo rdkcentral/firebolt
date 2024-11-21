@@ -10,9 +10,12 @@ sdk: discovery
 
 ---
 
+Version Types 0.0.0-unknown.0
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Overview](#overview)
 - [Types](#types)
   - [AudioProfile](#audioprofile)
   - [SemanticVersion](#semanticversion)
@@ -20,6 +23,10 @@ sdk: discovery
   - [FlatMap](#flatmap)
   - [BooleanMap](#booleanmap)
   - [Timeout](#timeout)
+
+## Overview
+
+undefined
 
 ## Types
 
@@ -63,7 +70,7 @@ type LocalizedString = string | object
 ### FlatMap
 
 ```typescript
-type FlatMap = [property: string]: string | number | boolean
+
 ```
 
 ---
@@ -71,7 +78,7 @@ type FlatMap = [property: string]: string | number | boolean
 ### BooleanMap
 
 ```typescript
-type BooleanMap = [property: string]: boolean
+type BooleanMap = {}
 ```
 
 ---
@@ -81,7 +88,7 @@ type BooleanMap = [property: string]: boolean
 Defines the timeout in seconds. If the threshold for timeout is passed for any operation without a result it will throw an error.
 
 ```typescript
-type Timeout = number
+
 ```
 
 ---

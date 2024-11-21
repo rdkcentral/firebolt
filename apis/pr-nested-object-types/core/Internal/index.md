@@ -16,8 +16,8 @@ Version Internal 1.5.0-nested-object-types.0
 
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
-- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
-  </details>
+- [Methods](#methods)
+  - [initialize](#initialize)
 - [Types](#types)
   - [InitializeResult](#initializeresult)
 
@@ -25,14 +25,11 @@ Version Internal 1.5.0-nested-object-types.0
 
 Internal methods for SDK / FEE integration
 
-## Private Methods
-
-<details markdown="1"  id="private-methods-details">
-  <summary>View</summary>
+## Methods
 
 ### initialize
 
-_This is a private RPC method._
+_This is an private RPC method._
 
 Initialize the SDK / FEE session.
 
@@ -94,8 +91,6 @@ Response:
 ```
 
 ---
-
-</details>
 
 ## Types
 

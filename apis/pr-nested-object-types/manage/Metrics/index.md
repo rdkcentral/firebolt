@@ -126,7 +126,7 @@ type EventObjectPrimitives = string | number | number | boolean | null
 ### EventObject
 
 ```typescript
-type EventObject = [property: string]: EventObjectPrimitives | EventObjectPrimitives | EventObject[] | EventObject
+type EventObject = {}
 ```
 
 See also:

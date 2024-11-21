@@ -10,11 +10,18 @@ sdk: core
 
 ---
 
+Version Advertising 0.0.0-unknown.0
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Overview](#overview)
 - [Types](#types)
   - [SkipRestriction](#skiprestriction)
+
+## Overview
+
+undefined
 
 ## Types
 

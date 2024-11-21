@@ -45,15 +45,6 @@ Version Device 1.5.0-nested-object-types.0
   - [networkChanged](#networkchanged)
   - [screenResolutionChanged](#screenresolutionchanged)
   - [videoResolutionChanged](#videoresolutionchanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  - [deviceNameChanged](#devicenamechanged-1)
-  - [hdcpChanged](#hdcpchanged-1)
-  - [hdrChanged](#hdrchanged-1)
-  - [nameChanged](#namechanged-1)
-  - [networkChanged](#networkchanged-1)
-  - [screenResolutionChanged](#screenresolutionchanged-1)
-  - [videoResolutionChanged](#videoresolutionchanged-1)
-  </details>
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
@@ -1902,74 +1893,92 @@ See: [audio](#audio)
 
 ### deviceNameChanged
 
-[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
+```typescript
+function listen('deviceNameChanged', () => void): Promise<number>
+```
 
----
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
-### hdcpChanged
+Event value:
 
-See: [hdcp](#hdcp)
+Capabilities:
 
-### hdrChanged
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:device:name |
 
-See: [hdr](#hdr)
+#### Examples
 
-### nameChanged
+Getting the device name
 
-See: [name](#name)
+JavaScript:
 
-### networkChanged
+```javascript
+import { Device } from '@firebolt-js/sdk'
 
-See: [network](#network)
+Device.listen('deviceNameChanged', (value) => {
+  console.log(value)
+})
+```
 
-### screenResolutionChanged
+Value of `value`:
 
-See: [screenResolution](#screenresolution)
+```javascript
+'Living Room'
+```
 
-### videoResolutionChanged
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
 
-See: [videoResolution](#videoresolution)
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Device.onDeviceNameChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
 
-## Private Events
+Response:
 
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
-
-### audioChanged
-
-See: [audio](#audio)
-
-### deviceNameChanged
-
-[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
-
----
-
-### hdcpChanged
-
-See: [hdcp](#hdcp)
-
-### hdrChanged
-
-See: [hdr](#hdr)
-
-### nameChanged
-
-See: [name](#name)
-
-### networkChanged
-
-See: [network](#network)
-
-### screenResolutionChanged
-
-See: [screenResolution](#screenresolution)
-
-### videoResolutionChanged
-
-See: [videoResolution](#videoresolution)
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
+}
+```
 
 </details>
+
+---
+
+### hdcpChanged
+
+See: [hdcp](#hdcp)
+
+### hdrChanged
+
+See: [hdr](#hdr)
+
+### nameChanged
+
+See: [name](#name)
+
+### networkChanged
+
+See: [network](#network)
+
+### screenResolutionChanged
+
+See: [screenResolution](#screenresolution)
+
+### videoResolutionChanged
+
+See: [videoResolution](#videoresolution)
 
 ## Types
 

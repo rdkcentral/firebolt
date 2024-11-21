@@ -49,21 +49,6 @@ Version ClosedCaptions 1.5.0-nested-object-types.0
   - [textAlignVerticalChanged](#textalignverticalchanged)
   - [windowColorChanged](#windowcolorchanged)
   - [windowOpacityChanged](#windowopacitychanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  - [backgroundOpacityChanged](#backgroundopacitychanged-1)
-  - [enabledChanged](#enabledchanged-1)
-  - [fontColorChanged](#fontcolorchanged-1)
-  - [fontEdgeChanged](#fontedgechanged-1)
-  - [fontEdgeColorChanged](#fontedgecolorchanged-1)
-  - [fontFamilyChanged](#fontfamilychanged-1)
-  - [fontOpacityChanged](#fontopacitychanged-1)
-  - [fontSizeChanged](#fontsizechanged-1)
-  - [preferredLanguagesChanged](#preferredlanguageschanged-1)
-  - [textAlignChanged](#textalignchanged-1)
-  - [textAlignVerticalChanged](#textalignverticalchanged-1)
-  - [windowColorChanged](#windowcolorchanged-1)
-  - [windowOpacityChanged](#windowopacitychanged-1)
-  </details>
 - [Types](#types)
 
 ## Usage
@@ -341,7 +326,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.backgroundColor()
+let result = await ClosedCaptions.backgroundColor(null)
 console.log(result)
 ```
 
@@ -795,7 +780,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.backgroundOpacity()
+let result = await ClosedCaptions.backgroundOpacity(null)
 console.log(result)
 ```
 
@@ -1569,7 +1554,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontColor()
+let result = await ClosedCaptions.fontColor(null)
 console.log(result)
 ```
 
@@ -2023,7 +2008,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontEdge()
+let result = await ClosedCaptions.fontEdge(null)
 console.log(result)
 ```
 
@@ -2477,7 +2462,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontEdgeColor()
+let result = await ClosedCaptions.fontEdgeColor(null)
 console.log(result)
 ```
 
@@ -2931,7 +2916,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontFamily()
+let result = await ClosedCaptions.fontFamily(null)
 console.log(result)
 ```
 
@@ -3385,7 +3370,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontOpacity()
+let result = await ClosedCaptions.fontOpacity(null)
 console.log(result)
 ```
 
@@ -3839,7 +3824,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.fontSize()
+let result = await ClosedCaptions.fontSize(null)
 console.log(result)
 ```
 
@@ -4725,7 +4710,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.textAlign()
+let result = await ClosedCaptions.textAlign(null)
 console.log(result)
 ```
 
@@ -5179,7 +5164,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.textAlignVertical()
+let result = await ClosedCaptions.textAlignVertical(null)
 console.log(result)
 ```
 
@@ -5635,7 +5620,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.windowColor()
+let result = await ClosedCaptions.windowColor(null)
 console.log(result)
 ```
 
@@ -6089,7 +6074,7 @@ JavaScript:
 ```javascript
 import { ClosedCaptions } from '@firebolt-js/manage-sdk'
 
-let result = await ClosedCaptions.windowOpacity()
+let result = await ClosedCaptions.windowOpacity(null)
 console.log(result)
 ```
 
@@ -6339,68 +6324,5 @@ See: [windowColor](#windowcolor)
 ### windowOpacityChanged
 
 See: [windowOpacity](#windowopacity)
-
-## Private Events
-
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
-
-### backgroundColorChanged
-
-See: [backgroundColor](#backgroundcolor)
-
-### backgroundOpacityChanged
-
-See: [backgroundOpacity](#backgroundopacity)
-
-### enabledChanged
-
-See: [enabled](#enabled)
-
-### fontColorChanged
-
-See: [fontColor](#fontcolor)
-
-### fontEdgeChanged
-
-See: [fontEdge](#fontedge)
-
-### fontEdgeColorChanged
-
-See: [fontEdgeColor](#fontedgecolor)
-
-### fontFamilyChanged
-
-See: [fontFamily](#fontfamily)
-
-### fontOpacityChanged
-
-See: [fontOpacity](#fontopacity)
-
-### fontSizeChanged
-
-See: [fontSize](#fontsize)
-
-### preferredLanguagesChanged
-
-See: [preferredLanguages](#preferredlanguages)
-
-### textAlignChanged
-
-See: [textAlign](#textalign)
-
-### textAlignVerticalChanged
-
-See: [textAlignVertical](#textalignvertical)
-
-### windowColorChanged
-
-See: [windowColor](#windowcolor)
-
-### windowOpacityChanged
-
-See: [windowOpacity](#windowopacity)
-
-</details>
 
 ## Types

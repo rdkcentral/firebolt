@@ -10,9 +10,12 @@ sdk: manage
 
 ---
 
+Version Entertainment 0.0.0-unknown.0
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Overview](#overview)
 - [Types](#types)
   - [OfferingType](#offeringtype)
   - [MusicType](#musictype)
@@ -24,6 +27,10 @@ sdk: manage
   - [Entitlement](#entitlement)
   - [WayToWatch](#waytowatch)
   - [EntityInfo](#entityinfo)
+
+## Overview
+
+undefined
 
 ## Types
 

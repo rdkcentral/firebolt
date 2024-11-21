@@ -10,9 +10,12 @@ sdk: discovery
 
 ---
 
+Version Capabilities 0.0.0-unknown.0
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Overview](#overview)
 - [Types](#types)
   - [Role](#role)
   - [DenyReason](#denyreason)
@@ -20,6 +23,10 @@ sdk: discovery
   - [CapPermissionStatus](#cappermissionstatus)
   - [CapabilityInfo](#capabilityinfo)
   - [Permission](#permission)
+
+## Overview
+
+undefined
 
 ## Types
 
@@ -61,7 +68,7 @@ DenyReason: {
 A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
 
 ```typescript
-type Capability = string
+
 ```
 
 ---
@@ -69,10 +76,7 @@ type Capability = string
 ### CapPermissionStatus
 
 ```typescript
-type CapPermissionStatus = {
-  permitted?: boolean // Provides info whether the capability is permitted
-  granted?: boolean
-}
+
 ```
 
 ---
@@ -84,18 +88,9 @@ type CapabilityInfo = {
   capability?: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
   supported: boolean // Provides info whether the capability is supported
   available: boolean // Provides info whether the capability is available
-  use: {
-    permitted?: boolean // Provides info whether the capability is permitted
-    granted?: boolean
-  }
-  manage: {
-    permitted?: boolean // Provides info whether the capability is permitted
-    granted?: boolean
-  }
-  provide: {
-    permitted?: boolean // Provides info whether the capability is permitted
-    granted?: boolean
-  }
+  use: object
+  manage: object
+  provide: object
   details?: DenyReason[] // Reasons why a Capability might not be invokable
 }
 ```

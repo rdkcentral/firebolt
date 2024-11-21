@@ -23,8 +23,6 @@ Version AudioDescriptions 1.5.0-nested-object-types.0
   - [once](#once)
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
-- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
-  </details>
 - [Types](#types)
 
 ## Usage
@@ -476,16 +474,5 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 ### enabledChanged
 
 See: [enabled](#enabled)
-
-## Private Events
-
-<details markdown="1"  id="private-events-details">
-  <summary>View</summary>
-
-### enabledChanged
-
-See: [enabled](#enabled)
-
-</details>
 
 ## Types

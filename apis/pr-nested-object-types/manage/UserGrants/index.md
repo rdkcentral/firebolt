@@ -611,12 +611,16 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let info = await UserGrants.request('certapp', [
-  {
-    role: 'use',
-    capability: 'xrn:firebolt:capability:localization:postal-code',
-  },
-])
+let info = await UserGrants.request(
+  'certapp',
+  [
+    {
+      role: 'use',
+      capability: 'xrn:firebolt:capability:localization:postal-code',
+    },
+  ],
+  null,
+)
 console.log(info)
 ```
 

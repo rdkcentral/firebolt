@@ -297,6 +297,7 @@ let success = await SecureStorage.setForApp(
   'account',
   'authRefreshToken',
   'VGhpcyBub3QgYSByZWFsIHRva2VuLgo=',
+  null,
 )
 console.log(success)
 ```
