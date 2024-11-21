@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Discovery 1.5.0-next.8
+Version Discovery 1.5.0-next.9
 
 ## Table of Contents
 
