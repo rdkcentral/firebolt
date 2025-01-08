@@ -231,9 +231,12 @@
 		},
 		{
 			"name": "Accessibility.highContrastMode",
-			"summary": "Get whether high-contrast UI mode is enabled on the device",
+			"summary": "The user's preference for a high-contrast UI",
 			"params": [],
 			"tags": [
+				{
+					"name": "property:readonly"
+				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -442,6 +445,64 @@
 								"spa"
 							]
 						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Accessibility.onHighContrastModeChanged",
+			"summary": "The user's preference for a high-contrast UI",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Accessibility.highContrastMode"
+				},
+				{
+					"name": "event",
+					"x-alternative": "highContrastMode"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:highcontrastmode"
+					]
+				}
+			],
+			"result": {
+				"name": "highContrastMode",
+				"summary": "Whether high-contrast mode is enabled",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "boolean"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "High-contrast mode is enabled",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": true
 					}
 				}
 			]

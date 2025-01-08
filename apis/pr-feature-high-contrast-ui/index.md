@@ -41,7 +41,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Accessibility.highContrastMode](./core/Accessibility/#highcontrastmode) |
+| [Accessibility.highContrastMode](./core/Accessibility/#highcontrastmode)<br/>[Accessibility.onHighContrastModeChanged](./core/Accessibility/#highcontrastmodechanged) |
 
 
 ### `xrn:firebolt:capability:accessibility:voiceguidance`

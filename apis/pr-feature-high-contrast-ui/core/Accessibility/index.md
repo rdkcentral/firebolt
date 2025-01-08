@@ -29,6 +29,7 @@ Version Accessibility 1.5.0-feature-high-contrast-ui.0
 - [Events](#events)
   - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
   - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
+  - [highContrastModeChanged](#highcontrastmodechanged)
   - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
 - [Types](#types)
   - [AudioDescriptionSettings](#audiodescriptionsettings-1)
@@ -494,7 +495,9 @@ Response:
 
 ### highContrastMode
 
-Get whether high-contrast UI mode is enabled on the device
+The user's preference for a high-contrast UI
+
+To get the value of `highContrastMode` call the method like this:
 
 ```typescript
 function highContrastMode(): Promise<boolean>
@@ -537,6 +540,68 @@ Request:
   "id": 1,
   "method": "Accessibility.highContrastMode",
   "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function highContrastMode(callback: (value) => boolean): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+High-contrast mode is enabled
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let listenerId = await highContrastMode((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `highContrastMode`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onHighContrastModeChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
@@ -885,6 +950,10 @@ See: [audioDescriptionSettings](#audiodescriptionsettings)
 ### closedCaptionsSettingsChanged
 
 See: [closedCaptionsSettings](#closedcaptionssettings)
+
+### highContrastModeChanged
+
+See: [highContrastMode](#highcontrastmode)
 
 ### voiceGuidanceSettingsChanged
 
