@@ -232,6 +232,7 @@
 						"name": "Default Result",
 						"value": {
 							"enabled": true,
+							"navigationHints": true,
 							"speed": 2
 						}
 					}
@@ -464,6 +465,7 @@
 						"name": "Default Result",
 						"value": {
 							"enabled": true,
+							"navigationHints": true,
 							"speed": 2
 						}
 					}
@@ -9556,6 +9558,10 @@
 						"type": "boolean",
 						"description": "Whether or not voice guidance should be enabled by default"
 					},
+					"navigationHints": {
+						"type": "boolean",
+						"description": "Whether or not voice guidance should include additional navigation hints"
+					},
 					"speed": {
 						"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
 						"description": "The speed at which voice guidance speech will be read back to the user"
@@ -9564,6 +9570,7 @@
 				"examples": [
 					{
 						"enabled": true,
+						"navigationHints": true,
 						"speed": 2
 					}
 				]
@@ -9571,8 +9578,8 @@
 			"VoiceSpeed": {
 				"title": "VoiceSpeed",
 				"type": "number",
-				"minimum": 0.5,
-				"maximum": 2
+				"minimum": 0.1,
+				"maximum": 10
 			},
 			"ClosedCaptionsStyles": {
 				"title": "ClosedCaptionsStyles",

@@ -56,6 +56,7 @@ undefined
 ```typescript
 type VoiceGuidanceSettings = {
   enabled: boolean // Whether or not voice guidance should be enabled by default
+  navigationHints?: boolean // Whether or not voice guidance should include additional navigation hints
   speed?: VoiceSpeed // The speed at which voice guidance speech will be read back to the user
 }
 ```

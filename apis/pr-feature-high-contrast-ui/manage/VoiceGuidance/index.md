@@ -587,10 +587,10 @@ function speed(value: VoiceSpeed): Promise<void>
 
 Parameters:
 
-| Param      | Type                                                 | Required | Description       |
-| ---------- | ---------------------------------------------------- | -------- | ----------------- |
-| `value`    | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true     | <br/>minumum: 0.5 |
-| maximum: 2 |
+| Param       | Type                                                 | Required | Description       |
+| ----------- | ---------------------------------------------------- | -------- | ----------------- |
+| `value`     | [`VoiceSpeed`](../Accessibility/schemas/#VoiceSpeed) | true     | <br/>minumum: 0.1 |
+| maximum: 10 |
 
 Promise resolution:
 

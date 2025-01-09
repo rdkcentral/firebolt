@@ -837,6 +837,7 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
+	"navigationHints": true,
 	"speed": 2
 }
 ```
@@ -862,6 +863,7 @@ Response:
   "id": 1,
   "result": {
     "enabled": true,
+    "navigationHints": true,
     "speed": 2
   }
 }
@@ -905,6 +907,7 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
+	"navigationHints": true,
 	"speed": 2
 }
 ```
@@ -932,6 +935,7 @@ Response:
   "id": 1,
   "result": {
     "enabled": true,
+    "navigationHints": true,
     "speed": 2
   }
 }
