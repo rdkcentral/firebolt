@@ -21,7 +21,7 @@ Version Accessibility 1.5.0-feature-high-contrast-ui.0
   - [audioDescriptionSettings](#audiodescriptionsettings)
   - [closedCaptions](#closedcaptions)
   - [closedCaptionsSettings](#closedcaptionssettings)
-  - [highContrastMode](#highcontrastmode)
+  - [highContrastUI](#highcontrastui)
   - [listen](#listen)
   - [once](#once)
   - [voiceGuidance](#voiceguidance)
@@ -29,7 +29,7 @@ Version Accessibility 1.5.0-feature-high-contrast-ui.0
 - [Events](#events)
   - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
   - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
-  - [highContrastModeChanged](#highcontrastmodechanged)
+  - [highContrastUIChanged](#highcontrastuichanged)
   - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
 - [Types](#types)
   - [AudioDescriptionSettings](#audiodescriptionsettings-1)
@@ -493,38 +493,38 @@ Response:
 
 ---
 
-### highContrastMode
+### highContrastUI
 
 The user's preference for a high-contrast UI
 
-To get the value of `highContrastMode` call the method like this:
+To get the value of `highContrastUI` call the method like this:
 
 ```typescript
-function highContrastMode(): Promise<boolean>
+function highContrastUI(): Promise<boolean>
 ```
 
 Promise resolution:
 
 Capabilities:
 
-| Role | Capability                                             |
-| ---- | ------------------------------------------------------ |
-| uses | xrn:firebolt:capability:accessibility:highcontrastmode |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:highcontrastui |
 
 #### Examples
 
-High-contrast mode is enabled
+High-contrast UI mode is enabled
 
 JavaScript:
 
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-let highContrastMode = await Accessibility.highContrastMode()
-console.log(highContrastMode)
+let highContrastUI = await Accessibility.highContrastUI()
+console.log(highContrastUI)
 ```
 
-Value of `highContrastMode`:
+Value of `highContrastUI`:
 
 ```javascript
 true
@@ -538,7 +538,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "Accessibility.highContrastMode",
+  "method": "Accessibility.highContrastUI",
   "params": {}
 }
 ```
@@ -560,7 +560,7 @@ Response:
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function highContrastMode(callback: (value) => boolean): Promise<number>
+function highContrastUI(callback: (value) => boolean): Promise<number>
 ```
 
 Promise resolution:
@@ -571,20 +571,20 @@ number
 
 #### Examples
 
-High-contrast mode is enabled
+High-contrast UI mode is enabled
 
 JavaScript:
 
 ```javascript
 import { Accessibility } from '@firebolt-js/sdk'
 
-let listenerId = await highContrastMode((value) => {
+let listenerId = await highContrastUI((value) => {
   console.log(value)
 })
 console.log(listenerId)
 ```
 
-Value of `highContrastMode`:
+Value of `highContrastUI`:
 
 ```javascript
 true
@@ -598,7 +598,7 @@ Request:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "Accessibility.onHighContrastModeChanged",
+  "method": "Accessibility.onHighContrastUIChanged",
   "params": {
     "listen": true
   }
@@ -955,9 +955,9 @@ See: [audioDescriptionSettings](#audiodescriptionsettings)
 
 See: [closedCaptionsSettings](#closedcaptionssettings)
 
-### highContrastModeChanged
+### highContrastUIChanged
 
-See: [highContrastMode](#highcontrastmode)
+See: [highContrastUI](#highcontrastui)
 
 ### voiceGuidanceSettingsChanged
 

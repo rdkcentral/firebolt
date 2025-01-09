@@ -36,7 +36,7 @@
 				"negotiable": false
 			}
 		},
-		"xrn:firebolt:capability:accessibility:highcontrastmode": {
+		"xrn:firebolt:capability:accessibility:highcontrastui": {
 			"level": "must",
 			"use": {
 				"public": true,
@@ -1185,7 +1185,7 @@
 					]
 				},
 				{
-					"name": "Accessibility.highContrastMode",
+					"name": "Accessibility.highContrastUI",
 					"summary": "The user's preference for a high-contrast UI",
 					"params": [],
 					"tags": [
@@ -1195,20 +1195,20 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:accessibility:highcontrastmode"
+								"xrn:firebolt:capability:accessibility:highcontrastui"
 							]
 						}
 					],
 					"result": {
-						"name": "highContrastMode",
-						"summary": "Whether high-contrast mode is enabled",
+						"name": "highContrastUI",
+						"summary": "Whether high-contrast UI mode is enabled",
 						"schema": {
 							"type": "boolean"
 						}
 					},
 					"examples": [
 						{
-							"name": "High-contrast mode is enabled",
+							"name": "High-contrast UI mode is enabled",
 							"params": [],
 							"result": {
 								"name": "Default Result",
@@ -1406,7 +1406,7 @@
 					]
 				},
 				{
-					"name": "Accessibility.onHighContrastModeChanged",
+					"name": "Accessibility.onHighContrastUIChanged",
 					"summary": "The user's preference for a high-contrast UI",
 					"params": [
 						{
@@ -1420,22 +1420,22 @@
 					"tags": [
 						{
 							"name": "subscriber",
-							"x-subscriber-for": "Accessibility.highContrastMode"
+							"x-subscriber-for": "Accessibility.highContrastUI"
 						},
 						{
 							"name": "event",
-							"x-alternative": "highContrastMode"
+							"x-alternative": "highContrastUI"
 						},
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:accessibility:highcontrastmode"
+								"xrn:firebolt:capability:accessibility:highcontrastui"
 							]
 						}
 					],
 					"result": {
-						"name": "highContrastMode",
-						"summary": "Whether high-contrast mode is enabled",
+						"name": "highContrastUI",
+						"summary": "Whether high-contrast UI mode is enabled",
 						"schema": {
 							"anyOf": [
 								{
@@ -1449,7 +1449,7 @@
 					},
 					"examples": [
 						{
-							"name": "High-contrast mode is enabled",
+							"name": "High-contrast UI mode is enabled",
 							"params": [
 								{
 									"name": "listen",
