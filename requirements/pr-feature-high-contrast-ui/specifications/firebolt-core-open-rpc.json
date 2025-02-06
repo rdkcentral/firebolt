@@ -165,44 +165,6 @@
 			]
 		},
 		{
-			"name": "Accessibility.voiceGuidance",
-			"summary": "Get the user's preferred voice guidance settings",
-			"params": [],
-			"tags": [
-				{
-					"name": "deprecated",
-					"x-alternative": "Accessibility.voiceGuidanceSettings()",
-					"x-since": "0.6.0"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:accessibility:voiceguidance"
-					]
-				}
-			],
-			"result": {
-				"name": "settings",
-				"summary": "the voice guidance settings",
-				"schema": {
-					"$ref": "#/x-schemas/Accessibility/VoiceGuidanceSettings"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the voice guidance settings",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"enabled": true,
-							"speed": 2
-						}
-					}
-				}
-			]
-		},
-		{
 			"name": "Accessibility.voiceGuidanceSettings",
 			"summary": "Get the user's preferred voice guidance settings",
 			"params": [],
@@ -233,7 +195,8 @@
 						"value": {
 							"enabled": true,
 							"navigationHints": true,
-							"speed": 2
+							"rate": 1,
+							"speed": 1
 						}
 					}
 				}
@@ -466,7 +429,8 @@
 						"value": {
 							"enabled": true,
 							"navigationHints": true,
-							"speed": 2
+							"rate": 1,
+							"speed": 1
 						}
 					}
 				}
@@ -9551,7 +9515,9 @@
 				"title": "VoiceGuidanceSettings",
 				"type": "object",
 				"required": [
-					"enabled"
+					"enabled",
+					"navigationHints",
+					"rate"
 				],
 				"properties": {
 					"enabled": {
@@ -9562,21 +9528,26 @@
 						"type": "boolean",
 						"description": "Whether or not voice guidance should include additional navigation hints"
 					},
+					"rate": {
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "The rate at which voice guidance speech will be read back to the user"
+					},
 					"speed": {
-						"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
-						"description": "The speed at which voice guidance speech will be read back to the user"
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "**DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user"
 					}
 				},
 				"examples": [
 					{
 						"enabled": true,
 						"navigationHints": true,
-						"speed": 2
+						"rate": 1,
+						"speed": 1
 					}
 				]
 			},
-			"VoiceSpeed": {
-				"title": "VoiceSpeed",
+			"SpeechRate": {
+				"title": "SpeechRate",
 				"type": "number",
 				"minimum": 0.1,
 				"maximum": 10

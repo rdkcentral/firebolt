@@ -24,7 +24,6 @@ Version Accessibility 1.5.0-feature-high-contrast-ui.0
   - [highContrastUI](#highcontrastui)
   - [listen](#listen)
   - [once](#once)
-  - [voiceGuidance](#voiceguidance)
   - [voiceGuidanceSettings](#voiceguidancesettings)
 - [Events](#events)
   - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
@@ -729,76 +728,6 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-### voiceGuidance
-
-Get the user's preferred voice guidance settings
-
-```typescript
-function voiceGuidance(): Promise<VoiceGuidanceSettings>
-```
-
-Promise resolution:
-
-[VoiceGuidanceSettings](../Accessibility/schemas/#VoiceGuidanceSettings)
-
-Capabilities:
-
-| Role | Capability                                          |
-| ---- | --------------------------------------------------- |
-| uses | xrn:firebolt:capability:accessibility:voiceguidance |
-
-#### Examples
-
-Getting the voice guidance settings
-
-JavaScript:
-
-```javascript
-import { Accessibility } from '@firebolt-js/sdk'
-
-let settings = await Accessibility.voiceGuidance()
-console.log(settings)
-```
-
-Value of `settings`:
-
-```javascript
-{
-	"enabled": true,
-	"speed": 2
-}
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Accessibility.voiceGuidance",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "enabled": true,
-    "speed": 2
-  }
-}
-```
-
-</details>
-
----
-
 ### voiceGuidanceSettings
 
 Get the user's preferred voice guidance settings
@@ -838,7 +767,8 @@ Value of `settings`:
 {
 	"enabled": true,
 	"navigationHints": true,
-	"speed": 2
+	"rate": 1,
+	"speed": 1
 }
 ```
 
@@ -864,7 +794,8 @@ Response:
   "result": {
     "enabled": true,
     "navigationHints": true,
-    "speed": 2
+    "rate": 1,
+    "speed": 1
   }
 }
 ```
@@ -908,7 +839,8 @@ Value of `settings`:
 {
 	"enabled": true,
 	"navigationHints": true,
-	"speed": 2
+	"rate": 1,
+	"speed": 1
 }
 ```
 
@@ -936,7 +868,8 @@ Response:
   "result": {
     "enabled": true,
     "navigationHints": true,
-    "speed": 2
+    "rate": 1,
+    "speed": 1
   }
 }
 ```

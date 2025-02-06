@@ -18,7 +18,7 @@ Version Accessibility 0.0.0-unknown.0
 - [Overview](#overview)
 - [Types](#types)
   - [FontFamily](#fontfamily)
-  - [VoiceSpeed](#voicespeed)
+  - [SpeechRate](#speechrate)
   - [VoiceGuidanceSettings](#voiceguidancesettings)
   - [FontSize](#fontsize)
   - [Color](#color)
@@ -43,7 +43,7 @@ undefined
 
 ---
 
-### VoiceSpeed
+### SpeechRate
 
 ```typescript
 
@@ -56,14 +56,15 @@ undefined
 ```typescript
 type VoiceGuidanceSettings = {
   enabled: boolean // Whether or not voice guidance should be enabled by default
-  navigationHints?: boolean // Whether or not voice guidance should include additional navigation hints
-  speed?: VoiceSpeed // The speed at which voice guidance speech will be read back to the user
+  navigationHints: boolean // Whether or not voice guidance should include additional navigation hints
+  rate: SpeechRate // The rate at which voice guidance speech will be read back to the user
+  speed?: SpeechRate // **DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user
 }
 ```
 
 See also:
 
-[VoiceSpeed](#voicespeed)
+[SpeechRate](#speechrate)
 
 ---
 

@@ -787,7 +787,9 @@
 				"title": "VoiceGuidanceSettings",
 				"type": "object",
 				"required": [
-					"enabled"
+					"enabled",
+					"navigationHints",
+					"rate"
 				],
 				"properties": {
 					"enabled": {
@@ -798,21 +800,26 @@
 						"type": "boolean",
 						"description": "Whether or not voice guidance should include additional navigation hints"
 					},
+					"rate": {
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "The rate at which voice guidance speech will be read back to the user"
+					},
 					"speed": {
-						"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
-						"description": "The speed at which voice guidance speech will be read back to the user"
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "**DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user"
 					}
 				},
 				"examples": [
 					{
 						"enabled": true,
 						"navigationHints": true,
-						"speed": 2
+						"rate": 1,
+						"speed": 1
 					}
 				]
 			},
-			"VoiceSpeed": {
-				"title": "VoiceSpeed",
+			"SpeechRate": {
+				"title": "SpeechRate",
 				"type": "number",
 				"minimum": 0.1,
 				"maximum": 10
