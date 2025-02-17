@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.5.0-next.11
+Version Keyboard 1.5.0-next.12
 
 ## Table of Contents
 
@@ -18,20 +18,21 @@ Version Keyboard 1.5.0-next.11
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [emailError](#emailerror)
+  - [provide](#provide)
+- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
   - [emailFocus](#emailfocus)
   - [emailResponse](#emailresponse)
   - [passwordError](#passworderror)
   - [passwordFocus](#passwordfocus)
   - [passwordResponse](#passwordresponse)
-  - [provide](#provide)
   - [standardError](#standarderror)
   - [standardFocus](#standardfocus)
   - [standardResponse](#standardresponse)
-- [Events](#events)
-  - [onRequestEmail](#onrequestemail)
+  </details>
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
   - [onRequestPassword](#onrequestpassword)
   - [onRequestStandard](#onrequeststandard)
+  </details>
 - [Provider Interfaces](#provider-interfaces)
   - [KeyboardInputProvider](#keyboardinputprovider)
 - [Types](#types)
@@ -52,9 +53,31 @@ Methods for prompting users to enter text with task-oriented UX
 
 ## Methods
 
+### provide
+
+To provide a specific capability to the platform. See [Provider Interfaces](#provider-interfaces) for a list of interfaces available to provide in this module.
+
+```typescript
+provide(capability: string, provider: any): void
+```
+
+Parameters:
+
+| Param        | Type     | Required | Summary                                      |
+| ------------ | -------- | -------- | -------------------------------------------- |
+| `capability` | `string` | Yes      | The capability that is being provided.       |
+| `provider`   | `any`    | Yes      | An implementation of the required interface. |
+
+See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
+
+## Private Methods
+
+<details markdown="1"  id="private-methods-details">
+  <summary>View</summary>
+
 ### emailError
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Email Provider to send back error.
 
@@ -110,7 +133,7 @@ Response:
 
 ### emailFocus
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Email Provider to request focus for UX purposes.
 
@@ -153,7 +176,7 @@ Response:
 
 ### emailResponse
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Email Provider to send back response.
 
@@ -206,7 +229,7 @@ Response:
 
 ### passwordError
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Password Provider to send back error.
 
@@ -262,7 +285,7 @@ Response:
 
 ### passwordFocus
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Password Provider to request focus for UX purposes.
 
@@ -305,7 +328,7 @@ Response:
 
 ### passwordResponse
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Password Provider to send back response.
 
@@ -356,26 +379,9 @@ Response:
 
 ---
 
-### provide
-
-To provide a specific capability to the platform. See [Provider Interfaces](#provider-interfaces) for a list of interfaces available to provide in this module.
-
-```typescript
-provide(capability: string, provider: any): void
-```
-
-Parameters:
-
-| Param        | Type     | Required | Summary                                      |
-| ------------ | -------- | -------- | -------------------------------------------- |
-| `capability` | `string` | Yes      | The capability that is being provided.       |
-| `provider`   | `any`    | Yes      | An implementation of the required interface. |
-
-See [Provider Interfaces](#provider-interfaces) for each capabilities interface definition.
-
 ### standardError
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Standard Provider to send back error.
 
@@ -431,7 +437,7 @@ Response:
 
 ### standardFocus
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Standard Provider to request focus for UX purposes.
 
@@ -474,7 +480,7 @@ Response:
 
 ### standardResponse
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Internal API for Standard Provider to send back response.
 
@@ -525,11 +531,16 @@ Response:
 
 ---
 
-## Events
+</details>
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
 
 ### onRequestEmail
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Registers as a provider for when the user should be shown a keyboard optimized for email address entry.
 
@@ -587,7 +598,7 @@ Response:
 
 ### onRequestPassword
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Registers as a provider for when the user should be shown a password keyboard, with dots for each character entered.
 
@@ -645,7 +656,7 @@ Response:
 
 ### onRequestStandard
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Registers as a provider for when the user should be shown a standard keyboard.
 
@@ -700,6 +711,8 @@ Response:
 ```
 
 ---
+
+</details>
 
 ## Provider Interfaces
 

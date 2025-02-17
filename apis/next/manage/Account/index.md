@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Account 1.5.0-next.11
+Version Account 1.5.0-next.12
 
 ## Table of Contents
 
@@ -119,7 +119,7 @@ Response:
 Encoded token provided by the Distributor for Device Authentication.
 
 ```typescript
-
+type Token = string
 ```
 
 ---
@@ -129,7 +129,7 @@ Encoded token provided by the Distributor for Device Authentication.
 Number of secs before the token expires
 
 ```typescript
-
+type Expiry = number
 ```
 
 ---

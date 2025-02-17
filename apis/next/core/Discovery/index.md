@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.5.0-next.11
+Version Discovery 1.5.0-next.12
 
 ## Table of Contents
 
@@ -32,14 +32,18 @@ Version Discovery 1.5.0-next.11
   - [signIn](#signin)
   - [signOut](#signout)
   - [userInterest](#userinterest)
-  - [userInterestError](#userinteresterror)
-  - [userInterestResponse](#userinterestresponse)
   - [watched](#watched)
   - [watchNext](#watchnext)
+- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
+  - [userInterestResponse](#userinterestresponse)
+  </details>
 - [Events](#events)
   - [navigateTo](#navigateto)
   - [policyChanged](#policychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [policyChanged](#policychanged-1)
   - [onRequestUserInterest](#onrequestuserinterest)
+  </details>
 - [Provider Interfaces](#provider-interfaces)
   - [UserInterestProvider](#userinterestprovider)
 - [Types](#types)
@@ -482,93 +486,11 @@ Response:
 
 ### entitlements
 
-Inform the platform of the users latest entitlements w/in this app.
+[Deprecated] This method is deprecated as of since version 0.10.0. Please use `Discovery.contentAccess()` as a replacement.
 
 ```typescript
 function entitlements(entitlements: Entitlement[]): Promise<boolean>
 ```
-
-Parameters:
-
-| Param          | Type            | Required | Description                  |
-| -------------- | --------------- | -------- | ---------------------------- |
-| `entitlements` | `Entitlement[]` | true     | Array of entitlement objects |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                       |
-| ---- | ------------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:content-access |
-
-#### Examples
-
-Update user's entitlements
-
-JavaScript:
-
-```javascript
-import { Discovery } from '@firebolt-js/sdk'
-
-let success = await Discovery.entitlements([
-  {
-    entitlementId: 'partner.com/entitlement/123',
-    startTime: '2021-04-23T18:25:43.511Z',
-    endTime: '2021-04-23T18:25:43.511Z',
-  },
-  {
-    entitlementId: 'partner.com/entitlement/456',
-    startTime: '2021-04-23T18:25:43.511Z',
-    endTime: '2021-04-23T18:25:43.511Z',
-  },
-])
-console.log(success)
-```
-
-Value of `success`:
-
-```javascript
-true
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Discovery.entitlements",
-  "params": {
-    "entitlements": [
-      {
-        "entitlementId": "partner.com/entitlement/123",
-        "startTime": "2021-04-23T18:25:43.511Z",
-        "endTime": "2021-04-23T18:25:43.511Z"
-      },
-      {
-        "entitlementId": "partner.com/entitlement/456",
-        "startTime": "2021-04-23T18:25:43.511Z",
-        "endTime": "2021-04-23T18:25:43.511Z"
-      }
-    ]
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
-</details>
 
 ---
 
@@ -3177,7 +3099,7 @@ JavaScript:
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-let success = await Discovery.signIn(null)
+let success = await Discovery.signIn()
 console.log(success)
 ```
 
@@ -3424,136 +3346,6 @@ Response:
 
 ---
 
-### userInterestError
-
-_This is an private RPC method._
-
-Internal API for .onRequestUserInterest Provider to send back error.
-
-Parameters:
-
-| Param           | Type     | Required | Description |
-| --------------- | -------- | -------- | ----------- |
-| `correlationId` | `string` | true     |             |
-| `error`         | `object` | true     |             |
-
-Result:
-
-Capabilities:
-
-| Role     | Capability                                 |
-| -------- | ------------------------------------------ |
-| provides | xrn:firebolt:capability:discovery:interest |
-
-#### Examples
-
-Example 1
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Discovery.userInterestError",
-  "params": {
-    "correlationId": "123",
-    "error": {
-      "code": 1,
-      "message": "Error"
-    }
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
----
-
-### userInterestResponse
-
-_This is an private RPC method._
-
-Internal API for .onRequestUserInterest Provider to send back response.
-
-Parameters:
-
-| Param           | Type                                                | Required | Description |
-| --------------- | --------------------------------------------------- | -------- | ----------- |
-| `correlationId` | `string`                                            | true     |             |
-| `result`        | [`EntityDetails`](../Entity/schemas/#EntityDetails) | true     |             |
-
-Result:
-
-Capabilities:
-
-| Role     | Capability                                 |
-| -------- | ------------------------------------------ |
-| provides | xrn:firebolt:capability:discovery:interest |
-
-#### Examples
-
-Example
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Discovery.userInterestResponse",
-  "params": {
-    "correlationId": "123",
-    "result": {
-      "identifiers": {
-        "entityId": "345",
-        "entityType": "program",
-        "programType": "movie"
-      },
-      "info": {
-        "title": "Cool Runnings",
-        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-        "releaseDate": "1993-01-01T00:00:00.000Z",
-        "contentRatings": [
-          {
-            "scheme": "US-Movie",
-            "rating": "PG"
-          },
-          {
-            "scheme": "CA-Movie",
-            "rating": "G"
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
----
-
 ### watched
 
 Notify the platform that content was partially or completely watched
@@ -3754,8 +3546,7 @@ import { Discovery } from '@firebolt-js/sdk'
 let success = await Discovery.watchNext(
   'A Fantastic Show',
   { entityId: 'partner.com/entity/456' },
-  null,
-  null,
+  undefined,
 )
 console.log(success)
 ```
@@ -3797,6 +3588,143 @@ Response:
 </details>
 
 ---
+
+## Private Methods
+
+<details markdown="1"  id="private-methods-details">
+  <summary>View</summary>
+
+### userInterestError
+
+_This is a private RPC method._
+
+Internal API for .onRequestUserInterest Provider to send back error.
+
+Parameters:
+
+| Param           | Type     | Required | Description |
+| --------------- | -------- | -------- | ----------- |
+| `correlationId` | `string` | true     |             |
+| `error`         | `object` | true     |             |
+
+Result:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Example 1
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestError",
+  "params": {
+    "correlationId": "123",
+    "error": {
+      "code": 1,
+      "message": "Error"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+### userInterestResponse
+
+_This is a private RPC method._
+
+Internal API for .onRequestUserInterest Provider to send back response.
+
+Parameters:
+
+| Param           | Type                                                | Required | Description |
+| --------------- | --------------------------------------------------- | -------- | ----------- |
+| `correlationId` | `string`                                            | true     |             |
+| `result`        | [`EntityDetails`](../Entity/schemas/#EntityDetails) | true     |             |
+
+Result:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Example
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterestResponse",
+  "params": {
+    "correlationId": "123",
+    "result": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+---
+
+</details>
 
 ## Events
 
@@ -3889,9 +3817,103 @@ Response:
 
 See: [policy](#policy)
 
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### navigateTo
+
+```typescript
+function listen('navigateTo', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[NavigationIntent](../Intents/schemas/#NavigationIntent)
+
+Capabilities:
+
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:navigate-to |
+
+#### Examples
+
+Listening for `navigateTo` events
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('navigateTo', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"action": "search",
+	"data": {
+		"query": "a cool show"
+	},
+	"context": {
+		"campaign": "unknown",
+		"source": "voice"
+	}
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onNavigateTo",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "action": "search",
+    "data": {
+      "query": "a cool show"
+    },
+    "context": {
+      "campaign": "unknown",
+      "source": "voice"
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+### policyChanged
+
+See: [policy](#policy)
+
 ### onRequestUserInterest
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Provide information about the entity currently displayed or selected on the screen.
 
@@ -3945,6 +3967,8 @@ Response:
 ```
 
 ---
+
+</details>
 
 ## Provider Interfaces
 

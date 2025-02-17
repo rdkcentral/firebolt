@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Wifi 1.5.0-next.11
+Version Wifi 1.5.0-next.12
 
 ## Table of Contents
 
@@ -139,7 +139,7 @@ JavaScript:
 ```javascript
 import { Wifi } from '@firebolt-js/manage-sdk'
 
-let connectedWifi = await Wifi.connect('Guardian WIFI', '', 'none')
+let connectedWifi = await Wifi.connect('Guardian WIFI', undefined, 'none')
 console.log(connectedWifi)
 ```
 
@@ -498,7 +498,7 @@ WPSSecurityPin: {
 Strength of Wifi signal, value is negative based on RSSI specification.
 
 ```typescript
-
+type WifiSignalStrength = number
 ```
 
 ---
@@ -508,7 +508,7 @@ Strength of Wifi signal, value is negative based on RSSI specification.
 Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
 
 ```typescript
-
+type WifiFrequency = number
 ```
 
 ---

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.5.0-next.11
+Version Localization 1.5.0-next.12
 
 ## Table of Contents
 
@@ -35,6 +35,13 @@ Version Localization 1.5.0-next.11
   - [localityChanged](#localitychanged)
   - [postalCodeChanged](#postalcodechanged)
   - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [languageChanged](#languagechanged-1)
+  - [localeChanged](#localechanged-1)
+  - [localityChanged](#localitychanged-1)
+  - [postalCodeChanged](#postalcodechanged-1)
+  - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged-1)
+  </details>
 - [Types](#types)
   - [LatLon](#latlon-1)
 
@@ -1608,6 +1615,37 @@ See: [postalCode](#postalcode)
 ### preferredAudioLanguagesChanged
 
 See: [preferredAudioLanguages](#preferredaudiolanguages)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### countryCodeChanged
+
+See: [countryCode](#countrycode)
+
+### languageChanged
+
+See: [language](#language)
+
+### localeChanged
+
+See: [locale](#locale)
+
+### localityChanged
+
+See: [locality](#locality)
+
+### postalCodeChanged
+
+See: [postalCode](#postalcode)
+
+### preferredAudioLanguagesChanged
+
+See: [preferredAudioLanguages](#preferredaudiolanguages)
+
+</details>
 
 ## Types
 

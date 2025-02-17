@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Advertising 1.5.0-next.11
+Version Advertising 1.5.0-next.12
 
 ## Table of Contents
 
@@ -27,6 +27,8 @@ Version Advertising 1.5.0-next.11
   - [policy](#policy)
 - [Events](#events)
   - [policyChanged](#policychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
   - [AdConfigurationOptions](#adconfigurationoptions)
   - [AdPolicy](#adpolicy)
@@ -82,7 +84,7 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
 
-let advertisingId = await Advertising.advertisingId(null)
+let advertisingId = await Advertising.advertisingId()
 console.log(advertisingId)
 ```
 
@@ -734,6 +736,17 @@ Response:
 
 See: [policy](#policy)
 
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### policyChanged
+
+See: [policy](#policy)
+
+</details>
+
 ## Types
 
 ### AdConfigurationOptions
@@ -769,7 +782,11 @@ See also:
 
 ```typescript
 type AdvertisingIdOptions = {
-  scope?: object // Provides the options to send scope type and id to select desired advertising id
+  scope?: {
+    type: 'browse' | 'content' // The scope type, which will determine where to show advertisement
+    id: string // A value that identifies a specific scope within the scope type
+  }
+  // Provides the options to send scope type and id to select desired advertising id
 }
 ```
 
