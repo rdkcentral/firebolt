@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Authentication 1.5.0-next.12
+Version Authentication 1.5.0-next.13
 
 ## Table of Contents
 

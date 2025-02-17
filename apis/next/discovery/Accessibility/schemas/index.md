@@ -15,7 +15,7 @@ sdk: discovery
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
   - [FontFamily](#fontfamily)
-  - [VoiceSpeed](#voicespeed)
+  - [SpeechRate](#speechrate)
   - [VoiceGuidanceSettings](#voiceguidancesettings)
   - [FontSize](#fontsize)
   - [Color](#color)
@@ -45,10 +45,10 @@ FontFamily: {
 
 ---
 
-### VoiceSpeed
+### SpeechRate
 
 ```typescript
-type VoiceSpeed = number
+type SpeechRate = number
 ```
 
 ---
@@ -58,13 +58,15 @@ type VoiceSpeed = number
 ```typescript
 type VoiceGuidanceSettings = {
   enabled: boolean // Whether or not voice guidance should be enabled by default
-  speed?: VoiceSpeed // The speed at which voice guidance speech will be read back to the user
+  navigationHints: boolean // Whether or not voice guidance should include additional navigation hints
+  rate: SpeechRate // The rate at which voice guidance speech will be read back to the user
+  speed?: SpeechRate // **DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user
 }
 ```
 
 See also:
 
-[VoiceSpeed](#voicespeed)
+[SpeechRate](#speechrate)
 
 ---
 

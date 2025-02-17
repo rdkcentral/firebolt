@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Accessibility 1.5.0-next.12
+Version Accessibility 1.5.0-next.13
 
 ## Table of Contents
 
@@ -21,6 +21,7 @@ Version Accessibility 1.5.0-next.12
   - [audioDescriptionSettings](#audiodescriptionsettings)
   - [closedCaptions](#closedcaptions)
   - [closedCaptionsSettings](#closedcaptionssettings)
+  - [highContrastUI](#highcontrastui)
   - [listen](#listen)
   - [once](#once)
   - [voiceGuidance](#voiceguidance)
@@ -28,9 +29,11 @@ Version Accessibility 1.5.0-next.12
 - [Events](#events)
   - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
   - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
+  - [highContrastUIChanged](#highcontrastuichanged)
   - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
 - [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
   - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged-1)
+  - [highContrastUIChanged](#highcontrastuichanged-1)
   - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged-1)
   </details>
 - [Types](#types)
@@ -404,6 +407,132 @@ Response:
 
 ---
 
+### highContrastUI
+
+The user's preference for a high-contrast UI
+
+To get the value of `highContrastUI` call the method like this:
+
+```typescript
+function highContrastUI(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:highcontrastui |
+
+#### Examples
+
+High-contrast UI mode is enabled
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let highContrastUI = await Accessibility.highContrastUI()
+console.log(highContrastUI)
+```
+
+Value of `highContrastUI`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.highContrastUI",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function highContrastUI(callback: (value) => boolean): Promise<number>
+```
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+High-contrast UI mode is enabled
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let listenerId = await highContrastUI((value) => {
+  console.log(value)
+})
+console.log(listenerId)
+```
+
+Value of `highContrastUI`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onHighContrastUIChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
 ### listen
 
 To listen to a specific event pass the event name as the first parameter:
@@ -562,7 +691,8 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
-	"speed": 2
+	"navigationHints": true,
+	"rate": 1
 }
 ```
 
@@ -587,7 +717,8 @@ Response:
   "id": 1,
   "result": {
     "enabled": true,
-    "speed": 2
+    "navigationHints": true,
+    "rate": 1
   }
 }
 ```
@@ -630,7 +761,8 @@ Value of `settings`:
 ```javascript
 {
 	"enabled": true,
-	"speed": 2
+	"navigationHints": true,
+	"rate": 1
 }
 ```
 
@@ -657,7 +789,8 @@ Response:
   "id": 1,
   "result": {
     "enabled": true,
-    "speed": 2
+    "navigationHints": true,
+    "rate": 1
   }
 }
 ```
@@ -676,6 +809,10 @@ See: [audioDescriptionSettings](#audiodescriptionsettings)
 
 See: [closedCaptionsSettings](#closedcaptionssettings)
 
+### highContrastUIChanged
+
+See: [highContrastUI](#highcontrastui)
+
 ### voiceGuidanceSettingsChanged
 
 See: [voiceGuidanceSettings](#voiceguidancesettings)
@@ -692,6 +829,10 @@ See: [audioDescriptionSettings](#audiodescriptionsettings)
 ### closedCaptionsSettingsChanged
 
 See: [closedCaptionsSettings](#closedcaptionssettings)
+
+### highContrastUIChanged
+
+See: [highContrastUI](#highcontrastui)
 
 ### voiceGuidanceSettingsChanged
 

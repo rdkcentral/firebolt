@@ -37,17 +37,24 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [ClosedCaptions.setEnabled](./manage/ClosedCaptions/#setenabled)<br/>[ClosedCaptions.setFontFamily](./manage/ClosedCaptions/#setfontfamily)<br/>[ClosedCaptions.setFontSize](./manage/ClosedCaptions/#setfontsize)<br/>[ClosedCaptions.setFontColor](./manage/ClosedCaptions/#setfontcolor)<br/>[ClosedCaptions.setFontEdge](./manage/ClosedCaptions/#setfontedge)<br/>[ClosedCaptions.setFontEdgeColor](./manage/ClosedCaptions/#setfontedgecolor)<br/>[ClosedCaptions.setFontOpacity](./manage/ClosedCaptions/#setfontopacity)<br/>[ClosedCaptions.setBackgroundColor](./manage/ClosedCaptions/#setbackgroundcolor)<br/>[ClosedCaptions.setBackgroundOpacity](./manage/ClosedCaptions/#setbackgroundopacity)<br/>[ClosedCaptions.setTextAlign](./manage/ClosedCaptions/#settextalign)<br/>[ClosedCaptions.setTextAlignVertical](./manage/ClosedCaptions/#settextalignvertical)<br/>[ClosedCaptions.setWindowColor](./manage/ClosedCaptions/#setwindowcolor)<br/>[ClosedCaptions.setWindowOpacity](./manage/ClosedCaptions/#setwindowopacity)<br/>[ClosedCaptions.setPreferredLanguages](./manage/ClosedCaptions/#setpreferredlanguages) |
 
 
+### `xrn:firebolt:capability:accessibility:highcontrastui`
+
+| Uses |
+| ---- |
+| [Accessibility.highContrastUI](./core/Accessibility/#highcontrastui)<br/>[Accessibility.onHighContrastUIChanged](./core/Accessibility/#highcontrastuichanged) |
+
+
 ### `xrn:firebolt:capability:accessibility:voiceguidance`
 
 | Uses |
 | ---- |
-| [Accessibility.voiceGuidance](./core/Accessibility/#voiceguidance)<br/>[Accessibility.voiceGuidanceSettings](./core/Accessibility/#voiceguidancesettings)<br/>[Accessibility.onVoiceGuidanceSettingsChanged](./core/Accessibility/#voiceguidancesettingschanged)<br/>[VoiceGuidance.enabled](./manage/VoiceGuidance/#enabled)<br/>[VoiceGuidance.speed](./manage/VoiceGuidance/#speed)<br/>[VoiceGuidance.onEnabledChanged](./manage/VoiceGuidance/#enabledchanged)<br/>[VoiceGuidance.onSpeedChanged](./manage/VoiceGuidance/#speedchanged) |
+| [Accessibility.voiceGuidance](./core/Accessibility/#voiceguidance)<br/>[Accessibility.voiceGuidanceSettings](./core/Accessibility/#voiceguidancesettings)<br/>[Accessibility.onVoiceGuidanceSettingsChanged](./core/Accessibility/#voiceguidancesettingschanged)<br/>[VoiceGuidance.enabled](./manage/VoiceGuidance/#enabled)<br/>[VoiceGuidance.navigationHints](./manage/VoiceGuidance/#navigationhints)<br/>[VoiceGuidance.rate](./manage/VoiceGuidance/#rate)<br/>[VoiceGuidance.speed](./manage/VoiceGuidance/#speed)<br/>[VoiceGuidance.onEnabledChanged](./manage/VoiceGuidance/#enabledchanged)<br/>[VoiceGuidance.onNavigationHintsChanged](./manage/VoiceGuidance/#navigationhintschanged)<br/>[VoiceGuidance.onRateChanged](./manage/VoiceGuidance/#ratechanged)<br/>[VoiceGuidance.onSpeedChanged](./manage/VoiceGuidance/#speedchanged) |
 
 
 
 | Manages |
 | ------- |
-| [VoiceGuidance.setEnabled](./manage/VoiceGuidance/#setenabled)<br/>[VoiceGuidance.setSpeed](./manage/VoiceGuidance/#setspeed) |
+| [VoiceGuidance.setEnabled](./manage/VoiceGuidance/#setenabled)<br/>[VoiceGuidance.setNavigationHints](./manage/VoiceGuidance/#setnavigationhints)<br/>[VoiceGuidance.setRate](./manage/VoiceGuidance/#setrate)<br/>[VoiceGuidance.setSpeed](./manage/VoiceGuidance/#setspeed) |
 
 
 ### `xrn:firebolt:capability:account:id`
