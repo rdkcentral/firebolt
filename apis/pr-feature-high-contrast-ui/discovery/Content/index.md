@@ -23,6 +23,8 @@ Version Content 1.5.0-feature-high-contrast-ui.0
   - [requestUserInterest](#requestuserinterest)
 - [Events](#events)
   - [userInterest](#userinterest)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
   - [InterestResult](#interestresult)
   - [InterestEvent](#interestevent)
@@ -396,6 +398,132 @@ Response:
 </details>
 
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### userInterest
+
+```typescript
+function listen('userInterest', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[InterestEvent](#interestevent)
+
+Capabilities:
+
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('userInterest', (interest) => {
+  console.log(interest)
+})
+```
+
+Value of `interest`:
+
+```javascript
+{
+	"appId": "cool-app",
+	"type": "interest",
+	"reason": "playlist",
+	"entity": {
+		"identifiers": {
+			"entityId": "345",
+			"entityType": "program",
+			"programType": "movie"
+		},
+		"info": {
+			"title": "Cool Runnings",
+			"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+			"releaseDate": "1993-01-01T00:00:00.000Z",
+			"contentRatings": [
+				{
+					"scheme": "US-Movie",
+					"rating": "PG"
+				},
+				{
+					"scheme": "CA-Movie",
+					"rating": "G"
+				}
+			]
+		}
+	}
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onUserInterest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "cool-app",
+    "type": "interest",
+    "reason": "playlist",
+    "entity": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
 

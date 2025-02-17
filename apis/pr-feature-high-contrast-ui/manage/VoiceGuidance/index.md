@@ -29,6 +29,11 @@ Version VoiceGuidance 1.5.0-feature-high-contrast-ui.0
   - [navigationHintsChanged](#navigationhintschanged)
   - [rateChanged](#ratechanged)
   - [speedChanged](#speedchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [navigationHintsChanged](#navigationhintschanged-1)
+  - [rateChanged](#ratechanged-1)
+  - [speedChanged](#speedchanged-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -1490,5 +1495,28 @@ See: [rate](#rate)
 ### speedChanged
 
 See: [speed](#speed)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### enabledChanged
+
+See: [enabled](#enabled)
+
+### navigationHintsChanged
+
+See: [navigationHints](#navigationhints)
+
+### rateChanged
+
+See: [rate](#rate)
+
+### speedChanged
+
+See: [speed](#speed)
+
+</details>
 
 ## Types

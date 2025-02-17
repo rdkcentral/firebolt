@@ -45,6 +45,15 @@ Version Device 1.5.0-feature-high-contrast-ui.0
   - [networkChanged](#networkchanged)
   - [screenResolutionChanged](#screenresolutionchanged)
   - [videoResolutionChanged](#videoresolutionchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [deviceNameChanged](#devicenamechanged-1)
+  - [hdcpChanged](#hdcpchanged-1)
+  - [hdrChanged](#hdrchanged-1)
+  - [nameChanged](#namechanged-1)
+  - [networkChanged](#networkchanged-1)
+  - [screenResolutionChanged](#screenresolutionchanged-1)
+  - [videoResolutionChanged](#videoresolutionchanged-1)
+  </details>
 - [Types](#types)
   - [NetworkState](#networkstate)
   - [NetworkType](#networktype)
@@ -1893,66 +1902,7 @@ See: [audio](#audio)
 
 ### deviceNameChanged
 
-```typescript
-function listen('deviceNameChanged', () => void): Promise<number>
-```
-
-See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-Event value:
-
-Capabilities:
-
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:name |
-
-#### Examples
-
-Getting the device name
-
-JavaScript:
-
-```javascript
-import { Device } from '@firebolt-js/sdk'
-
-Device.listen('deviceNameChanged', (value) => {
-  console.log(value)
-})
-```
-
-Value of `value`:
-
-```javascript
-'Living Room'
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Device.onDeviceNameChanged",
-  "params": {
-    "listen": true
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "Living Room"
-}
-```
-
-</details>
+[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
 
 ---
 
@@ -1979,6 +1929,47 @@ See: [screenResolution](#screenresolution)
 ### videoResolutionChanged
 
 See: [videoResolution](#videoresolution)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### audioChanged
+
+See: [audio](#audio)
+
+### deviceNameChanged
+
+[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
+
+---
+
+### hdcpChanged
+
+See: [hdcp](#hdcp)
+
+### hdrChanged
+
+See: [hdr](#hdr)
+
+### nameChanged
+
+See: [name](#name)
+
+### networkChanged
+
+See: [network](#network)
+
+### screenResolutionChanged
+
+See: [screenResolution](#screenresolution)
+
+### videoResolutionChanged
+
+See: [videoResolution](#videoresolution)
+
+</details>
 
 ## Types
 
