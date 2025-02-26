@@ -70,7 +70,7 @@ Capabilities:
 
 #### Examples
 
-Enable voice guidance
+Voice guidance enabled
 
 JavaScript:
 
@@ -96,9 +96,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.enabled",
-  "params": {
-    "enabled": true
-  }
+  "params": {}
 }
 ```
 
@@ -114,7 +112,7 @@ Response:
 
 </details>
 
-Disable voice guidance
+Voice guidance disabled
 
 JavaScript:
 
@@ -140,9 +138,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.enabled",
-  "params": {
-    "enabled": false
-  }
+  "params": {}
 }
 ```
 
@@ -176,7 +172,7 @@ Promise resolution:
 
 #### Examples
 
-Enable voice guidance
+Voice guidance enabled
 
 JavaScript:
 
@@ -203,7 +199,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setEnabled",
   "params": {
-    "enabled": true,
     "value": true
   }
 }
@@ -221,7 +216,7 @@ Response:
 
 </details>
 
-Disable voice guidance
+Voice guidance disabled
 
 JavaScript:
 
@@ -248,7 +243,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setEnabled",
   "params": {
-    "enabled": false,
     "value": false
   }
 }
@@ -282,7 +276,7 @@ number
 
 #### Examples
 
-Enable voice guidance
+Voice guidance enabled
 
 JavaScript:
 
@@ -311,7 +305,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onEnabledChanged",
   "params": {
-    "enabled": true,
     "listen": true
   }
 }
@@ -329,7 +322,7 @@ Response:
 
 </details>
 
-Disable voice guidance
+Voice guidance disabled
 
 JavaScript:
 
@@ -358,7 +351,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onEnabledChanged",
   "params": {
-    "enabled": false,
     "listen": true
   }
 }
@@ -452,7 +444,7 @@ Capabilities:
 
 #### Examples
 
-Enable navigation hints
+Navigation hints enabled
 
 JavaScript:
 
@@ -478,9 +470,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.navigationHints",
-  "params": {
-    "navigationHints": true
-  }
+  "params": {}
 }
 ```
 
@@ -496,7 +486,7 @@ Response:
 
 </details>
 
-Disable navigation hints
+Navigation hints disabled
 
 JavaScript:
 
@@ -522,9 +512,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.navigationHints",
-  "params": {
-    "navigationHints": false
-  }
+  "params": {}
 }
 ```
 
@@ -558,7 +546,7 @@ Promise resolution:
 
 #### Examples
 
-Enable navigation hints
+Navigation hints enabled
 
 JavaScript:
 
@@ -585,7 +573,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setNavigationHints",
   "params": {
-    "navigationHints": true,
     "value": true
   }
 }
@@ -603,7 +590,7 @@ Response:
 
 </details>
 
-Disable navigation hints
+Navigation hints disabled
 
 JavaScript:
 
@@ -630,7 +617,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setNavigationHints",
   "params": {
-    "navigationHints": false,
     "value": false
   }
 }
@@ -664,7 +650,7 @@ number
 
 #### Examples
 
-Enable navigation hints
+Navigation hints enabled
 
 JavaScript:
 
@@ -693,7 +679,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onNavigationHintsChanged",
   "params": {
-    "navigationHints": true,
     "listen": true
   }
 }
@@ -711,7 +696,7 @@ Response:
 
 </details>
 
-Disable navigation hints
+Navigation hints disabled
 
 JavaScript:
 
@@ -740,7 +725,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onNavigationHintsChanged",
   "params": {
-    "navigationHints": false,
     "listen": true
   }
 }
@@ -838,7 +822,7 @@ Capabilities:
 
 #### Examples
 
-Set the voice guidance to the normal speech rate
+Normal voice guidance speech rate
 
 JavaScript:
 
@@ -864,9 +848,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.rate",
-  "params": {
-    "rate": 1
-  }
+  "params": {}
 }
 ```
 
@@ -882,7 +864,7 @@ Response:
 
 </details>
 
-Double the voice guidance speech rate
+Doubled voice guidance speech rate
 
 JavaScript:
 
@@ -908,9 +890,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.rate",
-  "params": {
-    "rate": 2
-  }
+  "params": {}
 }
 ```
 
@@ -945,7 +925,7 @@ Promise resolution:
 
 #### Examples
 
-Set the voice guidance to the normal speech rate
+Normal voice guidance speech rate
 
 JavaScript:
 
@@ -972,7 +952,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setRate",
   "params": {
-    "rate": 1,
     "value": 1
   }
 }
@@ -990,7 +969,7 @@ Response:
 
 </details>
 
-Double the voice guidance speech rate
+Doubled voice guidance speech rate
 
 JavaScript:
 
@@ -1017,7 +996,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setRate",
   "params": {
-    "rate": 2,
     "value": 2
   }
 }
@@ -1051,7 +1029,7 @@ number
 
 #### Examples
 
-Set the voice guidance to the normal speech rate
+Normal voice guidance speech rate
 
 JavaScript:
 
@@ -1080,7 +1058,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onRateChanged",
   "params": {
-    "rate": 1,
     "listen": true
   }
 }
@@ -1098,7 +1075,7 @@ Response:
 
 </details>
 
-Double the voice guidance speech rate
+Doubled voice guidance speech rate
 
 JavaScript:
 
@@ -1127,7 +1104,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onRateChanged",
   "params": {
-    "rate": 2,
     "listen": true
   }
 }
@@ -1169,7 +1145,7 @@ Capabilities:
 
 #### Examples
 
-Set the voice guidance to the normal speech rate
+Normal voice guidance speech rate
 
 JavaScript:
 
@@ -1195,9 +1171,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.speed",
-  "params": {
-    "speed": 1
-  }
+  "params": {}
 }
 ```
 
@@ -1213,7 +1187,7 @@ Response:
 
 </details>
 
-Double the voice guidance speech rate
+Doubled voice guidance speech rate
 
 JavaScript:
 
@@ -1239,9 +1213,7 @@ Request:
   "jsonrpc": "2.0",
   "id": 1,
   "method": "VoiceGuidance.speed",
-  "params": {
-    "speed": 2
-  }
+  "params": {}
 }
 ```
 
@@ -1276,7 +1248,7 @@ Promise resolution:
 
 #### Examples
 
-Set the voice guidance to the normal speech rate
+Normal voice guidance speech rate
 
 JavaScript:
 
@@ -1303,7 +1275,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setSpeed",
   "params": {
-    "speed": 1,
     "value": 1
   }
 }
@@ -1321,7 +1292,7 @@ Response:
 
 </details>
 
-Double the voice guidance speech rate
+Doubled voice guidance speech rate
 
 JavaScript:
 
@@ -1348,7 +1319,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.setSpeed",
   "params": {
-    "speed": 2,
     "value": 2
   }
 }
@@ -1382,7 +1352,7 @@ number
 
 #### Examples
 
-Set the voice guidance to the normal speech rate
+Normal voice guidance speech rate
 
 JavaScript:
 
@@ -1411,7 +1381,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onSpeedChanged",
   "params": {
-    "speed": 1,
     "listen": true
   }
 }
@@ -1429,7 +1398,7 @@ Response:
 
 </details>
 
-Double the voice guidance speech rate
+Doubled voice guidance speech rate
 
 JavaScript:
 
@@ -1458,7 +1427,6 @@ Request:
   "id": 1,
   "method": "VoiceGuidance.onSpeedChanged",
   "params": {
-    "speed": 2,
     "listen": true
   }
 }

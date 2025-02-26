@@ -17920,26 +17920,16 @@
 			},
 			"examples": [
 				{
-					"name": "Enable voice guidance",
-					"params": [
-						{
-							"name": "enabled",
-							"value": true
-						}
-					],
+					"name": "Voice guidance enabled",
+					"params": [],
 					"result": {
 						"name": "enabled",
 						"value": true
 					}
 				},
 				{
-					"name": "Disable voice guidance",
-					"params": [
-						{
-							"name": "enabled",
-							"value": false
-						}
-					],
+					"name": "Voice guidance disabled",
+					"params": [],
 					"result": {
 						"name": "enabled",
 						"value": false
@@ -17970,26 +17960,16 @@
 			},
 			"examples": [
 				{
-					"name": "Enable navigation hints",
-					"params": [
-						{
-							"name": "navigationHints",
-							"value": true
-						}
-					],
+					"name": "Navigation hints enabled",
+					"params": [],
 					"result": {
 						"name": "navigationHints",
 						"value": true
 					}
 				},
 				{
-					"name": "Disable navigation hints",
-					"params": [
-						{
-							"name": "navigationHints",
-							"value": false
-						}
-					],
+					"name": "Navigation hints disabled",
+					"params": [],
 					"result": {
 						"name": "navigationHints",
 						"value": false
@@ -18020,26 +18000,16 @@
 			},
 			"examples": [
 				{
-					"name": "Set the voice guidance to the normal speech rate",
-					"params": [
-						{
-							"name": "rate",
-							"value": 1
-						}
-					],
+					"name": "Normal voice guidance speech rate",
+					"params": [],
 					"result": {
 						"name": "rate",
 						"value": 1
 					}
 				},
 				{
-					"name": "Double the voice guidance speech rate",
-					"params": [
-						{
-							"name": "rate",
-							"value": 2
-						}
-					],
+					"name": "Doubled voice guidance speech rate",
+					"params": [],
 					"result": {
 						"name": "rate",
 						"value": 2
@@ -18075,26 +18045,16 @@
 			},
 			"examples": [
 				{
-					"name": "Set the voice guidance to the normal speech rate",
-					"params": [
-						{
-							"name": "speed",
-							"value": 1
-						}
-					],
+					"name": "Normal voice guidance speech rate",
+					"params": [],
 					"result": {
 						"name": "speed",
 						"value": 1
 					}
 				},
 				{
-					"name": "Double the voice guidance speech rate",
-					"params": [
-						{
-							"name": "speed",
-							"value": 2
-						}
-					],
+					"name": "Doubled voice guidance speech rate",
+					"params": [],
 					"result": {
 						"name": "speed",
 						"value": 2
@@ -18145,12 +18105,8 @@
 			},
 			"examples": [
 				{
-					"name": "Enable voice guidance",
+					"name": "Voice guidance enabled",
 					"params": [
-						{
-							"name": "enabled",
-							"value": true
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18162,12 +18118,8 @@
 					}
 				},
 				{
-					"name": "Disable voice guidance",
+					"name": "Voice guidance disabled",
 					"params": [
-						{
-							"name": "enabled",
-							"value": false
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18223,12 +18175,8 @@
 			},
 			"examples": [
 				{
-					"name": "Enable navigation hints",
+					"name": "Navigation hints enabled",
 					"params": [
-						{
-							"name": "navigationHints",
-							"value": true
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18240,12 +18188,8 @@
 					}
 				},
 				{
-					"name": "Disable navigation hints",
+					"name": "Navigation hints disabled",
 					"params": [
-						{
-							"name": "navigationHints",
-							"value": false
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18301,12 +18245,8 @@
 			},
 			"examples": [
 				{
-					"name": "Set the voice guidance to the normal speech rate",
+					"name": "Normal voice guidance speech rate",
 					"params": [
-						{
-							"name": "rate",
-							"value": 1
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18318,12 +18258,8 @@
 					}
 				},
 				{
-					"name": "Double the voice guidance speech rate",
+					"name": "Doubled voice guidance speech rate",
 					"params": [
-						{
-							"name": "rate",
-							"value": 2
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18384,12 +18320,8 @@
 			},
 			"examples": [
 				{
-					"name": "Set the voice guidance to the normal speech rate",
+					"name": "Normal voice guidance speech rate",
 					"params": [
-						{
-							"name": "speed",
-							"value": 1
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18401,12 +18333,8 @@
 					}
 				},
 				{
-					"name": "Double the voice guidance speech rate",
+					"name": "Doubled voice guidance speech rate",
 					"params": [
-						{
-							"name": "speed",
-							"value": 2
-						},
 						{
 							"name": "listen",
 							"value": true
@@ -18451,12 +18379,8 @@
 			},
 			"examples": [
 				{
-					"name": "Enable voice guidance",
+					"name": "Voice guidance enabled",
 					"params": [
-						{
-							"name": "enabled",
-							"value": true
-						},
 						{
 							"name": "value",
 							"value": true
@@ -18468,12 +18392,8 @@
 					}
 				},
 				{
-					"name": "Disable voice guidance",
+					"name": "Voice guidance disabled",
 					"params": [
-						{
-							"name": "enabled",
-							"value": false
-						},
 						{
 							"name": "value",
 							"value": false
@@ -18518,12 +18438,8 @@
 			},
 			"examples": [
 				{
-					"name": "Enable navigation hints",
+					"name": "Navigation hints enabled",
 					"params": [
-						{
-							"name": "navigationHints",
-							"value": true
-						},
 						{
 							"name": "value",
 							"value": true
@@ -18535,12 +18451,8 @@
 					}
 				},
 				{
-					"name": "Disable navigation hints",
+					"name": "Navigation hints disabled",
 					"params": [
-						{
-							"name": "navigationHints",
-							"value": false
-						},
 						{
 							"name": "value",
 							"value": false
@@ -18585,12 +18497,8 @@
 			},
 			"examples": [
 				{
-					"name": "Set the voice guidance to the normal speech rate",
+					"name": "Normal voice guidance speech rate",
 					"params": [
-						{
-							"name": "rate",
-							"value": 1
-						},
 						{
 							"name": "value",
 							"value": 1
@@ -18602,12 +18510,8 @@
 					}
 				},
 				{
-					"name": "Double the voice guidance speech rate",
+					"name": "Doubled voice guidance speech rate",
 					"params": [
-						{
-							"name": "rate",
-							"value": 2
-						},
 						{
 							"name": "value",
 							"value": 2
@@ -18657,12 +18561,8 @@
 			},
 			"examples": [
 				{
-					"name": "Set the voice guidance to the normal speech rate",
+					"name": "Normal voice guidance speech rate",
 					"params": [
-						{
-							"name": "speed",
-							"value": 1
-						},
 						{
 							"name": "value",
 							"value": 1
@@ -18674,12 +18574,8 @@
 					}
 				},
 				{
-					"name": "Double the voice guidance speech rate",
+					"name": "Doubled voice guidance speech rate",
 					"params": [
-						{
-							"name": "speed",
-							"value": 2
-						},
 						{
 							"name": "value",
 							"value": 2
