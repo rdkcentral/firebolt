@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.4.1
+Version Profile 1.5.0
 
 ## Table of Contents
 

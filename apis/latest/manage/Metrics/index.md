@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.4.1
+Version Metrics 1.5.0
 
 ## Table of Contents
 
@@ -126,7 +126,7 @@ type EventObjectPrimitives = string | number | number | boolean | null
 ### EventObject
 
 ```typescript
-type EventObject = {}
+type EventObject = [property: string]: EventObjectPrimitives | EventObjectPrimitives | EventObject[] | EventObject
 ```
 
 See also:
