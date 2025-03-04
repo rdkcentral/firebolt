@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version SecureStorage 1.4.1
+Version SecureStorage 1.5.0
 
 ## Table of Contents
 
@@ -297,7 +297,6 @@ let success = await SecureStorage.setForApp(
   'account',
   'authRefreshToken',
   'VGhpcyBub3QgYSByZWFsIHRva2VuLgo=',
-  null,
 )
 console.log(success)
 ```

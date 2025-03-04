@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.4.1
+Version Metrics 1.5.0
 
 ## Table of Contents
 
@@ -33,11 +33,12 @@ Version Metrics 1.4.1
   - [mediaSeeking](#mediaseeking)
   - [mediaWaiting](#mediawaiting)
   - [page](#page)
-  - [ready](#ready)
-  - [signIn](#signin)
-  - [signOut](#signout)
   - [startContent](#startcontent)
   - [stopContent](#stopcontent)
+- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
+  - [signIn](#signin)
+  - [signOut](#signout)
+  </details>
 - [Types](#types)
   - [ErrorType](#errortype)
   - [MediaPosition](#mediaposition)
@@ -93,7 +94,7 @@ JavaScript:
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
 
-let success = await Metrics.action('user', 'The user did foo', null)
+let success = await Metrics.action('user', 'The user did foo')
 console.log(success)
 ```
 
@@ -249,7 +250,6 @@ let success = await Metrics.error(
   'MEDIA-STALLED',
   'playback stalled',
   true,
-  null,
 )
 console.log(success)
 ```
@@ -1210,168 +1210,6 @@ Response:
 
 ---
 
-### ready
-
-_This is an private RPC method._
-
-Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
-
-Result:
-
-Capabilities:
-
-| Role | Capability                              |
-| ---- | --------------------------------------- |
-| uses | xrn:firebolt:capability:metrics:general |
-
-#### Examples
-
-Send ready metric
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.ready",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
----
-
-### signIn
-
-_This is an private RPC method._
-
-Log a sign in event, called by Discovery.signIn().
-
-Result:
-
-Capabilities:
-
-| Role | Capability                              |
-| ---- | --------------------------------------- |
-| uses | xrn:firebolt:capability:metrics:general |
-
-#### Examples
-
-Send signIn metric
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.signIn",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
-Send signIn metric with entitlements
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.signIn",
-  "params": {
-    "entitlements": [
-      {
-        "entitlementId": "123",
-        "startTime": "2025-01-01T00:00:00.000Z",
-        "endTime": "2025-01-01T00:00:00.000Z"
-      }
-    ]
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
----
-
-### signOut
-
-_This is an private RPC method._
-
-Log a sign out event, called by Discovery.signOut().
-
-Result:
-
-Capabilities:
-
-| Role | Capability                              |
-| ---- | --------------------------------------- |
-| uses | xrn:firebolt:capability:metrics:general |
-
-#### Examples
-
-Send signOut metric
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.signOut",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
----
-
 ### startContent
 
 Inform the platform that your user has started content.
@@ -1403,7 +1241,7 @@ JavaScript:
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
 
-let success = await Metrics.startContent(null)
+let success = await Metrics.startContent()
 console.log(success)
 ```
 
@@ -1515,7 +1353,7 @@ JavaScript:
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
 
-let success = await Metrics.stopContent(null)
+let success = await Metrics.stopContent()
 console.log(success)
 ```
 
@@ -1595,6 +1433,175 @@ Response:
 </details>
 
 ---
+
+## Private Methods
+
+<details markdown="1"  id="private-methods-details">
+  <summary>View</summary>
+
+### ready
+
+_This is a private RPC method._
+
+Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
+
+Result:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send ready metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.ready",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+---
+
+### signIn
+
+_This is a private RPC method._
+
+Log a sign in event, called by Discovery.signIn().
+
+Result:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send signIn metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signIn",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+Send signIn metric with entitlements
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signIn",
+  "params": {
+    "entitlements": [
+      {
+        "entitlementId": "123",
+        "startTime": "2025-01-01T00:00:00.000Z",
+        "endTime": "2025-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+---
+
+### signOut
+
+_This is a private RPC method._
+
+Log a sign out event, called by Discovery.signOut().
+
+Result:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send signOut metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signOut",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+---
+
+</details>
 
 ## Types
 

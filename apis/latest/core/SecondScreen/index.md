@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.4.1
+Version SecondScreen 1.5.0
 
 ## Table of Contents
 
@@ -27,6 +27,10 @@ Version SecondScreen 1.4.1
   - [closeRequest](#closerequest)
   - [friendlyNameChanged](#friendlynamechanged)
   - [launchRequest](#launchrequest)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [friendlyNameChanged](#friendlynamechanged-1)
+  - [launchRequest](#launchrequest-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -74,7 +78,7 @@ JavaScript:
 ```javascript
 import { SecondScreen } from '@firebolt-js/sdk'
 
-let deviceId = await SecondScreen.device(null)
+let deviceId = await SecondScreen.device()
 console.log(deviceId)
 ```
 
@@ -568,5 +572,164 @@ Response:
 </details>
 
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### closeRequest
+
+```typescript
+function listen('closeRequest', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('closeRequest', (closeRequestEvent) => {
+  console.log(closeRequestEvent)
+})
+```
+
+Value of `closeRequestEvent`:
+
+```javascript
+{
+	"type": "dial",
+	"version": "1.7"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onCloseRequest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "type": "dial",
+    "version": "1.7"
+  }
+}
+```
+
+</details>
+
+---
+
+### friendlyNameChanged
+
+See: [friendlyName](#friendlyname)
+
+### launchRequest
+
+```typescript
+function listen('launchRequest', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[SecondScreenEvent](../SecondScreen/schemas/#SecondScreenEvent)
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('launchRequest', (launchRequestEvent) => {
+  console.log(launchRequestEvent)
+})
+```
+
+Value of `launchRequestEvent`:
+
+```javascript
+{
+	"type": "dial",
+	"version": "1.7",
+	"data": "{\"code\":\"AQDPQZiQcb3KQ7gY7yy5tHTMbbkGHR9Zjp-KL53H3eKBZIeAt7O9UKYPu6B21l2UZVmIqkFXDXBmXvK4g2e3EgZtjMNmKPsTltgnRl95DImtOXjSpWtTjSaOkW4w1kZKUTwLKdwVWTzBVH8ERHorvLU6vCGOVHxXt65LNwdl5HKRweShVC1V9QsyvRnQS61ov0UclmrH_xZML2Bt-Q-rZFjey5MjwupIb4x4f53XUJMhjHpDHoIUKrjpdPDQvK2a\",\"friendlyName\":\"Operator_TX061AEI\",\"UDN\":\"608fef11-2800-482a-962b-23a6690c93c1\"}"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onLaunchRequest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "type": "dial",
+    "version": "1.7",
+    "data": "{\"code\":\"AQDPQZiQcb3KQ7gY7yy5tHTMbbkGHR9Zjp-KL53H3eKBZIeAt7O9UKYPu6B21l2UZVmIqkFXDXBmXvK4g2e3EgZtjMNmKPsTltgnRl95DImtOXjSpWtTjSaOkW4w1kZKUTwLKdwVWTzBVH8ERHorvLU6vCGOVHxXt65LNwdl5HKRweShVC1V9QsyvRnQS61ov0UclmrH_xZML2Bt-Q-rZFjey5MjwupIb4x4f53XUJMhjHpDHoIUKrjpdPDQvK2a\",\"friendlyName\":\"Operator_TX061AEI\",\"UDN\":\"608fef11-2800-482a-962b-23a6690c93c1\"}"
+  }
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types

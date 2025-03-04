@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.4.1
+Version Advertising 1.5.0
 
 ## Table of Contents
 
@@ -24,6 +24,8 @@ Version Advertising 1.4.1
   - [skipRestriction](#skiprestriction)
 - [Events](#events)
   - [skipRestrictionChanged](#skiprestrictionchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -539,5 +541,16 @@ Response:
 ### skipRestrictionChanged
 
 See: [skipRestriction](#skiprestriction)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### skipRestrictionChanged
+
+See: [skipRestriction](#skiprestriction)
+
+</details>
 
 ## Types

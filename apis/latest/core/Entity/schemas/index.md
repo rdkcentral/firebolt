@@ -10,12 +10,9 @@ sdk: core
 
 ---
 
-Version Entity 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [MovieEntity](#movieentity)
   - [Metadata](#metadata)
@@ -31,10 +28,6 @@ Version Entity 0.0.0-unknown.0
   - [Entity](#entity)
   - [EntityDetails](#entitydetails)
   - [PlayableEntity](#playableentity)
-
-## Overview
-
-undefined
 
 ## Types
 
@@ -230,7 +223,12 @@ See also:
 ### Entity
 
 ```typescript
-
+type Entity =
+  | ProgramEntity
+  | MusicEntity
+  | ChannelEntity
+  | UntypedEntity
+  | PlaylistEntity
 ```
 
 See also:

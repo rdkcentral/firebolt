@@ -10,12 +10,9 @@ sdk: manage
 
 ---
 
-Version Localization 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [ISO639_2Language](#isolanguage)
   - [Locality](#locality)
@@ -24,16 +21,12 @@ Version Localization 0.0.0-unknown.0
   - [Locale](#locale)
   - [TimeZone](#timezone)
 
-## Overview
-
-undefined
-
 ## Types
 
 ### ISO639_2Language
 
 ```typescript
-
+type ISO639_2Language = string
 ```
 
 ---
@@ -41,7 +34,7 @@ undefined
 ### Locality
 
 ```typescript
-
+type Locality = string
 ```
 
 ---
@@ -49,7 +42,7 @@ undefined
 ### CountryCode
 
 ```typescript
-
+type CountryCode = string
 ```
 
 ---
@@ -57,7 +50,7 @@ undefined
 ### Language
 
 ```typescript
-
+type Language = string
 ```
 
 ---
@@ -65,7 +58,7 @@ undefined
 ### Locale
 
 ```typescript
-
+type Locale = string
 ```
 
 ---
@@ -73,7 +66,7 @@ undefined
 ### TimeZone
 
 ```typescript
-
+type TimeZone = string
 ```
 
 ---
