@@ -46,6 +46,19 @@ Version Privacy 1.5.0-feature-parental-viewing-restrictions.0
   - [allowUnentitledPersonalizationChanged](#allowunentitledpersonalizationchanged)
   - [allowUnentitledResumePointsChanged](#allowunentitledresumepointschanged)
   - [allowWatchHistoryChanged](#allowwatchhistorychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [allowAppContentAdTargetingChanged](#allowappcontentadtargetingchanged-1)
+  - [allowCameraAnalyticsChanged](#allowcameraanalyticschanged-1)
+  - [allowPersonalizationChanged](#allowpersonalizationchanged-1)
+  - [allowPrimaryBrowseAdTargetingChanged](#allowprimarybrowseadtargetingchanged-1)
+  - [allowPrimaryContentAdTargetingChanged](#allowprimarycontentadtargetingchanged-1)
+  - [allowProductAnalyticsChanged](#allowproductanalyticschanged-1)
+  - [allowRemoteDiagnosticsChanged](#allowremotediagnosticschanged-1)
+  - [allowResumePointsChanged](#allowresumepointschanged-1)
+  - [allowUnentitledPersonalizationChanged](#allowunentitledpersonalizationchanged-1)
+  - [allowUnentitledResumePointsChanged](#allowunentitledresumepointschanged-1)
+  - [allowWatchHistoryChanged](#allowwatchhistorychanged-1)
+  </details>
 - [Types](#types)
   - [PrivacySettings](#privacysettings)
 
@@ -4162,6 +4175,61 @@ See: [allowUnentitledResumePoints](#allowunentitledresumepoints)
 ### allowWatchHistoryChanged
 
 See: [allowWatchHistory](#allowwatchhistory)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### allowACRCollectionChanged
+
+See: [allowACRCollection](#allowacrcollection)
+
+### allowAppContentAdTargetingChanged
+
+See: [allowAppContentAdTargeting](#allowappcontentadtargeting)
+
+### allowCameraAnalyticsChanged
+
+See: [allowCameraAnalytics](#allowcameraanalytics)
+
+### allowPersonalizationChanged
+
+See: [allowPersonalization](#allowpersonalization)
+
+### allowPrimaryBrowseAdTargetingChanged
+
+See: [allowPrimaryBrowseAdTargeting](#allowprimarybrowseadtargeting)
+
+### allowPrimaryContentAdTargetingChanged
+
+See: [allowPrimaryContentAdTargeting](#allowprimarycontentadtargeting)
+
+### allowProductAnalyticsChanged
+
+See: [allowProductAnalytics](#allowproductanalytics)
+
+### allowRemoteDiagnosticsChanged
+
+See: [allowRemoteDiagnostics](#allowremotediagnostics)
+
+### allowResumePointsChanged
+
+See: [allowResumePoints](#allowresumepoints)
+
+### allowUnentitledPersonalizationChanged
+
+See: [allowUnentitledPersonalization](#allowunentitledpersonalization)
+
+### allowUnentitledResumePointsChanged
+
+See: [allowUnentitledResumePoints](#allowunentitledresumepoints)
+
+### allowWatchHistoryChanged
+
+See: [allowWatchHistory](#allowwatchhistory)
+
+</details>
 
 ## Types
 

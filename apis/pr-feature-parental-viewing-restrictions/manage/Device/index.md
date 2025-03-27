@@ -25,6 +25,9 @@ Version Device 1.5.0-feature-parental-viewing-restrictions.0
 - [Events](#events)
   - [deviceNameChanged](#devicenamechanged)
   - [nameChanged](#namechanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [nameChanged](#namechanged-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -508,7 +511,7 @@ JavaScript:
 ```javascript
 import { Device } from '@firebolt-js/manage-sdk'
 
-let result = await Device.provision('12345678910', '987654321111', null)
+let result = await Device.provision('12345678910', '987654321111')
 console.log(result)
 ```
 
@@ -602,71 +605,29 @@ Response:
 
 ### deviceNameChanged
 
-```typescript
-function listen('deviceNameChanged', () => void): Promise<number>
-```
-
-See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
-
-Event value:
-
-Capabilities:
-
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:name |
-
-#### Examples
-
-Getting the device name
-
-JavaScript:
-
-```javascript
-import { Device } from '@firebolt-js/manage-sdk'
-
-Device.listen('deviceNameChanged', (value) => {
-  console.log(value)
-})
-```
-
-Value of `value`:
-
-```javascript
-'Living Room'
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Device.onDeviceNameChanged",
-  "params": {
-    "listen": true
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "Living Room"
-}
-```
-
-</details>
+[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
 
 ---
 
 ### nameChanged
 
 See: [name](#name)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### deviceNameChanged
+
+[Deprecated] This method is deprecated as of since version 0.6.0. Please use `Device.name()` as a replacement.
+
+---
+
+### nameChanged
+
+See: [name](#name)
+
+</details>
 
 ## Types

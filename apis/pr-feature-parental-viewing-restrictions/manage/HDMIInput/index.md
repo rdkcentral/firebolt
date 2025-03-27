@@ -34,6 +34,13 @@ Version HDMIInput 1.5.0-feature-parental-viewing-restrictions.0
   - [edidVersionChanged](#edidversionchanged)
   - [lowLatencyModeChanged](#lowlatencymodechanged)
   - [signalChanged](#signalchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [autoLowLatencyModeSignalChanged](#autolowlatencymodesignalchanged-1)
+  - [connectionChanged](#connectionchanged-1)
+  - [edidVersionChanged](#edidversionchanged-1)
+  - [lowLatencyModeChanged](#lowlatencymodechanged-1)
+  - [signalChanged](#signalchanged-1)
+  </details>
 - [Types](#types)
   - [EDIDVersion](#edidversion-1)
   - [HDMISignalStatus](#hdmisignalstatus)
@@ -1723,6 +1730,244 @@ Response:
 
 ---
 
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### autoLowLatencyModeCapableChanged
+
+See: [autoLowLatencyModeCapable](#autolowlatencymodecapable)
+
+### autoLowLatencyModeSignalChanged
+
+```typescript
+function listen('autoLowLatencyModeSignalChanged', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[AutoLowLatencyModeSignalChangedInfo](#autolowlatencymodesignalchangedinfo)
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:inputs:hdmi |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { HDMIInput } from '@firebolt-js/manage-sdk'
+
+HDMIInput.listen('autoLowLatencyModeSignalChanged', (info) => {
+  console.log(info)
+})
+```
+
+Value of `info`:
+
+```javascript
+{
+	"port": "HDMI1",
+	"autoLowLatencyModeSignalled": true
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "HDMIInput.onAutoLowLatencyModeSignalChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "port": "HDMI1",
+    "autoLowLatencyModeSignalled": true
+  }
+}
+```
+
+</details>
+
+---
+
+### connectionChanged
+
+```typescript
+function listen('connectionChanged', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[ConnectionChangedInfo](#connectionchangedinfo)
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:inputs:hdmi |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { HDMIInput } from '@firebolt-js/manage-sdk'
+
+HDMIInput.listen('connectionChanged', (info) => {
+  console.log(info)
+})
+```
+
+Value of `info`:
+
+```javascript
+{
+	"port": "HDMI1",
+	"connected": true
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "HDMIInput.onConnectionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "port": "HDMI1",
+    "connected": true
+  }
+}
+```
+
+</details>
+
+---
+
+### edidVersionChanged
+
+See: [edidVersion](#edidversion)
+
+### lowLatencyModeChanged
+
+See: [lowLatencyMode](#lowlatencymode)
+
+### signalChanged
+
+```typescript
+function listen('signalChanged', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[SignalChangedInfo](#signalchangedinfo)
+
+Capabilities:
+
+| Role | Capability                          |
+| ---- | ----------------------------------- |
+| uses | xrn:firebolt:capability:inputs:hdmi |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { HDMIInput } from '@firebolt-js/manage-sdk'
+
+HDMIInput.listen('signalChanged', (info) => {
+  console.log(info)
+})
+```
+
+Value of `info`:
+
+```javascript
+{
+	"port": "HDMI1",
+	"signal": "stable"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "HDMIInput.onSignalChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "port": "HDMI1",
+    "signal": "stable"
+  }
+}
+```
+
+</details>
+
+---
+
+</details>
+
 ## Types
 
 ### EDIDVersion
@@ -1756,7 +2001,7 @@ HDMISignalStatus: {
 ### HDMIPortId
 
 ```typescript
-
+type HDMIPortId = string
 ```
 
 ---

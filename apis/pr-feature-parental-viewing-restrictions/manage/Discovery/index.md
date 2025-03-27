@@ -24,6 +24,9 @@ Version Discovery 1.5.0-feature-parental-viewing-restrictions.0
 - [Events](#events)
   - [signIn](#signin)
   - [signOut](#signout)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [signOut](#signout-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -301,5 +304,150 @@ Response:
 </details>
 
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### signIn
+
+```typescript
+function listen('signIn', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role    | Capability                                       |
+| ------- | ------------------------------------------------ |
+| manages | xrn:firebolt:capability:discovery:sign-in-status |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/manage-sdk'
+
+Discovery.listen('signIn', (event) => {
+  console.log(event)
+})
+```
+
+Value of `event`:
+
+```javascript
+{
+	"appId": "firecert"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onSignIn",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "firecert"
+  }
+}
+```
+
+</details>
+
+---
+
+### signOut
+
+```typescript
+function listen('signOut', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role    | Capability                                       |
+| ------- | ------------------------------------------------ |
+| manages | xrn:firebolt:capability:discovery:sign-in-status |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/manage-sdk'
+
+Discovery.listen('signOut', (event) => {
+  console.log(event)
+})
+```
+
+Value of `event`:
+
+```javascript
+{
+	"appId": "firecert"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onSignOut",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "firecert"
+  }
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types

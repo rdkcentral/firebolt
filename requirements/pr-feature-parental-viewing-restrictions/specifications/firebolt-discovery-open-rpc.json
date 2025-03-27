@@ -524,9 +524,11 @@
 				"type": "object",
 				"properties": {
 					"rating": {
+						"description": "The rating to be restricted. Refer to operator documentation for supported values.",
 						"type": "string"
 					},
-					"subratings": {
+					"subRatings": {
+						"description": "A list of sub-ratings to be restricted. Refer to operator documentation for supported values.",
 						"type": "array",
 						"items": {
 							"type": "string"
@@ -802,30 +804,42 @@
 				"title": "VoiceGuidanceSettings",
 				"type": "object",
 				"required": [
-					"enabled"
+					"enabled",
+					"navigationHints",
+					"rate"
 				],
 				"properties": {
 					"enabled": {
 						"type": "boolean",
 						"description": "Whether or not voice guidance should be enabled by default"
 					},
+					"navigationHints": {
+						"type": "boolean",
+						"description": "Whether or not voice guidance should include additional navigation hints"
+					},
+					"rate": {
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "The rate at which voice guidance speech will be read back to the user"
+					},
 					"speed": {
-						"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
-						"description": "The speed at which voice guidance speech will be read back to the user"
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "**DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user"
 					}
 				},
 				"examples": [
 					{
 						"enabled": true,
-						"speed": 2
+						"navigationHints": true,
+						"rate": 1,
+						"speed": 1
 					}
 				]
 			},
-			"VoiceSpeed": {
-				"title": "VoiceSpeed",
+			"SpeechRate": {
+				"title": "SpeechRate",
 				"type": "number",
-				"minimum": 0.5,
-				"maximum": 2
+				"minimum": 0.1,
+				"maximum": 10
 			},
 			"ClosedCaptionsStyles": {
 				"title": "ClosedCaptionsStyles",

@@ -10,19 +10,12 @@ sdk: discovery
 
 ---
 
-Version Lifecycle 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [CloseReason](#closereason)
   - [LifecycleState](#lifecyclestate)
-
-## Overview
-
-undefined
 
 ## Types
 

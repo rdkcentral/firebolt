@@ -30,6 +30,12 @@ Version Lifecycle 1.5.0-feature-parental-viewing-restrictions.0
   - [inactive](#inactive)
   - [suspended](#suspended)
   - [unloading](#unloading)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [foreground](#foreground-1)
+  - [inactive](#inactive-1)
+  - [suspended](#suspended-1)
+  - [unloading](#unloading-1)
+  </details>
 - [Types](#types)
   - [LifecycleEvent](#lifecycleevent)
 
@@ -877,6 +883,430 @@ Response:
 </details>
 
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### background
+
+```typescript
+function listen('background', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[LifecycleEvent](#lifecycleevent)
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('background', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"state": "background",
+	"previous": "foreground"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onBackground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "background",
+    "previous": "foreground"
+  }
+}
+```
+
+</details>
+
+---
+
+### foreground
+
+```typescript
+function listen('foreground', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[LifecycleEvent](#lifecycleevent)
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('foreground', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"state": "foreground",
+	"previous": "inactive"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "foreground",
+    "previous": "inactive"
+  }
+}
+```
+
+</details>
+
+Move to foreground via remote branded buton
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('foreground', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"state": "foreground",
+	"previous": "inactive"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "foreground",
+    "previous": "inactive",
+    "source": "remote"
+  }
+}
+```
+
+</details>
+
+---
+
+### inactive
+
+```typescript
+function listen('inactive', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[LifecycleEvent](#lifecycleevent)
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('inactive', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"state": "inactive",
+	"previous": "initializing"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onInactive",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "inactive",
+    "previous": "initializing"
+  }
+}
+```
+
+</details>
+
+---
+
+### suspended
+
+```typescript
+function listen('suspended', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[LifecycleEvent](#lifecycleevent)
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('suspended', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"state": "suspended",
+	"previous": "inactive"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onSuspended",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "suspended",
+    "previous": "inactive"
+  }
+}
+```
+
+</details>
+
+---
+
+### unloading
+
+```typescript
+function listen('unloading', () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+[LifecycleEvent](#lifecycleevent)
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('unloading', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"state": "unloading",
+	"previous": "inactive"
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onUnloading",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": "unloading",
+    "previous": "inactive"
+  }
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
 

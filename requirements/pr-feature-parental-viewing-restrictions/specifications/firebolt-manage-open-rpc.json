@@ -19,7 +19,7 @@
 			"Privacy": "A module for managing device settings.",
 			"SecureStorage": "A module for storing and retrieving secure data owned by the app",
 			"UserGrants": "A module for managing grants given by the user",
-			"VoiceGuidance": "A module for managing voice-guidance Settings.",
+			"VoiceGuidance": "A module for managing voice guidance settings.",
 			"Wifi": "A module for providing support for Wifi."
 		},
 		"x-interface-names": {
@@ -4699,7 +4699,7 @@
 			},
 			"examples": [
 				{
-					"name": "Default example #1",
+					"name": "Voice guidance enabled",
 					"params": [],
 					"result": {
 						"name": "enabled",
@@ -4707,7 +4707,7 @@
 					}
 				},
 				{
-					"name": "Default example #2",
+					"name": "Voice guidance disabled",
 					"params": [],
 					"result": {
 						"name": "enabled",
@@ -4717,10 +4717,95 @@
 			]
 		},
 		{
+			"name": "VoiceGuidance.navigationHints",
+			"tags": [
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:voiceguidance"
+					]
+				}
+			],
+			"summary": "The user's preference for whether additional navigation hints should be synthesized.",
+			"params": [],
+			"result": {
+				"name": "navigationHints",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Navigation hints enabled",
+					"params": [],
+					"result": {
+						"name": "navigationHints",
+						"value": true
+					}
+				},
+				{
+					"name": "Navigation hints disabled",
+					"params": [],
+					"result": {
+						"name": "navigationHints",
+						"value": false
+					}
+				}
+			]
+		},
+		{
+			"name": "VoiceGuidance.rate",
+			"tags": [
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:voiceguidance"
+					]
+				}
+			],
+			"summary": "The rate at which voice guidance speech will be read back to the user.",
+			"params": [],
+			"result": {
+				"name": "rate",
+				"schema": {
+					"$ref": "#/x-schemas/Accessibility/SpeechRate"
+				}
+			},
+			"examples": [
+				{
+					"name": "Normal voice guidance speech rate",
+					"params": [],
+					"result": {
+						"name": "rate",
+						"value": 1
+					}
+				},
+				{
+					"name": "Doubled voice guidance speech rate",
+					"params": [],
+					"result": {
+						"name": "rate",
+						"value": 2
+					}
+				}
+			]
+		},
+		{
 			"name": "VoiceGuidance.speed",
 			"tags": [
 				{
 					"name": "property"
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "VoiceGuidance.rate()",
+					"x-since": "1.5.0"
 				},
 				{
 					"name": "capabilities",
@@ -4734,12 +4819,12 @@
 			"result": {
 				"name": "speed",
 				"schema": {
-					"$ref": "#/x-schemas/Accessibility/VoiceSpeed"
+					"$ref": "#/x-schemas/Accessibility/SpeechRate"
 				}
 			},
 			"examples": [
 				{
-					"name": "Voice guidance speed to 1",
+					"name": "Normal voice guidance speech rate",
 					"params": [],
 					"result": {
 						"name": "speed",
@@ -4747,7 +4832,7 @@
 					}
 				},
 				{
-					"name": "Voice guidance speed to 2",
+					"name": "Doubled voice guidance speech rate",
 					"params": [],
 					"result": {
 						"name": "speed",
@@ -4799,7 +4884,7 @@
 			},
 			"examples": [
 				{
-					"name": "Default example #1",
+					"name": "Voice guidance enabled",
 					"params": [
 						{
 							"name": "listen",
@@ -4812,7 +4897,7 @@
 					}
 				},
 				{
-					"name": "Default example #2",
+					"name": "Voice guidance disabled",
 					"params": [
 						{
 							"name": "listen",
@@ -4827,6 +4912,146 @@
 			]
 		},
 		{
+			"name": "VoiceGuidance.onNavigationHintsChanged",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VoiceGuidance.navigationHints"
+				},
+				{
+					"name": "event",
+					"x-alternative": "navigationHints"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:voiceguidance"
+					]
+				}
+			],
+			"summary": "The user's preference for whether additional navigation hints should be synthesized.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "navigationHints",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "boolean"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Navigation hints enabled",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "navigationHints",
+						"value": true
+					}
+				},
+				{
+					"name": "Navigation hints disabled",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "navigationHints",
+						"value": false
+					}
+				}
+			]
+		},
+		{
+			"name": "VoiceGuidance.onRateChanged",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "VoiceGuidance.rate"
+				},
+				{
+					"name": "event",
+					"x-alternative": "rate"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:voiceguidance"
+					]
+				}
+			],
+			"summary": "The rate at which voice guidance speech will be read back to the user.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "rate",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Accessibility/SpeechRate"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Normal voice guidance speech rate",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "rate",
+						"value": 1
+					}
+				},
+				{
+					"name": "Doubled voice guidance speech rate",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "rate",
+						"value": 2
+					}
+				}
+			]
+		},
+		{
 			"name": "VoiceGuidance.onSpeedChanged",
 			"tags": [
 				{
@@ -4836,6 +5061,11 @@
 				{
 					"name": "event",
 					"x-alternative": "speed"
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "VoiceGuidance.rate()",
+					"x-since": "1.5.0"
 				},
 				{
 					"name": "capabilities",
@@ -4862,14 +5092,14 @@
 							"$ref": "#/x-schemas/Types/ListenResponse"
 						},
 						{
-							"$ref": "#/x-schemas/Accessibility/VoiceSpeed"
+							"$ref": "#/x-schemas/Accessibility/SpeechRate"
 						}
 					]
 				}
 			},
 			"examples": [
 				{
-					"name": "Voice guidance speed to 1",
+					"name": "Normal voice guidance speech rate",
 					"params": [
 						{
 							"name": "listen",
@@ -4882,7 +5112,7 @@
 					}
 				},
 				{
-					"name": "Voice guidance speed to 2",
+					"name": "Doubled voice guidance speech rate",
 					"params": [
 						{
 							"name": "listen",
@@ -4928,7 +5158,7 @@
 			},
 			"examples": [
 				{
-					"name": "Default example #1",
+					"name": "Voice guidance enabled",
 					"params": [
 						{
 							"name": "value",
@@ -4941,7 +5171,7 @@
 					}
 				},
 				{
-					"name": "Default example #2",
+					"name": "Voice guidance disabled",
 					"params": [
 						{
 							"name": "value",
@@ -4956,11 +5186,134 @@
 			]
 		},
 		{
+			"name": "VoiceGuidance.setNavigationHints",
+			"tags": [
+				{
+					"name": "setter",
+					"x-setter-for": "navigationHints"
+				},
+				{
+					"name": "capabilities",
+					"x-manages": [
+						"xrn:firebolt:capability:accessibility:voiceguidance"
+					]
+				}
+			],
+			"summary": "The user's preference for whether additional navigation hints should be synthesized.",
+			"params": [
+				{
+					"name": "value",
+					"schema": {
+						"type": "boolean"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "result",
+				"schema": {
+					"type": "null"
+				}
+			},
+			"examples": [
+				{
+					"name": "Navigation hints enabled",
+					"params": [
+						{
+							"name": "value",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "navigationHints",
+						"value": null
+					}
+				},
+				{
+					"name": "Navigation hints disabled",
+					"params": [
+						{
+							"name": "value",
+							"value": false
+						}
+					],
+					"result": {
+						"name": "navigationHints",
+						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "VoiceGuidance.setRate",
+			"tags": [
+				{
+					"name": "setter",
+					"x-setter-for": "rate"
+				},
+				{
+					"name": "capabilities",
+					"x-manages": [
+						"xrn:firebolt:capability:accessibility:voiceguidance"
+					]
+				}
+			],
+			"summary": "The rate at which voice guidance speech will be read back to the user.",
+			"params": [
+				{
+					"name": "value",
+					"schema": {
+						"$ref": "#/x-schemas/Accessibility/SpeechRate"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "result",
+				"schema": {
+					"type": "null"
+				}
+			},
+			"examples": [
+				{
+					"name": "Normal voice guidance speech rate",
+					"params": [
+						{
+							"name": "value",
+							"value": 1
+						}
+					],
+					"result": {
+						"name": "rate",
+						"value": null
+					}
+				},
+				{
+					"name": "Doubled voice guidance speech rate",
+					"params": [
+						{
+							"name": "value",
+							"value": 2
+						}
+					],
+					"result": {
+						"name": "rate",
+						"value": null
+					}
+				}
+			]
+		},
+		{
 			"name": "VoiceGuidance.setSpeed",
 			"tags": [
 				{
 					"name": "setter",
 					"x-setter-for": "speed"
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "VoiceGuidance.rate()",
+					"x-since": "1.5.0"
 				},
 				{
 					"name": "capabilities",
@@ -4974,7 +5327,7 @@
 				{
 					"name": "value",
 					"schema": {
-						"$ref": "#/x-schemas/Accessibility/VoiceSpeed"
+						"$ref": "#/x-schemas/Accessibility/SpeechRate"
 					},
 					"required": true
 				}
@@ -4987,7 +5340,7 @@
 			},
 			"examples": [
 				{
-					"name": "Voice guidance speed to 1",
+					"name": "Normal voice guidance speech rate",
 					"params": [
 						{
 							"name": "value",
@@ -5000,7 +5353,7 @@
 					}
 				},
 				{
-					"name": "Voice guidance speed to 2",
+					"name": "Doubled voice guidance speech rate",
 					"params": [
 						{
 							"name": "value",
@@ -11488,9 +11841,11 @@
 				"type": "object",
 				"properties": {
 					"rating": {
+						"description": "The rating to be restricted. Refer to operator documentation for supported values.",
 						"type": "string"
 					},
-					"subratings": {
+					"subRatings": {
+						"description": "A list of sub-ratings to be restricted. Refer to operator documentation for supported values.",
 						"type": "array",
 						"items": {
 							"type": "string"
@@ -11884,30 +12239,42 @@
 				"title": "VoiceGuidanceSettings",
 				"type": "object",
 				"required": [
-					"enabled"
+					"enabled",
+					"navigationHints",
+					"rate"
 				],
 				"properties": {
 					"enabled": {
 						"type": "boolean",
 						"description": "Whether or not voice guidance should be enabled by default"
 					},
+					"navigationHints": {
+						"type": "boolean",
+						"description": "Whether or not voice guidance should include additional navigation hints"
+					},
+					"rate": {
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "The rate at which voice guidance speech will be read back to the user"
+					},
 					"speed": {
-						"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
-						"description": "The speed at which voice guidance speech will be read back to the user"
+						"$ref": "#/x-schemas/Accessibility/SpeechRate",
+						"description": "**DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user"
 					}
 				},
 				"examples": [
 					{
 						"enabled": true,
-						"speed": 2
+						"navigationHints": true,
+						"rate": 1,
+						"speed": 1
 					}
 				]
 			},
-			"VoiceSpeed": {
-				"title": "VoiceSpeed",
+			"SpeechRate": {
+				"title": "SpeechRate",
 				"type": "number",
-				"minimum": 0.5,
-				"maximum": 2
+				"minimum": 0.1,
+				"maximum": 10
 			},
 			"ClosedCaptionsStyles": {
 				"title": "ClosedCaptionsStyles",
