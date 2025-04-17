@@ -12,7 +12,9 @@ Firebolt APIs are defined by [OpenRPC schemas](https://spec.open-rpc.org).
 The schemas are used to generate SDK and Documentation artifacts.
 
 ## Methods
+
 Capability prefix `xrn:firebolt:capability` trimmed for readability.
+
 | Method | Level | Capability |
 |-|-|-|
 | [Accessibility.audioDescriptionSettings](./core/Accessibility/#audiodescriptionsettings) | **MUST** | `accessibility:audiodescriptions`  |
@@ -151,7 +153,9 @@ Capability prefix `xrn:firebolt:capability` trimmed for readability.
 | [SecureStorage.remove](./core/SecureStorage/#remove) | **SHOULD** | `storage:secure`  |
 | [SecureStorage.set](./core/SecureStorage/#set) | **SHOULD** | `storage:secure`  |
 
+
 ## Capailities
+
 | Capability | Level | Uses | Provides |
 |-|-|-|-|
 | `xrn:firebolt:capability:accessibility:audiodescriptions` | **MUST** | <details><summary>2</summary>[Accessibility.audioDescriptionSettings](./core/Accessibility/#audiodescriptionsettings)<br/>[Accessibility.onAudioDescriptionSettingsChanged](./core/Accessibility/#audiodescriptionsettingschanged)</details> |  |
