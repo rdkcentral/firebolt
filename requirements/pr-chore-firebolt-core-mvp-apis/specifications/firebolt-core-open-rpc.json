@@ -16,13 +16,107 @@
 			"Lifecycle": "Methods and events for responding to lifecycle changes in your app",
 			"Localization": "Methods for accessessing location and language preferences",
 			"Metrics": "Methods for sending metrics",
-			"Parameters": "Methods for getting initialization parameters for an app cold launch.",
 			"Profile": "Methods for getting information about the current user/account profile",
 			"SecondScreen": "Methods for communicating with second screen devices",
 			"SecureStorage": "A module for storing and retrieving secure data owned by the app"
 		}
 	},
 	"methods": [
+		{
+			"name": "Accessibility.audioDescriptionSettings",
+			"summary": "Get the user's preferred audio description settings",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:audiodescriptions"
+					]
+				}
+			],
+			"result": {
+				"name": "settings",
+				"summary": "the audio description settings",
+				"schema": {
+					"$ref": "#/components/schemas/AudioDescriptionSettings"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the audio description settings",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"enabled": true
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Accessibility.onAudioDescriptionSettingsChanged",
+			"summary": "Get the user's preferred audio description settings",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Accessibility.audioDescriptionSettings"
+				},
+				{
+					"name": "event",
+					"x-alternative": "audioDescriptionSettings"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:audiodescriptions"
+					]
+				}
+			],
+			"result": {
+				"name": "settings",
+				"summary": "the audio description settings",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/components/schemas/AudioDescriptionSettings"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the audio description settings",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"enabled": true
+						}
+					}
+				}
+			]
+		},
 		{
 			"name": "Accessibility.closedCaptions",
 			"summary": "Get the user's preferred closed-captions settings",
@@ -132,6 +226,84 @@
 			]
 		},
 		{
+			"name": "Accessibility.onClosedCaptionsSettingsChanged",
+			"summary": "Get the user's preferred closed-captions settings",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Accessibility.closedCaptionsSettings"
+				},
+				{
+					"name": "event",
+					"x-alternative": "closedCaptionsSettings"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:closedcaptions"
+					]
+				}
+			],
+			"result": {
+				"name": "closedCaptionsSettings",
+				"summary": "the closed captions settings",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Accessibility/ClosedCaptionsSettings"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the closed captions settings",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "settings",
+						"value": {
+							"enabled": true,
+							"styles": {
+								"fontFamily": "monospaced_sanserif",
+								"fontSize": 1,
+								"fontColor": "#ffffff",
+								"fontEdge": "none",
+								"fontEdgeColor": "#7F7F7F",
+								"fontOpacity": 100,
+								"backgroundColor": "#000000",
+								"backgroundOpacity": 100,
+								"textAlign": "center",
+								"textAlignVertical": "middle",
+								"windowColor": "white",
+								"windowOpacity": 50
+							},
+							"preferredLanguages": [
+								"eng",
+								"spa"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
 			"name": "Accessibility.highContrastUI",
 			"summary": "The user's preference for a high-contrast UI",
 			"params": [],
@@ -157,6 +329,64 @@
 				{
 					"name": "High-contrast UI mode is enabled",
 					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Accessibility.onHighContrastUIChanged",
+			"summary": "The user's preference for a high-contrast UI",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Accessibility.highContrastUI"
+				},
+				{
+					"name": "event",
+					"x-alternative": "highContrastUI"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:accessibility:highcontrastui"
+					]
+				}
+			],
+			"result": {
+				"name": "highContrastUI",
+				"summary": "Whether high-contrast UI mode is enabled",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "boolean"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "High-contrast UI mode is enabled",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
 					"result": {
 						"name": "Default Result",
 						"value": true
@@ -241,177 +471,6 @@
 			]
 		},
 		{
-			"name": "Accessibility.audioDescriptionSettings",
-			"summary": "Get the user's preferred audio description settings",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:accessibility:audiodescriptions"
-					]
-				}
-			],
-			"result": {
-				"name": "settings",
-				"summary": "the audio description settings",
-				"schema": {
-					"$ref": "#/components/schemas/AudioDescriptionSettings"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the audio description settings",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"enabled": true
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Accessibility.onClosedCaptionsSettingsChanged",
-			"summary": "Get the user's preferred closed-captions settings",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Accessibility.closedCaptionsSettings"
-				},
-				{
-					"name": "event",
-					"x-alternative": "closedCaptionsSettings"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:accessibility:closedcaptions"
-					]
-				}
-			],
-			"result": {
-				"name": "closedCaptionsSettings",
-				"summary": "the closed captions settings",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Accessibility/ClosedCaptionsSettings"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the closed captions settings",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "settings",
-						"value": {
-							"enabled": true,
-							"styles": {
-								"fontFamily": "monospaced_sanserif",
-								"fontSize": 1,
-								"fontColor": "#ffffff",
-								"fontEdge": "none",
-								"fontEdgeColor": "#7F7F7F",
-								"fontOpacity": 100,
-								"backgroundColor": "#000000",
-								"backgroundOpacity": 100,
-								"textAlign": "center",
-								"textAlignVertical": "middle",
-								"windowColor": "white",
-								"windowOpacity": 50
-							},
-							"preferredLanguages": [
-								"eng",
-								"spa"
-							]
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Accessibility.onHighContrastUIChanged",
-			"summary": "The user's preference for a high-contrast UI",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Accessibility.highContrastUI"
-				},
-				{
-					"name": "event",
-					"x-alternative": "highContrastUI"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:accessibility:highcontrastui"
-					]
-				}
-			],
-			"result": {
-				"name": "highContrastUI",
-				"summary": "Whether high-contrast UI mode is enabled",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "boolean"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "High-contrast UI mode is enabled",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": true
-					}
-				}
-			]
-		},
-		{
 			"name": "Accessibility.onVoiceGuidanceSettingsChanged",
 			"summary": "Get the user's preferred voice guidance settings",
 			"params": [
@@ -468,66 +527,6 @@
 							"enabled": true,
 							"navigationHints": true,
 							"rate": 1
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Accessibility.onAudioDescriptionSettingsChanged",
-			"summary": "Get the user's preferred audio description settings",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Accessibility.audioDescriptionSettings"
-				},
-				{
-					"name": "event",
-					"x-alternative": "audioDescriptionSettings"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:accessibility:audiodescriptions"
-					]
-				}
-			],
-			"result": {
-				"name": "settings",
-				"summary": "the audio description settings",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/AudioDescriptionSettings"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the audio description settings",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"enabled": true
 						}
 					}
 				}
@@ -595,106 +594,6 @@
 					"result": {
 						"name": "Default Result",
 						"value": "ee6723b8-7ab3-462c-8d93-dbf61227998e"
-					}
-				}
-			]
-		},
-		{
-			"name": "Advertising.config",
-			"summary": "Build configuration object for Ad Framework initialization",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:advertising:configuration"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "options",
-					"summary": "Configuration options",
-					"required": true,
-					"schema": {
-						"$ref": "#/components/schemas/AdConfigurationOptions"
-					}
-				}
-			],
-			"result": {
-				"name": "adFrameworkConfig",
-				"summary": "the ad framework config",
-				"schema": {
-					"type": "object",
-					"description": "An opaque object represneting the AdConfiguration"
-				}
-			},
-			"examples": [
-				{
-					"name": "Initializing the Ad Framework",
-					"params": [
-						{
-							"name": "options",
-							"value": {
-								"environment": "prod",
-								"authenticationEntity": "MVPD"
-							}
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"adServerUrl": "https://demo.v.fwmrm.net/ad/p/1",
-							"adServerUrlTemplate": "https://demo.v.fwmrm.net/ad/p/1?flag=+sltp+exvt+slcb+emcr+amcb+aeti&prof=12345:caf_allinone_profile &nw=12345&mode=live&vdur=123&caid=a110523018&asnw=372464&csid=gmott_ios_tablet_watch_live_ESPNU&ssnw=372464&vip=198.205.92.1&resp=vmap1&metr=1031&pvrn=12345&vprn=12345&vcid=1X0Ce7L3xRWlTeNhc7br8Q%3D%3D",
-							"adNetworkId": "519178",
-							"adProfileId": "12345:caf_allinone_profile",
-							"adSiteSectionId": "caf_allinone_profile_section",
-							"adOptOut": true,
-							"privacyData": "ew0KICAicGR0IjogImdkcDp2MSIsDQogICJ1c19wcml2YWN5IjogIjEtTi0iLA0KICAibG10IjogIjEiIA0KfQ0K",
-							"ifaValue": "01234567-89AB-CDEF-GH01-23456789ABCD",
-							"ifa": "ewogICJ2YWx1ZSI6ICIwMTIzNDU2Ny04OUFCLUNERUYtR0gwMS0yMzQ1Njc4OUFCQ0QiLAogICJpZmFfdHlwZSI6ICJzc3BpZCIsCiAgImxtdCI6ICIwIgp9Cg==",
-							"appName": "FutureToday",
-							"appBundleId": "FutureToday.comcast",
-							"distributorAppId": "1001",
-							"deviceAdAttributes": "ewogICJib0F0dHJpYnV0ZXNGb3JSZXZTaGFyZUlkIjogIjEyMzQiCn0=",
-							"coppa": 0,
-							"authenticationEntity": "60f72475281cfba3852413bd53e957f6"
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Advertising.policy",
-			"summary": "Get the advertising privacy and playback policy",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:advertising:policy"
-					]
-				}
-			],
-			"result": {
-				"name": "adPolicy",
-				"summary": "the ad policy",
-				"schema": {
-					"$ref": "#/components/schemas/AdPolicy"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the advertising policy settings",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"skipRestriction": "adsUnwatched",
-							"limitAdTracking": false
-						}
 					}
 				}
 			]
@@ -787,6 +686,100 @@
 			]
 		},
 		{
+			"name": "Advertising.appBundleId",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:advertising:configuration"
+					]
+				}
+			],
+			"summary": "Get the App's Bundle ID",
+			"params": [],
+			"result": {
+				"name": "appBundleId",
+				"summary": "the app bundle ID",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "app.operator"
+					}
+				}
+			]
+		},
+		{
+			"name": "Advertising.config",
+			"summary": "Build configuration object for Ad Framework initialization",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:advertising:configuration"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "options",
+					"summary": "Configuration options",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/AdConfigurationOptions"
+					}
+				}
+			],
+			"result": {
+				"name": "adFrameworkConfig",
+				"summary": "the ad framework config",
+				"schema": {
+					"type": "object",
+					"description": "An opaque object represneting the AdConfiguration"
+				}
+			},
+			"examples": [
+				{
+					"name": "Initializing the Ad Framework",
+					"params": [
+						{
+							"name": "options",
+							"value": {
+								"environment": "prod",
+								"authenticationEntity": "MVPD"
+							}
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"adServerUrl": "https://demo.v.fwmrm.net/ad/p/1",
+							"adServerUrlTemplate": "https://demo.v.fwmrm.net/ad/p/1?flag=+sltp+exvt+slcb+emcr+amcb+aeti&prof=12345:caf_allinone_profile &nw=12345&mode=live&vdur=123&caid=a110523018&asnw=372464&csid=gmott_ios_tablet_watch_live_ESPNU&ssnw=372464&vip=198.205.92.1&resp=vmap1&metr=1031&pvrn=12345&vprn=12345&vcid=1X0Ce7L3xRWlTeNhc7br8Q%3D%3D",
+							"adNetworkId": "519178",
+							"adProfileId": "12345:caf_allinone_profile",
+							"adSiteSectionId": "caf_allinone_profile_section",
+							"adOptOut": true,
+							"privacyData": "ew0KICAicGR0IjogImdkcDp2MSIsDQogICJ1c19wcml2YWN5IjogIjEtTi0iLA0KICAibG10IjogIjEiIA0KfQ0K",
+							"ifaValue": "01234567-89AB-CDEF-GH01-23456789ABCD",
+							"ifa": "ewogICJ2YWx1ZSI6ICIwMTIzNDU2Ny04OUFCLUNERUYtR0gwMS0yMzQ1Njc4OUFCQ0QiLAogICJpZmFfdHlwZSI6ICJzc3BpZCIsCiAgImxtdCI6ICIwIgp9Cg==",
+							"appName": "FutureToday",
+							"appBundleId": "FutureToday.comcast",
+							"distributorAppId": "1001",
+							"deviceAdAttributes": "ewogICJib0F0dHJpYnV0ZXNGb3JSZXZTaGFyZUlkIjogIjEyMzQiCn0=",
+							"coppa": 0,
+							"authenticationEntity": "60f72475281cfba3852413bd53e957f6"
+						}
+					}
+				}
+			]
+		},
+		{
 			"name": "Advertising.deviceAttributes",
 			"tags": [
 				{
@@ -817,31 +810,37 @@
 			]
 		},
 		{
-			"name": "Advertising.appBundleId",
+			"name": "Advertising.policy",
+			"summary": "Get the advertising privacy and playback policy",
+			"params": [],
 			"tags": [
+				{
+					"name": "property:readonly"
+				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:advertising:configuration"
+						"xrn:firebolt:capability:advertising:policy"
 					]
 				}
 			],
-			"summary": "Get the App's Bundle ID",
-			"params": [],
 			"result": {
-				"name": "appBundleId",
-				"summary": "the app bundle ID",
+				"name": "adPolicy",
+				"summary": "the ad policy",
 				"schema": {
-					"type": "string"
+					"$ref": "#/components/schemas/AdPolicy"
 				}
 			},
 			"examples": [
 				{
-					"name": "Default Example",
+					"name": "Getting the advertising policy settings",
 					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": "app.operator"
+						"value": {
+							"skipRestriction": "adsUnwatched",
+							"limitAdTracking": false
+						}
 					}
 				}
 			]
@@ -903,6 +902,96 @@
 							"skipRestriction": "adsUnwatched",
 							"limitAdTracking": false
 						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Authentication.device",
+			"summary": "Get a device token scoped to the current app.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:token:device"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "token",
+				"summary": "the token value and expiration",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Acquire a Firebolt device identity token",
+					"params": [],
+					"result": {
+						"name": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+					}
+				}
+			]
+		},
+		{
+			"name": "Authentication.root",
+			"summary": "Get a root device token.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:token:root"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "token",
+				"summary": "the token value",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Acquire a Firebolt root device identity token",
+					"params": [],
+					"result": {
+						"name": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+					}
+				}
+			]
+		},
+		{
+			"name": "Authentication.session",
+			"summary": "Get a destributor session token.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:token:session"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "token",
+				"summary": "the token value",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Acquire a distributor session token",
+					"params": [],
+					"result": {
+						"name": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 					}
 				}
 			]
@@ -1013,152 +1102,6 @@
 			]
 		},
 		{
-			"name": "Authentication.device",
-			"summary": "Get a device token scoped to the current app.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:token:device"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "token",
-				"summary": "the token value and expiration",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Acquire a Firebolt device identity token",
-					"params": [],
-					"result": {
-						"name": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-					}
-				}
-			]
-		},
-		{
-			"name": "Authentication.session",
-			"summary": "Get a destributor session token.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:token:session"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "token",
-				"summary": "the token value",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Acquire a distributor session token",
-					"params": [],
-					"result": {
-						"name": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-					}
-				}
-			]
-		},
-		{
-			"name": "Authentication.root",
-			"summary": "Get a root device token.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:token:root"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "token",
-				"summary": "the token value",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Acquire a Firebolt root device identity token",
-					"params": [],
-					"result": {
-						"name": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-					}
-				}
-			]
-		},
-		{
-			"name": "Capabilities.supported",
-			"summary": "Returns whether the platform supports the passed capability.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:capabilities:info"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "capability",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Capabilities/Capability"
-					}
-				}
-			],
-			"result": {
-				"name": "supported",
-				"summary": "Whether or not capability is supported in device.",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Wifi scan supported capability",
-					"params": [
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:wifi:scan"
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": true
-					}
-				},
-				{
-					"name": "BLE protocol unsupported capability",
-					"params": [
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:protocol:bluetoothle"
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": false
-					}
-				}
-			]
-		},
-		{
 			"name": "Capabilities.available",
 			"summary": "Returns whether a capability is available now.",
 			"tags": [
@@ -1215,9 +1158,11 @@
 			]
 		},
 		{
-			"name": "Capabilities.permitted",
-			"summary": "Returns whether the current App has permission to the passed capability and role.",
+			"name": "Capabilities.onAvailable",
 			"tags": [
+				{
+					"name": "event"
+				},
 				{
 					"name": "capabilities",
 					"x-uses": [
@@ -1225,6 +1170,7 @@
 					]
 				}
 			],
+			"summary": "Listens for all App permitted capabilities to become available.",
 			"params": [
 				{
 					"name": "capability",
@@ -1234,64 +1180,62 @@
 					}
 				},
 				{
-					"name": "options",
-					"summary": "Capability options",
+					"name": "listen",
+					"required": true,
 					"schema": {
-						"$ref": "#/components/schemas/CapabilityOption"
+						"type": "boolean"
 					}
 				}
 			],
 			"result": {
-				"name": "permitted",
-				"summary": "Whether or not app is permitted for the given capability and the role",
+				"name": "value",
+				"summary": "Provides the capability info.",
 				"schema": {
-					"type": "boolean"
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Capabilities/CapabilityInfo"
+						}
+					]
 				}
 			},
 			"examples": [
 				{
-					"name": "Keyboard",
+					"name": "Platform token is available",
 					"params": [
 						{
 							"name": "capability",
-							"value": "xrn:firebolt:capability:input:keyboard"
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": true
-					}
-				},
-				{
-					"name": "Keyboard incorrect manage role capability",
-					"params": [
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:input:keyboard"
+							"value": "xrn:firebolt:capability:token:platform"
 						},
 						{
-							"name": "options",
-							"value": {
-								"role": "manage"
-							}
+							"name": "listen",
+							"value": true
 						}
 					],
 					"result": {
-						"name": "Default Result",
-						"value": false
-					}
-				},
-				{
-					"name": "Wifi scan not permitted capability",
-					"params": [
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:wifi:scan"
+						"name": "Default result",
+						"value": {
+							"capability": "xrn:firebolt:capability:token:platform",
+							"supported": true,
+							"available": true,
+							"use": {
+								"permitted": true,
+								"granted": true
+							},
+							"manage": {
+								"permitted": true,
+								"granted": true
+							},
+							"provide": {
+								"permitted": true,
+								"granted": true
+							},
+							"details": [
+								"unpermitted"
+							]
 						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": false
 					}
 				}
 			]
@@ -1375,6 +1319,97 @@
 					"result": {
 						"name": "Default Result",
 						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "Capabilities.onGranted",
+			"tags": [
+				{
+					"name": "event"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:capabilities:info"
+					]
+				}
+			],
+			"summary": "Listens for all App permitted capabilities to become granted.",
+			"params": [
+				{
+					"name": "role",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Capabilities/Role"
+					}
+				},
+				{
+					"name": "capability",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Capabilities/Capability"
+					}
+				},
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "value",
+				"summary": "Provides the capability info.",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Capabilities/CapabilityInfo"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Postal code granted",
+					"params": [
+						{
+							"name": "role",
+							"value": "use"
+						},
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:localization:postal-code"
+						},
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"capability": "xrn:firebolt:capability:localization:postal-code",
+							"supported": true,
+							"available": true,
+							"use": {
+								"permitted": true,
+								"granted": true
+							},
+							"manage": {
+								"permitted": true,
+								"granted": true
+							},
+							"provide": {
+								"permitted": true,
+								"granted": true
+							}
+						}
 					}
 				}
 			]
@@ -1635,6 +1670,88 @@
 			]
 		},
 		{
+			"name": "Capabilities.permitted",
+			"summary": "Returns whether the current App has permission to the passed capability and role.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:capabilities:info"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "capability",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Capabilities/Capability"
+					}
+				},
+				{
+					"name": "options",
+					"summary": "Capability options",
+					"schema": {
+						"$ref": "#/components/schemas/CapabilityOption"
+					}
+				}
+			],
+			"result": {
+				"name": "permitted",
+				"summary": "Whether or not app is permitted for the given capability and the role",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Keyboard",
+					"params": [
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:input:keyboard"
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": true
+					}
+				},
+				{
+					"name": "Keyboard incorrect manage role capability",
+					"params": [
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:input:keyboard"
+						},
+						{
+							"name": "options",
+							"value": {
+								"role": "manage"
+							}
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": false
+					}
+				},
+				{
+					"name": "Wifi scan not permitted capability",
+					"params": [
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:wifi:scan"
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": false
+					}
+				}
+			]
+		},
+		{
 			"name": "Capabilities.request",
 			"summary": "Requests grants for all capability/role combinations in the roles array.",
 			"tags": [
@@ -1704,263 +1821,6 @@
 								}
 							}
 						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Capabilities.onAvailable",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:capabilities:info"
-					]
-				}
-			],
-			"summary": "Listens for all App permitted capabilities to become available.",
-			"params": [
-				{
-					"name": "capability",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Capabilities/Capability"
-					}
-				},
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "value",
-				"summary": "Provides the capability info.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Capabilities/CapabilityInfo"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Platform token is available",
-					"params": [
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:token:platform"
-						},
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default result",
-						"value": {
-							"capability": "xrn:firebolt:capability:token:platform",
-							"supported": true,
-							"available": true,
-							"use": {
-								"permitted": true,
-								"granted": true
-							},
-							"manage": {
-								"permitted": true,
-								"granted": true
-							},
-							"provide": {
-								"permitted": true,
-								"granted": true
-							},
-							"details": [
-								"unpermitted"
-							]
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Capabilities.onUnavailable",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:capabilities:info"
-					]
-				}
-			],
-			"summary": "Listens for all App permitted capabilities to become unavailable.",
-			"params": [
-				{
-					"name": "capability",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Capabilities/Capability"
-					}
-				},
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "value",
-				"summary": "Provides the capability info.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Capabilities/CapabilityInfo"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Platform token is unavailable.",
-					"params": [
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:token:platform"
-						},
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"capability": "xrn:firebolt:capability:token:platform",
-							"supported": true,
-							"available": false,
-							"use": {
-								"permitted": true,
-								"granted": true
-							},
-							"manage": {
-								"permitted": true,
-								"granted": true
-							},
-							"provide": {
-								"permitted": true,
-								"granted": true
-							},
-							"details": [
-								"unavailable"
-							]
-						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Capabilities.onGranted",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:capabilities:info"
-					]
-				}
-			],
-			"summary": "Listens for all App permitted capabilities to become granted.",
-			"params": [
-				{
-					"name": "role",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Capabilities/Role"
-					}
-				},
-				{
-					"name": "capability",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Capabilities/Capability"
-					}
-				},
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "value",
-				"summary": "Provides the capability info.",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Capabilities/CapabilityInfo"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Postal code granted",
-					"params": [
-						{
-							"name": "role",
-							"value": "use"
-						},
-						{
-							"name": "capability",
-							"value": "xrn:firebolt:capability:localization:postal-code"
-						},
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"capability": "xrn:firebolt:capability:localization:postal-code",
-							"supported": true,
-							"available": true,
-							"use": {
-								"permitted": true,
-								"granted": true
-							},
-							"manage": {
-								"permitted": true,
-								"granted": true
-							},
-							"provide": {
-								"permitted": true,
-								"granted": true
-							}
-						}
 					}
 				}
 			]
@@ -2060,400 +1920,139 @@
 			]
 		},
 		{
-			"name": "Device.id",
-			"summary": "Get the platform back-office device identifier",
-			"params": [],
+			"name": "Capabilities.supported",
+			"summary": "Returns whether the platform supports the passed capability.",
 			"tags": [
-				{
-					"name": "property:immutable"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:device:id"
+						"xrn:firebolt:capability:capabilities:info"
 					]
 				}
 			],
-			"result": {
-				"name": "id",
-				"summary": "the id",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
+			"params": [
 				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "123"
+					"name": "capability",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Capabilities/Capability"
 					}
 				}
-			]
-		},
-		{
-			"name": "Device.distributor",
-			"summary": "Get the name of the entity which is distributing the current device. There can be multiple distributors which distribute the same device model.",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:distributor"
-					]
-				}
 			],
 			"result": {
-				"name": "distributorId",
-				"summary": "the distributor ID",
+				"name": "supported",
+				"summary": "Whether or not capability is supported in device.",
 				"schema": {
-					"type": "string"
+					"type": "boolean"
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the distributor ID",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "Company"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.platform",
-			"summary": "Get a platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"result": {
-				"name": "platformId",
-				"summary": "the platform ID",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the platform ID",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "WPE"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.uid",
-			"summary": "Gets a unique id for the current app & device",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:uid"
-					]
-				}
-			],
-			"result": {
-				"name": "uniqueId",
-				"summary": "a unique ID",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the unique ID",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "ee6723b8-7ab3-462c-8d93-dbf61227998e"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.type",
-			"summary": "Get the device type",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"result": {
-				"name": "deviceType",
-				"summary": "the device type",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the device type",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "STB"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.model",
-			"summary": "Get the manufacturer designated model of the device",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:model"
-					]
-				}
-			],
-			"result": {
-				"name": "model",
-				"summary": "the device model",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the device model",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "xi6"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.sku",
-			"summary": "Get the device sku",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:sku"
-					]
-				}
-			],
-			"result": {
-				"name": "sku",
-				"summary": "the device sku",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the device sku",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "AX061AEI"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.make",
-			"summary": "Get the manufacturer of the device model",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:make"
-					]
-				}
-			],
-			"result": {
-				"name": "make",
-				"summary": "the device make",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the device make",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "Arris"
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.version",
-			"summary": "Get the SDK, OS and other version info",
-			"params": [],
-			"tags": [
-				{
-					"name": "exclude-from-sdk"
-				},
-				{
-					"name": "property:immutable"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"result": {
-				"name": "versions",
-				"summary": "the versions",
-				"schema": {
-					"$ref": "#/components/schemas/DeviceVersion"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the os and sdk versions",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"sdk": {
-								"major": 0,
-								"minor": 8,
-								"patch": 0,
-								"readable": "Firebolt JS SDK v0.8.0"
-							},
-							"api": {
-								"major": 0,
-								"minor": 8,
-								"patch": 0,
-								"readable": "Firebolt API v0.8.0"
-							},
-							"firmware": {
-								"major": 1,
-								"minor": 2,
-								"patch": 3,
-								"readable": "Device Firmware v1.2.3"
-							},
-							"os": {
-								"major": 0,
-								"minor": 1,
-								"patch": 0,
-								"readable": "Firebolt OS v0.1.0"
-							},
-							"debug": "Non-parsable build info for error logging only."
+					"name": "Wifi scan supported capability",
+					"params": [
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:wifi:scan"
 						}
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.hdcp",
-			"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
-			"params": [],
-			"tags": [
-				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				}
-			],
-			"result": {
-				"name": "negotiatedHdcpVersions",
-				"summary": "the negotiated HDCP versions",
-				"schema": {
-					"$ref": "#/components/schemas/HDCPVersionMap"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the negotiated HDCP versions",
-					"params": [],
+					],
 					"result": {
 						"name": "Default Result",
-						"value": {
-							"hdcp1.4": true,
-							"hdcp2.2": true
+						"value": true
+					}
+				},
+				{
+					"name": "BLE protocol unsupported capability",
+					"params": [
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:protocol:bluetoothle"
 						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": false
 					}
 				}
 			]
 		},
 		{
-			"name": "Device.hdr",
-			"summary": "Get the negotiated HDR formats for the connected display and device",
-			"params": [],
+			"name": "Capabilities.onUnavailable",
 			"tags": [
 				{
-					"name": "property:readonly"
+					"name": "event"
 				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:device:info"
+						"xrn:firebolt:capability:capabilities:info"
 					]
 				}
 			],
+			"summary": "Listens for all App permitted capabilities to become unavailable.",
+			"params": [
+				{
+					"name": "capability",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Capabilities/Capability"
+					}
+				},
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
 			"result": {
-				"name": "negotiatedHdrFormats",
-				"summary": "the negotiated HDR formats",
+				"name": "value",
+				"summary": "Provides the capability info.",
 				"schema": {
-					"$ref": "#/components/schemas/HDRFormatMap"
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Capabilities/CapabilityInfo"
+						}
+					]
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the negotiated HDR formats",
-					"params": [],
+					"name": "Platform token is unavailable.",
+					"params": [
+						{
+							"name": "capability",
+							"value": "xrn:firebolt:capability:token:platform"
+						},
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"hdr10": true,
-							"hdr10Plus": true,
-							"dolbyVision": true,
-							"hlg": true
+							"capability": "xrn:firebolt:capability:token:platform",
+							"supported": true,
+							"available": false,
+							"use": {
+								"permitted": true,
+								"granted": true
+							},
+							"manage": {
+								"permitted": true,
+								"granted": true
+							},
+							"provide": {
+								"permitted": true,
+								"granted": true
+							},
+							"details": [
+								"unavailable"
+							]
 						}
 					}
 				}
@@ -2498,53 +2097,25 @@
 			]
 		},
 		{
-			"name": "Device.screenResolution",
-			"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160] \n\n**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
-			"params": [],
-			"tags": [
+			"name": "Device.onAudioChanged",
+			"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.",
+			"params": [
 				{
-					"name": "property:readonly"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:info"
-					]
-				},
-				{
-					"name": "deprecated",
-					"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
-					"x-since": "1.4.0"
-				}
-			],
-			"result": {
-				"name": "screenResolution",
-				"summary": "the resolution",
-				"schema": {
-					"$ref": "#/components/schemas/Resolution"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the screen resolution",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							1920,
-							1080
-						]
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
 					}
 				}
-			]
-		},
-		{
-			"name": "Device.videoResolution",
-			"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160]",
-			"params": [],
+			],
 			"tags": [
 				{
-					"name": "property:readonly"
+					"name": "subscriber",
+					"x-subscriber-for": "Device.audio"
+				},
+				{
+					"name": "event",
+					"x-alternative": "audio"
 				},
 				{
 					"name": "capabilities",
@@ -2554,63 +2125,36 @@
 				}
 			],
 			"result": {
-				"name": "videoResolution",
-				"summary": "the resolution",
+				"name": "supportedAudioProfiles",
+				"summary": "the supported audio profiles",
 				"schema": {
-					"$ref": "#/components/schemas/Resolution"
-				}
-			},
-			"examples": [
-				{
-					"name": "Getting the video resolution",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							1920,
-							1080
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Device.name",
-			"summary": "The human readable name of the device",
-			"params": [],
-			"tags": [
-				{
-					"name": "property"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:device:name"
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/components/schemas/AudioProfiles"
+						}
 					]
 				}
-			],
-			"result": {
-				"name": "value",
-				"summary": "the device friendly-name",
-				"schema": {
-					"type": "string"
-				}
 			},
 			"examples": [
 				{
-					"name": "Default example #1",
-					"params": [],
+					"name": "Getting the supported audio profiles",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
 					"result": {
 						"name": "Default Result",
-						"value": "Living Room"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "Kitchen"
+						"value": {
+							"stereo": true,
+							"dolbyDigital5.1": true,
+							"dolbyDigital5.1+": true,
+							"dolbyAtmos": true
+						}
 					}
 				}
 			]
@@ -2674,8 +2218,41 @@
 			]
 		},
 		{
-			"name": "Device.network",
-			"summary": "Get the current network status and type",
+			"name": "Device.distributor",
+			"summary": "Get the name of the entity which is distributing the current device. There can be multiple distributors which distribute the same device model.",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:distributor"
+					]
+				}
+			],
+			"result": {
+				"name": "distributorId",
+				"summary": "the distributor ID",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the distributor ID",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "Company"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.hdcp",
+			"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 			"params": [],
 			"tags": [
 				{
@@ -2684,27 +2261,329 @@
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:network:status"
+						"xrn:firebolt:capability:device:info"
 					]
 				}
 			],
 			"result": {
-				"name": "networkInfo",
-				"summary": "the status and type",
+				"name": "negotiatedHdcpVersions",
+				"summary": "the negotiated HDCP versions",
 				"schema": {
-					"$ref": "#/components/schemas/NetworkInfoResult"
+					"$ref": "#/components/schemas/HDCPVersionMap"
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the network info",
+					"name": "Getting the negotiated HDCP versions",
 					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"state": "connected",
-							"type": "wifi"
+							"hdcp1.4": true,
+							"hdcp2.2": true
 						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.onHdcpChanged",
+			"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Device.hdcp"
+				},
+				{
+					"name": "event",
+					"x-alternative": "hdcp"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				}
+			],
+			"result": {
+				"name": "negotiatedHdcpVersions",
+				"summary": "the negotiated HDCP versions",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/components/schemas/HDCPVersionMap"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the negotiated HDCP versions",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"hdcp1.4": true,
+							"hdcp2.2": true
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.hdr",
+			"summary": "Get the negotiated HDR formats for the connected display and device",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				}
+			],
+			"result": {
+				"name": "negotiatedHdrFormats",
+				"summary": "the negotiated HDR formats",
+				"schema": {
+					"$ref": "#/components/schemas/HDRFormatMap"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the negotiated HDR formats",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"hdr10": true,
+							"hdr10Plus": true,
+							"dolbyVision": true,
+							"hlg": true
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.onHdrChanged",
+			"summary": "Get the negotiated HDR formats for the connected display and device",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Device.hdr"
+				},
+				{
+					"name": "event",
+					"x-alternative": "hdr"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				}
+			],
+			"result": {
+				"name": "negotiatedHdrFormats",
+				"summary": "the negotiated HDR formats",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/components/schemas/HDRFormatMap"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the negotiated HDR formats",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"hdr10": true,
+							"hdr10Plus": true,
+							"dolbyVision": true,
+							"hlg": true
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.id",
+			"summary": "Get the platform back-office device identifier",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:id"
+					]
+				}
+			],
+			"result": {
+				"name": "id",
+				"summary": "the id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "123"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.make",
+			"summary": "Get the manufacturer of the device model",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:make"
+					]
+				}
+			],
+			"result": {
+				"name": "make",
+				"summary": "the device make",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the device make",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "Arris"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.model",
+			"summary": "Get the manufacturer designated model of the device",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:model"
+					]
+				}
+			],
+			"result": {
+				"name": "model",
+				"summary": "the device model",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the device model",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "xi6"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.name",
+			"summary": "The human readable name of the device",
+			"params": [],
+			"tags": [
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:name"
+					]
+				}
+			],
+			"result": {
+				"name": "value",
+				"summary": "the device friendly-name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "Living Room"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "Kitchen"
 					}
 				}
 			]
@@ -2781,69 +2660,44 @@
 			]
 		},
 		{
-			"name": "Device.onHdcpChanged",
-			"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"name": "Device.network",
+			"summary": "Get the current network status and type",
+			"params": [],
 			"tags": [
 				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.hdcp"
-				},
-				{
-					"name": "event",
-					"x-alternative": "hdcp"
+					"name": "property:readonly"
 				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:device:info"
+						"xrn:firebolt:capability:network:status"
 					]
 				}
 			],
 			"result": {
-				"name": "negotiatedHdcpVersions",
-				"summary": "the negotiated HDCP versions",
+				"name": "networkInfo",
+				"summary": "the status and type",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/HDCPVersionMap"
-						}
-					]
+					"$ref": "#/components/schemas/NetworkInfoResult"
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the negotiated HDCP versions",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"name": "Getting the network info",
+					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"hdcp1.4": true,
-							"hdcp2.2": true
+							"state": "connected",
+							"type": "wifi"
 						}
 					}
 				}
 			]
 		},
 		{
-			"name": "Device.onHdrChanged",
-			"summary": "Get the negotiated HDR formats for the connected display and device",
+			"name": "Device.onNetworkChanged",
+			"summary": "Get the current network status and type",
 			"params": [
 				{
 					"name": "listen",
@@ -2856,36 +2710,36 @@
 			"tags": [
 				{
 					"name": "subscriber",
-					"x-subscriber-for": "Device.hdr"
+					"x-subscriber-for": "Device.network"
 				},
 				{
 					"name": "event",
-					"x-alternative": "hdr"
+					"x-alternative": "network"
 				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:device:info"
+						"xrn:firebolt:capability:network:status"
 					]
 				}
 			],
 			"result": {
-				"name": "negotiatedHdrFormats",
-				"summary": "the negotiated HDR formats",
+				"name": "networkInfo",
+				"summary": "the status and type",
 				"schema": {
 					"anyOf": [
 						{
 							"$ref": "#/x-schemas/Types/ListenResponse"
 						},
 						{
-							"$ref": "#/components/schemas/HDRFormatMap"
+							"$ref": "#/components/schemas/NetworkInfoResult"
 						}
 					]
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the negotiated HDR formats",
+					"name": "Getting the network info",
 					"params": [
 						{
 							"name": "listen",
@@ -2895,74 +2749,88 @@
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"hdr10": true,
-							"hdr10Plus": true,
-							"dolbyVision": true,
-							"hlg": true
+							"state": "connected",
+							"type": "wifi"
 						}
 					}
 				}
 			]
 		},
 		{
-			"name": "Device.onAudioChanged",
-			"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"name": "Device.platform",
+			"summary": "Get a platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.",
+			"params": [],
 			"tags": [
 				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.audio"
-				},
-				{
-					"name": "event",
-					"x-alternative": "audio"
+					"name": "property:immutable"
 				},
 				{
 					"name": "capabilities",
 					"x-uses": [
 						"xrn:firebolt:capability:device:info"
 					]
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+					"x-since": "1.6.0"
 				}
 			],
 			"result": {
-				"name": "supportedAudioProfiles",
-				"summary": "the supported audio profiles",
+				"name": "platformId",
+				"summary": "the platform ID",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/AudioProfiles"
-						}
-					]
+					"type": "string"
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the supported audio profiles",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"name": "Getting the platform ID",
+					"params": [],
 					"result": {
 						"name": "Default Result",
-						"value": {
-							"stereo": true,
-							"dolbyDigital5.1": true,
-							"dolbyDigital5.1+": true,
-							"dolbyAtmos": true
-						}
+						"value": "WPE"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.screenResolution",
+			"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160] \n\n**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				},
+				{
+					"name": "deprecated",
+					"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+					"x-since": "1.4.0"
+				}
+			],
+			"result": {
+				"name": "screenResolution",
+				"summary": "the resolution",
+				"schema": {
+					"$ref": "#/components/schemas/Resolution"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the screen resolution",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": [
+							1920,
+							1080
+						]
 					}
 				}
 			]
@@ -3023,6 +2891,203 @@
 							"value": true
 						}
 					],
+					"result": {
+						"name": "Default Result",
+						"value": [
+							1920,
+							1080
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.sku",
+			"summary": "Get the device sku",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:sku"
+					]
+				}
+			],
+			"result": {
+				"name": "sku",
+				"summary": "the device sku",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the device sku",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "AX061AEI"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.type",
+			"summary": "Get the device type",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				}
+			],
+			"result": {
+				"name": "deviceType",
+				"summary": "the device type",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the device type",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "STB"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.uid",
+			"summary": "Gets a unique id for the current app & device",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:uid"
+					]
+				}
+			],
+			"result": {
+				"name": "uniqueId",
+				"summary": "a unique ID",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the unique ID",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "ee6723b8-7ab3-462c-8d93-dbf61227998e"
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.version",
+			"summary": "Get the SDK, OS and other version info",
+			"params": [],
+			"tags": [
+				{
+					"name": "exclude-from-sdk"
+				},
+				{
+					"name": "property:immutable"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				}
+			],
+			"result": {
+				"name": "versions",
+				"summary": "the versions",
+				"schema": {
+					"$ref": "#/components/schemas/DeviceVersion"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the os and sdk versions",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": {
+							"sdk": {
+								"major": 0,
+								"minor": 8,
+								"patch": 0,
+								"readable": "Firebolt JS SDK v0.8.0"
+							},
+							"api": {
+								"major": 0,
+								"minor": 8,
+								"patch": 0,
+								"readable": "Firebolt API v0.8.0"
+							},
+							"firmware": {
+								"major": 1,
+								"minor": 2,
+								"patch": 3,
+								"readable": "Device Firmware v1.2.3"
+							},
+							"os": {
+								"major": 0,
+								"minor": 1,
+								"patch": 0,
+								"readable": "Firebolt OS v0.1.0"
+							},
+							"debug": "Non-parsable build info for error logging only."
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Device.videoResolution",
+			"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160]",
+			"params": [],
+			"tags": [
+				{
+					"name": "property:readonly"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:device:info"
+					]
+				}
+			],
+			"result": {
+				"name": "videoResolution",
+				"summary": "the resolution",
+				"schema": {
+					"$ref": "#/components/schemas/Resolution"
+				}
+			},
+			"examples": [
+				{
+					"name": "Getting the video resolution",
+					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": [
@@ -3095,99 +3160,237 @@
 			]
 		},
 		{
-			"name": "Device.onNetworkChanged",
-			"summary": "Get the current network status and type",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"name": "Discovery.clearContentAccess",
+			"summary": "Clear both availabilities and entitlements from the subscriber. This is equivalent of calling `Discovery.contentAccess({ availabilities: [], entitlements: []})`. This is typically called when the user signs out of an account.",
 			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Device.network"
-				},
-				{
-					"name": "event",
-					"x-alternative": "network"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:network:status"
+						"xrn:firebolt:capability:discovery:content-access"
 					]
 				}
 			],
+			"params": [],
 			"result": {
-				"name": "networkInfo",
-				"summary": "the status and type",
+				"name": "result",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/NetworkInfoResult"
-						}
-					]
+					"const": null
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the network info",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"name": "Clear subscriber's availabilities and entitlements",
+					"params": [],
 					"result": {
-						"name": "Default Result",
-						"value": {
-							"state": "connected",
-							"type": "wifi"
-						}
+						"name": "result",
+						"value": null
 					}
 				}
 			]
 		},
 		{
-			"name": "Discovery.policy",
-			"summary": "get the discovery policy",
-			"params": [],
+			"name": "Discovery.contentAccess",
+			"summary": "Inform the platform of what content the user can access either by discovering it or consuming it. Availabilities determine which content is discoverable to a user, while entitlements determine if the user can currently consume that content. Content can be available but not entitled, this means that user can see the content but when they try to open it they must gain an entitlement either through purchase or subscription upgrade. In case the access changed off-device, this API should be called any time the app comes to the foreground to refresh the access. This API should also be called any time the availabilities or entitlements change within the app for any reason. Typical reasons may include the user signing into an account or upgrading a subscription. Less common cases can cause availabilities to change, such as moving to a new service location. When availabilities or entitlements are removed from the subscriber (such as when the user signs out), then an empty array should be given. To clear both, use the Discovery.clearContentAccess convenience API.",
 			"tags": [
-				{
-					"name": "property:readonly"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:discovery:policy"
+						"xrn:firebolt:capability:discovery:content-access"
 					]
 				}
 			],
+			"params": [
+				{
+					"name": "ids",
+					"summary": "A list of identifiers that represent content that is discoverable or consumable for the subscriber",
+					"schema": {
+						"$ref": "#/components/schemas/ContentAccessIdentifiers"
+					},
+					"required": true
+				}
+			],
 			"result": {
-				"name": "policy",
-				"summary": "discovery policy opt-in/outs",
+				"name": "result",
 				"schema": {
-					"$ref": "#/components/schemas/DiscoveryPolicy"
+					"const": null
 				}
 			},
 			"examples": [
 				{
-					"name": "Getting the discovery policy",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"enableRecommendations": true,
-							"shareWatchHistory": true,
-							"rememberWatchedPrograms": true
+					"name": "Update subscriber's availabilities",
+					"params": [
+						{
+							"name": "ids",
+							"value": {
+								"availabilities": [
+									{
+										"type": "channel-lineup",
+										"id": "partner.com/availability/123",
+										"startTime": "2021-04-23T18:25:43.511Z",
+										"endTime": "2021-04-23T18:25:43.511Z"
+									},
+									{
+										"type": "channel-lineup",
+										"id": "partner.com/availability/456",
+										"startTime": "2021-04-23T18:25:43.511Z",
+										"endTime": "2021-04-23T18:25:43.511Z"
+									}
+								]
+							}
 						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				},
+				{
+					"name": "Update subscriber's availabilities and entitlements",
+					"params": [
+						{
+							"name": "ids",
+							"value": {
+								"availabilities": [
+									{
+										"type": "channel-lineup",
+										"id": "partner.com/availability/123",
+										"startTime": "2021-04-23T18:25:43.511Z",
+										"endTime": "2021-04-23T18:25:43.511Z"
+									},
+									{
+										"type": "channel-lineup",
+										"id": "partner.com/availability/456",
+										"startTime": "2021-04-23T18:25:43.511Z",
+										"endTime": "2021-04-23T18:25:43.511Z"
+									}
+								],
+								"entitlements": [
+									{
+										"entitlementId": "123",
+										"startTime": "2025-01-01T00:00:00.000Z",
+										"endTime": "2025-01-01T00:00:00.000Z"
+									}
+								]
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				},
+				{
+					"name": "Update subscriber's entitlements",
+					"params": [
+						{
+							"name": "ids",
+							"value": {
+								"entitlements": [
+									{
+										"entitlementId": "123",
+										"startTime": "2025-01-01T00:00:00.000Z",
+										"endTime": "2025-01-01T00:00:00.000Z"
+									}
+								]
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				},
+				{
+					"name": "Clear a subscriber's entitlements",
+					"params": [
+						{
+							"name": "ids",
+							"value": {
+								"entitlements": []
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				},
+				{
+					"name": "Clear a subscriber's availabilities",
+					"params": [
+						{
+							"name": "ids",
+							"value": {
+								"availabilities": []
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "Discovery.entitlements",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:discovery:content-access"
+					]
+				},
+				{
+					"name": "deprecated",
+					"x-since": "0.10.0",
+					"x-alternative": "Discovery.contentAccess()"
+				}
+			],
+			"summary": "Inform the platform of the users latest entitlements w/in this app.",
+			"params": [
+				{
+					"name": "entitlements",
+					"summary": "Array of entitlement objects",
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/x-schemas/Entertainment/Entitlement"
+						}
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"summary": "whether the call was successful or not",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Update user's entitlements",
+					"params": [
+						{
+							"name": "entitlements",
+							"value": [
+								{
+									"entitlementId": "partner.com/entitlement/123",
+									"startTime": "2021-04-23T18:25:43.511Z",
+									"endTime": "2021-04-23T18:25:43.511Z"
+								},
+								{
+									"entitlementId": "partner.com/entitlement/456",
+									"startTime": "2021-04-23T18:25:43.511Z",
+									"endTime": "2021-04-23T18:25:43.511Z"
+								}
+							]
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
 					}
 				}
 			]
@@ -3568,555 +3771,6 @@
 			]
 		},
 		{
-			"name": "Discovery.purchasedContent",
-			"tags": [
-				{
-					"name": "polymorphic-pull"
-				},
-				{
-					"name": "capabilities",
-					"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
-				},
-				{
-					"name": "deprecated"
-				}
-			],
-			"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
-			"params": [
-				{
-					"name": "correlationId",
-					"required": true,
-					"schema": {
-						"type": [
-							"string",
-							"null"
-						]
-					}
-				},
-				{
-					"name": "result",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Discovery/PurchasedContentResult"
-					},
-					"summary": "The data for the purchasedContent"
-				}
-			],
-			"result": {
-				"name": "success",
-				"summary": "True if the push operation is successful",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Inform the platform of the user's purchased content",
-					"params": [
-						{
-							"name": "correlationId",
-							"value": null
-						},
-						{
-							"name": "result",
-							"value": {
-								"totalCount": 10,
-								"expires": "2025-01-01T00:00:00.000Z",
-								"entries": [
-									{
-										"identifiers": {
-											"entityId": "345"
-										},
-										"entityType": "program",
-										"programType": "movie",
-										"title": "Cool Runnings",
-										"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-										"releaseDate": "1993-01-01T00:00:00.000Z",
-										"contentRatings": [
-											{
-												"scheme": "US-Movie",
-												"rating": "PG"
-											},
-											{
-												"scheme": "CA-Movie",
-												"rating": "G"
-											}
-										],
-										"waysToWatch": [
-											{
-												"identifiers": {
-													"assetId": "123"
-												},
-												"expires": "2025-01-01T00:00:00.000Z",
-												"entitled": true,
-												"entitledExpires": "2025-01-01T00:00:00.000Z",
-												"offeringType": "buy",
-												"price": 2.99,
-												"videoQuality": [
-													"UHD"
-												],
-												"audioProfile": [
-													"dolbyAtmos"
-												],
-												"audioLanguages": [
-													"en"
-												],
-												"closedCaptions": [
-													"en"
-												],
-												"subtitles": [
-													"es"
-												],
-												"audioDescriptions": [
-													"en"
-												]
-											}
-										]
-									}
-								]
-							}
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			],
-			"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
-		},
-		{
-			"name": "Discovery.watched",
-			"summary": "Notify the platform that content was partially or completely watched",
-			"tags": [
-				{
-					"name": "polymorphic-reducer"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:watched"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "entityId",
-					"required": true,
-					"schema": {
-						"type": "string"
-					},
-					"summary": "The entity Id of the watched content."
-				},
-				{
-					"name": "progress",
-					"summary": "How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live)",
-					"schema": {
-						"type": "number",
-						"minimum": 0
-					}
-				},
-				{
-					"name": "completed",
-					"summary": "Whether or not this viewing is considered \"complete,\" per the app's definition thereof",
-					"schema": {
-						"type": "boolean"
-					}
-				},
-				{
-					"name": "watchedOn",
-					"summary": "Date/Time the content was watched, ISO 8601 Date/Time",
-					"schema": {
-						"type": "string",
-						"format": "date-time"
-					}
-				}
-			],
-			"result": {
-				"name": "success",
-				"summary": "whether the call was successful or not",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Notifying the platform of watched content",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "partner.com/entity/123"
-						},
-						{
-							"name": "progress",
-							"value": 0.95
-						},
-						{
-							"name": "completed",
-							"value": true
-						},
-						{
-							"name": "watchedOn",
-							"value": "2021-04-23T18:25:43.511Z"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.watchNext",
-			"summary": "Suggest a call-to-action for this app on the platform home screen",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:watch-next"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "title",
-					"summary": "The title of this call to action",
-					"schema": {
-						"$ref": "#/x-schemas/Types/LocalizedString"
-					},
-					"required": true
-				},
-				{
-					"name": "identifiers",
-					"summary": "A set of content identifiers for this call to action",
-					"schema": {
-						"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
-					},
-					"required": true
-				},
-				{
-					"name": "expires",
-					"summary": "When this call to action should no longer be presented to users",
-					"schema": {
-						"type": "string",
-						"format": "date-time"
-					}
-				},
-				{
-					"name": "images",
-					"summary": "A set of images for this call to action",
-					"schema": {
-						"type": "object",
-						"patternProperties": {
-							"^.*$": {
-								"$ref": "#/x-schemas/Types/LocalizedString"
-							}
-						}
-					}
-				}
-			],
-			"result": {
-				"name": "success",
-				"summary": "whether the call was successful or not",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Suggest a watch-next tile for the home screen",
-					"params": [
-						{
-							"name": "title",
-							"value": "A Cool Show"
-						},
-						{
-							"name": "identifiers",
-							"value": {
-								"entityId": "partner.com/entity/123"
-							}
-						},
-						{
-							"name": "expires",
-							"value": "2021-04-23T18:25:43.511Z"
-						},
-						{
-							"name": "images",
-							"value": {
-								"3x4": {
-									"en-US": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg",
-									"es": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
-								},
-								"16x9": {
-									"en": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
-								}
-							}
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				},
-				{
-					"name": "Suggest a watch-next tile for the home screen",
-					"params": [
-						{
-							"name": "title",
-							"value": "A Fantastic Show"
-						},
-						{
-							"name": "identifiers",
-							"value": {
-								"entityId": "partner.com/entity/456"
-							}
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.entitlements",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:content-access"
-					]
-				},
-				{
-					"name": "deprecated",
-					"x-since": "0.10.0",
-					"x-alternative": "Discovery.contentAccess()"
-				}
-			],
-			"summary": "Inform the platform of the users latest entitlements w/in this app.",
-			"params": [
-				{
-					"name": "entitlements",
-					"summary": "Array of entitlement objects",
-					"schema": {
-						"type": "array",
-						"items": {
-							"$ref": "#/x-schemas/Entertainment/Entitlement"
-						}
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"summary": "whether the call was successful or not",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Update user's entitlements",
-					"params": [
-						{
-							"name": "entitlements",
-							"value": [
-								{
-									"entitlementId": "partner.com/entitlement/123",
-									"startTime": "2021-04-23T18:25:43.511Z",
-									"endTime": "2021-04-23T18:25:43.511Z"
-								},
-								{
-									"entitlementId": "partner.com/entitlement/456",
-									"startTime": "2021-04-23T18:25:43.511Z",
-									"endTime": "2021-04-23T18:25:43.511Z"
-								}
-							]
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.contentAccess",
-			"summary": "Inform the platform of what content the user can access either by discovering it or consuming it. Availabilities determine which content is discoverable to a user, while entitlements determine if the user can currently consume that content. Content can be available but not entitled, this means that user can see the content but when they try to open it they must gain an entitlement either through purchase or subscription upgrade. In case the access changed off-device, this API should be called any time the app comes to the foreground to refresh the access. This API should also be called any time the availabilities or entitlements change within the app for any reason. Typical reasons may include the user signing into an account or upgrading a subscription. Less common cases can cause availabilities to change, such as moving to a new service location. When availabilities or entitlements are removed from the subscriber (such as when the user signs out), then an empty array should be given. To clear both, use the Discovery.clearContentAccess convenience API.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:content-access"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "ids",
-					"summary": "A list of identifiers that represent content that is discoverable or consumable for the subscriber",
-					"schema": {
-						"$ref": "#/components/schemas/ContentAccessIdentifiers"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "result",
-				"schema": {
-					"const": null
-				}
-			},
-			"examples": [
-				{
-					"name": "Update subscriber's availabilities",
-					"params": [
-						{
-							"name": "ids",
-							"value": {
-								"availabilities": [
-									{
-										"type": "channel-lineup",
-										"id": "partner.com/availability/123",
-										"startTime": "2021-04-23T18:25:43.511Z",
-										"endTime": "2021-04-23T18:25:43.511Z"
-									},
-									{
-										"type": "channel-lineup",
-										"id": "partner.com/availability/456",
-										"startTime": "2021-04-23T18:25:43.511Z",
-										"endTime": "2021-04-23T18:25:43.511Z"
-									}
-								]
-							}
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				},
-				{
-					"name": "Update subscriber's availabilities and entitlements",
-					"params": [
-						{
-							"name": "ids",
-							"value": {
-								"availabilities": [
-									{
-										"type": "channel-lineup",
-										"id": "partner.com/availability/123",
-										"startTime": "2021-04-23T18:25:43.511Z",
-										"endTime": "2021-04-23T18:25:43.511Z"
-									},
-									{
-										"type": "channel-lineup",
-										"id": "partner.com/availability/456",
-										"startTime": "2021-04-23T18:25:43.511Z",
-										"endTime": "2021-04-23T18:25:43.511Z"
-									}
-								],
-								"entitlements": [
-									{
-										"entitlementId": "123",
-										"startTime": "2025-01-01T00:00:00.000Z",
-										"endTime": "2025-01-01T00:00:00.000Z"
-									}
-								]
-							}
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				},
-				{
-					"name": "Update subscriber's entitlements",
-					"params": [
-						{
-							"name": "ids",
-							"value": {
-								"entitlements": [
-									{
-										"entitlementId": "123",
-										"startTime": "2025-01-01T00:00:00.000Z",
-										"endTime": "2025-01-01T00:00:00.000Z"
-									}
-								]
-							}
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				},
-				{
-					"name": "Clear a subscriber's entitlements",
-					"params": [
-						{
-							"name": "ids",
-							"value": {
-								"entitlements": []
-							}
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				},
-				{
-					"name": "Clear a subscriber's availabilities",
-					"params": [
-						{
-							"name": "ids",
-							"value": {
-								"availabilities": []
-							}
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.clearContentAccess",
-			"summary": "Clear both availabilities and entitlements from the subscriber. This is equivalent of calling `Discovery.contentAccess({ availabilities: [], entitlements: []})`. This is typically called when the user signs out of an account.",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:content-access"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "result",
-				"schema": {
-					"const": null
-				}
-			},
-			"examples": [
-				{
-					"name": "Clear subscriber's availabilities and entitlements",
-					"params": [],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				}
-			]
-		},
-		{
 			"name": "Discovery.launch",
 			"tags": [
 				{
@@ -4465,289 +4119,37 @@
 			]
 		},
 		{
-			"name": "Discovery.signIn",
-			"tags": [
-				{
-					"name": "calls-metrics"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:sign-in-status"
-					]
-				}
-			],
-			"summary": "Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.",
-			"params": [
-				{
-					"name": "entitlements",
-					"summary": "Optional array of Entitlements, in case of a different user account, or a long time since last sign-in.",
-					"schema": {
-						"type": "array",
-						"items": {
-							"$ref": "#/x-schemas/Entertainment/Entitlement"
-						}
-					},
-					"required": false
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send signIn metric",
-					"params": [],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				},
-				{
-					"name": "Send signIn notification with entitlements",
-					"params": [
-						{
-							"name": "entitlements",
-							"value": [
-								{
-									"entitlementId": "123",
-									"startTime": "2025-01-01T00:00:00.000Z",
-									"endTime": "2025-01-01T00:00:00.000Z"
-								}
-							]
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.signOut",
-			"tags": [
-				{
-					"name": "calls-metrics"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:discovery:sign-in-status"
-					]
-				}
-			],
-			"summary": "Inform the platform that your user has signed out. See `Discovery.signIn` for more details on how the sign-in state is used.signOut will NOT clear entitlements, the app should make a separate call to Discovery.clearContentAccess. Apps should also call signOut when a login token has expired and the user is now in a signed-out state.",
+			"name": "Discovery.policy",
+			"summary": "get the discovery policy",
 			"params": [],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send signOut notification",
-					"params": [],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.userInterest",
-			"summary": "Send an entity that the user has expressed interest in to the platform.",
 			"tags": [
 				{
-					"name": "capabilities",
-					"x-provides": "xrn:firebolt:capability:discovery:interest"
-				}
-			],
-			"params": [
-				{
-					"name": "type",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Discovery/InterestType"
-					}
-				},
-				{
-					"name": "reason",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Discovery/InterestReason"
-					}
-				},
-				{
-					"name": "entity",
-					"required": true,
-					"schema": {
-						"$ref": "#/x-schemas/Entity/EntityDetails"
-					}
-				}
-			],
-			"result": {
-				"name": "result",
-				"schema": {
-					"type": "null"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "type",
-							"value": "interest"
-						},
-						{
-							"name": "reason",
-							"value": "playlist"
-						},
-						{
-							"name": "entity",
-							"value": {
-								"identifiers": {
-									"entityId": "345",
-									"entityType": "program",
-									"programType": "movie"
-								},
-								"info": {}
-							}
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				}
-			]
-		},
-		{
-			"name": "Discovery.onRequestUserInterest",
-			"tags": [
-				{
-					"name": "rpc-only"
-				},
-				{
-					"name": "event",
-					"x-response-name": "entity",
-					"x-response": {
-						"$ref": "#/x-schemas/Entity/EntityDetails",
-						"examples": [
-							{
-								"identifiers": {
-									"entityId": "345",
-									"entityType": "program",
-									"programType": "movie"
-								},
-								"info": {
-									"title": "Cool Runnings",
-									"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
-									"releaseDate": "1993-01-01T00:00:00.000Z",
-									"contentRatings": [
-										{
-											"scheme": "US-Movie",
-											"rating": "PG"
-										},
-										{
-											"scheme": "CA-Movie",
-											"rating": "G"
-										}
-									]
-								}
-							}
-						]
-					},
-					"x-error": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"code",
-							"message"
-						],
-						"properties": {
-							"code": {
-								"title": "errorObjectCode",
-								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-								"type": "integer"
-							},
-							"message": {
-								"title": "errorObjectMessage",
-								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-								"type": "string"
-							},
-							"data": {
-								"title": "errorObjectData",
-								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-							}
-						}
-					}
+					"name": "property:readonly"
 				},
 				{
 					"name": "capabilities",
-					"x-provides": "xrn:firebolt:capability:discovery:interest"
-				}
-			],
-			"summary": "Provide information about the entity currently displayed or selected on the screen.",
-			"description": "Provide information about the entity currently displayed or selected on the screen.",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "request",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "object",
-							"required": [
-								"correlationId",
-								"parameters"
-							],
-							"properties": {
-								"correlationId": {
-									"type": "string"
-								},
-								"parameters": {
-									"$ref": "#/components/schemas/UserInterestProviderParameters"
-								}
-							},
-							"additionalProperties": false
-						}
+					"x-uses": [
+						"xrn:firebolt:capability:discovery:policy"
 					]
 				}
+			],
+			"result": {
+				"name": "policy",
+				"summary": "discovery policy opt-in/outs",
+				"schema": {
+					"$ref": "#/components/schemas/DiscoveryPolicy"
+				}
 			},
 			"examples": [
 				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"name": "Getting the discovery policy",
+					"params": [],
 					"result": {
-						"name": "request",
+						"name": "Default Result",
 						"value": {
-							"correlationId": "xyz",
-							"parameters": {
-								"type": "interest",
-								"reason": "playlist"
-							}
+							"enableRecommendations": true,
+							"shareWatchHistory": true,
+							"rememberWatchedPrograms": true
 						}
 					}
 				}
@@ -4980,6 +4382,493 @@
 			"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
 		},
 		{
+			"name": "Discovery.purchasedContent",
+			"tags": [
+				{
+					"name": "polymorphic-pull"
+				},
+				{
+					"name": "capabilities",
+					"x-provides": "xrn:firebolt:capability:discovery:purchased-content"
+				},
+				{
+					"name": "deprecated"
+				}
+			],
+			"summary": "Provide a list of purchased content for the authenticated account, such as rentals and electronic sell through purchases.",
+			"params": [
+				{
+					"name": "correlationId",
+					"required": true,
+					"schema": {
+						"type": [
+							"string",
+							"null"
+						]
+					}
+				},
+				{
+					"name": "result",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Discovery/PurchasedContentResult"
+					},
+					"summary": "The data for the purchasedContent"
+				}
+			],
+			"result": {
+				"name": "success",
+				"summary": "True if the push operation is successful",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Inform the platform of the user's purchased content",
+					"params": [
+						{
+							"name": "correlationId",
+							"value": null
+						},
+						{
+							"name": "result",
+							"value": {
+								"totalCount": 10,
+								"expires": "2025-01-01T00:00:00.000Z",
+								"entries": [
+									{
+										"identifiers": {
+											"entityId": "345"
+										},
+										"entityType": "program",
+										"programType": "movie",
+										"title": "Cool Runnings",
+										"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+										"releaseDate": "1993-01-01T00:00:00.000Z",
+										"contentRatings": [
+											{
+												"scheme": "US-Movie",
+												"rating": "PG"
+											},
+											{
+												"scheme": "CA-Movie",
+												"rating": "G"
+											}
+										],
+										"waysToWatch": [
+											{
+												"identifiers": {
+													"assetId": "123"
+												},
+												"expires": "2025-01-01T00:00:00.000Z",
+												"entitled": true,
+												"entitledExpires": "2025-01-01T00:00:00.000Z",
+												"offeringType": "buy",
+												"price": 2.99,
+												"videoQuality": [
+													"UHD"
+												],
+												"audioProfile": [
+													"dolbyAtmos"
+												],
+												"audioLanguages": [
+													"en"
+												],
+												"closedCaptions": [
+													"en"
+												],
+												"subtitles": [
+													"es"
+												],
+												"audioDescriptions": [
+													"en"
+												]
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			],
+			"description": "Return content purchased by the user, such as rentals and electronic sell through purchases.\n\nThe app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.\n\nThe `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.\n\nThe app should implement both Push and Pull methods for `purchasedContent`.\n\nThe app should actively push `purchasedContent` when:\n\n*  The app becomes Active.\n*  When the state of the purchasedContent set has changed.\n*  The app goes into Inactive or Background state, if there is a chance a change event has been missed."
+		},
+		{
+			"name": "Discovery.onRequestUserInterest",
+			"tags": [
+				{
+					"name": "rpc-only"
+				},
+				{
+					"name": "event",
+					"x-response-name": "entity",
+					"x-response": {
+						"$ref": "#/x-schemas/Entity/EntityDetails",
+						"examples": [
+							{
+								"identifiers": {
+									"entityId": "345",
+									"entityType": "program",
+									"programType": "movie"
+								},
+								"info": {
+									"title": "Cool Runnings",
+									"synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+									"releaseDate": "1993-01-01T00:00:00.000Z",
+									"contentRatings": [
+										{
+											"scheme": "US-Movie",
+											"rating": "PG"
+										},
+										{
+											"scheme": "CA-Movie",
+											"rating": "G"
+										}
+									]
+								}
+							}
+						]
+					},
+					"x-error": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
+							},
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
+							}
+						}
+					}
+				},
+				{
+					"name": "capabilities",
+					"x-provides": "xrn:firebolt:capability:discovery:interest"
+				}
+			],
+			"summary": "Provide information about the entity currently displayed or selected on the screen.",
+			"description": "Provide information about the entity currently displayed or selected on the screen.",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "request",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "object",
+							"required": [
+								"correlationId",
+								"parameters"
+							],
+							"properties": {
+								"correlationId": {
+									"type": "string"
+								},
+								"parameters": {
+									"$ref": "#/components/schemas/UserInterestProviderParameters"
+								}
+							},
+							"additionalProperties": false
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "request",
+						"value": {
+							"correlationId": "xyz",
+							"parameters": {
+								"type": "interest",
+								"reason": "playlist"
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Discovery.signIn",
+			"tags": [
+				{
+					"name": "calls-metrics"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:discovery:sign-in-status"
+					]
+				}
+			],
+			"summary": "Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.",
+			"params": [
+				{
+					"name": "entitlements",
+					"summary": "Optional array of Entitlements, in case of a different user account, or a long time since last sign-in.",
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/x-schemas/Entertainment/Entitlement"
+						}
+					},
+					"required": false
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send signIn metric",
+					"params": [],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				},
+				{
+					"name": "Send signIn notification with entitlements",
+					"params": [
+						{
+							"name": "entitlements",
+							"value": [
+								{
+									"entitlementId": "123",
+									"startTime": "2025-01-01T00:00:00.000Z",
+									"endTime": "2025-01-01T00:00:00.000Z"
+								}
+							]
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Discovery.signOut",
+			"tags": [
+				{
+					"name": "calls-metrics"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:discovery:sign-in-status"
+					]
+				}
+			],
+			"summary": "Inform the platform that your user has signed out. See `Discovery.signIn` for more details on how the sign-in state is used.signOut will NOT clear entitlements, the app should make a separate call to Discovery.clearContentAccess. Apps should also call signOut when a login token has expired and the user is now in a signed-out state.",
+			"params": [],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send signOut notification",
+					"params": [],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Discovery.userInterest",
+			"summary": "Send an entity that the user has expressed interest in to the platform.",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-provides": "xrn:firebolt:capability:discovery:interest"
+				}
+			],
+			"params": [
+				{
+					"name": "type",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Discovery/InterestType"
+					}
+				},
+				{
+					"name": "reason",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Discovery/InterestReason"
+					}
+				},
+				{
+					"name": "entity",
+					"required": true,
+					"schema": {
+						"$ref": "#/x-schemas/Entity/EntityDetails"
+					}
+				}
+			],
+			"result": {
+				"name": "result",
+				"schema": {
+					"type": "null"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "type",
+							"value": "interest"
+						},
+						{
+							"name": "reason",
+							"value": "playlist"
+						},
+						{
+							"name": "entity",
+							"value": {
+								"identifiers": {
+									"entityId": "345",
+									"entityType": "program",
+									"programType": "movie"
+								},
+								"info": {}
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "Discovery.userInterestError",
+			"tags": [
+				{
+					"name": "rpc-only"
+				},
+				{
+					"name": "capabilities",
+					"x-provides": "xrn:firebolt:capability:discovery:interest",
+					"x-error-for": "Discovery.onRequestUserInterest"
+				}
+			],
+			"summary": "Internal API for .onRequestUserInterest Provider to send back error.",
+			"description": "Provide information about the entity currently displayed or selected on the screen.",
+			"params": [
+				{
+					"name": "correlationId",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "error",
+					"schema": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"title": "errorObjectCode",
+								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
+								"type": "integer"
+							},
+							"message": {
+								"title": "errorObjectMessage",
+								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
+								"type": "string"
+							},
+							"data": {
+								"title": "errorObjectData",
+								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
+							}
+						}
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "result",
+				"schema": {
+					"type": "null"
+				}
+			},
+			"examples": [
+				{
+					"name": "Example 1",
+					"params": [
+						{
+							"name": "correlationId",
+							"value": "123"
+						},
+						{
+							"name": "error",
+							"value": {
+								"code": 1,
+								"message": "Error"
+							}
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				}
+			]
+		},
+		{
 			"name": "Discovery.userInterestResponse",
 			"tags": [
 				{
@@ -5081,81 +4970,196 @@
 			]
 		},
 		{
-			"name": "Discovery.userInterestError",
+			"name": "Discovery.watchNext",
+			"summary": "Suggest a call-to-action for this app on the platform home screen",
 			"tags": [
 				{
-					"name": "rpc-only"
-				},
-				{
 					"name": "capabilities",
-					"x-provides": "xrn:firebolt:capability:discovery:interest",
-					"x-error-for": "Discovery.onRequestUserInterest"
+					"x-uses": [
+						"xrn:firebolt:capability:discovery:watch-next"
+					]
 				}
 			],
-			"summary": "Internal API for .onRequestUserInterest Provider to send back error.",
-			"description": "Provide information about the entity currently displayed or selected on the screen.",
 			"params": [
 				{
-					"name": "correlationId",
+					"name": "title",
+					"summary": "The title of this call to action",
 					"schema": {
-						"type": "string"
+						"$ref": "#/x-schemas/Types/LocalizedString"
 					},
 					"required": true
 				},
 				{
-					"name": "error",
+					"name": "identifiers",
+					"summary": "A set of content identifiers for this call to action",
 					"schema": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"code",
-							"message"
-						],
-						"properties": {
-							"code": {
-								"title": "errorObjectCode",
-								"description": "A Number that indicates the error type that occurred. This MUST be an integer. The error codes from and including -32768 to -32000 are reserved for pre-defined errors. These pre-defined errors SHOULD be assumed to be returned from any JSON-RPC api.",
-								"type": "integer"
-							},
-							"message": {
-								"title": "errorObjectMessage",
-								"description": "A String providing a short description of the error. The message SHOULD be limited to a concise single sentence.",
-								"type": "string"
-							},
-							"data": {
-								"title": "errorObjectData",
-								"description": "A Primitive or Structured value that contains additional information about the error. This may be omitted. The value of this member is defined by the Server (e.g. detailed error information, nested errors etc.)."
-							}
-						}
+						"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
 					},
 					"required": true
+				},
+				{
+					"name": "expires",
+					"summary": "When this call to action should no longer be presented to users",
+					"schema": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				{
+					"name": "images",
+					"summary": "A set of images for this call to action",
+					"schema": {
+						"type": "object",
+						"patternProperties": {
+							"^.*$": {
+								"$ref": "#/x-schemas/Types/LocalizedString"
+							}
+						}
+					}
 				}
 			],
 			"result": {
-				"name": "result",
+				"name": "success",
+				"summary": "whether the call was successful or not",
 				"schema": {
-					"type": "null"
+					"type": "boolean"
 				}
 			},
 			"examples": [
 				{
-					"name": "Example 1",
+					"name": "Suggest a watch-next tile for the home screen",
 					"params": [
 						{
-							"name": "correlationId",
-							"value": "123"
+							"name": "title",
+							"value": "A Cool Show"
 						},
 						{
-							"name": "error",
+							"name": "identifiers",
 							"value": {
-								"code": 1,
-								"message": "Error"
+								"entityId": "partner.com/entity/123"
+							}
+						},
+						{
+							"name": "expires",
+							"value": "2021-04-23T18:25:43.511Z"
+						},
+						{
+							"name": "images",
+							"value": {
+								"3x4": {
+									"en-US": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg",
+									"es": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
+								},
+								"16x9": {
+									"en": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
+								}
 							}
 						}
 					],
 					"result": {
-						"name": "result",
-						"value": null
+						"name": "success",
+						"value": true
+					}
+				},
+				{
+					"name": "Suggest a watch-next tile for the home screen",
+					"params": [
+						{
+							"name": "title",
+							"value": "A Fantastic Show"
+						},
+						{
+							"name": "identifiers",
+							"value": {
+								"entityId": "partner.com/entity/456"
+							}
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Discovery.watched",
+			"summary": "Notify the platform that content was partially or completely watched",
+			"tags": [
+				{
+					"name": "polymorphic-reducer"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:discovery:watched"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "entityId",
+					"required": true,
+					"schema": {
+						"type": "string"
+					},
+					"summary": "The entity Id of the watched content."
+				},
+				{
+					"name": "progress",
+					"summary": "How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live)",
+					"schema": {
+						"type": "number",
+						"minimum": 0
+					}
+				},
+				{
+					"name": "completed",
+					"summary": "Whether or not this viewing is considered \"complete,\" per the app's definition thereof",
+					"schema": {
+						"type": "boolean"
+					}
+				},
+				{
+					"name": "watchedOn",
+					"summary": "Date/Time the content was watched, ISO 8601 Date/Time",
+					"schema": {
+						"type": "string",
+						"format": "date-time"
+					}
+				}
+			],
+			"result": {
+				"name": "success",
+				"summary": "whether the call was successful or not",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Notifying the platform of watched content",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "partner.com/entity/123"
+						},
+						{
+							"name": "progress",
+							"value": 0.95
+						},
+						{
+							"name": "completed",
+							"value": true
+						},
+						{
+							"name": "watchedOn",
+							"value": "2021-04-23T18:25:43.511Z"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
 					}
 				}
 			]
@@ -5388,36 +5392,56 @@
 			]
 		},
 		{
-			"name": "Lifecycle.ready",
+			"name": "Lifecycle.onBackground",
 			"tags": [
 				{
-					"name": "calls-metrics"
+					"name": "event"
 				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:lifecycle:ready"
+						"xrn:firebolt:capability:lifecycle:state"
 					]
-				},
-				{
-					"name": "exclude-from-sdk"
 				}
 			],
-			"summary": "Notify the platform that the app is ready",
-			"params": [],
+			"summary": "Listen to the background event",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
 			"result": {
-				"name": "result",
+				"name": "value",
 				"schema": {
-					"const": null
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/components/schemas/LifecycleEvent"
+						}
+					]
 				}
 			},
 			"examples": [
 				{
-					"name": "Let the platform know that your app is ready",
-					"params": [],
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
 					"result": {
 						"name": "Default Result",
-						"value": null
+						"value": {
+							"state": "background",
+							"previous": "foreground"
+						}
 					}
 				}
 			]
@@ -5511,97 +5535,6 @@
 			]
 		},
 		{
-			"name": "Lifecycle.state",
-			"summary": "Get the current state of the app. This function is **synchronous**.",
-			"tags": [
-				{
-					"name": "synchronous"
-				},
-				{
-					"name": "exclude-from-sdk"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:lifecycle:state"
-					]
-				}
-			],
-			"params": [],
-			"result": {
-				"name": "state",
-				"summary": "the current state of the app.",
-				"schema": {
-					"$ref": "#/x-schemas/Lifecycle/LifecycleState"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "foreground"
-					}
-				}
-			]
-		},
-		{
-			"name": "Lifecycle.onInactive",
-			"tags": [
-				{
-					"name": "event"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:lifecycle:state"
-					]
-				}
-			],
-			"summary": "Listen to the inactive event",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "value",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/components/schemas/LifecycleEvent"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": {
-							"state": "inactive",
-							"previous": "initializing"
-						}
-					}
-				}
-			]
-		},
-		{
 			"name": "Lifecycle.onForeground",
 			"tags": [
 				{
@@ -5674,7 +5607,7 @@
 			]
 		},
 		{
-			"name": "Lifecycle.onBackground",
+			"name": "Lifecycle.onInactive",
 			"tags": [
 				{
 					"name": "event"
@@ -5686,7 +5619,7 @@
 					]
 				}
 			],
-			"summary": "Listen to the background event",
+			"summary": "Listen to the inactive event",
 			"params": [
 				{
 					"name": "listen",
@@ -5721,9 +5654,80 @@
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"state": "background",
-							"previous": "foreground"
+							"state": "inactive",
+							"previous": "initializing"
 						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Lifecycle.ready",
+			"tags": [
+				{
+					"name": "calls-metrics"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:lifecycle:ready"
+					]
+				},
+				{
+					"name": "exclude-from-sdk"
+				}
+			],
+			"summary": "Notify the platform that the app is ready",
+			"params": [],
+			"result": {
+				"name": "result",
+				"schema": {
+					"const": null
+				}
+			},
+			"examples": [
+				{
+					"name": "Let the platform know that your app is ready",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "Lifecycle.state",
+			"summary": "Get the current state of the app. This function is **synchronous**.",
+			"tags": [
+				{
+					"name": "synchronous"
+				},
+				{
+					"name": "exclude-from-sdk"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:lifecycle:state"
+					]
+				}
+			],
+			"params": [],
+			"result": {
+				"name": "state",
+				"summary": "the current state of the app.",
+				"schema": {
+					"$ref": "#/x-schemas/Lifecycle/LifecycleState"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "foreground"
 					}
 				}
 			]
@@ -5839,83 +5843,40 @@
 			]
 		},
 		{
-			"name": "Localization.locality",
+			"name": "Localization.additionalInfo",
 			"tags": [
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:localization:locality"
+						"xrn:firebolt:capability:localization:additional-info"
 					]
-				},
-				{
-					"name": "property"
 				}
 			],
-			"summary": "Get the locality/city the device is located in",
+			"summary": "Get any platform-specific localization information",
 			"params": [],
 			"result": {
-				"name": "locality",
-				"summary": "the device city",
+				"name": "info",
+				"summary": "the additional info",
 				"schema": {
-					"$ref": "#/x-schemas/Localization/Locality"
+					"type": "object",
+					"additionalProperties": {
+						"type": [
+							"number",
+							"string",
+							"boolean"
+						],
+						"maxLength": 1024
+					},
+					"maxProperties": 32
 				}
 			},
 			"examples": [
 				{
-					"name": "Default example #1",
+					"name": "Default Example",
 					"params": [],
 					"result": {
-						"name": "Default Result",
-						"value": "Philadelphia"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "Rockville"
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.postalCode",
-			"tags": [
-				{
-					"name": "property"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:postal-code"
-					]
-				}
-			],
-			"summary": "Get the postal code the device is located in",
-			"params": [],
-			"result": {
-				"name": "postalCode",
-				"summary": "the device postal code",
-				"schema": {
-					"type": "string"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default example #1",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "19103"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "20850"
+						"name": "info",
+						"value": {}
 					}
 				}
 			]
@@ -5957,357 +5918,6 @@
 					"result": {
 						"name": "Default Result",
 						"value": "UK"
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.language",
-			"summary": "Get the ISO 639 1/2 code for the preferred language",
-			"params": [],
-			"tags": [
-				{
-					"name": "deprecated",
-					"x-since": "0.17.0",
-					"x-alternative": "Localization.locale"
-				},
-				{
-					"name": "property"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:language"
-					]
-				}
-			],
-			"result": {
-				"name": "lang",
-				"summary": "the device language",
-				"schema": {
-					"$ref": "#/x-schemas/Localization/Language"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default example #1",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "en"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "es"
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.preferredAudioLanguages",
-			"summary": "A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.",
-			"params": [],
-			"tags": [
-				{
-					"name": "property"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:language"
-					]
-				}
-			],
-			"result": {
-				"name": "languages",
-				"summary": "the preferred audio languages",
-				"schema": {
-					"type": "array",
-					"items": {
-						"$ref": "#/x-schemas/Localization/ISO639_2Language"
-					}
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"spa",
-							"eng"
-						]
-					}
-				},
-				{
-					"name": "Default Example #2",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							"eng",
-							"spa"
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.locale",
-			"tags": [
-				{
-					"name": "property"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:locale"
-					]
-				}
-			],
-			"summary": "Get the *full* BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale",
-			"params": [],
-			"result": {
-				"name": "locale",
-				"summary": "the device locale",
-				"schema": {
-					"$ref": "#/x-schemas/Localization/Locale"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default example #1",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "en-US"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": "es-US"
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.latlon",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:location"
-					]
-				}
-			],
-			"summary": "Get the approximate latitude and longitude coordinates of the device location",
-			"params": [],
-			"result": {
-				"name": "latlong",
-				"summary": "lat/long tuple",
-				"schema": {
-					"$ref": "#/components/schemas/LatLon"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "Default Result",
-						"value": [
-							39.9549,
-							75.1699
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.additionalInfo",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:additional-info"
-					]
-				}
-			],
-			"summary": "Get any platform-specific localization information",
-			"params": [],
-			"result": {
-				"name": "info",
-				"summary": "the additional info",
-				"schema": {
-					"type": "object",
-					"additionalProperties": {
-						"type": [
-							"number",
-							"string",
-							"boolean"
-						],
-						"maxLength": 1024
-					},
-					"maxProperties": 32
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "info",
-						"value": {}
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.onLocalityChanged",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Localization.locality"
-				},
-				{
-					"name": "event",
-					"x-alternative": "locality"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:locality"
-					]
-				}
-			],
-			"summary": "Get the locality/city the device is located in",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "locality",
-				"summary": "the device city",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Localization/Locality"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default example #1",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "Philadelphia"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "Rockville"
-					}
-				}
-			]
-		},
-		{
-			"name": "Localization.onPostalCodeChanged",
-			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Localization.postalCode"
-				},
-				{
-					"name": "event",
-					"x-alternative": "postalCode"
-				},
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:localization:postal-code"
-					]
-				}
-			],
-			"summary": "Get the postal code the device is located in",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
-			"result": {
-				"name": "postalCode",
-				"summary": "the device postal code",
-				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "string"
-						}
-					]
-				}
-			},
-			"examples": [
-				{
-					"name": "Default example #1",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "19103"
-					}
-				},
-				{
-					"name": "Default example #2",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "Default Result",
-						"value": "20850"
 					}
 				}
 			]
@@ -6384,6 +5994,52 @@
 			]
 		},
 		{
+			"name": "Localization.language",
+			"summary": "Get the ISO 639 1/2 code for the preferred language",
+			"params": [],
+			"tags": [
+				{
+					"name": "deprecated",
+					"x-since": "0.17.0",
+					"x-alternative": "Localization.locale"
+				},
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:language"
+					]
+				}
+			],
+			"result": {
+				"name": "lang",
+				"summary": "the device language",
+				"schema": {
+					"$ref": "#/x-schemas/Localization/Language"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "en"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "es"
+					}
+				}
+			]
+		},
+		{
 			"name": "Localization.onLanguageChanged",
 			"summary": "Get the ISO 639 1/2 code for the preferred language",
 			"params": [
@@ -6455,6 +6111,425 @@
 					"result": {
 						"name": "Default Result",
 						"value": "es"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.latlon",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:location"
+					]
+				}
+			],
+			"summary": "Get the approximate latitude and longitude coordinates of the device location",
+			"params": [],
+			"result": {
+				"name": "latlong",
+				"summary": "lat/long tuple",
+				"schema": {
+					"$ref": "#/components/schemas/LatLon"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": [
+							39.9549,
+							75.1699
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.locale",
+			"tags": [
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:locale"
+					]
+				}
+			],
+			"summary": "Get the *full* BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale",
+			"params": [],
+			"result": {
+				"name": "locale",
+				"summary": "the device locale",
+				"schema": {
+					"$ref": "#/x-schemas/Localization/Locale"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "en-US"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "es-US"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.onLocaleChanged",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Localization.locale"
+				},
+				{
+					"name": "event",
+					"x-alternative": "locale"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:locale"
+					]
+				}
+			],
+			"summary": "Get the *full* BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "locale",
+				"summary": "the device locale",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Localization/Locale"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "en-US"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "es-US"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.locality",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:locality"
+					]
+				},
+				{
+					"name": "property"
+				}
+			],
+			"summary": "Get the locality/city the device is located in",
+			"params": [],
+			"result": {
+				"name": "locality",
+				"summary": "the device city",
+				"schema": {
+					"$ref": "#/x-schemas/Localization/Locality"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "Philadelphia"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "Rockville"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.onLocalityChanged",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Localization.locality"
+				},
+				{
+					"name": "event",
+					"x-alternative": "locality"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:locality"
+					]
+				}
+			],
+			"summary": "Get the locality/city the device is located in",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "locality",
+				"summary": "the device city",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/Localization/Locality"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "Philadelphia"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "Rockville"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.postalCode",
+			"tags": [
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:postal-code"
+					]
+				}
+			],
+			"summary": "Get the postal code the device is located in",
+			"params": [],
+			"result": {
+				"name": "postalCode",
+				"summary": "the device postal code",
+				"schema": {
+					"type": "string"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "19103"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": "20850"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.onPostalCodeChanged",
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "Localization.postalCode"
+				},
+				{
+					"name": "event",
+					"x-alternative": "postalCode"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:postal-code"
+					]
+				}
+			],
+			"summary": "Get the postal code the device is located in",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"result": {
+				"name": "postalCode",
+				"summary": "the device postal code",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "string"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default example #1",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "19103"
+					}
+				},
+				{
+					"name": "Default example #2",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "Default Result",
+						"value": "20850"
+					}
+				}
+			]
+		},
+		{
+			"name": "Localization.preferredAudioLanguages",
+			"summary": "A prioritized list of ISO 639 1/2 codes for the preferred audio languages on this device.",
+			"params": [],
+			"tags": [
+				{
+					"name": "property"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:localization:language"
+					]
+				}
+			],
+			"result": {
+				"name": "languages",
+				"summary": "the preferred audio languages",
+				"schema": {
+					"type": "array",
+					"items": {
+						"$ref": "#/x-schemas/Localization/ISO639_2Language"
+					}
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": [
+							"spa",
+							"eng"
+						]
+					}
+				},
+				{
+					"name": "Default Example #2",
+					"params": [],
+					"result": {
+						"name": "Default Result",
+						"value": [
+							"eng",
+							"spa"
+						]
 					}
 				}
 			]
@@ -6540,72 +6615,823 @@
 			]
 		},
 		{
-			"name": "Localization.onLocaleChanged",
+			"name": "Metrics.action",
 			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "Localization.locale"
-				},
-				{
-					"name": "event",
-					"x-alternative": "locale"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:localization:locale"
+						"xrn:firebolt:capability:metrics:general"
 					]
 				}
 			],
-			"summary": "Get the *full* BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale",
+			"summary": "Inform the platform of something not covered by other Metrics APIs.",
 			"params": [
 				{
-					"name": "listen",
-					"required": true,
+					"name": "category",
+					"summary": "The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions",
 					"schema": {
-						"type": "boolean"
-					}
+						"type": "string",
+						"enum": [
+							"user",
+							"app"
+						]
+					},
+					"required": true
+				},
+				{
+					"name": "type",
+					"summary": "A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed'",
+					"schema": {
+						"type": "string",
+						"maxLength": 256
+					},
+					"required": true
+				},
+				{
+					"name": "parameters",
+					"schema": {
+						"$ref": "#/x-schemas/Types/FlatMap"
+					},
+					"required": false
 				}
 			],
 			"result": {
-				"name": "locale",
-				"summary": "the device locale",
+				"name": "success",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/Localization/Locale"
-						}
-					]
+					"type": "boolean"
 				}
 			},
 			"examples": [
 				{
-					"name": "Default example #1",
+					"name": "Send foo action",
 					"params": [
 						{
-							"name": "listen",
+							"name": "category",
+							"value": "user"
+						},
+						{
+							"name": "type",
+							"value": "The user did foo"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.appInfo",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:general"
+					]
+				}
+			],
+			"summary": "Inform the platform about an app's build info.",
+			"params": [
+				{
+					"name": "build",
+					"summary": "The build / version of this app.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "result",
+				"schema": {
+					"type": "null"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send appInfo metric",
+					"params": [
+						{
+							"name": "build",
+							"value": "1.2.2"
+						}
+					],
+					"result": {
+						"name": "result",
+						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.error",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:general"
+					]
+				}
+			],
+			"summary": "Inform the platform of an error that has occured in your app.",
+			"params": [
+				{
+					"name": "type",
+					"summary": "The type of error",
+					"schema": {
+						"$ref": "#/components/schemas/ErrorType"
+					},
+					"required": true
+				},
+				{
+					"name": "code",
+					"summary": "an app-specific error code",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "description",
+					"summary": "A short description of the error",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "visible",
+					"summary": "Whether or not this error was visible to the user.",
+					"schema": {
+						"type": "boolean"
+					},
+					"required": true
+				},
+				{
+					"name": "parameters",
+					"summary": "Optional additional parameters to be logged with the error",
+					"schema": {
+						"$ref": "#/x-schemas/Types/FlatMap"
+					},
+					"required": false
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send error metric",
+					"params": [
+						{
+							"name": "type",
+							"value": "media"
+						},
+						{
+							"name": "code",
+							"value": "MEDIA-STALLED"
+						},
+						{
+							"name": "description",
+							"value": "playback stalled"
+						},
+						{
+							"name": "visible",
 							"value": true
 						}
 					],
 					"result": {
-						"name": "Default Result",
-						"value": "en-US"
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaEnded",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when playback has stopped because the end of the media was reached.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send ended metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaLoadStart",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when setting the URL of a media asset to play, in order to infer load time.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send loadstart metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaPause",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when media playback will pause due to an intentional pause operation.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send pause metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaPlay",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when media playback should start due to autoplay, user-initiated play, or unpausing.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send play metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaPlaying",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interuption.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send playing metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaProgress",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called every 60 seconds as media playback progresses.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "progress",
+					"summary": "Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.",
+					"schema": {
+						"$ref": "#/components/schemas/MediaPosition"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send progress metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						},
+						{
+							"name": "progress",
+							"value": 0.75
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaRateChange",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when the playback rate of media is changed.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "rate",
+					"summary": "The new playback rate.",
+					"schema": {
+						"type": "number"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send ratechange metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						},
+						{
+							"name": "rate",
+							"value": 2
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaRenditionChange",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "bitrate",
+					"summary": "The new bitrate in kbps.",
+					"schema": {
+						"type": "number"
+					},
+					"required": true
+				},
+				{
+					"name": "width",
+					"summary": "The new resolution width.",
+					"schema": {
+						"type": "number"
+					},
+					"required": true
+				},
+				{
+					"name": "height",
+					"summary": "The new resolution height.",
+					"schema": {
+						"type": "number"
+					},
+					"required": true
+				},
+				{
+					"name": "profile",
+					"summary": "A description of the new profile, e.g. 'HDR' etc.",
+					"schema": {
+						"type": "string"
+					},
+					"required": false
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send renditionchange metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						},
+						{
+							"name": "bitrate",
+							"value": 5000
+						},
+						{
+							"name": "width",
+							"value": 1920
+						},
+						{
+							"name": "height",
+							"value": 1080
+						},
+						{
+							"name": "profile",
+							"value": "HDR+"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaSeeked",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when a seek is completed during media playback.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "position",
+					"summary": "Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.",
+					"schema": {
+						"$ref": "#/components/schemas/MediaPosition"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send seeked metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						},
+						{
+							"name": "position",
+							"value": 0.51
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaSeeking",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when a seek is initiated during media playback.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"name": "target",
+					"summary": "Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.",
+					"schema": {
+						"$ref": "#/components/schemas/MediaPosition"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send seeking metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						},
+						{
+							"name": "target",
+							"value": 0.5
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.mediaWaiting",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:media"
+					]
+				}
+			],
+			"summary": "Called when media playback will halt due to a network, buffer, or other unintentional constraint.",
+			"params": [
+				{
+					"name": "entityId",
+					"summary": "The entityId of the media.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send waiting metric.",
+					"params": [
+						{
+							"name": "entityId",
+							"value": "345"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Metrics.page",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:metrics:general"
+					]
+				}
+			],
+			"summary": "Inform the platform that your user has navigated to a page or view.",
+			"params": [
+				{
+					"name": "pageId",
+					"summary": "Page ID of the content.",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			"examples": [
+				{
+					"name": "Send page metric",
+					"params": [
+						{
+							"name": "pageId",
+							"value": "xyz"
+						}
+					],
+					"result": {
+						"name": "success",
+						"value": true
 					}
 				},
 				{
-					"name": "Default example #2",
+					"name": "Send startContent metric w/ entity",
 					"params": [
 						{
-							"name": "listen",
-							"value": true
+							"name": "pageId",
+							"value": "home"
 						}
 					],
 					"result": {
-						"name": "Default Result",
-						"value": "es-US"
+						"name": "success",
+						"value": true
 					}
 				}
 			]
@@ -6828,874 +7654,6 @@
 			]
 		},
 		{
-			"name": "Metrics.page",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:general"
-					]
-				}
-			],
-			"summary": "Inform the platform that your user has navigated to a page or view.",
-			"params": [
-				{
-					"name": "pageId",
-					"summary": "Page ID of the content.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send page metric",
-					"params": [
-						{
-							"name": "pageId",
-							"value": "xyz"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				},
-				{
-					"name": "Send startContent metric w/ entity",
-					"params": [
-						{
-							"name": "pageId",
-							"value": "home"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.action",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:general"
-					]
-				}
-			],
-			"summary": "Inform the platform of something not covered by other Metrics APIs.",
-			"params": [
-				{
-					"name": "category",
-					"summary": "The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions",
-					"schema": {
-						"type": "string",
-						"enum": [
-							"user",
-							"app"
-						]
-					},
-					"required": true
-				},
-				{
-					"name": "type",
-					"summary": "A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed'",
-					"schema": {
-						"type": "string",
-						"maxLength": 256
-					},
-					"required": true
-				},
-				{
-					"name": "parameters",
-					"schema": {
-						"$ref": "#/x-schemas/Types/FlatMap"
-					},
-					"required": false
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send foo action",
-					"params": [
-						{
-							"name": "category",
-							"value": "user"
-						},
-						{
-							"name": "type",
-							"value": "The user did foo"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.error",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:general"
-					]
-				}
-			],
-			"summary": "Inform the platform of an error that has occured in your app.",
-			"params": [
-				{
-					"name": "type",
-					"summary": "The type of error",
-					"schema": {
-						"$ref": "#/components/schemas/ErrorType"
-					},
-					"required": true
-				},
-				{
-					"name": "code",
-					"summary": "an app-specific error code",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "description",
-					"summary": "A short description of the error",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "visible",
-					"summary": "Whether or not this error was visible to the user.",
-					"schema": {
-						"type": "boolean"
-					},
-					"required": true
-				},
-				{
-					"name": "parameters",
-					"summary": "Optional additional parameters to be logged with the error",
-					"schema": {
-						"$ref": "#/x-schemas/Types/FlatMap"
-					},
-					"required": false
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send error metric",
-					"params": [
-						{
-							"name": "type",
-							"value": "media"
-						},
-						{
-							"name": "code",
-							"value": "MEDIA-STALLED"
-						},
-						{
-							"name": "description",
-							"value": "playback stalled"
-						},
-						{
-							"name": "visible",
-							"value": true
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaLoadStart",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when setting the URL of a media asset to play, in order to infer load time.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send loadstart metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaPlay",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when media playback should start due to autoplay, user-initiated play, or unpausing.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send play metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaPlaying",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interuption.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send playing metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaPause",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when media playback will pause due to an intentional pause operation.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send pause metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaWaiting",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when media playback will halt due to a network, buffer, or other unintentional constraint.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send waiting metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaProgress",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called every 60 seconds as media playback progresses.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "progress",
-					"summary": "Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.",
-					"schema": {
-						"$ref": "#/components/schemas/MediaPosition"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send progress metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						},
-						{
-							"name": "progress",
-							"value": 0.75
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaSeeking",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when a seek is initiated during media playback.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "target",
-					"summary": "Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.",
-					"schema": {
-						"$ref": "#/components/schemas/MediaPosition"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send seeking metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						},
-						{
-							"name": "target",
-							"value": 0.5
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaSeeked",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when a seek is completed during media playback.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "position",
-					"summary": "Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration.",
-					"schema": {
-						"$ref": "#/components/schemas/MediaPosition"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send seeked metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						},
-						{
-							"name": "position",
-							"value": 0.51
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaRateChange",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when the playback rate of media is changed.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "rate",
-					"summary": "The new playback rate.",
-					"schema": {
-						"type": "number"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send ratechange metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						},
-						{
-							"name": "rate",
-							"value": 2
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaRenditionChange",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				},
-				{
-					"name": "bitrate",
-					"summary": "The new bitrate in kbps.",
-					"schema": {
-						"type": "number"
-					},
-					"required": true
-				},
-				{
-					"name": "width",
-					"summary": "The new resolution width.",
-					"schema": {
-						"type": "number"
-					},
-					"required": true
-				},
-				{
-					"name": "height",
-					"summary": "The new resolution height.",
-					"schema": {
-						"type": "number"
-					},
-					"required": true
-				},
-				{
-					"name": "profile",
-					"summary": "A description of the new profile, e.g. 'HDR' etc.",
-					"schema": {
-						"type": "string"
-					},
-					"required": false
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send renditionchange metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						},
-						{
-							"name": "bitrate",
-							"value": 5000
-						},
-						{
-							"name": "width",
-							"value": 1920
-						},
-						{
-							"name": "height",
-							"value": 1080
-						},
-						{
-							"name": "profile",
-							"value": "HDR+"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.mediaEnded",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:media"
-					]
-				}
-			],
-			"summary": "Called when playback has stopped because the end of the media was reached.",
-			"params": [
-				{
-					"name": "entityId",
-					"summary": "The entityId of the media.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send ended metric.",
-					"params": [
-						{
-							"name": "entityId",
-							"value": "345"
-						}
-					],
-					"result": {
-						"name": "success",
-						"value": true
-					}
-				}
-			]
-		},
-		{
-			"name": "Metrics.appInfo",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:metrics:general"
-					]
-				}
-			],
-			"summary": "Inform the platform about an app's build info.",
-			"params": [
-				{
-					"name": "build",
-					"summary": "The build / version of this app.",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "result",
-				"schema": {
-					"type": "null"
-				}
-			},
-			"examples": [
-				{
-					"name": "Send appInfo metric",
-					"params": [
-						{
-							"name": "build",
-							"value": "1.2.2"
-						}
-					],
-					"result": {
-						"name": "result",
-						"value": null
-					}
-				}
-			]
-		},
-		{
-			"name": "Parameters.initialization",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:lifecycle:state"
-					]
-				}
-			],
-			"summary": "Returns any initialization parameters for the app, e.g. initialial `NavigationIntent`.",
-			"params": [],
-			"result": {
-				"name": "init",
-				"summary": "The initialization parameters.",
-				"schema": {
-					"$ref": "#/components/schemas/AppInitialization"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default Example",
-					"params": [],
-					"result": {
-						"name": "init",
-						"value": {
-							"lmt": 0,
-							"us_privacy": "1-Y-",
-							"discovery": {
-								"navigateTo": {
-									"action": "entity",
-									"data": {
-										"entityId": "abc",
-										"entityType": "program",
-										"programType": "movie"
-									},
-									"context": {
-										"source": "voice"
-									}
-								}
-							}
-						}
-					}
-				}
-			]
-		},
-		{
 			"name": "Profile.approveContentRating",
 			"tags": [
 				{
@@ -7788,32 +7746,55 @@
 			]
 		},
 		{
-			"name": "SecondScreen.protocols",
-			"summary": "Get the supported second screen discovery protocols",
+			"name": "SecondScreen.onCloseRequest",
 			"tags": [
+				{
+					"name": "event"
+				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:secondscreen:protocol"
+						"xrn:firebolt:capability:protocol:dial"
 					]
 				}
 			],
-			"params": [],
+			"summary": "Listen to the closeRequest event",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
 			"result": {
-				"name": "protocols",
-				"summary": "the supported protocols",
+				"name": "closeRequestEvent",
 				"schema": {
-					"$ref": "#/x-schemas/Types/BooleanMap"
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"$ref": "#/x-schemas/SecondScreen/SecondScreenEvent"
+						}
+					]
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [],
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"dial1.7": true
+							"type": "dial",
+							"version": "1.7"
 						}
 					}
 				}
@@ -7892,6 +7873,64 @@
 			]
 		},
 		{
+			"name": "SecondScreen.onFriendlyNameChanged",
+			"summary": "Get the broadcasted friendly name for the device",
+			"params": [
+				{
+					"name": "listen",
+					"required": true,
+					"schema": {
+						"type": "boolean"
+					}
+				}
+			],
+			"tags": [
+				{
+					"name": "subscriber",
+					"x-subscriber-for": "SecondScreen.friendlyName"
+				},
+				{
+					"name": "event",
+					"x-alternative": "friendlyName"
+				},
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:protocol:dial"
+					]
+				}
+			],
+			"result": {
+				"name": "friendlyName",
+				"summary": "the device friendly-name",
+				"schema": {
+					"anyOf": [
+						{
+							"$ref": "#/x-schemas/Types/ListenResponse"
+						},
+						{
+							"type": "string"
+						}
+					]
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [
+						{
+							"name": "listen",
+							"value": true
+						}
+					],
+					"result": {
+						"name": "friendlyName",
+						"value": "Living Room"
+					}
+				}
+			]
+		},
+		{
 			"name": "SecondScreen.onLaunchRequest",
 			"tags": [
 				{
@@ -7949,114 +7988,77 @@
 			]
 		},
 		{
-			"name": "SecondScreen.onCloseRequest",
+			"name": "SecondScreen.protocols",
+			"summary": "Get the supported second screen discovery protocols",
 			"tags": [
-				{
-					"name": "event"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:protocol:dial"
+						"xrn:firebolt:capability:secondscreen:protocol"
 					]
 				}
 			],
-			"summary": "Listen to the closeRequest event",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"params": [],
 			"result": {
-				"name": "closeRequestEvent",
+				"name": "protocols",
+				"summary": "the supported protocols",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"$ref": "#/x-schemas/SecondScreen/SecondScreenEvent"
-						}
-					]
+					"$ref": "#/x-schemas/Types/BooleanMap"
 				}
 			},
 			"examples": [
 				{
 					"name": "Default Example",
-					"params": [
-						{
-							"name": "listen",
-							"value": true
-						}
-					],
+					"params": [],
 					"result": {
 						"name": "Default Result",
 						"value": {
-							"type": "dial",
-							"version": "1.7"
+							"dial1.7": true
 						}
 					}
 				}
 			]
 		},
 		{
-			"name": "SecondScreen.onFriendlyNameChanged",
-			"summary": "Get the broadcasted friendly name for the device",
-			"params": [
-				{
-					"name": "listen",
-					"required": true,
-					"schema": {
-						"type": "boolean"
-					}
-				}
-			],
+			"name": "SecureStorage.clear",
+			"summary": "Clears all the secure data values",
 			"tags": [
-				{
-					"name": "subscriber",
-					"x-subscriber-for": "SecondScreen.friendlyName"
-				},
-				{
-					"name": "event",
-					"x-alternative": "friendlyName"
-				},
 				{
 					"name": "capabilities",
 					"x-uses": [
-						"xrn:firebolt:capability:protocol:dial"
+						"xrn:firebolt:capability:storage:secure"
 					]
 				}
 			],
+			"params": [
+				{
+					"name": "scope",
+					"summary": "The scope of the key/value",
+					"schema": {
+						"$ref": "#/components/schemas/StorageScope"
+					},
+					"required": true
+				}
+			],
 			"result": {
-				"name": "friendlyName",
-				"summary": "the device friendly-name",
+				"name": "success",
+				"summary": "",
 				"schema": {
-					"anyOf": [
-						{
-							"$ref": "#/x-schemas/Types/ListenResponse"
-						},
-						{
-							"type": "string"
-						}
-					]
+					"const": null
 				}
 			},
 			"examples": [
 				{
-					"name": "Default Example",
+					"name": "Clears all the data values of storage",
 					"params": [
 						{
-							"name": "listen",
-							"value": true
+							"name": "scope",
+							"value": "account"
 						}
 					],
 					"result": {
-						"name": "friendlyName",
-						"value": "Living Room"
+						"name": "defaultResult",
+						"value": null
 					}
 				}
 			]
@@ -8136,6 +8138,79 @@
 					],
 					"result": {
 						"name": "value",
+						"value": null
+					}
+				}
+			]
+		},
+		{
+			"name": "SecureStorage.remove",
+			"summary": "Remove a secure data value",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:storage:secure"
+					]
+				}
+			],
+			"params": [
+				{
+					"name": "scope",
+					"summary": "The scope of the data key",
+					"schema": {
+						"$ref": "#/components/schemas/StorageScope"
+					},
+					"required": true
+				},
+				{
+					"name": "key",
+					"summary": "Key to remove",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				}
+			],
+			"result": {
+				"name": "success",
+				"summary": "",
+				"schema": {
+					"const": null
+				}
+			},
+			"examples": [
+				{
+					"name": "Remove the value with key authRefreshToken for device",
+					"params": [
+						{
+							"name": "scope",
+							"value": "device"
+						},
+						{
+							"name": "key",
+							"value": "authRefreshToken"
+						}
+					],
+					"result": {
+						"name": "defaultResult",
+						"value": null
+					}
+				},
+				{
+					"name": "Remove the value with key authRefreshToken for account",
+					"params": [
+						{
+							"name": "scope",
+							"value": "account"
+						},
+						{
+							"name": "key",
+							"value": "authRefreshToken"
+						}
+					],
+					"result": {
+						"name": "defaultResult",
 						"value": null
 					}
 				}
@@ -8234,123 +8309,6 @@
 						{
 							"name": "value",
 							"value": "VGhpcyBub3QgYSByZWFsIHRva2VuLgo="
-						}
-					],
-					"result": {
-						"name": "defaultResult",
-						"value": null
-					}
-				}
-			]
-		},
-		{
-			"name": "SecureStorage.remove",
-			"summary": "Remove a secure data value",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:storage:secure"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "scope",
-					"summary": "The scope of the data key",
-					"schema": {
-						"$ref": "#/components/schemas/StorageScope"
-					},
-					"required": true
-				},
-				{
-					"name": "key",
-					"summary": "Key to remove",
-					"schema": {
-						"type": "string"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"summary": "",
-				"schema": {
-					"const": null
-				}
-			},
-			"examples": [
-				{
-					"name": "Remove the value with key authRefreshToken for device",
-					"params": [
-						{
-							"name": "scope",
-							"value": "device"
-						},
-						{
-							"name": "key",
-							"value": "authRefreshToken"
-						}
-					],
-					"result": {
-						"name": "defaultResult",
-						"value": null
-					}
-				},
-				{
-					"name": "Remove the value with key authRefreshToken for account",
-					"params": [
-						{
-							"name": "scope",
-							"value": "account"
-						},
-						{
-							"name": "key",
-							"value": "authRefreshToken"
-						}
-					],
-					"result": {
-						"name": "defaultResult",
-						"value": null
-					}
-				}
-			]
-		},
-		{
-			"name": "SecureStorage.clear",
-			"summary": "Clears all the secure data values",
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:storage:secure"
-					]
-				}
-			],
-			"params": [
-				{
-					"name": "scope",
-					"summary": "The scope of the key/value",
-					"schema": {
-						"$ref": "#/components/schemas/StorageScope"
-					},
-					"required": true
-				}
-			],
-			"result": {
-				"name": "success",
-				"summary": "",
-				"schema": {
-					"const": null
-				}
-			},
-			"examples": [
-				{
-					"name": "Clears all the data values of storage",
-					"params": [
-						{
-							"name": "scope",
-							"value": "account"
 						}
 					],
 					"result": {
@@ -9192,36 +9150,6 @@
 							"$ref": "#/components/schemas/EventObject"
 						}
 					]
-				}
-			},
-			"AppInitialization": {
-				"title": "AppInitialization",
-				"type": "object",
-				"properties": {
-					"us_privacy": {
-						"type": "string",
-						"description": "The IAB US Privacy string."
-					},
-					"lmt": {
-						"type": "integer",
-						"description": "The IAB limit ad tracking opt out value."
-					},
-					"discovery": {
-						"type": "object",
-						"properties": {
-							"navigateTo": {
-								"$ref": "#/x-schemas/Intents/NavigationIntent"
-							}
-						}
-					},
-					"secondScreen": {
-						"type": "object",
-						"properties": {
-							"launchRequest": {
-								"$ref": "#/x-schemas/SecondScreen/SecondScreenEvent"
-							}
-						}
-					}
 				}
 			},
 			"PinChallenge": {
