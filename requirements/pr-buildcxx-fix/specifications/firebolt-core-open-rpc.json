@@ -16,6 +16,7 @@
 			"Lifecycle": "Methods and events for responding to lifecycle changes in your app",
 			"Localization": "Methods for accessessing location and language preferences",
 			"Metrics": "Methods for sending metrics",
+			"Parameters": "Methods for getting initialization parameters for an app cold launch.",
 			"Profile": "Methods for getting information about the current user/account profile",
 			"SecondScreen": "Methods for communicating with second screen devices",
 			"SecureStorage": "A module for storing and retrieving secure data owned by the app"
@@ -7654,6 +7655,52 @@
 			]
 		},
 		{
+			"name": "Parameters.initialization",
+			"tags": [
+				{
+					"name": "capabilities",
+					"x-uses": [
+						"xrn:firebolt:capability:parameters:initialization"
+					]
+				}
+			],
+			"summary": "Returns any initialization parameters for the app, e.g. initialial `NavigationIntent`.",
+			"params": [],
+			"result": {
+				"name": "init",
+				"summary": "The initialization parameters.",
+				"schema": {
+					"$ref": "#/components/schemas/AppInitialization"
+				}
+			},
+			"examples": [
+				{
+					"name": "Default Example",
+					"params": [],
+					"result": {
+						"name": "init",
+						"value": {
+							"lmt": 0,
+							"us_privacy": "1-Y-",
+							"discovery": {
+								"navigateTo": {
+									"action": "entity",
+									"data": {
+										"entityId": "abc",
+										"entityType": "program",
+										"programType": "movie"
+									},
+									"context": {
+										"source": "voice"
+									}
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		{
 			"name": "Profile.approveContentRating",
 			"tags": [
 				{
@@ -9150,6 +9197,36 @@
 							"$ref": "#/components/schemas/EventObject"
 						}
 					]
+				}
+			},
+			"AppInitialization": {
+				"title": "AppInitialization",
+				"type": "object",
+				"properties": {
+					"us_privacy": {
+						"type": "string",
+						"description": "The IAB US Privacy string."
+					},
+					"lmt": {
+						"type": "integer",
+						"description": "The IAB limit ad tracking opt out value."
+					},
+					"discovery": {
+						"type": "object",
+						"properties": {
+							"navigateTo": {
+								"$ref": "#/x-schemas/Intents/NavigationIntent"
+							}
+						}
+					},
+					"secondScreen": {
+						"type": "object",
+						"properties": {
+							"launchRequest": {
+								"$ref": "#/x-schemas/SecondScreen/SecondScreenEvent"
+							}
+						}
+					}
 				}
 			},
 			"PinChallenge": {
