@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AudioDescriptions 1.5.0-next.17
+Version AudioDescriptions 1.5.0-next.19
 
 ## Table of Contents
 
