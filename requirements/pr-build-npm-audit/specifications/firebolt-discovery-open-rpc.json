@@ -519,6 +519,23 @@
 					"cancelled"
 				]
 			},
+			"ContentRating": {
+				"description": "The rating and subrating for content.",
+				"type": "object",
+				"properties": {
+					"rating": {
+						"description": "The rating to be restricted. Refer to operator documentation for supported values.",
+						"type": "string"
+					},
+					"subRatings": {
+						"description": "A list of sub-ratings to be restricted. Refer to operator documentation for supported values.",
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}
+			},
 			"AppInfo": {
 				"description": "Information about an app that a grant was for",
 				"type": "object",
