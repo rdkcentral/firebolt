@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.5.0-next.19
+Version Discovery 1.5.0-next.20
 
 ## Table of Contents
 
