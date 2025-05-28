@@ -504,7 +504,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Profile.viewingRestrictions](./manage/Profile/#viewingrestrictions)<br/>[Profile.onViewingRestrictionsChanged](./manage/Profile/#viewingrestrictionschanged) |
+| [Profile.viewingRestrictions](./core/Profile/#viewingrestrictions)<br/>[Profile.onViewingRestrictionsChanged](./core/Profile/#viewingrestrictionschanged) |
 
 
 ### `xrn:firebolt:capability:protocol:dial`

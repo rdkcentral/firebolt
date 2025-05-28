@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Device 1.5.0-next.20
+Version Device 1.5.0-next.21
 
 ## Table of Contents
 
