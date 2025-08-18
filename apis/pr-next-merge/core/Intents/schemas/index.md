@@ -38,9 +38,14 @@ type Intent = {
   action: string
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
+
+See also:
+
+[AgePolicy](../Policies/schemas/#AgePolicy)
 
 ---
 
@@ -67,6 +72,7 @@ type EntityIntent = {
     | PlaylistEntity
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -83,6 +89,7 @@ type PlaybackIntent = {
   data: PlayableEntity
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -111,6 +118,7 @@ type SearchIntent = {
   }
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -129,6 +137,7 @@ type SectionIntent = {
   }
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -153,6 +162,7 @@ type TuneIntent = {
   }
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -179,6 +189,7 @@ type PlayEntityIntent = {
   }
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -205,6 +216,7 @@ type PlayQueryIntent = {
   }
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -225,6 +237,7 @@ type HomeIntent = {
   action: 'home'
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
@@ -240,6 +253,7 @@ type LaunchIntent = {
   action: 'launch'
   context: {
     source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
   }
 }
 ```
