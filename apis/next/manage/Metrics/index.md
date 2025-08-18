@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.5.0-next.21
+Version Metrics 1.6.0-next.1
 
 ## Table of Contents
 
@@ -42,15 +42,20 @@ Methods for sending metrics
 Inform the platform of 1st party distributor metrics.
 
 ```typescript
-function event(schema: string, data: EventObject): Promise<null>
+function event(
+  schema: string,
+  data: EventObject,
+  agePolicy: AgePolicy,
+): Promise<null>
 ```
 
 Parameters:
 
-| Param    | Type                            | Required | Description                                        |
-| -------- | ------------------------------- | -------- | -------------------------------------------------- |
-| `schema` | `string`                        | true     | The schema URI of the metric type <br/>format: uri |
-| `data`   | [`EventObject`](#eventobject-1) | true     | A JSON payload conforming the the provided schema  |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `schema`    | `string`                                      | true     | The schema URI of the metric type <br/>format: uri                                                                       |
+| `data`      | [`EventObject`](#eventobject-1)               | true     | A JSON payload conforming the the provided schema                                                                        |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 

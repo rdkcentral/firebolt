@@ -972,7 +972,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.5.0-next.21",
+				"version": "1.6.0-next.1",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -8054,7 +8054,7 @@
 				},
 				{
 					"name": "Discovery.policy",
-					"summary": "get the discovery policy",
+					"summary": "Get the discovery policy",
 					"params": [],
 					"tags": [
 						{
@@ -8627,6 +8627,13 @@
 								"type": "string",
 								"format": "date-time"
 							}
+						},
+						{
+							"name": "agePolicy",
+							"description": "The age policy associated with the watch event. The age policy describes the age groups to which content may be directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -8638,7 +8645,7 @@
 					},
 					"examples": [
 						{
-							"name": "Notifying the platform of watched content",
+							"name": "Notify the platform of watched content",
 							"params": [
 								{
 									"name": "entityId",
@@ -8655,6 +8662,35 @@
 								{
 									"name": "watchedOn",
 									"value": "2021-04-23T18:25:43.511Z"
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
+						},
+						{
+							"name": "Notify the platform that child-directed content was watched",
+							"params": [
+								{
+									"name": "entityId",
+									"value": "partner.com/entity/123"
+								},
+								{
+									"name": "progress",
+									"value": 0.95
+								},
+								{
+									"name": "completed",
+									"value": true
+								},
+								{
+									"name": "watchedOn",
+									"value": "2021-04-23T18:25:43.511Z"
+								},
+								{
+									"name": "agePolicy",
+									"value": "app:child"
 								}
 							],
 							"result": {
@@ -9063,6 +9099,28 @@
 										"action": "home",
 										"context": {
 											"source": "voice"
+										}
+									}
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
+						},
+						{
+							"name": "Launch the 'Foo' app to it's home screen where the launch intent came from a child-directed browse menu.",
+							"params": [
+								{
+									"name": "appId",
+									"value": "foo"
+								},
+								{
+									"name": "intent",
+									"value": {
+										"action": "home",
+										"context": {
+											"source": "browse"
 										}
 									}
 								}
@@ -9776,7 +9834,7 @@
 				},
 				{
 					"name": "Discovery.onPolicyChanged",
-					"summary": "get the discovery policy",
+					"summary": "Get the discovery policy",
 					"params": [
 						{
 							"name": "listen",
@@ -14058,6 +14116,13 @@
 								"type": "string"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14087,6 +14152,23 @@
 								"name": "success",
 								"value": true
 							}
+						},
+						{
+							"name": "Send startContent metric and notify the platform that the content is child-directed",
+							"params": [
+								{
+									"name": "entityId",
+									"value": "abc"
+								},
+								{
+									"name": "agePolicy",
+									"value": "app:child"
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
 						}
 					]
 				},
@@ -14109,6 +14191,13 @@
 								"type": "string"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14160,6 +14249,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14236,6 +14332,13 @@
 								"$ref": "#/x-schemas/Types/FlatMap"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14315,6 +14418,13 @@
 								"$ref": "#/x-schemas/Types/FlatMap"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14370,6 +14480,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14413,6 +14530,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14456,6 +14580,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14499,6 +14630,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14542,6 +14680,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14593,6 +14738,13 @@
 								"$ref": "#/components/schemas/MediaPosition"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14648,6 +14800,13 @@
 								"$ref": "#/components/schemas/MediaPosition"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14703,6 +14862,13 @@
 								"$ref": "#/components/schemas/MediaPosition"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14758,6 +14924,13 @@
 								"type": "number"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14837,6 +15010,13 @@
 								"type": "string"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14896,6 +15076,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14948,6 +15135,13 @@
 								"$ref": "#/components/schemas/EventObject"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -22936,6 +23130,26 @@
 						]
 					}
 				},
+				"Policies": {
+					"uri": "https://meta.comcast.com/firebolt/policies",
+					"AgePolicy": {
+						"title": "AgePolicy",
+						"description": "The policy that describes various age groups to which content is directed. See distributor documentation for further details.",
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"enum": [
+									"app:adult",
+									"app:child",
+									"app:teen"
+								]
+							}
+						]
+					}
+				},
 				"Intents": {
 					"uri": "https://meta.comcast.com/firebolt/intents",
 					"NavigationIntent": {
@@ -23528,6 +23742,10 @@
 								"properties": {
 									"source": {
 										"type": "string"
+									},
+									"agePolicy": {
+										"$ref": "#/x-schemas/Policies/AgePolicy",
+										"description": "The age policy associated with the intent. The age policy describes the age groups to which content is directed. For example, content launched from a child-directed menu should have the appropriate child policy attached, which may inform an app or service to enable enhanced data protections or features."
 									}
 								}
 							}
