@@ -5,8 +5,6 @@ version: latest
 layout: default
 sdk: manage
 ---
-# [1.5.0](https://github.com/rdkcentral/firebolt-apis/compare/v1.4.1...v1.5.0) (2025-03-03)
-
 # [1.4.1](https://github.com/rdkcentral/firebolt-apis/compare/v1.4.0...v1.4.1) (2024-01-10)
 
 # [1.4.0](https://github.com/rdkcentral/firebolt-apis/compare/v1.3.0...v1.4.0) (2024-23-09)

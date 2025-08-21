@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.5.0
+Version AcknowledgeChallenge 1.6.0
 
 ## Table of Contents
 
