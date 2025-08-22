@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Discovery SDK",
-		"version": "1.6.0",
+		"version": "1.5.0",
 		"x-module-descriptions": {}
 	},
 	"methods": [
@@ -518,23 +518,6 @@
 					"correctPin",
 					"cancelled"
 				]
-			},
-			"ContentRating": {
-				"description": "The rating and subrating for content.",
-				"type": "object",
-				"properties": {
-					"rating": {
-						"description": "The rating to be restricted. Refer to operator documentation for supported values.",
-						"type": "string"
-					},
-					"subRatings": {
-						"description": "A list of sub-ratings to be restricted. Refer to operator documentation for supported values.",
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					}
-				}
 			},
 			"AppInfo": {
 				"description": "Information about an app that a grant was for",
@@ -1943,26 +1926,6 @@
 				]
 			}
 		},
-		"Policies": {
-			"uri": "https://meta.comcast.com/firebolt/policies",
-			"AgePolicy": {
-				"title": "AgePolicy",
-				"description": "The policy that describes various age groups to which content is directed. See distributor documentation for further details.",
-				"anyOf": [
-					{
-						"type": "string"
-					},
-					{
-						"type": "string",
-						"enum": [
-							"app:adult",
-							"app:child",
-							"app:teen"
-						]
-					}
-				]
-			}
-		},
 		"Intents": {
 			"uri": "https://meta.comcast.com/firebolt/intents",
 			"NavigationIntent": {
@@ -2555,10 +2518,6 @@
 						"properties": {
 							"source": {
 								"type": "string"
-							},
-							"agePolicy": {
-								"$ref": "#/x-schemas/Policies/AgePolicy",
-								"description": "The age policy associated with the intent. The age policy describes the age groups to which content is directed. For example, content launched from a child-directed menu should have the appropriate child policy attached, which may inform an app or service to enable enhanced data protections or features."
 							}
 						}
 					}
