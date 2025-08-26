@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.6.0-feat-ci-workflow.0
+Version Metrics 1.7.0-feat-ci-workflow.0
 
 ## Table of Contents
 

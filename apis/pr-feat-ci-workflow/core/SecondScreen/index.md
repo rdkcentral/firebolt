@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.6.0-feat-ci-workflow.0
+Version SecondScreen 1.7.0-feat-ci-workflow.0
 
 ## Table of Contents
 

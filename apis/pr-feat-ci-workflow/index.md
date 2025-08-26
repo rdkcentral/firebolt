@@ -500,13 +500,6 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [Profile.flags](./core/Profile/#flags) |
 
 
-### `xrn:firebolt:capability:profile:viewingrestrictions`
-
-| Uses |
-| ---- |
-| [Profile.viewingRestrictions](./core/Profile/#viewingrestrictions)<br/>[Profile.onViewingRestrictionsChanged](./core/Profile/#viewingrestrictionschanged) |
-
-
 ### `xrn:firebolt:capability:protocol:dial`
 
 | Uses |
