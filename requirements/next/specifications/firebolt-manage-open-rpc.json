@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Manage SDK",
-		"version": "1.6.0-next.1",
+		"version": "1.7.0-next.1",
 		"x-module-descriptions": {
 			"Account": "A module for querying about the device account.",
 			"AcknowledgeChallenge": "A module for registering as a provider for a user grant in which the user confirms access to a capability",
@@ -11842,23 +11842,6 @@
 						"allowWatchHistory": true
 					}
 				]
-			},
-			"ContentRating": {
-				"description": "The rating and subrating for content.",
-				"type": "object",
-				"properties": {
-					"rating": {
-						"description": "The rating to be restricted. Refer to operator documentation for supported values.",
-						"type": "string"
-					},
-					"subRatings": {
-						"description": "A list of sub-ratings to be restricted. Refer to operator documentation for supported values.",
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					}
-				}
 			},
 			"StorageScope": {
 				"title": "StorageScope",

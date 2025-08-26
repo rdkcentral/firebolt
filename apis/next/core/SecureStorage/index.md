@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecureStorage 1.6.0-next.1
+Version SecureStorage 1.7.0-next.1
 
 ## Table of Contents
 
