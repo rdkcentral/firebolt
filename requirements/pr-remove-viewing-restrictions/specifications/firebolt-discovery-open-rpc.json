@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Discovery SDK",
-		"version": "1.6.0-remove-viewing-restrictions.0",
+		"version": "1.6.1-remove-viewing-restrictions.0",
 		"x-module-descriptions": {}
 	},
 	"methods": [

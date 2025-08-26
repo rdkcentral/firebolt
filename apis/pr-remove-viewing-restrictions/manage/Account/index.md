@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Account 1.6.0-remove-viewing-restrictions.0
+Version Account 1.6.1-remove-viewing-restrictions.0
 
 ## Table of Contents
 

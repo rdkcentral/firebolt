@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Localization 1.6.0-remove-viewing-restrictions.0
+Version Localization 1.6.1-remove-viewing-restrictions.0
 
 ## Table of Contents
 

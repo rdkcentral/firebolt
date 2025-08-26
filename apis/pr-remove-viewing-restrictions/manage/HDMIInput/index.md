@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version HDMIInput 1.6.0-remove-viewing-restrictions.0
+Version HDMIInput 1.6.1-remove-viewing-restrictions.0
 
 ## Table of Contents
 

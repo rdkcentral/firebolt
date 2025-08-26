@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.6.0-remove-viewing-restrictions.0
+Version Metrics 1.6.1-remove-viewing-restrictions.0
 
 ## Table of Contents
 
