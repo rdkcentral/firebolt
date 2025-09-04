@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Internal 1.5.0
+Version Internal 1.7.0
 
 ## Table of Contents
 
