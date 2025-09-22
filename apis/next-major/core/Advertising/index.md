@@ -22,15 +22,18 @@ Version Advertising 0.0.0-unknown.0
   - [appBundleId](#appbundleid)
   - [config](#config)
   - [deviceAttributes](#deviceattributes)
-  - [policy](#policy)
   - [listen](#listen)
   - [once](#once)
+  - [policy](#policy)
 - [Events](#events)
   - [policyChanged](#policychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
-  - [AdPolicy](#adpolicy)
   - [AdConfigurationOptions](#adconfigurationoptions)
+  - [AdPolicy](#adpolicy)
   - [AdvertisingIdOptions](#advertisingidoptions)
+  - [AdvertisingIdResult](#advertisingidresult)
 
 ## Usage
 
@@ -48,10 +51,12 @@ A module for platform provided advertising settings and functionality.
 
 ### advertisingId
 
-Get the advertising ID
+Get the IAB compliant identifier for advertising (IFA). It is recommended to use the IFA to manage advertising related activities while respecting the user's privacy settings.
 
 ```typescript
-function advertisingId(options: AdvertisingIdOptions): Promise<object>
+function advertisingId(
+  options: AdvertisingIdOptions,
+): Promise<AdvertisingIdResult>
 ```
 
 Parameters:
@@ -69,6 +74,162 @@ Capabilities:
 | uses | xrn:firebolt:capability:advertising:identifier |
 
 #### Examples
+
+Getting the advertising ID
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let advertisingId = await Advertising.advertisingId()
+console.log(advertisingId)
+```
+
+Value of `advertisingId`:
+
+```javascript
+{"ifa":"01234567-89AB-CDEF-GH01-23456789ABCD","ifa_type":"sspid","lmt":"0"}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.advertisingId",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+    "ifa_type": "sspid",
+    "lmt": "0"
+  }
+}
+```
+
+</details>
+
+Getting the advertising ID with scope browse
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let advertisingId = await Advertising.advertisingId({
+  scope: { type: 'browse', id: 'paidPlacement' },
+})
+console.log(advertisingId)
+```
+
+Value of `advertisingId`:
+
+```javascript
+{"ifa":"01234567-89AB-CDEF-GH01-23456789ABCD","ifa_type":"sspid","lmt":"0"}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.advertisingId",
+  "params": {
+    "options": {
+      "scope": {
+        "type": "browse",
+        "id": "paidPlacement"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+    "ifa_type": "sspid",
+    "lmt": "0"
+  }
+}
+```
+
+</details>
+
+Getting the advertising ID with scope content
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let advertisingId = await Advertising.advertisingId({
+  scope: { type: 'content', id: 'metadata:linear:station:123' },
+})
+console.log(advertisingId)
+```
+
+Value of `advertisingId`:
+
+```javascript
+{"ifa":"01234567-89AB-CDEF-GH01-23456789ABCD","ifa_type":"sspid","lmt":"0"}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.advertisingId",
+  "params": {
+    "options": {
+      "scope": {
+        "type": "content",
+        "id": "metadata:linear:station:123"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
+    "ifa_type": "idfa",
+    "lmt": "0"
+  }
+}
+```
+
+</details>
 
 ---
 
@@ -89,6 +250,48 @@ Capabilities:
 | uses | xrn:firebolt:capability:advertising:configuration |
 
 #### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let appBundleId = await Advertising.appBundleId()
+console.log(appBundleId)
+```
+
+Value of `appBundleId`:
+
+```javascript
+'app.operator'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.appBundleId",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "app.operator"
+}
+```
+
+</details>
 
 ---
 
@@ -116,6 +319,72 @@ Capabilities:
 
 #### Examples
 
+Initializing the Ad Framework
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let adFrameworkConfig = await Advertising.config({
+  environment: 'prod',
+  authenticationEntity: 'MVPD',
+})
+console.log(adFrameworkConfig)
+```
+
+Value of `adFrameworkConfig`:
+
+```javascript
+{"adServerUrl":"https://demo.v.fwmrm.net/ad/p/1","adServerUrlTemplate":"https://demo.v.fwmrm.net/ad/p/1?flag=+sltp+exvt+slcb+emcr+amcb+aeti&prof=12345:caf_allinone_profile &nw=12345&mode=live&vdur=123&caid=a110523018&asnw=372464&csid=gmott_ios_tablet_watch_live_ESPNU&ssnw=372464&vip=198.205.92.1&resp=vmap1&metr=1031&pvrn=12345&vprn=12345&vcid=1X0Ce7L3xRWlTeNhc7br8Q%3D%3D","adNetworkId":"519178","adProfileId":"12345:caf_allinone_profile","adSiteSectionId":"caf_allinone_profile_section","adOptOut":true,"privacyData":"ew0KICAicGR0IjogImdkcDp2MSIsDQogICJ1c19wcml2YWN5IjogIjEtTi0iLA0KICAibG10IjogIjEiIA0KfQ0K","ifaValue":"01234567-89AB-CDEF-GH01-23456789ABCD","ifa":"ewogICJ2YWx1ZSI6ICIwMTIzNDU2Ny04OUFCLUNERUYtR0gwMS0yMzQ1Njc4OUFCQ0QiLAogICJpZmFfdHlwZSI6ICJzc3BpZCIsCiAgImxtdCI6ICIwIgp9Cg==","appName":"FutureToday","appBundleId":"FutureToday.comcast","distributorAppId":"1001","deviceAdAttributes":"ewogICJib0F0dHJpYnV0ZXNGb3JSZXZTaGFyZUlkIjogIjEyMzQiCn0=","coppa":0,"authenticationEntity":"60f72475281cfba3852413bd53e957f6"}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.config",
+  "params": {
+    "options": {
+      "environment": "prod",
+      "authenticationEntity": "MVPD"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "adServerUrl": "https://demo.v.fwmrm.net/ad/p/1",
+    "adServerUrlTemplate": "https://demo.v.fwmrm.net/ad/p/1?flag=+sltp+exvt+slcb+emcr+amcb+aeti&prof=12345:caf_allinone_profile &nw=12345&mode=live&vdur=123&caid=a110523018&asnw=372464&csid=gmott_ios_tablet_watch_live_ESPNU&ssnw=372464&vip=198.205.92.1&resp=vmap1&metr=1031&pvrn=12345&vprn=12345&vcid=1X0Ce7L3xRWlTeNhc7br8Q%3D%3D",
+    "adNetworkId": "519178",
+    "adProfileId": "12345:caf_allinone_profile",
+    "adSiteSectionId": "caf_allinone_profile_section",
+    "adOptOut": true,
+    "privacyData": "ew0KICAicGR0IjogImdkcDp2MSIsDQogICJ1c19wcml2YWN5IjogIjEtTi0iLA0KICAibG10IjogIjEiIA0KfQ0K",
+    "ifaValue": "01234567-89AB-CDEF-GH01-23456789ABCD",
+    "ifa": "ewogICJ2YWx1ZSI6ICIwMTIzNDU2Ny04OUFCLUNERUYtR0gwMS0yMzQ1Njc4OUFCQ0QiLAogICJpZmFfdHlwZSI6ICJzc3BpZCIsCiAgImxtdCI6ICIwIgp9Cg==",
+    "appName": "FutureToday",
+    "appBundleId": "FutureToday.comcast",
+    "distributorAppId": "1001",
+    "deviceAdAttributes": "ewogICJib0F0dHJpYnV0ZXNGb3JSZXZTaGFyZUlkIjogIjEyMzQiCn0=",
+    "coppa": 0,
+    "authenticationEntity": "60f72475281cfba3852413bd53e957f6"
+  }
+}
+```
+
+</details>
+
 ---
 
 ### deviceAttributes
@@ -136,43 +405,48 @@ Capabilities:
 
 #### Examples
 
----
+Getting the device attributes
 
-### policy
+JavaScript:
 
-Get the advertising privacy and playback policy
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
 
-To get the value of `policy` call the method like this:
-
-```typescript
-function policy(): Promise<AdPolicy>
+let deviceAttributes = await Advertising.deviceAttributes()
+console.log(deviceAttributes)
 ```
 
-Promise resolution:
+Value of `deviceAttributes`:
 
-Capabilities:
-
-| Role | Capability                                                                                        |
-| ---- | ------------------------------------------------------------------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:advertising<br/>xrn:firebolt:capability:advertising:configuration |
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function policy(callback: (value) => null): Promise<number>
+```javascript
+{
+}
 ```
 
-Promise resolution:
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
 
-```
-number
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.deviceAttributes",
+  "params": {}
+}
 ```
 
-#### Examples
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {}
+}
+```
+
+</details>
 
 ---
 
@@ -286,6 +560,136 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+### policy
+
+Get the advertising privacy and playback policy
+
+To get the value of `policy` call the method like this:
+
+```typescript
+function policy(): Promise<AdPolicy>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:advertising:policy |
+
+#### Examples
+
+Getting the advertising policy settings
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let adPolicy = await Advertising.policy()
+console.log(adPolicy)
+```
+
+Value of `adPolicy`:
+
+```javascript
+{"skipRestriction":"adsUnwatched","limitAdTracking":false}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.policy",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "skipRestriction": "adsUnwatched",
+    "limitAdTracking": false
+  }
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => AdPolicy): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Getting the advertising policy settings
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+let adPolicy = await Advertising.policy()
+console.log(adPolicy)
+```
+
+Value of `adPolicy`:
+
+```javascript
+{"skipRestriction":"adsUnwatched","limitAdTracking":false}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.policy",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "skipRestriction": "adsUnwatched",
+    "limitAdTracking": false
+  }
+}
+```
+
+</details>
+
+---
+
 ## Events
 
 ### policyChanged
@@ -300,32 +704,132 @@ Event value:
 
 Capabilities:
 
-| Role | Capability                                                                                        |
-| ---- | ------------------------------------------------------------------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:advertising<br/>xrn:firebolt:capability:advertising:configuration |
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:advertising:policy |
 
 #### Examples
 
----
+Getting the advertising policy settings
 
-## Types
+JavaScript:
 
-### AdPolicy
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
 
-Describes various ad playback enforcement rules that the app should follow.
+Advertising.listen('policyChanged', (result) => {
+  console.log(result)
+})
+```
 
-```typescript
-type AdPolicy = {
-  skipRestriction?: SkipRestriction // The advertisement skip restriction.
-  limitAdTracking?: boolean
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onPolicyChanged",
+  "params": {
+    "listen": true
+  }
 }
 ```
 
-See also:
+Response:
 
-SkipRestriction
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### policyChanged
+
+```typescript
+function listen('policyChanged', (AdPolicy) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:advertising:policy |
+
+#### Examples
+
+Getting the advertising policy settings
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/sdk'
+
+Advertising.listen('policyChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onPolicyChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
+
+## Types
 
 ### AdConfigurationOptions
 
@@ -339,11 +843,40 @@ type AdConfigurationOptions = {
 
 ---
 
+### AdPolicy
+
+Describes various ad playback enforcement rules that the app should follow.
+
+```typescript
+type AdPolicy = {
+  skipRestriction?: SkipRestriction
+  limitAdTracking?: boolean
+}
+```
+
+See also:
+
+SkipRestriction
+
+---
+
 ### AdvertisingIdOptions
 
 ```typescript
 type AdvertisingIdOptions = {
   scope?: object // Provides the options to send scope type and id to select desired advertising id
+}
+```
+
+---
+
+### AdvertisingIdResult
+
+```typescript
+type AdvertisingIdResult = {
+  ifa: string // UUID conforming to IAB standard
+  ifa_type: string // source of the IFA as defined by IAB
+  lmt: '0' | '1' // boolean that if set to 1, user has requested ad tracking and measurement is disabled
 }
 ```
 

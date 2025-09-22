@@ -18,14 +18,14 @@ Version Content 0.0.0-unknown.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [requestUserInterest](#requestuserinterest)
   - [listen](#listen)
   - [once](#once)
+  - [requestUserInterest](#requestuserinterest)
 - [Events](#events)
-  - [userInterest](#userinterest)
+  - [requestUserInterestChanged](#requestuserinterestchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
-  - [InterestResult](#interestresult)
-  - [InterestEvent](#interestevent)
 
 ## Usage
 
@@ -40,36 +40,6 @@ import { Content } from '@firebolt-js/discovery-sdk'
 undefined
 
 ## Methods
-
-### requestUserInterest
-
-Provide information about the entity currently displayed or selected on the screen.
-
-```typescript
-function requestUserInterest(
-  type: Discovery.InterestType,
-  reason: Discovery.InterestReason,
-): Promise<InterestResult>
-```
-
-Parameters:
-
-| Param    | Type                       | Required | Description |
-| -------- | -------------------------- | -------- | ----------- |
-| `type`   | `Discovery.InterestType`   | true     |             |
-| `reason` | `Discovery.InterestReason` | true     |             |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                 |
-| ---- | ------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:interest |
-
-#### Examples
-
----
 
 ### listen
 
@@ -181,15 +151,562 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-## Events
+### requestUserInterest
 
-### userInterest
+Provide information about the entity currently displayed or selected on the screen.
+
+To get the value of `requestUserInterest` call the method like this:
 
 ```typescript
-function listen('userInterest', (InterestEvent) => void): Promise<number>
+function requestUserInterest(
+  type: Discovery.InterestType,
+  reason: Discovery.InterestReason,
+): Promise<InterestResult>
+```
+
+Parameters:
+
+| Param    | Type                       | Required | Description |
+| -------- | -------------------------- | -------- | ----------- |
+| `type`   | `Discovery.InterestType`   | true     |             |
+| `reason` | `Discovery.InterestReason` | true     |             |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let interest = await Content.requestUserInterest('interest', 'playlist')
+console.log(interest)
+```
+
+Value of `interest`:
+
+```javascript
+{"appId":"cool-app","entity":{"identifiers":{"entityId":"345","entityType":"program","programType":"movie"},"info":{"title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}]}}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.requestUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "cool-app",
+    "entity": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+Example 2
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let interest = await Content.requestUserInterest('interest', 'playlist')
+console.log(interest)
+```
+
+Value of `interest`:
+
+```javascript
+{"appId":"cool-app","entity":{"identifiers":{"entityId":"345","entityType":"program","programType":"movie"},"info":{"title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}]}}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.requestUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "cool-app2",
+    "entity": {
+      "identifiers": {
+        "entityId": "3454",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings2",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1994-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+To set the value of `requestUserInterest` call the method like this:
+
+```typescript
+function requestUserInterest(
+  type: Discovery.InterestType,
+  reason: Discovery.InterestReason,
+  value: Discovery.InterestResult,
+): Promise<void>
+```
+
+Parameters:
+
+| Param    | Type                       | Required | Description             |
+| -------- | -------------------------- | -------- | ----------------------- |
+| `type`   | `Discovery.InterestType`   | true     |                         |
+| `reason` | `Discovery.InterestReason` | true     |                         |
+| `value`  | `Discovery.InterestResult` | true     | The EntityDetails data. |
+
+Promise resolution:
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let result = await Content.requestUserInterest('interest', 'playlist', {
+  appId: 'cool-app',
+  entity: {
+    identifiers: {
+      entityId: '345',
+      entityType: 'program',
+      programType: 'movie',
+    },
+    info: {
+      title: 'Cool Runnings',
+      synopsis:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+      releaseDate: '1993-01-01T00:00:00.000Z',
+      contentRatings: [
+        {
+          scheme: 'US-Movie',
+          rating: 'PG',
+        },
+        {
+          scheme: 'CA-Movie',
+          rating: 'G',
+        },
+      ],
+    },
+  },
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.setRequestUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "value": {
+      "appId": "cool-app",
+      "entity": {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Example 2
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let result = await Content.requestUserInterest('interest', 'playlist', {
+  appId: 'cool-app2',
+  entity: {
+    identifiers: {
+      entityId: '3454',
+      entityType: 'program',
+      programType: 'movie',
+    },
+    info: {
+      title: 'Cool Runnings2',
+      synopsis:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+      releaseDate: '1994-01-01T00:00:00.000Z',
+      contentRatings: [
+        {
+          scheme: 'US-Movie',
+          rating: 'PG',
+        },
+        {
+          scheme: 'CA-Movie',
+          rating: 'G',
+        },
+      ],
+    },
+  },
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.setRequestUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "value": {
+      "appId": "cool-app2",
+      "entity": {
+        "identifiers": {
+          "entityId": "3454",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings2",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1994-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => InterestResult): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let interest = await Content.requestUserInterest('interest', 'playlist')
+console.log(interest)
+```
+
+Value of `interest`:
+
+```javascript
+{"appId":"cool-app","entity":{"identifiers":{"entityId":"345","entityType":"program","programType":"movie"},"info":{"title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}]}}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.requestUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "cool-app",
+    "entity": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+Example 2
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+let interest = await Content.requestUserInterest('interest', 'playlist')
+console.log(interest)
+```
+
+Value of `interest`:
+
+```javascript
+{"appId":"cool-app","entity":{"identifiers":{"entityId":"345","entityType":"program","programType":"movie"},"info":{"title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}]}}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.requestUserInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "appId": "cool-app2",
+    "entity": {
+      "identifiers": {
+        "entityId": "3454",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings2",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1994-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+## Events
+
+### requestUserInterestChanged
+
+```typescript
+function listen('requestUserInterestChanged', type: Discovery.InterestType, reason: Discovery.InterestReason, (Discovery.InterestResult) => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param    | Type                       | Required | Description |
+| -------- | -------------------------- | -------- | ----------- |
+| `type`   | `Discovery.InterestType`   | true     |             |
+| `reason` | `Discovery.InterestReason` | true     |             |
 
 Event value:
 
@@ -201,40 +718,228 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('requestUserInterestChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onRequestUserInterestChanged",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Example 2
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('requestUserInterestChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onRequestUserInterestChanged",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### requestUserInterestChanged
+
+```typescript
+function listen('requestUserInterestChanged', type: Discovery.InterestType, reason: Discovery.InterestReason, (Discovery.InterestResult) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param    | Type                       | Required | Description |
+| -------- | -------------------------- | -------- | ----------- |
+| `type`   | `Discovery.InterestType`   | true     |             |
+| `reason` | `Discovery.InterestReason` | true     |             |
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('requestUserInterestChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onRequestUserInterestChanged",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Example 2
+
+JavaScript:
+
+```javascript
+import { Content } from '@firebolt-js/discovery-sdk'
+
+Content.listen('requestUserInterestChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Content.onRequestUserInterestChanged",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
-
-### InterestResult
-
-```typescript
-type InterestResult = {
-  appId: string
-  entity: Entity.EntityDetails
-}
-```
-
-See also:
-
-Entity.EntityDetails
-
----
-
-### InterestEvent
-
-```typescript
-type InterestEvent = {
-  appId: string
-  type: Discovery.InterestType
-  reason: Discovery.InterestReason
-  entity: Entity.EntityDetails
-}
-```
-
-See also:
-
-Discovery.InterestType
-Discovery.InterestReason
-Entity.EntityDetails
-
----

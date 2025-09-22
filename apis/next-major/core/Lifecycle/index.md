@@ -20,14 +20,24 @@ Version Lifecycle 0.0.0-unknown.0
 - [Methods](#methods)
   - [close](#close)
   - [finished](#finished)
-  - [provideActivatable](#provideactivatable)
-  - [provideApplication](#provideapplication)
-  - [provideSleepable](#providesleepable)
-- [Provider Interfaces](#provider-interfaces)
-  - [Application](#application)
-  - [Activatable](#activatable)
-  - [Sleepable](#sleepable)
+  - [listen](#listen)
+  - [once](#once)
+  - [ready](#ready)
+  - [state](#state)
+- [Events](#events)
+  - [background](#background)
+  - [foreground](#foreground)
+  - [inactive](#inactive)
+  - [suspended](#suspended)
+  - [unloading](#unloading)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [foreground](#foreground-1)
+  - [inactive](#inactive-1)
+  - [suspended](#suspended-1)
+  - [unloading](#unloading-1)
+  </details>
 - [Types](#types)
+  - [LifecycleEvent](#lifecycleevent)
 
 ## Usage
 
@@ -67,6 +77,94 @@ Capabilities:
 
 #### Examples
 
+Close the app when the user presses back on the app home screen
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+let success = await Lifecycle.close('remoteButton')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.close",
+  "params": {
+    "reason": "remoteButton"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Close the app when the user selects an exit menu item
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+let success = await Lifecycle.close('userExit')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.close",
+  "params": {
+    "reason": "userExit"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### finished
@@ -81,257 +179,39 @@ Promise resolution:
 
 Capabilities:
 
-| Role | Capability                                    |
-| ---- | --------------------------------------------- |
-| uses | xrn:firebolt:capability:lifecycle:application |
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
 
 #### Examples
 
----
+Default Example
 
-### provideActivatable
-
-Register an app's Activatable interface.
-
-```typescript
-function provideActivatable(enabled: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param     | Type      | Required | Description |
-| --------- | --------- | -------- | ----------- |
-| `enabled` | `boolean` | true     |             |
-
-Promise resolution:
-
-Capabilities:
-
-| Role     | Capability                                    |
-| -------- | --------------------------------------------- |
-| provides | xrn:firebolt:capability:lifecycle:activatable |
-
-#### Examples
-
----
-
-### provideApplication
-
-Register an app's Application interface.
-
-```typescript
-function provideApplication(enabled: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param     | Type      | Required | Description |
-| --------- | --------- | -------- | ----------- |
-| `enabled` | `boolean` | true     |             |
-
-Promise resolution:
-
-Capabilities:
-
-| Role     | Capability                                    |
-| -------- | --------------------------------------------- |
-| provides | xrn:firebolt:capability:lifecycle:application |
-
-#### Examples
-
----
-
-### provideSleepable
-
-Register an app's Sleepable interface.
-
-```typescript
-function provideSleepable(enabled: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param     | Type      | Required | Description |
-| --------- | --------- | -------- | ----------- |
-| `enabled` | `boolean` | true     |             |
-
-Promise resolution:
-
-Capabilities:
-
-| Role     | Capability                                  |
-| -------- | ------------------------------------------- |
-| provides | xrn:firebolt:capability:lifecycle:sleepable |
-
-#### Examples
-
----
-
-## Provider Interfaces
-
-### Application
-
-The provider interface for the `Application` capability.
-
-```typescript
-interface Application {
-    create(params: CreateParameters, session: ProviderSession): Promise<void>
-    resume(, session: ProviderSession): Promise<void>
-    suspend(, session: ProviderSession): Promise<void>
-    destroy(, session: ProviderSession): Promise<void>
-
-}
-```
-
-Usage:
-
-```typescript
-Lifecycle.provide('Application', provider: Application | object)
-```
-
-#### Examples
-
-**Register your app to provide the `Application` capability.**
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-class MyApplication {
+let results = await Lifecycle.finished()
+console.log(results)
+```
 
-    async Application.create(parameters, session) {
-        return null
-    }
+Value of `results`:
 
-    async Application.resume(parameters, session) {
-        return null
-    }
-
-    async Application.suspend(parameters, session) {
-        return null
-    }
-
-    async Application.destroy(parameters, session) {
-        return null
-    }
-
-}
-
-Lifecycle.provide('Application', new MyApplication())
+```javascript
+null
 ```
 
 <details markdown="1" >
-    <summary>JSON-RPC</summary>
-
-**Register to recieve each provider API**
-
+<summary>JSON-RPC:</summary>
 Request:
 
 ```json
-
 {
-    "id": 1,
-    "method": "Lifecycle.onRequestApplication.create",
-    "params": {
-        "listen": true
-    }
-}
-
-{
-    "id": 2,
-    "method": "Lifecycle.onRequestApplication.resume",
-    "params": {
-        "listen": true
-    }
-}
-
-{
-    "id": 3,
-    "method": "Lifecycle.onRequestApplication.suspend",
-    "params": {
-        "listen": true
-    }
-}
-
-{
-    "id": 4,
-    "method": "Lifecycle.onRequestApplication.destroy",
-    "params": {
-        "listen": true
-    }
-}
-
-```
-
-Response:
-
-```json
-
-{
-    "id": 1,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestApplication.create"
-    }
-
-}
-
-{
-    "id": 2,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestApplication.resume"
-    }
-
-}
-
-{
-    "id": 3,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestApplication.suspend"
-    }
-
-}
-
-{
-    "id": 4,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestApplication.destroy"
-    }
-
-}
-
-```
-
-**Asynchronous event to initiate Application.create()**
-
-Event Response:
-
-```json
-{
+  "jsonrpc": "2.0",
   "id": 1,
-  "result": {
-    "correlationId": "",
-    "parameters": {
-      "preload": false
-    }
-  }
-}
-```
-
-**App initiated response to event**
-
-Request:
-
-```json
-{
-  "id": 5,
-  "method": "Lifecycle.Application.createResponse",
-  "params": {
-    "correlationId": "",
-    "result": null
-  }
+  "method": "Lifecycle.finished",
+  "params": {}
 }
 ```
 
@@ -339,252 +219,171 @@ Response:
 
 ```json
 {
-  "id": 5,
-  "result": true
-}
-```
-
-**Asynchronous event to initiate Application.resume()**
-
-Event Response:
-
-```json
-{
-  "id": 2,
-  "result": {
-    "correlationId": "",
-    "parameters": ""
-  }
-}
-```
-
-**App initiated response to event**
-
-Request:
-
-```json
-{
-  "id": 6,
-  "method": "Lifecycle.Application.resumeResponse",
-  "params": {
-    "correlationId": "",
-    "result": null
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "id": 6,
-  "result": true
-}
-```
-
-**Asynchronous event to initiate Application.suspend()**
-
-Event Response:
-
-```json
-{
-  "id": 3,
-  "result": {
-    "correlationId": "",
-    "parameters": ""
-  }
-}
-```
-
-**App initiated response to event**
-
-Request:
-
-```json
-{
-  "id": 7,
-  "method": "Lifecycle.Application.suspendResponse",
-  "params": {
-    "correlationId": "",
-    "result": null
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "id": 7,
-  "result": true
-}
-```
-
-**Asynchronous event to initiate Application.destroy()**
-
-Event Response:
-
-```json
-{
-  "id": 4,
-  "result": {
-    "correlationId": "",
-    "parameters": ""
-  }
-}
-```
-
-**App initiated response to event**
-
-Request:
-
-```json
-{
-  "id": 8,
-  "method": "Lifecycle.Application.destroyResponse",
-  "params": {
-    "correlationId": "",
-    "result": null
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "id": 8,
-  "result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
 
 </details>
 
-### Activatable
+---
 
-The provider interface for the `Activatable` capability.
+### listen
 
-```typescript
-interface Activatable {
-    activate(intent: Intents.NavigationIntent, session: ProviderSession): Promise<void>
-    deactivate(, session: ProviderSession): Promise<void>
-
-}
-```
-
-Usage:
+To listen to a specific event pass the event name as the first parameter:
 
 ```typescript
-Lifecycle.provide('Activatable', provider: Activatable | object)
+listen(event: string, callback: (data: any) => void): Promise<number>
 ```
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
+
+Promise resolution:
+
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
+
+Callback parameters:
+
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+To listen to all events from this module pass only a callback, without specifying an event name:
+
+```typescript
+listen(callback: (event: string, data: any) => void): Promise<number>
+```
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
+
+Callback parameters:
+
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+Promise resolution:
+
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
+
+See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
+### once
+
+To listen to a single instance of a specific event pass the event name as the first parameter:
+
+```typescript
+once(event: string, callback: (data: any) => void): Promise<number>
+```
+
+The `once` method will only pass the next instance of this event, and then dicard the listener you provided.
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                |
+| ---------- | ---------- | -------- | ------------------------------------------------------ |
+| `event`    | `string`   | Yes      | The event to listen for, see [Events](#events).        |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. |
+
+Promise resolution:
+
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
+
+Callback parameters:
+
+| Param  | Type  | Required | Summary                                                                        |
+| ------ | ----- | -------- | ------------------------------------------------------------------------------ |
+| `data` | `any` | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+To listen to the next instance only of any events from this module pass only a callback, without specifying an event name:
+
+```typescript
+once(callback: (event: string, data: any) => void): Promise<number>
+```
+
+Parameters:
+
+| Param      | Type       | Required | Summary                                                                                                                        |
+| ---------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| _callback_ | `function` | Yes      | A function that will be invoked when the event occurs. The event data depends on which event is firing, see [Events](#events). |
+
+Callback parameters:
+
+| Param   | Type     | Required | Summary                                                                        |
+| ------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `event` | `string` | Yes      | The event that has occured listen for, see [Events](#events).                  |
+| `data`  | `any`    | Yes      | The event data, which depends on which event is firing, see [Events](#events). |
+
+Promise resolution:
+
+| Type     | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `Lifecycle.clear(id)` |
+
+See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
+### ready
+
+Notify the platform that the app is ready
+
+```typescript
+function ready(): Promise<void>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:ready |
 
 #### Examples
 
-**Register your app to provide the `Activatable` capability.**
+Let the platform know that your app is ready
+
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-class MyActivatable {
+let result = await Lifecycle.ready()
+console.log(result)
+```
 
-    async Activatable.activate(parameters, session) {
-        return null
-    }
+Value of `result`:
 
-    async Activatable.deactivate(parameters, session) {
-        return null
-    }
-
-}
-
-Lifecycle.provide('Activatable', new MyActivatable())
+```javascript
+null
 ```
 
 <details markdown="1" >
-    <summary>JSON-RPC</summary>
-
-**Register to recieve each provider API**
-
+<summary>JSON-RPC:</summary>
 Request:
 
 ```json
-
 {
-    "id": 1,
-    "method": "Lifecycle.onRequestActivatable.activate",
-    "params": {
-        "listen": true
-    }
-}
-
-{
-    "id": 2,
-    "method": "Lifecycle.onRequestActivatable.deactivate",
-    "params": {
-        "listen": true
-    }
-}
-
-```
-
-Response:
-
-```json
-
-{
-    "id": 1,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestActivatable.activate"
-    }
-
-}
-
-{
-    "id": 2,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestActivatable.deactivate"
-    }
-
-}
-
-```
-
-**Asynchronous event to initiate Activatable.activate()**
-
-Event Response:
-
-```json
-{
+  "jsonrpc": "2.0",
   "id": 1,
-  "result": {
-    "correlationId": "",
-    "parameters": {
-      "action": "search",
-      "data": {
-        "query": "cats"
-      },
-      "context": {
-        "source": "voice"
-      }
-    }
-  }
-}
-```
-
-**App initiated response to event**
-
-Request:
-
-```json
-{
-  "id": 3,
-  "method": "Lifecycle.Activatable.activateResponse",
-  "params": {
-    "correlationId": "",
-    "result": null
-  }
+  "method": "Lifecycle.ready",
+  "params": {}
 }
 ```
 
@@ -592,167 +391,127 @@ Response:
 
 ```json
 {
-  "id": 3,
-  "result": true
-}
-```
-
-**Asynchronous event to initiate Activatable.deactivate()**
-
-Event Response:
-
-```json
-{
-  "id": 2,
-  "result": {
-    "correlationId": "",
-    "parameters": ""
-  }
-}
-```
-
-**App initiated response to event**
-
-Request:
-
-```json
-{
-  "id": 4,
-  "method": "Lifecycle.Activatable.deactivateResponse",
-  "params": {
-    "correlationId": "",
-    "result": null
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "id": 4,
-  "result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
 
 </details>
 
-### Sleepable
+---
 
-The provider interface for the `Sleepable` capability.
+### state
 
-```typescript
-interface Sleepable {
-    sleep(, session: ProviderSession): Promise<void>
-    wake(, session: ProviderSession): Promise<void>
-
-}
-```
-
-Usage:
+Get the current state of the app. This function is **synchronous**.
 
 ```typescript
-Lifecycle.provide('Sleepable', provider: Sleepable | object)
+function state(): Promise<LifecycleState>
 ```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
 
 #### Examples
 
-**Register your app to provide the `Sleepable` capability.**
+Default Example
+
+JavaScript:
 
 ```javascript
 import { Lifecycle } from '@firebolt-js/sdk'
 
-class MySleepable {
+const state = Lifecycle.state()
+console.log(state)
+```
 
-    async Sleepable.sleep(parameters, session) {
-        return null
-    }
+Value of `state`:
 
-    async Sleepable.wake(parameters, session) {
-        return null
-    }
-
-}
-
-Lifecycle.provide('Sleepable', new MySleepable())
+```javascript
+'foreground'
 ```
 
 <details markdown="1" >
-    <summary>JSON-RPC</summary>
-
-**Register to recieve each provider API**
-
+<summary>JSON-RPC:</summary>
 Request:
 
 ```json
-
 {
-    "id": 1,
-    "method": "Lifecycle.onRequestSleepable.sleep",
-    "params": {
-        "listen": true
-    }
-}
-
-{
-    "id": 2,
-    "method": "Lifecycle.onRequestSleepable.wake",
-    "params": {
-        "listen": true
-    }
-}
-
-```
-
-Response:
-
-```json
-
-{
-    "id": 1,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestSleepable.sleep"
-    }
-
-}
-
-{
-    "id": 2,
-    "result": {
-        "listening": true,
-        "event": "Lifecycle.onRequestSleepable.wake"
-    }
-
-}
-
-```
-
-**Asynchronous event to initiate Sleepable.sleep()**
-
-Event Response:
-
-```json
-{
+  "jsonrpc": "2.0",
   "id": 1,
-  "result": {
-    "correlationId": "",
-    "parameters": ""
-  }
+  "method": "Lifecycle.state",
+  "params": {}
 }
 ```
 
-**App initiated response to event**
+Response:
 
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "foreground"
+}
+```
+
+</details>
+
+---
+
+## Events
+
+### background
+
+```typescript
+function listen('background', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('background', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-  "id": 3,
-  "method": "Lifecycle.Sleepable.sleepResponse",
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onBackground",
   "params": {
-    "correlationId": "",
-    "result": null
+    "listen": true
   }
 }
 ```
@@ -761,36 +520,63 @@ Response:
 
 ```json
 {
-  "id": 3,
-  "result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
 
-**Asynchronous event to initiate Sleepable.wake()**
+</details>
 
-Event Response:
+---
 
-```json
-{
-  "id": 2,
-  "result": {
-    "correlationId": "",
-    "parameters": ""
-  }
-}
+### foreground
+
+```typescript
+function listen('foreground', (LifecycleEvent) => void): Promise<number>
 ```
 
-**App initiated response to event**
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
 
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('foreground', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
-  "id": 4,
-  "method": "Lifecycle.Sleepable.wakeResponse",
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
   "params": {
-    "correlationId": "",
-    "result": null
+    "listen": true
   }
 }
 ```
@@ -799,11 +585,649 @@ Response:
 
 ```json
 {
-  "id": 4,
-  "result": true
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
 }
 ```
+
+</details>
+
+Move to foreground via remote branded buton
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('foreground', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### inactive
+
+```typescript
+function listen('inactive', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('inactive', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onInactive",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### suspended
+
+```typescript
+function listen('suspended', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('suspended', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onSuspended",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### unloading
+
+```typescript
+function listen('unloading', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('unloading', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onUnloading",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### background
+
+```typescript
+function listen('background', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('background', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onBackground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### foreground
+
+```typescript
+function listen('foreground', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('foreground', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Move to foreground via remote branded buton
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('foreground', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onForeground",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### inactive
+
+```typescript
+function listen('inactive', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('inactive', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onInactive",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### suspended
+
+```typescript
+function listen('suspended', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('suspended', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onSuspended",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### unloading
+
+```typescript
+function listen('unloading', (LifecycleEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:lifecycle:state |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Lifecycle } from '@firebolt-js/sdk'
+
+Lifecycle.listen('unloading', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Lifecycle.onUnloading",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
 
 </details>
 
 ## Types
+
+### LifecycleEvent
+
+A an object describing the previous and current states
+
+```typescript
+type LifecycleEvent = {
+  state: LifecycleState // The current lifcycle state
+  previous: LifecycleState // The previous lifcycle state
+  source?: 'voice' | 'remote' // The source of the lifecycle change.
+}
+```
+
+See also:
+
+LifecycleState
+
+---

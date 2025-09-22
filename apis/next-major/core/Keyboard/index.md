@@ -63,6 +63,102 @@ Capabilities:
 
 #### Examples
 
+Prompt the user to select or type an email address
+
+JavaScript:
+
+```javascript
+import { Keyboard } from '@firebolt-js/sdk'
+
+let email = await Keyboard.email(
+  'signIn',
+  'Enter your email to sign into this app',
+)
+console.log(email)
+```
+
+Value of `email`:
+
+```javascript
+'user@domain.com'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.email",
+  "params": {
+    "type": "signIn",
+    "message": "Enter your email to sign into this app"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "user@domain.com"
+}
+```
+
+</details>
+
+Prompt the user to type an email address to sign up
+
+JavaScript:
+
+```javascript
+import { Keyboard } from '@firebolt-js/sdk'
+
+let email = await Keyboard.email(
+  'signUp',
+  'Enter your email to sign up for this app',
+)
+console.log(email)
+```
+
+Value of `email`:
+
+```javascript
+'user@domain.com'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.email",
+  "params": {
+    "type": "signUp",
+    "message": "Enter your email to sign up for this app"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "user@domain.com"
+}
+```
+
+</details>
+
 ---
 
 ### password
@@ -88,6 +184,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:input:keyboard |
 
 #### Examples
+
+Prompt the user to enter their password
+
+JavaScript:
+
+```javascript
+import { Keyboard } from '@firebolt-js/sdk'
+
+let value = await Keyboard.password('Enter your password')
+console.log(value)
+```
+
+Value of `value`:
+
+```javascript
+'abc123'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.password",
+  "params": {
+    "message": "Enter your password"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "abc123"
+}
+```
+
+</details>
 
 ---
 
@@ -115,6 +255,52 @@ Capabilities:
 
 #### Examples
 
+Prompt the user for an arbitrary string
+
+JavaScript:
+
+```javascript
+import { Keyboard } from '@firebolt-js/sdk'
+
+let value = await Keyboard.standard(
+  "Enter the name you'd like to associate with this device",
+)
+console.log(value)
+```
+
+Value of `value`:
+
+```javascript
+'Living Room'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.standard",
+  "params": {
+    "message": "Enter the name you'd like to associate with this device"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
+}
+```
+
+</details>
+
 ---
 
 ## Types
@@ -122,10 +308,11 @@ Capabilities:
 ### EmailUsage
 
 ```typescript
-enum EmailUsage {
-  SIGN_IN = 'signIn',
-  SIGN_UP = 'signUp',
-}
+EmailUsage: {
+    SIGN_IN: 'signIn',
+    SIGN_UP: 'signUp',
+},
+
 ```
 
 ---

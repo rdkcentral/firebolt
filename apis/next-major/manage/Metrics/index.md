@@ -42,15 +42,20 @@ Methods for sending metrics
 Inform the platform of 1st party distributor metrics.
 
 ```typescript
-function event(schema: string, data: EventObject): Promise<null>
+function event(
+  schema: string,
+  data: EventObject,
+  agePolicy: Policies.AgePolicy,
+): Promise<null>
 ```
 
 Parameters:
 
-| Param    | Type          | Required | Description                                        |
-| -------- | ------------- | -------- | -------------------------------------------------- |
-| `schema` | `string`      | true     | The schema URI of the metric type <br/>format: uri |
-| `data`   | `EventObject` | true     | A JSON payload conforming the the provided schema  |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `schema`    | `string`             | true     | The schema URI of the metric type <br/>format: uri                                                                       |
+| `data`      | `EventObject`        | true     | A JSON payload conforming the the provided schema                                                                        |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -61,6 +66,55 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:distributor |
 
 #### Examples
+
+Send foo event
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/manage-sdk'
+
+let results = await Metrics.event('http://meta.rdkcentral.com/some/schema', {
+  foo: 'foo',
+})
+console.log(results)
+```
+
+Value of `results`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.event",
+  "params": {
+    "schema": "http://meta.rdkcentral.com/some/schema",
+    "data": {
+      "foo": "foo"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -77,7 +131,7 @@ type EventObjectPrimitives = string | number | number | boolean | null
 ### EventObject
 
 ```typescript
-type EventObject = {}
+type EventObject = [property: string]: EventObjectPrimitives | EventObjectPrimitives | EventObject[] | EventObject
 ```
 
 See also:

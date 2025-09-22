@@ -21,14 +21,21 @@ Version Accessibility 0.0.0-unknown.0
   - [audioDescriptionSettings](#audiodescriptionsettings)
   - [closedCaptions](#closedcaptions)
   - [closedCaptionsSettings](#closedcaptionssettings)
-  - [voiceGuidance](#voiceguidance)
-  - [voiceGuidanceSettings](#voiceguidancesettings)
+  - [highContrastUI](#highcontrastui)
   - [listen](#listen)
   - [once](#once)
+  - [voiceGuidance](#voiceguidance)
+  - [voiceGuidanceSettings](#voiceguidancesettings)
 - [Events](#events)
   - [audioDescriptionSettingsChanged](#audiodescriptionsettingschanged)
   - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged)
+  - [highContrastUIChanged](#highcontrastuichanged)
   - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [closedCaptionsSettingsChanged](#closedcaptionssettingschanged-1)
+  - [highContrastUIChanged](#highcontrastuichanged-1)
+  - [voiceGuidanceSettingsChanged](#voiceguidancesettingschanged-1)
+  </details>
 - [Types](#types)
   - [AudioDescriptionSettings](#audiodescriptionsettings-1)
 
@@ -68,13 +75,59 @@ Capabilities:
 
 #### Examples
 
+Getting the audio description settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let settings = await Accessibility.audioDescriptionSettings()
+console.log(settings)
+```
+
+Value of `settings`:
+
+```javascript
+{"enabled":true}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.audioDescriptionSettings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true
+  }
+}
+```
+
+</details>
+
 ---
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function audioDescriptionSettings(callback: (value) => null): Promise<number>
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => AudioDescriptionSettings): Promise<number>
 ```
+
+${event.params}
 
 Promise resolution:
 
@@ -84,25 +137,59 @@ number
 
 #### Examples
 
+Getting the audio description settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let settings = await Accessibility.audioDescriptionSettings()
+console.log(settings)
+```
+
+Value of `settings`:
+
+```javascript
+{"enabled":true}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.audioDescriptionSettings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true
+  }
+}
+```
+
+</details>
+
 ---
 
 ### closedCaptions
 
-Get the user's preferred closed-captions settings
+[Deprecated] This method is deprecated as of since version 0.6.0. Please use `closedCaptionsSettings` as a replacement.
 
 ```typescript
 function closedCaptions(): Promise<ClosedCaptionsSettings>
 ```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                           |
-| ---- | ---------------------------------------------------- |
-| uses | xrn:firebolt:capability:accessibility:closedcaptions |
-
-#### Examples
 
 ---
 
@@ -126,13 +213,74 @@ Capabilities:
 
 #### Examples
 
+Getting the closed captions settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let closedCaptionsSettings = await Accessibility.closedCaptionsSettings()
+console.log(closedCaptionsSettings)
+```
+
+Value of `closedCaptionsSettings`:
+
+```javascript
+{"enabled":true,"styles":{"fontFamily":"monospaced_sanserif","fontSize":1,"fontColor":"#ffffff","fontEdge":"none","fontEdgeColor":"#7F7F7F","fontOpacity":100,"backgroundColor":"#000000","backgroundOpacity":100,"textAlign":"center","textAlignVertical":"middle","windowColor":"white","windowOpacity":50},"preferredLanguages":["eng","spa"]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.closedCaptionsSettings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "monospaced_sanserif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle",
+      "windowColor": "white",
+      "windowOpacity": 50
+    },
+    "preferredLanguages": ["eng", "spa"]
+  }
+}
+```
+
+</details>
+
 ---
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function closedCaptionsSettings(callback: (value) => null): Promise<number>
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => ClosedCaptionsSettings): Promise<number>
 ```
+
+${event.params}
 
 Promise resolution:
 
@@ -142,55 +290,138 @@ number
 
 #### Examples
 
+Getting the closed captions settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let closedCaptionsSettings = await Accessibility.closedCaptionsSettings()
+console.log(closedCaptionsSettings)
+```
+
+Value of `closedCaptionsSettings`:
+
+```javascript
+{"enabled":true,"styles":{"fontFamily":"monospaced_sanserif","fontSize":1,"fontColor":"#ffffff","fontEdge":"none","fontEdgeColor":"#7F7F7F","fontOpacity":100,"backgroundColor":"#000000","backgroundOpacity":100,"textAlign":"center","textAlignVertical":"middle","windowColor":"white","windowOpacity":50},"preferredLanguages":["eng","spa"]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.closedCaptionsSettings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "styles": {
+      "fontFamily": "monospaced_sanserif",
+      "fontSize": 1,
+      "fontColor": "#ffffff",
+      "fontEdge": "none",
+      "fontEdgeColor": "#7F7F7F",
+      "fontOpacity": 100,
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 100,
+      "textAlign": "center",
+      "textAlignVertical": "middle",
+      "windowColor": "white",
+      "windowOpacity": 50
+    },
+    "preferredLanguages": ["eng", "spa"]
+  }
+}
+```
+
+</details>
+
 ---
 
-### voiceGuidance
+### highContrastUI
 
-Get the user's preferred voice guidance settings
+The user's preference for a high-contrast UI
+
+To get the value of `highContrastUI` call the method like this:
 
 ```typescript
-function voiceGuidance(): Promise<VoiceGuidanceSettings>
+function highContrastUI(): Promise<boolean>
 ```
 
 Promise resolution:
 
 Capabilities:
 
-| Role | Capability                                          |
-| ---- | --------------------------------------------------- |
-| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:highcontrastui |
 
 #### Examples
 
----
+High-contrast UI mode is enabled
 
-### voiceGuidanceSettings
+JavaScript:
 
-Get the user's preferred voice guidance settings
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
 
-To get the value of `voiceGuidanceSettings` call the method like this:
-
-```typescript
-function voiceGuidanceSettings(): Promise<VoiceGuidanceSettings>
+let highContrastUI = await Accessibility.highContrastUI()
+console.log(highContrastUI)
 ```
 
-Promise resolution:
+Value of `highContrastUI`:
 
-Capabilities:
+```javascript
+true
+```
 
-| Role | Capability                                          |
-| ---- | --------------------------------------------------- |
-| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
 
-#### Examples
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.highContrastUI",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function voiceGuidanceSettings(callback: (value) => null): Promise<number>
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
 ```
+
+${event.params}
 
 Promise resolution:
 
@@ -199,6 +430,48 @@ number
 ```
 
 #### Examples
+
+High-contrast UI mode is enabled
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let highContrastUI = await Accessibility.highContrastUI()
+console.log(highContrastUI)
+```
+
+Value of `highContrastUI`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.highContrastUI",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -312,6 +585,148 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+### voiceGuidance
+
+[Deprecated] This method is deprecated as of since version 0.6.0. Please use `voiceGuidanceSettings` as a replacement.
+
+```typescript
+function voiceGuidance(): Promise<VoiceGuidanceSettings>
+```
+
+---
+
+### voiceGuidanceSettings
+
+Get the user's preferred voice guidance settings
+
+To get the value of `voiceGuidanceSettings` call the method like this:
+
+```typescript
+function voiceGuidanceSettings(): Promise<VoiceGuidanceSettings>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Getting the voice guidance settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let settings = await Accessibility.voiceGuidanceSettings()
+console.log(settings)
+```
+
+Value of `settings`:
+
+```javascript
+{"enabled":true,"navigationHints":true,"rate":1}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.voiceGuidanceSettings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "navigationHints": true,
+    "rate": 1
+  }
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => VoiceGuidanceSettings): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Getting the voice guidance settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+let settings = await Accessibility.voiceGuidanceSettings()
+console.log(settings)
+```
+
+Value of `settings`:
+
+```javascript
+{"enabled":true,"navigationHints":true,"rate":1}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.voiceGuidanceSettings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enabled": true,
+    "navigationHints": true,
+    "rate": 1
+  }
+}
+```
+
+</details>
+
+---
+
 ## Events
 
 ### audioDescriptionSettingsChanged
@@ -331,6 +746,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:accessibility:audiodescriptions |
 
 #### Examples
+
+Getting the audio description settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('audioDescriptionSettingsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onAudioDescriptionSettingsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -352,6 +812,116 @@ Capabilities:
 
 #### Examples
 
+Getting the closed captions settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('closedCaptionsSettingsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onClosedCaptionsSettingsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### highContrastUIChanged
+
+```typescript
+function listen('highContrastUIChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:highcontrastui |
+
+#### Examples
+
+High-contrast UI mode is enabled
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('highContrastUIChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onHighContrastUIChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### voiceGuidanceSettingsChanged
@@ -372,7 +942,319 @@ Capabilities:
 
 #### Examples
 
+Getting the voice guidance settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('voiceGuidanceSettingsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onVoiceGuidanceSettingsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### audioDescriptionSettingsChanged
+
+```typescript
+function listen('audioDescriptionSettingsChanged', (AudioDescriptionSettings) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                              |
+| ---- | ------------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:audiodescriptions |
+
+#### Examples
+
+Getting the audio description settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('audioDescriptionSettingsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onAudioDescriptionSettingsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### closedCaptionsSettingsChanged
+
+```typescript
+function listen('closedCaptionsSettingsChanged', (ClosedCaptionsSettings) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:closedcaptions |
+
+#### Examples
+
+Getting the closed captions settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('closedCaptionsSettingsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onClosedCaptionsSettingsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### highContrastUIChanged
+
+```typescript
+function listen('highContrastUIChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                           |
+| ---- | ---------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:highcontrastui |
+
+#### Examples
+
+High-contrast UI mode is enabled
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('highContrastUIChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onHighContrastUIChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### voiceGuidanceSettingsChanged
+
+```typescript
+function listen('voiceGuidanceSettingsChanged', (VoiceGuidanceSettings) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Getting the voice guidance settings
+
+JavaScript:
+
+```javascript
+import { Accessibility } from '@firebolt-js/sdk'
+
+Accessibility.listen('voiceGuidanceSettingsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Accessibility.onVoiceGuidanceSettingsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
 

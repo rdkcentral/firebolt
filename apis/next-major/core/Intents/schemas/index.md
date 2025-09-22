@@ -10,152 +10,47 @@ sdk: core
 
 ---
 
-Version 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
-  - [AppIntentMessage](#appintentmessage)
-  - [PlatformIntentMessage](#platformintentmessage)
-  - [NavigationIntent](#navigationintent)
+  - [Intent](#intent)
+  - [IntentProperties](#intentproperties)
   - [LaunchIntent](#launchintent)
   - [HomeIntent](#homeintent)
   - [EntityIntent](#entityintent)
-  - [ChannelIntent](#channelintent)
   - [TuneIntent](#tuneintent)
   - [PlaybackIntent](#playbackintent)
   - [SearchIntent](#searchintent)
   - [SectionIntent](#sectionintent)
   - [PlayEntityIntent](#playentityintent)
   - [PlayQueryIntent](#playqueryintent)
-  - [ContentDiscoveryIntent](#contentdiscoveryintent)
-  - [EntityAppSelectionIntent](#entityappselectionintent)
-  - [FocusIntent](#focusintent)
-  - [SelectIntent](#selectintent)
-  - [BackIntent](#backintent)
-  - [ExitIntent](#exitintent)
-  - [ScrollIntent](#scrollintent)
-  - [ButtonIntent](#buttonintent)
-  - [VolumeIntent](#volumeintent)
-  - [MuteIntent](#muteintent)
-  - [PowerIntent](#powerintent)
-  - [MicrophoneIntent](#microphoneintent)
-  - [InputIntent](#inputintent)
-  - [PauseIntent](#pauseintent)
-  - [PlayIntent](#playintent)
-  - [ReplayIntent](#replayintent)
-  - [StopIntent](#stopintent)
-  - [PlaybackSpeedIntent](#playbackspeedintent)
-  - [FastForwardIntent](#fastforwardintent)
-  - [RewindIntent](#rewindintent)
-  - [SeekIntent](#seekintent)
-  - [SkipIntent](#skipintent)
-  - [ClosedCaptionsIntent](#closedcaptionsintent)
-  - [VoiceGuidanceIntent](#voiceguidanceintent)
-  - [AudioDescriptionsIntent](#audiodescriptionsintent)
-  - [HighContrastIntent](#highcontrastintent)
-  - [ScreenMagnificationIntent](#screenmagnificationintent)
-  - [MessageIntent](#messageintent)
-
-## Overview
-
-undefined
+  - [NavigationIntent](#navigationintent)
 
 ## Types
 
-### AppIntentMessage
+### Intent
 
-A message sent to a Firebolt app.
+A Firebolt compliant representation of a user intention.
 
 ```typescript
-type AppIntentMessage = {
-  appId: string
-  intent: NavigationIntent // A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
-  metadata?: object
-  type: string
+type Intent = {
+  action: string
+  context: object
 }
 ```
 
 See also:
 
-[NavigationIntent](#navigationintent)
+Policies.AgePolicy
 
 ---
 
-### PlatformIntentMessage
-
-A message sent to the Firebolt platform.
+### IntentProperties
 
 ```typescript
-type PlatformIntentMessage = {
-  intent:
-    | ContentDiscoveryIntent
-    | EntityAppSelectionIntent
-    | PlayIntent
-    | PauseIntent
-    | ReplayIntent
-    | StopIntent
-    | PlaybackSpeedIntent
-    | SeekIntent
-    | SkipIntent
-    | FastForwardIntent
-    | RewindIntent
-    | ClosedCaptionsIntent
-    | AudioDescriptionsIntent
-    | ButtonIntent
-    | FocusIntent
-    | SelectIntent
-    | BackIntent
-    | ExitIntent
-    | ChannelIntent
-    | ScrollIntent
-    | PowerIntent
-    | VolumeIntent
-    | MuteIntent
-    | MicrophoneIntent
-    | InputIntent
-    | TuneIntent
-    | VoiceGuidanceIntent
-    | HighContrastIntent
-    | ScreenMagnificationIntent
-    | MessageIntent
-  metadata?: object
-  type: string
-}
+type IntentProperties = {}
 ```
-
----
-
-### NavigationIntent
-
-A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
-
-```typescript
-type NavigationIntent =
-  | HomeIntent
-  | LaunchIntent
-  | EntityIntent
-  | PlaybackIntent
-  | SearchIntent
-  | SectionIntent
-  | TuneIntent
-  | PlayEntityIntent
-  | PlayQueryIntent
-```
-
-See also:
-
-[HomeIntent](#homeintent)
-[LaunchIntent](#launchintent)
-[EntityIntent](#entityintent)
-[PlaybackIntent](#playbackintent)
-[SearchIntent](#searchintent)
-[SectionIntent](#sectionintent)
-[TuneIntent](#tuneintent)
-[PlayEntityIntent](#playentityintent)
-[PlayQueryIntent](#playqueryintent)
 
 ---
 
@@ -193,25 +88,11 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 type EntityIntent = {
   action: 'entity'
   data:
-    | Entity.ProgramEntity
-    | Entity.MusicEntity
-    | Entity.ChannelEntity
-    | Entity.UntypedEntity
-    | Entity.PlaylistEntity
-  context: object
-}
-```
-
----
-
-### ChannelIntent
-
-A Firebolt compliant representation of a user intent to 'surf' to the next or previous channel.
-
-```typescript
-type ChannelIntent = {
-  action: 'channel'
-  data: 'next' | 'previous'
+    | ProgramEntity
+    | MusicEntity
+    | ChannelEntity
+    | UntypedEntity
+    | PlaylistEntity
   context: object
 }
 ```
@@ -319,395 +200,33 @@ Entertainment.MusicType
 
 ---
 
-### ContentDiscoveryIntent
+### NavigationIntent
 
-A Firebolt compliant representation of a user intention to discover content with out a clear specific entity match.
-
-```typescript
-type ContentDiscoveryIntent = {
-  action: 'discovery'
-  data: object
-  context: object
-}
-```
-
----
-
-### EntityAppSelectionIntent
-
-A Firebolt compliant representation of a user intention to navigate to a specific entity that could be served by more than one app.
+A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
 
 ```typescript
-type EntityAppSelectionIntent = {
-  action: 'entityAppSelection'
-  data: object
-  context: object
-}
+type NavigationIntent =
+  | HomeIntent
+  | LaunchIntent
+  | EntityIntent
+  | PlaybackIntent
+  | SearchIntent
+  | SectionIntent
+  | TuneIntent
+  | PlayEntityIntent
+  | PlayQueryIntent
 ```
 
 See also:
 
-Entity.MovieEntity
-Entity.TVEpisodeEntity
-Entity.TVSeriesEntity
-Entity.TVSeasonEntity
-Entity.AdditionalEntity
-
----
-
-### FocusIntent
-
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.
-
-```typescript
-type FocusIntent = {
-  action: 'focus'
-  data: object
-  context: object
-}
-```
-
----
-
-### SelectIntent
-
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'select' button.
-
-```typescript
-type SelectIntent = {
-  action: 'select'
-  context: object
-}
-```
-
----
-
-### BackIntent
-
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'back' button.
-
-```typescript
-type BackIntent = {
-  action: 'back'
-  context: object
-}
-```
-
----
-
-### ExitIntent
-
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing the remote 'back' button.
-
-```typescript
-type ExitIntent = {
-  action: 'exit'
-  context: object
-}
-```
-
----
-
-### ScrollIntent
-
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing remote directional pad buttons.
-
-```typescript
-type ScrollIntent = {
-  action: 'scroll'
-  data: object
-  context: object
-}
-```
-
----
-
-### ButtonIntent
-
-A Firebolt compliant representation of a user intention to interact with their device in a way analogous to pressing one of the remote buttons.
-
-```typescript
-type ButtonIntent = {
-  action: 'button'
-  data?: object
-  context: object
-}
-```
-
----
-
-### VolumeIntent
-
-A Firebolt compliant representation of a user intention to change the device volume.
-
-```typescript
-type VolumeIntent = {
-  action: 'volume'
-  data?: object
-  context: object
-}
-```
-
----
-
-### MuteIntent
-
-A Firebolt compliant representation of a user intention to mute or unmute the device.
-
-```typescript
-type MuteIntent = {
-  action: 'mute'
-  data?: object
-  context: object
-}
-```
-
----
-
-### PowerIntent
-
-A Firebolt compliant representation of a user intention to turn their device on or off.
-
-```typescript
-type PowerIntent = {
-  action: 'power'
-  data?: object
-  context: object
-}
-```
-
----
-
-### MicrophoneIntent
-
-A Firebolt compliant representation of a user intention to turn their microphone on or off.
-
-```typescript
-type MicrophoneIntent = {
-  action: 'microphone'
-  data?: object
-  context: object
-}
-```
-
----
-
-### InputIntent
-
-A Firebolt compliant representation of a user intention to change which video input is active.
-
-```typescript
-type InputIntent = {
-  action: 'input'
-  data?: object
-  context: object
-}
-```
-
----
-
-### PauseIntent
-
-A Firebolt compliant representation of a user intention to pause in-progress playback.
-
-```typescript
-type PauseIntent = {
-  action: 'pause'
-  context: object
-}
-```
-
----
-
-### PlayIntent
-
-A Firebolt compliant representation of a user intention to play/resume content.
-
-```typescript
-type PlayIntent = {
-  action: 'play'
-  context: object
-}
-```
-
----
-
-### ReplayIntent
-
-A Firebolt compliant representation of a user intention to replay content.
-
-```typescript
-type ReplayIntent = {
-  action: 'replay'
-  context: object
-}
-```
-
----
-
-### StopIntent
-
-A Firebolt compliant representation of a user intention to stop content.
-
-```typescript
-type StopIntent = {
-  action: 'stop'
-  context: object
-}
-```
-
----
-
-### PlaybackSpeedIntent
-
-A Firebolt compliant representation of a user intention to change the speed of in-progress playback.
-
-```typescript
-type PlaybackSpeedIntent = {
-  action: 'speed'
-  data?: object
-  context: object
-}
-```
-
----
-
-### FastForwardIntent
-
-A Firebolt compliant representation of a user intention to fast-forward in-progress playback.
-
-```typescript
-type FastForwardIntent = {
-  action: 'fast-forward'
-  data?: object
-  context: object
-}
-```
-
----
-
-### RewindIntent
-
-A Firebolt compliant representation of a user intention to rewind in-progress playback.
-
-```typescript
-type RewindIntent = {
-  action: 'rewind'
-  data?: object
-  context: object
-}
-```
-
----
-
-### SeekIntent
-
-A Firebolt compliant representation of a user intention to seek to a different time for in-progress playback.
-
-```typescript
-type SeekIntent = {
-  action: 'seek'
-  data?: object
-  context: object
-}
-```
-
----
-
-### SkipIntent
-
-A Firebolt compliant representation of a user intention to skip a scene/chapter/ad during in-progress playback.
-
-```typescript
-type SkipIntent = {
-  action: 'skip'
-  data?: object
-  context: object
-}
-```
-
----
-
-### ClosedCaptionsIntent
-
-A Firebolt compliant representation of a user intention to enable/disable closed captions.
-
-```typescript
-type ClosedCaptionsIntent = {
-  action: 'closed-captions'
-  data?: object
-  context: object
-}
-```
-
----
-
-### VoiceGuidanceIntent
-
-A Firebolt compliant representation of a user intention to enable/disable voice guidance.
-
-```typescript
-type VoiceGuidanceIntent = {
-  action: 'voice-guidance'
-  data?: object
-  context: object
-}
-```
-
----
-
-### AudioDescriptionsIntent
-
-A Firebolt compliant representation of a user intention to enable/disable audio descriptions.
-
-```typescript
-type AudioDescriptionsIntent = {
-  action: 'audio-descriptions'
-  data?: object
-  context: object
-}
-```
-
----
-
-### HighContrastIntent
-
-A Firebolt compliant representation of a user intention to enable or disable high contrast mode.
-
-```typescript
-type HighContrastIntent = {
-  action: 'high-contrast'
-  data?: object
-  context: object
-}
-```
-
----
-
-### ScreenMagnificationIntent
-
-A Firebolt compliant representation of a user intention to turn screen magnification on or off.
-
-```typescript
-type ScreenMagnificationIntent = {
-  action: 'screen-magnification'
-  data?: object
-  context: object
-}
-```
-
----
-
-### MessageIntent
-
-A Firebolt compliant representation of a platform intention to display a message on the device.
-
-```typescript
-type MessageIntent = {
-  action: 'message'
-  data?: object
-  context: object
-}
-```
+[HomeIntent](#homeintent)
+[LaunchIntent](#launchintent)
+[EntityIntent](#entityintent)
+[PlaybackIntent](#playbackintent)
+[SearchIntent](#searchintent)
+[SectionIntent](#sectionintent)
+[TuneIntent](#tuneintent)
+[PlayEntityIntent](#playentityintent)
+[PlayQueryIntent](#playqueryintent)
 
 ---

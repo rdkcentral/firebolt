@@ -55,6 +55,48 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { Profile } from '@firebolt-js/sdk'
+
+let allow = await Profile.approveContentRating()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+false
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Profile.approveContentRating",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
 ---
 
 ### approvePurchase
@@ -75,6 +117,48 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { Profile } from '@firebolt-js/sdk'
+
+let allow = await Profile.approvePurchase()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+false
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Profile.approvePurchase",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
 ---
 
 ### flags
@@ -94,6 +178,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:profile:flags |
 
 #### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Profile } from '@firebolt-js/sdk'
+
+let flags = await Profile.flags()
+console.log(flags)
+```
+
+Value of `flags`:
+
+```javascript
+{"userExperience":"1000"}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Profile.flags",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "userExperience": "1000"
+  }
+}
+```
+
+</details>
 
 ---
 

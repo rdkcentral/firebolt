@@ -24,6 +24,7 @@ Version Authentication 0.0.0-unknown.0
   - [token](#token)
 - [Types](#types)
   - [TokenType](#tokentype)
+  - [AuthenticationTokenResult](#authenticationtokenresult)
 
 ## Usage
 
@@ -57,6 +58,48 @@ Capabilities:
 
 #### Examples
 
+Acquire a Firebolt device identity token
+
+JavaScript:
+
+```javascript
+import { Authentication } from '@firebolt-js/sdk'
+
+let token = await Authentication.device()
+console.log(token)
+```
+
+Value of `token`:
+
+```javascript
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.device",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+}
+```
+
+</details>
+
 ---
 
 ### root
@@ -76,6 +119,48 @@ Capabilities:
 | uses | xrn:firebolt:capability:token:root |
 
 #### Examples
+
+Acquire a Firebolt root device identity token
+
+JavaScript:
+
+```javascript
+import { Authentication } from '@firebolt-js/sdk'
+
+let token = await Authentication.root()
+console.log(token)
+```
+
+Value of `token`:
+
+```javascript
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.root",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+}
+```
+
+</details>
 
 ---
 
@@ -97,32 +182,60 @@ Capabilities:
 
 #### Examples
 
+Acquire a distributor session token
+
+JavaScript:
+
+```javascript
+import { Authentication } from '@firebolt-js/sdk'
+
+let token = await Authentication.session()
+console.log(token)
+```
+
+Value of `token`:
+
+```javascript
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Authentication.session",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+}
+```
+
+</details>
+
 ---
 
 ### token
 
-Get a specific `type` of authentication token
+[Deprecated] This method is deprecated as of since version 0.9.0. ${if.method.alternative}Please use `` as a replacement.${end.if.method.alternative}
 
 ```typescript
-function token(type: TokenType, options: object): Promise<object>
+function token(
+  type: TokenType,
+  options: object,
+): Promise<AuthenticationTokenResult>
 ```
-
-Parameters:
-
-| Param     | Type        | Required | Description                                                                      |
-| --------- | ----------- | -------- | -------------------------------------------------------------------------------- |
-| `type`    | `TokenType` | true     | What type of token to get <br/>values: `'platform' \| 'device' \| 'distributor'` |
-| `options` | `object`    | false    | Additional options for acquiring the token.                                      |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                             |
-| ---- | -------------------------------------- |
-| uses | xrn:firebolt:capability:token:platform |
-
-#### Examples
 
 ---
 
@@ -131,10 +244,23 @@ Capabilities:
 ### TokenType
 
 ```typescript
-enum TokenType {
-  PLATFORM = 'platform',
-  DEVICE = 'device',
-  DISTRIBUTOR = 'distributor',
+TokenType: {
+    PLATFORM: 'platform',
+    DEVICE: 'device',
+    DISTRIBUTOR: 'distributor',
+},
+
+```
+
+---
+
+### AuthenticationTokenResult
+
+```typescript
+type AuthenticationTokenResult = {
+  value: string
+  expires?: string
+  type?: string
 }
 ```
 

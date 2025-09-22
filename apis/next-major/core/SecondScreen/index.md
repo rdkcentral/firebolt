@@ -18,15 +18,19 @@ Version SecondScreen 0.0.0-unknown.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [listen](#listen)
-  - [once](#once)
   - [device](#device)
   - [friendlyName](#friendlyname)
+  - [listen](#listen)
+  - [once](#once)
   - [protocols](#protocols)
 - [Events](#events)
   - [closeRequest](#closerequest)
   - [friendlyNameChanged](#friendlynamechanged)
   - [launchRequest](#launchrequest)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [friendlyNameChanged](#friendlynamechanged-1)
+  - [launchRequest](#launchrequest-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -42,6 +46,198 @@ import { SecondScreen } from '@firebolt-js/sdk'
 Methods for communicating with second screen devices
 
 ## Methods
+
+### device
+
+Get the broadcasted id for the device
+
+```typescript
+function device(type: string): Promise<string>
+```
+
+Parameters:
+
+| Param  | Type     | Required | Description                                     |
+| ------ | -------- | -------- | ----------------------------------------------- |
+| `type` | `string` | false    | The type of second screen protocol, e.g. "dial" |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+let deviceId = await SecondScreen.device()
+console.log(deviceId)
+```
+
+Value of `deviceId`:
+
+```javascript
+'device-id'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.device",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "device-id"
+}
+```
+
+</details>
+
+---
+
+### friendlyName
+
+Get the broadcasted friendly name for the device
+
+To get the value of `friendlyName` call the method like this:
+
+```typescript
+function friendlyName(): Promise<string>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+let friendlyName = await SecondScreen.friendlyName()
+console.log(friendlyName)
+```
+
+Value of `friendlyName`:
+
+```javascript
+'Living Room'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.friendlyName",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => string): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+let friendlyName = await SecondScreen.friendlyName()
+console.log(friendlyName)
+```
+
+Value of `friendlyName`:
+
+```javascript
+'Living Room'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.friendlyName",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "Living Room"
+}
+```
+
+</details>
+
+---
 
 ### listen
 
@@ -153,87 +349,67 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-### device
-
-Get the broadcasted id for the device
-
-```typescript
-function device(type: string): Promise<string>
-```
-
-Parameters:
-
-| Param  | Type     | Required | Description                                     |
-| ------ | -------- | -------- | ----------------------------------------------- |
-| `type` | `string` | false    | The type of second screen protocol, e.g. "dial" |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                            |
-| ---- | ------------------------------------- |
-| uses | xrn:firebolt:capability:protocol:dial |
-
-#### Examples
-
----
-
-### friendlyName
-
-Get the broadcasted friendly name for the device
-
-To get the value of `friendlyName` call the method like this:
-
-```typescript
-function friendlyName(): Promise<string>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                            |
-| ---- | ------------------------------------- |
-| uses | xrn:firebolt:capability:protocol:dial |
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function friendlyName(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
 ### protocols
 
 Get the supported second screen discovery protocols
 
 ```typescript
-function protocols(): Promise<Types.BooleanMap>
+function protocols(): Promise<BooleanMap>
 ```
 
 Promise resolution:
 
 Capabilities:
 
-| Role | Capability                          |
-| ---- | ----------------------------------- |
-| uses | xrn:firebolt:capability:device:info |
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:secondscreen:protocol |
 
 #### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+let protocols = await SecondScreen.protocols()
+console.log(protocols)
+```
+
+Value of `protocols`:
+
+```javascript
+{"dial1.7":true}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.protocols",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "dial1.7": true
+  }
+}
+```
+
+</details>
 
 ---
 
@@ -257,6 +433,51 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('closeRequest', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onCloseRequest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### friendlyNameChanged
@@ -276,6 +497,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:protocol:dial |
 
 #### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('friendlyNameChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onFriendlyNameChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -297,6 +563,253 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('launchRequest', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onLaunchRequest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### closeRequest
+
+```typescript
+function listen('closeRequest', (SecondScreenEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('closeRequest', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onCloseRequest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### friendlyNameChanged
+
+```typescript
+function listen('friendlyNameChanged', (string) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('friendlyNameChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onFriendlyNameChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### launchRequest
+
+```typescript
+function listen('launchRequest', (SecondScreenEvent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                            |
+| ---- | ------------------------------------- |
+| uses | xrn:firebolt:capability:protocol:dial |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { SecondScreen } from '@firebolt-js/sdk'
+
+SecondScreen.listen('launchRequest', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "SecondScreen.onLaunchRequest",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types

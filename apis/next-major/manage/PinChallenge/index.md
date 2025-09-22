@@ -23,8 +23,8 @@ Version PinChallenge 0.0.0-unknown.0
   - [PinChallenge](#pinchallenge)
 - [Types](#types)
   - [ResultReason](#resultreason)
-  - [ChallengeRequestor](#challengerequestor)
   - [PinChallengeResult](#pinchallengeresult)
+  - [ChallengeRequestor](#challengerequestor)
 
 ## Usage
 
@@ -64,13 +64,57 @@ Capabilities:
 
 #### Examples
 
+Default example
+
+JavaScript:
+
+```javascript
+import { PinChallenge } from '@firebolt-js/manage-sdk'
+
+let result = await PinChallenge.provide(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "PinChallenge.provide",
+  "params": {
+    "enabled": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ## Provider Interfaces
 
 ### PinChallenge
 
-The provider interface for the `PinChallenge` capability.
+The provider interface for the `xrn:firebolt:capability:usergrant:pinchallenge` capability.
 
 ```typescript
 interface PinChallenge {
@@ -86,12 +130,12 @@ interface PinChallenge {
 Usage:
 
 ```typescript
-PinChallenge.provide('PinChallenge', provider: PinChallenge | object)
+PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', provider: PinChallenge | object)
 ```
 
 #### Examples
 
-**Register your app to provide the `PinChallenge` capability.**
+**Register your app to provide the `xrn:firebolt:capability:usergrant:pinchallenge` capability.**
 
 ```javascript
 import { PinChallenge } from '@firebolt-js/manage-sdk'
@@ -99,15 +143,15 @@ import { PinChallenge } from '@firebolt-js/manage-sdk'
 class MyPinChallenge {
 
     async PinChallenge.challenge(parameters, session) {
-        return {
+        ${if.provider.interface.example.result}return {
             "granted": true,
             "reason": "correctPin"
-        }
+        }${end.if.provider.interface.example.result}
     }
 
 }
 
-PinChallenge.provide('PinChallenge', new MyPinChallenge())
+PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', new MyPinChallenge())
 ```
 
 <details markdown="1" >
@@ -189,24 +233,14 @@ Response:
 The reason for the result of challenging the user
 
 ```typescript
-enum ResultReason {
-  NO_PIN_REQUIRED = 'noPinRequired',
-  NO_PIN_REQUIRED_WINDOW = 'noPinRequiredWindow',
-  EXCEEDED_PIN_FAILURES = 'exceededPinFailures',
-  CORRECT_PIN = 'correctPin',
-  CANCELLED = 'cancelled',
-}
-```
+ResultReason: {
+    NO_PIN_REQUIRED: 'noPinRequired',
+    NO_PIN_REQUIRED_WINDOW: 'noPinRequiredWindow',
+    EXCEEDED_PIN_FAILURES: 'exceededPinFailures',
+    CORRECT_PIN: 'correctPin',
+    CANCELLED: 'cancelled',
+},
 
----
-
-### ChallengeRequestor
-
-```typescript
-type ChallengeRequestor = {
-  id: string // The id of the app that requested the challenge
-  name: string // The name of the app that requested the challenge
-}
 ```
 
 ---
@@ -223,5 +257,16 @@ type PinChallengeResult = {
 See also:
 
 ResultReason
+
+---
+
+### ChallengeRequestor
+
+```typescript
+type ChallengeRequestor = {
+  id: string // The id of the app that requested the challenge
+  name: string // The name of the app that requested the challenge
+}
+```
 
 ---

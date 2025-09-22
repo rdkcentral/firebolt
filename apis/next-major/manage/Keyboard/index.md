@@ -62,13 +62,57 @@ Capabilities:
 
 #### Examples
 
+Default example
+
+JavaScript:
+
+```javascript
+import { Keyboard } from '@firebolt-js/manage-sdk'
+
+let result = await Keyboard.provide(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Keyboard.provide",
+  "params": {
+    "enabled": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ## Provider Interfaces
 
 ### Keyboard
 
-The provider interface for the `Keyboard` capability.
+The provider interface for the `xrn:firebolt:capability:input:keyboard` capability.
 
 ```typescript
 interface Keyboard {
@@ -85,12 +129,12 @@ interface Keyboard {
 Usage:
 
 ```typescript
-Keyboard.provide('Keyboard', provider: Keyboard | object)
+Keyboard.provide('xrn:firebolt:capability:input:keyboard', provider: Keyboard | object)
 ```
 
 #### Examples
 
-**Register your app to provide the `Keyboard` capability.**
+**Register your app to provide the `xrn:firebolt:capability:input:keyboard` capability.**
 
 ```javascript
 import { Keyboard } from '@firebolt-js/manage-sdk'
@@ -98,20 +142,20 @@ import { Keyboard } from '@firebolt-js/manage-sdk'
 class MyKeyboard {
 
     async Keyboard.email(parameters, session) {
-        return "user@domain.com"
+        ${if.provider.interface.example.result}return "user@domain.com"${end.if.provider.interface.example.result}
     }
 
     async Keyboard.password(parameters, session) {
-        return "abc123"
+        ${if.provider.interface.example.result}return "abc123"${end.if.provider.interface.example.result}
     }
 
     async Keyboard.standard(parameters, session) {
-        return "Living Room"
+        ${if.provider.interface.example.result}return "Living Room"${end.if.provider.interface.example.result}
     }
 
 }
 
-Keyboard.provide('Keyboard', new MyKeyboard())
+Keyboard.provide('xrn:firebolt:capability:input:keyboard', new MyKeyboard())
 ```
 
 <details markdown="1" >
@@ -303,10 +347,11 @@ Response:
 ### EmailUsage
 
 ```typescript
-enum EmailUsage {
-  SIGN_IN = 'signIn',
-  SIGN_UP = 'signUp',
-}
+EmailUsage: {
+    SIGN_IN: 'signIn',
+    SIGN_UP: 'signUp',
+},
+
 ```
 
 ---

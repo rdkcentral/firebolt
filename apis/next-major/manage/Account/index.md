@@ -20,6 +20,8 @@ Version Account 0.0.0-unknown.0
 - [Methods](#methods)
   - [session](#session)
 - [Types](#types)
+  - [Account.Token](#accounttoken)
+  - [Account.Expiry](#accountexpiry)
 
 ## Usage
 
@@ -60,6 +62,74 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { Account } from '@firebolt-js/manage-sdk'
+
+let result = await Account.session(
+  'RmlyZWJvbHQgTWFuYWdlIFNESyBSb2NrcyEhIQ==',
+  84000,
+)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Account.session",
+  "params": {
+    "token": "RmlyZWJvbHQgTWFuYWdlIFNESyBSb2NrcyEhIQ==",
+    "expiresIn": 84000
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ## Types
+
+### Account.Token
+
+Encoded token provided by the Distributor for Device Authentication.
+
+```typescript
+type Token = string
+```
+
+---
+
+### Account.Expiry
+
+Number of secs before the token expires
+
+```typescript
+type Expiry = number
+```
+
+---

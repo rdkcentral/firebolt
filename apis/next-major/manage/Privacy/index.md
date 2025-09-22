@@ -18,8 +18,6 @@ Version Privacy 0.0.0-unknown.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [listen](#listen)
-  - [once](#once)
   - [allowACRCollection](#allowacrcollection)
   - [allowAppContentAdTargeting](#allowappcontentadtargeting)
   - [allowCameraAnalytics](#allowcameraanalytics)
@@ -32,6 +30,8 @@ Version Privacy 0.0.0-unknown.0
   - [allowUnentitledPersonalization](#allowunentitledpersonalization)
   - [allowUnentitledResumePoints](#allowunentitledresumepoints)
   - [allowWatchHistory](#allowwatchhistory)
+  - [listen](#listen)
+  - [once](#once)
   - [settings](#settings)
 - [Events](#events)
   - [allowACRCollectionChanged](#allowacrcollectionchanged)
@@ -46,6 +46,19 @@ Version Privacy 0.0.0-unknown.0
   - [allowUnentitledPersonalizationChanged](#allowunentitledpersonalizationchanged)
   - [allowUnentitledResumePointsChanged](#allowunentitledresumepointschanged)
   - [allowWatchHistoryChanged](#allowwatchhistorychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [allowAppContentAdTargetingChanged](#allowappcontentadtargetingchanged-1)
+  - [allowCameraAnalyticsChanged](#allowcameraanalyticschanged-1)
+  - [allowPersonalizationChanged](#allowpersonalizationchanged-1)
+  - [allowPrimaryBrowseAdTargetingChanged](#allowprimarybrowseadtargetingchanged-1)
+  - [allowPrimaryContentAdTargetingChanged](#allowprimarycontentadtargetingchanged-1)
+  - [allowProductAnalyticsChanged](#allowproductanalyticschanged-1)
+  - [allowRemoteDiagnosticsChanged](#allowremotediagnosticschanged-1)
+  - [allowResumePointsChanged](#allowresumepointschanged-1)
+  - [allowUnentitledPersonalizationChanged](#allowunentitledpersonalizationchanged-1)
+  - [allowUnentitledResumePointsChanged](#allowunentitledresumepointschanged-1)
+  - [allowWatchHistoryChanged](#allowwatchhistorychanged-1)
+  </details>
 - [Types](#types)
   - [PrivacySettings](#privacysettings)
 
@@ -62,6 +75,3774 @@ import { Privacy } from '@firebolt-js/manage-sdk'
 A module for managing device settings.
 
 ## Methods
+
+### allowACRCollection
+
+Whether the user allows their automatic content recognition data to be collected
+
+To get the value of `allowACRCollection` call the method like this:
+
+```typescript
+function allowACRCollection(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowACRCollection()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowACRCollection",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowACRCollection()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowACRCollection",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowACRCollection` call the method like this:
+
+```typescript
+function allowACRCollection(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowACRCollection(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowACRCollection",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowACRCollection(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowACRCollection",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowACRCollection()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowACRCollection",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowACRCollection()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowACRCollection",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowAppContentAdTargeting
+
+Whether the user allows ads to be targeted to the user while watching content in apps
+
+To get the value of `allowAppContentAdTargeting` call the method like this:
+
+```typescript
+function allowAppContentAdTargeting(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowAppContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowAppContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowAppContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowAppContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowAppContentAdTargeting` call the method like this:
+
+```typescript
+function allowAppContentAdTargeting(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowAppContentAdTargeting(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowAppContentAdTargeting",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowAppContentAdTargeting(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowAppContentAdTargeting",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowAppContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowAppContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowAppContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowAppContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowCameraAnalytics
+
+Whether the user allows data from their camera to be used for Product Analytics
+
+To get the value of `allowCameraAnalytics` call the method like this:
+
+```typescript
+function allowCameraAnalytics(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowCameraAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowCameraAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowCameraAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowCameraAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowCameraAnalytics` call the method like this:
+
+```typescript
+function allowCameraAnalytics(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowCameraAnalytics(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowCameraAnalytics",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowCameraAnalytics(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowCameraAnalytics",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowCameraAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowCameraAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowCameraAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowCameraAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowPersonalization
+
+Whether the user allows their usage data to be used for personalization and recommendations
+
+To get the value of `allowPersonalization` call the method like this:
+
+```typescript
+function allowPersonalization(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowPersonalization` call the method like this:
+
+```typescript
+function allowPersonalization(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowPersonalization(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPersonalization",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowPersonalization(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPersonalization",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowPrimaryBrowseAdTargeting
+
+Whether the user allows ads to be targeted to the user while browsing in the primary experience
+
+To get the value of `allowPrimaryBrowseAdTargeting` call the method like this:
+
+```typescript
+function allowPrimaryBrowseAdTargeting(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryBrowseAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryBrowseAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryBrowseAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryBrowseAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowPrimaryBrowseAdTargeting` call the method like this:
+
+```typescript
+function allowPrimaryBrowseAdTargeting(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowPrimaryBrowseAdTargeting(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryBrowseAdTargeting",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowPrimaryBrowseAdTargeting(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryBrowseAdTargeting",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryBrowseAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryBrowseAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryBrowseAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryBrowseAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowPrimaryContentAdTargeting
+
+Whether the user allows ads to be targeted to the user while watching content in the primary experience
+
+To get the value of `allowPrimaryContentAdTargeting` call the method like this:
+
+```typescript
+function allowPrimaryContentAdTargeting(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowPrimaryContentAdTargeting` call the method like this:
+
+```typescript
+function allowPrimaryContentAdTargeting(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowPrimaryContentAdTargeting(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryContentAdTargeting",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowPrimaryContentAdTargeting(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowPrimaryContentAdTargeting",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowPrimaryContentAdTargeting()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowPrimaryContentAdTargeting",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowProductAnalytics
+
+Whether the user allows their usage data can be used for analytics about the product
+
+To get the value of `allowProductAnalytics` call the method like this:
+
+```typescript
+function allowProductAnalytics(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowProductAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowProductAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowProductAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowProductAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowProductAnalytics` call the method like this:
+
+```typescript
+function allowProductAnalytics(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowProductAnalytics(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowProductAnalytics",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowProductAnalytics(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowProductAnalytics",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowProductAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowProductAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowProductAnalytics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowProductAnalytics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowRemoteDiagnostics
+
+Whether the user allows their personal data to be included in diagnostic telemetry. This also allows whether device logs can be remotely accessed from the client device
+
+To get the value of `allowRemoteDiagnostics` call the method like this:
+
+```typescript
+function allowRemoteDiagnostics(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowRemoteDiagnostics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowRemoteDiagnostics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowRemoteDiagnostics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowRemoteDiagnostics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowRemoteDiagnostics` call the method like this:
+
+```typescript
+function allowRemoteDiagnostics(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowRemoteDiagnostics(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowRemoteDiagnostics",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowRemoteDiagnostics(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowRemoteDiagnostics",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowRemoteDiagnostics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowRemoteDiagnostics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowRemoteDiagnostics()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowRemoteDiagnostics",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowResumePoints
+
+Whether the user allows resume points for content to show in the main experience
+
+To get the value of `allowResumePoints` call the method like this:
+
+```typescript
+function allowResumePoints(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowResumePoints` call the method like this:
+
+```typescript
+function allowResumePoints(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowResumePoints(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowResumePoints",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowResumePoints(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowResumePoints",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowUnentitledPersonalization
+
+Whether the user allows their usage data to be used for personalization and recommendations for unentitled content
+
+To get the value of `allowUnentitledPersonalization` call the method like this:
+
+```typescript
+function allowUnentitledPersonalization(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowUnentitledPersonalization` call the method like this:
+
+```typescript
+function allowUnentitledPersonalization(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowUnentitledPersonalization(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledPersonalization",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowUnentitledPersonalization(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledPersonalization",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledPersonalization()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledPersonalization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowUnentitledResumePoints
+
+Whether the user allows resume points for content from unentitled providers to show in the main experience
+
+To get the value of `allowUnentitledResumePoints` call the method like this:
+
+```typescript
+function allowUnentitledResumePoints(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowUnentitledResumePoints` call the method like this:
+
+```typescript
+function allowUnentitledResumePoints(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowUnentitledResumePoints(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledResumePoints",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowUnentitledResumePoints(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowUnentitledResumePoints",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowUnentitledResumePoints()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowUnentitledResumePoints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+### allowWatchHistory
+
+Whether the user allows their watch history from all sources to show in the main experience
+
+To get the value of `allowWatchHistory` call the method like this:
+
+```typescript
+function allowWatchHistory(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowWatchHistory()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowWatchHistory",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowWatchHistory()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowWatchHistory",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `allowWatchHistory` call the method like this:
+
+```typescript
+function allowWatchHistory(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowWatchHistory(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowWatchHistory",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let result = await Privacy.allowWatchHistory(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.setAllowWatchHistory",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowWatchHistory()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowWatchHistory",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let allow = await Privacy.allowWatchHistory()
+console.log(allow)
+```
+
+Value of `allow`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.allowWatchHistory",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
 
 ### listen
 
@@ -173,684 +3954,6 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-### allowACRCollection
-
-Whether the user allows their automatic content recognition data to be collected
-
-To get the value of `allowACRCollection` call the method like this:
-
-```typescript
-function allowACRCollection(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowACRCollection` call the method like this:
-
-```typescript
-function allowACRCollection(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowACRCollection(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowAppContentAdTargeting
-
-Whether the user allows ads to be targeted to the user while watching content in apps
-
-To get the value of `allowAppContentAdTargeting` call the method like this:
-
-```typescript
-function allowAppContentAdTargeting(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowAppContentAdTargeting` call the method like this:
-
-```typescript
-function allowAppContentAdTargeting(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowAppContentAdTargeting(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowCameraAnalytics
-
-Whether the user allows data from their camera to be used for Product Analytics
-
-To get the value of `allowCameraAnalytics` call the method like this:
-
-```typescript
-function allowCameraAnalytics(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowCameraAnalytics` call the method like this:
-
-```typescript
-function allowCameraAnalytics(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowCameraAnalytics(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowPersonalization
-
-Whether the user allows their usage data to be used for personalization and recommendations
-
-To get the value of `allowPersonalization` call the method like this:
-
-```typescript
-function allowPersonalization(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowPersonalization` call the method like this:
-
-```typescript
-function allowPersonalization(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowPersonalization(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowPrimaryBrowseAdTargeting
-
-Whether the user allows ads to be targeted to the user while browsing in the primary experience
-
-To get the value of `allowPrimaryBrowseAdTargeting` call the method like this:
-
-```typescript
-function allowPrimaryBrowseAdTargeting(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowPrimaryBrowseAdTargeting` call the method like this:
-
-```typescript
-function allowPrimaryBrowseAdTargeting(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowPrimaryBrowseAdTargeting(
-  callback: (value) => null,
-): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowPrimaryContentAdTargeting
-
-Whether the user allows ads to be targeted to the user while watching content in the primary experience
-
-To get the value of `allowPrimaryContentAdTargeting` call the method like this:
-
-```typescript
-function allowPrimaryContentAdTargeting(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowPrimaryContentAdTargeting` call the method like this:
-
-```typescript
-function allowPrimaryContentAdTargeting(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowPrimaryContentAdTargeting(
-  callback: (value) => null,
-): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowProductAnalytics
-
-Whether the user allows their usage data can be used for analytics about the product
-
-To get the value of `allowProductAnalytics` call the method like this:
-
-```typescript
-function allowProductAnalytics(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowProductAnalytics` call the method like this:
-
-```typescript
-function allowProductAnalytics(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowProductAnalytics(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowRemoteDiagnostics
-
-Whether the user allows their personal data to be included in diagnostic telemetry. This also allows whether device logs can be remotely accessed from the client device
-
-To get the value of `allowRemoteDiagnostics` call the method like this:
-
-```typescript
-function allowRemoteDiagnostics(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowRemoteDiagnostics` call the method like this:
-
-```typescript
-function allowRemoteDiagnostics(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowRemoteDiagnostics(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowResumePoints
-
-Whether the user allows resume points for content to show in the main experience
-
-To get the value of `allowResumePoints` call the method like this:
-
-```typescript
-function allowResumePoints(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowResumePoints` call the method like this:
-
-```typescript
-function allowResumePoints(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowResumePoints(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowUnentitledPersonalization
-
-Whether the user allows their usage data to be used for personalization and recommendations for unentitled content
-
-To get the value of `allowUnentitledPersonalization` call the method like this:
-
-```typescript
-function allowUnentitledPersonalization(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowUnentitledPersonalization` call the method like this:
-
-```typescript
-function allowUnentitledPersonalization(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowUnentitledPersonalization(
-  callback: (value) => null,
-): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowUnentitledResumePoints
-
-Whether the user allows resume points for content from unentitled providers to show in the main experience
-
-To get the value of `allowUnentitledResumePoints` call the method like this:
-
-```typescript
-function allowUnentitledResumePoints(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowUnentitledResumePoints` call the method like this:
-
-```typescript
-function allowUnentitledResumePoints(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowUnentitledResumePoints(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
-### allowWatchHistory
-
-Whether the user allows their watch history from all sources to show in the main experience
-
-To get the value of `allowWatchHistory` call the method like this:
-
-```typescript
-function allowWatchHistory(): Promise<boolean>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:settings |
-
-#### Examples
-
----
-
-To set the value of `allowWatchHistory` call the method like this:
-
-```typescript
-function allowWatchHistory(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function allowWatchHistory(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
-
 ### settings
 
 Gets the allowed value for all privacy settings
@@ -868,6 +3971,61 @@ Capabilities:
 | uses | xrn:firebolt:capability:privacy:settings |
 
 #### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+let settings = await Privacy.settings()
+console.log(settings)
+```
+
+Value of `settings`:
+
+```javascript
+{"allowACRCollection":true,"allowResumePoints":false,"allowAppContentAdTargeting":false,"allowCameraAnalytics":true,"allowPersonalization":true,"allowPrimaryBrowseAdTargeting":false,"allowPrimaryContentAdTargeting":false,"allowProductAnalytics":true,"allowRemoteDiagnostics":true,"allowUnentitledPersonalization":true,"allowUnentitledResumePoints":false,"allowWatchHistory":true}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.settings",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "allowACRCollection": true,
+    "allowResumePoints": false,
+    "allowAppContentAdTargeting": false,
+    "allowCameraAnalytics": true,
+    "allowPersonalization": true,
+    "allowPrimaryBrowseAdTargeting": false,
+    "allowPrimaryContentAdTargeting": false,
+    "allowProductAnalytics": true,
+    "allowRemoteDiagnostics": true,
+    "allowUnentitledPersonalization": true,
+    "allowUnentitledResumePoints": false,
+    "allowWatchHistory": true
+  }
+}
+```
+
+</details>
 
 ---
 
@@ -891,6 +4049,96 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowACRCollectionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowACRCollectionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowACRCollectionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowACRCollectionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### allowAppContentAdTargetingChanged
@@ -910,6 +4158,96 @@ Capabilities:
 | uses | xrn:firebolt:capability:privacy:settings |
 
 #### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowAppContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowAppContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowAppContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowAppContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -931,6 +4269,96 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowCameraAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowCameraAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowCameraAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowCameraAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### allowPersonalizationChanged
@@ -950,6 +4378,96 @@ Capabilities:
 | uses | xrn:firebolt:capability:privacy:settings |
 
 #### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -971,6 +4489,96 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryBrowseAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryBrowseAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### allowPrimaryContentAdTargetingChanged
@@ -990,6 +4598,96 @@ Capabilities:
 | uses | xrn:firebolt:capability:privacy:settings |
 
 #### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -1011,6 +4709,96 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowProductAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowProductAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowProductAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowProductAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### allowRemoteDiagnosticsChanged
@@ -1030,6 +4818,96 @@ Capabilities:
 | uses | xrn:firebolt:capability:privacy:settings |
 
 #### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowRemoteDiagnosticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowRemoteDiagnosticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowRemoteDiagnosticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowRemoteDiagnosticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -1051,6 +4929,96 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### allowUnentitledPersonalizationChanged
@@ -1070,6 +5038,96 @@ Capabilities:
 | uses | xrn:firebolt:capability:privacy:settings |
 
 #### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -1091,6 +5149,96 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### allowWatchHistoryChanged
@@ -1111,7 +5259,1424 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowWatchHistoryChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowWatchHistoryChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowWatchHistoryChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowWatchHistoryChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### allowACRCollectionChanged
+
+```typescript
+function listen('allowACRCollectionChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowACRCollectionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowACRCollectionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowACRCollectionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowACRCollectionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowAppContentAdTargetingChanged
+
+```typescript
+function listen('allowAppContentAdTargetingChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowAppContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowAppContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowAppContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowAppContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowCameraAnalyticsChanged
+
+```typescript
+function listen('allowCameraAnalyticsChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowCameraAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowCameraAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowCameraAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowCameraAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowPersonalizationChanged
+
+```typescript
+function listen('allowPersonalizationChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowPrimaryBrowseAdTargetingChanged
+
+```typescript
+function listen('allowPrimaryBrowseAdTargetingChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryBrowseAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryBrowseAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowPrimaryContentAdTargetingChanged
+
+```typescript
+function listen('allowPrimaryContentAdTargetingChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowPrimaryContentAdTargetingChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowPrimaryContentAdTargetingChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowProductAnalyticsChanged
+
+```typescript
+function listen('allowProductAnalyticsChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowProductAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowProductAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowProductAnalyticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowProductAnalyticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowRemoteDiagnosticsChanged
+
+```typescript
+function listen('allowRemoteDiagnosticsChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowRemoteDiagnosticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowRemoteDiagnosticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowRemoteDiagnosticsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowRemoteDiagnosticsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowResumePointsChanged
+
+```typescript
+function listen('allowResumePointsChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowUnentitledPersonalizationChanged
+
+```typescript
+function listen('allowUnentitledPersonalizationChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledPersonalizationChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledPersonalizationChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowUnentitledResumePointsChanged
+
+```typescript
+function listen('allowUnentitledResumePointsChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowUnentitledResumePointsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowUnentitledResumePointsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### allowWatchHistoryChanged
+
+```typescript
+function listen('allowWatchHistoryChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:privacy:settings |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowWatchHistoryChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowWatchHistoryChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { Privacy } from '@firebolt-js/manage-sdk'
+
+Privacy.listen('allowWatchHistoryChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Privacy.onAllowWatchHistoryChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
 

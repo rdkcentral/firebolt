@@ -32,22 +32,23 @@ This document is written using the [IETF Best Common Practice 14](https://www.rf
 The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in [BCP 14](https://www.rfc-editor.org/rfc/rfc2119.txt) [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
 
 ## 2. Table of Contents
-- [1. Overview](#1-overview)
-- [2. Table of Contents](#2-table-of-contents)
-- [3. Open RPC Extensions](#3-open-rpc-extensions)
-  - [3.1. Provided By Extension](#31-provided-by-extension)
-- [4. Routing App pass-through APIs](#4-routing-app-pass-through-apis)
-  - [4.1. No available providers](#41-no-available-providers)
-  - [4.2. Direct pass-through](#42-direct-pass-through)
-  - [4.4. Pass-through notifications](#44-pass-through-notifications)
-- [5. Provider Candidates](#5-provider-candidates)
-- [6. Best Candidate](#6-best-candidate)
-- [7. Result Transformations](#7-result-transformations)
-- [8. Provider Parameter Injection](#8-provider-parameter-injection)
-- [9. API Gateway](#9-api-gateway)
-- [10. Example: User Interest](#10-example-user-interest)
-  - [10.1. User Interest Pull](#101-user-interest-pull)
-  - [10.2. User Interest Push](#102-user-interest-push)
+- [App Pass-through APIs](#app-pass-through-apis)
+  - [1. Overview](#1-overview)
+  - [2. Table of Contents](#2-table-of-contents)
+  - [3. Open RPC Extensions](#3-open-rpc-extensions)
+    - [3.1. Provided By Extension](#31-provided-by-extension)
+  - [4. Routing App pass-through APIs](#4-routing-app-pass-through-apis)
+    - [4.1. No available providers](#41-no-available-providers)
+    - [4.2. Direct pass-through](#42-direct-pass-through)
+    - [4.4. Pass-through notifications](#44-pass-through-notifications)
+  - [5. Provider Candidates](#5-provider-candidates)
+  - [6. Best Candidate](#6-best-candidate)
+  - [7. Result Transformations](#7-result-transformations)
+  - [8. Provider Parameter Injection](#8-provider-parameter-injection)
+  - [9. API Gateway](#9-api-gateway)
+  - [10. Example: User Interest](#10-example-user-interest)
+    - [10.1. User Interest Pull](#101-user-interest-pull)
+    - [10.2. User Interest Push](#102-user-interest-push)
 
 ## 3. Open RPC Extensions
 
@@ -123,7 +124,7 @@ The platform **MUST** call the provider method from the [best candidate](#8-best
 
 If the platform method result schema matches the `x-response` schema on the provider method then the value **MUST** be used as-is.
 
-Otherwise if the platform method result schema has any properties that matches the `x-response` schema on the provider method then the value **MUST** be composed into an object under the corresponding property name and the platform **MUST** apply any [result transformations](#9-result-transformations) to the composed result.
+Otherwise if the platform method result schema has a property that matches the `x-response` schema on the provider method then the value **MUST** be composed into an object under the corresponding property name and the platform **MUST** apply any [result transformations](#9-result-transformations) to the composed result.
 
 ### 4.4. Pass-through notifications
 Firebolt events have a synchronous subscriber registration method, e.g. `Lifecycle.onInactive(true)`, in addition to asynchronous notifications when the event actually happens. For events powered by an app pass-through, only the asynchronous notifications are passed in by the providing app. The initial event registration is handled by the platform, and the success response is not handled by the providing app.
@@ -224,37 +225,18 @@ If the value was composed into the platform method result under a matching prope
 Finally the platform **MUST** dispatch the notification to the app that registered for the event via the original platform method, using all but the last parameter as context.
 
 ## 5. Provider Candidates
-The Firebolt Device Manifist **MUST** have a list of `ProviderPolicy` configurations that map capabilities to policies for determining candidate providers:
-
-```json
-{
-    "providerPolicies": [
-        {
-            "inFocus": true,
-            "capabilities": [
-                "xrn:firebolt:capability:foo:bar"
-            ]
-        }
-    ]
-}
-```
-The policy **MUST** have a list of capabilities that it is applied to.
-
-A capability **MUST NOT** be included in more than one policy.
-
-The policy **MAY** have an `inFocus` boolean.
-
-If the policy has `inFocus` set to `true` then any app without RCU input focus when the capability is invoked **MUST NOT** be considered a candidate.
+When a platform method with an `x-provided-by` extension is called, then
+all loaded apps that have permission to provide the capability **MUST** be
+considered as candidates to fulfill the method.
 
 ## 6. Best Candidate
+Any provider candidates that have not registered to provide the method in
+question **MUST NOT** be considered the best candidate and removed from
+consideration.
 
-**TODO**: fix section 5 and this section...
+If there is only one candidate left then it **MUST** be the best candidate.
 
-Candidate apps are all apps that have registered to provide the capability.
-
-If there is only one candidate then it **MUST** be the best candidate.
-
-If there is more than one candidate, then the candidate app that most recently had RCU input focus **MUST** be the best candidate.
+If there is more than one candidate left, then the candidate app that most recently had RCU input focus **MUST** be the best candidate.
 
 If none of the candidates have had focus yet, then the candidate app that was most recently launched **MUST** be the best candidate.
 

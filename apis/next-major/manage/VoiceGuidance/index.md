@@ -18,13 +18,22 @@ Version VoiceGuidance 0.0.0-unknown.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [listen](#listen)
-  - [once](#once)
   - [enabled](#enabled)
+  - [listen](#listen)
+  - [navigationHints](#navigationhints)
+  - [once](#once)
+  - [rate](#rate)
   - [speed](#speed)
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
+  - [navigationHintsChanged](#navigationhintschanged)
+  - [rateChanged](#ratechanged)
   - [speedChanged](#speedchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [navigationHintsChanged](#navigationhintschanged-1)
+  - [rateChanged](#ratechanged-1)
+  - [speedChanged](#speedchanged-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -37,9 +46,323 @@ import { VoiceGuidance } from '@firebolt-js/manage-sdk'
 
 ## Overview
 
-A module for managing voice-guidance Settings.
+A module for managing voice guidance settings.
 
 ## Methods
+
+### enabled
+
+Whether or not voice-guidance is enabled.
+
+To get the value of `enabled` call the method like this:
+
+```typescript
+function enabled(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Voice guidance enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let enabled = await VoiceGuidance.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Voice guidance disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let enabled = await VoiceGuidance.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `enabled` call the method like this:
+
+```typescript
+function enabled(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Voice guidance enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.enabled(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setEnabled",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Voice guidance disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.enabled(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setEnabled",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Voice guidance enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let enabled = await VoiceGuidance.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Voice guidance disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let enabled = await VoiceGuidance.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
 
 ### listen
 
@@ -94,6 +417,320 @@ Promise resolution:
 | `number` | Listener ID to clear the callback method and stop receiving the event, e.g. `VoiceGuidance.clear(id)` |
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
+
+### navigationHints
+
+The user's preference for whether additional navigation hints should be synthesized.
+
+To get the value of `navigationHints` call the method like this:
+
+```typescript
+function navigationHints(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Navigation hints enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let navigationHints = await VoiceGuidance.navigationHints()
+console.log(navigationHints)
+```
+
+Value of `navigationHints`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.navigationHints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Navigation hints disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let navigationHints = await VoiceGuidance.navigationHints()
+console.log(navigationHints)
+```
+
+Value of `navigationHints`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.navigationHints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
+
+To set the value of `navigationHints` call the method like this:
+
+```typescript
+function navigationHints(value: boolean): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type      | Required | Description |
+| ------- | --------- | -------- | ----------- |
+| `value` | `boolean` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Navigation hints enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.navigationHints(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setNavigationHints",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Navigation hints disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.navigationHints(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setNavigationHints",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Navigation hints enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let navigationHints = await VoiceGuidance.navigationHints()
+console.log(navigationHints)
+```
+
+Value of `navigationHints`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.navigationHints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Navigation hints disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let navigationHints = await VoiceGuidance.navigationHints()
+console.log(navigationHints)
+```
+
+Value of `navigationHints`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.navigationHints",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
+---
 
 ### once
 
@@ -151,14 +788,14 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-### enabled
+### rate
 
-Whether or not voice-guidance is enabled.
+The rate at which voice guidance speech will be read back to the user.
 
-To get the value of `enabled` call the method like this:
+To get the value of `rate` call the method like this:
 
 ```typescript
-function enabled(): Promise<boolean>
+function rate(): Promise<SpeechRate>
 ```
 
 Promise resolution:
@@ -171,31 +808,205 @@ Capabilities:
 
 #### Examples
 
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let rate = await VoiceGuidance.rate()
+console.log(rate)
+```
+
+Value of `rate`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.rate",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let rate = await VoiceGuidance.rate()
+console.log(rate)
+```
+
+Value of `rate`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.rate",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 2
+}
+```
+
+</details>
+
 ---
 
-To set the value of `enabled` call the method like this:
+To set the value of `rate` call the method like this:
 
 ```typescript
-function enabled(value: boolean): Promise<void>
+function rate(value: Accessibility.SpeechRate): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
+| Param   | Type                       | Required | Description |
+| ------- | -------------------------- | -------- | ----------- |
+| `value` | `Accessibility.SpeechRate` | true     |             |
 
 Promise resolution:
 
 #### Examples
+
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.rate(1)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setRate",
+  "params": {
+    "value": 1
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.rate(2)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setRate",
+  "params": {
+    "value": 2
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function enabled(callback: (value) => null): Promise<number>
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => SpeechRate): Promise<number>
 ```
+
+${event.params}
 
 Promise resolution:
 
@@ -204,6 +1015,90 @@ number
 ```
 
 #### Examples
+
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let rate = await VoiceGuidance.rate()
+console.log(rate)
+```
+
+Value of `rate`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.rate",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let rate = await VoiceGuidance.rate()
+console.log(rate)
+```
+
+Value of `rate`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.rate",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 2
+}
+```
+
+</details>
 
 ---
 
@@ -214,7 +1109,7 @@ The speed at which voice guidance speech will be read back to the user.
 To get the value of `speed` call the method like this:
 
 ```typescript
-function speed(): Promise<Accessibility.VoiceSpeed>
+function speed(): Promise<SpeechRate>
 ```
 
 Promise resolution:
@@ -227,31 +1122,205 @@ Capabilities:
 
 #### Examples
 
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let speed = await VoiceGuidance.speed()
+console.log(speed)
+```
+
+Value of `speed`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.speed",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let speed = await VoiceGuidance.speed()
+console.log(speed)
+```
+
+Value of `speed`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.speed",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 2
+}
+```
+
+</details>
+
 ---
 
 To set the value of `speed` call the method like this:
 
 ```typescript
-function speed(value: Accessibility.VoiceSpeed): Promise<void>
+function speed(value: Accessibility.SpeechRate): Promise<void>
 ```
 
 Parameters:
 
 | Param   | Type                       | Required | Description |
 | ------- | -------------------------- | -------- | ----------- |
-| `value` | `Accessibility.VoiceSpeed` | true     |             |
+| `value` | `Accessibility.SpeechRate` | true     |             |
 
 Promise resolution:
 
 #### Examples
+
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.speed(1)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setSpeed",
+  "params": {
+    "value": 1
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let result = await VoiceGuidance.speed(2)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.setSpeed",
+  "params": {
+    "value": 2
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function speed(callback: (value) => null): Promise<number>
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => SpeechRate): Promise<number>
 ```
+
+${event.params}
 
 Promise resolution:
 
@@ -260,6 +1329,90 @@ number
 ```
 
 #### Examples
+
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let speed = await VoiceGuidance.speed()
+console.log(speed)
+```
+
+Value of `speed`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.speed",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 1
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+let speed = await VoiceGuidance.speed()
+console.log(speed)
+```
+
+Value of `speed`:
+
+```javascript
+1
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.speed",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": 2
+}
+```
+
+</details>
 
 ---
 
@@ -283,12 +1436,102 @@ Capabilities:
 
 #### Examples
 
+Voice guidance enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Voice guidance disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
-### speedChanged
+### navigationHintsChanged
 
 ```typescript
-function listen('speedChanged', (Accessibility.VoiceSpeed) => void): Promise<number>
+function listen('navigationHintsChanged', (boolean) => void): Promise<number>
 ```
 
 See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
@@ -303,6 +1546,555 @@ Capabilities:
 
 #### Examples
 
+Navigation hints enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('navigationHintsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onNavigationHintsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Navigation hints disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('navigationHintsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onNavigationHintsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+### rateChanged
+
+```typescript
+function listen('rateChanged', (Accessibility.SpeechRate) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('rateChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onRateChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('rateChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onRateChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### speedChanged
+
+[Deprecated] This method is deprecated as of since version 1.5.0. Please use `rate` as a replacement.
+
+---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### enabledChanged
+
+```typescript
+function listen('enabledChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Voice guidance enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Voice guidance disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### navigationHintsChanged
+
+```typescript
+function listen('navigationHintsChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Navigation hints enabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('navigationHintsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onNavigationHintsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Navigation hints disabled
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('navigationHintsChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onNavigationHintsChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### rateChanged
+
+```typescript
+function listen('rateChanged', (Accessibility.SpeechRate) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:voiceguidance |
+
+#### Examples
+
+Normal voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('rateChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onRateChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Doubled voice guidance speech rate
+
+JavaScript:
+
+```javascript
+import { VoiceGuidance } from '@firebolt-js/manage-sdk'
+
+VoiceGuidance.listen('rateChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "VoiceGuidance.onRateChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### speedChanged
+
+[Deprecated] This method is deprecated as of since version 1.5.0. Please use `rate` as a replacement.
+
+---
+
+</details>
 
 ## Types

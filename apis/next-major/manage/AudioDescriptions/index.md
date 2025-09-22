@@ -23,6 +23,8 @@ Version AudioDescriptions 0.0.0-unknown.0
   - [once](#once)
 - [Events](#events)
   - [enabledChanged](#enabledchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -59,6 +61,90 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+let enabled = await AudioDescriptions.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+let enabled = await AudioDescriptions.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
+
 ---
 
 To set the value of `enabled` call the method like this:
@@ -77,13 +163,103 @@ Promise resolution:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+let result = await AudioDescriptions.enabled(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.setEnabled",
+  "params": {
+    "value": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+let result = await AudioDescriptions.enabled(false)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.setEnabled",
+  "params": {
+    "value": false
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
-function enabled(callback: (value) => null): Promise<number>
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => boolean): Promise<number>
 ```
+
+${event.params}
 
 Promise resolution:
 
@@ -92,6 +268,90 @@ number
 ```
 
 #### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+let enabled = await AudioDescriptions.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+let enabled = await AudioDescriptions.enabled()
+console.log(enabled)
+```
+
+Value of `enabled`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.enabled",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": false
+}
+```
+
+</details>
 
 ---
 
@@ -225,6 +485,213 @@ Capabilities:
 
 #### Examples
 
+Default example #1
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+AudioDescriptions.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+AudioDescriptions.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### enabledChanged
+
+```typescript
+function listen('enabledChanged', (boolean) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                              |
+| ---- | ------------------------------------------------------- |
+| uses | xrn:firebolt:capability:accessibility:audiodescriptions |
+
+#### Examples
+
+Default example #1
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+AudioDescriptions.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Default example #2
+
+JavaScript:
+
+```javascript
+import { AudioDescriptions } from '@firebolt-js/manage-sdk'
+
+AudioDescriptions.listen('enabledChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "AudioDescriptions.onEnabledChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types

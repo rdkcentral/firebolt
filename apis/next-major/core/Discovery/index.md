@@ -24,29 +24,34 @@ Version Discovery 0.0.0-unknown.0
   - [entitlements](#entitlements)
   - [entityInfo](#entityinfo)
   - [launch](#launch)
+  - [listen](#listen)
+  - [once](#once)
   - [policy](#policy)
-  - [provideInterest](#provideinterest)
+  - [provide](#provide)
   - [purchasedContent](#purchasedcontent)
   - [signIn](#signin)
   - [signOut](#signout)
+  - [userInterest](#userinterest)
   - [watched](#watched)
   - [watchNext](#watchnext)
-  - [listen](#listen)
-  - [once](#once)
 - [Events](#events)
+  - [entityInfoChanged](#entityinfochanged)
   - [navigateTo](#navigateto)
   - [policyChanged](#policychanged)
+  - [purchasedContentChanged](#purchasedcontentchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [navigateTo](#navigateto-1)
+  - [policyChanged](#policychanged-1)
+  - [purchasedContentChanged](#purchasedcontentchanged-1)
+  </details>
 - [Provider Interfaces](#provider-interfaces)
-  - [Interest](#interest)
+  - [Discovery](#discovery)
 - [Types](#types)
   - [DiscoveryPolicy](#discoverypolicy)
+  - [EntityInfoResult](#entityinforesult)
+  - [PurchasedContentResult](#purchasedcontentresult)
   - [Availability](#availability)
   - [ContentAccessIdentifiers](#contentaccessidentifiers)
-  - [FederatedRequest](#federatedrequest)
-  - [EntityInfoParameters](#entityinfoparameters)
-  - [EntityInfoFederatedRequest](#entityinfofederatedrequest)
-  - [PurchasedContentParameters](#purchasedcontentparameters)
-  - [PurchasedContentFederatedRequest](#purchasedcontentfederatedrequest)
 
 ## Usage
 
@@ -92,6 +97,48 @@ Capabilities:
 
 #### Examples
 
+Clear subscriber's availabilities and entitlements
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.clearContentAccess()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.clearContentAccess",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### contentAccess
@@ -118,33 +165,329 @@ Capabilities:
 
 #### Examples
 
+Update subscriber's availabilities
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.contentAccess({
+  availabilities: [
+    {
+      type: 'channel-lineup',
+      id: 'partner.com/availability/123',
+      startTime: '2021-04-23T18:25:43.511Z',
+      endTime: '2021-04-23T18:25:43.511Z',
+    },
+    {
+      type: 'channel-lineup',
+      id: 'partner.com/availability/456',
+      startTime: '2021-04-23T18:25:43.511Z',
+      endTime: '2021-04-23T18:25:43.511Z',
+    },
+  ],
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.contentAccess",
+  "params": {
+    "ids": {
+      "availabilities": [
+        {
+          "type": "channel-lineup",
+          "id": "partner.com/availability/123",
+          "startTime": "2021-04-23T18:25:43.511Z",
+          "endTime": "2021-04-23T18:25:43.511Z"
+        },
+        {
+          "type": "channel-lineup",
+          "id": "partner.com/availability/456",
+          "startTime": "2021-04-23T18:25:43.511Z",
+          "endTime": "2021-04-23T18:25:43.511Z"
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Update subscriber's availabilities and entitlements
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.contentAccess({
+  availabilities: [
+    {
+      type: 'channel-lineup',
+      id: 'partner.com/availability/123',
+      startTime: '2021-04-23T18:25:43.511Z',
+      endTime: '2021-04-23T18:25:43.511Z',
+    },
+    {
+      type: 'channel-lineup',
+      id: 'partner.com/availability/456',
+      startTime: '2021-04-23T18:25:43.511Z',
+      endTime: '2021-04-23T18:25:43.511Z',
+    },
+  ],
+  entitlements: [
+    {
+      entitlementId: '123',
+      startTime: '2025-01-01T00:00:00.000Z',
+      endTime: '2025-01-01T00:00:00.000Z',
+    },
+  ],
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.contentAccess",
+  "params": {
+    "ids": {
+      "availabilities": [
+        {
+          "type": "channel-lineup",
+          "id": "partner.com/availability/123",
+          "startTime": "2021-04-23T18:25:43.511Z",
+          "endTime": "2021-04-23T18:25:43.511Z"
+        },
+        {
+          "type": "channel-lineup",
+          "id": "partner.com/availability/456",
+          "startTime": "2021-04-23T18:25:43.511Z",
+          "endTime": "2021-04-23T18:25:43.511Z"
+        }
+      ],
+      "entitlements": [
+        {
+          "entitlementId": "123",
+          "startTime": "2025-01-01T00:00:00.000Z",
+          "endTime": "2025-01-01T00:00:00.000Z"
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Update subscriber's entitlements
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.contentAccess({
+  entitlements: [
+    {
+      entitlementId: '123',
+      startTime: '2025-01-01T00:00:00.000Z',
+      endTime: '2025-01-01T00:00:00.000Z',
+    },
+  ],
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.contentAccess",
+  "params": {
+    "ids": {
+      "entitlements": [
+        {
+          "entitlementId": "123",
+          "startTime": "2025-01-01T00:00:00.000Z",
+          "endTime": "2025-01-01T00:00:00.000Z"
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Clear a subscriber's entitlements
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.contentAccess({ entitlements: [] })
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.contentAccess",
+  "params": {
+    "ids": {
+      "entitlements": []
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Clear a subscriber's availabilities
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.contentAccess({ availabilities: [] })
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.contentAccess",
+  "params": {
+    "ids": {
+      "availabilities": []
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
 
 ### entitlements
 
-Inform the platform of the users latest entitlements w/in this app.
+[Deprecated] This method is deprecated as of since version 0.10.0. Please use `contentAccess` as a replacement.
 
 ```typescript
-function entitlements(
-  entitlements: Entertainment.Entitlement[],
-): Promise<boolean>
+function entitlements(entitlements: Entitlement[]): Promise<boolean>
 ```
-
-Parameters:
-
-| Param          | Type                          | Required | Description                  |
-| -------------- | ----------------------------- | -------- | ---------------------------- |
-| `entitlements` | `Entertainment.Entitlement[]` | true     | Array of entitlement objects |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                       |
-| ---- | ------------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:content-access |
-
-#### Examples
 
 ---
 
@@ -156,68 +499,759 @@ See the `EntityInfo` and `WayToWatch` data structures below for more information
 
 The app only needs to implement Pull support for `entityInfo` at this time.
 
-To allow the platform to pull data, use `entityInfo(callback: Function)`:
+To get the value of `entityInfo` call the method like this:
 
 ```typescript
 function entityInfo(
-  callback: (parameters: EntityInfoParameters) => Promise<EntityInfoResult>,
-): Promise<boolean>
+  entityId: string,
+  assedId: string,
+): Promise<EntityInfoResult>
 ```
 
 Parameters:
 
-| Param      | Type       | Required | Summary                                                      |
-| ---------- | ---------- | -------- | ------------------------------------------------------------ |
-| `callback` | `Function` | Yes      | A callback for the platform to pull EntityInfoResult objects |
-
-Callback parameters:
-
-| Param        | Type                   | Required | Summary                                                                     |
-| ------------ | ---------------------- | -------- | --------------------------------------------------------------------------- |
-| `parameters` | `EntityInfoParameters` | Yes      | An object describing the platform's query for an `EntityInfoResult` object. |
-
-```typescript
-type EntityInfoParameters = {
-  entityId: string
-  assetId?: string
-}
-```
-
-Callback promise resolution:
-
-```typescript
-
-```
-
-See also: [EntityInfoResult](#entityinforesult-1)
-
-#### Examples
-
-To push data to the platform, e.g. during app launch, use `entityInfo(result: EntityInfoResult)`:
-
-```typescript
-function entityInfo(result: EntityInfoResult): Promise<boolean>
-```
-
-Parameters:
-
-| Param    | Type               | Required | Summary                                             |
-| -------- | ------------------ | -------- | --------------------------------------------------- |
-| `result` | `EntityInfoResult` | Yes      | The `EntityInfoResult` data to push to the platform |
-
-```typescript
-
-```
-
-See also: [EntityInfo](#entityinfo-1)
+| Param      | Type     | Required | Description |
+| ---------- | -------- | -------- | ----------- |
+| `entityId` | `string` | true     |             |
+| `assedId`  | `string` | true     |             |
 
 Promise resolution:
 
-| Type      | Summary                                |
-| --------- | -------------------------------------- |
-| `boolean` | Whether or not the push was successful |
+Capabilities:
+
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:entity-info |
 
 #### Examples
+
+Entity info for a movie.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.entityInfo('id-123', 'asseId-123')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"expires":"2025-01-01T00:00:00.000Z","entity":{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.entityInfo",
+  "params": {
+    "entityId": "id-123",
+    "assedId": "asseId-123"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entity": {
+      "identifiers": {
+        "entityId": "345"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Cool Runnings",
+      "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+      "releaseDate": "1993-01-01T00:00:00.000Z",
+      "contentRatings": [
+        {
+          "scheme": "US-Movie",
+          "rating": "PG"
+        },
+        {
+          "scheme": "CA-Movie",
+          "rating": "G"
+        }
+      ],
+      "waysToWatch": [
+        {
+          "identifiers": {
+            "assetId": "123"
+          },
+          "expires": "2025-01-01T00:00:00.000Z",
+          "entitled": true,
+          "entitledExpires": "2025-01-01T00:00:00.000Z",
+          "offeringType": "buy",
+          "price": 2.99,
+          "videoQuality": ["UHD"],
+          "audioProfile": ["dolbyAtmos"],
+          "audioLanguages": ["en"],
+          "closedCaptions": ["en"],
+          "subtitles": ["es"],
+          "audioDescriptions": ["en"]
+        }
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+Entity info for a movie with a trailer.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.entityInfo('id-1234', 'asseId-1234')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"expires":"2025-01-01T00:00:00.000Z","entity":{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.entityInfo",
+  "params": {
+    "entityId": "id-1234",
+    "assedId": "asseId-1234"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entity": {
+      "identifiers": {
+        "entityId": "345"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Cool Runnings",
+      "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+      "releaseDate": "1993-01-01T00:00:00.000Z",
+      "contentRatings": [
+        {
+          "scheme": "US-Movie",
+          "rating": "PG"
+        },
+        {
+          "scheme": "CA-Movie",
+          "rating": "G"
+        }
+      ],
+      "waysToWatch": [
+        {
+          "identifiers": {
+            "assetId": "123"
+          },
+          "expires": "2025-01-01T00:00:00.000Z",
+          "entitled": true,
+          "entitledExpires": "2025-01-01T00:00:00.000Z",
+          "offeringType": "buy",
+          "price": 2.99,
+          "videoQuality": ["UHD"],
+          "audioProfile": ["dolbyAtmos"],
+          "audioLanguages": ["en"],
+          "closedCaptions": ["en"],
+          "subtitles": ["es"],
+          "audioDescriptions": ["en"]
+        }
+      ]
+    },
+    "related": [
+      {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "preview",
+        "title": "Cool Runnings Trailer",
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123111",
+              "entityId": "345"
+            },
+            "entitled": true,
+            "videoQuality": ["HD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+To set the value of `entityInfo` call the method like this:
+
+```typescript
+function entityInfo(
+  entityId: string,
+  assedId: string,
+  value: EntityInfoResult,
+): Promise<void>
+```
+
+Parameters:
+
+| Param      | Type               | Required | Description         |
+| ---------- | ------------------ | -------- | ------------------- |
+| `entityId` | `string`           | true     |                     |
+| `assedId`  | `string`           | true     |                     |
+| `value`    | `EntityInfoResult` | true     | The entityInfo data |
+
+Promise resolution:
+
+#### Examples
+
+Entity info for a movie.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.entityInfo('id-123', 'asseId-123', {
+  expires: '2025-01-01T00:00:00.000Z',
+  entity: {
+    identifiers: {
+      entityId: '345',
+    },
+    entityType: 'program',
+    programType: 'movie',
+    title: 'Cool Runnings',
+    synopsis:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+    releaseDate: '1993-01-01T00:00:00.000Z',
+    contentRatings: [
+      {
+        scheme: 'US-Movie',
+        rating: 'PG',
+      },
+      {
+        scheme: 'CA-Movie',
+        rating: 'G',
+      },
+    ],
+    waysToWatch: [
+      {
+        identifiers: {
+          assetId: '123',
+        },
+        expires: '2025-01-01T00:00:00.000Z',
+        entitled: true,
+        entitledExpires: '2025-01-01T00:00:00.000Z',
+        offeringType: 'buy',
+        price: 2.99,
+        videoQuality: ['UHD'],
+        audioProfile: ['dolbyAtmos'],
+        audioLanguages: ['en'],
+        closedCaptions: ['en'],
+        subtitles: ['es'],
+        audioDescriptions: ['en'],
+      },
+    ],
+  },
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.setEntityInfo",
+  "params": {
+    "entityId": "id-123",
+    "assedId": "asseId-123",
+    "value": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "entity": {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Entity info for a movie with a trailer.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.entityInfo('id-1234', 'asseId-1234', {
+  expires: '2025-01-01T00:00:00.000Z',
+  entity: {
+    identifiers: {
+      entityId: '345',
+    },
+    entityType: 'program',
+    programType: 'movie',
+    title: 'Cool Runnings',
+    synopsis:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+    releaseDate: '1993-01-01T00:00:00.000Z',
+    contentRatings: [
+      {
+        scheme: 'US-Movie',
+        rating: 'PG',
+      },
+      {
+        scheme: 'CA-Movie',
+        rating: 'G',
+      },
+    ],
+    waysToWatch: [
+      {
+        identifiers: {
+          assetId: '123',
+        },
+        expires: '2025-01-01T00:00:00.000Z',
+        entitled: true,
+        entitledExpires: '2025-01-01T00:00:00.000Z',
+        offeringType: 'buy',
+        price: 2.99,
+        videoQuality: ['UHD'],
+        audioProfile: ['dolbyAtmos'],
+        audioLanguages: ['en'],
+        closedCaptions: ['en'],
+        subtitles: ['es'],
+        audioDescriptions: ['en'],
+      },
+    ],
+  },
+  related: [
+    {
+      identifiers: {
+        entityId: '345',
+      },
+      entityType: 'program',
+      programType: 'preview',
+      title: 'Cool Runnings Trailer',
+      waysToWatch: [
+        {
+          identifiers: {
+            assetId: '123111',
+            entityId: '345',
+          },
+          entitled: true,
+          videoQuality: ['HD'],
+          audioProfile: ['dolbyAtmos'],
+          audioLanguages: ['en'],
+          closedCaptions: ['en'],
+        },
+      ],
+    },
+  ],
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.setEntityInfo",
+  "params": {
+    "entityId": "id-1234",
+    "assedId": "asseId-1234",
+    "value": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "entity": {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      },
+      "related": [
+        {
+          "identifiers": {
+            "entityId": "345"
+          },
+          "entityType": "program",
+          "programType": "preview",
+          "title": "Cool Runnings Trailer",
+          "waysToWatch": [
+            {
+              "identifiers": {
+                "assetId": "123111",
+                "entityId": "345"
+              },
+              "entitled": true,
+              "videoQuality": ["HD"],
+              "audioProfile": ["dolbyAtmos"],
+              "audioLanguages": ["en"],
+              "closedCaptions": ["en"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => EntityInfoResult): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Entity info for a movie.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.entityInfo('id-123', 'asseId-123')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"expires":"2025-01-01T00:00:00.000Z","entity":{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.entityInfo",
+  "params": {
+    "entityId": "id-123",
+    "assedId": "asseId-123"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entity": {
+      "identifiers": {
+        "entityId": "345"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Cool Runnings",
+      "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+      "releaseDate": "1993-01-01T00:00:00.000Z",
+      "contentRatings": [
+        {
+          "scheme": "US-Movie",
+          "rating": "PG"
+        },
+        {
+          "scheme": "CA-Movie",
+          "rating": "G"
+        }
+      ],
+      "waysToWatch": [
+        {
+          "identifiers": {
+            "assetId": "123"
+          },
+          "expires": "2025-01-01T00:00:00.000Z",
+          "entitled": true,
+          "entitledExpires": "2025-01-01T00:00:00.000Z",
+          "offeringType": "buy",
+          "price": 2.99,
+          "videoQuality": ["UHD"],
+          "audioProfile": ["dolbyAtmos"],
+          "audioLanguages": ["en"],
+          "closedCaptions": ["en"],
+          "subtitles": ["es"],
+          "audioDescriptions": ["en"]
+        }
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+Entity info for a movie with a trailer.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.entityInfo('id-1234', 'asseId-1234')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"expires":"2025-01-01T00:00:00.000Z","entity":{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.entityInfo",
+  "params": {
+    "entityId": "id-1234",
+    "assedId": "asseId-1234"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entity": {
+      "identifiers": {
+        "entityId": "345"
+      },
+      "entityType": "program",
+      "programType": "movie",
+      "title": "Cool Runnings",
+      "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+      "releaseDate": "1993-01-01T00:00:00.000Z",
+      "contentRatings": [
+        {
+          "scheme": "US-Movie",
+          "rating": "PG"
+        },
+        {
+          "scheme": "CA-Movie",
+          "rating": "G"
+        }
+      ],
+      "waysToWatch": [
+        {
+          "identifiers": {
+            "assetId": "123"
+          },
+          "expires": "2025-01-01T00:00:00.000Z",
+          "entitled": true,
+          "entitledExpires": "2025-01-01T00:00:00.000Z",
+          "offeringType": "buy",
+          "price": 2.99,
+          "videoQuality": ["UHD"],
+          "audioProfile": ["dolbyAtmos"],
+          "audioLanguages": ["en"],
+          "closedCaptions": ["en"],
+          "subtitles": ["es"],
+          "audioDescriptions": ["en"]
+        }
+      ]
+    },
+    "related": [
+      {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "preview",
+        "title": "Cool Runnings Trailer",
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123111",
+              "entityId": "345"
+            },
+            "entitled": true,
+            "videoQuality": ["HD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
 
 ---
 
@@ -254,267 +1288,660 @@ Capabilities:
 
 #### Examples
 
----
+Launch the 'Foo' app to it's home screen.
 
-### policy
+JavaScript:
 
-get the discovery policy
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
 
-To get the value of `policy` call the method like this:
-
-```typescript
-function policy(): Promise<DiscoveryPolicy>
+let success = await Discovery.launch('foo', {
+  action: 'home',
+  context: { source: 'voice' },
+})
+console.log(success)
 ```
 
-Promise resolution:
+Value of `success`:
 
-Capabilities:
-
-| Role | Capability                               |
-| ---- | ---------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:policy |
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function policy(callback: (value) => null): Promise<number>
+```javascript
+true
 ```
 
-Promise resolution:
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
 
-```
-number
-```
-
-#### Examples
-
----
-
-### provideInterest
-
-Register an app's Interest interface.
-
-```typescript
-function provideInterest(enabled: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param     | Type      | Required | Description |
-| --------- | --------- | -------- | ----------- |
-| `enabled` | `boolean` | true     |             |
-
-Promise resolution:
-
-Capabilities:
-
-| Role     | Capability                                 |
-| -------- | ------------------------------------------ |
-| provides | xrn:firebolt:capability:discovery:interest |
-
-#### Examples
-
----
-
-### purchasedContent
-
-Return content purchased by the user, such as rentals and electronic sell through purchases.
-
-The app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.
-
-The `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.
-
-The app should implement both Push and Pull methods for `purchasedContent`.
-
-The app should actively push `purchasedContent` when:
-
-- The app becomes Active.
-- When the state of the purchasedContent set has changed.
-- The app goes into Inactive or Background state, if there is a chance a change event has been missed.
-
-To allow the platform to pull data, use `purchasedContent(callback: Function)`:
-
-```typescript
-function purchasedContent(
-  callback: (
-    parameters: PurchasedContentParameters,
-  ) => Promise<PurchasedContentResult>,
-): Promise<boolean>
-```
-
-Parameters:
-
-| Param      | Type       | Required | Summary                                                            |
-| ---------- | ---------- | -------- | ------------------------------------------------------------------ |
-| `callback` | `Function` | Yes      | A callback for the platform to pull PurchasedContentResult objects |
-
-Callback parameters:
-
-| Param        | Type                         | Required | Summary                                                                           |
-| ------------ | ---------------------------- | -------- | --------------------------------------------------------------------------------- |
-| `parameters` | `PurchasedContentParameters` | Yes      | An object describing the platform's query for an `PurchasedContentResult` object. |
-
-```typescript
-type PurchasedContentParameters = {
-  limit: number
-  offeringType?: Entertainment.OfferingType // The offering type of the WayToWatch.
-  programType?: Entertainment.ProgramType // In the case of a program `entityType`, specifies the program type.
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "foo",
+    "intent": {
+      "action": "home",
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
 }
 ```
 
-Callback promise resolution:
+Response:
 
-```typescript
-
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
 ```
 
-See also: [PurchasedContentResult](#purchasedcontentresult-1)
+</details>
 
-#### Examples
+Launch the 'Foo' app to it's home screen where the launch intent came from a child-directed browse menu.
 
-To push data to the platform, e.g. during app launch, use `purchasedContent(result: PurchasedContentResult)`:
+JavaScript:
 
-```typescript
-function purchasedContent(result: PurchasedContentResult): Promise<boolean>
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('foo', {
+  action: 'home',
+  context: { source: 'browse' },
+})
+console.log(success)
 ```
 
-Parameters:
+Value of `success`:
 
-| Param    | Type                     | Required | Summary                                                   |
-| -------- | ------------------------ | -------- | --------------------------------------------------------- |
-| `result` | `PurchasedContentResult` | Yes      | The `PurchasedContentResult` data to push to the platform |
-
-```typescript
-
+```javascript
+true
 ```
 
-See also: [PurchasedContent](#purchasedcontent-1)
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
 
-Promise resolution:
-
-| Type      | Summary                                |
-| --------- | -------------------------------------- |
-| `boolean` | Whether or not the push was successful |
-
-#### Examples
-
----
-
-### signIn
-
-Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
-
-```typescript
-function signIn(entitlements: Entertainment.Entitlement[]): Promise<boolean>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "foo",
+    "intent": {
+      "action": "home",
+      "context": {
+        "source": "browse"
+      }
+    }
+  }
+}
 ```
 
-Parameters:
+Response:
 
-| Param          | Type                          | Required | Description                                                                                             |
-| -------------- | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------------- |
-| `entitlements` | `Entertainment.Entitlement[]` | false    | Optional array of Entitlements, in case of a different user account, or a long time since last sign-in. |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                       |
-| ---- | ------------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:sign-in-status |
-
-#### Examples
-
----
-
-### signOut
-
-Inform the platform that your user has signed out. See `Discovery.signIn` for more details on how the sign-in state is used.signOut will NOT clear entitlements, the app should make a separate call to Discovery.clearContentAccess. Apps should also call signOut when a login token has expired and the user is now in a signed-out state.
-
-```typescript
-function signOut(): Promise<boolean>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
 ```
 
-Promise resolution:
+</details>
 
-Capabilities:
+Launch the 'Foo' app to it's own page for a specific entity.
 
-| Role | Capability                                       |
-| ---- | ------------------------------------------------ |
-| uses | xrn:firebolt:capability:discovery:sign-in-status |
+JavaScript:
 
-#### Examples
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
 
----
-
-### watched
-
-Notify the platform that content was partially or completely watched
-
-```typescript
-function watched(
-  entityId: string,
-  progress: number,
-  completed: boolean,
-  watchedOn: string,
-): Promise<boolean>
+let success = await Discovery.launch('foo', {
+  action: 'entity',
+  data: {
+    entityType: 'program',
+    programType: 'movie',
+    entityId: 'example-movie-id',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
 ```
 
-Parameters:
+Value of `success`:
 
-| Param       | Type      | Required | Description                                                                                                      |
-| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                            |
-| `progress`  | `number`  | false    | How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live) <br/>minumum: 0 |
-| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                           |
-| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                     |
-
-Promise resolution:
-
-Capabilities:
-
-| Role | Capability                                |
-| ---- | ----------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:watched |
-
-#### Examples
-
----
-
-### watchNext
-
-Suggest a call-to-action for this app on the platform home screen
-
-```typescript
-function watchNext(
-  title: Types.LocalizedString,
-  identifiers: Entertainment.ContentIdentifiers,
-  expires: string,
-  images: object,
-): Promise<boolean>
+```javascript
+true
 ```
 
-Parameters:
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
 
-| Param         | Type                               | Required | Description                                                                            |
-| ------------- | ---------------------------------- | -------- | -------------------------------------------------------------------------------------- |
-| `title`       | `Types.LocalizedString`            | true     | The title of this call to action                                                       |
-| `identifiers` | `Entertainment.ContentIdentifiers` | true     | A set of content identifiers for this call to action                                   |
-| `expires`     | `string`                           | false    | When this call to action should no longer be presented to users <br/>format: date-time |
-| `images`      | `object`                           | false    | A set of images for this call to action                                                |
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "foo",
+    "intent": {
+      "action": "entity",
+      "data": {
+        "entityType": "program",
+        "programType": "movie",
+        "entityId": "example-movie-id"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
 
-Promise resolution:
+Response:
 
-Capabilities:
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
 
-| Role | Capability                                   |
-| ---- | -------------------------------------------- |
-| uses | xrn:firebolt:capability:discovery:watch-next |
+</details>
 
-#### Examples
+Launch the 'Foo' app to a fullscreen playback experience for a specific entity.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('foo', {
+  action: 'playback',
+  data: {
+    entityType: 'program',
+    programType: 'movie',
+    entityId: 'example-movie-id',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "foo",
+    "intent": {
+      "action": "playback",
+      "data": {
+        "entityType": "program",
+        "programType": "movie",
+        "entityId": "example-movie-id"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to a global page for a specific entity.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'entity',
+  data: {
+    entityType: 'program',
+    programType: 'movie',
+    entityId: 'example-movie-id',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "entity",
+      "data": {
+        "entityType": "program",
+        "programType": "movie",
+        "entityId": "example-movie-id"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to a global page for the company / partner with the ID 'foo'.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'section',
+  data: {
+    sectionName: 'company:foo',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "section",
+      "data": {
+        "sectionName": "company:foo"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to it's home screen, as if the Home remote button was pressed.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'home',
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "home",
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to it's search screen.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'search',
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "search",
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to it's settings screen.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:settings', {
+  action: 'section',
+  data: {
+    sectionName: 'settings',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:settings",
+    "intent": {
+      "action": "section",
+      "data": {
+        "sectionName": "settings"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to it's linear/epg guide.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main', {
+  action: 'section',
+  data: {
+    sectionName: 'guide',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main",
+    "intent": {
+      "action": "section",
+      "data": {
+        "sectionName": "guide"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Launch the Aggregated Experience to the App Store details page for a specific app with the ID 'foo'.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('xrn:firebolt:application-type:main ', {
+  action: 'section',
+  data: {
+    sectionName: 'app:foo',
+  },
+  context: {
+    source: 'voice',
+  },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "xrn:firebolt:application-type:main ",
+    "intent": {
+      "action": "section",
+      "data": {
+        "sectionName": "app:foo"
+      },
+      "context": {
+        "source": "voice"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -628,7 +2055,1640 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+### policy
+
+Get the discovery policy
+
+To get the value of `policy` call the method like this:
+
+```typescript
+function policy(): Promise<DiscoveryPolicy>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:policy |
+
+#### Examples
+
+Getting the discovery policy
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let policy = await Discovery.policy()
+console.log(policy)
+```
+
+Value of `policy`:
+
+```javascript
+{"enableRecommendations":true,"shareWatchHistory":true,"rememberWatchedPrograms":true}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.policy",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enableRecommendations": true,
+    "shareWatchHistory": true,
+    "rememberWatchedPrograms": true
+  }
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => DiscoveryPolicy): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Getting the discovery policy
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let policy = await Discovery.policy()
+console.log(policy)
+```
+
+Value of `policy`:
+
+```javascript
+{"enableRecommendations":true,"shareWatchHistory":true,"rememberWatchedPrograms":true}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.policy",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "enableRecommendations": true,
+    "shareWatchHistory": true,
+    "rememberWatchedPrograms": true
+  }
+}
+```
+
+</details>
+
+---
+
+### provide
+
+undefined
+
+```typescript
+function provide(enabled: boolean): Promise<null>
+```
+
+Parameters:
+
+| Param     | Type      | Required | Description |
+| --------- | --------- | -------- | ----------- |
+| `enabled` | `boolean` | false    |             |
+
+Promise resolution:
+
+Capabilities:
+
+| Role     | Capability                                 |
+| -------- | ------------------------------------------ |
+| provides | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default example
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.provide(true)
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.provide",
+  "params": {
+    "enabled": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### purchasedContent
+
+Return content purchased by the user, such as rentals and electronic sell through purchases.
+
+The app should return the user's 100 most recent purchases in `entries`. The total count of purchases must be provided in `count`. If `count` is greater than the total number of `entries`, the UI may provide a link into the app to see the complete purchase list.
+
+The `EntityInfo` object returned is not required to have `waysToWatch` populated, but it is recommended that it do so in case the UI wants to surface additional information on the purchases screen.
+
+The app should implement both Push and Pull methods for `purchasedContent`.
+
+The app should actively push `purchasedContent` when:
+
+- The app becomes Active.
+- When the state of the purchasedContent set has changed.
+- The app goes into Inactive or Background state, if there is a chance a change event has been missed.
+
+To get the value of `purchasedContent` call the method like this:
+
+```typescript
+function purchasedContent(
+  offeringType: Entertainment.OfferingType,
+  programType: Entertainment.ProgramType,
+): Promise<PurchasedContentResult>
+```
+
+Parameters:
+
+| Param          | Type                         | Required | Description |
+| -------------- | ---------------------------- | -------- | ----------- |
+| `offeringType` | `Entertainment.OfferingType` | true     |             |
+| `programType`  | `Entertainment.ProgramType`  | true     |             |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:purchased-content |
+
+#### Examples
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.purchasedContent('buy', 'movie')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"totalCount":10,"expires":"2025-01-01T00:00:00.000Z","entries":[{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.purchasedContent",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "totalCount": 10,
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entries": [
+      {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.purchasedContent('buy', 'movie')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"totalCount":10,"expires":"2025-01-01T00:00:00.000Z","entries":[{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.purchasedContent",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "totalCount": 10,
+    "expires": "2025-03-03T00:00:00.000Z",
+    "entries": [
+      {
+        "identifiers": {
+          "entityId": "789"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1995-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "12345"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+To set the value of `purchasedContent` call the method like this:
+
+```typescript
+function purchasedContent(
+  offeringType: Entertainment.OfferingType,
+  programType: Entertainment.ProgramType,
+  value: PurchasedContentResult,
+): Promise<void>
+```
+
+Parameters:
+
+| Param          | Type                         | Required | Description                       |
+| -------------- | ---------------------------- | -------- | --------------------------------- |
+| `offeringType` | `Entertainment.OfferingType` | true     |                                   |
+| `programType`  | `Entertainment.ProgramType`  | true     |                                   |
+| `value`        | `PurchasedContentResult`     | true     | The data for the purchasedContent |
+
+Promise resolution:
+
+#### Examples
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.purchasedContent('buy', 'movie', {
+  totalCount: 10,
+  expires: '2025-01-01T00:00:00.000Z',
+  entries: [
+    {
+      identifiers: {
+        entityId: '345',
+      },
+      entityType: 'program',
+      programType: 'movie',
+      title: 'Cool Runnings',
+      synopsis:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+      releaseDate: '1993-01-01T00:00:00.000Z',
+      contentRatings: [
+        {
+          scheme: 'US-Movie',
+          rating: 'PG',
+        },
+        {
+          scheme: 'CA-Movie',
+          rating: 'G',
+        },
+      ],
+      waysToWatch: [
+        {
+          identifiers: {
+            assetId: '123',
+          },
+          expires: '2025-01-01T00:00:00.000Z',
+          entitled: true,
+          entitledExpires: '2025-01-01T00:00:00.000Z',
+          offeringType: 'buy',
+          price: 2.99,
+          videoQuality: ['UHD'],
+          audioProfile: ['dolbyAtmos'],
+          audioLanguages: ['en'],
+          closedCaptions: ['en'],
+          subtitles: ['es'],
+          audioDescriptions: ['en'],
+        },
+      ],
+    },
+  ],
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.setPurchasedContent",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie",
+    "value": {
+      "totalCount": 10,
+      "expires": "2025-01-01T00:00:00.000Z",
+      "entries": [
+        {
+          "identifiers": {
+            "entityId": "345"
+          },
+          "entityType": "program",
+          "programType": "movie",
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ],
+          "waysToWatch": [
+            {
+              "identifiers": {
+                "assetId": "123"
+              },
+              "expires": "2025-01-01T00:00:00.000Z",
+              "entitled": true,
+              "entitledExpires": "2025-01-01T00:00:00.000Z",
+              "offeringType": "buy",
+              "price": 2.99,
+              "videoQuality": ["UHD"],
+              "audioProfile": ["dolbyAtmos"],
+              "audioLanguages": ["en"],
+              "closedCaptions": ["en"],
+              "subtitles": ["es"],
+              "audioDescriptions": ["en"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.purchasedContent('buy', 'movie', {
+  totalCount: 10,
+  expires: '2025-03-03T00:00:00.000Z',
+  entries: [
+    {
+      identifiers: {
+        entityId: '789',
+      },
+      entityType: 'program',
+      programType: 'movie',
+      title: 'Cool Runnings',
+      synopsis:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+      releaseDate: '1995-01-01T00:00:00.000Z',
+      contentRatings: [
+        {
+          scheme: 'US-Movie',
+          rating: 'PG',
+        },
+        {
+          scheme: 'CA-Movie',
+          rating: 'G',
+        },
+      ],
+      waysToWatch: [
+        {
+          identifiers: {
+            assetId: '12345',
+          },
+          expires: '2025-01-01T00:00:00.000Z',
+          entitled: true,
+          entitledExpires: '2025-01-01T00:00:00.000Z',
+          offeringType: 'buy',
+          price: 2.99,
+          videoQuality: ['UHD'],
+          audioProfile: ['dolbyAtmos'],
+          audioLanguages: ['en'],
+          closedCaptions: ['en'],
+          subtitles: ['es'],
+          audioDescriptions: ['en'],
+        },
+      ],
+    },
+  ],
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.setPurchasedContent",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie",
+    "value": {
+      "totalCount": 10,
+      "expires": "2025-03-03T00:00:00.000Z",
+      "entries": [
+        {
+          "identifiers": {
+            "entityId": "789"
+          },
+          "entityType": "program",
+          "programType": "movie",
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1995-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ],
+          "waysToWatch": [
+            {
+              "identifiers": {
+                "assetId": "12345"
+              },
+              "expires": "2025-01-01T00:00:00.000Z",
+              "entitled": true,
+              "entitledExpires": "2025-01-01T00:00:00.000Z",
+              "offeringType": "buy",
+              "price": 2.99,
+              "videoQuality": ["UHD"],
+              "audioProfile": ["dolbyAtmos"],
+              "audioLanguages": ["en"],
+              "closedCaptions": ["en"],
+              "subtitles": ["es"],
+              "audioDescriptions": ["en"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => PurchasedContentResult): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.purchasedContent('buy', 'movie')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"totalCount":10,"expires":"2025-01-01T00:00:00.000Z","entries":[{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.purchasedContent",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "totalCount": 10,
+    "expires": "2025-01-01T00:00:00.000Z",
+    "entries": [
+      {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.purchasedContent('buy', 'movie')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+{"totalCount":10,"expires":"2025-01-01T00:00:00.000Z","entries":[{"identifiers":{"entityId":"345"},"entityType":"program","programType":"movie","title":"Cool Runnings","synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.","releaseDate":"1993-01-01T00:00:00.000Z","contentRatings":[{"scheme":"US-Movie","rating":"PG"},{"scheme":"CA-Movie","rating":"G"}],"waysToWatch":[{"identifiers":{"assetId":"123"},"expires":"2025-01-01T00:00:00.000Z","entitled":true,"entitledExpires":"2025-01-01T00:00:00.000Z","offeringType":"buy","price":2.99,"videoQuality":["UHD"],"audioProfile":["dolbyAtmos"],"audioLanguages":["en"],"closedCaptions":["en"],"subtitles":["es"],"audioDescriptions":["en"]}]}]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.purchasedContent",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "totalCount": 10,
+    "expires": "2025-03-03T00:00:00.000Z",
+    "entries": [
+      {
+        "identifiers": {
+          "entityId": "789"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1995-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "12345"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+### signIn
+
+Inform the platform that your user is signed in, for increased visibility in search & discovery. Sign-in state is used separately from what content can be access through entitlements and availabilities. Sign-in state may be used when deciding whether to choose this app to handle a user intent. For instance, if the user tries to launch something generic like playing music from an artist, only a signed-in app will be chosen. If the user wants to tune to a channel, only a signed-in app will be chosen to handle that intent. While signIn can optionally include entitlements as those typically change at signIn time, it is recommended to make a separate call to Discovery.contentAccess for entitlements. signIn is not only for when a user explicitly enters login credentials. If an app does not require any credentials from the user to consume content, such as in a free app, then the app should call signIn immediately on launch.
+
+```typescript
+function signIn(entitlements: Entitlement[]): Promise<boolean>
+```
+
+Parameters:
+
+| Param          | Type            | Required | Description                                                                                             |
+| -------------- | --------------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| `entitlements` | `Entitlement[]` | false    | Optional array of Entitlements, in case of a different user account, or a long time since last sign-in. |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                       |
+| ---- | ------------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:sign-in-status |
+
+#### Examples
+
+Send signIn metric
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.signIn()
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.signIn",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Send signIn notification with entitlements
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.signIn([
+  {
+    entitlementId: '123',
+    startTime: '2025-01-01T00:00:00.000Z',
+    endTime: '2025-01-01T00:00:00.000Z',
+  },
+])
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.signIn",
+  "params": {
+    "entitlements": [
+      {
+        "entitlementId": "123",
+        "startTime": "2025-01-01T00:00:00.000Z",
+        "endTime": "2025-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
+### signOut
+
+Inform the platform that your user has signed out. See `Discovery.signIn` for more details on how the sign-in state is used.signOut will NOT clear entitlements, the app should make a separate call to Discovery.clearContentAccess. Apps should also call signOut when a login token has expired and the user is now in a signed-out state.
+
+```typescript
+function signOut(): Promise<boolean>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                       |
+| ---- | ------------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:sign-in-status |
+
+#### Examples
+
+Send signOut notification
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.signOut()
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.signOut",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
+### userInterest
+
+Send an entity that the user has expressed interest in to the platform.
+
+```typescript
+function userInterest(
+  type: InterestType,
+  reason: InterestReason,
+  entity: Entity.EntityDetails,
+): Promise<null>
+```
+
+Parameters:
+
+| Param    | Type                   | Required | Description |
+| -------- | ---------------------- | -------- | ----------- |
+| `type`   | `InterestType`         | true     |             |
+| `reason` | `InterestReason`       | true     |             |
+| `entity` | `Entity.EntityDetails` | true     |             |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:discovery:interest |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let result = await Discovery.userInterest('interest', 'playlist', {
+  identifiers: {
+    entityId: '345',
+    entityType: 'program',
+    programType: 'movie',
+  },
+  info: {
+    title: 'Cool Runnings',
+    synopsis:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.',
+    releaseDate: '1993-01-01T00:00:00.000Z',
+    contentRatings: [
+      {
+        scheme: 'US-Movie',
+        rating: 'PG',
+      },
+      {
+        scheme: 'CA-Movie',
+        rating: 'G',
+      },
+    ],
+  },
+})
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.userInterest",
+  "params": {
+    "type": "interest",
+    "reason": "playlist",
+    "entity": {
+      "identifiers": {
+        "entityId": "345",
+        "entityType": "program",
+        "programType": "movie"
+      },
+      "info": {
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### watched
+
+Notify the platform that content was partially or completely watched
+
+```typescript
+function watched(
+  entityId: string,
+  progress: number,
+  completed: boolean,
+  watchedOn: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
+```
+
+Parameters:
+
+| Param       | Type                 | Required | Description                                                                                                            |
+| ----------- | -------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`             | true     | The entity Id of the watched content.                                                                                  |
+| `progress`  | `number`             | false    | How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) <br/>minumum: 0 |
+| `completed` | `boolean`            | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                                 |
+| `watchedOn` | `string`             | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                           |
+| `agePolicy` | `Policies.AgePolicy` | false    |                                                                                                                        |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                |
+| ---- | ----------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:watched |
+
+#### Examples
+
+Notify the platform of watched content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.watched(
+  'partner.com/entity/123',
+  0.95,
+  true,
+  '2021-04-23T18:25:43.511Z',
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.watched",
+  "params": {
+    "entityId": "partner.com/entity/123",
+    "progress": 0.95,
+    "completed": true,
+    "watchedOn": "2021-04-23T18:25:43.511Z"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Notify the platform that child-directed content was watched
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.watched(
+  'partner.com/entity/123',
+  0.95,
+  true,
+  '2021-04-23T18:25:43.511Z',
+  'app:child',
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.watched",
+  "params": {
+    "entityId": "partner.com/entity/123",
+    "progress": 0.95,
+    "completed": true,
+    "watchedOn": "2021-04-23T18:25:43.511Z",
+    "agePolicy": "app:child"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
+### watchNext
+
+Suggest a call-to-action for this app on the platform home screen
+
+```typescript
+function watchNext(
+  title: Types.LocalizedString,
+  identifiers: Entertainment.ContentIdentifiers,
+  expires: string,
+  images: object,
+): Promise<boolean>
+```
+
+Parameters:
+
+| Param         | Type                               | Required | Description                                                                            |
+| ------------- | ---------------------------------- | -------- | -------------------------------------------------------------------------------------- |
+| `title`       | `Types.LocalizedString`            | true     | The title of this call to action                                                       |
+| `identifiers` | `Entertainment.ContentIdentifiers` | true     | A set of content identifiers for this call to action                                   |
+| `expires`     | `string`                           | false    | When this call to action should no longer be presented to users <br/>format: date-time |
+| `images`      | `object`                           | false    | A set of images for this call to action                                                |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                                   |
+| ---- | -------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:watch-next |
+
+#### Examples
+
+Suggest a watch-next tile for the home screen
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.watchNext(
+  'A Cool Show',
+  {
+    entityId: 'partner.com/entity/123',
+  },
+  '2021-04-23T18:25:43.511Z',
+  {
+    '3x4': {
+      'en-US': 'https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg',
+      es: 'https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg',
+    },
+    '16x9': {
+      en: 'https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg',
+    },
+  },
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.watchNext",
+  "params": {
+    "title": "A Cool Show",
+    "identifiers": {
+      "entityId": "partner.com/entity/123"
+    },
+    "expires": "2021-04-23T18:25:43.511Z",
+    "images": {
+      "3x4": {
+        "en-US": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg",
+        "es": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
+      },
+      "16x9": {
+        "en": "https://i.ytimg.com/vi/4r7wHMg5Yjg/maxresdefault.jpg"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Suggest a watch-next tile for the home screen
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.watchNext(
+  'A Fantastic Show',
+  { entityId: 'partner.com/entity/456' },
+  undefined,
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.watchNext",
+  "params": {
+    "title": "A Fantastic Show",
+    "identifiers": {
+      "entityId": "partner.com/entity/456"
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
 ## Events
+
+### entityInfoChanged
+
+```typescript
+function listen('entityInfoChanged', entityId: string, assedId: string, (EntityInfoResult) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param      | Type     | Required | Description |
+| ---------- | -------- | -------- | ----------- |
+| `entityId` | `string` | true     |             |
+| `assedId`  | `string` | true     |             |
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:entity-info |
+
+#### Examples
+
+Entity info for a movie.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('entityInfoChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onEntityInfoChanged",
+  "params": {
+    "entityId": "id-123",
+    "assedId": "asseId-123",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Entity info for a movie with a trailer.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('entityInfoChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onEntityInfoChanged",
+  "params": {
+    "entityId": "id-1234",
+    "assedId": "asseId-1234",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
 
 ### navigateTo
 
@@ -647,6 +3707,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:discovery:navigate-to |
 
 #### Examples
+
+Listening for `navigateTo` events
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('navigateTo', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onNavigateTo",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -668,66 +3773,33 @@ Capabilities:
 
 #### Examples
 
----
+Getting the discovery policy
 
-## Provider Interfaces
-
-### Interest
-
-The provider interface for the `Interest` capability.
-
-```typescript
-interface Interest {
-  userInterest(
-    type: InterestType,
-    reason: InterestReason,
-    session: ProviderSession,
-  ): Promise<Entity.EntityDetails>
-}
-```
-
-Usage:
-
-```typescript
-Discovery.provide('Interest', provider: Interest | object)
-```
-
-#### Examples
-
-**Register your app to provide the `Interest` capability.**
+JavaScript:
 
 ```javascript
 import { Discovery } from '@firebolt-js/sdk'
 
-class MyInterest {
+Discovery.listen('policyChanged', (result) => {
+  console.log(result)
+})
+```
 
-    async Interest.userInterest(parameters, session) {
-        return {
-            "identifiers": {
-                "entityId": "345",
-                "entityType": "program",
-                "programType": "movie"
-            },
-            "info": {}
-        }
-    }
+Value of `result`:
 
-}
-
-Discovery.provide('Interest', new MyInterest())
+```javascript
+null
 ```
 
 <details markdown="1" >
-    <summary>JSON-RPC</summary>
-
-**Register to recieve each provider API**
-
+<summary>JSON-RPC:</summary>
 Request:
 
 ```json
 {
+  "jsonrpc": "2.0",
   "id": 1,
-  "method": "Discovery.onRequestInterest.userInterest",
+  "method": "Discovery.onPolicyChanged",
   "params": {
     "listen": true
   }
@@ -738,15 +3810,801 @@ Response:
 
 ```json
 {
+  "jsonrpc": "2.0",
   "id": 1,
-  "result": {
-    "listening": true,
-    "event": "Discovery.onRequestInterest.userInterest"
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### purchasedContentChanged
+
+```typescript
+function listen('purchasedContentChanged', offeringType: Entertainment.OfferingType, programType: Entertainment.ProgramType, (PurchasedContentResult) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param          | Type                         | Required | Description |
+| -------------- | ---------------------------- | -------- | ----------- |
+| `offeringType` | `Entertainment.OfferingType` | true     |             |
+| `programType`  | `Entertainment.ProgramType`  | true     |             |
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:purchased-content |
+
+#### Examples
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('purchasedContentChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onPurchasedContentChanged",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie",
+    "listen": true
   }
 }
 ```
 
-**Asynchronous event to initiate Interest.userInterest()**
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('purchasedContentChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onPurchasedContentChanged",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### entityInfoChanged
+
+```typescript
+function listen('entityInfoChanged', entityId: string, assedId: string, (EntityInfoResult) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param      | Type     | Required | Description |
+| ---------- | -------- | -------- | ----------- |
+| `entityId` | `string` | true     |             |
+| `assedId`  | `string` | true     |             |
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:entity-info |
+
+#### Examples
+
+Entity info for a movie.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('entityInfoChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onEntityInfoChanged",
+  "params": {
+    "entityId": "id-123",
+    "assedId": "asseId-123",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Entity info for a movie with a trailer.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('entityInfoChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onEntityInfoChanged",
+  "params": {
+    "entityId": "id-1234",
+    "assedId": "asseId-1234",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### navigateTo
+
+```typescript
+function listen('navigateTo', (Intents.NavigationIntent) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                    |
+| ---- | --------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:navigate-to |
+
+#### Examples
+
+Listening for `navigateTo` events
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('navigateTo', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onNavigateTo",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### policyChanged
+
+```typescript
+function listen('policyChanged', (DiscoveryPolicy) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                               |
+| ---- | ---------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:policy |
+
+#### Examples
+
+Getting the discovery policy
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('policyChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onPolicyChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### purchasedContentChanged
+
+```typescript
+function listen('purchasedContentChanged', offeringType: Entertainment.OfferingType, programType: Entertainment.ProgramType, (PurchasedContentResult) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param          | Type                         | Required | Description |
+| -------------- | ---------------------------- | -------- | ----------- |
+| `offeringType` | `Entertainment.OfferingType` | true     |             |
+| `programType`  | `Entertainment.ProgramType`  | true     |             |
+
+Event value:
+
+Capabilities:
+
+| Role | Capability                                          |
+| ---- | --------------------------------------------------- |
+| uses | xrn:firebolt:capability:discovery:purchased-content |
+
+#### Examples
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('purchasedContentChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onPurchasedContentChanged",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Inform the platform of the user's purchased content
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+Discovery.listen('purchasedContentChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.onPurchasedContentChanged",
+  "params": {
+    "offeringType": "buy",
+    "programType": "movie",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
+
+## Provider Interfaces
+
+### Discovery
+
+The provider interface for the `xrn:firebolt:capability:discovery:interest` capability.
+
+```typescript
+interface Discovery {
+  requestUserInterest(
+    type: InterestType,
+    reason: InterestReason,
+    session: ProviderSession,
+  ): Promise<InterestResult>
+  entityInfo(
+    entityId: string,
+    assedId: string,
+    session: ProviderSession,
+  ): Promise<EntityInfoResult>
+  purchasedContent(
+    offeringType: Entertainment.OfferingType,
+    programType: Entertainment.ProgramType,
+    session: ProviderSession,
+  ): Promise<PurchasedContentResult>
+  userInterest(
+    type: InterestType,
+    reason: InterestReason,
+    entity: Entity.EntityDetails,
+    session: ProviderSession,
+  ): Promise<null>
+}
+```
+
+Usage:
+
+```typescript
+Discovery.provide('xrn:firebolt:capability:discovery:interest', provider: Discovery | object)
+```
+
+#### Examples
+
+**Register your app to provide the `xrn:firebolt:capability:discovery:interest` capability.**
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+class MyDiscovery {
+
+    async Discovery.requestUserInterest(parameters, session) {
+        ${if.provider.interface.example.result}return {
+            "appId": "cool-app",
+            "entity": {
+                "identifiers": {
+                    "entityId": "345",
+                    "entityType": "program",
+                    "programType": "movie"
+                },
+                "info": {
+                    "title": "Cool Runnings",
+                    "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+                    "releaseDate": "1993-01-01T00:00:00.000Z",
+                    "contentRatings": [
+                        {
+                            "scheme": "US-Movie",
+                            "rating": "PG"
+                        },
+                        {
+                            "scheme": "CA-Movie",
+                            "rating": "G"
+                        }
+                    ]
+                }
+            }
+        }${end.if.provider.interface.example.result}
+    }
+
+    async Discovery.entityInfo(parameters, session) {
+        ${if.provider.interface.example.result}return {
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entity": {
+                "identifiers": {
+                    "entityId": "345"
+                },
+                "entityType": "program",
+                "programType": "movie",
+                "title": "Cool Runnings",
+                "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+                "releaseDate": "1993-01-01T00:00:00.000Z",
+                "contentRatings": [
+                    {
+                        "scheme": "US-Movie",
+                        "rating": "PG"
+                    },
+                    {
+                        "scheme": "CA-Movie",
+                        "rating": "G"
+                    }
+                ],
+                "waysToWatch": [
+                    {
+                        "identifiers": {
+                            "assetId": "123"
+                        },
+                        "expires": "2025-01-01T00:00:00.000Z",
+                        "entitled": true,
+                        "entitledExpires": "2025-01-01T00:00:00.000Z",
+                        "offeringType": "buy",
+                        "price": 2.99,
+                        "videoQuality": [
+                            "UHD"
+                        ],
+                        "audioProfile": [
+                            "dolbyAtmos"
+                        ],
+                        "audioLanguages": [
+                            "en"
+                        ],
+                        "closedCaptions": [
+                            "en"
+                        ],
+                        "subtitles": [
+                            "es"
+                        ],
+                        "audioDescriptions": [
+                            "en"
+                        ]
+                    }
+                ]
+            }
+        }${end.if.provider.interface.example.result}
+    }
+
+    async Discovery.purchasedContent(parameters, session) {
+        ${if.provider.interface.example.result}return {
+            "totalCount": 10,
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entries": [
+                {
+                    "identifiers": {
+                        "entityId": "345"
+                    },
+                    "entityType": "program",
+                    "programType": "movie",
+                    "title": "Cool Runnings",
+                    "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+                    "releaseDate": "1993-01-01T00:00:00.000Z",
+                    "contentRatings": [
+                        {
+                            "scheme": "US-Movie",
+                            "rating": "PG"
+                        },
+                        {
+                            "scheme": "CA-Movie",
+                            "rating": "G"
+                        }
+                    ],
+                    "waysToWatch": [
+                        {
+                            "identifiers": {
+                                "assetId": "123"
+                            },
+                            "expires": "2025-01-01T00:00:00.000Z",
+                            "entitled": true,
+                            "entitledExpires": "2025-01-01T00:00:00.000Z",
+                            "offeringType": "buy",
+                            "price": 2.99,
+                            "videoQuality": [
+                                "UHD"
+                            ],
+                            "audioProfile": [
+                                "dolbyAtmos"
+                            ],
+                            "audioLanguages": [
+                                "en"
+                            ],
+                            "closedCaptions": [
+                                "en"
+                            ],
+                            "subtitles": [
+                                "es"
+                            ],
+                            "audioDescriptions": [
+                                "en"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }${end.if.provider.interface.example.result}
+    }
+
+    async Discovery.userInterest(parameters, session) {
+        ${if.provider.interface.example.result}return null${end.if.provider.interface.example.result}
+    }
+
+}
+
+Discovery.provide('xrn:firebolt:capability:discovery:interest', new MyDiscovery())
+```
+
+<details markdown="1" >
+    <summary>JSON-RPC</summary>
+
+**Register to recieve each provider API**
+
+Request:
+
+```json
+
+{
+    "id": 1,
+    "method": "Discovery.onRequestDiscovery.requestUserInterest",
+    "params": {
+        "listen": true
+    }
+}
+
+{
+    "id": 2,
+    "method": "Discovery.onRequestDiscovery.entityInfo",
+    "params": {
+        "listen": true
+    }
+}
+
+{
+    "id": 3,
+    "method": "Discovery.onRequestDiscovery.purchasedContent",
+    "params": {
+        "listen": true
+    }
+}
+
+{
+    "id": 4,
+    "method": "Discovery.onRequestDiscovery.userInterest",
+    "params": {
+        "listen": true
+    }
+}
+
+```
+
+Response:
+
+```json
+
+{
+    "id": 1,
+    "result": {
+        "listening": true,
+        "event": "Discovery.onRequestDiscovery.requestUserInterest"
+    }
+
+}
+
+{
+    "id": 2,
+    "result": {
+        "listening": true,
+        "event": "Discovery.onRequestDiscovery.entityInfo"
+    }
+
+}
+
+{
+    "id": 3,
+    "result": {
+        "listening": true,
+        "event": "Discovery.onRequestDiscovery.purchasedContent"
+    }
+
+}
+
+{
+    "id": 4,
+    "result": {
+        "listening": true,
+        "event": "Discovery.onRequestDiscovery.userInterest"
+    }
+
+}
+
+```
+
+**Asynchronous event to initiate Discovery.requestUserInterest()**
 
 Event Response:
 
@@ -766,17 +4624,34 @@ Request:
 
 ```json
 {
-  "id": 2,
-  "method": "Discovery.Interest.userInterestResponse",
+  "id": 5,
+  "method": "Discovery.Discovery.requestUserInterestResponse",
   "params": {
     "correlationId": "",
     "result": {
-      "identifiers": {
-        "entityId": "345",
-        "entityType": "program",
-        "programType": "movie"
-      },
-      "info": {}
+      "appId": "cool-app",
+      "entity": {
+        "identifiers": {
+          "entityId": "345",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "info": {
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ]
+        }
+      }
     }
   }
 }
@@ -786,7 +4661,204 @@ Response:
 
 ```json
 {
+  "id": 5,
+  "result": true
+}
+```
+
+**Asynchronous event to initiate Discovery.entityInfo()**
+
+Event Response:
+
+```json
+{
   "id": 2,
+  "result": {
+    "correlationId": "",
+    "parameters": "id-123"
+  }
+}
+```
+
+**App initiated response to event**
+
+Request:
+
+```json
+{
+  "id": 6,
+  "method": "Discovery.Discovery.entityInfoResponse",
+  "params": {
+    "correlationId": "",
+    "result": {
+      "expires": "2025-01-01T00:00:00.000Z",
+      "entity": {
+        "identifiers": {
+          "entityId": "345"
+        },
+        "entityType": "program",
+        "programType": "movie",
+        "title": "Cool Runnings",
+        "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+        "releaseDate": "1993-01-01T00:00:00.000Z",
+        "contentRatings": [
+          {
+            "scheme": "US-Movie",
+            "rating": "PG"
+          },
+          {
+            "scheme": "CA-Movie",
+            "rating": "G"
+          }
+        ],
+        "waysToWatch": [
+          {
+            "identifiers": {
+              "assetId": "123"
+            },
+            "expires": "2025-01-01T00:00:00.000Z",
+            "entitled": true,
+            "entitledExpires": "2025-01-01T00:00:00.000Z",
+            "offeringType": "buy",
+            "price": 2.99,
+            "videoQuality": ["UHD"],
+            "audioProfile": ["dolbyAtmos"],
+            "audioLanguages": ["en"],
+            "closedCaptions": ["en"],
+            "subtitles": ["es"],
+            "audioDescriptions": ["en"]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 6,
+  "result": true
+}
+```
+
+**Asynchronous event to initiate Discovery.purchasedContent()**
+
+Event Response:
+
+```json
+{
+  "id": 3,
+  "result": {
+    "correlationId": "",
+    "parameters": "buy"
+  }
+}
+```
+
+**App initiated response to event**
+
+Request:
+
+```json
+{
+  "id": 7,
+  "method": "Discovery.Discovery.purchasedContentResponse",
+  "params": {
+    "correlationId": "",
+    "result": {
+      "totalCount": 10,
+      "expires": "2025-01-01T00:00:00.000Z",
+      "entries": [
+        {
+          "identifiers": {
+            "entityId": "345"
+          },
+          "entityType": "program",
+          "programType": "movie",
+          "title": "Cool Runnings",
+          "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc.",
+          "releaseDate": "1993-01-01T00:00:00.000Z",
+          "contentRatings": [
+            {
+              "scheme": "US-Movie",
+              "rating": "PG"
+            },
+            {
+              "scheme": "CA-Movie",
+              "rating": "G"
+            }
+          ],
+          "waysToWatch": [
+            {
+              "identifiers": {
+                "assetId": "123"
+              },
+              "expires": "2025-01-01T00:00:00.000Z",
+              "entitled": true,
+              "entitledExpires": "2025-01-01T00:00:00.000Z",
+              "offeringType": "buy",
+              "price": 2.99,
+              "videoQuality": ["UHD"],
+              "audioProfile": ["dolbyAtmos"],
+              "audioLanguages": ["en"],
+              "closedCaptions": ["en"],
+              "subtitles": ["es"],
+              "audioDescriptions": ["en"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 7,
+  "result": true
+}
+```
+
+**Asynchronous event to initiate Discovery.userInterest()**
+
+Event Response:
+
+```json
+{
+  "id": 4,
+  "result": {
+    "correlationId": "",
+    "parameters": "interest"
+  }
+}
+```
+
+**App initiated response to event**
+
+Request:
+
+```json
+{
+  "id": 8,
+  "method": "Discovery.Discovery.userInterestResponse",
+  "params": {
+    "correlationId": "",
+    "result": null
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "id": 8,
   "result": true
 }
 ```
@@ -804,6 +4876,40 @@ type DiscoveryPolicy = {
   rememberWatchedPrograms: boolean // Whether or not the user has enabled watch history
 }
 ```
+
+---
+
+### EntityInfoResult
+
+The result for an `entityInfo()` push or pull.
+
+```typescript
+type EntityInfoResult = {
+  expires: string
+  entity: Entertainment.EntityInfo
+  related?: EntityInfo[]
+}
+```
+
+See also:
+
+Entertainment.EntityInfo
+
+---
+
+### PurchasedContentResult
+
+```typescript
+type PurchasedContentResult = {
+  expires: string
+  totalCount: number
+  entries: EntityInfo[]
+}
+```
+
+See also:
+
+Entertainment.EntityInfo
 
 ---
 
@@ -826,7 +4932,7 @@ type Availability = {
 ```typescript
 type ContentAccessIdentifiers = {
   availabilities?: Availability[] // A list of identifiers that represent what content is discoverable for the subscriber. Excluding availabilities will cause no change to the availabilities that are stored for this subscriber. Providing an empty array will clear the subscriber's availabilities
-  entitlements?: Entertainment.Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
+  entitlements?: Entitlement[] // A list of identifiers that represent what content is consumable for the subscriber. Excluding entitlements will cause no change to the entitlements that are stored for this subscriber. Providing an empty array will clear the subscriber's entitlements
 }
 ```
 
@@ -834,75 +4940,5 @@ See also:
 
 Availability
 Entertainment.Entitlement
-
----
-
-### FederatedRequest
-
-```typescript
-type FederatedRequest = {
-  correlationId: string
-}
-```
-
----
-
-### EntityInfoParameters
-
-```typescript
-type EntityInfoParameters = {
-  entityId: string
-  assetId?: string
-}
-```
-
----
-
-### EntityInfoFederatedRequest
-
-```typescript
-type EntityInfoFederatedRequest = {
-  parameters: EntityInfoParameters
-  correlationId: string
-}
-```
-
-See also:
-
-FederatedRequest
-EntityInfoParameters
-
----
-
-### PurchasedContentParameters
-
-```typescript
-type PurchasedContentParameters = {
-  limit: number
-  offeringType?: Entertainment.OfferingType // The offering type of the WayToWatch.
-  programType?: Entertainment.ProgramType // In the case of a program `entityType`, specifies the program type.
-}
-```
-
-See also:
-
-Entertainment.OfferingType
-Entertainment.ProgramType
-
----
-
-### PurchasedContentFederatedRequest
-
-```typescript
-type PurchasedContentFederatedRequest = {
-  parameters: PurchasedContentParameters
-  correlationId: string
-}
-```
-
-See also:
-
-FederatedRequest
-PurchasedContentParameters
 
 ---

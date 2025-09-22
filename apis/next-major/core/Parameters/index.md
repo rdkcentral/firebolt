@@ -54,6 +54,64 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { Parameters } from '@firebolt-js/sdk'
+
+let init = await Parameters.initialization()
+console.log(init)
+```
+
+Value of `init`:
+
+```javascript
+{"lmt":0,"us_privacy":"1-Y-","discovery":{"navigateTo":{"action":"entity","data":{"entityId":"abc","entityType":"program","programType":"movie"},"context":{"source":"voice"}}}}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Parameters.initialization",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "lmt": 0,
+    "us_privacy": "1-Y-",
+    "discovery": {
+      "navigateTo": {
+        "action": "entity",
+        "data": {
+          "entityId": "abc",
+          "entityType": "program",
+          "programType": "movie"
+        },
+        "context": {
+          "source": "voice"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+
 ---
 
 ## Types

@@ -25,8 +25,8 @@ Version Wifi 0.0.0-unknown.0
 - [Types](#types)
   - [WifiSecurityMode](#wifisecuritymode)
   - [WPSSecurityPin](#wpssecuritypin)
-  - [WifiFrequency](#wififrequency)
   - [WifiSignalStrength](#wifisignalstrength)
+  - [WifiFrequency](#wififrequency)
   - [AccessPoint](#accesspoint)
   - [AccessPointList](#accesspointlist)
 
@@ -74,6 +74,108 @@ Capabilities:
 
 #### Examples
 
+Connect to a wpa2Psk Wifi with password
+
+JavaScript:
+
+```javascript
+import { Wifi } from '@firebolt-js/manage-sdk'
+
+let connectedWifi = await Wifi.connect('DND', 'gargoyle', 'wpa2Psk')
+console.log(connectedWifi)
+```
+
+Value of `connectedWifi`:
+
+```javascript
+{"ssid":"DND","security":"wpa2Psk","signalStrength":-70,"frequency":2.4}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Wifi.connect",
+  "params": {
+    "ssid": "DND",
+    "passphrase": "gargoyle",
+    "security": "wpa2Psk"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ssid": "DND",
+    "security": "wpa2Psk",
+    "signalStrength": -70,
+    "frequency": 2.4
+  }
+}
+```
+
+</details>
+
+Connect to a WPA2 PSK Wifi with password
+
+JavaScript:
+
+```javascript
+import { Wifi } from '@firebolt-js/manage-sdk'
+
+let connectedWifi = await Wifi.connect('Guardian WIFI', undefined, 'none')
+console.log(connectedWifi)
+```
+
+Value of `connectedWifi`:
+
+```javascript
+{"ssid":"DND","security":"wpa2Psk","signalStrength":-70,"frequency":2.4}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Wifi.connect",
+  "params": {
+    "ssid": "Guardian WIFI",
+    "passphrase": "",
+    "security": "none"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ssid": "Guardian WIFI",
+    "security": "none",
+    "signalStrength": -70,
+    "frequency": 2.4
+  }
+}
+```
+
+</details>
+
 ---
 
 ### disconnect
@@ -93,6 +195,48 @@ Capabilities:
 | uses | xrn:firebolt:capability:protocol:wifi |
 
 #### Examples
+
+Disconnect
+
+JavaScript:
+
+```javascript
+import { Wifi } from '@firebolt-js/manage-sdk'
+
+let result = await Wifi.disconnect()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Wifi.disconnect",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -120,6 +264,71 @@ Capabilities:
 
 #### Examples
 
+Successful Wifi List
+
+JavaScript:
+
+```javascript
+import { Wifi } from '@firebolt-js/manage-sdk'
+
+let list = await Wifi.scan(30)
+console.log(list)
+```
+
+Value of `list`:
+
+```javascript
+{"list":[{"ssid":"DND","security":"wpa2Psk","signalStrength":-70,"frequency":2.4},{"ssid":"Fortnite","security":"WPA2_ENTERPRISE_AES","signalStrength":-70,"frequency":5},{"ssid":"Guardian","security":"none","signalStrength":-70,"frequency":2.4}]}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Wifi.scan",
+  "params": {
+    "timeout": 30
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "list": [
+      {
+        "ssid": "DND",
+        "security": "wpa2Psk",
+        "signalStrength": -70,
+        "frequency": 2.4
+      },
+      {
+        "ssid": "Fortnite",
+        "security": "WPA2_ENTERPRISE_AES",
+        "signalStrength": -70,
+        "frequency": 5
+      },
+      {
+        "ssid": "Guardian",
+        "security": "none",
+        "signalStrength": -70,
+        "frequency": 2.4
+      }
+    ]
+  }
+}
+```
+
+</details>
+
 ---
 
 ### wps
@@ -146,6 +355,55 @@ Capabilities:
 
 #### Examples
 
+Connect to a WPS Wifi router
+
+JavaScript:
+
+```javascript
+import { Wifi } from '@firebolt-js/manage-sdk'
+
+let connectedWifi = await Wifi.wps('pushButton')
+console.log(connectedWifi)
+```
+
+Value of `connectedWifi`:
+
+```javascript
+{"ssid":"DND","security":"wpa2Psk","signalStrength":-70,"frequency":2.4}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Wifi.wps",
+  "params": {
+    "security": "pushButton"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ssid": "DND",
+    "security": "wpa2Psk",
+    "signalStrength": -70,
+    "frequency": 2.4
+  }
+}
+```
+
+</details>
+
 ---
 
 ## Types
@@ -155,23 +413,24 @@ Capabilities:
 Security Mode supported for Wifi
 
 ```typescript
-enum WifiSecurityMode {
-  NONE = 'none',
-  WEP_64 = 'wep64',
-  WEP_128 = 'wep128',
-  WPA_PSK_TKIP = 'wpaPskTkip',
-  WPA_PSK_AES = 'wpaPskAes',
-  WPA_2PSK_TKIP = 'wpa2PskTkip',
-  WPA_2PSK_AES = 'wpa2PskAes',
-  WPA_ENTERPRISE_TKIP = 'wpaEnterpriseTkip',
-  WPA_ENTERPRISE_AES = 'wpaEnterpriseAes',
-  WPA_2ENTERPRISE_TKIP = 'wpa2EnterpriseTkip',
-  WPA_2ENTERPRISE_AES = 'wpa2EnterpriseAes',
-  WPA_2PSK = 'wpa2Psk',
-  WPA_2ENTERPRISE = 'wpa2Enterprise',
-  WPA_3PSK_AES = 'wpa3PskAes',
-  WPA_3SAE = 'wpa3Sae',
-}
+WifiSecurityMode: {
+    NONE: 'none',
+    WEP_64: 'wep64',
+    WEP_128: 'wep128',
+    WPA_PSK_TKIP: 'wpaPskTkip',
+    WPA_PSK_AES: 'wpaPskAes',
+    WPA_2PSK_TKIP: 'wpa2PskTkip',
+    WPA_2PSK_AES: 'wpa2PskAes',
+    WPA_ENTERPRISE_TKIP: 'wpaEnterpriseTkip',
+    WPA_ENTERPRISE_AES: 'wpaEnterpriseAes',
+    WPA_2ENTERPRISE_TKIP: 'wpa2EnterpriseTkip',
+    WPA_2ENTERPRISE_AES: 'wpa2EnterpriseAes',
+    WPA_2PSK: 'wpa2Psk',
+    WPA_2ENTERPRISE: 'wpa2Enterprise',
+    WPA_3PSK_AES: 'wpa3PskAes',
+    WPA_3SAE: 'wpa3Sae',
+},
+
 ```
 
 ---
@@ -181,20 +440,11 @@ enum WifiSecurityMode {
 Security pin type for WPS(Wifi Protected Setup).
 
 ```typescript
-enum WPSSecurityPin {
-  PUSH_BUTTON = 'pushButton',
-  PIN = 'pin',
-  MANUFACTURER_PIN = 'manufacturerPin',
-}
-```
-
----
-
-### WifiFrequency
-
-Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
-
-```typescript
+WPSSecurityPin: {
+    PUSH_BUTTON: 'pushButton',
+    PIN: 'pin',
+    MANUFACTURER_PIN: 'manufacturerPin',
+},
 
 ```
 
@@ -205,7 +455,17 @@ Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
 Strength of Wifi signal, value is negative based on RSSI specification.
 
 ```typescript
+type WifiSignalStrength = number
+```
 
+---
+
+### WifiFrequency
+
+Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
+
+```typescript
+type WifiFrequency = number
 ```
 
 ---

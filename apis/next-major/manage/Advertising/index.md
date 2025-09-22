@@ -18,12 +18,14 @@ Version Advertising 0.0.0-unknown.0
 - [Usage](#usage)
 - [Overview](#overview)
 - [Methods](#methods)
-  - [resetIdentifier](#resetidentifier)
-  - [skipRestriction](#skiprestriction)
   - [listen](#listen)
   - [once](#once)
+  - [resetIdentifier](#resetidentifier)
+  - [skipRestriction](#skiprestriction)
 - [Events](#events)
   - [skipRestrictionChanged](#skiprestrictionchanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -39,82 +41,6 @@ import { Advertising } from '@firebolt-js/manage-sdk'
 A module for platform provided advertising settings and functionality.
 
 ## Methods
-
-### resetIdentifier
-
-Resets a user's identifier in the ad platform so that the advertising id that apps get will be a new value
-
-```typescript
-function resetIdentifier(): Promise<void>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role    | Capability                                     |
-| ------- | ---------------------------------------------- |
-| manages | xrn:firebolt:capability:advertising:identifier |
-
-#### Examples
-
----
-
-### skipRestriction
-
-Set the value for AdPolicy.skipRestriction
-
-To get the value of `skipRestriction` call the method like this:
-
-```typescript
-function skipRestriction(): Promise<SkipRestriction>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role    | Capability                                        |
-| ------- | ------------------------------------------------- |
-| manages | xrn:firebolt:capability:advertising:configuration |
-
-#### Examples
-
----
-
-To set the value of `skipRestriction` call the method like this:
-
-```typescript
-function skipRestriction(value: SkipRestriction): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type              | Required | Description |
-| ------- | ----------------- | -------- | ----------- |
-| `value` | `SkipRestriction` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
----
-
-To subscribe to notifications when the value changes, call the method like this:
-
-```typescript
-function skipRestriction(callback: (value) => null): Promise<number>
-```
-
-Promise resolution:
-
-```
-number
-```
-
-#### Examples
-
----
 
 ### listen
 
@@ -226,6 +152,382 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
+### resetIdentifier
+
+Resets a user's identifier in the ad platform so that the advertising id that apps get will be a new value
+
+```typescript
+function resetIdentifier(): Promise<void>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role    | Capability                                     |
+| ------- | ---------------------------------------------- |
+| manages | xrn:firebolt:capability:advertising:identifier |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.resetIdentifier()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.resetIdentifier",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+### skipRestriction
+
+Set the value for AdPolicy.skipRestriction
+
+To get the value of `skipRestriction` call the method like this:
+
+```typescript
+function skipRestriction(): Promise<SkipRestriction>
+```
+
+Promise resolution:
+
+Capabilities:
+
+| Role    | Capability                                        |
+| ------- | ------------------------------------------------- |
+| manages | xrn:firebolt:capability:advertising:configuration |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.skipRestriction()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+'none'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.skipRestriction",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "none"
+}
+```
+
+</details>
+
+Additional Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.skipRestriction()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+'none'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.skipRestriction",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "all"
+}
+```
+
+</details>
+
+---
+
+To set the value of `skipRestriction` call the method like this:
+
+```typescript
+function skipRestriction(value: SkipRestriction): Promise<void>
+```
+
+Parameters:
+
+| Param   | Type              | Required | Description |
+| ------- | ----------------- | -------- | ----------- |
+| `value` | `SkipRestriction` | true     |             |
+
+Promise resolution:
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.skipRestriction('none')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.setSkipRestriction",
+  "params": {
+    "value": "none"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Additional Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.skipRestriction('all')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.setSkipRestriction",
+  "params": {
+    "value": "all"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+To subscribe to notifications when the value changes, call the method like this:
+
+```typescript
+function ${method.alternative}(${event.signature.params}${if.context}, ${end.if.context}callback: (value) => SkipRestriction): Promise<number>
+```
+
+${event.params}
+
+Promise resolution:
+
+```
+number
+```
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.skipRestriction()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+'none'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.skipRestriction",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "none"
+}
+```
+
+</details>
+
+Additional Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+let result = await Advertising.skipRestriction()
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+'none'
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.skipRestriction",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "all"
+}
+```
+
+</details>
+
+---
+
 ## Events
 
 ### skipRestrictionChanged
@@ -246,6 +548,213 @@ Capabilities:
 
 #### Examples
 
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+Advertising.listen('skipRestrictionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onSkipRestrictionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Additional Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+Advertising.listen('skipRestrictionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onSkipRestrictionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### skipRestrictionChanged
+
+```typescript
+function listen('skipRestrictionChanged', (SkipRestriction) => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Event value:
+
+Capabilities:
+
+| Role    | Capability                                        |
+| ------- | ------------------------------------------------- |
+| manages | xrn:firebolt:capability:advertising:configuration |
+
+#### Examples
+
+Default Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+Advertising.listen('skipRestrictionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onSkipRestrictionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+Additional Example
+
+JavaScript:
+
+```javascript
+import { Advertising } from '@firebolt-js/manage-sdk'
+
+Advertising.listen('skipRestrictionChanged', (result) => {
+  console.log(result)
+})
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Advertising.onSkipRestrictionChanged",
+  "params": {
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
