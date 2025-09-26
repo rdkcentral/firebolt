@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Discovery 1.5.0
+Version Discovery 1.7.0
 
 ## Table of Contents
 
@@ -1874,6 +1874,59 @@ Response:
 
 </details>
 
+Launch the 'Foo' app to it's home screen where the launch intent came from a child-directed browse menu.
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.launch('foo', {
+  action: 'home',
+  context: { source: 'browse' },
+})
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.launch",
+  "params": {
+    "appId": "foo",
+    "intent": {
+      "action": "home",
+      "context": {
+        "source": "browse"
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
 Launch the 'Foo' app to it's own page for a specific entity.
 
 JavaScript:
@@ -2537,7 +2590,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### policy
 
-get the discovery policy
+Get the discovery policy
 
 To get the value of `policy` call the method like this:
 
@@ -3356,17 +3409,19 @@ function watched(
   progress: number,
   completed: boolean,
   watchedOn: string,
+  agePolicy: AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param       | Type      | Required | Description                                                                                                            |
-| ----------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `entityId`  | `string`  | true     | The entity Id of the watched content.                                                                                  |
-| `progress`  | `number`  | false    | How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) <br/>minumum: 0 |
-| `completed` | `boolean` | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                                 |
-| `watchedOn` | `string`  | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                           |
+| Param       | Type                                          | Required | Description                                                                                                            |
+| ----------- | --------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`                                      | true     | The entity Id of the watched content.                                                                                  |
+| `progress`  | `number`                                      | false    | How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) <br/>minumum: 0 |
+| `completed` | `boolean`                                     | false    | Whether or not this viewing is considered "complete," per the app's definition thereof                                 |
+| `watchedOn` | `string`                                      | false    | Date/Time the content was watched, ISO 8601 Date/Time <br/>format: date-time                                           |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    |                                                                                                                        |
 
 Promise resolution:
 
@@ -3378,7 +3433,7 @@ Capabilities:
 
 #### Examples
 
-Notifying the platform of watched content
+Notify the platform of watched content
 
 JavaScript:
 
@@ -3414,6 +3469,60 @@ Request:
     "progress": 0.95,
     "completed": true,
     "watchedOn": "2021-04-23T18:25:43.511Z"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Notify the platform that child-directed content was watched
+
+JavaScript:
+
+```javascript
+import { Discovery } from '@firebolt-js/sdk'
+
+let success = await Discovery.watched(
+  'partner.com/entity/123',
+  0.95,
+  true,
+  '2021-04-23T18:25:43.511Z',
+  'app:child',
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Discovery.watched",
+  "params": {
+    "entityId": "partner.com/entity/123",
+    "progress": 0.95,
+    "completed": true,
+    "watchedOn": "2021-04-23T18:25:43.511Z",
+    "agePolicy": "app:child"
   }
 }
 ```

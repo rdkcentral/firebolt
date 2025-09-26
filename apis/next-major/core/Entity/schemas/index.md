@@ -10,54 +10,26 @@ sdk: core
 
 ---
 
-Version 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
-  - [EntityDetails](#entitydetails)
   - [ChannelEntity](#channelentity)
-  - [ProgramEntity](#programentity)
-  - [MusicEntity](#musicentity)
   - [MovieEntity](#movieentity)
+  - [MusicEntity](#musicentity)
   - [TVEpisodeEntity](#tvepisodeentity)
   - [TVSeasonEntity](#tvseasonentity)
   - [TVSeriesEntity](#tvseriesentity)
-  - [PlaylistEntity](#playlistentity)
-  - [PlayableEntity](#playableentity)
   - [AdditionalEntity](#additionalentity)
+  - [PlaylistEntity](#playlistentity)
+  - [ProgramEntity](#programentity)
   - [UntypedEntity](#untypedentity)
+  - [PlayableEntity](#playableentity)
+  - [Entity](#entity)
   - [Metadata](#metadata)
-
-## Overview
-
-undefined
+  - [EntityDetails](#entitydetails)
 
 ## Types
-
-### EntityDetails
-
-```typescript
-type EntityDetails = {
-  identifiers:
-    | ProgramEntity
-    | MusicEntity
-    | ChannelEntity
-    | UntypedEntity
-    | PlaylistEntity
-  info?: Metadata
-  waysToWatch?: Entertainment.WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
-}
-```
-
-See also:
-
-[Metadata](#metadata)
-Entertainment.WayToWatch
-
----
 
 ### ChannelEntity
 
@@ -69,43 +41,6 @@ type ChannelEntity = {
   appContentData?: string
 }
 ```
-
----
-
-### ProgramEntity
-
-```typescript
-type ProgramEntity =
-  | MovieEntity
-  | TVEpisodeEntity
-  | TVSeasonEntity
-  | TVSeriesEntity
-  | AdditionalEntity
-```
-
-See also:
-
-[MovieEntity](#movieentity)
-[TVEpisodeEntity](#tvepisodeentity)
-[TVSeasonEntity](#tvseasonentity)
-[TVSeriesEntity](#tvseriesentity)
-[AdditionalEntity](#additionalentity)
-
----
-
-### MusicEntity
-
-```typescript
-type MusicEntity = {
-  entityType: 'music'
-  musicType: Entertainment.MusicType // In the case of a music `entityType`, specifies the type of music entity.
-  entityId: string
-}
-```
-
-See also:
-
-Entertainment.MusicType
 
 ---
 
@@ -122,6 +57,22 @@ type MovieEntity = {
   appContentData?: string
 }
 ```
+
+---
+
+### MusicEntity
+
+```typescript
+type MusicEntity = {
+  entityType: 'music'
+  musicType: Entertainment.MusicType
+  entityId: string
+}
+```
+
+See also:
+
+Entertainment.MusicType
 
 ---
 
@@ -176,6 +127,30 @@ type TVSeriesEntity = {
 
 ---
 
+### AdditionalEntity
+
+A Firebolt compliant representation of the remaining program entity types.
+
+```typescript
+type AdditionalEntity = {
+  entityType: 'program'
+  programType:
+    | 'concert'
+    | 'sportingEvent'
+    | 'preview'
+    | 'other'
+    | 'advertisement'
+    | 'musicVideo'
+    | 'minisode'
+    | 'extra'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
 ### PlaylistEntity
 
 A Firebolt compliant representation of a Playlist entity.
@@ -183,6 +158,39 @@ A Firebolt compliant representation of a Playlist entity.
 ```typescript
 type PlaylistEntity = {
   entityType: 'playlist'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### ProgramEntity
+
+```typescript
+type ProgramEntity =
+  | MovieEntity
+  | TVEpisodeEntity
+  | TVSeasonEntity
+  | TVSeriesEntity
+  | AdditionalEntity
+```
+
+See also:
+
+[MovieEntity](#movieentity)
+[TVEpisodeEntity](#tvepisodeentity)
+[TVSeasonEntity](#tvseasonentity)
+[TVSeriesEntity](#tvseriesentity)
+[AdditionalEntity](#additionalentity)
+
+---
+
+### UntypedEntity
+
+```typescript
+type UntypedEntity = {
   entityId: string
   assetId?: string
   appContentData?: string
@@ -212,39 +220,24 @@ See also:
 
 ---
 
-### AdditionalEntity
-
-A Firebolt compliant representation of the remaining program entity types.
+### Entity
 
 ```typescript
-type AdditionalEntity = {
-  entityType: 'program'
-  programType:
-    | 'concert'
-    | 'sportingEvent'
-    | 'preview'
-    | 'other'
-    | 'advertisement'
-    | 'musicVideo'
-    | 'minisode'
-    | 'extra'
-  entityId: string
-  assetId?: string
-  appContentData?: string
-}
+type Entity =
+  | ProgramEntity
+  | MusicEntity
+  | ChannelEntity
+  | UntypedEntity
+  | PlaylistEntity
 ```
 
----
+See also:
 
-### UntypedEntity
-
-```typescript
-type UntypedEntity = {
-  entityId: string
-  assetId?: string
-  appContentData?: string
-}
-```
+[ProgramEntity](#programentity)
+[MusicEntity](#musicentity)
+[ChannelEntity](#channelentity)
+[UntypedEntity](#untypedentity)
+[PlaylistEntity](#playlistentity)
 
 ---
 
@@ -259,12 +252,34 @@ type Metadata = {
   episodeNumber?: number // For TV episodes, the episode number.
   episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
   releaseDate?: string // The date that the program or entity was released or first aired.
-  contentRatings?: Entertainment.ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+  contentRatings?: ContentRating[] // A list of ContentRating objects, describing the entity's ratings in various rating schemes.
 }
 ```
 
 See also:
 
 Entertainment.ContentRating
+
+---
+
+### EntityDetails
+
+```typescript
+type EntityDetails = {
+  identifiers:
+    | ProgramEntity
+    | MusicEntity
+    | ChannelEntity
+    | UntypedEntity
+    | PlaylistEntity
+  info?: Metadata
+  waysToWatch?: WayToWatch[] // An array of ways a user is might watch this entity, regardless of entitlements.
+}
+```
+
+See also:
+
+[Metadata](#metadata)
+Entertainment.WayToWatch
 
 ---

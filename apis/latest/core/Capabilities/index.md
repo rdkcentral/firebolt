@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.5.0
+Version Capabilities 1.7.0
 
 ## Table of Contents
 
@@ -173,7 +173,8 @@ Response:
 
 ### granted
 
-Returns whether the current App has a user grant for passed capability and role.
+Returns whether or not the user has granted the app with the provided capability and role.
+This will return 'null' if the user has not yet specified whether or not they grant the app with the provided permission, in which case the app can request permission by calling Capabilities.request().
 
 ```typescript
 function granted(
@@ -199,7 +200,7 @@ Capabilities:
 
 #### Examples
 
-Default capabilities without grants.
+The user has granted the app with permission to use the keyboard.
 
 JavaScript:
 
@@ -245,7 +246,7 @@ Response:
 
 </details>
 
-Get Postal code without grants.
+The user has denied the app access to their postal code.
 
 JavaScript:
 
@@ -291,7 +292,7 @@ Response:
 
 </details>
 
-Get Postal code with grants.
+The user has not yet specified whether they grant the app access to their postal code.
 
 JavaScript:
 
@@ -341,7 +342,7 @@ Response:
 
 ### info
 
-Returns an array of CapabilityInfo objects for the passed in capabilities.
+Returns an array of CapabilityInfo objects for the provided capabilities.
 
 ```typescript
 function info(capabilities: Capability[]): Promise<CapabilityInfo[]>
@@ -897,7 +898,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### permitted
 
-Returns whether the current App has permission to the passed capability and role.
+Returns whether or not the platform operator has granted the app with the provided capability and role.
 
 ```typescript
 function permitted(
@@ -923,7 +924,7 @@ Capabilities:
 
 #### Examples
 
-Keyboard
+Platform operator allows the app to use the keyboard
 
 JavaScript:
 
@@ -969,7 +970,7 @@ Response:
 
 </details>
 
-Keyboard incorrect manage role capability
+Platform operator does not allow the app to manage the keyboard
 
 JavaScript:
 
@@ -1019,7 +1020,7 @@ Response:
 
 </details>
 
-Wifi scan not permitted capability
+Platform operator does not allow the app to perform wifi scans
 
 JavaScript:
 

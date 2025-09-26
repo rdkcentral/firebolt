@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 0.0.0-unknown.0
+Version Metrics 1.8.0-next-major.2
 
 ## Table of Contents
 
@@ -19,6 +19,7 @@ Version Metrics 0.0.0-unknown.0
 - [Overview](#overview)
 - [Methods](#methods)
   - [action](#action)
+  - [appInfo](#appinfo)
   - [error](#error)
   - [mediaEnded](#mediaended)
   - [mediaLoadStart](#medialoadstart)
@@ -38,10 +39,76 @@ Version Metrics 0.0.0-unknown.0
   - [startContent](#startcontent)
   - [stopContent](#stopcontent)
 - [Types](#types)
+  - [NetworkType](#networktype)
+  - [NetworkState](#networkstate)
+  - [EDIDVersion](#edidversion)
   - [ErrorType](#errortype)
+  - [WifiSecurityMode](#wifisecuritymode)
+  - [AudioProfile](#audioprofile)
+  - [SkipRestriction](#skiprestriction)
+  - [Role](#role)
+  - [DenyReason](#denyreason)
+  - [OfferingType](#offeringtype)
+  - [MusicType](#musictype)
+  - [ProgramType](#programtype)
+  - [WifiFrequency](#wififrequency)
+  - [SemanticVersion](#semanticversion)
+  - [HDMISignalStatus](#hdmisignalstatus)
+  - [FlatMap](#flatmap)
+  - [SpeechRate](#speechrate)
+  - [ClosedCaptionsStyles](#closedcaptionsstyles)
+  - [FontFamily](#fontfamily)
+  - [FontSize](#fontsize)
+  - [Color](#color)
+  - [FontEdge](#fontedge)
+  - [Opacity](#opacity)
+  - [HorizontalAlignment](#horizontalalignment)
+  - [VerticalAlignment](#verticalalignment)
+  - [ISO639_2Language](#isolanguage)
   - [MediaPosition](#mediaposition)
+  - [Capability](#capability)
+  - [HDMIPortId](#hdmiportid)
+  - [CapPermissionStatus](#cappermissionstatus)
   - [EventObjectPrimitives](#eventobjectprimitives)
+  - [EntityDetails](#entitydetails)
+  - [Entity](#entity)
+  - [Metadata](#metadata)
+  - [ProgramEntity](#programentity)
+  - [MusicEntity](#musicentity)
+  - [ChannelEntity](#channelentity)
+  - [UntypedEntity](#untypedentity)
+  - [PlaylistEntity](#playlistentity)
+  - [MovieEntity](#movieentity)
+  - [TVEpisodeEntity](#tvepisodeentity)
+  - [TVSeasonEntity](#tvseasonentity)
+  - [TVSeriesEntity](#tvseriesentity)
+  - [AdditionalEntity](#additionalentity)
+  - [PlayableEntity](#playableentity)
+  - [WayToWatch](#waytowatch)
   - [EventObject](#eventobject)
+  - [ContentIdentifiers](#contentidentifiers)
+  - [ContentRating](#contentrating)
+- [United States](#united-states)
+- [Canada](#canada)
+  - [Availability](#availability)
+  - [WifiSignalStrength](#wifisignalstrength)
+  - [Entitlement](#entitlement)
+  - [EntityInfo](#entityinfo)
+  - [AgePolicy](#agepolicy)
+  - [NavigationIntent](#navigationintent)
+  - [HomeIntent](#homeintent)
+  - [LaunchIntent](#launchintent)
+  - [EntityIntent](#entityintent)
+  - [PlaybackIntent](#playbackintent)
+  - [SearchIntent](#searchintent)
+  - [SectionIntent](#sectionintent)
+  - [TuneIntent](#tuneintent)
+  - [PlayEntityIntent](#playentityintent)
+  - [PlayQueryIntent](#playqueryintent)
+  - [Intent](#intent)
+  - [IntentProperties](#intentproperties)
+  - [SecondScreenEvent](#secondscreenevent)
+  - [LifecycleState](#lifecyclestate)
 
 ## Usage
 
@@ -66,16 +133,18 @@ function action(
   category: string,
   type: string,
   parameters: object,
+  agePolicy: Policies.AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param        | Type     | Required | Description                                                                                                                                 |
-| ------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `category`   | `string` | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
-| `type`       | `string` | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
-| `parameters` | `object` | false    |                                                                                                                                             |
+| Param        | Type                 | Required | Description                                                                                                                                 |
+| ------------ | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `category`   | `string`             | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
+| `type`       | `string`             | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
+| `parameters` | `object`             | false    |                                                                                                                                             |
+| `agePolicy`  | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                    |
 
 Promise resolution:
 
@@ -86,6 +155,121 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:general |
 
 #### Examples
+
+Send foo action
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.action('user', 'The user did foo', undefined)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.action",
+  "params": {
+    "category": "user",
+    "type": "The user did foo"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+---
+
+### appInfo
+
+Inform the platform about an app's build info.
+
+```typescript
+function appInfo(build: string): Promise<null>
+```
+
+Parameters:
+
+| Param   | Type     | Required | Description                      |
+| ------- | -------- | -------- | -------------------------------- |
+| `build` | `string` | true     | The build / version of this app. |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send appInfo metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let result = await Metrics.appInfo('1.2.2')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.appInfo",
+  "params": {
+    "build": "1.2.2"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
 
 ---
 
@@ -100,18 +284,20 @@ function error(
   description: string,
   visible: boolean,
   parameters: object,
+  agePolicy: Policies.AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param         | Type        | Required | Description                                                                                        |
-| ------------- | ----------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `type`        | `ErrorType` | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
-| `code`        | `string`    | true     | an app-specific error code                                                                         |
-| `description` | `string`    | true     | A short description of the error                                                                   |
-| `visible`     | `boolean`   | true     | Whether or not this error was visible to the user.                                                 |
-| `parameters`  | `object`    | false    | Optional additional parameters to be logged with the error                                         |
+| Param         | Type                      | Required | Description                                                                                                              |
+| ------------- | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `type`        | [`ErrorType`](#errortype) | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'`                       |
+| `code`        | `string`                  | true     | an app-specific error code                                                                                               |
+| `description` | `string`                  | true     | A short description of the error                                                                                         |
+| `visible`     | `boolean`                 | true     | Whether or not this error was visible to the user.                                                                       |
+| `parameters`  | `object`                  | false    | Optional additional parameters to be logged with the error                                                               |
+| `agePolicy`   | `Policies.AgePolicy`      | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -123,6 +309,59 @@ Capabilities:
 
 #### Examples
 
+Send error metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.error(
+  'media',
+  'MEDIA-STALLED',
+  'playback stalled',
+  true,
+  undefined,
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.error",
+  "params": {
+    "type": "media",
+    "code": "MEDIA-STALLED",
+    "description": "playback stalled",
+    "visible": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
 ---
 
 ### mediaEnded
@@ -130,14 +369,18 @@ Capabilities:
 Called when playback has stopped because the end of the media was reached.
 
 ```typescript
-function mediaEnded(entityId: string): Promise<boolean>
+function mediaEnded(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -148,6 +391,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send ended metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaEnded('345')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaEnded",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -156,14 +443,18 @@ Capabilities:
 Called when setting the URL of a media asset to play, in order to infer load time.
 
 ```typescript
-function mediaLoadStart(entityId: string): Promise<boolean>
+function mediaLoadStart(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -174,6 +465,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send loadstart metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaLoadStart('345')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaLoadStart",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -182,14 +517,18 @@ Capabilities:
 Called when media playback will pause due to an intentional pause operation.
 
 ```typescript
-function mediaPause(entityId: string): Promise<boolean>
+function mediaPause(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -200,6 +539,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send pause metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaPause('345')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaPause",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -208,14 +591,18 @@ Capabilities:
 Called when media playback should start due to autoplay, user-initiated play, or unpausing.
 
 ```typescript
-function mediaPlay(entityId: string): Promise<boolean>
+function mediaPlay(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -226,6 +613,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send play metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaPlay('345')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaPlay",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -234,14 +665,18 @@ Capabilities:
 Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interuption.
 
 ```typescript
-function mediaPlaying(entityId: string): Promise<boolean>
+function mediaPlaying(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -252,6 +687,50 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send playing metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaPlaying('345')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaPlaying",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -263,15 +742,17 @@ Called every 60 seconds as media playback progresses.
 function mediaProgress(
   entityId: string,
   progress: MediaPosition,
+  agePolicy: Policies.AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type            | Required | Description                                                                                                                                                                |
-| ---------- | --------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entityId` | `string`        | true     | The entityId of the media.                                                                                                                                                 |
-| `progress` | `MediaPosition` | true     | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param       | Type                              | Required | Description                                                                                                                                                                |
+| ----------- | --------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`                          | true     | The entityId of the media.                                                                                                                                                 |
+| `progress`  | [`MediaPosition`](#mediaposition) | true     | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| `agePolicy` | `Policies.AgePolicy`              | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                                                   |
 
 Promise resolution:
 
@@ -282,6 +763,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send progress metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaProgress('345', 0.75)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaProgress",
+  "params": {
+    "entityId": "345",
+    "progress": 0.75
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -290,15 +816,20 @@ Capabilities:
 Called when the playback rate of media is changed.
 
 ```typescript
-function mediaRateChange(entityId: string, rate: number): Promise<boolean>
+function mediaRateChange(
+  entityId: string,
+  rate: number,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
-| `rate`     | `number` | true     | The new playback rate.     |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `rate`      | `number`             | true     | The new playback rate.                                                                                                   |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -309,6 +840,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send ratechange metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaRateChange('345', 2)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaRateChange",
+  "params": {
+    "entityId": "345",
+    "rate": 2
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -323,18 +899,20 @@ function mediaRenditionChange(
   width: number,
   height: number,
   profile: string,
+  agePolicy: Policies.AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                                       |
-| ---------- | -------- | -------- | ------------------------------------------------- |
-| `entityId` | `string` | true     | The entityId of the media.                        |
-| `bitrate`  | `number` | true     | The new bitrate in kbps.                          |
-| `width`    | `number` | true     | The new resolution width.                         |
-| `height`   | `number` | true     | The new resolution height.                        |
-| `profile`  | `string` | false    | A description of the new profile, e.g. 'HDR' etc. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `bitrate`   | `number`             | true     | The new bitrate in kbps.                                                                                                 |
+| `width`     | `number`             | true     | The new resolution width.                                                                                                |
+| `height`    | `number`             | true     | The new resolution height.                                                                                               |
+| `profile`   | `string`             | false    | A description of the new profile, e.g. 'HDR' etc.                                                                        |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -345,6 +923,60 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send renditionchange metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaRenditionChange(
+  '345',
+  5000,
+  1920,
+  1080,
+  'HDR+',
+)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaRenditionChange",
+  "params": {
+    "entityId": "345",
+    "bitrate": 5000,
+    "width": 1920,
+    "height": 1080,
+    "profile": "HDR+"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -356,15 +988,17 @@ Called when a seek is completed during media playback.
 function mediaSeeked(
   entityId: string,
   position: MediaPosition,
+  agePolicy: Policies.AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type            | Required | Description                                                                                                                                                                                    |
-| ---------- | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entityId` | `string`        | true     | The entityId of the media.                                                                                                                                                                     |
-| `position` | `MediaPosition` | true     | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param       | Type                              | Required | Description                                                                                                                                                                                    |
+| ----------- | --------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`                          | true     | The entityId of the media.                                                                                                                                                                     |
+| `position`  | [`MediaPosition`](#mediaposition) | true     | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| `agePolicy` | `Policies.AgePolicy`              | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                                                                       |
 
 Promise resolution:
 
@@ -375,6 +1009,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send seeked metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaSeeked('345', 0.51)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaSeeked",
+  "params": {
+    "entityId": "345",
+    "position": 0.51
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -383,15 +1062,20 @@ Capabilities:
 Called when a seek is initiated during media playback.
 
 ```typescript
-function mediaSeeking(entityId: string, target: MediaPosition): Promise<boolean>
+function mediaSeeking(
+  entityId: string,
+  target: MediaPosition,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type            | Required | Description                                                                                                                                                                          |
-| ---------- | --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `entityId` | `string`        | true     | The entityId of the media.                                                                                                                                                           |
-| `target`   | `MediaPosition` | true     | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param       | Type                              | Required | Description                                                                                                                                                                          |
+| ----------- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                          | true     | The entityId of the media.                                                                                                                                                           |
+| `target`    | [`MediaPosition`](#mediaposition) | true     | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| `agePolicy` | `Policies.AgePolicy`              | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                                                             |
 
 Promise resolution:
 
@@ -402,6 +1086,51 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:media |
 
 #### Examples
+
+Send seeking metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaSeeking('345', 0.5)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaSeeking",
+  "params": {
+    "entityId": "345",
+    "target": 0.5
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -410,14 +1139,18 @@ Capabilities:
 Called when media playback will halt due to a network, buffer, or other unintentional constraint.
 
 ```typescript
-function mediaWaiting(entityId: string): Promise<boolean>
+function mediaWaiting(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -429,6 +1162,50 @@ Capabilities:
 
 #### Examples
 
+Send waiting metric.
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.mediaWaiting('345')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.mediaWaiting",
+  "params": {
+    "entityId": "345"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
 ---
 
 ### page
@@ -436,14 +1213,15 @@ Capabilities:
 Inform the platform that your user has navigated to a page or view.
 
 ```typescript
-function page(pageId: string): Promise<boolean>
+function page(pageId: string, agePolicy: Policies.AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description             |
-| -------- | -------- | -------- | ----------------------- |
-| `pageId` | `string` | true     | Page ID of the content. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `pageId`    | `string`             | true     | Page ID of the content.                                                                                                  |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -455,11 +1233,99 @@ Capabilities:
 
 #### Examples
 
+Send page metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.page('xyz')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.page",
+  "params": {
+    "pageId": "xyz"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Send startContent metric w/ entity
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.page('home')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.page",
+  "params": {
+    "pageId": "home"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
 ---
 
 ### ready
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
 
@@ -473,11 +1339,36 @@ Capabilities:
 
 #### Examples
 
+Send ready metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.ready",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
 ---
 
 ### signIn
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Log a sign in event, called by Discovery.signIn().
 
@@ -491,11 +1382,69 @@ Capabilities:
 
 #### Examples
 
+Send signIn metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signIn",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+Send signIn metric with entitlements
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signIn",
+  "params": {
+    "entitlements": [
+      {
+        "entitlementId": "123",
+        "startTime": "2025-01-01T00:00:00.000Z",
+        "endTime": "2025-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
 ---
 
 ### signOut
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Log a sign out event, called by Discovery.signOut().
 
@@ -509,6 +1458,31 @@ Capabilities:
 
 #### Examples
 
+Send signOut metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signOut",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
 ---
 
 ### startContent
@@ -516,14 +1490,18 @@ Capabilities:
 Inform the platform that your user has started content.
 
 ```typescript
-function startContent(entityId: string): Promise<boolean>
+function startContent(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                        |
-| ---------- | -------- | -------- | ---------------------------------- |
-| `entityId` | `string` | false    | Optional entity ID of the content. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | false    | Optional entity ID of the content.                                                                                       |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -534,6 +1512,137 @@ Capabilities:
 | uses | xrn:firebolt:capability:metrics:general |
 
 #### Examples
+
+Send startContent metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.startContent(undefined)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.startContent",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Send startContent metric w/ entity
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.startContent('abc')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.startContent",
+  "params": {
+    "entityId": "abc"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Send startContent metric and notify the platform that the content is child-directed
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.startContent('abc', 'app:child')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.startContent",
+  "params": {
+    "entityId": "abc",
+    "agePolicy": "app:child"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
 
 ---
 
@@ -542,14 +1651,18 @@ Capabilities:
 Inform the platform that your user has stopped content.
 
 ```typescript
-function stopContent(entityId: string): Promise<boolean>
+function stopContent(
+  entityId: string,
+  agePolicy: Policies.AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                        |
-| ---------- | -------- | -------- | ---------------------------------- |
-| `entityId` | `string` | false    | Optional entity ID of the content. |
+| Param       | Type                 | Required | Description                                                                                                              |
+| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`             | false    | Optional entity ID of the content.                                                                                       |
+| `agePolicy` | `Policies.AgePolicy` | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -561,20 +1674,462 @@ Capabilities:
 
 #### Examples
 
+Send stopContent metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.stopContent(undefined)
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.stopContent",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
+Send stopContent metric w/ entity
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.stopContent('abc')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.stopContent",
+  "params": {
+    "entityId": "abc"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
 ---
 
 ## Types
 
+### NetworkType
+
+The type of network that is currently active
+
+```typescript
+NetworkType: {
+    WIFI: 'wifi',
+    ETHERNET: 'ethernet',
+    HYBRID: 'hybrid',
+},
+
+```
+
+---
+
+### NetworkState
+
+The type of network that is currently active
+
+```typescript
+NetworkState: {
+    CONNECTED: 'connected',
+    DISCONNECTED: 'disconnected',
+},
+
+```
+
+---
+
+### EDIDVersion
+
+```typescript
+EDIDVersion: {
+    V1_4: '1.4',
+    V2_0: '2.0',
+    UNKNOWN: 'unknown',
+},
+
+```
+
+---
+
 ### ErrorType
 
 ```typescript
-enum ErrorType {
-  NETWORK = 'network',
-  MEDIA = 'media',
-  RESTRICTION = 'restriction',
-  ENTITLEMENT = 'entitlement',
-  OTHER = 'other',
+ErrorType: {
+    NETWORK: 'network',
+    MEDIA: 'media',
+    RESTRICTION: 'restriction',
+    ENTITLEMENT: 'entitlement',
+    OTHER: 'other',
+},
+
+```
+
+---
+
+### WifiSecurityMode
+
+Security Mode supported for Wifi
+
+```typescript
+WifiSecurityMode: {
+    NONE: 'none',
+    WEP_64: 'wep64',
+    WEP_128: 'wep128',
+    WPA_PSK_TKIP: 'wpaPskTkip',
+    WPA_PSK_AES: 'wpaPskAes',
+    WPA_2PSK_TKIP: 'wpa2PskTkip',
+    WPA_2PSK_AES: 'wpa2PskAes',
+    WPA_ENTERPRISE_TKIP: 'wpaEnterpriseTkip',
+    WPA_ENTERPRISE_AES: 'wpaEnterpriseAes',
+    WPA_2ENTERPRISE_TKIP: 'wpa2EnterpriseTkip',
+    WPA_2ENTERPRISE_AES: 'wpa2EnterpriseAes',
+    WPA_2PSK: 'wpa2Psk',
+    WPA_2ENTERPRISE: 'wpa2Enterprise',
+    WPA_3PSK_AES: 'wpa3PskAes',
+    WPA_3SAE: 'wpa3Sae',
+},
+
+```
+
+---
+
+### AudioProfile
+
+```typescript
+AudioProfile: {
+    STEREO: 'stereo',
+    DOLBY_DIGITAL_5_1: 'dolbyDigital5.1',
+    DOLBY_DIGITAL_5_1_PLUS: 'dolbyDigital5.1+',
+    DOLBY_ATMOS: 'dolbyAtmos',
+},
+
+```
+
+---
+
+### SkipRestriction
+
+The advertisement skip restriction.
+
+Applies to fast-forward/rewind (e.g. trick mode), seeking over an entire opportunity (e.g. jump), seeking out of what's currently playing, and "Skip this ad..." features. Seeking over multiple ad opportunities only requires playback of the _last_ opportunity, not all opportunities, preceding the seek destination.
+
+| Value        | Description                                                                    |
+| ------------ | ------------------------------------------------------------------------------ |
+| none         | No fast-forward, jump, or skip restrictions                                    |
+| adsUnwatched | Restrict fast-forward, jump, and skip for unwatched ad opportunities only.     |
+| adsAll       | Restrict fast-forward, jump, and skip for all ad opportunities                 |
+| all          | Restrict fast-forward, jump, and skip for all ad opportunities and all content |
+
+Namespace: `xrn:advertising:policy:skipRestriction:`
+
+```typescript
+SkipRestriction: {
+    NONE: 'none',
+    ADS_UNWATCHED: 'adsUnwatched',
+    ADS_ALL: 'adsAll',
+    ALL: 'all',
+},
+
+```
+
+---
+
+### Role
+
+Role provides access level for the app for a given capability.
+
+```typescript
+Role: {
+    USE: 'use',
+    MANAGE: 'manage',
+    PROVIDE: 'provide',
+},
+
+```
+
+---
+
+### DenyReason
+
+Reasons why a Capability might not be invokable
+
+```typescript
+DenyReason: {
+    UNPERMITTED: 'unpermitted',
+    UNSUPPORTED: 'unsupported',
+    DISABLED: 'disabled',
+    UNAVAILABLE: 'unavailable',
+    GRANT_DENIED: 'grantDenied',
+    UNGRANTED: 'ungranted',
+},
+
+```
+
+---
+
+### OfferingType
+
+The offering type of the WayToWatch.
+
+```typescript
+OfferingType: {
+    FREE: 'free',
+    SUBSCRIBE: 'subscribe',
+    BUY: 'buy',
+    RENT: 'rent',
+},
+
+```
+
+---
+
+### MusicType
+
+In the case of a music `entityType`, specifies the type of music entity.
+
+```typescript
+MusicType: {
+    SONG: 'song',
+    ALBUM: 'album',
+},
+
+```
+
+---
+
+### ProgramType
+
+In the case of a program `entityType`, specifies the program type.
+
+```typescript
+ProgramType: {
+    MOVIE: 'movie',
+    EPISODE: 'episode',
+    SEASON: 'season',
+    SERIES: 'series',
+    OTHER: 'other',
+    PREVIEW: 'preview',
+    EXTRA: 'extra',
+    CONCERT: 'concert',
+    SPORTING_EVENT: 'sportingEvent',
+    ADVERTISEMENT: 'advertisement',
+    MUSIC_VIDEO: 'musicVideo',
+    MINISODE: 'minisode',
+},
+
+```
+
+---
+
+### WifiFrequency
+
+Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.
+
+```typescript
+type WifiFrequency = number
+```
+
+---
+
+### SemanticVersion
+
+```typescript
+type SemanticVersion = {
+  major: number
+  minor: number
+  patch: number
+  readable: string
 }
+```
+
+---
+
+### HDMISignalStatus
+
+```typescript
+HDMISignalStatus: {
+    NONE: 'none',
+    STABLE: 'stable',
+    UNSTABLE: 'unstable',
+    UNSUPPORTED: 'unsupported',
+    UNKNOWN: 'unknown',
+},
+
+```
+
+---
+
+### FlatMap
+
+```typescript
+type FlatMap = [property: string]: string | number | boolean
+```
+
+---
+
+### SpeechRate
+
+```typescript
+type SpeechRate = number
+```
+
+---
+
+### ClosedCaptionsStyles
+
+The default styles to use when displaying closed-captions
+
+```typescript
+type ClosedCaptionsStyles = {
+  fontFamily?: string
+  fontSize?: number
+  fontColor?: string
+  fontEdge?: string
+  fontEdgeColor?: string
+  fontOpacity?: number
+  backgroundColor?: string
+  backgroundOpacity?: number
+  textAlign?: string
+  textAlignVertical?: string
+  windowColor?: string
+  windowOpacity?: number
+}
+```
+
+---
+
+### FontFamily
+
+```typescript
+FontFamily: {
+    MONOSPACED_SERIF: 'monospaced_serif',
+    PROPORTIONAL_SERIF: 'proportional_serif',
+    MONOSPACED_SANSERIF: 'monospaced_sanserif',
+    PROPORTIONAL_SANSERIF: 'proportional_sanserif',
+    SMALLCAPS: 'smallcaps',
+    CURSIVE: 'cursive',
+    CASUAL: 'casual',
+},
+
+```
+
+---
+
+### FontSize
+
+```typescript
+type FontSize = number
+```
+
+---
+
+### Color
+
+```typescript
+type Color = string
+```
+
+---
+
+### FontEdge
+
+```typescript
+FontEdge: {
+    NONE: 'none',
+    RAISED: 'raised',
+    DEPRESSED: 'depressed',
+    UNIFORM: 'uniform',
+    DROP_SHADOW_LEFT: 'drop_shadow_left',
+    DROP_SHADOW_RIGHT: 'drop_shadow_right',
+},
+
+```
+
+---
+
+### Opacity
+
+```typescript
+type Opacity = number
+```
+
+---
+
+### HorizontalAlignment
+
+```typescript
+type HorizontalAlignment = string
+```
+
+---
+
+### VerticalAlignment
+
+```typescript
+type VerticalAlignment = string
+```
+
+---
+
+### ISO639_2Language
+
+```typescript
+type ISO639_2Language = string
 ```
 
 ---
@@ -589,6 +2144,35 @@ type MediaPosition = void | number | number
 
 ---
 
+### Capability
+
+A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+
+```typescript
+type Capability = string
+```
+
+---
+
+### HDMIPortId
+
+```typescript
+type HDMIPortId = string
+```
+
+---
+
+### CapPermissionStatus
+
+```typescript
+type CapPermissionStatus = {
+  permitted?: boolean // Provides info whether the capability is permitted
+  granted?: boolean
+}
+```
+
+---
+
 ### EventObjectPrimitives
 
 ```typescript
@@ -597,15 +2181,732 @@ type EventObjectPrimitives = string | number | number | boolean | null
 
 ---
 
-### EventObject
+### EntityDetails
 
 ```typescript
-type EventObject = {}
+type EntityDetails = {
+  identifiers:
+    | ProgramEntity
+    | MusicEntity
+    | ChannelEntity
+    | UntypedEntity
+    | PlaylistEntity
+  info?: Metadata
+  waysToWatch?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
+}
 ```
 
 See also:
 
-EventObjectPrimitives
-EventObject
+Entity.Metadata
+Entertainment.WayToWatch
+
+---
+
+### Entity
+
+```typescript
+type Entity =
+  | ProgramEntity
+  | MusicEntity
+  | ChannelEntity
+  | UntypedEntity
+  | PlaylistEntity
+```
+
+See also:
+
+Entity.ProgramEntity
+Entity.MusicEntity
+Entity.ChannelEntity
+Entity.UntypedEntity
+Entity.PlaylistEntity
+
+---
+
+### Metadata
+
+```typescript
+type Metadata = {
+  title?: string // Title of the entity.
+  synopsis?: string // Short description of the entity.
+  seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
+  seasonCount?: number // For TV series, seasons, and episodes, the total number of seasons.
+  episodeNumber?: number // For TV episodes, the episode number.
+  episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
+  releaseDate?: string // The date that the program or entity was released or first aired.
+  contentRatings?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+}
+```
+
+See also:
+
+Entertainment.ContentRating
+
+---
+
+### ProgramEntity
+
+```typescript
+type ProgramEntity =
+  | MovieEntity
+  | TVEpisodeEntity
+  | TVSeasonEntity
+  | TVSeriesEntity
+  | AdditionalEntity
+```
+
+See also:
+
+Entity.MovieEntity
+Entity.TVEpisodeEntity
+Entity.TVSeasonEntity
+Entity.TVSeriesEntity
+Entity.AdditionalEntity
+
+---
+
+### MusicEntity
+
+```typescript
+type MusicEntity = {
+  entityType: 'music'
+  musicType: MusicType // In the case of a music `entityType`, specifies the type of music entity.
+  entityId: string
+}
+```
+
+See also:
+
+Entertainment.MusicType
+
+---
+
+### ChannelEntity
+
+```typescript
+type ChannelEntity = {
+  entityType: 'channel'
+  channelType: 'streaming' | 'overTheAir'
+  entityId: string // ID of the channel, in the target App's scope.
+  appContentData?: string
+}
+```
+
+---
+
+### UntypedEntity
+
+```typescript
+type UntypedEntity = {
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### PlaylistEntity
+
+A Firebolt compliant representation of a Playlist entity.
+
+```typescript
+type PlaylistEntity = {
+  entityType: 'playlist'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### MovieEntity
+
+A Firebolt compliant representation of a Movie entity.
+
+```typescript
+type MovieEntity = {
+  entityType: 'program'
+  programType: 'movie'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### TVEpisodeEntity
+
+A Firebolt compliant representation of a TV Episode entity.
+
+```typescript
+type TVEpisodeEntity = {
+  entityType: 'program'
+  programType: 'episode'
+  entityId: string
+  seriesId: string
+  seasonId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### TVSeasonEntity
+
+A Firebolt compliant representation of a TV Season entity.
+
+```typescript
+type TVSeasonEntity = {
+  entityType: 'program'
+  programType: 'season'
+  entityId: string
+  seriesId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### TVSeriesEntity
+
+A Firebolt compliant representation of a TV Series entity.
+
+```typescript
+type TVSeriesEntity = {
+  entityType: 'program'
+  programType: 'series'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### AdditionalEntity
+
+A Firebolt compliant representation of the remaining program entity types.
+
+```typescript
+type AdditionalEntity = {
+  entityType: 'program'
+  programType:
+    | 'concert'
+    | 'sportingEvent'
+    | 'preview'
+    | 'other'
+    | 'advertisement'
+    | 'musicVideo'
+    | 'minisode'
+    | 'extra'
+  entityId: string
+  assetId?: string
+  appContentData?: string
+}
+```
+
+---
+
+### PlayableEntity
+
+```typescript
+type PlayableEntity =
+  | MovieEntity
+  | TVEpisodeEntity
+  | PlaylistEntity
+  | MusicEntity
+  | AdditionalEntity
+```
+
+See also:
+
+Entity.MovieEntity
+Entity.TVEpisodeEntity
+Entity.PlaylistEntity
+Entity.MusicEntity
+Entity.AdditionalEntity
+
+---
+
+### WayToWatch
+
+A WayToWatch describes a way to watch a video program. It may describe a single
+streamable asset or a set of streamable assets. For example, an app provider may
+describe HD, SD, and UHD assets as individual WayToWatch objects or rolled into
+a single WayToWatch.
+
+If the WayToWatch represents a single streamable asset, the provided
+ContentIdentifiers must be sufficient to play back the specific asset when sent
+via a playback intent or deep link. If the WayToWatch represents multiple
+streamable assets, the provided ContentIdentifiers must be sufficient to
+playback one of the assets represented with no user action. In this scenario,
+the app SHOULD choose the best asset for the user based on their device and
+settings. The ContentIdentifiers MUST also be sufficient for navigating the user
+to the appropriate entity or detail screen via an entity intent.
+
+The app should set the `entitled` property to indicate if the user can watch, or
+not watch, the asset without making a purchase. If the entitlement is known to
+expire at a certain time (e.g., a rental), the app should also provide the
+`entitledExpires` property. If the entitlement is not expired, the UI will use
+the `entitled` property to display watchable assets to the user, adjust how
+assets are presented to the user, and how intents into the app are generated.
+For example, the the Aggregated Experience could render a "Watch" button for an
+entitled asset versus a "Subscribe" button for an non-entitled asset.
+
+The app should set the `offeringType` to define how the content may be
+authorized. The UI will use this to adjust how content is presented to the user.
+
+A single WayToWatch cannot represent streamable assets available via multiple
+purchase paths. If, for example, an asset has both Buy, Rent and Subscription
+availability, the three different entitlement paths MUST be represented as
+multiple WayToWatch objects.
+
+`price` should be populated for WayToWatch objects with `buy` or `rent`
+`offeringType`. If the WayToWatch represents a set of assets with various price
+points, the `price` provided must be the lowest available price.
+
+```typescript
+type WayToWatch = {
+  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
+  expires?: string // Time when the WayToWatch is no longer available.
+  entitled?: boolean // Specify if the user is entitled to watch the entity.
+  entitledExpires?: string // Time when the entity is no longer entitled.
+  offeringType?: OfferingType // The offering type of the WayToWatch.
+  hasAds?: boolean // True if the streamable asset contains ads.
+  price?: number // For "buy" and "rent" WayToWatch, the price to buy or rent in the user's preferred currency.
+  videoQuality?: 'SD' | 'HD' | 'UHD'[] // List of the video qualities available via the WayToWatch.
+  audioProfile: AudioProfile[] // List of the audio types available via the WayToWatch.
+  audioLanguages?: string[] // List of audio track languages available on the WayToWatch. The first is considered the primary language. Languages are expressed as ISO 639 1/2 codes.
+  closedCaptions?: string[] // List of languages for which closed captions are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
+  subtitles?: string[] // List of languages for which subtitles are available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
+  audioDescriptions?: string[] // List of languages for which audio descriptions (DVD) as available on the WayToWatch. Languages are expressed as ISO 639 1/2 codes.
+}
+```
+
+See also:
+
+Entertainment.ContentIdentifiers
+Entertainment.OfferingType
+Types.AudioProfile
+
+---
+
+### EventObject
+
+```typescript
+type EventObject = [property: string]: EventObjectPrimitives | EventObjectPrimitives | EventObject[] | EventObject
+```
+
+See also:
+
+[EventObjectPrimitives](#eventobjectprimitives)
+[EventObject](#eventobject-1)
+
+---
+
+### ContentIdentifiers
+
+The ContentIdentifiers object is how the app identifies an entity or asset to
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included.
+
+```typescript
+type ContentIdentifiers = {
+  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
+  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
+  seasonId?: string // The TV Season for a TV Episode.
+  seriesId?: string // The TV Series for a TV Episode or TV Season.
+  appContentData?: string // App-specific content identifiers.
+}
+```
+
+---
+
+### ContentRating
+
+A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+
+## United States
+
+`US-Movie` (MPAA):
+
+Ratings: `NR`, `G`, `PG`, `PG13`, `R`, `NC17`
+
+Advisories: `AT`, `BN`, `SL`, `SS`, `N`, `V`
+
+`US-TV` (Vchip):
+
+Ratings: `TVY`, `TVY7`, `TVG`, `TVPG`, `TV14`, `TVMA`
+
+Advisories: `FV`, `D`, `L`, `S`, `V`
+
+## Canada
+
+`CA-Movie` (OFRB):
+
+Ratings: `G`, `PG`, `14A`, `18A`, `R`, `E`
+
+`CA-TV` (AGVOT)
+
+Ratings: `E`, `C`, `C8`, `G`, `PG`, `14+`, `18+`
+
+Advisories: `C`, `C8`, `G`, `PG`, `14+`, `18+`
+
+`CA-Movie-Fr` (Canadian French language movies):
+
+Ratings: `G`, `8+`, `13+`, `16+`, `18+`
+
+`CA-TV-Fr` (Canadian French language TV):
+
+Ratings: `G`, `8+`, `13+`, `16+`, `18+`
+
+```typescript
+type ContentRating = {
+  scheme:
+    | 'CA-Movie'
+    | 'CA-TV'
+    | 'CA-Movie-Fr'
+    | 'CA-TV-Fr'
+    | 'US-Movie'
+    | 'US-TV' // The rating scheme.
+  rating: string // The content rating.
+  advisories?: string[] // Optional list of subratings or content advisories.
+}
+```
+
+---
+
+### Availability
+
+```typescript
+type Availability = {
+  type: 'channel-lineup' | 'program-lineup'
+  id: string
+  catalogId?: string
+  startTime?: string
+  endTime?: string
+}
+```
+
+---
+
+### WifiSignalStrength
+
+Strength of Wifi signal, value is negative based on RSSI specification.
+
+```typescript
+type WifiSignalStrength = number
+```
+
+---
+
+### Entitlement
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
+}
+```
+
+---
+
+### EntityInfo
+
+An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+
+Additionally, EntityInfo objects must specify a properly formed
+ContentIdentifiers object, `entityType`, and `title`. The app should provide
+the `synopsis` property for a good user experience if the content
+metadata is not available another way.
+
+The ContentIdentifiers must be sufficient for navigating the user to the
+appropriate entity or detail screen via a `detail` intent or deep link.
+
+EntityInfo objects must provide at least one WayToWatch object when returned as
+part of an `entityInfo` method and a streamable asset is available to the user.
+It is optional for the `purchasedContent` method, but recommended because the UI
+may use those data.
+
+```typescript
+type EntityInfo = {
+  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
+  title: string // Title of the entity.
+  entityType: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  musicType?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
+  synopsis?: string // Short description of the entity.
+  seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
+  seasonCount?: number // For TV series, seasons, and episodes, the total number of seasons.
+  episodeNumber?: number // For TV episodes, the episode number.
+  episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
+  releaseDate?: string // The date that the program or entity was released or first aired.
+  contentRatings?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+  waysToWatch?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
+}
+```
+
+See also:
+
+Entertainment.ContentIdentifiers
+Entertainment.ProgramType
+Entertainment.MusicType
+Entertainment.ContentRating
+Entertainment.WayToWatch
+
+---
+
+### AgePolicy
+
+The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+
+```typescript
+type AgePolicy = string | 'app:adult' | 'app:child' | 'app:teen'
+```
+
+---
+
+### NavigationIntent
+
+A Firebolt compliant representation of a user intention to navigate to a specific place in an app.
+
+```typescript
+type NavigationIntent =
+  | HomeIntent
+  | LaunchIntent
+  | EntityIntent
+  | PlaybackIntent
+  | SearchIntent
+  | SectionIntent
+  | TuneIntent
+  | PlayEntityIntent
+  | PlayQueryIntent
+```
+
+See also:
+
+Intents.HomeIntent
+Intents.LaunchIntent
+Intents.EntityIntent
+Intents.PlaybackIntent
+Intents.SearchIntent
+Intents.SectionIntent
+Intents.TuneIntent
+Intents.PlayEntityIntent
+Intents.PlayQueryIntent
+
+---
+
+### HomeIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
+
+```typescript
+type HomeIntent = {
+  action: 'home'
+  context: object
+}
+```
+
+---
+
+### LaunchIntent
+
+A Firebolt compliant representation of a user intention to launch an app.
+
+```typescript
+type LaunchIntent = {
+  action: 'launch'
+  context: object
+}
+```
+
+---
+
+### EntityIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a specific entity page, and bring that app to the foreground if needed.
+
+```typescript
+type EntityIntent = {
+  action: 'entity'
+  data:
+    | ProgramEntity
+    | MusicEntity
+    | ChannelEntity
+    | UntypedEntity
+    | PlaylistEntity
+  context: object
+}
+```
+
+---
+
+### PlaybackIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
+
+```typescript
+type PlaybackIntent = {
+  action: 'playback'
+  data: PlayableEntity
+  context: object
+}
+```
+
+See also:
+
+Entity.PlayableEntity
+
+---
+
+### SearchIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to it's search UI with a search term populated, and bring that app to the foreground if needed.
+
+```typescript
+type SearchIntent = {
+  action: 'search'
+  data?: object
+  context: object
+}
+```
+
+---
+
+### SectionIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a section not covered by `home`, `entity`, `player`, or `search`, and bring that app to the foreground if needed.
+
+```typescript
+type SectionIntent = {
+  action: 'section'
+  data: object
+  context: object
+}
+```
+
+---
+
+### TuneIntent
+
+A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.
+
+```typescript
+type TuneIntent = {
+  action: 'tune'
+  data: object
+  context: object
+}
+```
+
+See also:
+
+Entity.ChannelEntity
+
+---
+
+### PlayEntityIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
+
+```typescript
+type PlayEntityIntent = {
+  action: 'play-entity'
+  data: object
+  context: object
+}
+```
+
+See also:
+
+Entity.PlayableEntity
+
+---
+
+### PlayQueryIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to a the video player for an abstract query to be searched for and played by the app.
+
+```typescript
+type PlayQueryIntent = {
+  action: 'play-query'
+  data: object
+  context: object
+}
+```
+
+See also:
+
+Entertainment.ProgramType
+Entertainment.MusicType
+
+---
+
+### Intent
+
+A Firebolt compliant representation of a user intention.
+
+```typescript
+type Intent = {
+  action: string
+  context: object
+}
+```
+
+See also:
+
+Policies.AgePolicy
+
+---
+
+### IntentProperties
+
+```typescript
+type IntentProperties = {}
+```
+
+---
+
+### SecondScreenEvent
+
+An a message notification from a second screen device
+
+```typescript
+type SecondScreenEvent = {
+  type: 'dial'
+  version?: string
+  data?: string
+}
+```
+
+---
+
+### LifecycleState
+
+The application lifecycle state
+
+```typescript
+LifecycleState: {
+    INITIALIZING: 'initializing',
+    INACTIVE: 'inactive',
+    FOREGROUND: 'foreground',
+    BACKGROUND: 'background',
+    UNLOADING: 'unloading',
+    SUSPENDED: 'suspended',
+},
+
+```
 
 ---

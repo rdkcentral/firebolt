@@ -10,36 +10,28 @@ sdk: core
 
 ---
 
-Version 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [AudioProfile](#audioprofile)
   - [SemanticVersion](#semanticversion)
   - [BooleanMap](#booleanmap)
+  - [FlatMap](#flatmap)
   - [LocalizedString](#localizedstring)
-  - [Timeout](#timeout)
-
-## Overview
-
-undefined
 
 ## Types
 
 ### AudioProfile
 
 ```typescript
-enum AudioProfile {
-  STEREO = 'stereo',
-  DOLBY_DIGITAL_5_1 = 'dolbyDigital5.1',
-  DOLBY_DIGITAL_7_1 = 'dolbyDigital7.1',
-  DOLBY_DIGITAL_5_1_PLUS = 'dolbyDigital5.1+',
-  DOLBY_DIGITAL_7_1_PLUS = 'dolbyDigital7.1+',
-  DOLBY_ATMOS = 'dolbyAtmos',
-}
+AudioProfile: {
+    STEREO: 'stereo',
+    DOLBY_DIGITAL_5_1: 'dolbyDigital5.1',
+    DOLBY_DIGITAL_5_1_PLUS: 'dolbyDigital5.1+',
+    DOLBY_ATMOS: 'dolbyAtmos',
+},
+
 ```
 
 ---
@@ -60,7 +52,15 @@ type SemanticVersion = {
 ### BooleanMap
 
 ```typescript
-type BooleanMap = {}
+type BooleanMap = [property: string]: boolean
+```
+
+---
+
+### FlatMap
+
+```typescript
+type FlatMap = [property: string]: string | number | boolean
 ```
 
 ---
@@ -71,16 +71,6 @@ Localized string supports either a simple `string` or a Map<string, string> of l
 
 ```typescript
 type LocalizedString = string | object
-```
-
----
-
-### Timeout
-
-Defines the timeout in seconds. If the threshold for timeout is passed for any operation without a result it will throw an error.
-
-```typescript
-
 ```
 
 ---

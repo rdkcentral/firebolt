@@ -10,18 +10,11 @@ sdk: manage
 
 ---
 
-Version 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [SkipRestriction](#skiprestriction)
-
-## Overview
-
-undefined
 
 ## Types
 
@@ -41,12 +34,13 @@ Applies to fast-forward/rewind (e.g. trick mode), seeking over an entire opportu
 Namespace: `xrn:advertising:policy:skipRestriction:`
 
 ```typescript
-enum SkipRestriction {
-  NONE = 'none',
-  ADS_UNWATCHED = 'adsUnwatched',
-  ADS_ALL = 'adsAll',
-  ALL = 'all',
-}
+SkipRestriction: {
+    NONE: 'none',
+    ADS_UNWATCHED: 'adsUnwatched',
+    ADS_ALL: 'adsAll',
+    ALL: 'all',
+},
+
 ```
 
 ---

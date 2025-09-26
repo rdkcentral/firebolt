@@ -10,23 +10,16 @@ sdk: core
 
 ---
 
-Version 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [Role](#role)
   - [DenyReason](#denyreason)
-  - [GrantKey](#grantkey)
   - [Capability](#capability)
   - [Permission](#permission)
+  - [CapPermissionStatus](#cappermissionstatus)
   - [CapabilityInfo](#capabilityinfo)
-
-## Overview
-
-undefined
 
 ## Types
 
@@ -35,11 +28,12 @@ undefined
 Role provides access level for the app for a given capability.
 
 ```typescript
-enum Role {
-  USE = 'use',
-  MANAGE = 'manage',
-  PROVIDE = 'provide',
-}
+Role: {
+    USE: 'use',
+    MANAGE: 'manage',
+    PROVIDE: 'provide',
+},
+
 ```
 
 ---
@@ -49,27 +43,16 @@ enum Role {
 Reasons why a Capability might not be invokable
 
 ```typescript
-enum DenyReason {
-  UNPERMITTED = 'unpermitted',
-  UNSUPPORTED = 'unsupported',
-  DISABLED = 'disabled',
-  UNAVAILABLE = 'unavailable',
-  GRANT_DENIED = 'grantDenied',
-  UNGRANTED = 'ungranted',
-}
-```
-
----
-
-### GrantKey
-
-```typescript
+DenyReason: {
+    UNPERMITTED: 'unpermitted',
+    UNSUPPORTED: 'unsupported',
+    DISABLED: 'disabled',
+    UNAVAILABLE: 'unavailable',
+    GRANT_DENIED: 'grantDenied',
+    UNGRANTED: 'ungranted',
+},
 
 ```
-
-See also:
-
-[Capability](#capability)
 
 ---
 
@@ -78,7 +61,7 @@ See also:
 A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
 
 ```typescript
-
+type Capability = string
 ```
 
 ---
@@ -98,6 +81,17 @@ See also:
 
 [Role](#role)
 [Capability](#capability)
+
+---
+
+### CapPermissionStatus
+
+```typescript
+type CapPermissionStatus = {
+  permitted?: boolean // Provides info whether the capability is permitted
+  granted?: boolean
+}
+```
 
 ---
 
