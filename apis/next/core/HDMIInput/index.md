@@ -3,7 +3,7 @@ title: HDMIInput
 
 version: next
 layout: default
-sdk: manage
+sdk: core
 ---
 
 # HDMIInput Module
@@ -19,12 +19,10 @@ Version HDMIInput 1.8.0-next.1
 - [Overview](#overview)
 - [Methods](#methods)
   - [autoLowLatencyModeCapable](#autolowlatencymodecapable)
-  - [close](#close)
   - [edidVersion](#edidversion)
   - [listen](#listen)
   - [lowLatencyMode](#lowlatencymode)
   - [once](#once)
-  - [open](#open)
   - [port](#port)
   - [ports](#ports)
 - [Events](#events)
@@ -56,7 +54,7 @@ Version HDMIInput 1.8.0-next.1
 To use the HDMIInput module, you can import it into your project from the Firebolt SDK:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 ```
 
 ## Overview
@@ -96,7 +94,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let enabled = await HDMIInput.autoLowLatencyModeCapable('HDMI1')
 console.log(enabled)
@@ -140,7 +138,7 @@ Default Example #2
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let enabled = await HDMIInput.autoLowLatencyModeCapable('HDMI1')
 console.log(enabled)
@@ -181,118 +179,6 @@ Response:
 
 ---
 
-To set the value of `autoLowLatencyModeCapable` call the method like this:
-
-```typescript
-function autoLowLatencyModeCapable(
-  port: HDMIPortId,
-  value: boolean,
-): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type                        | Required | Description                |
-| ------- | --------------------------- | -------- | -------------------------- |
-| `port`  | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
-| `value` | `boolean`                   | true     |                            |
-
-Promise resolution:
-
-#### Examples
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let result = await HDMIInput.autoLowLatencyModeCapable('HDMI1', true)
-console.log(result)
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.setAutoLowLatencyModeCapable",
-  "params": {
-    "port": "HDMI1",
-    "value": true
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
-Default Example #2
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let result = await HDMIInput.autoLowLatencyModeCapable('HDMI1', false)
-console.log(result)
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.setAutoLowLatencyModeCapable",
-  "params": {
-    "port": "HDMI1",
-    "value": false
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
----
-
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
@@ -314,7 +200,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let listenerId = await autoLowLatencyModeCapable((value) => {
   console.log(value)
@@ -366,7 +252,7 @@ Default Example #2
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let listenerId = await autoLowLatencyModeCapable((value) => {
   console.log(value)
@@ -415,68 +301,6 @@ Response:
 
 ---
 
-### close
-
-Closes the given HDMI Port if it is the current active source for HDMI Input. If there was no active source, then there would no action taken on the device.
-
-```typescript
-function close(): Promise<void>
-```
-
-Promise resolution:
-
-Capabilities:
-
-| Role    | Capability                          |
-| ------- | ----------------------------------- |
-| manages | xrn:firebolt:capability:inputs:hdmi |
-
-#### Examples
-
-Default Example for stop
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let port = await HDMIInput.close()
-console.log(port)
-```
-
-Value of `port`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.close",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
----
-
 ### edidVersion
 
 Property for each port's active EDID version.
@@ -510,7 +334,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let edidVersion = await HDMIInput.edidVersion('HDMI1')
 console.log(edidVersion)
@@ -554,7 +378,7 @@ Default Example #2
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let edidVersion = await HDMIInput.edidVersion('HDMI1')
 console.log(edidVersion)
@@ -595,115 +419,6 @@ Response:
 
 ---
 
-To set the value of `edidVersion` call the method like this:
-
-```typescript
-function edidVersion(port: HDMIPortId, value: EDIDVersion): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type                            | Required | Description                                |
-| ------- | ------------------------------- | -------- | ------------------------------------------ |
-| `port`  | [`HDMIPortId`](#hdmiportid)     | true     | <br/>pattern: ^HDMI[0-9]+$                 |
-| `value` | [`EDIDVersion`](#edidversion-1) | true     | <br/>values: `'1.4' \| '2.0' \| 'unknown'` |
-
-Promise resolution:
-
-#### Examples
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let result = await HDMIInput.edidVersion('HDMI1', '2.0')
-console.log(result)
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.setEdidVersion",
-  "params": {
-    "port": "HDMI1",
-    "value": "2.0"
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
-Default Example #2
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let result = await HDMIInput.edidVersion('HDMI1', '1.4')
-console.log(result)
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.setEdidVersion",
-  "params": {
-    "port": "HDMI1",
-    "value": "1.4"
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
----
-
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
@@ -732,7 +447,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let listenerId = await edidVersion((value) => {
   console.log(value)
@@ -779,7 +494,7 @@ Default Example #2
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let listenerId = await edidVersion((value) => {
   console.log(value)
@@ -902,7 +617,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let enabled = await HDMIInput.lowLatencyMode()
 console.log(enabled)
@@ -944,7 +659,7 @@ Default Example #2
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let enabled = await HDMIInput.lowLatencyMode()
 console.log(enabled)
@@ -983,112 +698,6 @@ Response:
 
 ---
 
-To set the value of `lowLatencyMode` call the method like this:
-
-```typescript
-function lowLatencyMode(value: boolean): Promise<void>
-```
-
-Parameters:
-
-| Param   | Type      | Required | Description |
-| ------- | --------- | -------- | ----------- |
-| `value` | `boolean` | true     |             |
-
-Promise resolution:
-
-#### Examples
-
-Default Example
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let result = await HDMIInput.lowLatencyMode(true)
-console.log(result)
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.setLowLatencyMode",
-  "params": {
-    "value": true
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
-Default Example #2
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let result = await HDMIInput.lowLatencyMode(false)
-console.log(result)
-```
-
-Value of `result`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.setLowLatencyMode",
-  "params": {
-    "value": false
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
----
-
 To subscribe to notifications when the value changes, call the method like this:
 
 ```typescript
@@ -1108,7 +717,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let listenerId = await lowLatencyMode((value) => {
   console.log(value)
@@ -1154,7 +763,7 @@ Default Example #2
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let listenerId = await lowLatencyMode((value) => {
   console.log(value)
@@ -1253,76 +862,6 @@ Promise resolution:
 
 See [Listening for events](../../docs/listening-for-events/) for more information and examples.
 
-### open
-
-Opens the HDMI Port allowing it to be the active source device. Incase there is a different HDMI portId already set as the active source, this call would stop the older portId before opening the given portId.
-
-```typescript
-function open(portId: HDMIPortId): Promise<void>
-```
-
-Parameters:
-
-| Param    | Type                        | Required | Description                |
-| -------- | --------------------------- | -------- | -------------------------- |
-| `portId` | [`HDMIPortId`](#hdmiportid) | true     | <br/>pattern: ^HDMI[0-9]+$ |
-
-Promise resolution:
-
-Capabilities:
-
-| Role    | Capability                          |
-| ------- | ----------------------------------- |
-| manages | xrn:firebolt:capability:inputs:hdmi |
-
-#### Examples
-
-Default Example for open
-
-JavaScript:
-
-```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
-
-let port = await HDMIInput.open('HDMI1')
-console.log(port)
-```
-
-Value of `port`:
-
-```javascript
-null
-```
-
-<details markdown="1" >
-<summary>JSON-RPC:</summary>
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "HDMIInput.open",
-  "params": {
-    "portId": "HDMI1"
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": null
-}
-```
-
-</details>
-
----
-
 ### port
 
 Retrieve a specific HDMI input port.
@@ -1354,7 +893,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let port = await HDMIInput.port('HDMI1')
 console.log(port)
@@ -1436,7 +975,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 let ports = await HDMIInput.ports()
 console.log(ports)
@@ -1528,7 +1067,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 HDMIInput.listen('autoLowLatencyModeSignalChanged', (info) => {
   console.log(info)
@@ -1601,7 +1140,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 HDMIInput.listen('connectionChanged', (info) => {
   console.log(info)
@@ -1682,7 +1221,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 HDMIInput.listen('signalChanged', (info) => {
   console.log(info)
@@ -1764,7 +1303,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 HDMIInput.listen('autoLowLatencyModeSignalChanged', (info) => {
   console.log(info)
@@ -1837,7 +1376,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 HDMIInput.listen('connectionChanged', (info) => {
   console.log(info)
@@ -1918,7 +1457,7 @@ Default Example
 JavaScript:
 
 ```javascript
-import { HDMIInput } from '@firebolt-js/manage-sdk'
+import { HDMIInput } from '@firebolt-js/sdk'
 
 HDMIInput.listen('signalChanged', (info) => {
   console.log(info)

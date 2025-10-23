@@ -317,7 +317,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [HDMIInput.ports](./manage/HDMIInput/#ports)<br/>[HDMIInput.port](./manage/HDMIInput/#port)<br/>[HDMIInput.onConnectionChanged](./manage/HDMIInput/#connectionchanged)<br/>[HDMIInput.onSignalChanged](./manage/HDMIInput/#signalchanged)<br/>[HDMIInput.lowLatencyMode](./manage/HDMIInput/#lowlatencymode)<br/>[HDMIInput.onAutoLowLatencyModeSignalChanged](./manage/HDMIInput/#autolowlatencymodesignalchanged)<br/>[HDMIInput.autoLowLatencyModeCapable](./manage/HDMIInput/#autolowlatencymodecapable)<br/>[HDMIInput.edidVersion](./manage/HDMIInput/#edidversion)<br/>[HDMIInput.onLowLatencyModeChanged](./manage/HDMIInput/#lowlatencymodechanged)<br/>[HDMIInput.onAutoLowLatencyModeCapableChanged](./manage/HDMIInput/#autolowlatencymodecapablechanged)<br/>[HDMIInput.onEdidVersionChanged](./manage/HDMIInput/#edidversionchanged) |
+| [HDMIInput.ports](./core/HDMIInput/#ports)<br/>[HDMIInput.port](./core/HDMIInput/#port)<br/>[HDMIInput.onConnectionChanged](./core/HDMIInput/#connectionchanged)<br/>[HDMIInput.onSignalChanged](./core/HDMIInput/#signalchanged)<br/>[HDMIInput.lowLatencyMode](./core/HDMIInput/#lowlatencymode)<br/>[HDMIInput.onAutoLowLatencyModeSignalChanged](./core/HDMIInput/#autolowlatencymodesignalchanged)<br/>[HDMIInput.autoLowLatencyModeCapable](./core/HDMIInput/#autolowlatencymodecapable)<br/>[HDMIInput.edidVersion](./core/HDMIInput/#edidversion)<br/>[HDMIInput.onLowLatencyModeChanged](./core/HDMIInput/#lowlatencymodechanged)<br/>[HDMIInput.onAutoLowLatencyModeCapableChanged](./core/HDMIInput/#autolowlatencymodecapablechanged)<br/>[HDMIInput.onEdidVersionChanged](./core/HDMIInput/#edidversionchanged) |
 
 
 
