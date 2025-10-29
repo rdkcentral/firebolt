@@ -10,25 +10,29 @@ sdk: core
 
 ---
 
-Version Internal 1.2.1-main.0
+Version Internal 1.8.0-main.0
 
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
-- [Methods](#methods)
-  - [initialize](#initialize)
+- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
+  - [InitializeResult](#initializeresult)
 
 ## Overview
 
 Internal methods for SDK / FEE integration
 
-## Methods
+## Private Methods
+
+<details markdown="1"  id="private-methods-details">
+  <summary>View</summary>
 
 ### initialize
 
-_This is an private RPC method._
+_This is a private RPC method._
 
 Initialize the SDK / FEE session.
 
@@ -39,6 +43,8 @@ Parameters:
 | `version` | [`SemanticVersion`](../Types/schemas/#SemanticVersion) | true     | The semantic version of the SDK. |
 
 Result:
+
+[InitializeResult](#initializeresult)
 
 Capabilities:
 
@@ -89,4 +95,20 @@ Response:
 
 ---
 
+</details>
+
 ## Types
+
+### InitializeResult
+
+```typescript
+type InitializeResult = {
+  version: SemanticVersion // The semantic version of the FEE.
+}
+```
+
+See also:
+
+[SemanticVersion](../Types/schemas/#SemanticVersion)
+
+---

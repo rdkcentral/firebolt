@@ -37,17 +37,24 @@ The schemas are used to generate SDK and Documentation artifacts.
 | [ClosedCaptions.setEnabled](./manage/ClosedCaptions/#setenabled)<br/>[ClosedCaptions.setFontFamily](./manage/ClosedCaptions/#setfontfamily)<br/>[ClosedCaptions.setFontSize](./manage/ClosedCaptions/#setfontsize)<br/>[ClosedCaptions.setFontColor](./manage/ClosedCaptions/#setfontcolor)<br/>[ClosedCaptions.setFontEdge](./manage/ClosedCaptions/#setfontedge)<br/>[ClosedCaptions.setFontEdgeColor](./manage/ClosedCaptions/#setfontedgecolor)<br/>[ClosedCaptions.setFontOpacity](./manage/ClosedCaptions/#setfontopacity)<br/>[ClosedCaptions.setBackgroundColor](./manage/ClosedCaptions/#setbackgroundcolor)<br/>[ClosedCaptions.setBackgroundOpacity](./manage/ClosedCaptions/#setbackgroundopacity)<br/>[ClosedCaptions.setTextAlign](./manage/ClosedCaptions/#settextalign)<br/>[ClosedCaptions.setTextAlignVertical](./manage/ClosedCaptions/#settextalignvertical)<br/>[ClosedCaptions.setWindowColor](./manage/ClosedCaptions/#setwindowcolor)<br/>[ClosedCaptions.setWindowOpacity](./manage/ClosedCaptions/#setwindowopacity)<br/>[ClosedCaptions.setPreferredLanguages](./manage/ClosedCaptions/#setpreferredlanguages) |
 
 
+### `xrn:firebolt:capability:accessibility:highcontrastui`
+
+| Uses |
+| ---- |
+| [Accessibility.highContrastUI](./core/Accessibility/#highcontrastui)<br/>[Accessibility.onHighContrastUIChanged](./core/Accessibility/#highcontrastuichanged) |
+
+
 ### `xrn:firebolt:capability:accessibility:voiceguidance`
 
 | Uses |
 | ---- |
-| [Accessibility.voiceGuidance](./core/Accessibility/#voiceguidance)<br/>[Accessibility.voiceGuidanceSettings](./core/Accessibility/#voiceguidancesettings)<br/>[Accessibility.onVoiceGuidanceSettingsChanged](./core/Accessibility/#voiceguidancesettingschanged)<br/>[VoiceGuidance.enabled](./manage/VoiceGuidance/#enabled)<br/>[VoiceGuidance.speed](./manage/VoiceGuidance/#speed)<br/>[VoiceGuidance.onEnabledChanged](./manage/VoiceGuidance/#enabledchanged)<br/>[VoiceGuidance.onSpeedChanged](./manage/VoiceGuidance/#speedchanged) |
+| [Accessibility.voiceGuidance](./core/Accessibility/#voiceguidance)<br/>[Accessibility.voiceGuidanceSettings](./core/Accessibility/#voiceguidancesettings)<br/>[Accessibility.onVoiceGuidanceSettingsChanged](./core/Accessibility/#voiceguidancesettingschanged)<br/>[VoiceGuidance.enabled](./manage/VoiceGuidance/#enabled)<br/>[VoiceGuidance.navigationHints](./manage/VoiceGuidance/#navigationhints)<br/>[VoiceGuidance.rate](./manage/VoiceGuidance/#rate)<br/>[VoiceGuidance.speed](./manage/VoiceGuidance/#speed)<br/>[VoiceGuidance.onEnabledChanged](./manage/VoiceGuidance/#enabledchanged)<br/>[VoiceGuidance.onNavigationHintsChanged](./manage/VoiceGuidance/#navigationhintschanged)<br/>[VoiceGuidance.onRateChanged](./manage/VoiceGuidance/#ratechanged)<br/>[VoiceGuidance.onSpeedChanged](./manage/VoiceGuidance/#speedchanged) |
 
 
 
 | Manages |
 | ------- |
-| [VoiceGuidance.setEnabled](./manage/VoiceGuidance/#setenabled)<br/>[VoiceGuidance.setSpeed](./manage/VoiceGuidance/#setspeed) |
+| [VoiceGuidance.setEnabled](./manage/VoiceGuidance/#setenabled)<br/>[VoiceGuidance.setNavigationHints](./manage/VoiceGuidance/#setnavigationhints)<br/>[VoiceGuidance.setRate](./manage/VoiceGuidance/#setrate)<br/>[VoiceGuidance.setSpeed](./manage/VoiceGuidance/#setspeed) |
 
 
 ### `xrn:firebolt:capability:account:id`
@@ -74,7 +81,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
+| [Advertising.config](./core/Advertising/#config)<br/>[Advertising.deviceAttributes](./core/Advertising/#deviceattributes)<br/>[Advertising.appBundleId](./core/Advertising/#appbundleid) |
 
 
 
@@ -94,6 +101,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Manages |
 | ------- |
 | [Advertising.resetIdentifier](./manage/Advertising/#resetidentifier) |
+
+
+### `xrn:firebolt:capability:advertising:policy`
+
+| Uses |
+| ---- |
+| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
 
 
 ### `xrn:firebolt:capability:approve:content`
@@ -154,7 +168,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged)<br/>[SecondScreen.protocols](./core/SecondScreen/#protocols) |
+| [Device.platform](./core/Device/#platform)<br/>[Device.type](./core/Device/#type)<br/>[Device.version](./core/Device/#version)<br/>[Device.hdcp](./core/Device/#hdcp)<br/>[Device.hdr](./core/Device/#hdr)<br/>[Device.audio](./core/Device/#audio)<br/>[Device.screenResolution](./core/Device/#screenresolution)<br/>[Device.videoResolution](./core/Device/#videoresolution)<br/>[Device.onHdcpChanged](./core/Device/#hdcpchanged)<br/>[Device.onHdrChanged](./core/Device/#hdrchanged)<br/>[Device.onAudioChanged](./core/Device/#audiochanged)<br/>[Device.onScreenResolutionChanged](./core/Device/#screenresolutionchanged)<br/>[Device.onVideoResolutionChanged](./core/Device/#videoresolutionchanged) |
 
 
 ### `xrn:firebolt:capability:device:make`
@@ -303,7 +317,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [HDMIInput.ports](./manage/HDMIInput/#ports)<br/>[HDMIInput.port](./manage/HDMIInput/#port)<br/>[HDMIInput.onConnectionChanged](./manage/HDMIInput/#connectionchanged)<br/>[HDMIInput.onSignalChanged](./manage/HDMIInput/#signalchanged)<br/>[HDMIInput.lowLatencyMode](./manage/HDMIInput/#lowlatencymode)<br/>[HDMIInput.onAutoLowLatencyModeSignalChanged](./manage/HDMIInput/#autolowlatencymodesignalchanged)<br/>[HDMIInput.autoLowLatencyModeCapable](./manage/HDMIInput/#autolowlatencymodecapable)<br/>[HDMIInput.edidVersion](./manage/HDMIInput/#edidversion)<br/>[HDMIInput.onLowLatencyModeChanged](./manage/HDMIInput/#lowlatencymodechanged)<br/>[HDMIInput.onAutoLowLatencyModeCapableChanged](./manage/HDMIInput/#autolowlatencymodecapablechanged)<br/>[HDMIInput.onEdidVersionChanged](./manage/HDMIInput/#edidversionchanged) |
+| [HDMIInput.ports](./core/HDMIInput/#ports)<br/>[HDMIInput.port](./core/HDMIInput/#port)<br/>[HDMIInput.onConnectionChanged](./core/HDMIInput/#connectionchanged)<br/>[HDMIInput.onSignalChanged](./core/HDMIInput/#signalchanged)<br/>[HDMIInput.lowLatencyMode](./core/HDMIInput/#lowlatencymode)<br/>[HDMIInput.onAutoLowLatencyModeSignalChanged](./core/HDMIInput/#autolowlatencymodesignalchanged)<br/>[HDMIInput.autoLowLatencyModeCapable](./core/HDMIInput/#autolowlatencymodecapable)<br/>[HDMIInput.edidVersion](./core/HDMIInput/#edidversion)<br/>[HDMIInput.onLowLatencyModeChanged](./core/HDMIInput/#lowlatencymodechanged)<br/>[HDMIInput.onAutoLowLatencyModeCapableChanged](./core/HDMIInput/#autolowlatencymodecapablechanged)<br/>[HDMIInput.onEdidVersionChanged](./core/HDMIInput/#edidversionchanged) |
 
 
 
@@ -449,7 +463,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [Metrics.ready](./core/Metrics/#ready)<br/>[Metrics.signIn](./core/Metrics/#signin)<br/>[Metrics.signOut](./core/Metrics/#signout)<br/>[Metrics.startContent](./core/Metrics/#startcontent)<br/>[Metrics.stopContent](./core/Metrics/#stopcontent)<br/>[Metrics.page](./core/Metrics/#page)<br/>[Metrics.action](./core/Metrics/#action)<br/>[Metrics.error](./core/Metrics/#error) |
+| [Metrics.ready](./core/Metrics/#ready)<br/>[Metrics.signIn](./core/Metrics/#signin)<br/>[Metrics.signOut](./core/Metrics/#signout)<br/>[Metrics.startContent](./core/Metrics/#startcontent)<br/>[Metrics.stopContent](./core/Metrics/#stopcontent)<br/>[Metrics.page](./core/Metrics/#page)<br/>[Metrics.action](./core/Metrics/#action)<br/>[Metrics.error](./core/Metrics/#error)<br/>[Metrics.appInfo](./core/Metrics/#appinfo) |
 
 
 ### `xrn:firebolt:capability:metrics:media`
@@ -464,13 +478,6 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Uses |
 | ---- |
 | [Device.network](./core/Device/#network)<br/>[Device.onNetworkChanged](./core/Device/#networkchanged) |
-
-
-### `xrn:firebolt:capability:privacy:advertising`
-
-| Uses |
-| ---- |
-| [Advertising.policy](./core/Advertising/#policy)<br/>[Advertising.onPolicyChanged](./core/Advertising/#policychanged) |
 
 
 ### `xrn:firebolt:capability:privacy:settings`
@@ -512,6 +519,13 @@ The schemas are used to generate SDK and Documentation artifacts.
 | Uses |
 | ---- |
 | [rpc.discover](./manage/rpc/#discover) |
+
+
+### `xrn:firebolt:capability:secondscreen:protocol`
+
+| Uses |
+| ---- |
+| [SecondScreen.protocols](./core/SecondScreen/#protocols) |
 
 
 ### `xrn:firebolt:capability:storage:secure`

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Localization 1.2.1-main.0
+Version Localization 1.8.0-main.0
 
 ## Table of Contents
 
@@ -38,6 +38,14 @@ Version Localization 1.2.1-main.0
   - [postalCodeChanged](#postalcodechanged)
   - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged)
   - [timeZoneChanged](#timezonechanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [languageChanged](#languagechanged-1)
+  - [localeChanged](#localechanged-1)
+  - [localityChanged](#localitychanged-1)
+  - [postalCodeChanged](#postalcodechanged-1)
+  - [preferredAudioLanguagesChanged](#preferredaudiolanguageschanged-1)
+  - [timeZoneChanged](#timezonechanged-1)
+  </details>
 - [Types](#types)
 
 ## Usage
@@ -59,15 +67,15 @@ Methods for accessessing location and language preferences
 Add any platform-specific localization information in key/value pair
 
 ```typescript
-function addAdditionalInfo(key: string, value: string): Promise<void>
+function addAdditionalInfo(key: string, value: number): Promise<void>
 ```
 
 Parameters:
 
-| Param   | Type     | Required | Description                        |
-| ------- | -------- | -------- | ---------------------------------- |
-| `key`   | `string` | true     | Key to add additionalInfo          |
-| `value` | `string` | true     | Value to be set for additionalInfo |
+| Param   | Type     | Required | Description                                                                  |
+| ------- | -------- | -------- | ---------------------------------------------------------------------------- |
+| `key`   | `string` | true     | Key to add additionalInfo                                                    |
+| `value` | `number` | true     | Value to be set for additionalInfo. Value can be a number, string or boolean |
 
 Promise resolution:
 
@@ -128,7 +136,7 @@ Response:
 
 ### additionalInfo
 
-Get any platform-specific localization information, in an Map<string, string>
+Get any platform-specific localization information
 
 ```typescript
 function additionalInfo(): Promise<object>
@@ -2650,5 +2658,40 @@ See: [preferredAudioLanguages](#preferredaudiolanguages)
 ### timeZoneChanged
 
 See: [timeZone](#timezone)
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### countryCodeChanged
+
+See: [countryCode](#countrycode)
+
+### languageChanged
+
+See: [language](#language)
+
+### localeChanged
+
+See: [locale](#locale)
+
+### localityChanged
+
+See: [locality](#locality)
+
+### postalCodeChanged
+
+See: [postalCode](#postalcode)
+
+### preferredAudioLanguagesChanged
+
+See: [preferredAudioLanguages](#preferredaudiolanguages)
+
+### timeZoneChanged
+
+See: [timeZone](#timezone)
+
+</details>
 
 ## Types

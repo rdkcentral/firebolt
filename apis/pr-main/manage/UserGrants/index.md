@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version UserGrants 1.2.1-main.0
+Version UserGrants 1.8.0-main.0
 
 ## Table of Contents
 
@@ -611,16 +611,12 @@ JavaScript:
 ```javascript
 import { UserGrants } from '@firebolt-js/manage-sdk'
 
-let info = await UserGrants.request(
-  'certapp',
-  [
-    {
-      role: 'use',
-      capability: 'xrn:firebolt:capability:localization:postal-code',
-    },
-  ],
-  null,
-)
+let info = await UserGrants.request('certapp', [
+  {
+    role: 'use',
+    capability: 'xrn:firebolt:capability:localization:postal-code',
+  },
+])
 console.log(info)
 ```
 

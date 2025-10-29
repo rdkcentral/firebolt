@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Profile 1.2.1-main.0
+Version Profile 1.8.0-main.0
 
 ## Table of Contents
 

@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Advertising 1.2.1-main.0
+Version Advertising 1.8.0-main.0
 
 ## Table of Contents
 
@@ -27,10 +27,13 @@ Version Advertising 1.2.1-main.0
   - [policy](#policy)
 - [Events](#events)
   - [policyChanged](#policychanged)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  </details>
 - [Types](#types)
   - [AdConfigurationOptions](#adconfigurationoptions)
   - [AdPolicy](#adpolicy)
   - [AdvertisingIdOptions](#advertisingidoptions)
+  - [AdvertisingIdResult](#advertisingidresult)
 
 ## Usage
 
@@ -48,10 +51,12 @@ A module for platform provided advertising settings and functionality.
 
 ### advertisingId
 
-Get the advertising ID
+Get the IAB compliant identifier for advertising (IFA). It is recommended to use the IFA to manage advertising related activities while respecting the user's privacy settings.
 
 ```typescript
-function advertisingId(options: AdvertisingIdOptions): Promise<object>
+function advertisingId(
+  options: AdvertisingIdOptions,
+): Promise<AdvertisingIdResult>
 ```
 
 Parameters:
@@ -61,6 +66,8 @@ Parameters:
 | `options` | [`AdvertisingIdOptions`](#advertisingidoptions) | false    | AdvertisingId options |
 
 Promise resolution:
+
+[AdvertisingIdResult](#advertisingidresult)
 
 Capabilities:
 
@@ -77,7 +84,7 @@ JavaScript:
 ```javascript
 import { Advertising } from '@firebolt-js/sdk'
 
-let advertisingId = await Advertising.advertisingId(null)
+let advertisingId = await Advertising.advertisingId()
 console.log(advertisingId)
 ```
 
@@ -86,7 +93,7 @@ Value of `advertisingId`:
 ```javascript
 {
 	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-	"ifa_type": "idfa",
+	"ifa_type": "sspid",
 	"lmt": "0"
 }
 ```
@@ -112,7 +119,7 @@ Response:
   "id": 1,
   "result": {
     "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-    "ifa_type": "idfa",
+    "ifa_type": "sspid",
     "lmt": "0"
   }
 }
@@ -138,7 +145,7 @@ Value of `advertisingId`:
 ```javascript
 {
 	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-	"ifa_type": "idfa",
+	"ifa_type": "sspid",
 	"lmt": "0"
 }
 ```
@@ -171,7 +178,7 @@ Response:
   "id": 1,
   "result": {
     "ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-    "ifa_type": "idfa",
+    "ifa_type": "sspid",
     "lmt": "0"
   }
 }
@@ -197,7 +204,7 @@ Value of `advertisingId`:
 ```javascript
 {
 	"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-	"ifa_type": "idfa",
+	"ifa_type": "sspid",
 	"lmt": "0"
 }
 ```
@@ -272,7 +279,7 @@ console.log(appBundleId)
 Value of `appBundleId`:
 
 ```javascript
-'operator.app'
+'app.operator'
 ```
 
 <details markdown="1" >
@@ -294,7 +301,7 @@ Response:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": "operator.app"
+  "result": "app.operator"
 }
 ```
 
@@ -599,9 +606,9 @@ Promise resolution:
 
 Capabilities:
 
-| Role | Capability                                                                                        |
-| ---- | ------------------------------------------------------------------------------------------------- |
-| uses | xrn:firebolt:capability:privacy:advertising<br/>xrn:firebolt:capability:advertising:configuration |
+| Role | Capability                                 |
+| ---- | ------------------------------------------ |
+| uses | xrn:firebolt:capability:advertising:policy |
 
 #### Examples
 
@@ -729,6 +736,17 @@ Response:
 
 See: [policy](#policy)
 
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### policyChanged
+
+See: [policy](#policy)
+
+</details>
+
 ## Types
 
 ### AdConfigurationOptions
@@ -764,7 +782,23 @@ See also:
 
 ```typescript
 type AdvertisingIdOptions = {
-  scope?: object // Provides the options to send scope type and id to select desired advertising id
+  scope?: {
+    type: 'browse' | 'content' // The scope type, which will determine where to show advertisement
+    id: string // A value that identifies a specific scope within the scope type
+  }
+  // Provides the options to send scope type and id to select desired advertising id
+}
+```
+
+---
+
+### AdvertisingIdResult
+
+```typescript
+type AdvertisingIdResult = {
+  ifa: string // UUID conforming to IAB standard
+  ifa_type: string // source of the IFA as defined by IAB
+  lmt: '0' | '1' // boolean that if set to 1, user has requested ad tracking and measurement is disabled
 }
 ```
 

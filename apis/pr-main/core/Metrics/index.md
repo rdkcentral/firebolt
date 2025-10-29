@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.2.1-main.0
+Version Metrics 1.8.0-main.0
 
 ## Table of Contents
 
@@ -19,6 +19,7 @@ Version Metrics 1.2.1-main.0
 - [Overview](#overview)
 - [Methods](#methods)
   - [action](#action)
+  - [appInfo](#appinfo)
   - [error](#error)
   - [mediaEnded](#mediaended)
   - [mediaLoadStart](#medialoadstart)
@@ -32,11 +33,12 @@ Version Metrics 1.2.1-main.0
   - [mediaSeeking](#mediaseeking)
   - [mediaWaiting](#mediawaiting)
   - [page](#page)
-  - [ready](#ready)
-  - [signIn](#signin)
-  - [signOut](#signout)
   - [startContent](#startcontent)
   - [stopContent](#stopcontent)
+- [Private Methods](#private-methods)<details markdown="1"  ontoggle="document.getElementById('private-methods-details').open=this.open"><summary>Show</summary>
+  - [signIn](#signin)
+  - [signOut](#signout)
+  </details>
 - [Types](#types)
   - [ErrorType](#errortype)
   - [MediaPosition](#mediaposition)
@@ -64,16 +66,18 @@ function action(
   category: string,
   type: string,
   parameters: FlatMap,
+  agePolicy: AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param        | Type                                   | Required | Description                                                                                                                                 |
-| ------------ | -------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `category`   | `string`                               | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
-| `type`       | `string`                               | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
-| `parameters` | [`FlatMap`](../Types/schemas/#FlatMap) | false    |                                                                                                                                             |
+| Param        | Type                                          | Required | Description                                                                                                                                 |
+| ------------ | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `category`   | `string`                                      | true     | The category of action being logged. Must be 'user' for user-initated actions or 'app' for all other actions <br/>values: `'user' \| 'app'` |
+| `type`       | `string`                                      | true     | A short, indexible identifier for the action, e.g. 'SignIn Prompt Displayed' <br/>maxLength: 256                                            |
+| `parameters` | [`FlatMap`](../Types/schemas/#FlatMap)        | false    |                                                                                                                                             |
+| `agePolicy`  | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                    |
 
 Promise resolution:
 
@@ -92,7 +96,7 @@ JavaScript:
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
 
-let success = await Metrics.action('user', 'The user did foo', null)
+let success = await Metrics.action('user', 'The user did foo', undefined)
 console.log(success)
 ```
 
@@ -132,6 +136,76 @@ Response:
 
 ---
 
+### appInfo
+
+Inform the platform about an app's build info.
+
+```typescript
+function appInfo(build: string): Promise<null>
+```
+
+Parameters:
+
+| Param   | Type     | Required | Description                      |
+| ------- | -------- | -------- | -------------------------------- |
+| `build` | `string` | true     | The build / version of this app. |
+
+Promise resolution:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send appInfo metric
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let result = await Metrics.appInfo('1.2.2')
+console.log(result)
+```
+
+Value of `result`:
+
+```javascript
+null
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.appInfo",
+  "params": {
+    "build": "1.2.2"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": null
+}
+```
+
+</details>
+
+---
+
 ### error
 
 Inform the platform of an error that has occured in your app.
@@ -143,18 +217,20 @@ function error(
   description: string,
   visible: boolean,
   parameters: FlatMap,
+  agePolicy: AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param         | Type                                   | Required | Description                                                                                        |
-| ------------- | -------------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `type`        | [`ErrorType`](#errortype)              | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'` |
-| `code`        | `string`                               | true     | an app-specific error code                                                                         |
-| `description` | `string`                               | true     | A short description of the error                                                                   |
-| `visible`     | `boolean`                              | true     | Whether or not this error was visible to the user.                                                 |
-| `parameters`  | [`FlatMap`](../Types/schemas/#FlatMap) | false    | Optional additional parameters to be logged with the error                                         |
+| Param         | Type                                          | Required | Description                                                                                                              |
+| ------------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `type`        | [`ErrorType`](#errortype)                     | true     | The type of error <br/>values: `'network' \| 'media' \| 'restriction' \| 'entitlement' \| 'other'`                       |
+| `code`        | `string`                                      | true     | an app-specific error code                                                                                               |
+| `description` | `string`                                      | true     | A short description of the error                                                                                         |
+| `visible`     | `boolean`                                     | true     | Whether or not this error was visible to the user.                                                                       |
+| `parameters`  | [`FlatMap`](../Types/schemas/#FlatMap)        | false    | Optional additional parameters to be logged with the error                                                               |
+| `agePolicy`   | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -178,7 +254,7 @@ let success = await Metrics.error(
   'MEDIA-STALLED',
   'playback stalled',
   true,
-  null,
+  undefined,
 )
 console.log(success)
 ```
@@ -226,14 +302,15 @@ Response:
 Called when playback has stopped because the end of the media was reached.
 
 ```typescript
-function mediaEnded(entityId: string): Promise<boolean>
+function mediaEnded(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -296,14 +373,18 @@ Response:
 Called when setting the URL of a media asset to play, in order to infer load time.
 
 ```typescript
-function mediaLoadStart(entityId: string): Promise<boolean>
+function mediaLoadStart(
+  entityId: string,
+  agePolicy: AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -366,14 +447,15 @@ Response:
 Called when media playback will pause due to an intentional pause operation.
 
 ```typescript
-function mediaPause(entityId: string): Promise<boolean>
+function mediaPause(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -436,14 +518,15 @@ Response:
 Called when media playback should start due to autoplay, user-initiated play, or unpausing.
 
 ```typescript
-function mediaPlay(entityId: string): Promise<boolean>
+function mediaPlay(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -506,14 +589,15 @@ Response:
 Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interuption.
 
 ```typescript
-function mediaPlaying(entityId: string): Promise<boolean>
+function mediaPlaying(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -579,15 +663,17 @@ Called every 60 seconds as media playback progresses.
 function mediaProgress(
   entityId: string,
   progress: MediaPosition,
+  agePolicy: AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type                              | Required | Description                                                                                                                                                                |
-| ---------- | --------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entityId` | `string`                          | true     | The entityId of the media.                                                                                                                                                 |
-| `progress` | [`MediaPosition`](#mediaposition) | true     | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param       | Type                                          | Required | Description                                                                                                                                                                |
+| ----------- | --------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                                                                                 |
+| `progress`  | [`MediaPosition`](#mediaposition)             | true     | Progress of playback, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                                                   |
 
 Promise resolution:
 
@@ -651,15 +737,20 @@ Response:
 Called when the playback rate of media is changed.
 
 ```typescript
-function mediaRateChange(entityId: string, rate: number): Promise<boolean>
+function mediaRateChange(
+  entityId: string,
+  rate: number,
+  agePolicy: AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
-| `rate`     | `number` | true     | The new playback rate.     |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `rate`      | `number`                                      | true     | The new playback rate.                                                                                                   |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -729,18 +820,20 @@ function mediaRenditionChange(
   width: number,
   height: number,
   profile: string,
+  agePolicy: AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                                       |
-| ---------- | -------- | -------- | ------------------------------------------------- |
-| `entityId` | `string` | true     | The entityId of the media.                        |
-| `bitrate`  | `number` | true     | The new bitrate in kbps.                          |
-| `width`    | `number` | true     | The new resolution width.                         |
-| `height`   | `number` | true     | The new resolution height.                        |
-| `profile`  | `string` | false    | A description of the new profile, e.g. 'HDR' etc. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `bitrate`   | `number`                                      | true     | The new bitrate in kbps.                                                                                                 |
+| `width`     | `number`                                      | true     | The new resolution width.                                                                                                |
+| `height`    | `number`                                      | true     | The new resolution height.                                                                                               |
+| `profile`   | `string`                                      | false    | A description of the new profile, e.g. 'HDR' etc.                                                                        |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -816,15 +909,17 @@ Called when a seek is completed during media playback.
 function mediaSeeked(
   entityId: string,
   position: MediaPosition,
+  agePolicy: AgePolicy,
 ): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type                              | Required | Description                                                                                                                                                                                    |
-| ---------- | --------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entityId` | `string`                          | true     | The entityId of the media.                                                                                                                                                                     |
-| `position` | [`MediaPosition`](#mediaposition) | true     | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param       | Type                                          | Required | Description                                                                                                                                                                                    |
+| ----------- | --------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                                                                                                     |
+| `position`  | [`MediaPosition`](#mediaposition)             | true     | Resulting position of the seek operation, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                                                                       |
 
 Promise resolution:
 
@@ -888,15 +983,20 @@ Response:
 Called when a seek is initiated during media playback.
 
 ```typescript
-function mediaSeeking(entityId: string, target: MediaPosition): Promise<boolean>
+function mediaSeeking(
+  entityId: string,
+  target: MediaPosition,
+  agePolicy: AgePolicy,
+): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type                              | Required | Description                                                                                                                                                                          |
-| ---------- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `entityId` | `string`                          | true     | The entityId of the media.                                                                                                                                                           |
-| `target`   | [`MediaPosition`](#mediaposition) | true     | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| Param       | Type                                          | Required | Description                                                                                                                                                                          |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                                                                                           |
+| `target`    | [`MediaPosition`](#mediaposition)             | true     | Target destination of the seek, as a decimal percentage (0-0.999) for content with a known duration, or an integer number of seconds (0-86400) for content with an unknown duration. |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.                                                             |
 
 Promise resolution:
 
@@ -960,14 +1060,15 @@ Response:
 Called when media playback will halt due to a network, buffer, or other unintentional constraint.
 
 ```typescript
-function mediaWaiting(entityId: string): Promise<boolean>
+function mediaWaiting(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                |
-| ---------- | -------- | -------- | -------------------------- |
-| `entityId` | `string` | true     | The entityId of the media. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | true     | The entityId of the media.                                                                                               |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -1030,14 +1131,15 @@ Response:
 Inform the platform that your user has navigated to a page or view.
 
 ```typescript
-function page(pageId: string): Promise<boolean>
+function page(pageId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param    | Type     | Required | Description             |
-| -------- | -------- | -------- | ----------------------- |
-| `pageId` | `string` | true     | Page ID of the content. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `pageId`    | `string`                                      | true     | Page ID of the content.                                                                                                  |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -1139,181 +1241,20 @@ Response:
 
 ---
 
-### ready
-
-_This is an private RPC method._
-
-Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
-
-Result:
-
-Capabilities:
-
-| Role | Capability                              |
-| ---- | --------------------------------------- |
-| uses | xrn:firebolt:capability:metrics:general |
-
-#### Examples
-
-Send ready metric
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.ready",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
----
-
-### signIn
-
-_This is an private RPC method._
-
-Log a sign in event, called by Discovery.signIn().
-
-Result:
-
-Capabilities:
-
-| Role | Capability                              |
-| ---- | --------------------------------------- |
-| uses | xrn:firebolt:capability:metrics:general |
-
-#### Examples
-
-Send signIn metric
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.signIn",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
-Send signIn metric with entitlements
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.signIn",
-  "params": {
-    "entitlements": [
-      {
-        "entitlementId": "123",
-        "startTime": "2025-01-01T00:00:00.000Z",
-        "endTime": "2025-01-01T00:00:00.000Z"
-      }
-    ]
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
----
-
-### signOut
-
-_This is an private RPC method._
-
-Log a sign out event, called by Discovery.signOut().
-
-Result:
-
-Capabilities:
-
-| Role | Capability                              |
-| ---- | --------------------------------------- |
-| uses | xrn:firebolt:capability:metrics:general |
-
-#### Examples
-
-Send signOut metric
-
-JSON-RPC:
-
-Request:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "Metrics.signOut",
-  "params": {}
-}
-```
-
-Response:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": true
-}
-```
-
----
-
 ### startContent
 
 Inform the platform that your user has started content.
 
 ```typescript
-function startContent(entityId: string): Promise<boolean>
+function startContent(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                        |
-| ---------- | -------- | -------- | ---------------------------------- |
-| `entityId` | `string` | false    | Optional entity ID of the content. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | false    | Optional entity ID of the content.                                                                                       |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -1332,7 +1273,7 @@ JavaScript:
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
 
-let success = await Metrics.startContent(null)
+let success = await Metrics.startContent(undefined)
 console.log(success)
 ```
 
@@ -1411,6 +1352,51 @@ Response:
 
 </details>
 
+Send startContent metric and notify the platform that the content is child-directed
+
+JavaScript:
+
+```javascript
+import { Metrics } from '@firebolt-js/sdk'
+
+let success = await Metrics.startContent('abc', 'app:child')
+console.log(success)
+```
+
+Value of `success`:
+
+```javascript
+true
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.startContent",
+  "params": {
+    "entityId": "abc",
+    "agePolicy": "app:child"
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+</details>
+
 ---
 
 ### stopContent
@@ -1418,14 +1404,15 @@ Response:
 Inform the platform that your user has stopped content.
 
 ```typescript
-function stopContent(entityId: string): Promise<boolean>
+function stopContent(entityId: string, agePolicy: AgePolicy): Promise<boolean>
 ```
 
 Parameters:
 
-| Param      | Type     | Required | Description                        |
-| ---------- | -------- | -------- | ---------------------------------- |
-| `entityId` | `string` | false    | Optional entity ID of the content. |
+| Param       | Type                                          | Required | Description                                                                                                              |
+| ----------- | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `entityId`  | `string`                                      | false    | Optional entity ID of the content.                                                                                       |
+| `agePolicy` | [`AgePolicy`](../Policies/schemas/#AgePolicy) | false    | The age policy to associate with the metrics event. The age policy describes the age group to which content is directed. |
 
 Promise resolution:
 
@@ -1444,7 +1431,7 @@ JavaScript:
 ```javascript
 import { Metrics } from '@firebolt-js/sdk'
 
-let success = await Metrics.stopContent(null)
+let success = await Metrics.stopContent(undefined)
 console.log(success)
 ```
 
@@ -1524,6 +1511,175 @@ Response:
 </details>
 
 ---
+
+## Private Methods
+
+<details markdown="1"  id="private-methods-details">
+  <summary>View</summary>
+
+### ready
+
+_This is a private RPC method._
+
+Inform the platform that your app is minimally usable. This method is called automatically by `Lifecycle.ready()`
+
+Result:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send ready metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.ready",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+---
+
+### signIn
+
+_This is a private RPC method._
+
+Log a sign in event, called by Discovery.signIn().
+
+Result:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send signIn metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signIn",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+Send signIn metric with entitlements
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signIn",
+  "params": {
+    "entitlements": [
+      {
+        "entitlementId": "123",
+        "startTime": "2025-01-01T00:00:00.000Z",
+        "endTime": "2025-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+---
+
+### signOut
+
+_This is a private RPC method._
+
+Log a sign out event, called by Discovery.signOut().
+
+Result:
+
+Capabilities:
+
+| Role | Capability                              |
+| ---- | --------------------------------------- |
+| uses | xrn:firebolt:capability:metrics:general |
+
+#### Examples
+
+Send signOut metric
+
+JSON-RPC:
+
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Metrics.signOut",
+  "params": {}
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": true
+}
+```
+
+---
+
+</details>
 
 ## Types
 

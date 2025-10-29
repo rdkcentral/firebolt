@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Capabilities 1.2.1-main.0
+Version Capabilities 1.8.0-main.0
 
 ## Table of Contents
 
@@ -31,6 +31,11 @@ Version Capabilities 1.2.1-main.0
   - [granted](#granted-1)
   - [revoked](#revoked)
   - [unavailable](#unavailable)
+- [Private Events](#private-events)<details markdown="1"  ontoggle="document.getElementById('private-events-details').open=this.open"><summary>Show</summary>
+  - [granted](#granted-2)
+  - [revoked](#revoked-1)
+  - [unavailable](#unavailable-1)
+  </details>
 - [Types](#types)
   - [CapabilityOption](#capabilityoption)
 
@@ -168,7 +173,8 @@ Response:
 
 ### granted
 
-Returns whether the current App has a user grant for passed capability and role.
+Returns whether or not the user has granted the app with the provided capability and role.
+This will return 'null' if the user has not yet specified whether or not they grant the app with the provided permission, in which case the app can request permission by calling Capabilities.request().
 
 ```typescript
 function granted(
@@ -194,7 +200,7 @@ Capabilities:
 
 #### Examples
 
-Default capabilities without grants.
+The user has granted the app with permission to use the keyboard.
 
 JavaScript:
 
@@ -203,7 +209,6 @@ import { Capabilities } from '@firebolt-js/sdk'
 
 let granted = await Capabilities.granted(
   'xrn:firebolt:capability:input:keyboard',
-  null,
 )
 console.log(granted)
 ```
@@ -241,7 +246,7 @@ Response:
 
 </details>
 
-Get Postal code without grants.
+The user has denied the app access to their postal code.
 
 JavaScript:
 
@@ -250,7 +255,6 @@ import { Capabilities } from '@firebolt-js/sdk'
 
 let granted = await Capabilities.granted(
   'xrn:firebolt:capability:localization:postal-code',
-  null,
 )
 console.log(granted)
 ```
@@ -288,7 +292,7 @@ Response:
 
 </details>
 
-Get Postal code with grants.
+The user has not yet specified whether they grant the app access to their postal code.
 
 JavaScript:
 
@@ -297,7 +301,6 @@ import { Capabilities } from '@firebolt-js/sdk'
 
 let granted = await Capabilities.granted(
   'xrn:firebolt:capability:localization:postal-code',
-  null,
 )
 console.log(granted)
 ```
@@ -339,7 +342,7 @@ Response:
 
 ### info
 
-Returns an array of CapabilityInfo objects for the passed in capabilities.
+Returns an array of CapabilityInfo objects for the provided capabilities.
 
 ```typescript
 function info(capabilities: Capability[]): Promise<CapabilityInfo[]>
@@ -895,7 +898,7 @@ See [Listening for events](../../docs/listening-for-events/) for more informatio
 
 ### permitted
 
-Returns whether the current App has permission to the passed capability and role.
+Returns whether or not the platform operator has granted the app with the provided capability and role.
 
 ```typescript
 function permitted(
@@ -921,7 +924,7 @@ Capabilities:
 
 #### Examples
 
-Keyboard
+Platform operator allows the app to use the keyboard
 
 JavaScript:
 
@@ -930,7 +933,6 @@ import { Capabilities } from '@firebolt-js/sdk'
 
 let permitted = await Capabilities.permitted(
   'xrn:firebolt:capability:input:keyboard',
-  null,
 )
 console.log(permitted)
 ```
@@ -968,7 +970,7 @@ Response:
 
 </details>
 
-Keyboard incorrect manage role capability
+Platform operator does not allow the app to manage the keyboard
 
 JavaScript:
 
@@ -1018,7 +1020,7 @@ Response:
 
 </details>
 
-Wifi scan not permitted capability
+Platform operator does not allow the app to perform wifi scans
 
 JavaScript:
 
@@ -1027,7 +1029,6 @@ import { Capabilities } from '@firebolt-js/sdk'
 
 let permitted = await Capabilities.permitted(
   'xrn:firebolt:capability:wifi:scan',
-  null,
 )
 console.log(permitted)
 ```
@@ -1739,6 +1740,453 @@ Response:
 </details>
 
 ---
+
+## Private Events
+
+<details markdown="1"  id="private-events-details">
+  <summary>View</summary>
+
+### available
+
+```typescript
+function listen('available', capability: Capability, () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+
+Event value:
+
+[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+
+Capabilities:
+
+| Role | Capability                                |
+| ---- | ----------------------------------------- |
+| uses | xrn:firebolt:capability:capabilities:info |
+
+#### Examples
+
+Platform token is available
+
+JavaScript:
+
+```javascript
+import { Capabilities } from '@firebolt-js/sdk'
+
+Capabilities.listen('available', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"capability": "xrn:firebolt:capability:token:platform",
+	"supported": true,
+	"available": true,
+	"use": {
+		"permitted": true,
+		"granted": true
+	},
+	"manage": {
+		"permitted": true,
+		"granted": true
+	},
+	"provide": {
+		"permitted": true,
+		"granted": true
+	},
+	"details": [
+		"unpermitted"
+	]
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Capabilities.onAvailable",
+  "params": {
+    "capability": "xrn:firebolt:capability:token:platform",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "capability": "xrn:firebolt:capability:token:platform",
+    "supported": true,
+    "available": true,
+    "use": {
+      "permitted": true,
+      "granted": true
+    },
+    "manage": {
+      "permitted": true,
+      "granted": true
+    },
+    "provide": {
+      "permitted": true,
+      "granted": true
+    },
+    "details": ["unpermitted"]
+  }
+}
+```
+
+</details>
+
+---
+
+### granted
+
+```typescript
+function listen('granted', role: Role, capability: Capability, () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+
+Event value:
+
+[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+
+Capabilities:
+
+| Role | Capability                                |
+| ---- | ----------------------------------------- |
+| uses | xrn:firebolt:capability:capabilities:info |
+
+#### Examples
+
+Postal code granted
+
+JavaScript:
+
+```javascript
+import { Capabilities } from '@firebolt-js/sdk'
+
+Capabilities.listen('granted', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"capability": "xrn:firebolt:capability:localization:postal-code",
+	"supported": true,
+	"available": true,
+	"use": {
+		"permitted": true,
+		"granted": true
+	},
+	"manage": {
+		"permitted": true,
+		"granted": true
+	},
+	"provide": {
+		"permitted": true,
+		"granted": true
+	}
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Capabilities.onGranted",
+  "params": {
+    "role": "use",
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "supported": true,
+    "available": true,
+    "use": {
+      "permitted": true,
+      "granted": true
+    },
+    "manage": {
+      "permitted": true,
+      "granted": true
+    },
+    "provide": {
+      "permitted": true,
+      "granted": true
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+### revoked
+
+```typescript
+function listen('revoked', role: Role, capability: Capability, () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `role`       | [`Role`](../Capabilities/schemas/#Role)             | true     | <br/>values: `'use' \| 'manage' \| 'provide'`                          |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+
+Event value:
+
+[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+
+Capabilities:
+
+| Role | Capability                                |
+| ---- | ----------------------------------------- |
+| uses | xrn:firebolt:capability:capabilities:info |
+
+#### Examples
+
+Postal code revoked
+
+JavaScript:
+
+```javascript
+import { Capabilities } from '@firebolt-js/sdk'
+
+Capabilities.listen('revoked', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"capability": "xrn:firebolt:capability:localization:postal-code",
+	"supported": true,
+	"available": true,
+	"use": {
+		"permitted": true,
+		"granted": true
+	},
+	"manage": {
+		"permitted": true,
+		"granted": true
+	},
+	"provide": {
+		"permitted": true,
+		"granted": true
+	},
+	"details": [
+		"grantDenied"
+	]
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Capabilities.onRevoked",
+  "params": {
+    "role": "use",
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "capability": "xrn:firebolt:capability:localization:postal-code",
+    "supported": true,
+    "available": true,
+    "use": {
+      "permitted": true,
+      "granted": true
+    },
+    "manage": {
+      "permitted": true,
+      "granted": true
+    },
+    "provide": {
+      "permitted": true,
+      "granted": true
+    },
+    "details": ["grantDenied"]
+  }
+}
+```
+
+</details>
+
+---
+
+### unavailable
+
+```typescript
+function listen('unavailable', capability: Capability, () => void): Promise<number>
+```
+
+See also: [listen()](#listen), [once()](#listen), [clear()](#listen).
+
+Parameters:
+
+| Param        | Type                                                | Required | Description                                                            |
+| ------------ | --------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `capability` | [`Capability`](../Capabilities/schemas/#Capability) | true     | <br/>pattern: ^xrn:firebolt:capability:([a-z0-9\-]+)((:[a-z0-9\-]+)?)$ |
+
+Event value:
+
+[CapabilityInfo](../Capabilities/schemas/#CapabilityInfo)
+
+Capabilities:
+
+| Role | Capability                                |
+| ---- | ----------------------------------------- |
+| uses | xrn:firebolt:capability:capabilities:info |
+
+#### Examples
+
+Platform token is unavailable.
+
+JavaScript:
+
+```javascript
+import { Capabilities } from '@firebolt-js/sdk'
+
+Capabilities.listen('unavailable', (value) => {
+  console.log(value)
+})
+```
+
+Value of `value`:
+
+```javascript
+{
+	"capability": "xrn:firebolt:capability:token:platform",
+	"supported": true,
+	"available": false,
+	"use": {
+		"permitted": true,
+		"granted": true
+	},
+	"manage": {
+		"permitted": true,
+		"granted": true
+	},
+	"provide": {
+		"permitted": true,
+		"granted": true
+	},
+	"details": [
+		"unavailable"
+	]
+}
+```
+
+<details markdown="1" >
+<summary>JSON-RPC:</summary>
+Request:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "Capabilities.onUnavailable",
+  "params": {
+    "capability": "xrn:firebolt:capability:token:platform",
+    "listen": true
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "capability": "xrn:firebolt:capability:token:platform",
+    "supported": true,
+    "available": false,
+    "use": {
+      "permitted": true,
+      "granted": true
+    },
+    "manage": {
+      "permitted": true,
+      "granted": true
+    },
+    "provide": {
+      "permitted": true,
+      "granted": true
+    },
+    "details": ["unavailable"]
+  }
+}
+```
+
+</details>
+
+---
+
+</details>
 
 ## Types
 

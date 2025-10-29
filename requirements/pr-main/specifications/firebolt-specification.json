@@ -6,471 +6,6 @@
 		"readable": "Firebolt Version Manifest v1.0.0"
 	},
 	"capabilities": {
-		"xrn:firebolt:capability:lifecycle:initialize": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:lifecycle:ready": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:lifecycle:state": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:advertising:configuration": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:account:id": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:advertising:identifier": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:discovery:sign-in-status": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:discovery:watch-next": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:discovery:watched": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:input:keyboard": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:grants:state": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:locality": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:location": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:postal-code": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:localization:time-zone": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:protocol:dial": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:protocol:wifi": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:privacy:settings": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:account": {
-			"level": "should",
-			"use": {
-				"public": false,
-				"negotiable": false
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:device": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:platform": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:root": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:token:session": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:usergrant:acknowledgechallenge": {
-			"level": "should",
-			"use": {
-				"public": false,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:usergrant:pinchallenge": {
-			"level": "should",
-			"use": {
-				"public": false,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": true,
-				"negotiable": true
-			}
-		},
-		"xrn:firebolt:capability:capabilities:info": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:capabilities:request": {
-			"level": "must",
-			"use": {
-				"public": true,
-				"negotiable": false
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:privacy:advertising": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:metrics:distributor": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:storage:secure": {
-			"level": "could",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": true,
-				"negotiable": true
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
-		"xrn:firebolt:capability:account:uid": {
-			"level": "should",
-			"use": {
-				"public": true,
-				"negotiable": true
-			},
-			"manage": {
-				"public": false,
-				"negotiable": false
-			},
-			"provide": {
-				"public": false,
-				"negotiable": false
-			}
-		},
 		"xrn:firebolt:capability:accessibility:audiodescriptions": {
 			"level": "must",
 			"use": {
@@ -501,6 +36,21 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:accessibility:highcontrastui": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:accessibility:voiceguidance": {
 			"level": "must",
 			"use": {
@@ -510,6 +60,81 @@
 			"manage": {
 				"public": true,
 				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:account:id": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:account:uid": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:advertising:configuration": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:advertising:identifier": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:advertising:policy": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
 			},
 			"provide": {
 				"public": false,
@@ -536,6 +161,36 @@
 			"use": {
 				"public": true,
 				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:capabilities:info": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:capabilities:request": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
 			},
 			"manage": {
 				"public": false,
@@ -756,6 +411,81 @@
 				"negotiable": true
 			}
 		},
+		"xrn:firebolt:capability:discovery:sign-in-status": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:discovery:watch-next": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:discovery:watched": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:grants:state": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:input:keyboard": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
+		},
 		"xrn:firebolt:capability:inputs:hdmi": {
 			"level": "must",
 			"use": {
@@ -765,6 +495,21 @@
 			"manage": {
 				"public": true,
 				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:lifecycle:initialize": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
 			},
 			"provide": {
 				"public": false,
@@ -784,6 +529,36 @@
 			"provide": {
 				"public": false,
 				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:lifecycle:ready": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:lifecycle:state": {
+			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": true
 			}
 		},
 		"xrn:firebolt:capability:localization:additional-info": {
@@ -846,6 +621,81 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:localization:locality": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:localization:location": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:localization:postal-code": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:localization:time-zone": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:metrics:distributor": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:metrics:general": {
 			"level": "must",
 			"use": {
@@ -891,8 +741,53 @@
 				"negotiable": false
 			}
 		},
+		"xrn:firebolt:capability:privacy:settings": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
 		"xrn:firebolt:capability:profile:flags": {
 			"level": "must",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:protocol:dial": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:protocol:wifi": {
+			"level": "could",
 			"use": {
 				"public": true,
 				"negotiable": true
@@ -920,6 +815,141 @@
 				"public": false,
 				"negotiable": false
 			}
+		},
+		"xrn:firebolt:capability:secondscreen:protocol": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:storage:secure": {
+			"level": "could",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:account": {
+			"level": "should",
+			"use": {
+				"public": false,
+				"negotiable": false
+			},
+			"manage": {
+				"public": true,
+				"negotiable": true
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:device": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:platform": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:root": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:token:session": {
+			"level": "should",
+			"use": {
+				"public": true,
+				"negotiable": true
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": false,
+				"negotiable": false
+			}
+		},
+		"xrn:firebolt:capability:usergrant:acknowledgechallenge": {
+			"level": "should",
+			"use": {
+				"public": false,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
+		},
+		"xrn:firebolt:capability:usergrant:pinchallenge": {
+			"level": "should",
+			"use": {
+				"public": false,
+				"negotiable": false
+			},
+			"manage": {
+				"public": false,
+				"negotiable": false
+			},
+			"provide": {
+				"public": true,
+				"negotiable": true
+			}
 		}
 	},
 	"apis": {
@@ -927,7 +957,7 @@
 			"openrpc": "1.2.4",
 			"info": {
 				"title": "Firebolt JSON-RPC API",
-				"version": "1.2.1-main.0",
+				"version": "1.8.0-main.0",
 				"x-module-descriptions": {
 					"Internal": "Internal methods for SDK / FEE integration",
 					"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -952,7 +982,7 @@
 					"SecondScreen": "Methods for communicating with second screen devices",
 					"SecureStorage": "A module for storing and retrieving secure data owned by the app",
 					"UserGrants": "A module for managing grants given by the user",
-					"VoiceGuidance": "A module for managing voice-guidance Settings.",
+					"VoiceGuidance": "A module for managing voice guidance settings.",
 					"Wifi": "A module for providing support for Wifi."
 				}
 			},
@@ -1015,17 +1045,7 @@
 						"name": "session",
 						"summary": "Info about the SDK/FEE session",
 						"schema": {
-							"type": "object",
-							"required": [
-								"version"
-							],
-							"properties": {
-								"version": {
-									"$ref": "#/x-schemas/Types/SemanticVersion",
-									"description": "The semantic version of the FEE."
-								}
-							},
-							"additionalProperties": false
+							"$ref": "#/components/schemas/InitializeResult"
 						}
 					},
 					"examples": [
@@ -1165,6 +1185,39 @@
 					]
 				},
 				{
+					"name": "Accessibility.highContrastUI",
+					"summary": "The user's preference for a high-contrast UI",
+					"params": [],
+					"tags": [
+						{
+							"name": "property:readonly"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:highcontrastui"
+							]
+						}
+					],
+					"result": {
+						"name": "highContrastUI",
+						"summary": "Whether high-contrast UI mode is enabled",
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					"examples": [
+						{
+							"name": "High-contrast UI mode is enabled",
+							"params": [],
+							"result": {
+								"name": "Default Result",
+								"value": true
+							}
+						}
+					]
+				},
+				{
 					"name": "Accessibility.voiceGuidance",
 					"summary": "Get the user's preferred voice guidance settings",
 					"params": [],
@@ -1196,7 +1249,8 @@
 								"name": "Default Result",
 								"value": {
 									"enabled": true,
-									"speed": 2
+									"navigationHints": true,
+									"rate": 1
 								}
 							}
 						}
@@ -1232,7 +1286,8 @@
 								"name": "Default Result",
 								"value": {
 									"enabled": true,
-									"speed": 2
+									"navigationHints": true,
+									"rate": 1
 								}
 							}
 						}
@@ -1352,6 +1407,64 @@
 					]
 				},
 				{
+					"name": "Accessibility.onHighContrastUIChanged",
+					"summary": "The user's preference for a high-contrast UI",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "Accessibility.highContrastUI"
+						},
+						{
+							"name": "event",
+							"x-alternative": "highContrastUI"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:highcontrastui"
+							]
+						}
+					],
+					"result": {
+						"name": "highContrastUI",
+						"summary": "Whether high-contrast UI mode is enabled",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "boolean"
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "High-contrast UI mode is enabled",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "Default Result",
+								"value": true
+							}
+						}
+					]
+				},
+				{
 					"name": "Accessibility.onVoiceGuidanceSettingsChanged",
 					"summary": "Get the user's preferred voice guidance settings",
 					"params": [
@@ -1406,7 +1519,8 @@
 								"name": "Default Result",
 								"value": {
 									"enabled": true,
-									"speed": 2
+									"navigationHints": true,
+									"rate": 1
 								}
 							}
 						}
@@ -1965,8 +2079,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:privacy:advertising",
-								"xrn:firebolt:capability:advertising:configuration"
+								"xrn:firebolt:capability:advertising:policy"
 							]
 						}
 					],
@@ -2041,7 +2154,7 @@
 							]
 						}
 					],
-					"summary": "Get the advertising ID",
+					"summary": "Get the IAB compliant identifier for advertising (IFA). It is recommended to use the IFA to manage advertising related activities while respecting the user's privacy settings.",
 					"params": [
 						{
 							"name": "options",
@@ -2056,21 +2169,7 @@
 						"name": "advertisingId",
 						"summary": "the advertising ID",
 						"schema": {
-							"type": "object",
-							"properties": {
-								"ifa": {
-									"type": "string"
-								},
-								"ifa_type": {
-									"type": "string"
-								},
-								"lmt": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"ifa"
-							]
+							"$ref": "#/components/schemas/AdvertisingIdResult"
 						}
 					},
 					"examples": [
@@ -2081,7 +2180,7 @@
 								"name": "Default Result",
 								"value": {
 									"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-									"ifa_type": "idfa",
+									"ifa_type": "sspid",
 									"lmt": "0"
 								}
 							}
@@ -2103,7 +2202,7 @@
 								"name": "Default Result",
 								"value": {
 									"ifa": "01234567-89AB-CDEF-GH01-23456789ABCD",
-									"ifa_type": "idfa",
+									"ifa_type": "sspid",
 									"lmt": "0"
 								}
 							}
@@ -2187,7 +2286,7 @@
 							"params": [],
 							"result": {
 								"name": "Default Result",
-								"value": "operator.app"
+								"value": "app.operator"
 							}
 						}
 					]
@@ -2315,8 +2414,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:privacy:advertising",
-								"xrn:firebolt:capability:advertising:configuration"
+								"xrn:firebolt:capability:advertising:policy"
 							]
 						}
 					],
@@ -2619,22 +2717,7 @@
 						"name": "token",
 						"summary": "the token value, type, and expiration",
 						"schema": {
-							"type": "object",
-							"properties": {
-								"value": {
-									"type": "string"
-								},
-								"expires": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"type": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"value"
-							]
+							"$ref": "#/components/schemas/AuthenticationTokenResult"
 						}
 					},
 					"examples": [
@@ -2905,7 +2988,7 @@
 				},
 				{
 					"name": "Capabilities.permitted",
-					"summary": "Returns whether the current App has permission to the passed capability and role.",
+					"summary": "Returns whether or not the platform operator has granted the app with the provided capability and role.",
 					"tags": [
 						{
 							"name": "capabilities",
@@ -2932,14 +3015,14 @@
 					],
 					"result": {
 						"name": "permitted",
-						"summary": "Whether or not app is permitted for the given capability and the role",
+						"summary": "Whether or not the app is permitted to the provided capability and role",
 						"schema": {
 							"type": "boolean"
 						}
 					},
 					"examples": [
 						{
-							"name": "Keyboard",
+							"name": "Platform operator allows the app to use the keyboard",
 							"params": [
 								{
 									"name": "capability",
@@ -2952,7 +3035,7 @@
 							}
 						},
 						{
-							"name": "Keyboard incorrect manage role capability",
+							"name": "Platform operator does not allow the app to manage the keyboard",
 							"params": [
 								{
 									"name": "capability",
@@ -2971,7 +3054,7 @@
 							}
 						},
 						{
-							"name": "Wifi scan not permitted capability",
+							"name": "Platform operator does not allow the app to perform wifi scans",
 							"params": [
 								{
 									"name": "capability",
@@ -2987,7 +3070,7 @@
 				},
 				{
 					"name": "Capabilities.granted",
-					"summary": "Returns whether the current App has a user grant for passed capability and role.",
+					"summary": "Returns whether or not the user has granted the app with the provided capability and role.\nThis will return 'null' if the user has not yet specified whether or not they grant the app with the provided permission, in which case the app can request permission by calling Capabilities.request().",
 					"tags": [
 						{
 							"name": "capabilities",
@@ -3014,7 +3097,7 @@
 					],
 					"result": {
 						"name": "granted",
-						"summary": "Whether or not app is granted to use the given capability and the role",
+						"summary": "Whether or not the app is granted the provided capability and role",
 						"schema": {
 							"oneOf": [
 								{
@@ -3028,7 +3111,7 @@
 					},
 					"examples": [
 						{
-							"name": "Default capabilities without grants.",
+							"name": "The user has granted the app with permission to use the keyboard.",
 							"params": [
 								{
 									"name": "capability",
@@ -3041,7 +3124,7 @@
 							}
 						},
 						{
-							"name": "Get Postal code without grants.",
+							"name": "The user has denied the app access to their postal code.",
 							"params": [
 								{
 									"name": "capability",
@@ -3054,7 +3137,7 @@
 							}
 						},
 						{
-							"name": "Get Postal code with grants.",
+							"name": "The user has not yet specified whether they grant the app access to their postal code.",
 							"params": [
 								{
 									"name": "capability",
@@ -3070,7 +3153,7 @@
 				},
 				{
 					"name": "Capabilities.info",
-					"summary": "Returns an array of CapabilityInfo objects for the passed in capabilities.",
+					"summary": "Returns an array of CapabilityInfo objects for the provided capabilities.",
 					"tags": [
 						{
 							"name": "capabilities",
@@ -6748,7 +6831,7 @@
 				},
 				{
 					"name": "Device.distributor",
-					"summary": "Get the distributor ID for this device",
+					"summary": "Get the name of the entity which is distributing the current device. There can be multiple distributors which distribute the same device model.",
 					"params": [],
 					"tags": [
 						{
@@ -6781,7 +6864,7 @@
 				},
 				{
 					"name": "Device.platform",
-					"summary": "Get the platform ID for this device",
+					"summary": "Get a platform identifier for the device. This API should be used to correlate metrics on the device only and cannot be guaranteed to have consistent responses across platforms.",
 					"params": [],
 					"tags": [
 						{
@@ -6880,7 +6963,7 @@
 				},
 				{
 					"name": "Device.model",
-					"summary": "Get the device model",
+					"summary": "Get the manufacturer designated model of the device",
 					"params": [],
 					"tags": [
 						{
@@ -6946,7 +7029,7 @@
 				},
 				{
 					"name": "Device.make",
-					"summary": "Get the device make",
+					"summary": "Get the manufacturer of the device model",
 					"params": [],
 					"tags": [
 						{
@@ -6999,34 +7082,7 @@
 						"name": "versions",
 						"summary": "the versions",
 						"schema": {
-							"type": "object",
-							"properties": {
-								"sdk": {
-									"$ref": "#/x-schemas/Types/SemanticVersion",
-									"description": "The Firebolt SDK version"
-								},
-								"api": {
-									"$ref": "#/x-schemas/Types/SemanticVersion",
-									"description": "The lateset Firebolt API version supported by the curent device."
-								},
-								"firmware": {
-									"$ref": "#/x-schemas/Types/SemanticVersion",
-									"description": "The device firmware version."
-								},
-								"os": {
-									"$ref": "#/x-schemas/Types/SemanticVersion",
-									"description": "**Deprecated** Use `firmware`, instead."
-								},
-								"debug": {
-									"type": "string",
-									"description": "Detail version as a string, for debugging purposes"
-								}
-							},
-							"required": [
-								"api",
-								"firmware",
-								"os"
-							]
+							"$ref": "#/components/schemas/DeviceVersion"
 						}
 					},
 					"examples": [
@@ -7068,7 +7124,7 @@
 				},
 				{
 					"name": "Device.hdcp",
-					"summary": "Get the supported HDCP profiles",
+					"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 					"params": [],
 					"tags": [
 						{
@@ -7082,15 +7138,15 @@
 						}
 					],
 					"result": {
-						"name": "supportedHdcpProfiles",
-						"summary": "the supported HDCP profiles",
+						"name": "negotiatedHdcpVersions",
+						"summary": "the negotiated HDCP versions",
 						"schema": {
-							"$ref": "#/x-schemas/Types/BooleanMap"
+							"$ref": "#/components/schemas/HDCPVersionMap"
 						}
 					},
 					"examples": [
 						{
-							"name": "Getting the supported HDCP profiles",
+							"name": "Getting the negotiated HDCP versions",
 							"params": [],
 							"result": {
 								"name": "Default Result",
@@ -7104,7 +7160,7 @@
 				},
 				{
 					"name": "Device.hdr",
-					"summary": "Get the supported HDR profiles",
+					"summary": "Get the negotiated HDR formats for the connected display and device",
 					"params": [],
 					"tags": [
 						{
@@ -7118,15 +7174,15 @@
 						}
 					],
 					"result": {
-						"name": "supportedHdrProfiles",
-						"summary": "the supported HDR profiles",
+						"name": "negotiatedHdrFormats",
+						"summary": "the negotiated HDR formats",
 						"schema": {
-							"$ref": "#/x-schemas/Types/BooleanMap"
+							"$ref": "#/components/schemas/HDRFormatMap"
 						}
 					},
 					"examples": [
 						{
-							"name": "Getting the supported HDR profiles",
+							"name": "Getting the negotiated HDR formats",
 							"params": [],
 							"result": {
 								"name": "Default Result",
@@ -7142,7 +7198,7 @@
 				},
 				{
 					"name": "Device.audio",
-					"summary": "Get the supported audio profiles",
+					"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.",
 					"params": [],
 					"tags": [
 						{
@@ -7180,7 +7236,7 @@
 				},
 				{
 					"name": "Device.screenResolution",
-					"summary": "Get the current screen resolution",
+					"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160] \n\n**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
 					"params": [],
 					"tags": [
 						{
@@ -7191,6 +7247,11 @@
 							"x-uses": [
 								"xrn:firebolt:capability:device:info"
 							]
+						},
+						{
+							"name": "deprecated",
+							"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+							"x-since": "1.4.0"
 						}
 					],
 					"result": {
@@ -7216,7 +7277,7 @@
 				},
 				{
 					"name": "Device.videoResolution",
-					"summary": "Get the current video resolution",
+					"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160]",
 					"params": [],
 					"tags": [
 						{
@@ -7368,19 +7429,7 @@
 						"name": "networkInfo",
 						"summary": "the status and type",
 						"schema": {
-							"type": "object",
-							"properties": {
-								"state": {
-									"$ref": "#/components/schemas/NetworkState"
-								},
-								"type": {
-									"$ref": "#/components/schemas/NetworkType"
-								}
-							},
-							"required": [
-								"state",
-								"type"
-							]
+							"$ref": "#/components/schemas/NetworkInfoResult"
 						}
 					},
 					"examples": [
@@ -7555,7 +7604,7 @@
 				},
 				{
 					"name": "Device.onHdcpChanged",
-					"summary": "Get the supported HDCP profiles",
+					"summary": "Get the negotiated HDCP profiles for a connected device. \n\n For devices that do not require additional connections (e.g. panels), `true` will be returned for all profiles.",
 					"params": [
 						{
 							"name": "listen",
@@ -7582,22 +7631,22 @@
 						}
 					],
 					"result": {
-						"name": "supportedHdcpProfiles",
-						"summary": "the supported HDCP profiles",
+						"name": "negotiatedHdcpVersions",
+						"summary": "the negotiated HDCP versions",
 						"schema": {
 							"anyOf": [
 								{
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/x-schemas/Types/BooleanMap"
+									"$ref": "#/components/schemas/HDCPVersionMap"
 								}
 							]
 						}
 					},
 					"examples": [
 						{
-							"name": "Getting the supported HDCP profiles",
+							"name": "Getting the negotiated HDCP versions",
 							"params": [
 								{
 									"name": "listen",
@@ -7616,7 +7665,7 @@
 				},
 				{
 					"name": "Device.onHdrChanged",
-					"summary": "Get the supported HDR profiles",
+					"summary": "Get the negotiated HDR formats for the connected display and device",
 					"params": [
 						{
 							"name": "listen",
@@ -7643,22 +7692,22 @@
 						}
 					],
 					"result": {
-						"name": "supportedHdrProfiles",
-						"summary": "the supported HDR profiles",
+						"name": "negotiatedHdrFormats",
+						"summary": "the negotiated HDR formats",
 						"schema": {
 							"anyOf": [
 								{
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/x-schemas/Types/BooleanMap"
+									"$ref": "#/components/schemas/HDRFormatMap"
 								}
 							]
 						}
 					},
 					"examples": [
 						{
-							"name": "Getting the supported HDR profiles",
+							"name": "Getting the negotiated HDR formats",
 							"params": [
 								{
 									"name": "listen",
@@ -7679,7 +7728,7 @@
 				},
 				{
 					"name": "Device.onAudioChanged",
-					"summary": "Get the supported audio profiles",
+					"summary": "Get the supported audio profiles for the connected devices. \n\n It is not recommended to use this API for visual badging on content within your app since this does not reflect the settings of the user.",
 					"params": [
 						{
 							"name": "listen",
@@ -7742,7 +7791,7 @@
 				},
 				{
 					"name": "Device.onScreenResolutionChanged",
-					"summary": "Get the current screen resolution",
+					"summary": "Get the resolution for the graphical surface of the app. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160] \n\n**Deprecated:** Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
 					"params": [
 						{
 							"name": "listen",
@@ -7766,6 +7815,11 @@
 							"x-uses": [
 								"xrn:firebolt:capability:device:info"
 							]
+						},
+						{
+							"name": "deprecated",
+							"x-alternative": "Use non-Firebolt APIs specific to your platform, e.g. W3C APIs",
+							"x-since": "1.4.0"
 						}
 					],
 					"result": {
@@ -7803,7 +7857,7 @@
 				},
 				{
 					"name": "Device.onVideoResolutionChanged",
-					"summary": "Get the current video resolution",
+					"summary": "Get the maximum supported video resolution of the currently connected device and display. \n\nThe pairs returned will be of a [width, height] format and will correspond to the following values: \n\nNTSC Standard Definition (SD): [720, 480] \n\nPAL Standard Definition (SD): [720, 576] \n\nHigh Definition (HD): [1280, 720] \n\nFull HD (FHD): [1920, 1080]\n\n4K Ultra High Definition (UHD): [3840, 2160]",
 					"params": [
 						{
 							"name": "listen",
@@ -7899,19 +7953,7 @@
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"type": "object",
-									"properties": {
-										"state": {
-											"$ref": "#/components/schemas/NetworkState"
-										},
-										"type": {
-											"$ref": "#/components/schemas/NetworkType"
-										}
-									},
-									"required": [
-										"state",
-										"type"
-									]
+									"$ref": "#/components/schemas/NetworkInfoResult"
 								}
 							]
 						}
@@ -7997,7 +8039,7 @@
 				},
 				{
 					"name": "Discovery.policy",
-					"summary": "get the discovery policy",
+					"summary": "Get the discovery policy",
 					"params": [],
 					"tags": [
 						{
@@ -8550,7 +8592,7 @@
 						},
 						{
 							"name": "progress",
-							"summary": "How much of the content has been watched (percentage as 0-1 for VOD, number of seconds for live)",
+							"summary": "How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live)",
 							"schema": {
 								"type": "number",
 								"minimum": 0
@@ -8570,6 +8612,13 @@
 								"type": "string",
 								"format": "date-time"
 							}
+						},
+						{
+							"name": "agePolicy",
+							"description": "The age policy associated with the watch event. The age policy describes the age groups to which content may be directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -8581,7 +8630,7 @@
 					},
 					"examples": [
 						{
-							"name": "Notifying the platform of watched content",
+							"name": "Notify the platform of watched content",
 							"params": [
 								{
 									"name": "entityId",
@@ -8598,6 +8647,35 @@
 								{
 									"name": "watchedOn",
 									"value": "2021-04-23T18:25:43.511Z"
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
+						},
+						{
+							"name": "Notify the platform that child-directed content was watched",
+							"params": [
+								{
+									"name": "entityId",
+									"value": "partner.com/entity/123"
+								},
+								{
+									"name": "progress",
+									"value": 0.95
+								},
+								{
+									"name": "completed",
+									"value": true
+								},
+								{
+									"name": "watchedOn",
+									"value": "2021-04-23T18:25:43.511Z"
+								},
+								{
+									"name": "agePolicy",
+									"value": "app:child"
 								}
 							],
 							"result": {
@@ -8631,7 +8709,7 @@
 							"name": "identifiers",
 							"summary": "A set of content identifiers for this call to action",
 							"schema": {
-								"$ref": "#/x-schemas/Entity/Entity"
+								"$ref": "#/x-schemas/Entertainment/ContentIdentifiers"
 							},
 							"required": true
 						},
@@ -9016,6 +9094,28 @@
 							}
 						},
 						{
+							"name": "Launch the 'Foo' app to it's home screen where the launch intent came from a child-directed browse menu.",
+							"params": [
+								{
+									"name": "appId",
+									"value": "foo"
+								},
+								{
+									"name": "intent",
+									"value": {
+										"action": "home",
+										"context": {
+											"source": "browse"
+										}
+									}
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
+						},
+						{
 							"name": "Launch the 'Foo' app to it's own page for a specific entity.",
 							"params": [
 								{
@@ -9170,7 +9270,7 @@
 							"params": [
 								{
 									"name": "appId",
-									"value": "xrn:firebolt:application-type:settings "
+									"value": "xrn:firebolt:application-type:settings"
 								},
 								{
 									"name": "intent",
@@ -9719,7 +9819,7 @@
 				},
 				{
 					"name": "Discovery.onPolicyChanged",
-					"summary": "get the discovery policy",
+					"summary": "Get the discovery policy",
 					"params": [
 						{
 							"name": "listen",
@@ -12753,7 +12853,7 @@
 							]
 						}
 					],
-					"summary": "Get any platform-specific localization information, in an Map<string, string>",
+					"summary": "Get any platform-specific localization information",
 					"params": [],
 					"result": {
 						"name": "info",
@@ -12761,7 +12861,11 @@
 						"schema": {
 							"type": "object",
 							"additionalProperties": {
-								"type": "string",
+								"type": [
+									"number",
+									"string",
+									"boolean"
+								],
 								"maxLength": 1024
 							},
 							"maxProperties": 32
@@ -12800,9 +12904,13 @@
 						},
 						{
 							"name": "value",
-							"summary": "Value to be set for additionalInfo",
+							"summary": "Value to be set for additionalInfo. Value can be a number, string or boolean",
 							"schema": {
-								"type": "string"
+								"type": [
+									"number",
+									"string",
+									"boolean"
+								]
 							},
 							"required": true
 						}
@@ -13993,6 +14101,13 @@
 								"type": "string"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14022,6 +14137,23 @@
 								"name": "success",
 								"value": true
 							}
+						},
+						{
+							"name": "Send startContent metric and notify the platform that the content is child-directed",
+							"params": [
+								{
+									"name": "entityId",
+									"value": "abc"
+								},
+								{
+									"name": "agePolicy",
+									"value": "app:child"
+								}
+							],
+							"result": {
+								"name": "success",
+								"value": true
+							}
 						}
 					]
 				},
@@ -14044,6 +14176,13 @@
 								"type": "string"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14095,6 +14234,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14171,6 +14317,13 @@
 								"$ref": "#/x-schemas/Types/FlatMap"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14250,6 +14403,13 @@
 								"$ref": "#/x-schemas/Types/FlatMap"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14305,6 +14465,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14348,6 +14515,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14391,6 +14565,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14434,6 +14615,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14477,6 +14665,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14528,6 +14723,13 @@
 								"$ref": "#/components/schemas/MediaPosition"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14583,6 +14785,13 @@
 								"$ref": "#/components/schemas/MediaPosition"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14638,6 +14847,13 @@
 								"$ref": "#/components/schemas/MediaPosition"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14693,6 +14909,13 @@
 								"type": "number"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14772,6 +14995,13 @@
 								"type": "string"
 							},
 							"required": false
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14831,6 +15061,13 @@
 								"type": "string"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14883,6 +15120,13 @@
 								"$ref": "#/components/schemas/EventObject"
 							},
 							"required": true
+						},
+						{
+							"name": "agePolicy",
+							"summary": "The age policy to associate with the metrics event. The age policy describes the age group to which content is directed.",
+							"schema": {
+								"$ref": "#/x-schemas/Policies/AgePolicy"
+							}
 						}
 					],
 					"result": {
@@ -14904,6 +15148,49 @@
 									"value": {
 										"foo": "foo"
 									}
+								}
+							],
+							"result": {
+								"name": "result",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "Metrics.appInfo",
+					"tags": [
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:metrics:general"
+							]
+						}
+					],
+					"summary": "Inform the platform about an app's build info.",
+					"params": [
+						{
+							"name": "build",
+							"summary": "The build / version of this app.",
+							"schema": {
+								"type": "string"
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Send appInfo metric",
+							"params": [
+								{
+									"name": "build",
+									"value": "1.2.2"
 								}
 							],
 							"result": {
@@ -17471,7 +17758,7 @@
 						{
 							"name": "capabilities",
 							"x-uses": [
-								"xrn:firebolt:capability:device:info"
+								"xrn:firebolt:capability:secondscreen:protocol"
 							]
 						}
 					],
@@ -18782,7 +19069,7 @@
 					},
 					"examples": [
 						{
-							"name": "Default example #1",
+							"name": "Voice guidance enabled",
 							"params": [],
 							"result": {
 								"name": "enabled",
@@ -18790,7 +19077,7 @@
 							}
 						},
 						{
-							"name": "Default example #2",
+							"name": "Voice guidance disabled",
 							"params": [],
 							"result": {
 								"name": "enabled",
@@ -18800,10 +19087,95 @@
 					]
 				},
 				{
+					"name": "VoiceGuidance.navigationHints",
+					"tags": [
+						{
+							"name": "property"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:voiceguidance"
+							]
+						}
+					],
+					"summary": "The user's preference for whether additional navigation hints should be synthesized.",
+					"params": [],
+					"result": {
+						"name": "navigationHints",
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					"examples": [
+						{
+							"name": "Navigation hints enabled",
+							"params": [],
+							"result": {
+								"name": "navigationHints",
+								"value": true
+							}
+						},
+						{
+							"name": "Navigation hints disabled",
+							"params": [],
+							"result": {
+								"name": "navigationHints",
+								"value": false
+							}
+						}
+					]
+				},
+				{
+					"name": "VoiceGuidance.rate",
+					"tags": [
+						{
+							"name": "property"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:voiceguidance"
+							]
+						}
+					],
+					"summary": "The rate at which voice guidance speech will be read back to the user.",
+					"params": [],
+					"result": {
+						"name": "rate",
+						"schema": {
+							"$ref": "#/x-schemas/Accessibility/SpeechRate"
+						}
+					},
+					"examples": [
+						{
+							"name": "Normal voice guidance speech rate",
+							"params": [],
+							"result": {
+								"name": "rate",
+								"value": 1
+							}
+						},
+						{
+							"name": "Doubled voice guidance speech rate",
+							"params": [],
+							"result": {
+								"name": "rate",
+								"value": 2
+							}
+						}
+					]
+				},
+				{
 					"name": "VoiceGuidance.speed",
 					"tags": [
 						{
 							"name": "property"
+						},
+						{
+							"name": "deprecated",
+							"x-alternative": "VoiceGuidance.rate()",
+							"x-since": "1.5.0"
 						},
 						{
 							"name": "capabilities",
@@ -18817,12 +19189,12 @@
 					"result": {
 						"name": "speed",
 						"schema": {
-							"$ref": "#/x-schemas/Accessibility/VoiceSpeed"
+							"$ref": "#/x-schemas/Accessibility/SpeechRate"
 						}
 					},
 					"examples": [
 						{
-							"name": "Voice guidance speed to 1",
+							"name": "Normal voice guidance speech rate",
 							"params": [],
 							"result": {
 								"name": "speed",
@@ -18830,7 +19202,7 @@
 							}
 						},
 						{
-							"name": "Voice guidance speed to 2",
+							"name": "Doubled voice guidance speech rate",
 							"params": [],
 							"result": {
 								"name": "speed",
@@ -18882,7 +19254,7 @@
 					},
 					"examples": [
 						{
-							"name": "Default example #1",
+							"name": "Voice guidance enabled",
 							"params": [
 								{
 									"name": "listen",
@@ -18895,7 +19267,7 @@
 							}
 						},
 						{
-							"name": "Default example #2",
+							"name": "Voice guidance disabled",
 							"params": [
 								{
 									"name": "listen",
@@ -18910,6 +19282,146 @@
 					]
 				},
 				{
+					"name": "VoiceGuidance.onNavigationHintsChanged",
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "VoiceGuidance.navigationHints"
+						},
+						{
+							"name": "event",
+							"x-alternative": "navigationHints"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:voiceguidance"
+							]
+						}
+					],
+					"summary": "The user's preference for whether additional navigation hints should be synthesized.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "navigationHints",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"type": "boolean"
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Navigation hints enabled",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "navigationHints",
+								"value": true
+							}
+						},
+						{
+							"name": "Navigation hints disabled",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "navigationHints",
+								"value": false
+							}
+						}
+					]
+				},
+				{
+					"name": "VoiceGuidance.onRateChanged",
+					"tags": [
+						{
+							"name": "subscriber",
+							"x-subscriber-for": "VoiceGuidance.rate"
+						},
+						{
+							"name": "event",
+							"x-alternative": "rate"
+						},
+						{
+							"name": "capabilities",
+							"x-uses": [
+								"xrn:firebolt:capability:accessibility:voiceguidance"
+							]
+						}
+					],
+					"summary": "The rate at which voice guidance speech will be read back to the user.",
+					"params": [
+						{
+							"name": "listen",
+							"required": true,
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					],
+					"result": {
+						"name": "rate",
+						"schema": {
+							"anyOf": [
+								{
+									"$ref": "#/x-schemas/Types/ListenResponse"
+								},
+								{
+									"$ref": "#/x-schemas/Accessibility/SpeechRate"
+								}
+							]
+						}
+					},
+					"examples": [
+						{
+							"name": "Normal voice guidance speech rate",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "rate",
+								"value": 1
+							}
+						},
+						{
+							"name": "Doubled voice guidance speech rate",
+							"params": [
+								{
+									"name": "listen",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "rate",
+								"value": 2
+							}
+						}
+					]
+				},
+				{
 					"name": "VoiceGuidance.onSpeedChanged",
 					"tags": [
 						{
@@ -18919,6 +19431,11 @@
 						{
 							"name": "event",
 							"x-alternative": "speed"
+						},
+						{
+							"name": "deprecated",
+							"x-alternative": "VoiceGuidance.rate()",
+							"x-since": "1.5.0"
 						},
 						{
 							"name": "capabilities",
@@ -18945,14 +19462,14 @@
 									"$ref": "#/x-schemas/Types/ListenResponse"
 								},
 								{
-									"$ref": "#/x-schemas/Accessibility/VoiceSpeed"
+									"$ref": "#/x-schemas/Accessibility/SpeechRate"
 								}
 							]
 						}
 					},
 					"examples": [
 						{
-							"name": "Voice guidance speed to 1",
+							"name": "Normal voice guidance speech rate",
 							"params": [
 								{
 									"name": "listen",
@@ -18965,7 +19482,7 @@
 							}
 						},
 						{
-							"name": "Voice guidance speed to 2",
+							"name": "Doubled voice guidance speech rate",
 							"params": [
 								{
 									"name": "listen",
@@ -19011,7 +19528,7 @@
 					},
 					"examples": [
 						{
-							"name": "Default example #1",
+							"name": "Voice guidance enabled",
 							"params": [
 								{
 									"name": "value",
@@ -19024,7 +19541,7 @@
 							}
 						},
 						{
-							"name": "Default example #2",
+							"name": "Voice guidance disabled",
 							"params": [
 								{
 									"name": "value",
@@ -19039,11 +19556,134 @@
 					]
 				},
 				{
+					"name": "VoiceGuidance.setNavigationHints",
+					"tags": [
+						{
+							"name": "setter",
+							"x-setter-for": "navigationHints"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:accessibility:voiceguidance"
+							]
+						}
+					],
+					"summary": "The user's preference for whether additional navigation hints should be synthesized.",
+					"params": [
+						{
+							"name": "value",
+							"schema": {
+								"type": "boolean"
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Navigation hints enabled",
+							"params": [
+								{
+									"name": "value",
+									"value": true
+								}
+							],
+							"result": {
+								"name": "navigationHints",
+								"value": null
+							}
+						},
+						{
+							"name": "Navigation hints disabled",
+							"params": [
+								{
+									"name": "value",
+									"value": false
+								}
+							],
+							"result": {
+								"name": "navigationHints",
+								"value": null
+							}
+						}
+					]
+				},
+				{
+					"name": "VoiceGuidance.setRate",
+					"tags": [
+						{
+							"name": "setter",
+							"x-setter-for": "rate"
+						},
+						{
+							"name": "capabilities",
+							"x-manages": [
+								"xrn:firebolt:capability:accessibility:voiceguidance"
+							]
+						}
+					],
+					"summary": "The rate at which voice guidance speech will be read back to the user.",
+					"params": [
+						{
+							"name": "value",
+							"schema": {
+								"$ref": "#/x-schemas/Accessibility/SpeechRate"
+							},
+							"required": true
+						}
+					],
+					"result": {
+						"name": "result",
+						"schema": {
+							"type": "null"
+						}
+					},
+					"examples": [
+						{
+							"name": "Normal voice guidance speech rate",
+							"params": [
+								{
+									"name": "value",
+									"value": 1
+								}
+							],
+							"result": {
+								"name": "rate",
+								"value": null
+							}
+						},
+						{
+							"name": "Doubled voice guidance speech rate",
+							"params": [
+								{
+									"name": "value",
+									"value": 2
+								}
+							],
+							"result": {
+								"name": "rate",
+								"value": null
+							}
+						}
+					]
+				},
+				{
 					"name": "VoiceGuidance.setSpeed",
 					"tags": [
 						{
 							"name": "setter",
 							"x-setter-for": "speed"
+						},
+						{
+							"name": "deprecated",
+							"x-alternative": "VoiceGuidance.rate()",
+							"x-since": "1.5.0"
 						},
 						{
 							"name": "capabilities",
@@ -19057,7 +19697,7 @@
 						{
 							"name": "value",
 							"schema": {
-								"$ref": "#/x-schemas/Accessibility/VoiceSpeed"
+								"$ref": "#/x-schemas/Accessibility/SpeechRate"
 							},
 							"required": true
 						}
@@ -19070,7 +19710,7 @@
 					},
 					"examples": [
 						{
-							"name": "Voice guidance speed to 1",
+							"name": "Normal voice guidance speech rate",
 							"params": [
 								{
 									"name": "value",
@@ -19083,7 +19723,7 @@
 							}
 						},
 						{
-							"name": "Voice guidance speed to 2",
+							"name": "Doubled voice guidance speech rate",
 							"params": [
 								{
 									"name": "value",
@@ -19334,6 +19974,20 @@
 			],
 			"components": {
 				"schemas": {
+					"InitializeResult": {
+						"title": "InitializeResult",
+						"type": "object",
+						"required": [
+							"version"
+						],
+						"properties": {
+							"version": {
+								"$ref": "#/x-schemas/Types/SemanticVersion",
+								"description": "The semantic version of the FEE."
+							}
+						},
+						"additionalProperties": false
+					},
 					"AudioDescriptionSettings": {
 						"title": "AudioDescriptionSettings",
 						"type": "object",
@@ -19508,6 +20162,33 @@
 							}
 						}
 					},
+					"AdvertisingIdResult": {
+						"title": "AdvertisingIdResult",
+						"type": "object",
+						"properties": {
+							"ifa": {
+								"type": "string",
+								"description": "UUID conforming to IAB standard"
+							},
+							"ifa_type": {
+								"type": "string",
+								"description": "source of the IFA as defined by IAB"
+							},
+							"lmt": {
+								"type": "string",
+								"enum": [
+									"0",
+									"1"
+								],
+								"description": "boolean that if set to 1, user has requested ad tracking and measurement is disabled"
+							}
+						},
+						"required": [
+							"ifa",
+							"ifa_type",
+							"lmt"
+						]
+					},
 					"TokenType": {
 						"title": "TokenType",
 						"type": "string",
@@ -19515,6 +20196,25 @@
 							"platform",
 							"device",
 							"distributor"
+						]
+					},
+					"AuthenticationTokenResult": {
+						"title": "AuthenticationTokenResult",
+						"type": "object",
+						"properties": {
+							"value": {
+								"type": "string"
+							},
+							"expires": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"type": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"value"
 						]
 					},
 					"CapabilityOption": {
@@ -19590,18 +20290,98 @@
 						]
 					},
 					"Resolution": {
-						"type": "array",
-						"items": [
+						"oneOf": [
 							{
-								"type": "integer"
+								"type": "array",
+								"items": [
+									{
+										"type": "integer",
+										"const": 720,
+										"description": "Width in pixels"
+									},
+									{
+										"type": "integer",
+										"const": 480,
+										"description": "Height in pixels"
+									}
+								],
+								"additionalItems": false,
+								"minItems": 2,
+								"maxItems": 2
 							},
 							{
-								"type": "integer"
+								"type": "array",
+								"items": [
+									{
+										"type": "integer",
+										"const": 720,
+										"description": "Width in pixels"
+									},
+									{
+										"type": "integer",
+										"const": 576,
+										"description": "Height in pixels"
+									}
+								],
+								"additionalItems": false,
+								"minItems": 2,
+								"maxItems": 2
+							},
+							{
+								"type": "array",
+								"items": [
+									{
+										"type": "integer",
+										"const": 1280,
+										"description": "Width in pixels"
+									},
+									{
+										"type": "integer",
+										"const": 720,
+										"description": "Height in pixels"
+									}
+								],
+								"additionalItems": false,
+								"minItems": 2,
+								"maxItems": 2
+							},
+							{
+								"type": "array",
+								"items": [
+									{
+										"type": "integer",
+										"const": 1920,
+										"description": "Width in pixels"
+									},
+									{
+										"type": "integer",
+										"const": 1080,
+										"description": "Height in pixels"
+									}
+								],
+								"additionalItems": false,
+								"minItems": 2,
+								"maxItems": 2
+							},
+							{
+								"type": "array",
+								"items": [
+									{
+										"type": "integer",
+										"const": 3840,
+										"description": "Width in pixels"
+									},
+									{
+										"type": "integer",
+										"const": 2160,
+										"description": "Height in pixels"
+									}
+								],
+								"additionalItems": false,
+								"minItems": 2,
+								"maxItems": 2
 							}
-						],
-						"additionalItems": false,
-						"minItems": 2,
-						"maxItems": 2
+						]
 					},
 					"NetworkType": {
 						"title": "NetworkType",
@@ -19624,16 +20404,115 @@
 					},
 					"AudioProfiles": {
 						"title": "AudioProfiles",
-						"allOf": [
-							{
-								"$ref": "#/x-schemas/Types/BooleanMap"
+						"type": "object",
+						"properties": {
+							"stereo": {
+								"type": "boolean"
 							},
-							{
-								"type": "object",
-								"propertyNames": {
-									"$ref": "#/x-schemas/Types/AudioProfile"
-								}
+							"dolbyDigital5.1": {
+								"type": "boolean"
+							},
+							"dolbyDigital5.1+": {
+								"type": "boolean"
+							},
+							"dolbyAtmos": {
+								"type": "boolean"
 							}
+						},
+						"required": [
+							"stereo",
+							"dolbyDigital5.1",
+							"dolbyDigital5.1+",
+							"dolbyAtmos"
+						]
+					},
+					"HDRFormatMap": {
+						"title": "HDRFormatMap",
+						"type": "object",
+						"properties": {
+							"hdr10": {
+								"type": "boolean"
+							},
+							"hdr10Plus": {
+								"type": "boolean"
+							},
+							"dolbyVision": {
+								"type": "boolean"
+							},
+							"hlg": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"hdr10",
+							"hdr10Plus",
+							"dolbyVision",
+							"hlg"
+						],
+						"description": "The type of HDR format"
+					},
+					"HDCPVersionMap": {
+						"title": "HDCPVersionMap",
+						"type": "object",
+						"properties": {
+							"hdcp1.4": {
+								"type": "boolean"
+							},
+							"hdcp2.2": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"hdcp1.4",
+							"hdcp2.2"
+						],
+						"description": "The type of HDCP versions"
+					},
+					"DeviceVersion": {
+						"title": "DeviceVersion",
+						"type": "object",
+						"properties": {
+							"sdk": {
+								"$ref": "#/x-schemas/Types/SemanticVersion",
+								"description": "The Firebolt SDK version"
+							},
+							"api": {
+								"$ref": "#/x-schemas/Types/SemanticVersion",
+								"description": "The latest Firebolt API version supported by the current device."
+							},
+							"firmware": {
+								"$ref": "#/x-schemas/Types/SemanticVersion",
+								"description": "The firmware version as reported by the device"
+							},
+							"os": {
+								"$ref": "#/x-schemas/Types/SemanticVersion",
+								"description": "**Deprecated** Use `firmware`, instead."
+							},
+							"debug": {
+								"type": "string",
+								"description": "Detailed version as a string, for debugging purposes"
+							}
+						},
+						"required": [
+							"api",
+							"firmware",
+							"os"
+						]
+					},
+					"NetworkInfoResult": {
+						"title": "NetworkInfoResult",
+						"type": "object",
+						"properties": {
+							"state": {
+								"$ref": "#/components/schemas/NetworkState"
+							},
+							"type": {
+								"$ref": "#/components/schemas/NetworkType"
+							}
+						},
+						"required": [
+							"state",
+							"type"
 						]
 					},
 					"DiscoveryPolicy": {
@@ -20785,18 +21664,9 @@
 						"enum": [
 							"stereo",
 							"dolbyDigital5.1",
-							"dolbyDigital7.1",
 							"dolbyDigital5.1+",
-							"dolbyDigital7.1+",
 							"dolbyAtmos"
 						]
-					},
-					"BooleanMap": {
-						"title": "BooleanMap",
-						"type": "object",
-						"additionalProperties": {
-							"type": "boolean"
-						}
 					},
 					"LocalizedString": {
 						"title": "LocalizedString",
@@ -20836,6 +21706,13 @@
 							]
 						}
 					},
+					"BooleanMap": {
+						"title": "BooleanMap",
+						"type": "object",
+						"additionalProperties": {
+							"type": "boolean"
+						}
+					},
 					"Timeout": {
 						"title": "Timeout",
 						"description": "Defines the timeout in seconds. If the threshold for timeout is passed for any operation without a result it will throw an error.",
@@ -20851,8 +21728,7 @@
 						"title": "ClosedCaptionsSettings",
 						"type": "object",
 						"required": [
-							"enabled",
-							"styles"
+							"enabled"
 						],
 						"properties": {
 							"enabled": {
@@ -20898,30 +21774,41 @@
 						"type": "object",
 						"required": [
 							"enabled",
-							"speed"
+							"navigationHints",
+							"rate"
 						],
 						"properties": {
 							"enabled": {
 								"type": "boolean",
 								"description": "Whether or not voice guidance should be enabled by default"
 							},
+							"navigationHints": {
+								"type": "boolean",
+								"description": "Whether or not voice guidance should include additional navigation hints"
+							},
+							"rate": {
+								"$ref": "#/x-schemas/Accessibility/SpeechRate",
+								"description": "The rate at which voice guidance speech will be read back to the user"
+							},
 							"speed": {
-								"$ref": "#/x-schemas/Accessibility/VoiceSpeed",
-								"description": "The speed at which voice guidance speech will be read back to the user"
+								"$ref": "#/x-schemas/Accessibility/SpeechRate",
+								"description": "**DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user"
 							}
 						},
 						"examples": [
 							{
 								"enabled": true,
-								"speed": 2
+								"navigationHints": true,
+								"rate": 1,
+								"speed": 1
 							}
 						]
 					},
-					"VoiceSpeed": {
-						"title": "VoiceSpeed",
+					"SpeechRate": {
+						"title": "SpeechRate",
 						"type": "number",
-						"minimum": 0.5,
-						"maximum": 2
+						"minimum": 0.1,
+						"maximum": 10
 					},
 					"ClosedCaptionsStyles": {
 						"title": "ClosedCaptionsStyles",
@@ -22025,6 +22912,26 @@
 						]
 					}
 				},
+				"Policies": {
+					"uri": "https://meta.comcast.com/firebolt/policies",
+					"AgePolicy": {
+						"title": "AgePolicy",
+						"description": "The policy that describes various age groups to which content is directed. See distributor documentation for further details.",
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"enum": [
+									"app:adult",
+									"app:child",
+									"app:teen"
+								]
+							}
+						]
+					}
+				},
 				"Intents": {
 					"uri": "https://meta.comcast.com/firebolt/intents",
 					"NavigationIntent": {
@@ -22233,6 +23140,12 @@
 										"properties": {
 											"query": {
 												"type": "string"
+											},
+											"suggestions": {
+												"type": "array",
+												"items": {
+													"$ref": "#/x-schemas/Entity/Entity"
+												}
 											}
 										},
 										"additionalProperties": false
@@ -22611,6 +23524,10 @@
 								"properties": {
 									"source": {
 										"type": "string"
+									},
+									"agePolicy": {
+										"$ref": "#/x-schemas/Policies/AgePolicy",
+										"description": "The age policy associated with the intent. The age policy describes the age groups to which content is directed. For example, content launched from a child-directed menu should have the appropriate child policy attached, which may inform an app or service to enable enhanced data protections or features."
 									}
 								}
 							}

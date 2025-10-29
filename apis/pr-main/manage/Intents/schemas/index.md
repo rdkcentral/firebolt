@@ -10,12 +10,9 @@ sdk: manage
 
 ---
 
-Version Intents 0.0.0-unknown.0
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [Types](#types)
   - [Intent](#intent)
   - [IntentProperties](#intentproperties)
@@ -30,10 +27,6 @@ Version Intents 0.0.0-unknown.0
   - [LaunchIntent](#launchintent)
   - [NavigationIntent](#navigationintent)
 
-## Overview
-
-undefined
-
 ## Types
 
 ### Intent
@@ -41,15 +34,25 @@ undefined
 A Firebolt compliant representation of a user intention.
 
 ```typescript
-
+type Intent = {
+  action: string
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
+}
 ```
+
+See also:
+
+[AgePolicy](../Policies/schemas/#AgePolicy)
 
 ---
 
 ### IntentProperties
 
 ```typescript
-
+type IntentProperties = {}
 ```
 
 ---
@@ -67,7 +70,10 @@ type EntityIntent = {
     | ChannelEntity
     | UntypedEntity
     | PlaylistEntity
-  context: object
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -81,7 +87,10 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 type PlaybackIntent = {
   action: 'playback'
   data: PlayableEntity
-  context: object
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -98,8 +107,19 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 ```typescript
 type SearchIntent = {
   action: 'search'
-  data?: object
-  context: object
+  data?: {
+    query: string
+    suggestions?:
+      | ProgramEntity
+      | MusicEntity
+      | ChannelEntity
+      | UntypedEntity
+      | PlaylistEntity[]
+  }
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -112,8 +132,13 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 ```typescript
 type SectionIntent = {
   action: 'section'
-  data: object
-  context: object
+  data: {
+    sectionName: string
+  }
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -126,8 +151,19 @@ A Firebolt compliant representation of a user intention to 'tune' to a tradition
 ```typescript
 type TuneIntent = {
   action: 'tune'
-  data: object
-  context: object
+  data: {
+    entity: ChannelEntity
+    options?: {
+      assetId?: string // The ID of a specific 'listing', as scoped by the target App's ID-space, which the App should begin playback from.
+      restartCurrentProgram?: boolean // Denotes that the App should start playback at the most recent program boundary, rather than 'live.'
+      time?: string // ISO 8601 Date/Time where the App should begin playback from.
+    }
+    // The options property of the data property MUST have only one of the following fields.
+  }
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -144,8 +180,17 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 ```typescript
 type PlayEntityIntent = {
   action: 'play-entity'
-  data: object
-  context: object
+  data: {
+    entity: PlayableEntity
+    options?: {
+      playFirstId?: string
+      playFirstTrack?: number
+    }
+  }
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -162,8 +207,17 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 ```typescript
 type PlayQueryIntent = {
   action: 'play-query'
-  data: object
-  context: object
+  data: {
+    query: string
+    options?: {
+      programTypes?: ProgramType[]
+      musicTypes?: MusicType[]
+    }
+  }
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -181,7 +235,10 @@ A Firebolt compliant representation of a user intention to navigate an app to it
 ```typescript
 type HomeIntent = {
   action: 'home'
-  context: object
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
@@ -194,7 +251,10 @@ A Firebolt compliant representation of a user intention to launch an app.
 ```typescript
 type LaunchIntent = {
   action: 'launch'
-  context: object
+  context: {
+    source: string
+    agePolicy?: AgePolicy // The policy that describes various age groups to which content is directed. See distributor documentation for further details.
+  }
 }
 ```
 
