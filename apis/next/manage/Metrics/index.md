@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Metrics 1.8.0-next.3
+Version Metrics 1.8.0-next.4
 
 ## Table of Contents
 
