@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version HDMIInput 1.8.0-next.6
+Version HDMIInput 1.8.0-next.7
 
 ## Table of Contents
 

@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version PinChallenge 1.8.0-next.6
+Version PinChallenge 1.8.0-next.7
 
 ## Table of Contents
 
