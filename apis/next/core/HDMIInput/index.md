@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version HDMIInput 1.8.0-next.14
+Version HDMIInput 1.8.0-next.15
 
 ## Table of Contents
 
