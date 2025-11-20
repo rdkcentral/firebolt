@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Localization 1.8.0-next.16
+Version Localization 1.8.0-next.17
 
 ## Table of Contents
 

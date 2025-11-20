@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Metrics 1.8.0-next.16
+Version Metrics 1.8.0-next.17
 
 ## Table of Contents
 
