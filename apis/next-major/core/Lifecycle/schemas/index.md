@@ -14,10 +14,26 @@ sdk: core
 
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
-  - [LifecycleState](#lifecyclestate)
   - [CloseReason](#closereason)
+  - [LifecycleState](#lifecyclestate)
 
 ## Types
+
+### CloseReason
+
+The application close reason
+
+```typescript
+CloseReason: {
+    REMOTE_BUTTON: 'remoteButton',
+    USER_EXIT: 'userExit',
+    DONE: 'done',
+    ERROR: 'error',
+},
+
+```
+
+---
 
 ### LifecycleState
 
@@ -31,22 +47,6 @@ LifecycleState: {
     BACKGROUND: 'background',
     UNLOADING: 'unloading',
     SUSPENDED: 'suspended',
-},
-
-```
-
----
-
-### CloseReason
-
-The application close reason
-
-```typescript
-CloseReason: {
-    REMOTE_BUTTON: 'remoteButton',
-    USER_EXIT: 'userExit',
-    DONE: 'done',
-    ERROR: 'error',
 },
 
 ```

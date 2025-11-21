@@ -17,9 +17,9 @@ sdk: core
   - [Role](#role)
   - [DenyReason](#denyreason)
   - [Capability](#capability)
-  - [Permission](#permission)
   - [CapPermissionStatus](#cappermissionstatus)
   - [CapabilityInfo](#capabilityinfo)
+  - [Permission](#permission)
 
 ## Types
 
@@ -66,24 +66,6 @@ type Capability = string
 
 ---
 
-### Permission
-
-A capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
-
-```typescript
-type Permission = {
-  role?: Role // Role provides access level for the app for a given capability.
-  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
-}
-```
-
-See also:
-
-[Role](#role)
-[Capability](#capability)
-
----
-
 ### CapPermissionStatus
 
 ```typescript
@@ -113,5 +95,23 @@ See also:
 
 [Capability](#capability)
 [DenyReason](#denyreason)
+
+---
+
+### Permission
+
+A capability combined with a Role, which an app may be permitted (by a distributor) or granted (by an end user).
+
+```typescript
+type Permission = {
+  role?: Role // Role provides access level for the app for a given capability.
+  capability: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+}
+```
+
+See also:
+
+[Role](#role)
+[Capability](#capability)
 
 ---

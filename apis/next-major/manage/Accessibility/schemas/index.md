@@ -15,13 +15,16 @@ sdk: manage
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
   - [FontFamily](#fontfamily)
+  - [SpeechRate](#speechrate)
+  - [VoiceGuidanceSettings](#voiceguidancesettings)
   - [FontSize](#fontsize)
-  - [FontEdge](#fontedge)
   - [Color](#color)
+  - [FontEdge](#fontedge)
   - [Opacity](#opacity)
   - [HorizontalAlignment](#horizontalalignment)
   - [VerticalAlignment](#verticalalignment)
-  - [SpeechRate](#speechrate)
+  - [ClosedCaptionsStyles](#closedcaptionsstyles)
+  - [ClosedCaptionsSettings](#closedcaptionssettings)
 
 ## Types
 
@@ -42,10 +45,43 @@ FontFamily: {
 
 ---
 
+### SpeechRate
+
+```typescript
+type SpeechRate = number
+```
+
+---
+
+### VoiceGuidanceSettings
+
+```typescript
+type VoiceGuidanceSettings = {
+  enabled: boolean // Whether or not voice guidance should be enabled by default
+  navigationHints: boolean // Whether or not voice guidance should include additional navigation hints
+  rate: SpeechRate // The rate at which voice guidance speech will be read back to the user
+  speed?: SpeechRate // **DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user
+}
+```
+
+See also:
+
+[SpeechRate](#speechrate)
+
+---
+
 ### FontSize
 
 ```typescript
 type FontSize = number
+```
+
+---
+
+### Color
+
+```typescript
+type Color = string
 ```
 
 ---
@@ -62,14 +98,6 @@ FontEdge: {
     DROP_SHADOW_RIGHT: 'drop_shadow_right',
 },
 
-```
-
----
-
-### Color
-
-```typescript
-type Color = string
 ```
 
 ---
@@ -98,10 +126,41 @@ type VerticalAlignment = string
 
 ---
 
-### SpeechRate
+### ClosedCaptionsStyles
+
+The default styles to use when displaying closed-captions
 
 ```typescript
-type SpeechRate = number
+type ClosedCaptionsStyles = {
+  fontFamily?: string
+  fontSize?: number
+  fontColor?: string
+  fontEdge?: string
+  fontEdgeColor?: string
+  fontOpacity?: number
+  backgroundColor?: string
+  backgroundOpacity?: number
+  textAlign?: string
+  textAlignVertical?: string
+  windowColor?: string
+  windowOpacity?: number
+}
 ```
+
+---
+
+### ClosedCaptionsSettings
+
+```typescript
+type ClosedCaptionsSettings = {
+  enabled: boolean // Whether or not closed-captions should be enabled by default
+  styles?: ClosedCaptionsStyles // The default styles to use when displaying closed-captions
+  preferredLanguages?: string[]
+}
+```
+
+See also:
+
+[ClosedCaptionsStyles](#closedcaptionsstyles)
 
 ---

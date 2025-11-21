@@ -14,18 +14,48 @@ sdk: core
 
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
-  - [ProgramType](#programtype)
-  - [MusicType](#musictype)
   - [OfferingType](#offeringtype)
-  - [ContentIdentifiers](#contentidentifiers)
-  - [Entitlement](#entitlement)
+  - [MusicType](#musictype)
+  - [ProgramType](#programtype)
   - [ContentRating](#contentrating)
 - [United States](#united-states)
 - [Canada](#canada)
+  - [ContentIdentifiers](#contentidentifiers)
   - [WayToWatch](#waytowatch)
+  - [Entitlement](#entitlement)
   - [EntityInfo](#entityinfo)
 
 ## Types
+
+### OfferingType
+
+The offering type of the WayToWatch.
+
+```typescript
+OfferingType: {
+    FREE: 'free',
+    SUBSCRIBE: 'subscribe',
+    BUY: 'buy',
+    RENT: 'rent',
+},
+
+```
+
+---
+
+### MusicType
+
+In the case of a music `entityType`, specifies the type of music entity.
+
+```typescript
+MusicType: {
+    SONG: 'song',
+    ALBUM: 'album',
+},
+
+```
+
+---
 
 ### ProgramType
 
@@ -47,70 +77,6 @@ ProgramType: {
     MINISODE: 'minisode',
 },
 
-```
-
----
-
-### MusicType
-
-In the case of a music `entityType`, specifies the type of music entity.
-
-```typescript
-MusicType: {
-    SONG: 'song',
-    ALBUM: 'album',
-},
-
-```
-
----
-
-### OfferingType
-
-The offering type of the WayToWatch.
-
-```typescript
-OfferingType: {
-    FREE: 'free',
-    SUBSCRIBE: 'subscribe',
-    BUY: 'buy',
-    RENT: 'rent',
-},
-
-```
-
----
-
-### ContentIdentifiers
-
-The ContentIdentifiers object is how the app identifies an entity or asset to
-the Firebolt platform. These ids are used to look up metadata and deep link into
-the app.
-
-Apps do not need to provide all ids. They only need to provide the minimum
-required to target a playable stream or an entity detail screen via a deep link.
-If an id isn't needed to get to those pages, it doesn't need to be included.
-
-```typescript
-type ContentIdentifiers = {
-  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
-  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
-  seasonId?: string // The TV Season for a TV Episode.
-  seriesId?: string // The TV Series for a TV Episode or TV Season.
-  appContentData?: string // App-specific content identifiers.
-}
-```
-
----
-
-### Entitlement
-
-```typescript
-type Entitlement = {
-  entitlementId: string
-  startTime?: string
-  endTime?: string
-}
 ```
 
 ---
@@ -164,6 +130,28 @@ type ContentRating = {
     | 'US-TV' // The rating scheme.
   rating: string // The content rating.
   advisories?: string[] // Optional list of subratings or content advisories.
+}
+```
+
+---
+
+### ContentIdentifiers
+
+The ContentIdentifiers object is how the app identifies an entity or asset to
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included.
+
+```typescript
+type ContentIdentifiers = {
+  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
+  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
+  seasonId?: string // The TV Season for a TV Episode.
+  seriesId?: string // The TV Series for a TV Episode or TV Season.
+  appContentData?: string // App-specific content identifiers.
 }
 ```
 
@@ -228,7 +216,19 @@ See also:
 
 [ContentIdentifiers](#contentidentifiers)
 [OfferingType](#offeringtype)
-Types.AudioProfile
+[Types.AudioProfile](../Types/schemas/#AudioProfile)
+
+---
+
+### Entitlement
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
+}
+```
 
 ---
 

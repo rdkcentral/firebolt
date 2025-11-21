@@ -15,11 +15,15 @@ sdk: discovery
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
   - [OfferingType](#offeringtype)
-  - [ContentIdentifiers](#contentidentifiers)
+  - [MusicType](#musictype)
+  - [ProgramType](#programtype)
   - [ContentRating](#contentrating)
 - [United States](#united-states)
 - [Canada](#canada)
+  - [ContentIdentifiers](#contentidentifiers)
   - [WayToWatch](#waytowatch)
+  - [Entitlement](#entitlement)
+  - [EntityInfo](#entityinfo)
 
 ## Types
 
@@ -39,24 +43,40 @@ OfferingType: {
 
 ---
 
-### ContentIdentifiers
+### MusicType
 
-The ContentIdentifiers object is how the app identifies an entity or asset to
-the Firebolt platform. These ids are used to look up metadata and deep link into
-the app.
-
-Apps do not need to provide all ids. They only need to provide the minimum
-required to target a playable stream or an entity detail screen via a deep link.
-If an id isn't needed to get to those pages, it doesn't need to be included.
+In the case of a music `entityType`, specifies the type of music entity.
 
 ```typescript
-type ContentIdentifiers = {
-  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
-  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
-  seasonId?: string // The TV Season for a TV Episode.
-  seriesId?: string // The TV Series for a TV Episode or TV Season.
-  appContentData?: string // App-specific content identifiers.
-}
+MusicType: {
+    SONG: 'song',
+    ALBUM: 'album',
+},
+
+```
+
+---
+
+### ProgramType
+
+In the case of a program `entityType`, specifies the program type.
+
+```typescript
+ProgramType: {
+    MOVIE: 'movie',
+    EPISODE: 'episode',
+    SEASON: 'season',
+    SERIES: 'series',
+    OTHER: 'other',
+    PREVIEW: 'preview',
+    EXTRA: 'extra',
+    CONCERT: 'concert',
+    SPORTING_EVENT: 'sportingEvent',
+    ADVERTISEMENT: 'advertisement',
+    MUSIC_VIDEO: 'musicVideo',
+    MINISODE: 'minisode',
+},
+
 ```
 
 ---
@@ -110,6 +130,28 @@ type ContentRating = {
     | 'US-TV' // The rating scheme.
   rating: string // The content rating.
   advisories?: string[] // Optional list of subratings or content advisories.
+}
+```
+
+---
+
+### ContentIdentifiers
+
+The ContentIdentifiers object is how the app identifies an entity or asset to
+the Firebolt platform. These ids are used to look up metadata and deep link into
+the app.
+
+Apps do not need to provide all ids. They only need to provide the minimum
+required to target a playable stream or an entity detail screen via a deep link.
+If an id isn't needed to get to those pages, it doesn't need to be included.
+
+```typescript
+type ContentIdentifiers = {
+  assetId?: string // Identifies a particular playable asset. For example, the HD version of a particular movie separate from the UHD version.
+  entityId?: string // Identifies an entity, such as a Movie, TV Series or TV Episode.
+  seasonId?: string // The TV Season for a TV Episode.
+  seriesId?: string // The TV Series for a TV Episode or TV Season.
+  appContentData?: string // App-specific content identifiers.
 }
 ```
 
@@ -174,6 +216,63 @@ See also:
 
 [ContentIdentifiers](#contentidentifiers)
 [OfferingType](#offeringtype)
-Types.AudioProfile
+[Types.AudioProfile](../Types/schemas/#AudioProfile)
+
+---
+
+### Entitlement
+
+```typescript
+type Entitlement = {
+  entitlementId: string
+  startTime?: string
+  endTime?: string
+}
+```
+
+---
+
+### EntityInfo
+
+An EntityInfo object represents an "entity" on the platform. Currently, only entities of type `program` are supported. `programType` must be supplied to identify the program type.
+
+Additionally, EntityInfo objects must specify a properly formed
+ContentIdentifiers object, `entityType`, and `title`. The app should provide
+the `synopsis` property for a good user experience if the content
+metadata is not available another way.
+
+The ContentIdentifiers must be sufficient for navigating the user to the
+appropriate entity or detail screen via a `detail` intent or deep link.
+
+EntityInfo objects must provide at least one WayToWatch object when returned as
+part of an `entityInfo` method and a streamable asset is available to the user.
+It is optional for the `purchasedContent` method, but recommended because the UI
+may use those data.
+
+```typescript
+type EntityInfo = {
+  identifiers: ContentIdentifiers // The ContentIdentifiers object is how the app identifies an entity or asset to
+  title: string // Title of the entity.
+  entityType: 'program' | 'music' // The type of the entity, e.g. `program` or `music`.
+  programType?: ProgramType // In the case of a program `entityType`, specifies the program type.
+  musicType?: MusicType // In the case of a music `entityType`, specifies the type of music entity.
+  synopsis?: string // Short description of the entity.
+  seasonNumber?: number // For TV seasons, the season number. For TV episodes, the season that the episode belongs to.
+  seasonCount?: number // For TV series, seasons, and episodes, the total number of seasons.
+  episodeNumber?: number // For TV episodes, the episode number.
+  episodeCount?: number // For TV seasons and episodes, the total number of episodes in the current season.
+  releaseDate?: string // The date that the program or entity was released or first aired.
+  contentRatings?: ContentRating[] // A ContentRating represents an age or content based of an entity. Supported rating schemes and associated types are below.
+  waysToWatch?: WayToWatch[] // A WayToWatch describes a way to watch a video program. It may describe a single
+}
+```
+
+See also:
+
+[ContentIdentifiers](#contentidentifiers)
+[ProgramType](#programtype)
+[MusicType](#musictype)
+[ContentRating](#contentrating)
+[WayToWatch](#waytowatch)
 
 ---

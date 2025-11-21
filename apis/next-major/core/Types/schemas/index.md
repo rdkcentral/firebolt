@@ -13,12 +13,13 @@ sdk: core
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Types](#types)
+- [Types](#types-1)
   - [AudioProfile](#audioprofile)
   - [SemanticVersion](#semanticversion)
-  - [BooleanMap](#booleanmap)
-  - [FlatMap](#flatmap)
   - [LocalizedString](#localizedstring)
+  - [FlatMap](#flatmap)
+  - [BooleanMap](#booleanmap)
+  - [Timeout](#timeout)
 
 ## Types
 
@@ -49,10 +50,12 @@ type SemanticVersion = {
 
 ---
 
-### BooleanMap
+### LocalizedString
+
+Localized string supports either a simple `string` or a Map<string, string> of language codes to strings. When using a simple `string`, the current preferred langauge from `Localization.langauge()` is assumed.
 
 ```typescript
-type BooleanMap = [property: string]: boolean
+type LocalizedString = string | object
 ```
 
 ---
@@ -65,12 +68,20 @@ type FlatMap = [property: string]: string | number | boolean
 
 ---
 
-### LocalizedString
-
-Localized string supports either a simple `string` or a Map<string, string> of language codes to strings. When using a simple `string`, the current preferred langauge from `Localization.langauge()` is assumed.
+### BooleanMap
 
 ```typescript
-type LocalizedString = string | object
+type BooleanMap = [property: string]: boolean
+```
+
+---
+
+### Timeout
+
+Defines the timeout in seconds. If the threshold for timeout is passed for any operation without a result it will throw an error.
+
+```typescript
+type Timeout = number
 ```
 
 ---

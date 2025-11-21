@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt JSON-RPC API",
-		"version": "1.8.0-next-major.2",
+		"version": "1.8.0-next-major.3",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -32,35 +32,6 @@
 		}
 	},
 	"methods": [
-		{
-			"name": "rpc.discover",
-			"summary": "The OpenRPC schema for this JSON-RPC API",
-			"params": [],
-			"tags": [
-				{
-					"name": "capabilities",
-					"x-uses": [
-						"xrn:firebolt:capability:rpc:discover"
-					]
-				}
-			],
-			"result": {
-				"name": "OpenRPC Schema",
-				"schema": {
-					"type": "object"
-				}
-			},
-			"examples": [
-				{
-					"name": "Default",
-					"params": [],
-					"result": {
-						"name": "schema",
-						"value": {}
-					}
-				}
-			]
-		},
 		{
 			"name": "rpc.discover",
 			"summary": "The OpenRPC schema for this JSON-RPC API",
@@ -12414,7 +12385,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.available"
+					"x-notifier": "Capabilities.onAvailable"
 				},
 				{
 					"name": "capabilities",
@@ -12470,7 +12441,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.unavailable"
+					"x-notifier": "Capabilities.onUnavailable"
 				},
 				{
 					"name": "capabilities",
@@ -12526,7 +12497,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.granted"
+					"x-notifier": "Capabilities.onGranted"
 				},
 				{
 					"name": "capabilities",
@@ -12593,7 +12564,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.revoked"
+					"x-notifier": "Capabilities.onRevoked"
 				},
 				{
 					"name": "capabilities",
@@ -12660,7 +12631,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.deviceNameChanged"
+					"x-notifier": "Device.onDeviceNameChanged"
 				},
 				{
 					"name": "deprecated",
@@ -12710,7 +12681,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.navigateTo"
+					"x-notifier": "Discovery.onNavigateTo"
 				},
 				{
 					"name": "capabilities",
@@ -12755,7 +12726,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.signIn"
+					"x-notifier": "Discovery.onSignIn"
 				},
 				{
 					"name": "capabilities",
@@ -12800,7 +12771,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.signOut"
+					"x-notifier": "Discovery.onSignOut"
 				},
 				{
 					"name": "capabilities",
@@ -12845,7 +12816,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.connectionChanged"
+					"x-notifier": "HDMIInput.onConnectionChanged"
 				},
 				{
 					"name": "capabilities",
@@ -12890,7 +12861,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.signalChanged"
+					"x-notifier": "HDMIInput.onSignalChanged"
 				},
 				{
 					"name": "capabilities",
@@ -12942,7 +12913,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.autoLowLatencyModeSignalChanged"
+					"x-notifier": "HDMIInput.onAutoLowLatencyModeSignalChanged"
 				}
 			],
 			"params": [
@@ -12980,7 +12951,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.inactive"
+					"x-notifier": "Lifecycle.onInactive"
 				},
 				{
 					"name": "capabilities",
@@ -13025,7 +12996,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.foreground"
+					"x-notifier": "Lifecycle.onForeground"
 				},
 				{
 					"name": "capabilities",
@@ -13083,7 +13054,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.background"
+					"x-notifier": "Lifecycle.onBackground"
 				},
 				{
 					"name": "capabilities",
@@ -13128,7 +13099,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.suspended"
+					"x-notifier": "Lifecycle.onSuspended"
 				},
 				{
 					"name": "capabilities",
@@ -13173,7 +13144,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.unloading"
+					"x-notifier": "Lifecycle.onUnloading"
 				},
 				{
 					"name": "capabilities",
@@ -13218,7 +13189,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "SecondScreen.launchRequest"
+					"x-notifier": "SecondScreen.onLaunchRequest"
 				},
 				{
 					"name": "capabilities",
@@ -13263,7 +13234,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "SecondScreen.closeRequest"
+					"x-notifier": "SecondScreen.onCloseRequest"
 				},
 				{
 					"name": "capabilities",
@@ -13309,7 +13280,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Advertising.skipRestrictionChanged",
+					"x-notifier": "Advertising.onSkipRestrictionChanged",
 					"x-subscriber-for": "Advertising.skipRestriction"
 				},
 				{
@@ -13367,7 +13338,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "AudioDescriptions.enabledChanged",
+					"x-notifier": "AudioDescriptions.onEnabledChanged",
 					"x-subscriber-for": "AudioDescriptions.enabled"
 				},
 				{
@@ -13426,7 +13397,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.enabledChanged",
+					"x-notifier": "ClosedCaptions.onEnabledChanged",
 					"x-subscriber-for": "ClosedCaptions.enabled"
 				},
 				{
@@ -13485,7 +13456,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontFamilyChanged",
+					"x-notifier": "ClosedCaptions.onFontFamilyChanged",
 					"x-subscriber-for": "ClosedCaptions.fontFamily"
 				},
 				{
@@ -13557,7 +13528,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontSizeChanged",
+					"x-notifier": "ClosedCaptions.onFontSizeChanged",
 					"x-subscriber-for": "ClosedCaptions.fontSize"
 				},
 				{
@@ -13629,7 +13600,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontColorChanged",
+					"x-notifier": "ClosedCaptions.onFontColorChanged",
 					"x-subscriber-for": "ClosedCaptions.fontColor"
 				},
 				{
@@ -13701,7 +13672,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontEdgeChanged",
+					"x-notifier": "ClosedCaptions.onFontEdgeChanged",
 					"x-subscriber-for": "ClosedCaptions.fontEdge"
 				},
 				{
@@ -13773,7 +13744,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontEdgeColorChanged",
+					"x-notifier": "ClosedCaptions.onFontEdgeColorChanged",
 					"x-subscriber-for": "ClosedCaptions.fontEdgeColor"
 				},
 				{
@@ -13845,7 +13816,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontOpacityChanged",
+					"x-notifier": "ClosedCaptions.onFontOpacityChanged",
 					"x-subscriber-for": "ClosedCaptions.fontOpacity"
 				},
 				{
@@ -13917,7 +13888,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.backgroundColorChanged",
+					"x-notifier": "ClosedCaptions.onBackgroundColorChanged",
 					"x-subscriber-for": "ClosedCaptions.backgroundColor"
 				},
 				{
@@ -13989,7 +13960,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.backgroundOpacityChanged",
+					"x-notifier": "ClosedCaptions.onBackgroundOpacityChanged",
 					"x-subscriber-for": "ClosedCaptions.backgroundOpacity"
 				},
 				{
@@ -14061,7 +14032,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.textAlignChanged",
+					"x-notifier": "ClosedCaptions.onTextAlignChanged",
 					"x-subscriber-for": "ClosedCaptions.textAlign"
 				},
 				{
@@ -14133,7 +14104,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.textAlignVerticalChanged",
+					"x-notifier": "ClosedCaptions.onTextAlignVerticalChanged",
 					"x-subscriber-for": "ClosedCaptions.textAlignVertical"
 				},
 				{
@@ -14205,7 +14176,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.windowColorChanged",
+					"x-notifier": "ClosedCaptions.onWindowColorChanged",
 					"x-subscriber-for": "ClosedCaptions.windowColor"
 				},
 				{
@@ -14277,7 +14248,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.windowOpacityChanged",
+					"x-notifier": "ClosedCaptions.onWindowOpacityChanged",
 					"x-subscriber-for": "ClosedCaptions.windowOpacity"
 				},
 				{
@@ -14358,7 +14329,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.preferredLanguagesChanged",
+					"x-notifier": "ClosedCaptions.onPreferredLanguagesChanged",
 					"x-subscriber-for": "ClosedCaptions.preferredLanguages"
 				},
 				{
@@ -14408,7 +14379,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Content.requestUserInterestChanged",
+					"x-notifier": "Content.onRequestUserInterestChanged",
 					"x-subscriber-for": "Content.requestUserInterest"
 				},
 				{
@@ -14508,7 +14479,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.nameChanged",
+					"x-notifier": "Device.onNameChanged",
 					"x-subscriber-for": "Device.name"
 				},
 				{
@@ -14558,7 +14529,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.entityInfoChanged",
+					"x-notifier": "Discovery.onEntityInfoChanged",
 					"x-subscriber-for": "Discovery.entityInfo"
 				},
 				{
@@ -14656,7 +14627,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Discovery.purchasedContentChanged",
+					"x-notifier": "Discovery.onPurchasedContentChanged",
 					"x-subscriber-for": "Discovery.purchasedContent"
 				}
 			],
@@ -14747,7 +14718,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.lowLatencyModeChanged",
+					"x-notifier": "HDMIInput.onLowLatencyModeChanged",
 					"x-subscriber-for": "HDMIInput.lowLatencyMode"
 				}
 			],
@@ -14807,11 +14778,18 @@
 				{
 					"name": "event",
 					"x-subscriber-type": "global",
-					"x-notifier": "HDMIInput.autoLowLatencyModeCapableChanged",
+					"x-notifier": "HDMIInput.onAutoLowLatencyModeCapableChanged",
 					"x-subscriber-for": "HDMIInput.autoLowLatencyModeCapable"
 				}
 			],
 			"params": [
+				{
+					"name": "port",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/HDMIPortId"
+					}
+				},
 				{
 					"name": "listen",
 					"schema": {
@@ -14823,6 +14801,10 @@
 				{
 					"name": "Default Example",
 					"params": [
+						{
+							"name": "port",
+							"value": "HDMI1"
+						},
 						{
 							"name": "listen",
 							"value": true
@@ -14836,6 +14818,10 @@
 				{
 					"name": "Default Example #2",
 					"params": [
+						{
+							"name": "port",
+							"value": "HDMI1"
+						},
 						{
 							"name": "listen",
 							"value": true
@@ -14866,7 +14852,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.edidVersionChanged",
+					"x-notifier": "HDMIInput.onEdidVersionChanged",
 					"x-subscriber-for": "HDMIInput.edidVersion"
 				}
 			],
@@ -14939,7 +14925,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Localization.localityChanged",
+					"x-notifier": "Localization.onLocalityChanged",
 					"x-subscriber-for": "Localization.locality"
 				}
 			],
@@ -14992,7 +14978,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.postalCodeChanged",
+					"x-notifier": "Localization.onPostalCodeChanged",
 					"x-subscriber-for": "Localization.postalCode"
 				},
 				{
@@ -15051,7 +15037,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.countryCodeChanged",
+					"x-notifier": "Localization.onCountryCodeChanged",
 					"x-subscriber-for": "Localization.countryCode"
 				},
 				{
@@ -15124,7 +15110,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Localization.languageChanged",
+					"x-notifier": "Localization.onLanguageChanged",
 					"x-subscriber-for": "Localization.language"
 				},
 				{
@@ -15183,7 +15169,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.preferredAudioLanguagesChanged",
+					"x-notifier": "Localization.onPreferredAudioLanguagesChanged",
 					"x-subscriber-for": "Localization.preferredAudioLanguages"
 				},
 				{
@@ -15233,7 +15219,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.localeChanged",
+					"x-notifier": "Localization.onLocaleChanged",
 					"x-subscriber-for": "Localization.locale"
 				},
 				{
@@ -15292,7 +15278,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.timeZoneChanged",
+					"x-notifier": "Localization.onTimeZoneChanged",
 					"x-subscriber-for": "Localization.timeZone"
 				},
 				{
@@ -15352,7 +15338,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowResumePointsChanged",
+					"x-notifier": "Privacy.onAllowResumePointsChanged",
 					"x-subscriber-for": "Privacy.allowResumePoints"
 				},
 				{
@@ -15412,7 +15398,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowUnentitledResumePointsChanged",
+					"x-notifier": "Privacy.onAllowUnentitledResumePointsChanged",
 					"x-subscriber-for": "Privacy.allowUnentitledResumePoints"
 				},
 				{
@@ -15472,7 +15458,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowWatchHistoryChanged",
+					"x-notifier": "Privacy.onAllowWatchHistoryChanged",
 					"x-subscriber-for": "Privacy.allowWatchHistory"
 				},
 				{
@@ -15532,7 +15518,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowProductAnalyticsChanged",
+					"x-notifier": "Privacy.onAllowProductAnalyticsChanged",
 					"x-subscriber-for": "Privacy.allowProductAnalytics"
 				},
 				{
@@ -15592,7 +15578,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowPersonalizationChanged",
+					"x-notifier": "Privacy.onAllowPersonalizationChanged",
 					"x-subscriber-for": "Privacy.allowPersonalization"
 				},
 				{
@@ -15652,7 +15638,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowUnentitledPersonalizationChanged",
+					"x-notifier": "Privacy.onAllowUnentitledPersonalizationChanged",
 					"x-subscriber-for": "Privacy.allowUnentitledPersonalization"
 				},
 				{
@@ -15712,7 +15698,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowRemoteDiagnosticsChanged",
+					"x-notifier": "Privacy.onAllowRemoteDiagnosticsChanged",
 					"x-subscriber-for": "Privacy.allowRemoteDiagnostics"
 				},
 				{
@@ -15772,7 +15758,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowPrimaryContentAdTargetingChanged",
+					"x-notifier": "Privacy.onAllowPrimaryContentAdTargetingChanged",
 					"x-subscriber-for": "Privacy.allowPrimaryContentAdTargeting"
 				},
 				{
@@ -15832,7 +15818,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowPrimaryBrowseAdTargetingChanged",
+					"x-notifier": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
 					"x-subscriber-for": "Privacy.allowPrimaryBrowseAdTargeting"
 				},
 				{
@@ -15892,7 +15878,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowAppContentAdTargetingChanged",
+					"x-notifier": "Privacy.onAllowAppContentAdTargetingChanged",
 					"x-subscriber-for": "Privacy.allowAppContentAdTargeting"
 				},
 				{
@@ -15952,7 +15938,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowACRCollectionChanged",
+					"x-notifier": "Privacy.onAllowACRCollectionChanged",
 					"x-subscriber-for": "Privacy.allowACRCollection"
 				},
 				{
@@ -16012,7 +15998,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowCameraAnalyticsChanged",
+					"x-notifier": "Privacy.onAllowCameraAnalyticsChanged",
 					"x-subscriber-for": "Privacy.allowCameraAnalytics"
 				},
 				{
@@ -16071,7 +16057,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.enabledChanged",
+					"x-notifier": "VoiceGuidance.onEnabledChanged",
 					"x-subscriber-for": "VoiceGuidance.enabled"
 				},
 				{
@@ -16130,7 +16116,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.navigationHintsChanged",
+					"x-notifier": "VoiceGuidance.onNavigationHintsChanged",
 					"x-subscriber-for": "VoiceGuidance.navigationHints"
 				},
 				{
@@ -16189,7 +16175,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.rateChanged",
+					"x-notifier": "VoiceGuidance.onRateChanged",
 					"x-subscriber-for": "VoiceGuidance.rate"
 				},
 				{
@@ -16248,7 +16234,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.speedChanged",
+					"x-notifier": "VoiceGuidance.onSpeedChanged",
 					"x-subscriber-for": "VoiceGuidance.speed"
 				},
 				{
@@ -16321,7 +16307,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.closedCaptionsSettingsChanged",
+					"x-notifier": "Accessibility.onClosedCaptionsSettingsChanged",
 					"x-subscriber-for": "Accessibility.closedCaptionsSettings"
 				},
 				{
@@ -16367,7 +16353,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.highContrastUIChanged",
+					"x-notifier": "Accessibility.onHighContrastUIChanged",
 					"x-subscriber-for": "Accessibility.highContrastUI"
 				},
 				{
@@ -16413,7 +16399,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.voiceGuidanceSettingsChanged",
+					"x-notifier": "Accessibility.onVoiceGuidanceSettingsChanged",
 					"x-subscriber-for": "Accessibility.voiceGuidanceSettings"
 				},
 				{
@@ -16459,7 +16445,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.audioDescriptionSettingsChanged",
+					"x-notifier": "Accessibility.onAudioDescriptionSettingsChanged",
 					"x-subscriber-for": "Accessibility.audioDescriptionSettings"
 				},
 				{
@@ -16505,7 +16491,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Advertising.policyChanged",
+					"x-notifier": "Advertising.onPolicyChanged",
 					"x-subscriber-for": "Advertising.policy"
 				},
 				{
@@ -16551,7 +16537,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.hdcpChanged",
+					"x-notifier": "Device.onHdcpChanged",
 					"x-subscriber-for": "Device.hdcp"
 				},
 				{
@@ -16597,7 +16583,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.hdrChanged",
+					"x-notifier": "Device.onHdrChanged",
 					"x-subscriber-for": "Device.hdr"
 				},
 				{
@@ -16643,7 +16629,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.audioChanged",
+					"x-notifier": "Device.onAudioChanged",
 					"x-subscriber-for": "Device.audio"
 				},
 				{
@@ -16689,7 +16675,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.screenResolutionChanged",
+					"x-notifier": "Device.onScreenResolutionChanged",
 					"x-subscriber-for": "Device.screenResolution"
 				},
 				{
@@ -16740,7 +16726,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.videoResolutionChanged",
+					"x-notifier": "Device.onVideoResolutionChanged",
 					"x-subscriber-for": "Device.videoResolution"
 				},
 				{
@@ -16786,7 +16772,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.networkChanged",
+					"x-notifier": "Device.onNetworkChanged",
 					"x-subscriber-for": "Device.network"
 				},
 				{
@@ -16832,7 +16818,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.policyChanged",
+					"x-notifier": "Discovery.onPolicyChanged",
 					"x-subscriber-for": "Discovery.policy"
 				},
 				{
@@ -16878,7 +16864,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "SecondScreen.friendlyNameChanged",
+					"x-notifier": "SecondScreen.onFriendlyNameChanged",
 					"x-subscriber-for": "SecondScreen.friendlyName"
 				},
 				{
@@ -18622,22 +18608,6 @@
 						}
 					}
 				}
-			},
-			"HDMIInput.AutoLowLatencyModeCapableChangedInfo": {
-				"title": "AutoLowLatencyModeCapableChangedInfo",
-				"type": "object",
-				"properties": {
-					"port": {
-						"$ref": "#/components/schemas/HDMIPortId"
-					},
-					"enabled": {
-						"type": "boolean"
-					}
-				},
-				"required": [
-					"port",
-					"enabled"
-				]
 			}
 		}
 	},

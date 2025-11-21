@@ -16,15 +16,15 @@ sdk: core
 - [Types](#types)
   - [Intent](#intent)
   - [IntentProperties](#intentproperties)
-  - [LaunchIntent](#launchintent)
-  - [HomeIntent](#homeintent)
   - [EntityIntent](#entityintent)
-  - [TuneIntent](#tuneintent)
   - [PlaybackIntent](#playbackintent)
   - [SearchIntent](#searchintent)
   - [SectionIntent](#sectionintent)
+  - [TuneIntent](#tuneintent)
   - [PlayEntityIntent](#playentityintent)
   - [PlayQueryIntent](#playqueryintent)
+  - [HomeIntent](#homeintent)
+  - [LaunchIntent](#launchintent)
   - [NavigationIntent](#navigationintent)
 
 ## Types
@@ -42,7 +42,7 @@ type Intent = {
 
 See also:
 
-Policies.AgePolicy
+[Policies.AgePolicy](../Policies/schemas/#AgePolicy)
 
 ---
 
@@ -50,32 +50,6 @@ Policies.AgePolicy
 
 ```typescript
 type IntentProperties = {}
-```
-
----
-
-### LaunchIntent
-
-A Firebolt compliant representation of a user intention to launch an app.
-
-```typescript
-type LaunchIntent = {
-  action: 'launch'
-  context: object
-}
-```
-
----
-
-### HomeIntent
-
-A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
-
-```typescript
-type HomeIntent = {
-  action: 'home'
-  context: object
-}
 ```
 
 ---
@@ -99,24 +73,6 @@ type EntityIntent = {
 
 ---
 
-### TuneIntent
-
-A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.
-
-```typescript
-type TuneIntent = {
-  action: 'tune'
-  data: object
-  context: object
-}
-```
-
-See also:
-
-Entity.ChannelEntity
-
----
-
 ### PlaybackIntent
 
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
@@ -124,14 +80,14 @@ A Firebolt compliant representation of a user intention to navigate an app to a 
 ```typescript
 type PlaybackIntent = {
   action: 'playback'
-  data: Entity.PlayableEntity
+  data: PlayableEntity
   context: object
 }
 ```
 
 See also:
 
-Entity.PlayableEntity
+[Entity.PlayableEntity](../Entity/schemas/#PlayableEntity)
 
 ---
 
@@ -163,6 +119,24 @@ type SectionIntent = {
 
 ---
 
+### TuneIntent
+
+A Firebolt compliant representation of a user intention to 'tune' to a traditional over-the-air broadcast, or an OTT Stream from an OTT or vMVPD App.
+
+```typescript
+type TuneIntent = {
+  action: 'tune'
+  data: object
+  context: object
+}
+```
+
+See also:
+
+[Entity.ChannelEntity](../Entity/schemas/#ChannelEntity)
+
+---
+
 ### PlayEntityIntent
 
 A Firebolt compliant representation of a user intention to navigate an app to a the video player for a specific, playable entity, and bring that app to the foreground if needed.
@@ -177,7 +151,7 @@ type PlayEntityIntent = {
 
 See also:
 
-Entity.PlayableEntity
+[Entity.PlayableEntity](../Entity/schemas/#PlayableEntity)
 
 ---
 
@@ -195,8 +169,34 @@ type PlayQueryIntent = {
 
 See also:
 
-Entertainment.ProgramType
-Entertainment.MusicType
+[Entertainment.ProgramType](../Entertainment/schemas/#ProgramType)
+[Entertainment.MusicType](../Entertainment/schemas/#MusicType)
+
+---
+
+### HomeIntent
+
+A Firebolt compliant representation of a user intention to navigate an app to it's home screen, and bring that app to the foreground if needed.
+
+```typescript
+type HomeIntent = {
+  action: 'home'
+  context: object
+}
+```
+
+---
+
+### LaunchIntent
+
+A Firebolt compliant representation of a user intention to launch an app.
+
+```typescript
+type LaunchIntent = {
+  action: 'launch'
+  context: object
+}
+```
 
 ---
 

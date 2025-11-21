@@ -536,7 +536,7 @@ The schemas are used to generate SDK and Documentation artifacts.
 
 | Uses |
 | ---- |
-| [rpc.discover](./manage/rpc/#discover)<br/>[rpc.discover](./manage/rpc/#discover) |
+| [rpc.discover](./manage/rpc/#discover) |
 
 
 ### `xrn:firebolt:capability:secondscreen:protocol`

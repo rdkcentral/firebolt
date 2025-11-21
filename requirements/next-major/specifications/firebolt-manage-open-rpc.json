@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Manage SDK",
-		"version": "1.8.0-next-major.2",
+		"version": "1.8.0-next-major.3",
 		"x-module-descriptions": {
 			"Account": "A module for querying about the device account.",
 			"AcknowledgeChallenge": "A module for registering as a provider for a user grant in which the user confirms access to a capability",
@@ -912,7 +912,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Localization.localityChanged",
+					"x-notifier": "Localization.onLocalityChanged",
 					"x-subscriber-for": "Localization.locality"
 				}
 			],
@@ -965,7 +965,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.postalCodeChanged",
+					"x-notifier": "Localization.onPostalCodeChanged",
 					"x-subscriber-for": "Localization.postalCode"
 				},
 				{
@@ -1024,7 +1024,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.countryCodeChanged",
+					"x-notifier": "Localization.onCountryCodeChanged",
 					"x-subscriber-for": "Localization.countryCode"
 				},
 				{
@@ -1097,7 +1097,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Localization.languageChanged",
+					"x-notifier": "Localization.onLanguageChanged",
 					"x-subscriber-for": "Localization.language"
 				},
 				{
@@ -1156,7 +1156,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.preferredAudioLanguagesChanged",
+					"x-notifier": "Localization.onPreferredAudioLanguagesChanged",
 					"x-subscriber-for": "Localization.preferredAudioLanguages"
 				},
 				{
@@ -1206,7 +1206,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.localeChanged",
+					"x-notifier": "Localization.onLocaleChanged",
 					"x-subscriber-for": "Localization.locale"
 				},
 				{
@@ -1265,7 +1265,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.timeZoneChanged",
+					"x-notifier": "Localization.onTimeZoneChanged",
 					"x-subscriber-for": "Localization.timeZone"
 				},
 				{
@@ -3281,7 +3281,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.enabledChanged",
+					"x-notifier": "ClosedCaptions.onEnabledChanged",
 					"x-subscriber-for": "ClosedCaptions.enabled"
 				},
 				{
@@ -3340,7 +3340,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontFamilyChanged",
+					"x-notifier": "ClosedCaptions.onFontFamilyChanged",
 					"x-subscriber-for": "ClosedCaptions.fontFamily"
 				},
 				{
@@ -3412,7 +3412,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontSizeChanged",
+					"x-notifier": "ClosedCaptions.onFontSizeChanged",
 					"x-subscriber-for": "ClosedCaptions.fontSize"
 				},
 				{
@@ -3484,7 +3484,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontColorChanged",
+					"x-notifier": "ClosedCaptions.onFontColorChanged",
 					"x-subscriber-for": "ClosedCaptions.fontColor"
 				},
 				{
@@ -3556,7 +3556,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontEdgeChanged",
+					"x-notifier": "ClosedCaptions.onFontEdgeChanged",
 					"x-subscriber-for": "ClosedCaptions.fontEdge"
 				},
 				{
@@ -3628,7 +3628,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontEdgeColorChanged",
+					"x-notifier": "ClosedCaptions.onFontEdgeColorChanged",
 					"x-subscriber-for": "ClosedCaptions.fontEdgeColor"
 				},
 				{
@@ -3700,7 +3700,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.fontOpacityChanged",
+					"x-notifier": "ClosedCaptions.onFontOpacityChanged",
 					"x-subscriber-for": "ClosedCaptions.fontOpacity"
 				},
 				{
@@ -3772,7 +3772,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.backgroundColorChanged",
+					"x-notifier": "ClosedCaptions.onBackgroundColorChanged",
 					"x-subscriber-for": "ClosedCaptions.backgroundColor"
 				},
 				{
@@ -3844,7 +3844,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.backgroundOpacityChanged",
+					"x-notifier": "ClosedCaptions.onBackgroundOpacityChanged",
 					"x-subscriber-for": "ClosedCaptions.backgroundOpacity"
 				},
 				{
@@ -3916,7 +3916,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.textAlignChanged",
+					"x-notifier": "ClosedCaptions.onTextAlignChanged",
 					"x-subscriber-for": "ClosedCaptions.textAlign"
 				},
 				{
@@ -3988,7 +3988,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.textAlignVerticalChanged",
+					"x-notifier": "ClosedCaptions.onTextAlignVerticalChanged",
 					"x-subscriber-for": "ClosedCaptions.textAlignVertical"
 				},
 				{
@@ -4060,7 +4060,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.windowColorChanged",
+					"x-notifier": "ClosedCaptions.onWindowColorChanged",
 					"x-subscriber-for": "ClosedCaptions.windowColor"
 				},
 				{
@@ -4132,7 +4132,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.windowOpacityChanged",
+					"x-notifier": "ClosedCaptions.onWindowOpacityChanged",
 					"x-subscriber-for": "ClosedCaptions.windowOpacity"
 				},
 				{
@@ -4213,7 +4213,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "ClosedCaptions.preferredLanguagesChanged",
+					"x-notifier": "ClosedCaptions.onPreferredLanguagesChanged",
 					"x-subscriber-for": "ClosedCaptions.preferredLanguages"
 				},
 				{
@@ -4362,7 +4362,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "AudioDescriptions.enabledChanged",
+					"x-notifier": "AudioDescriptions.onEnabledChanged",
 					"x-subscriber-for": "AudioDescriptions.enabled"
 				},
 				{
@@ -4827,7 +4827,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.enabledChanged",
+					"x-notifier": "VoiceGuidance.onEnabledChanged",
 					"x-subscriber-for": "VoiceGuidance.enabled"
 				},
 				{
@@ -4886,7 +4886,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.navigationHintsChanged",
+					"x-notifier": "VoiceGuidance.onNavigationHintsChanged",
 					"x-subscriber-for": "VoiceGuidance.navigationHints"
 				},
 				{
@@ -4945,7 +4945,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.rateChanged",
+					"x-notifier": "VoiceGuidance.onRateChanged",
 					"x-subscriber-for": "VoiceGuidance.rate"
 				},
 				{
@@ -5004,7 +5004,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "VoiceGuidance.speedChanged",
+					"x-notifier": "VoiceGuidance.onSpeedChanged",
 					"x-subscriber-for": "VoiceGuidance.speed"
 				},
 				{
@@ -5254,7 +5254,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.deviceNameChanged"
+					"x-notifier": "Device.onDeviceNameChanged"
 				},
 				{
 					"name": "deprecated",
@@ -5313,7 +5313,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.nameChanged",
+					"x-notifier": "Device.onNameChanged",
 					"x-subscriber-for": "Device.name"
 				},
 				{
@@ -7086,7 +7086,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowResumePointsChanged",
+					"x-notifier": "Privacy.onAllowResumePointsChanged",
 					"x-subscriber-for": "Privacy.allowResumePoints"
 				},
 				{
@@ -7146,7 +7146,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowUnentitledResumePointsChanged",
+					"x-notifier": "Privacy.onAllowUnentitledResumePointsChanged",
 					"x-subscriber-for": "Privacy.allowUnentitledResumePoints"
 				},
 				{
@@ -7206,7 +7206,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowWatchHistoryChanged",
+					"x-notifier": "Privacy.onAllowWatchHistoryChanged",
 					"x-subscriber-for": "Privacy.allowWatchHistory"
 				},
 				{
@@ -7266,7 +7266,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowProductAnalyticsChanged",
+					"x-notifier": "Privacy.onAllowProductAnalyticsChanged",
 					"x-subscriber-for": "Privacy.allowProductAnalytics"
 				},
 				{
@@ -7326,7 +7326,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowPersonalizationChanged",
+					"x-notifier": "Privacy.onAllowPersonalizationChanged",
 					"x-subscriber-for": "Privacy.allowPersonalization"
 				},
 				{
@@ -7386,7 +7386,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowUnentitledPersonalizationChanged",
+					"x-notifier": "Privacy.onAllowUnentitledPersonalizationChanged",
 					"x-subscriber-for": "Privacy.allowUnentitledPersonalization"
 				},
 				{
@@ -7446,7 +7446,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowRemoteDiagnosticsChanged",
+					"x-notifier": "Privacy.onAllowRemoteDiagnosticsChanged",
 					"x-subscriber-for": "Privacy.allowRemoteDiagnostics"
 				},
 				{
@@ -7506,7 +7506,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowPrimaryContentAdTargetingChanged",
+					"x-notifier": "Privacy.onAllowPrimaryContentAdTargetingChanged",
 					"x-subscriber-for": "Privacy.allowPrimaryContentAdTargeting"
 				},
 				{
@@ -7566,7 +7566,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowPrimaryBrowseAdTargetingChanged",
+					"x-notifier": "Privacy.onAllowPrimaryBrowseAdTargetingChanged",
 					"x-subscriber-for": "Privacy.allowPrimaryBrowseAdTargeting"
 				},
 				{
@@ -7626,7 +7626,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowAppContentAdTargetingChanged",
+					"x-notifier": "Privacy.onAllowAppContentAdTargetingChanged",
 					"x-subscriber-for": "Privacy.allowAppContentAdTargeting"
 				},
 				{
@@ -7686,7 +7686,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowACRCollectionChanged",
+					"x-notifier": "Privacy.onAllowACRCollectionChanged",
 					"x-subscriber-for": "Privacy.allowACRCollection"
 				},
 				{
@@ -7746,7 +7746,7 @@
 				{
 					"name": "event",
 					"x-allow-value": true,
-					"x-notifier": "Privacy.allowCameraAnalyticsChanged",
+					"x-notifier": "Privacy.onAllowCameraAnalyticsChanged",
 					"x-subscriber-for": "Privacy.allowCameraAnalytics"
 				},
 				{
@@ -7934,7 +7934,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Advertising.skipRestrictionChanged",
+					"x-notifier": "Advertising.onSkipRestrictionChanged",
 					"x-subscriber-for": "Advertising.skipRestriction"
 				},
 				{
@@ -8413,7 +8413,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.signIn"
+					"x-notifier": "Discovery.onSignIn"
 				},
 				{
 					"name": "capabilities",
@@ -8458,7 +8458,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.signOut"
+					"x-notifier": "Discovery.onSignOut"
 				},
 				{
 					"name": "capabilities",
@@ -9032,7 +9032,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.connectionChanged"
+					"x-notifier": "HDMIInput.onConnectionChanged"
 				},
 				{
 					"name": "capabilities",
@@ -9077,7 +9077,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.signalChanged"
+					"x-notifier": "HDMIInput.onSignalChanged"
 				},
 				{
 					"name": "capabilities",
@@ -9129,7 +9129,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.autoLowLatencyModeSignalChanged"
+					"x-notifier": "HDMIInput.onAutoLowLatencyModeSignalChanged"
 				}
 			],
 			"params": [
@@ -9174,7 +9174,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.lowLatencyModeChanged",
+					"x-notifier": "HDMIInput.onLowLatencyModeChanged",
 					"x-subscriber-for": "HDMIInput.lowLatencyMode"
 				}
 			],
@@ -9234,11 +9234,18 @@
 				{
 					"name": "event",
 					"x-subscriber-type": "global",
-					"x-notifier": "HDMIInput.autoLowLatencyModeCapableChanged",
+					"x-notifier": "HDMIInput.onAutoLowLatencyModeCapableChanged",
 					"x-subscriber-for": "HDMIInput.autoLowLatencyModeCapable"
 				}
 			],
 			"params": [
+				{
+					"name": "port",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/HDMIPortId"
+					}
+				},
 				{
 					"name": "listen",
 					"schema": {
@@ -9250,6 +9257,10 @@
 				{
 					"name": "Default Example",
 					"params": [
+						{
+							"name": "port",
+							"value": "HDMI1"
+						},
 						{
 							"name": "listen",
 							"value": true
@@ -9263,6 +9274,10 @@
 				{
 					"name": "Default Example #2",
 					"params": [
+						{
+							"name": "port",
+							"value": "HDMI1"
+						},
 						{
 							"name": "listen",
 							"value": true
@@ -9293,7 +9308,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.edidVersionChanged",
+					"x-notifier": "HDMIInput.onEdidVersionChanged",
 					"x-subscriber-for": "HDMIInput.edidVersion"
 				}
 			],
@@ -9366,209 +9381,6 @@
 				"type": "integer",
 				"description": "Number of secs before the token expires",
 				"minimum": 1
-			},
-			"Challenge": {
-				"title": "Challenge",
-				"type": "object",
-				"required": [
-					"capability",
-					"requestor"
-				],
-				"properties": {}
-			},
-			"NetworkType": {
-				"title": "NetworkType",
-				"type": "string",
-				"enum": [
-					"wifi",
-					"ethernet",
-					"hybrid"
-				],
-				"description": "The type of network that is currently active"
-			},
-			"NetworkState": {
-				"title": "NetworkState",
-				"type": "string",
-				"enum": [
-					"connected",
-					"disconnected"
-				],
-				"description": "The type of network that is currently active"
-			},
-			"FederatedRequest": {
-				"title": "FederatedRequest",
-				"type": "object",
-				"properties": {
-					"correlationId": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"correlationId"
-				],
-				"propertyNames": {
-					"enum": [
-						"correlationId",
-						"parameters"
-					]
-				},
-				"examples": [
-					{
-						"correlationId": "xyz"
-					}
-				]
-			},
-			"FederatedResponse": {
-				"title": "FederatedResponse",
-				"type": "object",
-				"properties": {
-					"correlationId": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"correlationId",
-					"result"
-				],
-				"propertyNames": {
-					"enum": [
-						"correlationId",
-						"result"
-					]
-				},
-				"examples": [
-					{
-						"correlationId": "xyz"
-					}
-				]
-			},
-			"EntityInfoParameters": {
-				"title": "EntityInfoParameters",
-				"type": "object",
-				"properties": {
-					"entityId": {
-						"type": "string"
-					},
-					"assetId": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"entityId"
-				],
-				"additionalProperties": false,
-				"examples": [
-					{
-						"entityId": "345"
-					}
-				]
-			},
-			"EntityInfoResult": {
-				"title": "EntityInfoResult",
-				"description": "The result for an `entityInfo()` push or pull.",
-				"type": "object",
-				"properties": {
-					"expires": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"entity": {
-						"$ref": "#/x-schemas/Entertainment/EntityInfo"
-					},
-					"related": {
-						"type": "array",
-						"items": {
-							"$ref": "#/x-schemas/Entertainment/EntityInfo"
-						}
-					}
-				},
-				"required": [
-					"expires",
-					"entity"
-				],
-				"additionalProperties": false
-			},
-			"PurchasedContentParameters": {
-				"title": "PurchasedContentParameters",
-				"type": "object",
-				"properties": {
-					"limit": {
-						"type": "integer",
-						"minimum": -1
-					},
-					"offeringType": {
-						"$ref": "#/x-schemas/Entertainment/OfferingType"
-					},
-					"programType": {
-						"$ref": "#/x-schemas/Entertainment/ProgramType"
-					}
-				},
-				"required": [
-					"limit"
-				],
-				"additionalProperties": false,
-				"examples": [
-					{
-						"limit": 100
-					}
-				]
-			},
-			"PurchasedContentResult": {
-				"title": "PurchasedContentResult",
-				"type": "object",
-				"properties": {
-					"expires": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"totalCount": {
-						"type": "integer",
-						"minimum": 0
-					},
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "#/x-schemas/Entertainment/EntityInfo"
-						}
-					}
-				},
-				"required": [
-					"expires",
-					"totalCount",
-					"entries"
-				],
-				"additionalProperties": false
-			},
-			"Availability": {
-				"title": "Availability",
-				"type": "object",
-				"properties": {
-					"type": {
-						"type": "string",
-						"enum": [
-							"channel-lineup",
-							"program-lineup"
-						]
-					},
-					"id": {
-						"type": "string"
-					},
-					"catalogId": {
-						"type": "string"
-					},
-					"startTime": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"endTime": {
-						"type": "string",
-						"format": "date-time"
-					}
-				},
-				"required": [
-					"type",
-					"id"
-				]
 			},
 			"HDMIPortId": {
 				"type": "string",
@@ -9655,20 +9467,6 @@
 					"unknown"
 				]
 			},
-			"KeyboardParameters": {
-				"title": "KeyboardParameters",
-				"type": "object",
-				"required": [
-					"message"
-				],
-				"properties": {},
-				"examples": [
-					{
-						"type": "standard",
-						"message": "Enter your user name."
-					}
-				]
-			},
 			"EventObjectPrimitives": {
 				"title": "EventObjectPrimitives",
 				"anyOf": [
@@ -9718,27 +9516,6 @@
 						}
 					]
 				}
-			},
-			"PinChallenge": {
-				"title": "PinChallenge",
-				"type": "object",
-				"required": [
-					"requestor",
-					"pinSpace"
-				],
-				"properties": {}
-			},
-			"ResultReason": {
-				"title": "ResultReason",
-				"type": "string",
-				"description": "The reason for the result of challenging the user",
-				"enum": [
-					"noPinRequired",
-					"noPinRequiredWindow",
-					"exceededPinFailures",
-					"correctPin",
-					"cancelled"
-				]
 			},
 			"PrivacySettings": {
 				"title": "PrivacySettings",

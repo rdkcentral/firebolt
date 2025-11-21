@@ -15,7 +15,10 @@ sdk: manage
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
   - [Role](#role)
+  - [DenyReason](#denyreason)
   - [Capability](#capability)
+  - [CapPermissionStatus](#cappermissionstatus)
+  - [CapabilityInfo](#capabilityinfo)
   - [Permission](#permission)
 
 ## Types
@@ -35,6 +38,24 @@ Role: {
 
 ---
 
+### DenyReason
+
+Reasons why a Capability might not be invokable
+
+```typescript
+DenyReason: {
+    UNPERMITTED: 'unpermitted',
+    UNSUPPORTED: 'unsupported',
+    DISABLED: 'disabled',
+    UNAVAILABLE: 'unavailable',
+    GRANT_DENIED: 'grantDenied',
+    UNGRANTED: 'ungranted',
+},
+
+```
+
+---
+
 ### Capability
 
 A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
@@ -42,6 +63,38 @@ A Capability is a discrete unit of functionality that a Firebolt device might be
 ```typescript
 type Capability = string
 ```
+
+---
+
+### CapPermissionStatus
+
+```typescript
+type CapPermissionStatus = {
+  permitted?: boolean // Provides info whether the capability is permitted
+  granted?: boolean
+}
+```
+
+---
+
+### CapabilityInfo
+
+```typescript
+type CapabilityInfo = {
+  capability?: Capability // A Capability is a discrete unit of functionality that a Firebolt device might be able to perform.
+  supported: boolean // Provides info whether the capability is supported
+  available: boolean // Provides info whether the capability is available
+  use: object
+  manage: object
+  provide: object
+  details?: DenyReason[] // Reasons why a Capability might not be invokable
+}
+```
+
+See also:
+
+[Capability](#capability)
+[DenyReason](#denyreason)
 
 ---
 

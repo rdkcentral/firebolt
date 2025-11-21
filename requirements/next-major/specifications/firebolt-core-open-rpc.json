@@ -2,7 +2,7 @@
 	"openrpc": "1.2.4",
 	"info": {
 		"title": "Firebolt Core SDK",
-		"version": "1.8.0-next-major.2",
+		"version": "1.8.0-next-major.3",
 		"x-module-descriptions": {
 			"Internal": "Internal methods for SDK / FEE integration",
 			"Accessibility": "The `Accessibility` module provides access to the user/device settings for closed captioning and voice guidance.\n\nApps **SHOULD** attempt o respect these settings, rather than manage and persist seprate settings, which would be different per-app.",
@@ -290,7 +290,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.closedCaptionsSettingsChanged",
+					"x-notifier": "Accessibility.onClosedCaptionsSettingsChanged",
 					"x-subscriber-for": "Accessibility.closedCaptionsSettings"
 				},
 				{
@@ -336,7 +336,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.highContrastUIChanged",
+					"x-notifier": "Accessibility.onHighContrastUIChanged",
 					"x-subscriber-for": "Accessibility.highContrastUI"
 				},
 				{
@@ -382,7 +382,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.voiceGuidanceSettingsChanged",
+					"x-notifier": "Accessibility.onVoiceGuidanceSettingsChanged",
 					"x-subscriber-for": "Accessibility.voiceGuidanceSettings"
 				},
 				{
@@ -428,7 +428,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Accessibility.audioDescriptionSettingsChanged",
+					"x-notifier": "Accessibility.onAudioDescriptionSettingsChanged",
 					"x-subscriber-for": "Accessibility.audioDescriptionSettings"
 				},
 				{
@@ -787,7 +787,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Advertising.policyChanged",
+					"x-notifier": "Advertising.onPolicyChanged",
 					"x-subscriber-for": "Advertising.policy"
 				},
 				{
@@ -1625,7 +1625,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.available"
+					"x-notifier": "Capabilities.onAvailable"
 				},
 				{
 					"name": "capabilities",
@@ -1681,7 +1681,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.unavailable"
+					"x-notifier": "Capabilities.onUnavailable"
 				},
 				{
 					"name": "capabilities",
@@ -1737,7 +1737,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.granted"
+					"x-notifier": "Capabilities.onGranted"
 				},
 				{
 					"name": "capabilities",
@@ -1804,7 +1804,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Capabilities.revoked"
+					"x-notifier": "Capabilities.onRevoked"
 				},
 				{
 					"name": "capabilities",
@@ -2122,7 +2122,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.connectionChanged"
+					"x-notifier": "HDMIInput.onConnectionChanged"
 				},
 				{
 					"name": "capabilities",
@@ -2167,7 +2167,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.signalChanged"
+					"x-notifier": "HDMIInput.onSignalChanged"
 				},
 				{
 					"name": "capabilities",
@@ -2219,7 +2219,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.autoLowLatencyModeSignalChanged"
+					"x-notifier": "HDMIInput.onAutoLowLatencyModeSignalChanged"
 				}
 			],
 			"params": [
@@ -2264,7 +2264,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.lowLatencyModeChanged",
+					"x-notifier": "HDMIInput.onLowLatencyModeChanged",
 					"x-subscriber-for": "HDMIInput.lowLatencyMode"
 				}
 			],
@@ -2324,11 +2324,18 @@
 				{
 					"name": "event",
 					"x-subscriber-type": "global",
-					"x-notifier": "HDMIInput.autoLowLatencyModeCapableChanged",
+					"x-notifier": "HDMIInput.onAutoLowLatencyModeCapableChanged",
 					"x-subscriber-for": "HDMIInput.autoLowLatencyModeCapable"
 				}
 			],
 			"params": [
+				{
+					"name": "port",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/HDMIPortId"
+					}
+				},
 				{
 					"name": "listen",
 					"schema": {
@@ -2340,6 +2347,10 @@
 				{
 					"name": "Default Example",
 					"params": [
+						{
+							"name": "port",
+							"value": "HDMI1"
+						},
 						{
 							"name": "listen",
 							"value": true
@@ -2353,6 +2364,10 @@
 				{
 					"name": "Default Example #2",
 					"params": [
+						{
+							"name": "port",
+							"value": "HDMI1"
+						},
 						{
 							"name": "listen",
 							"value": true
@@ -2383,7 +2398,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "HDMIInput.edidVersionChanged",
+					"x-notifier": "HDMIInput.onEdidVersionChanged",
 					"x-subscriber-for": "HDMIInput.edidVersion"
 				}
 			],
@@ -3042,7 +3057,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.deviceNameChanged"
+					"x-notifier": "Device.onDeviceNameChanged"
 				},
 				{
 					"name": "deprecated",
@@ -3101,7 +3116,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.nameChanged",
+					"x-notifier": "Device.onNameChanged",
 					"x-subscriber-for": "Device.name"
 				},
 				{
@@ -3160,7 +3175,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.hdcpChanged",
+					"x-notifier": "Device.onHdcpChanged",
 					"x-subscriber-for": "Device.hdcp"
 				},
 				{
@@ -3206,7 +3221,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.hdrChanged",
+					"x-notifier": "Device.onHdrChanged",
 					"x-subscriber-for": "Device.hdr"
 				},
 				{
@@ -3252,7 +3267,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.audioChanged",
+					"x-notifier": "Device.onAudioChanged",
 					"x-subscriber-for": "Device.audio"
 				},
 				{
@@ -3298,7 +3313,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.screenResolutionChanged",
+					"x-notifier": "Device.onScreenResolutionChanged",
 					"x-subscriber-for": "Device.screenResolution"
 				},
 				{
@@ -3349,7 +3364,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.videoResolutionChanged",
+					"x-notifier": "Device.onVideoResolutionChanged",
 					"x-subscriber-for": "Device.videoResolution"
 				},
 				{
@@ -3395,7 +3410,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Device.networkChanged",
+					"x-notifier": "Device.onNetworkChanged",
 					"x-subscriber-for": "Device.network"
 				},
 				{
@@ -5250,7 +5265,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.navigateTo"
+					"x-notifier": "Discovery.onNavigateTo"
 				},
 				{
 					"name": "capabilities",
@@ -5295,7 +5310,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.entityInfoChanged",
+					"x-notifier": "Discovery.onEntityInfoChanged",
 					"x-subscriber-for": "Discovery.entityInfo"
 				},
 				{
@@ -5393,7 +5408,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Discovery.purchasedContentChanged",
+					"x-notifier": "Discovery.onPurchasedContentChanged",
 					"x-subscriber-for": "Discovery.purchasedContent"
 				}
 			],
@@ -5486,7 +5501,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Discovery.policyChanged",
+					"x-notifier": "Discovery.onPolicyChanged",
 					"x-subscriber-for": "Discovery.policy"
 				},
 				{
@@ -5948,7 +5963,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.inactive"
+					"x-notifier": "Lifecycle.onInactive"
 				},
 				{
 					"name": "capabilities",
@@ -5993,7 +6008,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.foreground"
+					"x-notifier": "Lifecycle.onForeground"
 				},
 				{
 					"name": "capabilities",
@@ -6051,7 +6066,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.background"
+					"x-notifier": "Lifecycle.onBackground"
 				},
 				{
 					"name": "capabilities",
@@ -6096,7 +6111,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.suspended"
+					"x-notifier": "Lifecycle.onSuspended"
 				},
 				{
 					"name": "capabilities",
@@ -6141,7 +6156,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Lifecycle.unloading"
+					"x-notifier": "Lifecycle.onUnloading"
 				},
 				{
 					"name": "capabilities",
@@ -6524,7 +6539,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Localization.localityChanged",
+					"x-notifier": "Localization.onLocalityChanged",
 					"x-subscriber-for": "Localization.locality"
 				}
 			],
@@ -6577,7 +6592,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.postalCodeChanged",
+					"x-notifier": "Localization.onPostalCodeChanged",
 					"x-subscriber-for": "Localization.postalCode"
 				},
 				{
@@ -6636,7 +6651,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.countryCodeChanged",
+					"x-notifier": "Localization.onCountryCodeChanged",
 					"x-subscriber-for": "Localization.countryCode"
 				},
 				{
@@ -6709,7 +6724,7 @@
 				},
 				{
 					"name": "event",
-					"x-notifier": "Localization.languageChanged",
+					"x-notifier": "Localization.onLanguageChanged",
 					"x-subscriber-for": "Localization.language"
 				},
 				{
@@ -6768,7 +6783,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.preferredAudioLanguagesChanged",
+					"x-notifier": "Localization.onPreferredAudioLanguagesChanged",
 					"x-subscriber-for": "Localization.preferredAudioLanguages"
 				},
 				{
@@ -6818,7 +6833,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "Localization.localeChanged",
+					"x-notifier": "Localization.onLocaleChanged",
 					"x-subscriber-for": "Localization.locale"
 				},
 				{
@@ -8287,7 +8302,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "SecondScreen.launchRequest"
+					"x-notifier": "SecondScreen.onLaunchRequest"
 				},
 				{
 					"name": "capabilities",
@@ -8332,7 +8347,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "SecondScreen.closeRequest"
+					"x-notifier": "SecondScreen.onCloseRequest"
 				},
 				{
 					"name": "capabilities",
@@ -8386,7 +8401,7 @@
 			"tags": [
 				{
 					"name": "event",
-					"x-notifier": "SecondScreen.friendlyNameChanged",
+					"x-notifier": "SecondScreen.onFriendlyNameChanged",
 					"x-subscriber-for": "SecondScreen.friendlyName"
 				},
 				{
@@ -8746,15 +8761,6 @@
 						"description": "Whether or not audio descriptions should be enabled by default"
 					}
 				}
-			},
-			"Challenge": {
-				"title": "Challenge",
-				"type": "object",
-				"required": [
-					"capability",
-					"requestor"
-				],
-				"properties": {}
 			},
 			"AdPolicy": {
 				"title": "AdPolicy",
@@ -9136,74 +9142,6 @@
 					}
 				}
 			},
-			"FederatedRequest": {
-				"title": "FederatedRequest",
-				"type": "object",
-				"properties": {
-					"correlationId": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"correlationId"
-				],
-				"propertyNames": {
-					"enum": [
-						"correlationId",
-						"parameters"
-					]
-				},
-				"examples": [
-					{
-						"correlationId": "xyz"
-					}
-				]
-			},
-			"FederatedResponse": {
-				"title": "FederatedResponse",
-				"type": "object",
-				"properties": {
-					"correlationId": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"correlationId",
-					"result"
-				],
-				"propertyNames": {
-					"enum": [
-						"correlationId",
-						"result"
-					]
-				},
-				"examples": [
-					{
-						"correlationId": "xyz"
-					}
-				]
-			},
-			"EntityInfoParameters": {
-				"title": "EntityInfoParameters",
-				"type": "object",
-				"properties": {
-					"entityId": {
-						"type": "string"
-					},
-					"assetId": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"entityId"
-				],
-				"additionalProperties": false,
-				"examples": [
-					{
-						"entityId": "345"
-					}
-				]
-			},
 			"EntityInfoResult": {
 				"title": "EntityInfoResult",
 				"description": "The result for an `entityInfo()` push or pull.",
@@ -9228,31 +9166,6 @@
 					"entity"
 				],
 				"additionalProperties": false
-			},
-			"PurchasedContentParameters": {
-				"title": "PurchasedContentParameters",
-				"type": "object",
-				"properties": {
-					"limit": {
-						"type": "integer",
-						"minimum": -1
-					},
-					"offeringType": {
-						"$ref": "#/x-schemas/Entertainment/OfferingType"
-					},
-					"programType": {
-						"$ref": "#/x-schemas/Entertainment/ProgramType"
-					}
-				},
-				"required": [
-					"limit"
-				],
-				"additionalProperties": false,
-				"examples": [
-					{
-						"limit": 100
-					}
-				]
 			},
 			"PurchasedContentResult": {
 				"title": "PurchasedContentResult",
@@ -9425,20 +9338,6 @@
 					"signUp"
 				]
 			},
-			"KeyboardParameters": {
-				"title": "KeyboardParameters",
-				"type": "object",
-				"required": [
-					"message"
-				],
-				"properties": {},
-				"examples": [
-					{
-						"type": "standard",
-						"message": "Enter your user name."
-					}
-				]
-			},
 			"LatLon": {
 				"type": "array",
 				"items": [
@@ -9483,56 +9382,6 @@
 					"other"
 				]
 			},
-			"EventObjectPrimitives": {
-				"title": "EventObjectPrimitives",
-				"anyOf": [
-					{
-						"type": "string",
-						"maxLength": 256
-					},
-					{
-						"type": "number"
-					},
-					{
-						"type": "integer"
-					},
-					{
-						"type": "boolean"
-					},
-					{
-						"type": "null"
-					}
-				]
-			},
-			"EventObject": {
-				"title": "EventObject",
-				"type": "object",
-				"maxProperties": 256,
-				"additionalProperties": {
-					"anyOf": [
-						{
-							"$ref": "#/components/schemas/EventObjectPrimitives"
-						},
-						{
-							"type": "array",
-							"maxItems": 256,
-							"items": {
-								"anyOf": [
-									{
-										"$ref": "#/components/schemas/EventObjectPrimitives"
-									},
-									{
-										"$ref": "#/components/schemas/EventObject"
-									}
-								]
-							}
-						},
-						{
-							"$ref": "#/components/schemas/EventObject"
-						}
-					]
-				}
-			},
 			"AppInitialization": {
 				"title": "AppInitialization",
 				"type": "object",
@@ -9563,27 +9412,6 @@
 					}
 				}
 			},
-			"PinChallenge": {
-				"title": "PinChallenge",
-				"type": "object",
-				"required": [
-					"requestor",
-					"pinSpace"
-				],
-				"properties": {}
-			},
-			"ResultReason": {
-				"title": "ResultReason",
-				"type": "string",
-				"description": "The reason for the result of challenging the user",
-				"enum": [
-					"noPinRequired",
-					"noPinRequiredWindow",
-					"exceededPinFailures",
-					"correctPin",
-					"cancelled"
-				]
-			},
 			"StorageScope": {
 				"title": "StorageScope",
 				"type": "string",
@@ -9603,87 +9431,6 @@
 					"ttl": {
 						"type": "number",
 						"description": "Seconds from set time before the data expires and is removed"
-					}
-				}
-			},
-			"AppInfo": {
-				"description": "Information about an app that a grant was for",
-				"type": "object",
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"title": {
-						"type": "string"
-					}
-				},
-				"additionalProperties": false,
-				"required": [
-					"id"
-				]
-			},
-			"GrantState": {
-				"description": "The state the grant is in",
-				"type": "string",
-				"enum": [
-					"granted",
-					"denied"
-				]
-			},
-			"WifiSecurityMode": {
-				"title": "WifiSecurityMode",
-				"description": "Security Mode supported for Wifi",
-				"type": "string",
-				"enum": [
-					"none",
-					"wep64",
-					"wep128",
-					"wpaPskTkip",
-					"wpaPskAes",
-					"wpa2PskTkip",
-					"wpa2PskAes",
-					"wpaEnterpriseTkip",
-					"wpaEnterpriseAes",
-					"wpa2EnterpriseTkip",
-					"wpa2EnterpriseAes",
-					"wpa2Psk",
-					"wpa2Enterprise",
-					"wpa3PskAes",
-					"wpa3Sae"
-				]
-			},
-			"WifiSignalStrength": {
-				"title": "WifiSignalStrength",
-				"description": "Strength of Wifi signal, value is negative based on RSSI specification.",
-				"type": "integer",
-				"default": -255,
-				"minimum": -255,
-				"maximum": 0
-			},
-			"WifiFrequency": {
-				"title": "WifiFrequency",
-				"description": "Wifi Frequency in Ghz, example 2.4Ghz and 5Ghz.",
-				"type": "number",
-				"default": 0,
-				"minimum": 0
-			},
-			"AccessPoint": {
-				"title": "AccessPoint",
-				"description": "Properties of a scanned wifi list item.",
-				"type": "object",
-				"properties": {
-					"ssid": {
-						"type": "string",
-						"description": "Name of the wifi."
-					},
-					"securityMode": {
-						"$ref": "#/components/schemas/WifiSecurityMode"
-					},
-					"signalStrength": {
-						"$ref": "#/components/schemas/WifiSignalStrength"
-					},
-					"frequency": {
-						"$ref": "#/components/schemas/WifiFrequency"
 					}
 				}
 			}

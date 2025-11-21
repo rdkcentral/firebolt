@@ -15,16 +15,16 @@ sdk: core
 - [Table of Contents](#table-of-contents)
 - [Types](#types)
   - [FontFamily](#fontfamily)
+  - [SpeechRate](#speechrate)
+  - [VoiceGuidanceSettings](#voiceguidancesettings)
   - [FontSize](#fontsize)
-  - [FontEdge](#fontedge)
   - [Color](#color)
+  - [FontEdge](#fontedge)
   - [Opacity](#opacity)
   - [HorizontalAlignment](#horizontalalignment)
   - [VerticalAlignment](#verticalalignment)
   - [ClosedCaptionsStyles](#closedcaptionsstyles)
   - [ClosedCaptionsSettings](#closedcaptionssettings)
-  - [SpeechRate](#speechrate)
-  - [VoiceGuidanceSettings](#voiceguidancesettings)
 
 ## Types
 
@@ -45,10 +45,43 @@ FontFamily: {
 
 ---
 
+### SpeechRate
+
+```typescript
+type SpeechRate = number
+```
+
+---
+
+### VoiceGuidanceSettings
+
+```typescript
+type VoiceGuidanceSettings = {
+  enabled: boolean // Whether or not voice guidance should be enabled by default
+  navigationHints: boolean // Whether or not voice guidance should include additional navigation hints
+  rate: SpeechRate // The rate at which voice guidance speech will be read back to the user
+  speed?: SpeechRate // **DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user
+}
+```
+
+See also:
+
+[SpeechRate](#speechrate)
+
+---
+
 ### FontSize
 
 ```typescript
 type FontSize = number
+```
+
+---
+
+### Color
+
+```typescript
+type Color = string
 ```
 
 ---
@@ -65,14 +98,6 @@ FontEdge: {
     DROP_SHADOW_RIGHT: 'drop_shadow_right',
 },
 
-```
-
----
-
-### Color
-
-```typescript
-type Color = string
 ```
 
 ---
@@ -137,30 +162,5 @@ type ClosedCaptionsSettings = {
 See also:
 
 [ClosedCaptionsStyles](#closedcaptionsstyles)
-
----
-
-### SpeechRate
-
-```typescript
-type SpeechRate = number
-```
-
----
-
-### VoiceGuidanceSettings
-
-```typescript
-type VoiceGuidanceSettings = {
-  enabled: boolean // Whether or not voice guidance should be enabled by default
-  navigationHints: boolean // Whether or not voice guidance should include additional navigation hints
-  rate: SpeechRate // The rate at which voice guidance speech will be read back to the user
-  speed?: SpeechRate // **DEPRECATED** Use rate instead. The rate at which voice guidance speech will be read back to the user
-}
-```
-
-See also:
-
-[SpeechRate](#speechrate)
 
 ---

@@ -50,12 +50,12 @@ InterestReason: {
 ```typescript
 type InterestResult = {
   appId: string
-  entity: Entity.EntityDetails
+  entity: EntityDetails
 }
 ```
 
 See also:
 
-Entity.EntityDetails
+[Entity.EntityDetails](../Entity/schemas/#EntityDetails)
 
 ---

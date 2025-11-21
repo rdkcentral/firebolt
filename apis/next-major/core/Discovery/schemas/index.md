@@ -16,6 +16,7 @@ sdk: core
 - [Types](#types)
   - [InterestType](#interesttype)
   - [InterestReason](#interestreason)
+  - [InterestResult](#interestresult)
 
 ## Types
 
@@ -41,5 +42,20 @@ InterestReason: {
 },
 
 ```
+
+---
+
+### InterestResult
+
+```typescript
+type InterestResult = {
+  appId: string
+  entity: EntityDetails
+}
+```
+
+See also:
+
+[Entity.EntityDetails](../Entity/schemas/#EntityDetails)
 
 ---
