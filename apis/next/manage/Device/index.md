@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Device 1.8.0-next.19
+Version Device 1.8.0-next.20
 
 ## Table of Contents
 
