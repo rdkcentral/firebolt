@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.8.0-next.23
+Version Advertising 1.8.0-next.24
 
 ## Table of Contents
 
