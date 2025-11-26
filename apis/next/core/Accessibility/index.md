@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version Accessibility 1.8.0-next.25
+Version Accessibility 1.8.0-next.26
 
 ## Table of Contents
 
