@@ -10,7 +10,7 @@ sdk: core
 
 ---
 
-Version SecondScreen 1.8.0-next.28
+Version SecondScreen 1.8.0-next.29
 
 ## Table of Contents
 
