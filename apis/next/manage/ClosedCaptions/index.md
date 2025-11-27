@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version ClosedCaptions 1.8.0-next.27
+Version ClosedCaptions 1.8.0-next.28
 
 ## Table of Contents
 

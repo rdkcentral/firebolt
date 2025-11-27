@@ -10,7 +10,7 @@ sdk: discovery
 
 ---
 
-Version Content 1.8.0-next.27
+Version Content 1.8.0-next.28
 
 ## Table of Contents
 
