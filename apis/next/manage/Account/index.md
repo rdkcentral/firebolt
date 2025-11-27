@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Account 1.8.0-next.26
+Version Account 1.8.0-next.27
 
 ## Table of Contents
 
