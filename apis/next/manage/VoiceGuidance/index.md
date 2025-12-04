@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version VoiceGuidance 1.8.0-next.30
+Version VoiceGuidance 1.8.0-next.31
 
 ## Table of Contents
 
