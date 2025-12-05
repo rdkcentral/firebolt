@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Wifi 1.8.0-next.31
+Version Wifi 1.8.0-next.32
 
 ## Table of Contents
 
