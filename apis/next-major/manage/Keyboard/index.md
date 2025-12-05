@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Keyboard 1.8.0-next-major.3
+Version Keyboard 1.8.0-next-major.4
 
 ## Table of Contents
 

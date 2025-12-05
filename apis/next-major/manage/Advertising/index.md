@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version Advertising 1.8.0-next-major.3
+Version Advertising 1.8.0-next-major.4
 
 ## Table of Contents
 

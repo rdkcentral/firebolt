@@ -10,7 +10,7 @@ sdk: manage
 
 ---
 
-Version AcknowledgeChallenge 1.8.0-next-major.3
+Version AcknowledgeChallenge 1.8.0-next-major.4
 
 ## Table of Contents
 
